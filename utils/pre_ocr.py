@@ -18,7 +18,6 @@ def plot_img(img, title='', size=(15,10)):
         plt.imshow(img_rgb)
     plt.show()
 
-
 ## Funciones para procesar la imagen ----
 
 # Apply median blurring to remove noise
@@ -50,7 +49,21 @@ def corregir_giro(img):
     rotated = cv2.warpAffine(img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
     return rotated
 
-def procesar_imagen(img, enderezar=True):
+def procesar_img_1(img, enderezar=True):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gray
+
+def procesar_img_2(img, enderezar=True):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    blur = blur_img(gray)
+    return blur
+
+def procesar_img_3(img, enderezar=True):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = umbral_otsu(gray)
+    return gray
+
+def procesar_img_4(img, enderezar=True):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     blur = blur_img(gray)
     out = umbral_adaptivo(blur)
@@ -58,28 +71,14 @@ def procesar_imagen(img, enderezar=True):
         out = corregir_giro(out)
     return out
 
+def procesar_img_5(img, enderezar=True):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = umbral_otsu(gray)
+    out = blur_img(gray)
+    out = umbral_adaptivo(out)
+    if enderezar:
+        out = corregir_giro(out)
+    return out
 
-## Obtener diferentes versiones de la imagen ----
-
-# im_path = 'temp_pags/pagina_1.jpg'
-
-# image = cv2.imread(im_path)
-# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-# blur = blur_img(gray)
-# th1 = umbral_otsu(gray)
-# th2 = umbral_adaptivo(gray)
-# th3 = umbral_adaptivo(gray, 'mean')
-
-# blur_th1 = blur_img(th1)
-# blur_th2 = blur_img(th2)
-# blur_th3 = blur_img(th3)
-
-# sand1 = umbral_otsu(blur)
-# sand2 = umbral_adaptivo(blur)
-# sand3 = umbral_adaptivo(blur, 'mean')
-
-# # Imagen con todo el flujo
-# full = procesar_imagen(image)
 
 
