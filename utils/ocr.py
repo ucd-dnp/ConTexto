@@ -39,7 +39,7 @@ class OCR():
 		config = ("-l {} --oem {} --psm {}".format(self.lang, self.oem, self.psm))
 		texto = pytesseract.image_to_string(Image.open(file_name),config=config)
 		# texto = pytesseract.image_to_string(Image.open(file_name))
-		# os.remove(file_name)
+		os.remove(file_name)
 		return str(texto)
 	def pdf2image(self, pdf_path):
 		verify_create_dir(self.folder_dir)
