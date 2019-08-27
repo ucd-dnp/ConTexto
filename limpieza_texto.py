@@ -53,12 +53,12 @@ def limpieza_basica(texto, quitar_numeros=True):
     return texto
 
 # Limpieza básica + remover palabras de menos de n caracteres y stopwords
-def limpieza_texto(texto, lista_palabras=[], lista_expresiones=[], ubicacion_archivo=None, separador_espacio='__', n_min=0, quitar_acentos=False):
+def limpieza_texto(texto, lista_palabras=[], lista_expresiones=[], ubicacion_archivo=None, separador_espacio='__', n_min=0, quitar_numeros=True, quitar_acentos=False):
     # Se verifica si se desean quitar acentos/tildes
     if quitar_acentos:
         texto = remover_acentos(texto)
     # Limpieza básica del texto
-    texto = basic_clean(texto)
+    texto = limpieza_basica(texto, quitar_numeros)
     # Quita palabras cortas y palabras pertenecientes a una lista específica
     texto = remover_palabras_cortas(texto, n_min)
     texto = remover_stopwords(texto,lista_palabras,lista_expresiones,ubicacion_archivo,separador_espacio)

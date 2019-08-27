@@ -1,30 +1,37 @@
-# Función para generar n-gramas
-def get_ngrams(text, n ):
-    n_grams = ngrams(text.split(' '), n)
-    return [ ' '.join(grams) for grams in n_grams]
-
-
-lista_uni = []
-lista_bi = []
-lista_tri = []
-lista_cuatri = []
-
-for texto in base_filtrada.texto_limpio:
-    lista_uni += get_ngrams(texto,1)
-    lista_bi += get_ngrams(texto,2)
-    lista_tri += get_ngrams(texto,3)
-    lista_cuatri += get_ngrams(texto,4)
-    
+from collections import Counter
+from wordcloud import WordCloud
 import numpy as np
-x, y = np.ogrid[:600, :600]
-mask = (x - 300) ** 2 + (y - 300) ** 2 > 260 ** 2
-mask = 255 * mask.astype(int)
+import matplotlib.pyplot as plt
 
-for lista in ['lista_uni','lista_bi','lista_tri','lista_cuatri']:
-    print('\n ------------- {} ----------'.format(lista))
-    cont = Counter(eval(lista))
-    dictu = dict(cont.most_common(200))
+# Función para generar n-gramas a partir de un texto
+def obtener_ngramas(texto, n=1, devolver_lista=True):
+    lista = texto.split(' ')
+    n_gramas = (' '.join(lista[i:i+n]) for i in range(len(lista)) if i + n <= len(lista))
+    if devolver_lista:
+        n_gramas = list(n_gramas)
+    return n_gramas
+
+
+def nube_palabras(lista, n_palabras=100, plot=True, figsize=(10,10), titulo='Términos más frecuentes'):
+    x, y = np.ogrid[:600, :600]
+    mask = (x - 300) ** 2 + (y - 300) ** 2 > 260 ** 2
+    mask = 255 * mask.astype(int)
+    cont = Counter(lista)
+    dictu = dict(cont.most_common(n_palabras))
     wordcl = WordCloud(background_color = 'white',prefer_horizontal=0.6, mask=mask)
-    exec(lista + '_cloud = wordcl.generate_from_frequencies(dictu)')
+    figura = wordcl.generate_from_frequencies(dictu)
+
+    if plot:
+        # Graficar la imagen generada
+        graficar_nube(figura, figsize, titulo)
     
-    print(cont.most_common(20))
+    return figura
+
+def graficar_nube(nube, figsize=(10,10), titulo='Términos más frecuentes'):
+    plt.figure(figsize=figsize)
+    plt.imshow(nube, interpolation='bilinear')
+    plt.title(titulo)
+    plt.axis("off")
+    plt.show()
+
+    
