@@ -48,7 +48,7 @@ class OCR():
 		image_counter = 0
 		for pagina in paginas:
 			image_counter += 1
-			filename = self.folder_dir + "/pagina_" + str(image_counter) + ".jpg"
+			filename = self.folder_dir + "/pagina_" + str(image_counter).zfill(7) + ".jpg"
 			pagina.save(filename, 'JPEG')
 	def pdf2text(self, pdf_path,borrar_folder=True):
 		self.pdf2image(pdf_path)
