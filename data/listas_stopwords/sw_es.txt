@@ -257,6 +257,7 @@ seáis
 siente
 si
 sin
+sino
 sintiendo
 sobre
 sois
@@ -271,6 +272,7 @@ suyo
 suyos
 sí
 también
+tan
 tanto
 te
 tendremos
