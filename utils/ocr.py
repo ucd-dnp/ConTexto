@@ -41,17 +41,21 @@ class OCR():
 		# texto = pytesseract.image_to_string(Image.open(file_name))
 		os.remove(file_name)
 		return str(texto)
-	def pdf2image(self, pdf_path):
+	def pdf_to_image(self, pdf_path):
+		tempo_dir = self.folder_dir + '/tempo/'
 		verify_create_dir(self.folder_dir)
-		paginas = convert_from_path(pdf_path, 500)
+		verify_create_dir(tempo_dir)
+		paginas = convert_from_path(pdf_path, thread_count=8, output_folder=tempo_dir)
 		# Counter to store images of each page of PDF to image 
 		image_counter = 0
 		for pagina in paginas:
 			image_counter += 1
 			filename = self.folder_dir + "/pagina_" + str(image_counter).zfill(7) + ".jpg"
 			pagina.save(filename, 'JPEG')
+		# Borrar folder temporal
+		shutil.rmtree(tempo_dir)
 	def pdf2text(self, pdf_path,borrar_folder=True):
-		self.pdf2image(pdf_path)
+		self.pdf_to_image(pdf_path)
 		imagenes = glob(self.folder_dir + '/*.jpg')
 		paginas = []
 		for imagen in imagenes:

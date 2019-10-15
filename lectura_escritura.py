@@ -34,10 +34,16 @@ class Lector():
             paginas = recog.pdf2text(self.file_path)
         else:
             import PyPDF2
+            # Función para prevenir errores
+            def leer_pag(reader, pag):
+                try:
+                    return reader.getPage(pag).extractText()
+                except:
+                    return ''
             pdf_file = open(self.file_path, 'rb')
             reader = PyPDF2.PdfFileReader(pdf_file)
             number_of_pages = reader.getNumPages()
-            paginas = [reader.getPage(i).extractText() for i in range(number_of_pages)]
+            paginas = [leer_pag(reader,i) for i in range(number_of_pages)]
             pdf_file.close()
         if por_paginas:
             return paginas

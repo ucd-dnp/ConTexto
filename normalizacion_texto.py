@@ -1,35 +1,11 @@
 import json
 import nltk.stem
-import os
 import spacy
-from .lenguajes import detectar_lenguaje
 from .limpieza_texto import remover_acentos
+from .lenguajes import detectar_lenguaje
+from .lenguajes import dict_lenguajes, dict_lenguajes_simplificado
 
-# Diccionario para distintas representaciones de idiomas
-# Por ahora se acota a español, inglés, alemán y francés
-dict_lenguajes = {
-    'es': 'spanish',
-    'espanol': 'spanish',
-    'spanish': 'spanish',
-    'sp': 'spanish',
-    'en': 'english',
-    'english': 'english',
-    'ingles': 'english',
-    'ge': 'german',
-    'de': 'german',
-    'german': 'german',
-    'aleman': 'german',
-    'fr': 'french',
-    'french': 'french',
-    'frances': 'french',
-}
-
-dict_lemma = {
-    'spanish': 'es',
-    'english': 'en',
-    'french': 'fr',
-    'german': 'de'
-}
+### Definir clases para el lematizador y el stemmer ###
 
 class Lematizador():
     def __init__(self, lenguaje, dict_lemmas=None):
@@ -53,7 +29,7 @@ class Lematizador():
     def iniciar_lematizador(self, modelo=''):
         if self.leng in dict_lenguajes.keys():
             self.leng = dict_lenguajes[self.leng]
-            self.leng = dict_lemma[self.leng]
+            self.leng = dict_lenguajes_simplificado[self.leng]
             if modelo != '':
                 pass
             else:
@@ -77,10 +53,10 @@ class Lematizador():
 
 class Stemmer():
     def __init__(self, lenguaje):
-        # Definir lenguaje del lematizador
+        # Definir lenguaje del stemmer
         self.definir_lenguaje(lenguaje)
-        # Inicializar lematizador
-        self.stemmer = None
+        # Inicializar stemmer
+        self.iniciar_stemmer()
     
     def definir_lenguaje(self, lenguaje):
         leng = remover_acentos(lenguaje)
@@ -92,20 +68,19 @@ class Stemmer():
             self.leng = dict_lenguajes[self.leng]
             self.stemmer = nltk.stem.SnowballStemmer(self.leng)
         else:
-            self.stemmer = -1
-
-    # def modificar
+            self.stemmer = None
 
     def stemming(self, texto):
         return  ' '.join([self.stemmer.stem(palabra) for palabra in texto.split(" ")])
 
- 
+
+### Definir funciones que envuelvan la funcionalidad básica de las clases ###
+
 def lematizar_texto(texto, lenguaje='es', lematizador=None, dict_lemmas=None):
     # Si no se provee un lematizador, este debe ser inicializado
     if lematizador is None:
         if lenguaje=='auto':
             lenguaje = detectar_lenguaje(texto)
-
         lematizador = Lematizador(lenguaje, dict_lemmas)
 
     if lematizador.lematizador is None:
@@ -114,12 +89,15 @@ def lematizar_texto(texto, lenguaje='es', lematizador=None, dict_lemmas=None):
     
     return lematizador.lematizar(texto)
 
-def stem_texto(texto, lenguaje='es', modelo=''):
-    if lenguaje=='auto':
-        lenguaje = detectar_lenguaje(texto)
-    stemmer = Stemmer(lenguaje)
-    stemmer.iniciar_stemmer()
-    if (stemmer.stemmer is not None) and (stemmer.stemmer != -1):
-        return stemmer.stemming(texto)
+def stem_texto(texto, lenguaje='es', stemmer=None):
+    # Si no se provee un stemmer, este debe ser inicializado
+    if stemmer is None:
+        if lenguaje=='auto':
+            lenguaje = detectar_lenguaje(texto)
+        stemmer = Stemmer(lenguaje)
+    
+    if stemmer.stemmer is None:
+        print('Lenguaje no válido.')
+        return None
 
-
+    return stemmer.stemming(texto)

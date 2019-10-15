@@ -15,3 +15,30 @@ def traducir_texto(texto,lenguaje_destino):
         return out.text
     else:
         return [i.text for i in out]
+
+# Diccionario para distintas representaciones de idiomas
+# Por ahora se acota a español, inglés, alemán y francés
+dict_lenguajes = {
+    'es': 'spanish',
+    'espanol': 'spanish',
+    'spanish': 'spanish',
+    'sp': 'spanish',
+    'en': 'english',
+    'english': 'english',
+    'ingles': 'english',
+    'ge': 'german',
+    'de': 'german',
+    'german': 'german',
+    'aleman': 'german',
+    'fr': 'french',
+    'french': 'french',
+    'frances': 'french',
+}
+
+# Diccionario para dejar la representación en dos letras de cada idioma
+dict_lenguajes_simplificado = {
+    'spanish': 'es',
+    'english': 'en',
+    'french': 'fr',
+    'german': 'de'
+}
