@@ -13,18 +13,25 @@ def obtener_ngramas(texto, n=1, devolver_lista=True):
         n_gramas = list(n_gramas)
     return n_gramas
 
-# Función para crear y graficar/guardar una nube de palabras
-def nube_palabras(texto, n_grama=1, n_palabras=100, plot=True, figsize=(10,10), 
-                  titulo='Términos más frecuentes',archivo='',mask=None, semilla=1234):
-    # Obtener lista de n_gramas a partir del texto
+def frecuencia_ngramas(texto, n_grama=1, n_max=None):
     lista = obtener_ngramas(texto, n_grama)
+    cont = Counter(lista)
+    if n_max is not None:
+        dictu = dict(cont.most_common(n_max))
+    else:
+        dictu = dict(cont)
+    return dictu
+
+# Función para crear y graficar/guardar una nube de palabras
+def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), 
+                  titulo='Términos más frecuentes',archivo='',mask=None, semilla=1234):
+    # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
+    dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Crear máscara (circular) para ordenar la nube
     if mask is None:
         x, y = np.ogrid[:600, :600]
         mask = (x - 300) ** 2 + (y - 300) ** 2 > 260 ** 2
         mask = 255 * mask.astype(int)
-    cont = Counter(lista)
-    dictu = dict(cont.most_common(n_palabras))
     wordcl = WordCloud(background_color = 'white',prefer_horizontal=0.6, mask=mask,random_state=semilla)
     figura = wordcl.generate_from_frequencies(dictu)
     # Graficar y/o guardar la imagen generada
@@ -72,13 +79,14 @@ def matriz_coocurrencias(texto, min_freq=1, max_num=100, modo='documento', venta
                         if (inicio + j) != i:
                             mat_oc[item][palabra] += 1
         else:
+            if palabra not in names:
+                continue
             for item in names:
-                if palabra in mat_oc.columns:
-                    if palabra != item:
-                        mat_oc[item][palabra] = cuenta_filt[palabra] * cuenta_filt[item]
-                    else:
-                        if mat_oc[item][palabra] == 0: 
-                            mat_oc[item][palabra] = cuenta_filt[palabra]
+                if palabra != item:
+                    mat_oc[item][palabra] = cuenta_filt[palabra] * cuenta_filt[item]
+                else:
+                    if mat_oc[item][palabra] == 0: 
+                        mat_oc[item][palabra] = cuenta_filt[palabra]
     # Ordenar filas y columnas alfabeticamente
     mat_oc.sort_index(inplace=True)
     mat_oc = mat_oc.reindex(sorted(mat_oc.columns), axis=1)

@@ -10,6 +10,9 @@ def detectar_lenguaje(texto, devolver_proba=False):
 
 def traducir_texto(texto,lenguaje_destino):
     traductor = Translator()
+    # Adecuar el lenguaje de destino al formato de la API
+    lenguaje_destino = dict_lenguajes[lenguaje_destino]
+    lenguaje_destino = dict_lenguajes_simplificado[lenguaje_destino]
     out = traductor.translate(texto, dest=lenguaje_destino)
     if type(texto) == str:
         return out.text
