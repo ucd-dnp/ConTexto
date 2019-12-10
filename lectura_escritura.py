@@ -1,7 +1,7 @@
 '''Código, funciones y clases relacionadas a la carga y lectura de diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).'''
 from .utils.helper import verify_create_dir
 
-
+#prueba
 # Clase lector
 class Lector():
     def __init__(self, ubicacion_archivo):
