@@ -23,7 +23,7 @@ def frecuencia_ngramas(texto, n_grama=1, n_max=None):
     return dictu
 
 # Función para crear y graficar/guardar una nube de palabras
-def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), 
+def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), hor=0.6,
                   titulo='Términos más frecuentes',archivo='',mask=None, semilla=1234):
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
@@ -32,7 +32,7 @@ def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10),
         x, y = np.ogrid[:600, :600]
         mask = (x - 300) ** 2 + (y - 300) ** 2 > 260 ** 2
         mask = 255 * mask.astype(int)
-    wordcl = WordCloud(background_color = 'white',prefer_horizontal=0.6, mask=mask,random_state=semilla)
+    wordcl = WordCloud(background_color = 'white',prefer_horizontal=hor, mask=mask,random_state=semilla)
     figura = wordcl.generate_from_frequencies(dictu)
     # Graficar y/o guardar la imagen generada
     grafica_nube(figura, figsize, titulo, archivo, plot)
@@ -40,7 +40,8 @@ def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10),
 # Función para graficar o guardar una nube de palabras
 def grafica_nube(nube, figsize=(10,10), titulo='Términos más frecuentes', archivo='', plot=True):
     fig = plt.figure(figsize=figsize)
-    plt.title(titulo)
+    if titulo != '':
+        plt.title(titulo)
     plt.axis("off")
     if plot:
         plt.imshow(nube, interpolation='bilinear')
@@ -149,7 +150,10 @@ def graficar_coocurrencias(mat, tipo=None, prop_fuera=0, archivo='', plot=True, 
     G.add_weighted_edges_from(edge_list)
     # Crear la gráfica
     plt.subplots(figsize=figsize)
-    pos = nx.spring_layout(G, iterations=300, k=K, seed=semilla)
+    try:
+        pos = nx.spring_layout(G, iterations=300, k=K, seed=semilla)
+    except:
+        pos = nx.spring_layout(G, iterations=300, k=K)
     nx.draw(G, pos, with_labels=False, node_size=sizes, width=widths, edge_color=col_borde,
             node_color=col_nodo)
     # Escribir los nombres de los nodos
