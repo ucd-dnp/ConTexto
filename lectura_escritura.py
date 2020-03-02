@@ -177,9 +177,3 @@ def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
     es.texto_a_archivo(tipo)
 
 
-
-# extraer medios: solo para Word. Extraer imágenes y archivarlas
-# Por páginas: lista de páginas 
-# preprocess: mirar de 1 a 5 
-
-
