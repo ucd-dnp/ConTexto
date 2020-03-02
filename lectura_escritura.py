@@ -41,7 +41,8 @@ class Lector():
                 except:
                     return ''
             pdf_file = open(self.file_path, 'rb')
-            reader = PyPDF2.PdfFileReader(pdf_file)
+            # reader = PyPDF2.PdfFileReader(pdf_file)
+            reader = PyPDF2.PdfFileReader(pdf_file,strict=False)
             number_of_pages = reader.getNumPages()
             paginas = [leer_pag(reader,i) for i in range(number_of_pages)]
             pdf_file.close()
@@ -97,7 +98,9 @@ class Escritor():
     def write_txt(self):
         if type(self.txt) == list:
             self.txt = '\n\n|**|\n\n'.join(self.txt)
-        with open(self.file_path, 'w') as fp:
+        # with open(self.file_path, 'w') as fp:
+        with open(self.file_path, 'w',encoding="utf-8") as fp:
+
             fp.write(self.txt)
     def write_word(self):
         from docx import Document
@@ -172,3 +175,11 @@ def leer_texto(ubicacion_archivo, tipo='inferir', extraer_medios=False, dir_medi
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
     es = Escritor(ubicacion_archivo, texto)
     es.texto_a_archivo(tipo)
+
+
+
+# extraer medios: solo para Word. Extraer imágenes y archivarlas
+# Por páginas: lista de páginas 
+# preprocess: mirar de 1 a 5 
+
+
