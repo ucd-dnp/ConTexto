@@ -40,11 +40,11 @@ def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), 
 # Función para graficar o guardar una nube de palabras
 def grafica_nube(nube, figsize=(10,10), titulo='Términos más frecuentes', archivo='', plot=True):
     fig = plt.figure(figsize=figsize)
+    plt.imshow(nube, interpolation='bilinear')
     if titulo != '':
         plt.title(titulo)
     plt.axis("off")
     if plot:
-        plt.imshow(nube, interpolation='bilinear')
         plt.show()
     if archivo != '':
         fig.savefig(archivo)
@@ -161,6 +161,39 @@ def graficar_coocurrencias(mat, tipo=None, prop_fuera=0, archivo='', plot=True, 
         x, y = value[0] + 0, value[1] - offset_y
         plt.text(x, y, s=key, horizontalalignment='center', fontsize=10)
     plt.axis('off')
+    if archivo != '':
+        plt.savefig(archivo) # save as png
+    if plot:
+        plt.show()
+    # Cerrar gráfica
+    plt.close()
+
+# los datos corresponden a un string para analizar
+def grafica_barchart_frecuencias(texto, n_grama=1, figsize=(8,5), titulo='', ascendente=True,
+                                archivo='', plot=True, n_terminos=15):
+    
+    dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)
+    # Ordenar datos en un dataframe
+    df = pd.DataFrame.from_dict(dict_datos, orient='index')
+    df = df.reset_index()
+    df.columns = ['n_grama', 'frecuencia']
+    df = df.sort_values(by='frecuencia', ascending=ascendente)
+    # Crear gráfica
+    plt.rcdefaults()
+    fig, ax = plt.subplots(figsize=figsize)
+    y_pos = np.arange(n_terminos)
+    ax.barh(y_pos, df['frecuencia'], align='center')
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(df['n_grama'])
+    if titulo != '':
+        ax.set_title(titulo)
+    ax.set_xlabel('Frecuencia')
+    ax.set_ylabel('Término')
+    plt.tight_layout()
+  
+    for i, v in enumerate(df['frecuencia']):        
+        ax.text(v, i, v, fontsize=10, verticalalignment="center")        
+    
     if archivo != '':
         plt.savefig(archivo) # save as png
     if plot:

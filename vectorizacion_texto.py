@@ -4,7 +4,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
 
-
 ####### BOW / TF-IDF  #########
 class VectorizadorFrecuencias():
     def __init__(self, tipo='bow', ngram_range=(1,1),max_feat=None,idf=True):
@@ -22,36 +21,45 @@ class VectorizadorFrecuencias():
         self.model.fit(x)
 
     def vectorizar(self, x, disperso=True):
+        if type(x) == str:
+            x = [x]
         vectores = self.model.transform(x)
         if not disperso:
             vectores = vectores.toarray()
         return vectores
 
     def vocabulario(self):
-        vocab = self.model.vocabulary_
-        vocab = pd.DataFrame.from_dict(vocab, orient='index', columns=['valor'])
-        vocab = vocab.sort_values('valor')
-        vocab['palabra'] = vocab.index
-        vocab.index = range(len(vocab))
-        return vocab
+        try:
+            vocab = self.model.vocabulary_
+            vocab = pd.DataFrame.from_dict(vocab, orient='index', columns=['valor'])
+            vocab = vocab.sort_values('valor')
+            vocab['palabra'] = vocab.index
+            vocab.index = range(len(vocab))
+            return vocab
+        except:
+            print('Debe entrenar primero el vectorizador para que exista un vocabulario.')
 
     # A partir de un vector o grupo de vectores, devuelve los términos con frecuencia mayor a 0 
-    # en el documento (Solo disponible para TF-IDF)
+    # en el documento
     def inversa(self, x):
-        if self.tipo == 'tfidf':
-            return self.model.inverse_transform(x)
-        else:
-            pass
-
-####### Hashing #########
+        return self.model.inverse_transform(x)
+        
+####### Hashing ######### 
 class VectorizadorHash():
-    def __init__(self, n_features=100):
-        self.model = HashingVectorizer(n_features=n_features)
+    def __init__(self, n_features=100, ngram_range=(1,1)):
+        self.model = HashingVectorizer(n_features=n_features, ngram_range=ngram_range)
+    def vectorizar(self, x):
+        if type(x) == str:
+            x = [x]
+        vectores = self.model.transform(x, disperso=True)
+        if not disperso:
+            vectores = vectores.toarray()
+        return vectores
 
-# create the transform
-vectorizer = HashingVectorizer(n_features=200)
-# encode document
-X_hash = vectorizer.transform(base_filtrada.texto_limpio)
+# # create the transform
+# vectorizer = HashingVectorizer(n_features=200)
+# # encode document
+# X_hash = vectorizer.transform(base_filtrada.texto_limpio)
 # .todense() vuelve la matriz dispersa en matriz "normal"? - averiguar
 
   
