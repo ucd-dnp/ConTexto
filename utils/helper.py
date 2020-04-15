@@ -1,8 +1,7 @@
 import os
 import re
 import time
-import comtypes.client
-
+import win32com.client
 
 # # leer archivo '.RData' como una dataframe pandas
 # def load_rdata_file(filename):
@@ -177,13 +176,12 @@ def striprtf(text):
 
 def word_a_pdf(in_file,out_file):
     wdFormatPDF=17
-    word=comtypes.client.CreateObject('Word.Application')
+    word = win32com.client.Dispatch('Word.Application')    
     in_file=in_file
     out_file=out_file
-    word.Visible=False
+    word.Visible=True
     time.sleep(3)
     doc=word.Documents.Open(in_file)
     doc.SaveAs(out_file, FileFormat=wdFormatPDF)
     doc.Close()
-    word.quit()    
     return
