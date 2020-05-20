@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 import pandas as pd
-from collections import Counter
+from collections import Counter, Iterable
 from wordcloud import WordCloud
 
 # Función para generar n-gramas a partir de un texto
@@ -24,7 +24,8 @@ def frecuencia_ngramas(texto, n_grama=1, n_max=None):
 
 # Función para crear y graficar/guardar una nube de palabras
 def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), hor=0.6,
-                  titulo='Términos más frecuentes',archivo='',mask=None, semilla=1234):
+                  titulo='Términos más frecuentes', archivo='', mask=None, semilla=1234,
+                  devolver_nube=False):
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Crear máscara (circular) para ordenar la nube
@@ -34,8 +35,12 @@ def nube_palabras(texto, n_grama=1, n_terminos=100, plot=True, figsize=(10,10), 
         mask = 255 * mask.astype(int)
     wordcl = WordCloud(background_color = 'white',prefer_horizontal=hor, mask=mask,random_state=semilla)
     figura = wordcl.generate_from_frequencies(dictu)
-    # Graficar y/o guardar la imagen generada
-    grafica_nube(figura, figsize, titulo, archivo, plot)
+    # Devolver el objeto de la nube, para graficarlo de otra manera
+    if devolver_nube:
+        return figura
+    else:
+        # Graficar y/o guardar la imagen generada
+        grafica_nube(figura, figsize, titulo, archivo, plot)
 
 # Función para graficar o guardar una nube de palabras
 def grafica_nube(nube, figsize=(10,10), titulo='Términos más frecuentes', archivo='', plot=True):
@@ -50,44 +55,82 @@ def grafica_nube(nube, figsize=(10,10), titulo='Términos más frecuentes', arch
         fig.savefig(archivo)
     # Cerrar gráfica
     plt.close()
+
+# Grafica un par de nubes de palabras, una junto a otra
+def par_nubes(texto, n1=1, n2=2, figsize=(20,11), archivo='', plot=True):
+    # Obtener nubes de palabras
+    nube_1 = nube_palabras(texto, n_grama=n1, hor=0.8, devolver_nube=True)
+    nube_2 = nube_palabras(texto, n_grama=n2, hor=1, devolver_nube=True)
     
+    # Graficar nubes y mostrarlas
+    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=figsize, gridspec_kw={'hspace': 0, 'wspace': 0})
+
+    ax1.imshow(nube_1, interpolation='bilinear')
+    tit = 'términos' if n1==1 else f"n_gramas ({n1})"
+    ax1.set_title(f'Nube de palabras: {tit}', size=18)
+
+    ax2.imshow(nube_2, interpolation='bilinear')
+    tit = 'términos' if n2==1 else f"n_gramas ({n2})"
+    ax2.set_title(f'Nube de palabras: {tit}', size=18)
+
+    fig.suptitle('Términos más frecuentes', size=28, y=0.99)
+    plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[])
+    if plot:
+        plt.show()
+    if archivo != '':
+        fig.savefig(archivo)
+    # Cerrar gráfica
+    plt.close()        
+
 # Función que calcula matriz de co-ocurrencias de un texto
 def matriz_coocurrencias(texto, min_freq=1, max_num=100, modo='documento', ventana=3, triu=True):
     """
+    texto: Un solo texto o un conjunto de documentos
     min_freq: Mínima frecuencia de aparición de palabras
     max_num: Máximo número de palabras a dejar en la matriz (se cogen las más frecuentes)
     ventana: Tamaño de la ventana (solo se usa cuando modo='ventana')
     modo: Modo de análisis (documento o ventana)
     """
-    # Generar lista de palabras
-    palabras = texto.split()
+    # Generar un solo texto con todos los documentos
+    if isinstance(texto, Iterable) and type(texto) != str:
+        texto_entero = ' '.join([str(i) for i in texto])
+    else:
+        texto_entero = str(texto)
+        texto = [texto_entero] # Convertirlo en un iterable
+    # Generar lista de palabras en todos los textos juntos
+    palabras = texto_entero.split()
     # Dejar solo las palabras con mayor frecuencia y/o que cumplan una frecuencia mínima
     cuenta = dict(Counter(palabras).most_common(max_num))
     cuenta_filt = {k: v for k, v in cuenta.items() if v >= min_freq}
-    names = list(cuenta_filt.keys())
+    names = list(set(cuenta_filt.keys()))
     # Inicializar en ceros la matriz de co-ocurrencias
-    mat_oc = pd.DataFrame(np.zeros([len(names),len(names)]),columns=names, index=names)
-    # Ciclo a través de las palabras para obtener las co-ocurrencias:
-    for i, palabra in enumerate(palabras):
-        if modo == 'ventana':
-            inicio = max(0, i - ventana)
-            fin = min(len(palabras), i + ventana + 1)
-            for j, item in enumerate(palabras[inicio:fin]):
-                if (item in mat_oc.columns) and (palabra in mat_oc.columns):
-                    if palabra != item:
-                        mat_oc[item][palabra] += 1
+    mat_oc = pd.DataFrame(np.zeros([len(names), len(names)]), columns=names, index=names) 
+    if modo == 'ventana':
+        for t in texto:
+            palabras_t = t.split()
+            # Ciclo a través de las palabras para obtener las co-ocurrencias:
+            for i, p1 in enumerate(palabras_t):
+                inicio = max(0, i - ventana)
+                fin = min(len(palabras), i + ventana + 1)
+                for j, p2 in enumerate(palabras_t[inicio:fin]):
+                    if (p2 in names) and (p1 in names):
+                        if p1 != p2:
+                            mat_oc[p2][p1] += 1
+                        else:
+                            if (inicio + j) != i:
+                                mat_oc[p2][p1] += 1
+    elif modo == 'documento':
+        for t in texto:
+            cuenta_t = dict(Counter(t.split()))
+            for p1 in names:
+                for p2 in names:
+                    if p1 != p2:
+                        if p1 in cuenta_t and p2 in cuenta_t:
+                            mat_oc[p2][p1] += cuenta_t[p1] * cuenta_t[p2]
                     else:
-                        if (inicio + j) != i:
-                            mat_oc[item][palabra] += 1
-        else:
-            if palabra not in names:
-                continue
-            for item in names:
-                if palabra != item:
-                    mat_oc[item][palabra] = cuenta_filt[palabra] * cuenta_filt[item]
-                else:
-                    if mat_oc[item][palabra] == 0: 
-                        mat_oc[item][palabra] = cuenta_filt[palabra]
+                        if p1 in cuenta_t:
+                            mat_oc[p2][p1] += cuenta_t[p1]
+
     # Ordenar filas y columnas alfabeticamente
     mat_oc.sort_index(inplace=True)
     mat_oc = mat_oc.reindex(sorted(mat_oc.columns), axis=1)
