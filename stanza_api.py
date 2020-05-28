@@ -7,6 +7,8 @@ idioma = 'español'
 idioma = remover_acentos(idioma)
 idioma = dict_lenguajes_simplificado[dict_lenguajes[idioma]]
 
-nlp = stanza.Pipeline('en')
-
-stanza.download('en')
+try:
+    nlp = stanza.Pipeline(idioma)
+except BaseException:
+    stanza.download(idioma)
+    nlp = stanza.Pipeline(idioma)

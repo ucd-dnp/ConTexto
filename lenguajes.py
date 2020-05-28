@@ -1,6 +1,7 @@
 from langid.langid import LanguageIdentifier, model
 from googletrans import Translator
 
+
 def detectar_lenguaje(texto, devolver_proba=False):
     identifier = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
@@ -8,16 +9,18 @@ def detectar_lenguaje(texto, devolver_proba=False):
     else:
         return identifier.classify(texto)[0]
 
-def traducir_texto(texto,lenguaje_destino):
+
+def traducir_texto(texto, lenguaje_destino):
     traductor = Translator()
     # Adecuar el lenguaje de destino al formato de la API
     lenguaje_destino = dict_lenguajes[lenguaje_destino]
     lenguaje_destino = dict_lenguajes_simplificado[lenguaje_destino]
     out = traductor.translate(texto, dest=lenguaje_destino)
-    if type(texto) == str:
+    if isinstance(texto, str):
         return out.text
     else:
         return [i.text for i in out]
+
 
 # Diccionario para distintas representaciones de idiomas
 # Por ahora se acota a español, inglés, alemán y francés

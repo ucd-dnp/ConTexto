@@ -1,11 +1,11 @@
 if self.leng == 'es':
     try:
         self.lematizador = spacy.load('es_core_news_md')
-    except:
+    except BaseException:
         try:
             os.system('python -m spacy download es_core_news_md')
             self.lematizador = spacy.load('es_core_news_md')
-        except:
+        except BaseException:
             self.lematizador = spacy.blank(self.leng)
 else:
     self.lematizador = spacy.blank(self.leng)
@@ -19,4 +19,4 @@ doc = nlp(texto)
 
 for token in doc:
     print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
-            token.shape_, token.is_alpha, token.is_stop)
+          token.shape_, token.is_alpha, token.is_stop)

@@ -6,6 +6,7 @@ from lenguajes import dict_lenguajes, dict_lenguajes_simplificado
 
 ### Definir clase para el corrector ortográfico ###
 
+
 class Corrector():
     def __init__(self, lenguaje, diccionario=None, distancia=2):
         # Definir lenguaje del corrector ortográfico
@@ -23,7 +24,7 @@ class Corrector():
         if self.leng in dict_lenguajes.keys():
             self.leng = dict_lenguajes[self.leng]
             self.leng = dict_lenguajes_simplificado[self.leng]
-            if type(diccionario) == str:
+            if isinstance(diccionario, str):
                 self.corrector = SpellChecker(local_dictionary=diccionario)
             elif type(diccionario) in [dict, list]:
                 self.corrector = SpellChecker(language=self.leng)
@@ -32,33 +33,34 @@ class Corrector():
                 self.corrector = SpellChecker(language=self.leng)
         else:
             self.corrector = None
- 
+
     def establecer_distancia(self, distancia):
         self.corrector.distance = distancia
 
     def actualizar_diccionario(self, diccionario):
-        if type(diccionario) == str:
+        if isinstance(diccionario, str):
             diccionario = json.load(open(diccionario))
-        if type(diccionario) == list:
+        if isinstance(diccionario, list):
             diccionario = [palabra.lower() for palabra in diccionario]
             self.corrector.word_frequency.load_words(diccionario)
-        elif type(diccionario) == dict:
+        elif isinstance(diccionario, dict):
             self.quitar_palabras(list(diccionario.keys()))
             for key in diccionario.keys():
-                self.corrector.word_frequency.load_words([key.lower()]*diccionario[key])
+                self.corrector.word_frequency.load_words(
+                    [key.lower()] * diccionario[key])
         else:
             pass
 
     def quitar_palabras(self, palabras):
-        if type(palabras) == str:
+        if isinstance(palabras, str):
             palabras = [palabras]
         # Quitar de la lista palabras que no estén en el diccionario
-        palabras = [p for p in palabras if self.frecuencia_palabra(p)>0]
+        palabras = [p for p in palabras if self.frecuencia_palabra(p) > 0]
         if len(palabras) > 0:
             self.corrector.word_frequency.remove_words(palabras)
-        
+
     def agregar_palabras(self, palabras):
-        if type(palabras) == str:
+        if isinstance(palabras, str):
             palabras = [palabras]
         self.actualizar_diccionario(palabras)
 
@@ -79,26 +81,30 @@ class Corrector():
 
     def correccion_ortografia(self, texto):
         # Limpieza básica del texto para que no afecte la corrección
-        texto = limpieza_basica(texto,quitar_numeros=False)
+        texto = limpieza_basica(texto, quitar_numeros=False)
         lista_palabras = texto.split()
         desconocidas = self.corrector.unknown(lista_palabras)
-        texto_corregido = [self.corrector.correction(palabra) if palabra in desconocidas 
-                          else palabra for palabra in lista_palabras]
+        texto_corregido = [self.corrector.correction(palabra) if palabra in desconocidas
+                           else palabra for palabra in lista_palabras]
         return ' '.join(texto_corregido)
 
 
 ### Definir función que envuelva la funcionalidad básica de la clase ###
 
-def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2):
+def corregir_texto(
+        texto,
+        lenguaje='es',
+        corrector=None,
+        diccionario=None,
+        distancia=2):
     # Si no se provee un lematizador, este debe ser inicializado
     if corrector is None:
-        if lenguaje=='auto':
+        if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
         corrector = Corrector(lenguaje, diccionario, distancia)
-    
+
     if corrector.corrector is None:
         print('Lenguaje no válido.')
         return None
 
     return corrector.correccion_ortografia(texto)
-

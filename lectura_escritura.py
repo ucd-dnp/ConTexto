@@ -1,5 +1,5 @@
 '''
-Código, funciones y clases relacionadas a la carga y lectura de 
+Código, funciones y clases relacionadas a la carga y lectura de
 diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).
 '''
 from utils.helper import verify_create_dir
@@ -23,7 +23,7 @@ class Lector():
                 try:
                     out.append(line.strip())
                     line = fp.readline()
-                except:
+                except BaseException:
                     continue
         return '\n'.join(out)
 
@@ -48,7 +48,7 @@ class Lector():
             def leer_pag(reader, pag):
                 try:
                     return reader.getPage(pag).extractText()
-                except:
+                except BaseException:
                     return ''
             pdf_file = open(self.file_path, 'rb')
             # reader = PyPDF2.PdfFileReader(pdf_file)
@@ -70,7 +70,7 @@ class Lector():
                 try:
                     text.append(line.strip())
                     line = fp.readline()
-                except:
+                except BaseException:
                     continue
         text = [striprtf(i) for i in text]
         texto = ' '.join(text)
@@ -82,7 +82,17 @@ class Lector():
         texto = recog.image2text(self.file_path)
         return texto
 
-    def archivo_a_texto(self, tipo='inferir', extraer_medios=False, dir_medios="temp/img_dir/", por_paginas=False, ocr=False, preprocess=4, lang='spa', oem=2, psm=3):
+    def archivo_a_texto(
+            self,
+            tipo='inferir',
+            extraer_medios=False,
+            dir_medios="temp/img_dir/",
+            por_paginas=False,
+            ocr=False,
+            preprocess=4,
+            lang='spa',
+            oem=2,
+            psm=3):
         if tipo == 'inferir':
             tipo = self.file_path.split('.')[-1]
         if tipo in ['txt', 'csv']:
@@ -115,7 +125,7 @@ class Escritor():
         self.txt = texto
 
     def write_txt(self):
-        if type(self.txt) == list:
+        if isinstance(self.txt, list):
             self.txt = '\n\n|**|\n\n'.join(self.txt)
         # with open(self.file_path, 'w') as fp:
         with open(self.file_path, 'w', encoding="utf-8") as fp:
@@ -125,7 +135,7 @@ class Escritor():
     def write_word(self):
         from docx import Document
         document = Document()
-        if type(self.txt) == list:
+        if isinstance(self.txt, list):
             for i, page in enumerate(self.txt):
                 document.add_paragraph(page)
                 if i < len(self.txt) - 1:
@@ -163,7 +173,7 @@ class Escritor():
             lector = PyPDF2.PdfFileReader(temp)
             return lector
         salida = PyPDF2.PdfFileWriter()
-        if type(self.txt) == list:
+        if isinstance(self.txt, list):
             for page in self.txt:
                 lector = write_page(page)
                 salida.addPage(lector.getPage(0))
@@ -190,11 +200,31 @@ class Escritor():
             self.write_txt()
 
 
-# Funciones que encapsulan el proceso de lectura y escritura de archivos de texto
+# Funciones que encapsulan el proceso de lectura y escritura de archivos
+# de texto
 
-def leer_texto(ubicacion_archivo, tipo='inferir', extraer_medios=False, dir_medios="temp/img_dir/", por_paginas=False, ocr=False, preprocess=4, lang='spa', oem=2, psm=3):
+def leer_texto(
+        ubicacion_archivo,
+        tipo='inferir',
+        extraer_medios=False,
+        dir_medios="temp/img_dir/",
+        por_paginas=False,
+        ocr=False,
+        preprocess=4,
+        lang='spa',
+        oem=2,
+        psm=3):
     le = Lector(ubicacion_archivo)
-    return le.archivo_a_texto(tipo, extraer_medios, dir_medios, por_paginas, ocr, preprocess, lang, oem, psm)
+    return le.archivo_a_texto(
+        tipo,
+        extraer_medios,
+        dir_medios,
+        por_paginas,
+        ocr,
+        preprocess,
+        lang,
+        oem,
+        psm)
 
 
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
