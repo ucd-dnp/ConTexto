@@ -7,18 +7,23 @@ from sklearn.feature_extraction.text import HashingVectorizer
 ####### BOW / TF-IDF  #########
 class VectorizadorFrecuencias():
     def __init__(self, tipo='bow', ngram_range=(1,1),max_feat=None,idf=True):
-        if tipo.lower() == 'bow':
-            self.tipo = tipo.lower()
+        tipo = tipo.lower()
+        if tipo == 'bow':
+            self.tipo = tipo
             self.model = CountVectorizer(ngram_range=ngram_range,max_features=max_feat)
-        elif tipo.lower() == 'tfidf':
-            self.tipo = tipo.lower()
+        elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
+            self.tipo = tipo
             self.model = TfidfVectorizer(ngram_range=ngram_range,max_features=max_feat,use_idf=idf)
         else:
             print('Por favor seleccionar un tipo de modelo válido (bow o tfidf)')
             return None
 
-    def entrenar(self, x):
+    def ajustar(self, x):
         self.model.fit(x)
+
+    # Para mantener "nomenclatura sklearn"
+    def fit(self, x):
+        self.ajustar(x)
 
     def vectorizar(self, x, disperso=True):
         if type(x) == str:
@@ -27,6 +32,10 @@ class VectorizadorFrecuencias():
         if not disperso:
             vectores = vectores.toarray()
         return vectores
+
+    # Para mantener "nomenclatura sklearn"
+    def transform(self, x, disperso=True):
+        return self.vectorizar(x, disperso)
 
     def vocabulario(self):
         try:
@@ -48,6 +57,7 @@ class VectorizadorFrecuencias():
 class VectorizadorHash():
     def __init__(self, n_features=100, ngram_range=(1,1)):
         self.model = HashingVectorizer(n_features=n_features, ngram_range=ngram_range)
+    
     def vectorizar(self, x):
         if type(x) == str:
             x = [x]
@@ -56,6 +66,10 @@ class VectorizadorHash():
             vectores = vectores.toarray()
         return vectores
 
+    # Para mantener "nomenclatura sklearn"
+    def transform(self, x):
+        return self.vectorizar(x)
+    
 # # create the transform
 # vectorizer = HashingVectorizer(n_features=200)
 # # encode document

@@ -1,9 +1,9 @@
 import json
 import nltk.stem
 import spacy
-from .limpieza_texto import remover_acentos
-from .lenguajes import detectar_lenguaje
-from .lenguajes import dict_lenguajes, dict_lenguajes_simplificado
+from limpieza_texto import remover_acentos
+from lenguajes import detectar_lenguaje
+from lenguajes import dict_lenguajes, dict_lenguajes_simplificado
 
 ### Definir clases para el lematizador y el stemmer ###
 

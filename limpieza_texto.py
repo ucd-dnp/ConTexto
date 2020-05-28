@@ -2,7 +2,7 @@ import itertools
 import re
 import unicodedata
 import pkg_resources
-from .lenguajes import dict_lenguajes
+from lenguajes import dict_lenguajes
 
 ####### Definición de funciones para limpiar el texto  #########
 

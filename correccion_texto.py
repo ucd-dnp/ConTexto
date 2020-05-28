@@ -1,8 +1,8 @@
 import json
 from spellchecker import SpellChecker
-from .limpieza_texto import remover_acentos, limpieza_basica
-from .lenguajes import detectar_lenguaje
-from .lenguajes import dict_lenguajes, dict_lenguajes_simplificado
+from limpieza_texto import remover_acentos, limpieza_basica
+from lenguajes import detectar_lenguaje
+from lenguajes import dict_lenguajes, dict_lenguajes_simplificado
 
 ### Definir clase para el corrector ortográfico ###
 
