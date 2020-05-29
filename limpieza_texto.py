@@ -97,20 +97,23 @@ def limpieza_texto(
                               lista_expresiones, ubicacion_archivo)
     return texto
 
-# Función para quitar frases o palabras repetidas separadas por un caracter
-# en particular.
-
-
-def quitar_repetidos(texto, sep='|'):
-    lista = texto.split(sep)
-    lista = set(lista)
-    return ' '.join(lista)
-
 # Función para quitar el espacio al inicio y al final de un string
 
 
 def limpiar_extremos(texto):
     return texto[::-1].rstrip()[::-1].rstrip()
+
+# Función para quitar frases o palabras repetidas separadas por un caracter
+# en particular.
+
+
+def quitar_repetidos(texto, sep='|', remover_espacios=True):
+    lista = texto.split(sep)
+    if remover_espacios:
+        lista = [limpiar_extremos(i) for i in lista]
+    lista = set(lista)
+    return ' '.join(lista)
+
 
 # Función para obtener las listas de palabras y expresiones que se desean
 # eliminar de un texto, a partir de un archivo plano
@@ -146,27 +149,37 @@ def lista_stopwords(lenguaje='es'):
         except BaseException:
             from nltk.corpus import stopwords
             sw = stopwords.words(lenguaje)
-        else:
-            from nltk.corpus import stopwords
-            sw = stopwords.words(lenguaje)
+    else:
+        from nltk.corpus import stopwords
+        sw = stopwords.words(lenguaje)
     return sw
 
 # Función para cargar lista general de stopwords
 
 
 def lista_nombres(tipo='todos'):
-    if tipo == 'todos':
-        ruta = pkg_resources.resource_filename(
-            __name__, 'data/listas_stopwords/nombres.txt')
-    elif tipo.lower() in ['m', 'masculino', 'hombre', 'hombres']:
+    if tipo.lower() in ['m', 'masculino', 'hombre', 'hombres']:
         ruta = pkg_resources.resource_filename(
             __name__, 'data/listas_stopwords/nombres_hombres.txt')
+        return cargar_stopwords(ruta)
     elif tipo.lower() in ['f', 'femenino', 'mujer', 'mujeres']:
         ruta = pkg_resources.resource_filename(
             __name__, 'data/listas_stopwords/nombres_mujeres.txt')
+        return cargar_stopwords(ruta)
+    elif tipo == 'todos':
+        ruta = pkg_resources.resource_filename(
+            __name__, 'data/listas_stopwords/nombres_ambos.txt')
+        lista_todos = list(cargar_stopwords(ruta))
+        lista_hombres = lista_nombres('hombre')
+        lista_mujeres = lista_nombres('mujer')
+        for i in range(2):
+            lista_todos[i] += lista_hombres[i] + lista_mujeres[i]
+            lista_todos[i] = sorted(list(set(lista_todos[i])))
+
+        return lista_todos[0], lista_todos[1]
     else:
+        print('Por favor ingresar un tipo válido de nombes ("hombres", "mujeres" o "todos").')
         return [], []
-    return cargar_stopwords(ruta)
 
 
 def lista_apellidos():
@@ -181,14 +194,15 @@ def lista_geo_colombia(tipo='todos'):
     ruta_dep = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/departamentos_col.txt')
     if tipo == 'todos':
-        palabras = list(set(cargar_stopwords(ruta_mun)[
-                        0] + cargar_stopwords(ruta_dep)[0]))
-        expresiones = list(set(cargar_stopwords(ruta_mun)[
-                           1] + cargar_stopwords(ruta_dep)[1]))
+        palabras = sorted(list(set(cargar_stopwords(ruta_mun)[
+                        0] + cargar_stopwords(ruta_dep)[0])))
+        expresiones = sorted(list(set(cargar_stopwords(ruta_mun)[
+                           1] + cargar_stopwords(ruta_dep)[1])))
         return palabras, expresiones
     elif tipo.lower() in ['municipios', 'mun', 'm']:
         return cargar_stopwords(ruta_mun)
     elif tipo.lower() in ['departamentos', 'dep', 'd']:
         return cargar_stopwords(ruta_dep)
     else:
+        print('Por favor ingresar un tipo válido de lugares ("municipios", "departamentos" o "todos").')
         return [], []

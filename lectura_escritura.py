@@ -15,9 +15,9 @@ class Lector():
     def definir_ubicacion(self, ubicacion_archivo):
         self.file_path = ubicacion_archivo
 
-    def read_txt(self):
+    def read_txt(self, encoding="utf-8"):
         out = []
-        with open(self.file_path) as fp:
+        with open(self.file_path, encoding=encoding) as fp:
             line = fp.readline()
             while line:
                 try:
@@ -88,6 +88,7 @@ class Lector():
             extraer_medios=False,
             dir_medios="temp/img_dir/",
             por_paginas=False,
+            encoding="utf-8",
             ocr=False,
             preprocess=4,
             lang='spa',
@@ -96,7 +97,7 @@ class Lector():
         if tipo == 'inferir':
             tipo = self.file_path.split('.')[-1]
         if tipo in ['txt', 'csv']:
-            return self.read_txt()
+            return self.read_txt(encoding)
         elif tipo == 'pdf':
             return self.read_pdf(por_paginas, ocr, preprocess, lang, oem, psm)
         elif tipo == 'rtf':
@@ -209,6 +210,7 @@ def leer_texto(
         extraer_medios=False,
         dir_medios="temp/img_dir/",
         por_paginas=False,
+        encoding="utf-8",
         ocr=False,
         preprocess=4,
         lang='spa',
@@ -220,6 +222,7 @@ def leer_texto(
         extraer_medios,
         dir_medios,
         por_paginas,
+        encoding,
         ocr,
         preprocess,
         lang,

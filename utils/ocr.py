@@ -1,9 +1,9 @@
 # import the necessary packages
 from pdf2image import convert_from_path
-from .helper import verify_create_dir
+from helper import verify_create_dir
 from PIL import Image
 from glob import glob
-from .pre_ocr import procesar_img_1, procesar_img_2, procesar_img_3, procesar_img_4, procesar_img_5
+from pre_ocr import procesar_img_1, procesar_img_2, procesar_img_3, procesar_img_4, procesar_img_5
 import os
 import cv2
 import shutil
