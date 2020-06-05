@@ -1,7 +1,6 @@
 import json
 import nltk.stem
-import spacy
-from limpieza_texto import remover_acentos
+from limpieza_texto import remover_acentos, limpieza_basica
 from lenguajes import detectar_lenguaje
 from lenguajes import dict_lenguajes, dict_lenguajes_simplificado
 
@@ -23,20 +22,18 @@ class Lematizador():
             self.modificar_lemmas(dict_lemmas)
 
     def definir_lenguaje(self, lenguaje):
-        leng = remover_acentos(lenguaje)
-        leng = leng.lower()
-        self.leng = leng
-
-    def iniciar_lematizador(self, modelo=''):
-        if self.leng in dict_lenguajes.keys():
-            self.leng = dict_lenguajes[self.leng]
+        self.leng = None
+        leng = lenguaje.lower()
+        leng = remover_acentos(leng)
+        if leng in dict_lenguajes.keys():
+            self.leng = dict_lenguajes[leng]
             self.leng = dict_lenguajes_simplificado[self.leng]
-            if modelo != '':
-                pass
-            else:
-                self.lematizador = spacy.blank(self.leng)
-        else:
-            self.lematizador = None
+
+    def iniciar_lematizador(self):
+        self.lematizador = None
+        if self.leng is not None:
+            import spacy
+            self.lematizador = spacy.blank(self.leng)
 
     def modificar_lemmas(self, dict_lemmas):
         dict_lemmas = dict_lemmas
@@ -53,7 +50,40 @@ class Lematizador():
         texto = texto.lower()
         return ' '.join([token.lemma_ for token in self.lematizador(texto)])
 
+# Implementación alternativa, utilizando stanza
+class Lematizador_stanza():
+    def __init__(self, lenguaje, dict_lemmas=None):
+        # Definir lenguaje del lematizador
+        self.definir_lenguaje(lenguaje)
+        # Inicializar lematizador
+        self.iniciar_lematizador()
+        # Si se introdujo un diccionario personalizado, se utiliza
+        if isinstance(dict_lemmas, dict):
+            self.modificar_lemmas(dict_lemmas)
+        # Si es la ubicación del archivo, primero se carga
+        elif isinstance(dict_lemmas, str):
+            dict_lemmas = json.load(open(dict_lemmas))
+            self.modificar_lemmas(dict_lemmas)
 
+    def definir_lenguaje(self, lenguaje):
+        self.leng = None
+        leng = lenguaje.lower()
+        leng = remover_acentos(leng)
+        if leng in dict_lenguajes.keys():
+            self.leng = dict_lenguajes[leng]
+            self.leng = dict_lenguajes_simplificado[self.leng]
+ 
+    def iniciar_lematizador(self):
+        self.lematizador = None
+        if self.leng is not None:
+            from utils.stanza_funcs import stanza_pipeline
+            self.lematizador = stanza_pipeline(self.leng)
+
+    def lematizar(self, texto):
+            texto = limpieza_basica(texto)
+            return ' '.join([i['lemma'] for i in self.lematizador(texto).to_dict()[0]]) 
+
+# Stemmer
 class Stemmer():
     def __init__(self, lenguaje):
         # Definir lenguaje del stemmer

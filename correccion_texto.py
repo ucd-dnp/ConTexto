@@ -97,7 +97,7 @@ def corregir_texto(
         corrector=None,
         diccionario=None,
         distancia=2):
-    # Si no se provee un lematizador, este debe ser inicializado
+    # Si no se provee un corrector, este debe ser inicializado
     if corrector is None:
         if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
