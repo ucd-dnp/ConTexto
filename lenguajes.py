@@ -1,5 +1,6 @@
 from langid.langid import LanguageIdentifier, model
 from googletrans import Translator
+from limpieza_texto import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
@@ -56,3 +57,14 @@ dict_lenguajes_simplificado = {
     'french': 'fr',
     'german': 'de'
 }
+
+# Función para determinar el lenguaje a partir de una entrada
+def definir_lenguaje(lenguaje, simplificado=True):
+    leng = None
+    lenguaje = lenguaje.lower()
+    lenguaje = remover_acentos(lenguaje)
+    if lenguaje in dict_lenguajes.keys():
+        leng = dict_lenguajes[lenguaje]
+        if simplificado:
+            leng = dict_lenguajes_simplificado[leng]
+    return leng
