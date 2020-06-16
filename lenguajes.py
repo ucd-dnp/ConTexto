@@ -59,6 +59,8 @@ dict_lenguajes_simplificado = {
 }
 
 # Función para determinar el lenguaje a partir de una entrada
+
+
 def definir_lenguaje(lenguaje, simplificado=True):
     leng = None
     lenguaje = lenguaje.lower()

@@ -8,6 +8,7 @@ from lenguajes import dict_lenguajes
 
 # Quita acentos (tildes y 'ñ'), reemplazándolos por su versión sin acento
 
+
 def remover_acentos(texto):
     try:
         texto = unicode(texto, 'utf-8')
@@ -20,7 +21,7 @@ def remover_acentos(texto):
 
 # Quita ciertas palabras y expresiones previamente indicadas
 
-#%%
+
 def remover_stopwords(
         texto,
         lista_palabras=[],
@@ -40,15 +41,16 @@ def remover_stopwords(
     # Reemplaza espacios múltiples por un solo espacio
     texto = re.sub(r" +", " ", texto)
     return texto
-#%%
+
 # Quita palabras de menos de n caracteres
-#%%
+
 
 def remover_palabras_cortas(texto, n_min):
     palabras = texto.split(' ')
     return ' '.join([palabra for palabra in palabras if len(palabra) >= n_min])
-#%%
+
 # Limpieza básica del texto
+
 
 def limpieza_basica(texto, quitar_numeros=True):
     # Texto a minúsculas
@@ -68,7 +70,7 @@ def limpieza_basica(texto, quitar_numeros=True):
 
 # Limpieza básica + remover palabras de menos de n caracteres y stopwords
 
-#%%
+
 def limpieza_texto(
         texto,
         lista_palabras=[],
@@ -94,7 +96,7 @@ def limpieza_texto(
     texto = remover_stopwords(texto, lista_palabras,
                               lista_expresiones, ubicacion_archivo)
     return texto
-#%%
+
 # Función para quitar el espacio al inicio y al final de un string
 
 
@@ -176,7 +178,8 @@ def lista_nombres(tipo='todos'):
 
         return lista_todos[0], lista_todos[1]
     else:
-        print('Por favor ingresar un tipo válido de nombes ("hombres", "mujeres" o "todos").')
+        print(
+            'Por favor ingresar un tipo válido de nombes ("hombres", "mujeres" o "todos").')
         return [], []
 
 
@@ -193,9 +196,9 @@ def lista_geo_colombia(tipo='todos'):
         __name__, 'data/listas_stopwords/departamentos_col.txt')
     if tipo == 'todos':
         palabras = sorted(list(set(cargar_stopwords(ruta_mun)[
-                        0] + cargar_stopwords(ruta_dep)[0])))
+            0] + cargar_stopwords(ruta_dep)[0])))
         expresiones = sorted(list(set(cargar_stopwords(ruta_mun)[
-                           1] + cargar_stopwords(ruta_dep)[1])))
+            1] + cargar_stopwords(ruta_dep)[1])))
         return palabras, expresiones
     elif tipo.lower() in ['municipios', 'mun', 'm']:
         return cargar_stopwords(ruta_mun)
