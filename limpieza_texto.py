@@ -2,7 +2,6 @@ import itertools
 import re
 import unicodedata
 import pkg_resources
-from lenguajes import dict_lenguajes
 
 ####### Definición de funciones para limpiar el texto  #########
 
@@ -140,7 +139,8 @@ def cargar_stopwords(file_path):
 
 # Función para cargar lista general predefinida de stopwords
 def lista_stopwords(lenguaje='es'):
-    lenguaje = dict_lenguajes[remover_acentos(lenguaje)]
+    from lenguajes import definir_lenguaje
+    lenguaje = definir_lenguaje(lenguaje, False)
     if lenguaje == 'spanish':
         try:
             ruta = pkg_resources.resource_filename(

@@ -36,7 +36,13 @@ def stanza_pipeline(
     return nlp_pipe
 
 
-def modificar_modelo(tipo, new_dict, in_path='', out_path='', location='cpu'):
+def modificar_modelo(
+        nlp_pipe,
+        tipo,
+        new_dict,
+        in_path='',
+        out_path='',
+        location='cpu'):
     # opciones de tipo: 'lemma', 'pos', 'tokenize'
     # Definir ubicación del modelo
     if in_path == '':
@@ -60,7 +66,7 @@ def modificar_modelo(tipo, new_dict, in_path='', out_path='', location='cpu'):
     # Guardar modelo modificado
     torch.save(model, out_path)
     # Cargar el modelo modificado
-    tipo = tipo.lowe()
+    tipo = tipo.lower()
     if tipo == 'lemma':
         nlp_pipe = stanza_pipeline('es', lemma_model_path=out_path)
     elif tipo == 'pos':
