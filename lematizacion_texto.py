@@ -1,5 +1,4 @@
 import json
-import os
 import spacy
 from limpieza_texto import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
@@ -27,48 +26,11 @@ class Lematizador_spacy():
     def definir_lenguaje(self, lenguaje):
         self.leng = definir_lenguaje(lenguaje)
 
-    def cargar_modelo(self, dim_modelo):
-        dim_modelo = dim_modelo.lower()
-        # Estandarizar el tamaño del modelo
-        if dim_modelo in ['grande', 'large', 'lg', 'gr']:
-            dim_modelo = 'lg'
-        elif dim_modelo in ['mediano', 'medio', 'md', 'medium', 'm']:
-            dim_modelo = 'md'
-        elif dim_modelo in ['pequeño', 'pequeno', 'small', 's', 'sm']:
-            dim_modelo = 'sm'
-        # Si no se puede distinguir el tamaño del modelo, se retorna un modelo
-        # en blanco
-        else:
-            return spacy.blank(self.leng)
-        # Modelo a cargar de acuerdo a su tamaño y lenguaje
-        if self.leng == 'en':
-            language_model = f'{self.leng}_core_web_{dim_modelo}'
-        else:
-            language_model = f'{self.leng}_core_news_{dim_modelo}'
-        # Se intenta cargar el modelo
-        try:
-            lematizador = spacy.load(language_model)
-        # Si no funciona, se trata de descargar el modelo, o se usa uno vacío
-        except BaseException:
-            try:
-                print(
-                    '[INFO] Descargando modelo. Este proceso puede tardar varios minutos.\n')
-                os.system(f'python -m spacy download {language_model}')
-                print('\n[INFO] El modelo ha sido descargado.')
-                print(
-                    '[INFO] Por favor correr de nuevo el script, o iniciar una nueva sesión de Python para cargarlo.')
-                print('[INFO] Hasta entonces, se utilizará un modelo en blanco.')
-            except BaseException:
-                print(
-                    '\n[INFO] El modelo no pudo ser descargado, se cargará un modelo vacío.')
-            lematizador = spacy.blank(self.leng)
-        # Devolver el lematizador
-        return lematizador
-
     def iniciar_lematizador(self, dim_modelo):
         self.lematizador = None
         if self.leng is not None:
-            self.lematizador = self.cargar_modelo(dim_modelo)
+            from utils.spacy_funcs import cargar_modelo
+            self.lematizador = cargar_modelo(dim_modelo, self.leng)
 
     def modificar_lemmas(self, dict_lemmas):
         # Definir función auxiliar

@@ -1,8 +1,12 @@
+import numpy as np
 import pandas as pd
-import gensim
+import spacy
+from gensim.models import doc2vec
+from gensim.utils import simple_preprocess
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
+from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ####### BOW / TF-IDF  #########
 
@@ -11,20 +15,18 @@ class VectorizadorFrecuencias():
     def __init__(
             self,
             tipo='bow',
-            ngram_range=(
-                1,
-                1),
+            rango_ngramas=(1, 1),
             max_feat=None,
             idf=True):
         tipo = tipo.lower()
         if tipo == 'bow':
             self.tipo = tipo
-            self.model = CountVectorizer(
-                ngram_range=ngram_range, max_features=max_feat)
+            self.model = CountVectorizer(   
+                ngram_range=rango_ngramas, max_features=max_feat)
         elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
-            self.tipo = tipo
+            self.tipo = 'tfidf'
             self.model = TfidfVectorizer(
-                ngram_range=ngram_range, max_features=max_feat, use_idf=idf)
+                ngram_range=rango_ngramas, max_features=max_feat, use_idf=idf)
         else:
             print('Por favor seleccionar un tipo de modelo válido (bow o tfidf)')
             return None
@@ -36,10 +38,10 @@ class VectorizadorFrecuencias():
     def fit(self, x):
         self.ajustar(x)
 
-    def vectorizar(self, x, disperso=True):
-        if isinstance(x, str):
-            x = [x]
-        vectores = self.model.transform(x)
+    def vectorizar(self, textos, disperso=True):
+        if isinstance(textos, str):
+            textos = [textos]
+        vectores = self.model.transform(textos)
         if not disperso:
             vectores = vectores.toarray()
         return vectores
@@ -69,14 +71,14 @@ class VectorizadorFrecuencias():
 
 
 class VectorizadorHash():
-    def __init__(self, n_features=100, ngram_range=(1, 1)):
+    def __init__(self, n_elementos=100, rango_ngramas=(1, 1)):
         self.model = HashingVectorizer(
-            n_features=n_features, ngram_range=ngram_range)
+            n_features=n_elementos, ngram_range=rango_ngramas)
 
-    def vectorizar(self, x):
-        if isinstance(x, str):
-            x = [x]
-        vectores = self.model.transform(x, disperso=True)
+    def vectorizar(self, textos, disperso=True):
+        if isinstance(textos, str):
+            textos = [textos]
+        vectores = self.model.transform(textos)
         if not disperso:
             vectores = vectores.toarray()
         return vectores
@@ -85,49 +87,122 @@ class VectorizadorHash():
     def transform(self, x):
         return self.vectorizar(x)
 
-# # create the transform
-# vectorizer = HashingVectorizer(n_features=200)
-# # encode document
-# X_hash = vectorizer.transform(base_filtrada.texto_limpio)
-# .todense() vuelve la matriz dispersa en matriz "normal"? - averiguar
+####### Word2Vec con spacy #########
 
 
-# ####### Definición de funciones para vectorizar textos utilizando Doc2Ve
+class VectorizadorWord2Vec():
+    def __init__(self, lenguaje='es', dim_modelo='md'):
+        # Definir lenguaje del vectorizador
+        self.definir_lenguaje(lenguaje)
+        # Inicializar vectorizador
+        self.iniciar_vectorizador(dim_modelo)
 
-# # Función para procesar una lista de textos
-# def read_list(lista):
-#     for i, line in enumerate(lista):
-#         line = gensim.utils.simple_preprocess(line)
-#         yield gensim.models.doc2vec.TaggedDocument(line, [i])
+    def definir_lenguaje(self, lenguaje):
+        self.leng = definir_lenguaje(lenguaje)
 
-# # Función para entrenar un modelo a partir de un corpus de entrenamiento
-# def entrenar_modelo_doc2vec(train_corpus,long_vector=100,minima_cuenta=5,epocas=20, semilla=1):
-#     # Inicializar modelo
-#     model = gensim.models.doc2vec.Doc2Vec(vector_size=long_vector, min_count=minima_cuenta, epochs=epocas, seed=semilla)
-#     # Construir vocabulario
-#     model.build_vocab(train_corpus)
-#     # Entrenar modelo
-#     model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
+    def iniciar_vectorizador(self, dim_modelo):
+        self.vectorizador = None
+        if self.leng is not None:
+            from utils.spacy_funcs import cargar_modelo
+            self.vectorizador = cargar_modelo(dim_modelo, self.leng)
 
-#     return model
+    def vectorizar_texto(self, texto, quitar_desconocidas: bool=False):
+        # Aplicar el modelo al texto
+        tokens = self.vectorizador(texto)
+        vector_doc = tokens.vector
+        if quitar_desconocidas:
+            # Crear lista con todos los vectores de palabras reconocidas
+            vectores = []
+            for token in tokens:
+                if token.has_vector:
+                    vectores.append(token.vector)
+            # Convertir lista en un array, y sacar el vector promedio
+            vectores = np.array(vectores)
+            if len(vectores) > 0:
+                vector_doc = np.mean(vectores, axis=0, keepdims=True)
+        # Devolver vector del texto            
+        return vector_doc
 
-# # Función que aplica un determinado modelo a un documento para vectorizarlo
-# def vectorizar_texto(texto,model):
-#     tokenizado = gensim.utils.simple_preprocess(texto)
-#     model.random.seed(13)  # Esto se hace para que siempre devuelva el mismo vector
-#     return model.infer_vector(tokenizado,alpha=0.025,steps=60)
+    def vectorizar((self, textos, quitar_desconocidas: bool=False)):
+        if isinstance(textos, str):
+            textos = [textos]
+        vectores = [self.vectorizar_texto(t, quitar_desconocidas) for t in textos]
+        return np.array(vectores)
+
+    def vectores_palabras(self, texto, tipo='diccionario'):
+        # Aplicar el modelo al texto
+        tokens = self.vectorizador(texto)   
+        # Iniciar el diccionario y empezar a llenarlo
+        vectores = {}
+        for token in tokens:
+            if token not in vectores.keys():
+                vectores[token] = token.vector
+        # Retornar el objeto, de acuerdo a su tipo
+        if tipo.lower() in ['diccionario', 'dict']:
+            return vectores
+        elif tipo.lower() in ['tabla', 'dataframe', 'df']:
+            vectores = pd.DataFrame(vectores).T
+            vectores.reset_index(level=0, inplace=True)
+            vectores.columns = ['palabra'] + [f'x_{i}' for i in range(1, vectores.shape[1])]
+            return vectores
+        else:
+            print('Debe escoger una estructura válida (diccionario o dataframe)')
+            return None
+
+    def similitud_textos(t1, t2):
+        # Aplicar vectorizador a ambos textos de entrada
+        to1 = self.vectorizador(t1)
+        to2 = self.vectorizador(t2)
+        # Retornar la similitud entre textos
+        return to1.similarity(to2)
+
+####### Doc2Vec con gensim #########
 
 
-# # (Ejemplo de uso)
-# semilla = 30
+class VectorizadorDoc2Vec():
+    def __init__(self, n_elementos=100, minima_cuenta=5, epocas=20, semilla=1, archivo_modelo=''):
+        # Si se proporciona un modelo pre-entrenado, este se carga
+        if archivo_modelo != '':
+            pass # TODO: código para cargar el modelo
+        else:
+            # Inicializar modelo
+            self.vectorizador = doc2vec.Doc2Vec(vector_size=n_elementos, min_count=minima_cuenta, epochs=epocas, seed=semilla)
 
-# # Definir corpus de entrenamiento para el texto
-# clean_corpus = list(read_list(base_filtrada['texto_limpio']))
+    # Función para procesar una lista de textos y dejarla lista para el modelo
+    def preparar_textos(self, lista_textos):
+        if type(lista_textos) == str:
+            lista_textos = [lista_textos]
+        # Generador que va proporcionando los textos pre procesados
+        # a medida que se piden
+        for i, linea in enumerate(lista_textos):
+            linea = simple_preprocess(linea)
+            yield doc2vec.TaggedDocument(linea, [i])
 
-# # Entrenar modelos
-# clean_model = entrenar_modelo_doc2vec(clean_corpus,tamaño_vector=150)
+    # Función para entrenar un modelo a partir de un corpus de entrenamiento
+    def entrenar_modelo(self, corpus_entrenamiento, archivo_salida=''):
+        # Pre procesar los textos de entrenamiento
+        corpus_entrenamiento = list(self.preparar_textos(corpus_entrenamiento))
+        # Construir vocabulario del modelo
+        self.vectorizador.build_vocab(corpus_entrenamiento)
+        # Entrenar modelo
+        self.vectorizador.train(train_corpus, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
+        # Si se proporcionó un archivo, se guarda el modelo en esta ubicación
+        if archivo_salida != ''
+            pass # TODO: código para guardar el modelo
 
-# # Crear data frame para el texto, con los vectores extraídos
+    # Función para vectorizar un texto con un modelo entrenado
+    def vectorizar_texto(self, texto, alpha=0.025, num_pasos=50, semilla=13):
+        # Vectorizar el texto de entrada
+        tokenizado = simple_preprocess(texto)
+        # La vectorización tiene un componente aleatorio. Se establece una semilla
+        # para que la función siempre devuelva el mismo vector para el mismo texto
+        self.vectorizador.random.seed(semilla)
+        # Se devuelve el vector
+        return self.vectorizador.infer_vector(tokenizado, alpha=alpha, steps=num_pasos)           
 
-# clean_vec = [vectorizar_texto(i,clean_model) for i in base_filtrada['texto_limpio']]
-# X_doc2vec = np.array(clean_vec)
+    # Función para vectorizar una lista de textos
+    def vectorizar(self, textos, alpha=0.025, num_pasos=50, semilla=13):
+        if isinstance(textos, str):
+            textos = [textos]
+        vectores = [self.vectorizar_texto(t, alpha, num_pasos, semilla) for t in textos]
+        return np.array(vectores)
