@@ -16,17 +16,17 @@ class VectorizadorFrecuencias():
             self,
             tipo='bow',
             rango_ngramas=(1, 1),
-            max_feat=None,
+            max_elementos=None,
             idf=True):
         tipo = tipo.lower()
         if tipo == 'bow':
             self.tipo = tipo
             self.model = CountVectorizer(   
-                ngram_range=rango_ngramas, max_features=max_feat)
+                ngram_range=rango_ngramas, max_features=max_elementos)
         elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
             self.tipo = 'tfidf'
             self.model = TfidfVectorizer(
-                ngram_range=rango_ngramas, max_features=max_feat, use_idf=idf)
+                ngram_range=rango_ngramas, max_features=max_elementos, use_idf=idf)
         else:
             print('Por favor seleccionar un tipo de modelo válido (bow o tfidf)')
             return None
@@ -54,13 +54,13 @@ class VectorizadorFrecuencias():
         try:
             vocab = self.model.vocabulary_
             vocab = pd.DataFrame.from_dict(
-                vocab, orient='index', columns=['valor'])
-            vocab = vocab.sort_values('valor')
+                vocab, orient='index', columns=['posición'])
+            vocab = vocab.sort_values('posición')
             vocab['palabra'] = vocab.index
             vocab.index = range(len(vocab))
             return vocab
         except BaseException:
-            print('Debe entrenar primero el vectorizador para que exista un vocabulario.')
+            print('Debe ajustar primero el vectorizador para que exista un vocabulario.')
 
     # A partir de un vector o grupo de vectores, devuelve los términos con frecuencia mayor a 0
     # en el documento
@@ -123,7 +123,7 @@ class VectorizadorWord2Vec():
         # Devolver vector del texto            
         return vector_doc
 
-    def vectorizar((self, textos, quitar_desconocidas: bool=False)):
+    def vectorizar(self, textos, quitar_desconocidas: bool=False):
         if isinstance(textos, str):
             textos = [textos]
         vectores = [self.vectorizar_texto(t, quitar_desconocidas) for t in textos]
@@ -149,7 +149,7 @@ class VectorizadorWord2Vec():
             print('Debe escoger una estructura válida (diccionario o dataframe)')
             return None
 
-    def similitud_textos(t1, t2):
+    def similitud_textos(self, t1, t2):
         # Aplicar vectorizador a ambos textos de entrada
         to1 = self.vectorizador(t1)
         to2 = self.vectorizador(t2)
@@ -185,9 +185,9 @@ class VectorizadorDoc2Vec():
         # Construir vocabulario del modelo
         self.vectorizador.build_vocab(corpus_entrenamiento)
         # Entrenar modelo
-        self.vectorizador.train(train_corpus, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
+        self.vectorizador.train(corpus_entrenamiento, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
         # Si se proporcionó un archivo, se guarda el modelo en esta ubicación
-        if archivo_salida != ''
+        if archivo_salida != '':
             pass # TODO: código para guardar el modelo
 
     # Función para vectorizar un texto con un modelo entrenado
