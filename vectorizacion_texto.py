@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
 from lenguajes import detectar_lenguaje, definir_lenguaje
+from utils.helper import cargar_objeto, guardar_objeto
 
 ####### BOW / TF-IDF  #########
 
@@ -17,31 +18,37 @@ class VectorizadorFrecuencias():
             tipo='bow',
             rango_ngramas=(1, 1),
             max_elementos=None,
-            idf=True):
+            idf=True,
+            archivo_modelo=''):
         tipo = tipo.lower()
-        if tipo == 'bow':
+        if archivo_modelo != '':
+            self.vectorizador = cargar_objeto(archivo_modelo)
+        elif tipo == 'bow':
             self.tipo = tipo
-            self.model = CountVectorizer(   
+            self.vectorizador = CountVectorizer(   
                 ngram_range=rango_ngramas, max_features=max_elementos)
         elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
             self.tipo = 'tfidf'
-            self.model = TfidfVectorizer(
+            self.vectorizador = TfidfVectorizer(
                 ngram_range=rango_ngramas, max_features=max_elementos, use_idf=idf)
         else:
             print('Por favor seleccionar un tipo de modelo válido (bow o tfidf)')
             return None
 
-    def ajustar(self, x):
-        self.model.fit(x)
+    def ajustar(self, x, archivo_salida=''):
+        self.vectorizador.fit(x)
+        # Si se proporcionó un archivo, se guarda el modelo entrenado en esta ubicación
+        if archivo_salida != '':
+            guardar_objeto(self.vectorizador, archivo_salida)
 
     # Para mantener "nomenclatura sklearn"
-    def fit(self, x):
-        self.ajustar(x)
+    def fit(self, x, archivo_salida=''):
+        self.ajustar(x, archivo_salida)
 
     def vectorizar(self, textos, disperso=True):
         if isinstance(textos, str):
             textos = [textos]
-        vectores = self.model.transform(textos)
+        vectores = self.vectorizador.transform(textos)
         if not disperso:
             vectores = vectores.toarray()
         return vectores
@@ -52,7 +59,7 @@ class VectorizadorFrecuencias():
 
     def vocabulario(self):
         try:
-            vocab = self.model.vocabulary_
+            vocab = self.vectorizador.vocabulary_
             vocab = pd.DataFrame.from_dict(
                 vocab, orient='index', columns=['posición'])
             vocab = vocab.sort_values('posición')
@@ -65,7 +72,7 @@ class VectorizadorFrecuencias():
     # A partir de un vector o grupo de vectores, devuelve los términos con frecuencia mayor a 0
     # en el documento
     def inversa(self, x):
-        return self.model.inverse_transform(x)
+        return self.vectorizador.inverse_transform(x)
 
 ####### Hashing #########
 
@@ -163,7 +170,7 @@ class VectorizadorDoc2Vec():
     def __init__(self, n_elementos=100, minima_cuenta=5, epocas=20, semilla=1, archivo_modelo=''):
         # Si se proporciona un modelo pre-entrenado, este se carga
         if archivo_modelo != '':
-            pass # TODO: código para cargar el modelo
+            self.vectorizador = cargar_objeto(archivo_modelo)
         else:
             # Inicializar modelo
             self.vectorizador = doc2vec.Doc2Vec(vector_size=n_elementos, min_count=minima_cuenta, epochs=epocas, seed=semilla)
@@ -179,16 +186,16 @@ class VectorizadorDoc2Vec():
             yield doc2vec.TaggedDocument(linea, [i])
 
     # Función para entrenar un modelo a partir de un corpus de entrenamiento
-    def entrenar_modelo(self, corpus_entrenamiento, archivo_salida=''):
+    def entrenar_modelo(self, corpus_entrenamiento, actualizar=False, archivo_salida=''):
         # Pre procesar los textos de entrenamiento
         corpus_entrenamiento = list(self.preparar_textos(corpus_entrenamiento))
         # Construir vocabulario del modelo
-        self.vectorizador.build_vocab(corpus_entrenamiento)
+        self.vectorizador.build_vocab(corpus_entrenamiento, update=actualizar)
         # Entrenar modelo
         self.vectorizador.train(corpus_entrenamiento, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
-        # Si se proporcionó un archivo, se guarda el modelo en esta ubicación
+        # Si se proporcionó un archivo, se guarda el modelo entrenado en esta ubicación
         if archivo_salida != '':
-            pass # TODO: código para guardar el modelo
+            guardar_objeto(self.vectorizador, archivo_salida)
 
     # Función para vectorizar un texto con un modelo entrenado
     def vectorizar_texto(self, texto, alpha=0.025, num_pasos=50, semilla=13):

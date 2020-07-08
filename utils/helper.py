@@ -1,20 +1,8 @@
 import os
+import pickle
 import re
 import time
 import win32com.client
-
-# # leer archivo '.RData' como una dataframe pandas
-# def load_rdata_file(filename):
-#     r_data = robjects.r['get'](robjects.r['load'](filename))
-#     df = pandas2ri.ri2py(r_data)
-#     return df
-
-# # Escribir pandas dataframe en un archivo '.RData'
-# def save_rdata_file(df, filename):
-#     r_data = pandas2ri.py2ri(df)
-#     robjects.r.assign("datos", r_data)
-#     robjects.r("save(datos, file='{}')".format(filename))
-
 
 ######### Definición de funciones para buscar en el texto  #########
 def buscar_en_texto(texto, lista=[]):
@@ -34,7 +22,8 @@ def is_in_text(text, lista=[], lista_2=[]):
                     return True
     return isin
 
-
+# Función para verificar si un directorio existe o no.
+# Si el directorio no existe, lo crea
 def verify_create_dir(dir_path):
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
@@ -178,7 +167,7 @@ def striprtf(text):
                 out.append(tchar)
     return ''.join(out)
 
-
+# Función para convertir un archivo word a pdf
 def word_a_pdf(in_file, out_file):
     wdFormatPDF = 17
     word = win32com.client.Dispatch('Word.Application')
@@ -190,3 +179,15 @@ def word_a_pdf(in_file, out_file):
     doc.SaveAs(out_file, FileFormat=wdFormatPDF)
     doc.Close()
     return
+
+
+######### Definición de funciones para guardar y cargar objetos Python  #########
+
+def guardar_objeto(objeto, nombre_archivo):
+    with open(nombre_archivo, 'wb') as handle:
+        pickle.dump(objeto, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def cargar_objeto(nombre_archivo):
+    with open(nombre_archivo, 'rb') as handle:
+        objeto = pickle.load(handle)
+    return objeto
