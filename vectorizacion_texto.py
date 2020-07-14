@@ -45,7 +45,7 @@ class VectorizadorFrecuencias():
     def fit(self, x, archivo_salida=''):
         self.ajustar(x, archivo_salida)
 
-    def vectorizar(self, textos, disperso=True):
+    def vectorizar(self, textos, disperso=False):
         if isinstance(textos, str):
             textos = [textos]
         vectores = self.vectorizador.transform(textos)
@@ -54,7 +54,7 @@ class VectorizadorFrecuencias():
         return vectores
 
     # Para mantener "nomenclatura sklearn"
-    def transform(self, x, disperso=True):
+    def transform(self, x, disperso=False):
         return self.vectorizar(x, disperso)
 
     def vocabulario(self):
@@ -82,7 +82,7 @@ class VectorizadorHash():
         self.model = HashingVectorizer(
             n_features=n_elementos, ngram_range=rango_ngramas)
 
-    def vectorizar(self, textos, disperso=True):
+    def vectorizar(self, textos, disperso=False):
         if isinstance(textos, str):
             textos = [textos]
         vectores = self.model.transform(textos)
@@ -123,10 +123,10 @@ class VectorizadorWord2Vec():
             for token in tokens:
                 if token.has_vector:
                     vectores.append(token.vector)
-            # Convertir lista en un array, y sacar el vector promedio
-            vectores = np.array(vectores)
+            # Convertir lista en un array, y sacar el vector promedio     
             if len(vectores) > 0:
-                vector_doc = np.mean(vectores, axis=0, keepdims=True)
+                vectores = np.array(vectores)
+                vector_doc = np.mean(vectores, axis=0)
         # Devolver vector del texto            
         return vector_doc
 
