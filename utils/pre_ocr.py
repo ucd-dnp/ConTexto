@@ -10,9 +10,9 @@ from PIL import Image
 # Función auxiliar para graficar las imágenes
 
 
-def plot_img(img, title='', size=(15, 10)):
-    plt.figure(figsize=size)
-    plt.title(title)
+def graficar_img(img, titulo='', dims=(15, 10)):
+    plt.figure(figsize=dims)
+    plt.title(titulo)
     if len(img.shape) == 2:
         plt.imshow(img, cmap='gray')
     else:
@@ -22,13 +22,13 @@ def plot_img(img, title='', size=(15, 10)):
 
 # Funciones para procesar la imagen ----
 
-# Apply median blurring to remove noise
+# Applicar median blurring ('borrosidad') para remover ruido
 
 
 def blur_img(img):
     return cv2.medianBlur(img, 5)
 
-# Apply thresholding
+# Aplicar 'thresholding' (umbral para decidir valores)
 
 
 def umbral_otsu(img):
@@ -57,52 +57,52 @@ def umbral_adaptivo(img, tipo='gaussian'):
 def corregir_giro(img):
     # Adaptada de
     # https://www.pyimagesearch.com/2017/02/20/text-skew-correction-opencv-python/
-    inverted = cv2.bitwise_not(img)
-    coords = np.column_stack(np.where(inverted > 0))
-    angle = cv2.minAreaRect(coords)[-1]
-    if angle < -45:
-        angle = -(90 + angle)
+    invertida = cv2.bitwise_not(img)
+    coords = np.column_stack(np.where(invertida > 0))
+    angulo = cv2.minAreaRect(coords)[-1]
+    if angulo < -45:
+        angulo = -(90 + angulo)
     else:
-        angle = -angle
+        angulo = -angulo
     (h, w) = img.shape[:2]
-    center = (w // 2, h // 2)
-    M = cv2.getRotationMatrix2D(center, angle, 1.0)
-    rotated = cv2.warpAffine(
+    centro = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(centro, angulo, 1.0)
+    rotada = cv2.warpAffine(
         img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
-    return rotated
+    return rotada
 
 
 def procesar_img_1(img, enderezar=True):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    return gray
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gris
 
 
 def procesar_img_2(img, enderezar=True):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    blur = blur_img(gray)
-    return blur
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    borrosa = blur_img(gris)
+    return borrosa
 
 
 def procesar_img_3(img, enderezar=True):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    gray = umbral_otsu(gray)
-    return gray
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gris = umbral_otsu(gris)
+    return gris
 
 
 def procesar_img_4(img, enderezar=True):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    blur = blur_img(gray)
-    out = umbral_adaptivo(blur)
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    borrosa = blur_img(gris)
+    salida = umbral_adaptivo(borrosa)
     if enderezar:
-        out = corregir_giro(out)
-    return out
+        salida = corregir_giro(salida)
+    return salida
 
 
 def procesar_img_5(img, enderezar=True):
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    gray = umbral_otsu(gray)
-    out = blur_img(gray)
-    out = umbral_adaptivo(out)
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gris = umbral_otsu(gris)
+    salida = blur_img(gris)
+    salida = umbral_adaptivo(salida)
     if enderezar:
-        out = corregir_giro(out)
-    return out
+        salida = corregir_giro(salida)
+    return salida
