@@ -9,24 +9,24 @@ def buscar_en_texto(texto, lista=[]):
     return any(i in texto for i in lista)
 
 
-def is_in_text(text, lista=[], lista_2=[]):
+def esta_en_texto(texto, lista=[], lista_2=[]):
     isin = False
-    count = 0
+    cuenta = 0
     for string in lista:
-        if all(i in text for i in string.split('|')):
+        if all(i in texto for i in string.split('|')):
             if string not in lista_2:
                 return True
             else:
-                count += 1
-                if count > 1:
+                cuenta += 1
+                if cuenta > 1:
                     return True
     return isin
 
 # Función para verificar si un directorio existe o no.
 # Si el directorio no existe, lo crea
-def verify_create_dir(dir_path):
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
+def verificar_crear_dir(ubicacion_directorio):
+    if not os.path.exists(ubicacion_directorio):
+        os.makedirs(ubicacion_directorio)
 
 
 # Función para pasar de texto enriquecido a texto plano
@@ -168,15 +168,13 @@ def striprtf(text):
     return ''.join(out)
 
 # Función para convertir un archivo word a pdf
-def word_a_pdf(in_file, out_file):
+def word_a_pdf(archivo_entrada, archivo_salida):
     wdFormatPDF = 17
     word = win32com.client.Dispatch('Word.Application')
-    in_file = in_file
-    out_file = out_file
     word.Visible = True
     time.sleep(3)
-    doc = word.Documents.Open(in_file)
-    doc.SaveAs(out_file, FileFormat=wdFormatPDF)
+    doc = word.Documents.Open(archivo_entrada)
+    doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
     doc.Close()
     return
 
