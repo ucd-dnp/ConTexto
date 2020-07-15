@@ -7,30 +7,30 @@ import torch
 
 
 def stanza_pipeline(
-        leng,
-        procesors='tokenize, pos, lemma',
-        lemma_model_path='',
-        ner_model_path='',
-        pos_model_path=''):
+        lenguaje,
+        procesadores='tokenize, pos, lemma',
+        modelo_lemas='',
+        modelo_ner='',
+        modelo_pos=''):
     # Configuración básica del pipeline
     config = {
-        'processors': procesors,
-        'lang': leng,
+        'processors': procesadores,
+        'lang': lenguaje,
     }
     # Si se añade algún modelo custom, se agrega al diccionario
-    if pos_model_path != '':
-        config['pos_model_path'] = pos_model_path
-    if lemma_model_path != '':
-        config['lemma_model_path'] = lemma_model_path
-    if ner_model_path != '':
-        config['ner_model_path'] = ner_model_path
+    if modelo_pos != '':
+        config['pos_model_path'] = modelo_pos
+    if modelo_lemas != '':
+        config['lemma_model_path'] = modelo_lemas
+    if modelo_ner != '':
+        config['ner_model_path'] = modelo_ner
     # Intentar crear pipeline. Si el modelo no está descargado, se descarga
     # primero
     try:
         nlp_pipe = stanza.Pipeline(**config, verbose=0, )
     except BaseException:
         print('[INFO] Descargando modelo. Este proceso puede tardar varios minutos.\n')
-        stanza.download(leng)
+        stanza.download(lenguaje)
         nlp_pipe = stanza.Pipeline(**config, verbose=0)
     # Retornar pipeline
     return nlp_pipe
@@ -39,43 +39,44 @@ def stanza_pipeline(
 def modificar_modelo(
         nlp_pipe,
         tipo,
-        new_dict,
-        in_path='',
-        out_path='',
-        location='cpu'):
+        nuevo_diccionario,
+        archivo_entrada='',
+        archivo_salida='',
+        gpu=False):
     # opciones de tipo: 'lemma', 'pos', 'tokenize'
     # Definir ubicación del modelo
-    if in_path == '':
-        processor = [
+    if archivo_entrada == '':
+        procesador = [
             i for i in nlp_pipe.loaded_processors if tipo.lower() in str(i).lower()][0]
-        in_path = processor.config['model_path']
+        archivo_entrada = procesador.config['model_path']
     # Cargar modelo y diccionarios del modelo
-    model = torch.load(in_path, map_location=location)
-    word_dict, composite_dict = model['dicts']
+    locacion = 'gpu' if gpu else 'cpu'
+    modelo = torch.load(archivo_entrada, map_location=locacion)
+    dict_palabras, dict_compuesto = modelo['dicts']
     # Añadir nuevas palabras
-    for key in new_dict:
+    for key in nuevo_diccionario:
         if isinstance(key, tuple):
-            composite_dict[key] = new_dict[key]
+            dict_compuesto[key] = nuevo_diccionario[key]
         else:
-            word_dict[key] = new_dict[key]
+            dict_palabras[key] = nuevo_diccionario[key]
     # Establecer dónde se va a guardar el modelo
     borrar_modelo = False
-    if out_path == '':
+    if archivo_salida == '':
         borrar_modelo = True
-        out_path = "{}.pt".format(os.getpid())
+        archivo_salida = "{}.pt".format(os.getpid())
     # Guardar modelo modificado
-    torch.save(model, out_path)
+    torch.save(modelo, archivo_salida)
     # Cargar el modelo modificado
     tipo = tipo.lower()
     if tipo == 'lemma':
-        nlp_pipe = stanza_pipeline('es', lemma_model_path=out_path)
+        nlp_pipe = stanza_pipeline('es', lemma_model_path=archivo_salida)
     elif tipo == 'pos':
-        nlp_pipe = stanza_pipeline('es', pos_model_path=out_path)
+        nlp_pipe = stanza_pipeline('es', pos_model_path=archivo_salida)
     elif tipo == 'ner':
-        nlp_pipe = stanza_pipeline('es', ner_model_path=out_path)
+        nlp_pipe = stanza_pipeline('es', ner_model_path=archivo_salida)
     # Si no se especificó una ubicación para el modelo resultante, este se
     # borra
     if borrar_modelo:
-        os.remove(out_path)
+        os.remove(archivo_salida)
     # Devolver modelo modificado
     return nlp_pipe

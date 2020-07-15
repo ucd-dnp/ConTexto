@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 # https://www.geeksforgeeks.org/sequencematcher-in-python-for-longest-common-substring/
 
 
-def longestSubstring(str1, str2):
+def maximo_substring(str1, str2):
     # Inicializar objeto de SequenceMatcher con los dos textos
     seqMatch = SequenceMatcher(None, str1, str2)
     # Hallar el sub-string común de mayor longitud
@@ -17,21 +17,20 @@ def longestSubstring(str1, str2):
     else:
         pass
 
-
-def detectar_coincidencias(text_list):
+def detectar_coincidencias(lista_textos):
     coincidencias = []
-    for i in range(len(text_list)):
-        for j in range(i + 1, len(text_list)):
-            con = longestSubstring(text_list[i], text_list[j])
+    for i in range(len(lista_textos)):
+        for j in range(i + 1, len(lista_textos)):
+            con = maximo_substring(lista_textos[i], lista_textos[j])
             coincidencias.append(con)
     contador = Counter(coincidencias)
     comunes = {x: contador[x]
-               for x in contador if contador[x] >= len(text_list)}
-    return [i for i in list(comunes.keys()) if len(i.split()) >= 3]
+               for x in contador if contador[x] >= len(lista_textos)*0.9}
+    return [i for i in comunes if i is not None and len(i.split()) >= 3]
 
 
-def quitar_repetidos(text_list):
-    coincidencias = detectar_coincidencias(text_list)
+def quitar_repetidos(lista_textos):
+    coincidencias = detectar_coincidencias(lista_textos)
     for con in coincidencias:
-        text_list = [i.replace(con, '') for i in text_list]
-    return text_list
+        lista_textos = [i.replace(con, '') for i in lista_textos]
+    return lista_textos

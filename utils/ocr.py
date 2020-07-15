@@ -32,18 +32,18 @@ class OCR():
         self.psm = psm
 
     def imagen_a_texto(self, ubicacion_imagen):
-        # load the example image and convert it to grayscale
+        # Cargar la imagen de entrada        
         imagen = cv2.imread(ubicacion_imagen)
-        # check to see if we should apply preprocessing to the image
+        # Se define el preprocesamiento a aplicar 
+        # (si el número está fuera de rango, no se aplica ningún preprocesmiento)
         if 0 < self.preprocesamiento < 6:
             imagen = eval('procesar_img_{}(imagen)'.format(str(self.preprocesamiento)))
-        # write the grayscale image to disk as a temporary file so we can apply
-        # OCR to it
+        # Se guarda la imagen en un archivo temporal
         nombre_archivo = "{}.png".format(os.getpid())
         cv2.imwrite(nombre_archivo, imagen)
-        # load the image as a PIL/Pillow image, apply OCR, and then delete the
-        # temporary file
+        # Se establecen las opciones para el OCR
         config = ("-l {} --oem {} --psm {}".format(self.lenguaje, self.oem, self.psm))
+        # Se carga la imagen como un objeto PIL/Pillow image y se aplica el OCR
         texto = pytesseract.image_to_string(
             Image.open(nombre_archivo), config=config)
         # Borrar el archivo de imagen preprocesada

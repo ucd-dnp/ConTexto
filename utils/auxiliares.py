@@ -32,10 +32,9 @@ def verificar_crear_dir(ubicacion_directorio):
 # Función para pasar de texto enriquecido a texto plano
 def striprtf(text):
     """
-    Extract text in RTF Files. Refactored to use with Python 3.x
-    Source:
-        http://stackoverflow.com/a/188877
-    Code created by Markus Jarderot: http://mizardx.blogspot.com
+    Extrae texto en archivos RTF.
+    Tomado de: http://stackoverflow.com/a/188877
+    función creada por Markus Jarderot: http://mizardx.blogspot.com
     """
     pattern = re.compile(
         r"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)",
