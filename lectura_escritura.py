@@ -81,7 +81,7 @@ class Lector():
             por_paginas=False,
             encoding="utf-8",
             ocr=False,
-            preprocesamiento=4,
+            preprocesamiento=3,
             lenguaje='spa',
             oem=2,
             psm=3):
@@ -202,7 +202,7 @@ def leer_texto(
         por_paginas=False,
         encoding="utf-8",
         ocr=False,
-        preprocesamiento=4,
+        preprocesamiento=3,
         lenguaje='spa',
         oem=2,
         psm=3):
