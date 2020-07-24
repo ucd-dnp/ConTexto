@@ -1,11 +1,9 @@
 import json
 from spellchecker import SpellChecker
-from limpieza_texto import remover_acentos, limpieza_basica
-from lenguajes import detectar_lenguaje
-from lenguajes import dict_lenguajes, dict_lenguajes_simplificado
+from limpieza_texto import limpieza_basica
+from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ### Definir clase para el corrector ortográfico ###
-
 
 class Corrector():
     def __init__(self, lenguaje, diccionario=None, distancia=2):
@@ -15,27 +13,23 @@ class Corrector():
         self.iniciar_corrector(diccionario)
         self.establecer_distancia(distancia)
 
-    def definir_lenguaje(self, lenguaje):
-        leng = remover_acentos(lenguaje)
-        leng = leng.lower()
-        self.leng = leng
+    def establecer_lenguaje(self, lenguaje):
+        self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_corrector(self, diccionario):
-        if self.leng in dict_lenguajes.keys():
-            self.leng = dict_lenguajes[self.leng]
-            self.leng = dict_lenguajes_simplificado[self.leng]
+        self.corrector = None
+        if self.lenguaje is not None:
             if isinstance(diccionario, str):
                 self.corrector = SpellChecker(local_dictionary=diccionario)
             elif type(diccionario) in [dict, list]:
-                self.corrector = SpellChecker(language=self.leng)
+                self.corrector = SpellChecker(language=self.lenguaje)
                 self.actualizar_diccionario(diccionario)
             else:
-                self.corrector = SpellChecker(language=self.leng)
-        else:
-            self.corrector = None
+                self.corrector = SpellChecker(language=self.lenguaje)
 
     def establecer_distancia(self, distancia):
-        self.corrector.distance = distancia
+        if self.corrector is not None:
+            self.corrector.distance = distancia
 
     def actualizar_diccionario(self, diccionario):
         if isinstance(diccionario, str):
@@ -79,9 +73,10 @@ class Corrector():
     def probabilidad_palabra(self, palabra):
         return self.corrector.word_probability(palabra)
 
-    def correccion_ortografia(self, texto):
-        # Limpieza básica del texto para que no afecte la corrección
-        texto = limpieza_basica(texto, quitar_numeros=False)
+    def correccion_ortografia(self, texto, limpieza=True):
+        if limpieza:
+            # Limpieza básica del texto para que no afecte la corrección
+            texto = limpieza_basica(texto, quitar_numeros=False)
         lista_palabras = texto.split()
         desconocidas = self.corrector.unknown(lista_palabras)
         texto_corregido = [self.corrector.correction(palabra) if palabra in desconocidas
@@ -96,7 +91,8 @@ def corregir_texto(
         lenguaje='es',
         corrector=None,
         diccionario=None,
-        distancia=2):
+        distancia=2,
+        limpieza=True):
     # Si no se provee un corrector, este debe ser inicializado
     if corrector is None:
         if lenguaje == 'auto':
@@ -107,4 +103,4 @@ def corregir_texto(
         print('Lenguaje no válido.')
         return None
 
-    return corrector.correccion_ortografia(texto)
+    return corrector.correccion_ortografia(texto, limpieza)
