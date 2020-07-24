@@ -8,16 +8,16 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 class Stemmer():
     def __init__(self, lenguaje):
         # Definir lenguaje del stemmer
-        self.definir_lenguaje(lenguaje)
+        self.establecer_lenguaje(lenguaje)
         # Inicializar stemmer
         self.iniciar_stemmer()
 
-    def definir_lenguaje(self, lenguaje):
-        self.leng = definir_lenguaje(lenguaje, simplificado=False)
+    def establecer_lenguaje(self, lenguaje):
+        self.lenguaje = definir_lenguaje(lenguaje, simplificado=False)
 
     def iniciar_stemmer(self):
-        if self.leng is not None:
-            self.stemmer = nltk.stem.SnowballStemmer(self.leng)
+        if self.lenguaje is not None:
+            self.stemmer = nltk.stem.SnowballStemmer(self.lenguaje)
         else:
             self.stemmer = None
 
