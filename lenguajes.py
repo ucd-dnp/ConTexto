@@ -4,11 +4,11 @@ from limpieza_texto import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
-    identifier = LanguageIdentifier.from_modelstring(model, norm_probs=True)
+    identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
-        return identifier.classify(texto)
+        return identificador.classify(texto)
     else:
-        return identifier.classify(texto)[0]
+        return identificador.classify(texto)[0]
 
 
 def traducir_texto(texto, lenguaje_destino):
@@ -16,11 +16,11 @@ def traducir_texto(texto, lenguaje_destino):
     # Adecuar el lenguaje de destino al formato de la API
     lenguaje_destino = dict_lenguajes[lenguaje_destino]
     lenguaje_destino = dict_lenguajes_simplificado[lenguaje_destino]
-    out = traductor.translate(texto, dest=lenguaje_destino)
+    salida = traductor.translate(texto, dest=lenguaje_destino)
     if isinstance(texto, str):
-        return out.text
+        return salida.text
     else:
-        return [i.text for i in out]
+        return [i.text for i in salida]
 
 
 # Diccionario para distintas representaciones de idiomas
