@@ -9,7 +9,7 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 class Lematizador_spacy():
     def __init__(self, lenguaje, dict_lemmas=None, dim_modelo='md'):
         # Definir lenguaje del lematizador
-        self.definir_lenguaje(lenguaje)
+        self.establecer_lenguaje(lenguaje)
         # Inicializar lematizador
         self.iniciar_lematizador(dim_modelo)
         # Si se introdujo un diccionario personalizado, se utiliza
@@ -23,14 +23,14 @@ class Lematizador_spacy():
             except BaseException:
                 print('No se pudo cargar el diccionario de lemas')
 
-    def definir_lenguaje(self, lenguaje):
-        self.leng = definir_lenguaje(lenguaje)
+    def establecer_lenguaje(self, lenguaje):
+        self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_lematizador(self, dim_modelo):
         self.lematizador = None
-        if self.leng is not None:
+        if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.lematizador = cargar_modelo(dim_modelo, self.leng)
+            self.lematizador = cargar_modelo(dim_modelo, self.lenguaje)
 
     def modificar_lemmas(self, dict_lemmas):
         # Definir función auxiliar
@@ -55,48 +55,48 @@ class Lematizador_stanza():
     def __init__(
             self,
             lenguaje,
-            lemma_model_path='',
+            modelo_lemas='',
             dict_lemmas=None,
-            out_path=''):
+            archivo_salida=''):
         # Definir lenguaje del lematizador
-        self.definir_lenguaje(lenguaje)
+        self.establecer_lenguaje(lenguaje)
         # Inicializar lematizador
-        self.iniciar_lematizador(lemma_model_path)
+        self.iniciar_lematizador(modelo_lemas)
         # Si se introdujo un diccionario personalizado, se utiliza
         if isinstance(dict_lemmas, dict):
-            self.modificar_lemmas(dict_lemmas, lemma_model_path, out_path)
+            self.modificar_lemmas(dict_lemmas, modelo_lemas, archivo_salida)
         # Si es la ubicación del archivo, primero se carga
         elif isinstance(dict_lemmas, str):
             try:
                 dict_lemmas = json.load(open(dict_lemmas))
                 self.modificar_lemmas(dict_lemmas)
             except BaseException:
-                print('Debe proporcionar la ubicación de un archivo válido')
+                print('No se pudo cargar el diccionario de lemas')
 
     def definir_lenguaje(self, lenguaje):
-        self.leng = definir_lenguaje(lenguaje)
+        self.lenguaje = definir_lenguaje(lenguaje)
 
-    def iniciar_lematizador(self, lemma_model_path):
+    def iniciar_lematizador(self, modelo_lemas):
         from utils.stanza_funcs import stanza_pipeline
         self.lematizador = None
-        if self.leng is not None:
+        if self.lenguaje is not None:
             self.lematizador = stanza_pipeline(
-                self.leng, lemma_model_path=lemma_model_path)
+                self.lenguaje, modelo_lemas=modelo_lemas)
 
     def modificar_lemmas(
             self,
             dict_lemmas,
-            in_path='',
-            out_path='',
-            location='cpu'):
+            archivo_entrada='',
+            archivo_salida='',
+            gpu=False):
         from utils.stanza_funcs import modificar_modelo
         self.lematizador = modificar_modelo(
             self.lematizador,
             'lemma',
             dict_lemmas,
-            in_path,
-            out_path,
-            location)
+            archivo_entrada,
+            archivo_salida,
+            gpu)
 
     def lematizar(self, texto, limpiar=True):
         if limpiar:
@@ -104,7 +104,6 @@ class Lematizador_stanza():
         doc = self.lematizador(texto)
         # Extraer los lemas de cada palabra, de cada frase, y juntarlos
         return ' '.join([w.lemma for s in doc.sentences for w in s.words])
-        # return ' '.join([i['lemma'] for i in doc.to_dict()[0]])
 
 
 ### Definir función que envuelva la funcionalidad básica de las clases ###
@@ -117,8 +116,8 @@ def lematizar_texto(
         lematizador=None,
         dict_lemmas=None,
         dim_modelo='md',
-        lemma_model_path='',
-        out_path=''):
+        modelo_lemas='',
+        archivo_salida=''):
     # Si no se provee un lematizador, este debe ser inicializado
     if lematizador is None:
         if lenguaje == 'auto':
@@ -127,7 +126,7 @@ def lematizar_texto(
             lematizador = Lematizador_spacy(lenguaje, dict_lemmas, dim_modelo)
         elif libreria.lower() == 'stanza':
             lematizador = Lematizador_stanza(
-                lenguaje, lemma_model_path, dict_lemmas, out_path)
+                lenguaje, modelo_lemas, dict_lemmas, archivo_salida)
         else:
             print(
                 'Por favor escoja una librería válida para el lematizador (Spacy o Stanza)')
