@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
-import spacy
 from gensim.models import doc2vec
 from gensim.utils import simple_preprocess
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
 from lenguajes import detectar_lenguaje, definir_lenguaje
-from utils.helper import cargar_objeto, guardar_objeto
+from utils.auxiliares import cargar_objeto, guardar_objeto
 
 ####### BOW / TF-IDF  #########
 
@@ -68,6 +67,7 @@ class VectorizadorFrecuencias():
             return vocab
         except BaseException:
             print('Debe ajustar primero el vectorizador para que exista un vocabulario.')
+            return None
 
     # A partir de un vector o grupo de vectores, devuelve los términos con frecuencia mayor a 0
     # en el documento
@@ -91,8 +91,8 @@ class VectorizadorHash():
         return vectores
 
     # Para mantener "nomenclatura sklearn"
-    def transform(self, x):
-        return self.vectorizar(x)
+    def transform(self, x, disperso=False):
+        return self.vectorizar(x, disperso)
 
 ####### Word2Vec con spacy #########
 
@@ -105,13 +105,13 @@ class VectorizadorWord2Vec():
         self.iniciar_vectorizador(dim_modelo)
 
     def definir_lenguaje(self, lenguaje):
-        self.leng = definir_lenguaje(lenguaje)
+        self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_vectorizador(self, dim_modelo):
         self.vectorizador = None
-        if self.leng is not None:
+        if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.vectorizador = cargar_modelo(dim_modelo, self.leng)
+            self.vectorizador = cargar_modelo(dim_modelo, self.lenguaje)
 
     def vectorizar_texto(self, texto, quitar_desconocidas: bool=False):
         # Aplicar el modelo al texto
