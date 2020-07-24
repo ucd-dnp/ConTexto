@@ -11,7 +11,7 @@ import pkg_resources
 def remover_acentos(texto):
     try:
         texto = unicode(texto, 'utf-8')
-    except NameError:  # unicode is a default on python 3
+    except NameError:
         pass
     texto = unicodedata.normalize('NFD', texto)\
         .encode('ascii', 'ignore')\
@@ -118,15 +118,13 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
 # eliminar de un texto, a partir de un archivo plano
 
 
-def cargar_stopwords(file_path):
+def cargar_stopwords(ubicacion_archivo):
     lista_palabras = []
     lista_expresiones = []
-    with open(file_path, encoding='utf8') as fp:
+    with open(ubicacion_archivo, encoding='utf8') as fp:
         line = fp.readline()
         while line:
             linea = line.strip().split(',')
-            # linea = [i.split(' ') for i in linea]
-            # linea = list(itertools.chain.from_iterable(linea))
             for i in linea:
                 i = limpiar_extremos(i)
                 if len(i.split(' ')) > 1:
