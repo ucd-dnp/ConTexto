@@ -9,9 +9,9 @@ from utils.auxiliares import verificar_crear_dir
 
 class Lector():
     def __init__(self, ubicacion_archivo):
-        self.definir_ubicacion(ubicacion_archivo)
+        self.establecer_ubicacion(ubicacion_archivo)
 
-    def definir_ubicacion(self, ubicacion_archivo):
+    def establecer_ubicacion(self, ubicacion_archivo):
         self.ubicacion_archivo = ubicacion_archivo
 
     def leer_txt(self, encoding="utf-8"):
@@ -107,13 +107,13 @@ class Lector():
 
 class Escritor():
     def __init__(self, ubicacion_archivo, texto):
-        self.definir_ubicacion(ubicacion_archivo)
-        self.definir_texto(texto)
+        self.establecer_ubicacion(ubicacion_archivo)
+        self.establecer_texto(texto)
 
-    def definir_ubicacion(self, ubicacion_archivo):
+    def establecer_ubicacion(self, ubicacion_archivo):
         self.ubicacion_archivo = ubicacion_archivo
 
-    def definir_texto(self, texto):
+    def establecer_texto(self, texto):
         self.texto = texto
 
     def escribir_txt(self):
@@ -187,7 +187,7 @@ class Escritor():
             print('Formato desconocido. Se escribirá en un formato plano (.txt).')
             nueva_ruta = ''.join(self.ubicacion_archivo.split(
                 '.')[:-1]) + '_{}.txt'.format(tipo)
-            self.definir_ubicacion(nueva_ruta)
+            self.establecer_ubicacion(nueva_ruta)
             self.escribir_txt()
 
 
