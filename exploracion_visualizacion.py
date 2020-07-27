@@ -198,7 +198,7 @@ def graficar_coocurrencias(
     dim_figura=(13, 13)):
     # Detectar tipo de matriz de co-ocurrencias
     if tipo is None:
-        tipo = 'ventana' if np.sum(mat) == np.sum(np.triu(mat)) else 'documento'
+        tipo = 'ventana' if mat.sum().sum() == np.sum(np.triu(mat)) else 'documento'
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
     max_diag = max(np.diag(mat))
@@ -263,7 +263,7 @@ def graficar_coocurrencias(
     plt.axis('off')
     if ubicacion_archivo != '':
         plt.savefig(ubicacion_archivo)  # save as png
-    if plot:
+    if graficar:
         plt.show()
     # Cerrar gráfica
     plt.close()
@@ -274,13 +274,11 @@ def graficar_coocurrencias(
 def grafica_barchart_frecuencias(
         texto,
         n_grama=1,
-        figsize=(
-            8,
-            5),
-    titulo='',
-    ascendente=True,
-    ubicacion_archivo='',
-    plot=True,
+        figsize=(8, 5),
+        titulo='',
+        ascendente=True,
+        ubicacion_archivo='',
+        graficar=True,
         n_terminos=15):
 
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)

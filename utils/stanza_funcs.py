@@ -69,11 +69,11 @@ def modificar_modelo(
     # Cargar el modelo modificado
     tipo = tipo.lower()
     if tipo == 'lemma':
-        nlp_pipe = stanza_pipeline('es', lemma_model_path=archivo_salida)
+        nlp_pipe = stanza_pipeline('es', modelo_lemas=archivo_salida)
     elif tipo == 'pos':
-        nlp_pipe = stanza_pipeline('es', pos_model_path=archivo_salida)
+        nlp_pipe = stanza_pipeline('es', modelo_pos=archivo_salida)
     elif tipo == 'ner':
-        nlp_pipe = stanza_pipeline('es', ner_model_path=archivo_salida)
+        nlp_pipe = stanza_pipeline('es', modelo_ner=archivo_salida)
     # Si no se especificó una ubicación para el modelo resultante, este se
     # borra
     if borrar_modelo:

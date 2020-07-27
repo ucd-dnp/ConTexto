@@ -73,7 +73,7 @@ class Lematizador_stanza():
             except BaseException:
                 print('No se pudo cargar el diccionario de lemas')
 
-    def definir_lenguaje(self, lenguaje):
+    def establecer_lenguaje(self, lenguaje):
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_lematizador(self, modelo_lemas):

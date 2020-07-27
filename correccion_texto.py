@@ -8,7 +8,7 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 class Corrector():
     def __init__(self, lenguaje, diccionario=None, distancia=2):
         # Definir lenguaje del corrector ortográfico
-        self.definir_lenguaje(lenguaje)
+        self.establecer_lenguaje(lenguaje)
         # Inicializar corrector
         self.iniciar_corrector(diccionario)
         self.establecer_distancia(distancia)
