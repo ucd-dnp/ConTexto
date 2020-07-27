@@ -33,67 +33,63 @@ def nube_palabras(
         texto,
         n_grama=1,
         n_terminos=100,
-        plot=True,
-        figsize=(
-            10,
-            10),
-    hor=0.6,
-    titulo='Términos más frecuentes',
-    archivo='',
-    mask=None,
-    semilla=1234,
+        graficar=True,
+        dim_figura=(10, 10),
+        hor=0.6,
+        titulo='Términos más frecuentes',
+        ubicacion_archivo='',
+        mask=None,
+        semilla=1234,
         devolver_nube=False):
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
-    # Crear máscara (circular) para ordenar la nube
+    # Por defecto se crea una máscara circular para ordenar la nube
     if mask is None:
         x, y = np.ogrid[:600, :600]
         mask = (x - 300) ** 2 + (y - 300) ** 2 > 260 ** 2
         mask = 255 * mask.astype(int)
-    wordcl = WordCloud(background_color='white',
+    nube = WordCloud(background_color='white',
                        prefer_horizontal=hor, mask=mask, random_state=semilla)
-    figura = wordcl.generate_from_frequencies(dictu)
+    figura = nube.generate_from_frequencies(dictu)
     # Devolver el objeto de la nube, para graficarlo de otra manera
     if devolver_nube:
         return figura
     else:
         # Graficar y/o guardar la imagen generada
-        grafica_nube(figura, figsize, titulo, archivo, plot)
+        grafica_nube(figura, dim_figura, titulo, ubicacion_archivo, graficar)
 
 # Función para graficar o guardar una nube de palabras
 
 
 def grafica_nube(
         nube,
-        figsize=(
-            10,
-            10),
-    titulo='Términos más frecuentes',
-    archivo='',
-        plot=True):
-    fig = plt.figure(figsize=figsize)
+        dim_figura=(10, 10),
+        titulo='Términos más frecuentes',
+        ubicacion_archivo='',
+        graficar=True):
+    fig = plt.figure(figsize=dim_figura)
     plt.imshow(nube, interpolation='bilinear')
     if titulo != '':
         plt.title(titulo)
     plt.axis("off")
-    if plot:
+    if graficar:
         plt.show()
-    if archivo != '':
-        fig.savefig(archivo)
+    if ubicacion_archivo != '':
+        fig.savefig(ubicacion_archivo)
     # Cerrar gráfica
     plt.close()
 
 # Grafica un par de nubes de palabras, una junto a otra
 
 
-def par_nubes(texto, n1=1, n2=2, figsize=(20, 11), archivo='', plot=True):
+def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graficar=True):
     # Obtener nubes de palabras
     nube_1 = nube_palabras(texto, n_grama=n1, hor=0.8, devolver_nube=True)
     nube_2 = nube_palabras(texto, n_grama=n2, hor=1, devolver_nube=True)
 
     # Graficar nubes y mostrarlas
-    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2,
-                                   figsize=figsize, gridspec_kw={'hspace': 0, 'wspace': 0})
+    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=dim_figura, 
+                                    gridspec_kw={'hspace': 0, 'wspace': 0})
 
     ax1.imshow(nube_1, interpolation='bilinear')
     tit = 'términos' if n1 == 1 else f"n_gramas ({n1})"
@@ -105,10 +101,10 @@ def par_nubes(texto, n1=1, n2=2, figsize=(20, 11), archivo='', plot=True):
 
     fig.suptitle('Términos más frecuentes', size=28, y=0.99)
     plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[])
-    if plot:
+    if graficar:
         plt.show()
-    if archivo != '':
-        fig.savefig(archivo)
+    if ubicacion_archivo != '':
+        fig.savefig(ubicacion_archivo)
     # Cerrar gráfica
     plt.close()
 
@@ -117,14 +113,14 @@ def par_nubes(texto, n1=1, n2=2, figsize=(20, 11), archivo='', plot=True):
 
 def matriz_coocurrencias(
         texto,
-        min_freq=1,
-        max_num=100,
+        min_frec=1,
+        max_num=200,
         modo='documento',
         ventana=3,
-        triu=True):
+        tri_sup=True):
     """
     texto: Un solo texto o un conjunto de documentos
-    min_freq: Mínima frecuencia de aparición de palabras
+    min_frec: Mínima frecuencia de aparición de palabras
     max_num: Máximo número de palabras a dejar en la matriz (se cogen las más frecuentes)
     ventana: Tamaño de la ventana (solo se usa cuando modo='ventana')
     modo: Modo de análisis (documento o ventana)
@@ -134,17 +130,17 @@ def matriz_coocurrencias(
         texto_entero = ' '.join([str(i) for i in texto])
     else:
         texto_entero = str(texto)
-        texto = [texto_entero]  # Convertirlo en un iterable
+        texto = [texto_entero]  # Convertir variable "texto" en un iterable
     # Generar lista de palabras en todos los textos juntos
     palabras = texto_entero.split()
     # Dejar solo las palabras con mayor frecuencia y/o que cumplan una
     # frecuencia mínima
     cuenta = dict(Counter(palabras).most_common(max_num))
-    cuenta_filt = {k: v for k, v in cuenta.items() if v >= min_freq}
-    names = list(set(cuenta_filt.keys()))
+    cuenta_filt = {k: v for k, v in cuenta.items() if v >= min_frec}
+    nombres = list(set(cuenta_filt.keys()))
     # Inicializar en ceros la matriz de co-ocurrencias
     mat_oc = pd.DataFrame(
-        np.zeros([len(names), len(names)]), columns=names, index=names)
+        np.zeros([len(nombres), len(nombres)]), columns=nombres, index=nombres)
     if modo == 'ventana':
         for t in texto:
             palabras_t = t.split()
@@ -153,7 +149,7 @@ def matriz_coocurrencias(
                 inicio = max(0, i - ventana)
                 fin = min(len(palabras), i + ventana + 1)
                 for j, p2 in enumerate(palabras_t[inicio:fin]):
-                    if (p2 in names) and (p1 in names):
+                    if (p2 in nombres) and (p1 in nombres):
                         if p1 != p2:
                             mat_oc[p2][p1] += 1
                         else:
@@ -162,8 +158,8 @@ def matriz_coocurrencias(
     elif modo == 'documento':
         for t in texto:
             cuenta_t = dict(Counter(t.split()))
-            for p1 in names:
-                for p2 in names:
+            for p1 in nombres:
+                for p2 in nombres:
                     if p1 != p2:
                         if p1 in cuenta_t and p2 in cuenta_t:
                             mat_oc[p2][p1] += cuenta_t[p1] * cuenta_t[p2]
@@ -174,7 +170,7 @@ def matriz_coocurrencias(
     # Ordenar filas y columnas alfabeticamente
     mat_oc.sort_index(inplace=True)
     mat_oc = mat_oc.reindex(sorted(mat_oc.columns), axis=1)
-    if triu:
+    if tri_sup:
         mat_oc = diag_superior(mat_oc)
 
     return mat_oc
@@ -193,63 +189,61 @@ def graficar_coocurrencias(
     mat,
     tipo=None,
     prop_fuera=0,
-    archivo='',
-    plot=True,
+    ubicacion_archivo='',
+    graficar=True,
     K=5,
-    col_borde='orchid',
-    col_nodo='silver',
+    color_borde='orchid',
+    color_nodo='silver',
     semilla=123,
-    figsize=(
-        13,
-        13)):
+    dim_figura=(13, 13)):
     # Detectar tipo de matriz de co-ocurrencias
     if tipo is None:
-        tipo = 'ventana' if any(np.diag(mat) == 0) else 'documento'
+        tipo = 'ventana' if np.sum(mat) == np.sum(np.triu(mat)) else 'documento'
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
     max_diag = max(np.diag(mat))
     # Definir lista de conexiones (edges)
-    edge_list = []
-    for index, row in mat.iterrows():
+    lista_bordes = []
+    for indice, fila in mat.iterrows():
         i = 0
-        for col in row:
-            weight = float(col) / np.log10(max_cooc)
-            edge_list.append((index, mat.columns[i], weight))
+        for col in fila:
+            peso = float(col) / np.log10(max_cooc)
+            lista_bordes.append((indice, mat.columns[i], peso))
             i += 1
     # Quitar de la lista conexiones con peso 0 (no hay co-ocurrencia)
-    edge_list = [x for x in edge_list if x[2] > 0.0]
+    lista_bordes = [x for x in lista_bordes if x[2] > 0.0]
     # Quitar conexiones de un nodo consigo mismo
-    for i in edge_list:
+    for i in lista_bordes:
         if i[0] == i[1]:
-            edge_list.remove(i)
+            lista_bordes.remove(i)
     # Definir lista de vértices (nodes)
-    node_list = [[i, mat.loc[i, i] / np.log(max_diag)] for i in mat.columns]
-    for i, node in enumerate(node_list):
-        if node[1] == 0.0:
-            node_list[i][1] += 0.1
+    lista_nodos = [[i, mat.loc[i, i] / np.log(max_diag)] for i in mat.columns]
+    for i, nodo in enumerate(lista_nodos):
+        if nodo[1] == 0.0:
+            lista_nodos[i][1] += 0.1
     # Definir tamaños de nodos y bordes del grafo
     offset_y = 0.06
-    node_scalar = 200
-    edge_scalar = 0.0055
-    sizes = [x[1] for x in node_list]
-    widths = [x[2] for x in edge_list]
+    escalar_nodo = 200
+    escalar_borde = 0.0055
+    sizes = [x[1] for x in lista_nodos]
+    anchos = [x[2] for x in lista_bordes]
     # Acotar los tamaños en el percentil 99 para evitar valores demasiado altos
-    widths = np.clip(widths, 0, np.percentile(widths, 99))
-    sizes = np.clip(sizes, 0, np.percentile(widths, 99))
+    anchos = np.clip(anchos, 0, np.percentile(anchos, 99))
+    sizes = np.clip(sizes, 0, np.percentile(anchos, 99))
     # Modificar anchos de bordes y tamaño de nodos
-    widths = [100 * float(i) / max(widths) for i in widths]
-    widths = [x**2.35 * edge_scalar**2 for x in widths]
-    sizes = [30 + (node_scalar * float(i) / max(sizes)) for i in sizes]
+    anchos = [100 * float(i) / max(anchos) for i in anchos]
+    anchos = [x**2.35 * escalar_borde**2 for x in anchos]
+    sizes = [30 + (escalar_nodo * float(i) / max(sizes)) for i in sizes]
     # Eliminar las conexiones con menor peso para aclarar un poco la imagen
-    widths = [i if i >= np.percentile(
-        widths, prop_fuera) else 0 for i in widths]
+    anchos = [i if i >= np.percentile(
+        anchos, prop_fuera) else 0 for i in anchos]
     # Crear grafo
     G = nx.Graph()
-    for i in sorted(node_list):
+    for i in sorted(lista_nodos):
         G.add_node(i[0], size=1)
-    G.add_weighted_edges_from(edge_list)
+    G.add_weighted_edges_from(lista_bordes)
     # Crear la gráfica
-    plt.subplots(figsize=figsize)
+    plt.subplots(figsize=dim_figura)
     try:
         pos = nx.spring_layout(G, iterations=300, k=K, seed=semilla)
     except BaseException:
@@ -259,16 +253,16 @@ def graficar_coocurrencias(
         pos,
         with_labels=False,
         node_size=sizes,
-        width=widths,
-        edge_color=col_borde,
-        node_color=col_nodo)
+        width=anchos,
+        edge_color=color_borde,
+        node_color=color_nodo)
     # Escribir los nombres de los nodos
     for key, value in pos.items():
         x, y = value[0] + 0, value[1] - offset_y
         plt.text(x, y, s=key, horizontalalignment='center', fontsize=10)
     plt.axis('off')
-    if archivo != '':
-        plt.savefig(archivo)  # save as png
+    if ubicacion_archivo != '':
+        plt.savefig(ubicacion_archivo)  # save as png
     if plot:
         plt.show()
     # Cerrar gráfica
@@ -285,7 +279,7 @@ def grafica_barchart_frecuencias(
             5),
     titulo='',
     ascendente=True,
-    archivo='',
+    ubicacion_archivo='',
     plot=True,
         n_terminos=15):
 
@@ -311,9 +305,9 @@ def grafica_barchart_frecuencias(
     for i, v in enumerate(df['frecuencia']):
         ax.text(v, i, v, fontsize=10, verticalalignment="center")
 
-    if archivo != '':
-        plt.savefig(archivo)  # save as png
-    if plot:
+    if ubicacion_archivo != '':
+        plt.savefig(ubicacion_archivo)  # save as png
+    if graficar:
         plt.show()
     # Cerrar gráfica
     plt.close()
