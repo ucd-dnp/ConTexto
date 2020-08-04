@@ -4,6 +4,12 @@ from limpieza_texto import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
+    """
+
+    :param texto:
+    :param devolver_proba:
+    :return:
+    """
     identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
         return identificador.classify(texto)
@@ -12,6 +18,12 @@ def detectar_lenguaje(texto, devolver_proba=False):
 
 
 def traducir_texto(texto, lenguaje_destino):
+    """
+
+    :param texto:
+    :param lenguaje_destino:
+    :return:
+    """
     traductor = Translator()
     # Adecuar el lenguaje de destino al formato de la API
     lenguaje_destino = dict_lenguajes[lenguaje_destino]
@@ -62,6 +74,12 @@ dict_lenguajes_simplificado = {
 
 
 def definir_lenguaje(lenguaje, simplificado=True):
+    """
+
+    :param lenguaje:
+    :param simplificado:
+    :return:
+    """
     leng = None
     lenguaje = lenguaje.lower()
     lenguaje = remover_acentos(lenguaje)

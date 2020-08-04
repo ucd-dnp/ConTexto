@@ -9,6 +9,13 @@ from wordcloud import WordCloud
 
 
 def obtener_ngramas(texto, n=1, devolver_lista=True):
+    """
+
+    :param texto:
+    :param n:
+    :param devolver_lista:
+    :return:
+    """
     lista = texto.split(' ')
     n_gramas = (' '.join(lista[i:i + n])
                 for i in range(len(lista)) if i + n <= len(lista))
@@ -18,6 +25,13 @@ def obtener_ngramas(texto, n=1, devolver_lista=True):
 
 
 def frecuencia_ngramas(texto, n_grama=1, n_max=None):
+    """
+
+    :param texto:
+    :param n_grama:
+    :param n_max:
+    :return:
+    """
     lista = obtener_ngramas(texto, n_grama)
     cont = Counter(lista)
     if n_max is not None:
@@ -41,6 +55,22 @@ def nube_palabras(
         mask=None,
         semilla=1234,
         devolver_nube=False):
+    """
+
+    :param texto:
+    :param n_grama:
+    :param n_terminos:
+    :param graficar:
+    :param dim_figura:
+    :param hor:
+    :param titulo:
+    :param ubicacion_archivo:
+    :param mask:
+    :param semilla:
+    :param devolver_nube:
+    :return:
+    """
+
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Por defecto se crea una máscara circular para ordenar la nube
@@ -67,6 +97,16 @@ def grafica_nube(
         titulo='Términos más frecuentes',
         ubicacion_archivo='',
         graficar=True):
+    """
+
+    :param nube:
+    :param dim_figura:
+    :param titulo:
+    :param ubicacion_archivo:
+    :param graficar:
+    :return:
+    """
+
     fig = plt.figure(figsize=dim_figura)
     plt.imshow(nube, interpolation='bilinear')
     if titulo != '':
@@ -83,6 +123,17 @@ def grafica_nube(
 
 
 def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graficar=True):
+    """
+
+    :param texto:
+    :param n1:
+    :param n2:
+    :param dim_figura:
+    :param ubicacion_archivo:
+    :param graficar:
+    :return:
+    """
+
     # Obtener nubes de palabras
     nube_1 = nube_palabras(texto, n_grama=n1, hor=0.8, devolver_nube=True)
     nube_2 = nube_palabras(texto, n_grama=n2, hor=1, devolver_nube=True)
@@ -119,12 +170,16 @@ def matriz_coocurrencias(
         ventana=3,
         tri_sup=True):
     """
-    texto: Un solo texto o un conjunto de documentos
-    min_frec: Mínima frecuencia de aparición de palabras
-    max_num: Máximo número de palabras a dejar en la matriz (se cogen las más frecuentes)
-    ventana: Tamaño de la ventana (solo se usa cuando modo='ventana')
-    modo: Modo de análisis (documento o ventana)
+
+    :param texto: Un solo texto o un conjunto de documentos
+    :param min_frec: Mínima frecuencia de aparición de palabras
+    :param max_num: Máximo número de palabras a dejar en la matriz (se cogen las más frecuentes)
+    :param modo: Modo de análisis (documento o ventana)
+    :param ventana: Tamaño de la ventana (solo se usa cuando modo='ventana')
+    :param tri_sup:
+    :return:
     """
+
     # Generar un solo texto con todos los documentos
     if isinstance(texto, Iterable) and not isinstance(texto, str):
         texto_entero = ' '.join([str(i) for i in texto])
@@ -180,6 +235,11 @@ def matriz_coocurrencias(
 
 
 def diag_superior(df):
+    """
+
+    :param df:
+    :return:
+    """
     return pd.DataFrame(np.triu(df), index=df.index, columns=df.columns)
 
 # Función que grafica la matriz de co-ocurrencias como un grafo no dirigido
@@ -196,6 +256,20 @@ def graficar_coocurrencias(
     color_nodo='silver',
     semilla=123,
     dim_figura=(13, 13)):
+    """
+
+    :param mat:
+    :param tipo:
+    :param prop_fuera:
+    :param ubicacion_archivo:
+    :param graficar:
+    :param K:
+    :param color_borde:
+    :param color_nodo:
+    :param semilla:
+    :param dim_figura:
+    :return:
+    """
     # Detectar tipo de matriz de co-ocurrencias
     if tipo is None:
         tipo = 'ventana' if mat.sum().sum() == np.sum(np.triu(mat)) else 'documento'
@@ -280,7 +354,18 @@ def grafica_barchart_frecuencias(
         ubicacion_archivo='',
         graficar=True,
         n_terminos=15):
+    """
 
+    :param texto:
+    :param n_grama:
+    :param figsize:
+    :param titulo:
+    :param ascendente:
+    :param ubicacion_archivo:
+    :param graficar:
+    :param n_terminos:
+    :return:
+    """
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Ordenar datos en un dataframe
     df = pd.DataFrame.from_dict(dict_datos, orient='index')

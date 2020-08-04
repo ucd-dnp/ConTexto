@@ -8,6 +8,12 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 
 class Lematizador_spacy():
     def __init__(self, lenguaje, dict_lemmas=None, dim_modelo='md'):
+        """
+
+        :param lenguaje:
+        :param dict_lemmas:
+        :param dim_modelo:
+        """
         # Definir lenguaje del lematizador
         self.establecer_lenguaje(lenguaje)
         # Inicializar lematizador
@@ -24,15 +30,30 @@ class Lematizador_spacy():
                 print('No se pudo cargar el diccionario de lemas')
 
     def establecer_lenguaje(self, lenguaje):
+        """
+
+        :param lenguaje:
+        :return:
+        """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_lematizador(self, dim_modelo):
+        """
+
+        :param dim_modelo:
+        :return:
+        """
         self.lematizador = None
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
             self.lematizador = cargar_modelo(dim_modelo, self.lenguaje)
 
     def modificar_lemmas(self, dict_lemmas):
+        """
+
+        :param dict_lemmas:
+        :return:
+        """
         # Definir función auxiliar
         def cambiar_propiedades_lemma(doc):
             for token in doc:
@@ -44,6 +65,12 @@ class Lematizador_spacy():
             self.lematizador.add_pipe(cambiar_propiedades_lemma, first=True)
 
     def lematizar(self, texto, limpiar=True):
+        """
+
+        :param texto:
+        :param limpiar:
+        :return:
+        """
         if limpiar:
             texto = limpieza_basica(texto)
         return ' '.join([token.lemma_ for token in self.lematizador(texto)])
@@ -74,9 +101,19 @@ class Lematizador_stanza():
                 print('No se pudo cargar el diccionario de lemas')
 
     def establecer_lenguaje(self, lenguaje):
+        """
+
+        :param lenguaje:
+        :return:
+        """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_lematizador(self, modelo_lemas):
+        """
+
+        :param modelo_lemas:
+        :return:
+        """
         from utils.stanza_funcs import stanza_pipeline
         self.lematizador = None
         if self.lenguaje is not None:
@@ -89,6 +126,14 @@ class Lematizador_stanza():
             archivo_entrada='',
             archivo_salida='',
             gpu=False):
+        """
+
+        :param dict_lemmas:
+        :param archivo_entrada:
+        :param archivo_salida:
+        :param gpu:
+        :return:
+        """
         from utils.stanza_funcs import modificar_modelo
         self.lematizador = modificar_modelo(
             self.lematizador,
@@ -99,6 +144,12 @@ class Lematizador_stanza():
             gpu)
 
     def lematizar(self, texto, limpiar=True):
+        """
+
+        :param texto:
+        :param limpiar:
+        :return:
+        """
         if limpiar:
             texto = limpieza_basica(texto)
         doc = self.lematizador(texto)
@@ -118,6 +169,19 @@ def lematizar_texto(
         dim_modelo='md',
         modelo_lemas='',
         archivo_salida=''):
+    """
+
+    :param texto:
+    :param lenguaje:
+    :param libreria:
+    :param limpiar:
+    :param lematizador:
+    :param dict_lemmas:
+    :param dim_modelo:
+    :param modelo_lemas:
+    :param archivo_salida:
+    :return:
+    """
     # Si no se provee un lematizador, este debe ser inicializado
     if lematizador is None:
         if lenguaje == 'auto':
