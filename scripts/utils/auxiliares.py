@@ -29,10 +29,12 @@ def verificar_crear_dir(ubicacion_directorio):
         os.makedirs(ubicacion_directorio)
 
 
+## Funciones auxiliares para la lectura de documentos de texto ##
+
 # Función para pasar de texto enriquecido a texto plano
 def striprtf(text):
     """
-    Extrae texto en archivos RTF.
+    Extrae texto de archivos RTF.
     Tomado de: http://stackoverflow.com/a/188877
     función creada por Markus Jarderot: http://mizardx.blogspot.com
     """
@@ -177,6 +179,41 @@ def word_a_pdf(archivo_entrada, archivo_salida):
     doc.Close()
     return
 
+# Función para leer un archivo pdf utilizando la libería PyPDF2
+def leer_pdf_pypdf(ubicacion_archivo, password=None):
+    import PyPDF2	            
+    # Función interna para manejar errores de lectura de página
+    def leer_pag(lector, pag, ubicacion_archivo):	            
+        try:	            
+            with open(ubicacion_archivo, 'rb') as f:
+                return lector.getPage(pag).extractText()	                
+        except BaseException:	
+            return ''
+    # Crear objeto del lector, con el archivo PDF
+    with open(ubicacion_archivo, 'rb') as archivo_pdf:
+        lector = PyPDF2.PdfFileReader(archivo_pdf, strict=False)
+        if password is not None:
+            lector.decrypt(password)	
+        # Leer y extraer contenido de las páginas del archivo
+        num_paginas = lector.getNumPages()	
+        paginas = [leer_pag(lector, i, ubicacion_archivo) for i in range(num_paginas)]
+    # Retornar textos extraídos	
+    return paginas
+
+# Función para leer un archivo pdf utilizando la libería slate3k
+def leer_pdf_slate(ubicacion_archivo, password=None):
+    import slate3k as slate
+    # Para no mostrar warnings de slate
+    import logging
+    logging.getLogger('pdfminer').setLevel(logging.ERROR)
+    # Abrir el archivo y extraer el texto de las páginas
+    with open(ubicacion_archivo, 'rb') as f:
+        if password is not None:
+            paginas = slate.PDF(f, password)
+        else:
+            paginas = slate.PDF(f)
+    # Retornar el texto extraído
+    return paginas
 
 ######### Definición de funciones para guardar y cargar objetos Python  #########
 

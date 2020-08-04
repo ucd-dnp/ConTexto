@@ -35,18 +35,19 @@ class Lector():
             texto = docx2txt.process(self.ubicacion_archivo, dir_medios)
         return texto
 
-    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm):
+    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
         if ocr:
             from utils.ocr import OCR
             recog = OCR(preprocesamiento, lenguaje, oem, psm)
             paginas = recog.pdf_a_texto(self.ubicacion_archivo)
         else:
-            import slate3k as slate
-            # Para no mostrar warnings de slate
-            import logging
-            logging.getLogger('pdfminer').setLevel(logging.ERROR)
-            with open(self.ubicacion_archivo, 'rb') as f:
-                paginas = slate.PDF(f)
+            try:
+                from utils.auxiliares import leer_pdf_slate
+                paginas = leer_pdf_slate(self.ubicacion_archivo, password)
+            except:
+                from utils.auxiliares import leer_pdf_pypdf
+                paginas = leer_pdf_pypdf(self.ubicacion_archivo, password)
+        # Se define la forma de retornar el texto
         if por_paginas:
             return paginas
         else:
@@ -84,13 +85,14 @@ class Lector():
             preprocesamiento=3,
             lenguaje='spa',
             oem=2,
-            psm=3):
+            psm=3,
+            password=None):
         if tipo == 'inferir':
             tipo = self.ubicacion_archivo.split('.')[-1]
         if tipo in ['txt', 'csv']:
             return self.leer_txt(encoding)
         elif tipo == 'pdf':
-            return self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm)
+            return self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password)
         elif tipo == 'rtf':
             return self.leer_rtf()
         elif tipo in ['doc', 'docx']:
@@ -205,7 +207,8 @@ def leer_texto(
         preprocesamiento=3,
         lenguaje='spa',
         oem=2,
-        psm=3):
+        psm=3, 
+        password=None):
     le = Lector(ubicacion_archivo)
     return le.archivo_a_texto(
         tipo,
@@ -217,7 +220,8 @@ def leer_texto(
         preprocesamiento,
         lenguaje,
         oem,
-        psm)
+        psm,
+        password)
 
 
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
