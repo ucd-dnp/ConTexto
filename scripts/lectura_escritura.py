@@ -56,7 +56,6 @@ class Lector():
         return texto
 
     def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
-        def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm):
         """
 
         :param por_paginas:
