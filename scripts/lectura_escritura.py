@@ -9,12 +9,26 @@ from utils.auxiliares import verificar_crear_dir
 
 class Lector():
     def __init__(self, ubicacion_archivo):
+        """
+
+        :param ubicacion_archivo:
+        """
         self.establecer_ubicacion(ubicacion_archivo)
 
     def establecer_ubicacion(self, ubicacion_archivo):
+        """
+
+        :param ubicacion_archivo:
+        :return:
+        """
         self.ubicacion_archivo = ubicacion_archivo
 
     def leer_txt(self, encoding="utf-8"):
+        """
+
+        :param encoding:
+        :return:
+        """
         salida = []
         with open(self.ubicacion_archivo, encoding=encoding) as fp:
             linea = fp.readline()
@@ -27,6 +41,12 @@ class Lector():
         return '\n'.join(salida)
 
     def leer_word(self, extraer_medios, dir_medios):
+        """
+
+        :param extraer_medios:
+        :param dir_medios:
+        :return:
+        """
         import docx2txt
         if extraer_medios is False:
             texto = docx2txt.process(self.ubicacion_archivo)
@@ -36,6 +56,16 @@ class Lector():
         return texto
 
     def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm):
+        """
+
+        :param por_paginas:
+        :param ocr:
+        :param preprocesamiento:
+        :param lenguaje:
+        :param oem:
+        :param psm:
+        :return:
+        """
         if ocr:
             from utils.ocr import OCR
             recog = OCR(preprocesamiento, lenguaje, oem, psm)
@@ -53,6 +83,10 @@ class Lector():
             return ' '.join(paginas)
 
     def leer_rtf(self):
+        """
+
+        :return:
+        """
         from utils.auxiliares import striprtf
         texto = []
         with open(self.ubicacion_archivo) as fp:
@@ -68,6 +102,14 @@ class Lector():
         return texto
 
     def leer_imagen(self, preprocesamiento, lenguaje, oem, psm):
+        """
+
+        :param preprocesamiento:
+        :param lenguaje:
+        :param oem:
+        :param psm:
+        :return:
+        """
         from utils.ocr import OCR
         recog = OCR(preprocesamiento, lenguaje, oem, psm)
         texto = recog.imagen_a_texto(self.ubicacion_archivo)
@@ -85,6 +127,20 @@ class Lector():
             lenguaje='spa',
             oem=2,
             psm=3):
+        """
+
+        :param tipo:
+        :param extraer_medios:
+        :param dir_medios:
+        :param por_paginas:
+        :param encoding:
+        :param ocr:
+        :param preprocesamiento:
+        :param lenguaje:
+        :param oem:
+        :param psm:
+        :return:
+        """
         if tipo == 'inferir':
             tipo = self.ubicacion_archivo.split('.')[-1]
         if tipo in ['txt', 'csv']:
@@ -107,16 +163,35 @@ class Lector():
 
 class Escritor():
     def __init__(self, ubicacion_archivo, texto):
+        """
+
+        :param ubicacion_archivo:
+        :param texto:
+        """
         self.establecer_ubicacion(ubicacion_archivo)
         self.establecer_texto(texto)
 
     def establecer_ubicacion(self, ubicacion_archivo):
+        """
+
+        :param ubicacion_archivo:
+        :return:
+        """
         self.ubicacion_archivo = ubicacion_archivo
 
     def establecer_texto(self, texto):
+        """
+
+        :param texto:
+        :return:
+        """
         self.texto = texto
 
     def escribir_txt(self):
+        """
+
+        :return:
+        """
         if isinstance(self.texto, list):
             self.texto = '\n\n|**|\n\n'.join(self.texto)
         # with open(self.ubicacion_archivo, 'w') as fp:
@@ -124,6 +199,10 @@ class Escritor():
             fp.write(self.texto)
 
     def escribir_word(self):
+        """
+
+        :return:
+        """
         from docx import Document
         documento = Document()
         if isinstance(self.texto, list):
@@ -136,6 +215,10 @@ class Escritor():
         documento.save(self.ubicacion_archivo)
 
     def escribir_pdf(self):
+        """
+
+        :return:
+        """
         import PyPDF2
         from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
@@ -143,6 +226,11 @@ class Escritor():
         from textwrap import wrap
 
         def escribir_pagina(texto):
+            """
+
+            :param texto:
+            :return:
+            """
             texto = texto.split('\n')
             temp = BytesIO()
             can = canvas.Canvas(temp, pagesize=letter)
@@ -175,6 +263,11 @@ class Escritor():
             salida.write(fp)
 
     def texto_a_archivo(self, tipo='inferir'):
+        """
+
+        :param tipo:
+        :return:
+        """
         if tipo == 'inferir':
             tipo = self.ubicacion_archivo.split('.')[-1]
         if tipo in ['txt', 'csv']:
@@ -206,6 +299,21 @@ def leer_texto(
         lenguaje='spa',
         oem=2,
         psm=3):
+    """
+
+    :param ubicacion_archivo:
+    :param tipo:
+    :param extraer_medios:
+    :param dir_medios:
+    :param por_paginas:
+    :param encoding:
+    :param ocr:
+    :param preprocesamiento:
+    :param lenguaje:
+    :param oem:
+    :param psm:
+    :return:
+    """
     le = Lector(ubicacion_archivo)
     return le.archivo_a_texto(
         tipo,
@@ -221,5 +329,12 @@ def leer_texto(
 
 
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
+    """
+
+    :param ubicacion_archivo:
+    :param texto:
+    :param tipo:
+    :return:
+    """
     es = Escritor(ubicacion_archivo, texto)
     es.texto_a_archivo(tipo)

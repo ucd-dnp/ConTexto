@@ -9,6 +9,11 @@ import pkg_resources
 
 
 def remover_acentos(texto):
+    """
+
+    :param texto:
+    :return:
+    """
     try:
         texto = unicode(texto, 'utf-8')
     except NameError:
@@ -26,6 +31,14 @@ def remover_stopwords(
         lista_palabras=[],
         lista_expresiones=[],
         ubicacion_archivo=None):
+    """
+
+    :param texto:
+    :param lista_palabras:
+    :param lista_expresiones:
+    :param ubicacion_archivo:
+    :return:
+    """
     # Si se pasa como argumento la ubicación de un archivo plano que contiene la lista de palabras y expresiones
     # no deseadas separadas por comas, espacios o por enters.
     if ubicacion_archivo:
@@ -45,6 +58,12 @@ def remover_stopwords(
 
 
 def remover_palabras_cortas(texto, n_min):
+    """
+
+    :param texto:
+    :param n_min:
+    :return:
+    """
     palabras = texto.split(' ')
     return ' '.join([palabra for palabra in palabras if len(palabra) >= n_min])
 
@@ -52,6 +71,12 @@ def remover_palabras_cortas(texto, n_min):
 
 
 def limpieza_basica(texto, quitar_numeros=True):
+    """
+
+    :param texto:
+    :param quitar_numeros:
+    :return:
+    """
     # Texto a minúsculas
     texto = texto.lower()
     # Pone un espacio antes y después de cada signo de puntuación
@@ -78,6 +103,17 @@ def limpieza_texto(
         n_min=0,
         quitar_numeros=True,
         quitar_acentos=False):
+    """
+
+    :param texto:
+    :param lista_palabras:
+    :param lista_expresiones:
+    :param ubicacion_archivo:
+    :param n_min:
+    :param quitar_numeros:
+    :param quitar_acentos:
+    :return:
+    """
     # Quitar palabras y expresiones no deseadas. Se hace al texto original porque la palabra/expresión
     # a remover puede tener tildes/mayúsculas/signos o estar compuesta por
     # palabras cortas
@@ -100,6 +136,11 @@ def limpieza_texto(
 
 
 def limpiar_extremos(texto):
+    """
+
+    :param texto:
+    :return:
+    """
     return texto[::-1].rstrip()[::-1].rstrip()
 
 # Función para quitar frases o palabras repetidas separadas por un caracter
@@ -107,6 +148,13 @@ def limpiar_extremos(texto):
 
 
 def quitar_repetidos(texto, sep='|', remover_espacios=True):
+    """
+
+    :param texto:
+    :param sep:
+    :param remover_espacios:
+    :return:
+    """
     lista = texto.split(sep)
     if remover_espacios:
         lista = [limpiar_extremos(i) for i in lista]
@@ -119,6 +167,11 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
 
 
 def cargar_stopwords(ubicacion_archivo):
+    """
+
+    :param ubicacion_archivo:
+    :return:
+    """
     lista_palabras = []
     lista_expresiones = []
     with open(ubicacion_archivo, encoding='utf8') as fp:
@@ -137,6 +190,11 @@ def cargar_stopwords(ubicacion_archivo):
 
 # Función para cargar lista general predefinida de stopwords
 def lista_stopwords(lenguaje='es'):
+    """
+
+    :param lenguaje:
+    :return:
+    """
     from lenguajes import definir_lenguaje
     lenguaje = definir_lenguaje(lenguaje, False)
     if lenguaje == 'spanish':
@@ -156,6 +214,11 @@ def lista_stopwords(lenguaje='es'):
 
 
 def lista_nombres(tipo='todos'):
+    """
+
+    :param tipo:
+    :return:
+    """
     if tipo.lower() in ['m', 'masculino', 'hombre', 'hombres']:
         ruta = pkg_resources.resource_filename(
             __name__, 'data/listas_stopwords/nombres_hombres.txt')
@@ -182,12 +245,21 @@ def lista_nombres(tipo='todos'):
 
 
 def lista_apellidos():
+    """
+
+    :return:
+    """
     ruta = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/apellidos.txt')
     return cargar_stopwords(ruta)
 
 
 def lista_geo_colombia(tipo='todos'):
+    """
+
+    :param tipo:
+    :return:
+    """
     ruta_mun = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/municipios_col.txt')
     ruta_dep = pkg_resources.resource_filename(
