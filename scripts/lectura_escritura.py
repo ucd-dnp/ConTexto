@@ -58,14 +58,14 @@ class Lector():
     def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
         """
 
-        :param por_paginas:
-        :param ocr:
-        :param preprocesamiento:
-        :param lenguaje:
-        :param oem:
-        :param psm:
-        :return:
-        """
+            :param por_paginas:
+            :param ocr:
+            :param preprocesamiento:
+            :param lenguaje:
+            :param oem:
+            :param psm:
+            :return:
+            """
         if ocr:
             from utils.ocr import OCR
             recog = OCR(preprocesamiento, lenguaje, oem, psm)
@@ -287,8 +287,7 @@ def leer_texto(
         lenguaje='spa',
         oem=2,
         psm=3, 
-        password=None):
-        psm=3):
+        password=None):        
     """
 
     :param ubicacion_archivo:
