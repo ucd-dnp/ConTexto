@@ -5,7 +5,7 @@ from gensim.utils import simple_preprocess
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
-from lenguajes import detectar_lenguaje, definir_lenguaje
+from lenguajes import definir_lenguaje
 from utils.auxiliares import cargar_objeto, guardar_objeto
 
 ####### BOW / TF-IDF  #########
@@ -163,11 +163,11 @@ class VectorizadorWord2Vec():
         :param dim_modelo:
         """
         # Definir lenguaje del vectorizador
-        self.definir_lenguaje(lenguaje)
+        self.establecer_lenguaje(lenguaje)
         # Inicializar vectorizador
         self.iniciar_vectorizador(dim_modelo)
 
-    def definir_lenguaje(self, lenguaje):
+    def establecer_lenguaje(self, lenguaje):
         """
 
         :param lenguaje:
