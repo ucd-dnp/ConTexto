@@ -6,7 +6,7 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 ### Definir clases para el lematizador ###
 
 
-class Lematizador_spacy():
+class LematizadorSpacy():
     def __init__(self, lenguaje, dict_lemmas=None, dim_modelo='md'):
         """
 
@@ -78,7 +78,7 @@ class Lematizador_spacy():
 # Implementación alternativa, utilizando stanza
 
 
-class Lematizador_stanza():
+class LematizadorStanza():
     def __init__(
             self,
             lenguaje,
@@ -187,9 +187,9 @@ def lematizar_texto(
         if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
         if libreria.lower() == 'spacy':
-            lematizador = Lematizador_spacy(lenguaje, dict_lemmas, dim_modelo)
+            lematizador = LematizadorSpacy(lenguaje, dict_lemmas, dim_modelo)
         elif libreria.lower() == 'stanza':
-            lematizador = Lematizador_stanza(
+            lematizador = LematizadorStanza(
                 lenguaje, modelo_lemas, dict_lemmas, archivo_salida)
         else:
             print(
