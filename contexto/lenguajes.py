@@ -1,6 +1,6 @@
 from langid.langid import LanguageIdentifier, model
 from googletrans import Translator
-from limpieza_texto import remover_acentos
+from limpieza import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):

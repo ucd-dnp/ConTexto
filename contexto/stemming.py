@@ -1,5 +1,5 @@
 import nltk.stem
-from limpieza_texto import limpieza_basica
+from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ### Definir clase para el stemmer ###

@@ -1,6 +1,6 @@
 import json
 from spellchecker import SpellChecker
-from limpieza_texto import limpieza_basica
+from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ### Definir clase para el corrector ortográfico ###
