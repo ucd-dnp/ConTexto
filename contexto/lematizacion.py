@@ -1,6 +1,6 @@
 import json
 import spacy
-from limpieza_texto import limpieza_basica
+from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ### Definir clases para el lematizador ###

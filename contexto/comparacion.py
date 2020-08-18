@@ -1,7 +1,7 @@
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import pairwise_distances
 from lenguajes import definir_lenguaje
-from vectorizacion_texto import VectorizadorWord2Vec
+from vectorizacion import VectorizadorWord2Vec
 from utils.auxiliares import cargar_objeto
 
 class DistanciaCaracteres():
