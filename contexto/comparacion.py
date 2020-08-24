@@ -6,6 +6,11 @@ from lenguajes import definir_lenguaje
 from vectorizacion import VectorizadorWord2Vec
 from utils.auxiliares import cargar_objeto
 
+# Para que no se muestre la warning de "DataConversionWarning"
+import warnings
+from sklearn.exceptions import DataConversionWarning
+warnings.filterwarnings(action='ignore', category=DataConversionWarning)
+
 # Función auxiliar
 def jaccard_textos(texto1, texto2):
     if type(texto1) == str:
@@ -16,7 +21,7 @@ def jaccard_textos(texto1, texto2):
     union = set(texto1).union(set(texto2))
     return np.array([[len(intersection)/len(union)]])
 
-### Clase Similitud ----
+### Clase Similitud ----------------------------------------------------
 
 class Similitud():
     def __init__(self, vectorizador=None, lenguaje='es'):
@@ -90,7 +95,7 @@ class Similitud():
                 similitudes = 1 - pairwise_distances(textos, metric='jaccard')
         return similitudes
         
-### Clase Distancia ----
+### Clase Distancia ----------------------------------------------------
 
 class Distancia():
     def __init__(self, vectorizador=None, lenguaje='es'):
@@ -123,6 +128,8 @@ class Distancia():
             self.vectorizador = vectorizador
 
     def distancia_pares(self, textos, tipo_distancia, **kwds):
+        # Para tipo_distancia se puede utilizar cualquiera de las soportadas acá:
+        # https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
         if isinstance(textos, str) or len(textos) < 2:
             print ('Debe ingresar una lista de por lo menos dos textos o vectores para hacer la comparación.')
             return None
@@ -140,13 +147,13 @@ class Distancia():
     def l2(self, textos):
         return self.distancia_pares(textos, tipo_distancia='l2')
     
-    def minkowski(self, textos, grado):
-        if grado == 1:
+    def minkowski(self, textos, p):
+        if p == 1:
             return self.distancia_pares(textos, tipo_distancia='l1')
-        elif grado == 2:
+        elif p == 2:
             return self.distancia_pares(textos, tipo_distancia='l2')
         else:
-            return self.distancia_pares(textos, tipo_distancia='minkowski', p=grado)
+            return self.distancia_pares(textos, tipo_distancia='minkowski', p=p)
 
     def jaccard(self, textos):
         return self.distancia_pares(textos, tipo_distancia='jaccard')
@@ -154,7 +161,7 @@ class Distancia():
     def hamming(self, textos):
         return self.distancia_pares(textos, tipo_distancia='hamming')
 
-### Clase DiferenciaStrings ----
+### Clase DiferenciaStrings ----------------------------------------------------
 
 class DiferenciaStrings():
     def comparacion_pares(self, texto1, texto2, tipo='levenshtein', norm=None):
