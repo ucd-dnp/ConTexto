@@ -1,7 +1,7 @@
 
 a
 ademas
-ademas
+además
 ahi
 ahí
 al
@@ -338,8 +338,8 @@ un
 una
 uno
 unos
-vosostras
-vosostros
+vosotras
+vosotros
 vuestra
 vuestras
 vuestro

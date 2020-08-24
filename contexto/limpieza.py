@@ -166,7 +166,7 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
 # eliminar de un texto, a partir de un archivo plano
 
 
-def cargar_stopwords(ubicacion_archivo):
+def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
     """
 
     :param ubicacion_archivo:
@@ -174,7 +174,7 @@ def cargar_stopwords(ubicacion_archivo):
     """
     lista_palabras = []
     lista_expresiones = []
-    with open(ubicacion_archivo, encoding='utf8') as fp:
+    with open(ubicacion_archivo, encoding=encoding) as fp:
         line = fp.readline()
         while line:
             linea = line.strip().split(',')
@@ -201,7 +201,7 @@ def lista_stopwords(lenguaje='es'):
         try:
             ruta = pkg_resources.resource_filename(
                 __name__, 'data/listas_stopwords/sw_es.txt')
-            sw = cargar_stopwords(ruta)[0]
+            sw = cargar_stopwords(ruta, 'latin-1')[0]
         except BaseException:
             from nltk.corpus import stopwords
             sw = stopwords.words(lenguaje)
