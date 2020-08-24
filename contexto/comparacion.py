@@ -184,6 +184,7 @@ class DiferenciaStrings():
                 salida /= min(len(texto1), len(texto2))
             else:
                 salida /= max(len(texto1), len(texto2))
+        return salida
 
     def comparacion_lista(self, textos, tipo='levenshtein', norm=None):
         n_textos = len(textos)
