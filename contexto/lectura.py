@@ -3,7 +3,7 @@ Código, funciones y clases relacionadas a la carga y lectura de
 diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).
 '''
 import os
-from utils.auxiliares import verificar_crear_dir
+from utils.auxiliares import verificar_crear_dir, adecuar_xml
 
 # Clase lector
 
@@ -150,19 +150,24 @@ class Lector():
         if tipo == 'inferir':
             tipo = self.ubicacion_archivo.split('.')[-1]
         if tipo in ['txt', 'csv']:
-            return self.leer_txt(encoding)
+            salida = self.leer_txt(encoding)
         elif tipo == 'pdf':
-            return self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password)
+            salida = self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password)
         elif tipo == 'rtf':
-            return self.leer_rtf()
+            salida = self.leer_rtf()
         elif tipo in ['doc', 'docx']:
-            return self.leer_word(por_paginas, extraer_medios, dir_medios)
+            salida = self.leer_word(por_paginas, extraer_medios, dir_medios)
         elif tipo in ['png', 'jpg', 'jpeg']:
             return self.leer_imagen(preprocesamiento, lenguaje, oem, psm)
         else:
             print(
                 'Formato desconocido. Por favor ingrese un archivo en formato adecuado.')
             return None
+        # Quitar caracteres extraños de los archivos
+        if por_paginas:
+            return [adecuar_xml(i) for i in salida]
+        else:
+            return adecuar_xml(salida)
 
 # Función que encapsula el proceso de lectura de archivos de texto
 
