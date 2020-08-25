@@ -19,18 +19,6 @@ class OCR():
         self.oem = oem
         self.psm = psm
 
-    def definir_preprocesamiento(self, preprocesamiento):
-        self.preprocesamiento = preprocesamiento
-
-    def definir_lenguaje(self, lenguaje):
-        self.lenguaje = lenguaje
-
-    def definir_oem(self, oem):
-        self.oem = oem
-
-    def definir_psm(self, psm):
-        self.psm = psm
-
     def imagen_a_texto(self, ubicacion_imagen):
         # Cargar la imagen de entrada        
         imagen = cv2.imread(ubicacion_imagen)
