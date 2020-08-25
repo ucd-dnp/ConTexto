@@ -2,7 +2,6 @@ import os
 import pickle
 import re
 import time
-import win32com.client
 
 ######### Definición de funciones para buscar en el texto  #########
 def buscar_en_texto(texto, lista=[]):
@@ -21,6 +20,12 @@ def esta_en_texto(texto, lista=[], lista_2=[]):
                 if cuenta > 1:
                     return True
     return isin
+
+# Función para quitar caracteres extraños que no se puedan escribir sobre archivos
+# Obtenida de https://stackoverflow.com/a/25920392
+def adecuar_xml(texto):
+    exp_reg = u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+'
+    return re.sub(exp_reg, '', texto)
 
 # Función para verificar si un directorio existe o no.
 # Si el directorio no existe, lo crea
@@ -168,16 +173,38 @@ def striprtf(text):
                 out.append(tchar)
     return ''.join(out)
 
-# Función para convertir un archivo word a pdf
-def word_a_pdf(archivo_entrada, archivo_salida):
+# Funciones para convertir un archivo word a pdf
+
+def doc_a_pdf(archivo_entrada, archivo_salida):
+    from win32com import client
+    # Para que no haya problema con paths relativos
+    archivo_entrada = os.path.realpath(archivo_entrada)
+    archivo_salida = os.path.realpath(archivo_salida)
     wdFormatPDF = 17
-    word = win32com.client.Dispatch('Word.Application')
+    word = client.Dispatch('Word.Application')
     word.Visible = True
     time.sleep(3)
     doc = word.Documents.Open(archivo_entrada)
     doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
     doc.Close()
     return
+
+def docx_a_pdf(archivo_entrada, archivo_salida):
+    from docx2pdf import convert
+    convert(archivo_entrada, archivo_salida)
+
+def word_a_pdf(archivo_entrada, archivo_salida=None):
+    if archivo_salida is None:
+        archivo_salida = f'temp_pdf_{os.getpid()}.pdf'
+    # Realizar la conversión
+    try:
+        doc_a_pdf(archivo_entrada, archivo_salida)
+    except:
+        try:
+            docx_a_pdf(archivo_entrada, archivo_salida)
+        except:
+            return None
+    return archivo_salida
 
 # Función para leer un archivo pdf utilizando la libería PyPDF2
 def leer_pdf_pypdf(ubicacion_archivo, password=None):
