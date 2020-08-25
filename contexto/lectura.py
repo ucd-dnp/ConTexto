@@ -2,6 +2,7 @@
 Código, funciones y clases relacionadas a la carga y lectura de
 diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).
 '''
+import os
 from utils.auxiliares import verificar_crear_dir
 
 # Clase lector
@@ -40,13 +41,30 @@ class Lector():
                     continue
         return '\n'.join(salida)
 
-    def leer_word(self, extraer_medios, dir_medios):
+    def leer_word(self, por_paginas, extraer_medios, dir_medios):
         """
 
         :param extraer_medios:
         :param dir_medios:
         :return:
         """
+        if por_paginas:
+            from auxiliares import word_a_pdf
+            # El atributo 'ubicacion_archivo' se va a cambiar
+            # temporalmente, por lo que se guarda el valor original.
+            temp = self.ubicacion_archivo
+            archivo_pdf = word_a_pdf(self.ubicacion_archivo)
+            if archivo_pdf is None:
+                print('No se pudo convertir el documento Word a PDF. intente leer el archivo completo (por_paginas=False)')
+                return None
+            else:
+                self.establecer_ubicacion(archivo_pdf)
+                paginas = self.leer_pdf(por_paginas, False, 0, '', 0, 0)
+                # Volver a establecer la ubicacion de archivo original
+                self.establecer_ubicacion(temp)
+                # Borrar el archivo PDF creado temporalmente
+                os.remove(archivo_pdf)
+                return paginas
         import docx2txt
         if extraer_medios is False:
             texto = docx2txt.process(self.ubicacion_archivo)
@@ -138,7 +156,7 @@ class Lector():
         elif tipo == 'rtf':
             return self.leer_rtf()
         elif tipo in ['doc', 'docx']:
-            return self.leer_word(extraer_medios, dir_medios)
+            return self.leer_word(por_paginas, extraer_medios, dir_medios)
         elif tipo in ['png', 'jpg', 'jpeg']:
             return self.leer_imagen(preprocesamiento, lenguaje, oem, psm)
         else:
