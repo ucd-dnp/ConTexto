@@ -8,8 +8,12 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 class Stemmer():
     def __init__(self, lenguaje):
         """
-
-        :param lenguaje:
+        Constructor por defecto de la clase Stemmer. Esta clase se encarga \
+        de hacer la operación de *stemming*, o reducción de palabras a su \
+        raíz, en textos.
+        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los\
+            textos a los que se va a aplicar stemming.
+        :return: Objeto del tipo de la clase Stemmer
         """
         # Definir lenguaje del stemmer
         self.establecer_lenguaje(lenguaje)
@@ -18,16 +22,18 @@ class Stemmer():
 
     def establecer_lenguaje(self, lenguaje):
         """
+        Permite definir o cambiar el lenguaje de los textos sobre los cuales \
+            va a aplicarse el objeto de la case Stemmer.
 
-        :param lenguaje:
-        :return:
+        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los\
+            textos a los que se va a aplicar stemming.
         """
         self.lenguaje = definir_lenguaje(lenguaje, simplificado=False)
 
     def iniciar_stemmer(self):
         """
-
-        :return:
+        Inicializa el objeto de la clase `SnowballStemmer`, de la librería NLTk, \
+            para el lenguaje definido previamente.
         """
         if self.lenguaje is not None:
             self.stemmer = nltk.stem.SnowballStemmer(self.lenguaje)
@@ -36,10 +42,15 @@ class Stemmer():
 
     def stemming(self, texto, limpiar=True):
         """
+        Aplica *stemming* sobre un texto de entrada, y devuelve el texto \
+            resultante.
 
-        :param texto:
-        :param limpiar:
-        :return:
+        :param texto: (string). Texto al que se le desea aplicar el *stemming*. 
+        :param limpiar: (bool) {True, False}. Valor por defecto: True. Argumento \
+            opcional que define si se desea hacer una limpieza básica (\
+            aplicando la función `limpieza_basica` del módulo `limpieza`) al \
+            texto antes de aplicar el *stemming*.
+        :return: Texto luego de la aplicación del *stemming*.
         """
         if limpiar:
             texto = limpieza_basica(texto)
@@ -51,12 +62,22 @@ class Stemmer():
 
 def stem_texto(texto, lenguaje='es', limpiar=True, stemmer=None):
     """
-
-    :param texto:
-    :param lenguaje:
-    :param limpiar:
-    :param stemmer:
-    :return:
+    Función que aprovecha la clase Stemmer para realizar *stemming*, o \
+        reducción de palabras a su raíz, en un texto de entrada.
+    :param texto: (string). Texto al que se le desea aplicar el *stemming*.
+    :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje del \
+        texto al que se va a aplicar *stemming*.
+    :param limpiar: (bool) {True, False}. Valor por defecto: True. Define \
+        si se desea hacer una limpieza básica (aplicando la función  \
+        `limpieza_basica` del módulo `limpieza`) al texto de entrada,  \
+        antes de aplicar el *stemming*.
+    :param stemmer: Parámetro opcional. Objeto de la clase \ 
+        `nltk.stem.SnowballStemmer` para aplicar *stemming* sobre el texto \
+        de entrada. Se puede utilizar para aplicar *stemming* a varios textos \
+        a la vez, sin necesidad de inicializar un SnowballStemmer en cada \
+        texto. Esto puede representar ahorro en tiempos al momento de aplicar \
+        la función.
+    :return: Texto luego de la aplicación del *stemming*.
     """
     # Si no se provee un stemmer, este debe ser inicializado
     if stemmer is None:
