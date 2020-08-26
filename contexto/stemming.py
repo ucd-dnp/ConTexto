@@ -64,6 +64,7 @@ def stem_texto(texto, lenguaje='es', limpiar=True, stemmer=None):
     """
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
         reducción de palabras a su raíz, en un texto de entrada.
+        
     :param texto: (string). Texto al que se le desea aplicar el *stemming*.
     :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje del \
         texto al que se va a aplicar *stemming*.
