@@ -21,7 +21,7 @@ def traducir_texto(texto, lenguaje_destino):
     """ Permite hacer traducciones a un texto de interés.
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
-    :param lenguaje_destino: (str) {'es', 'en', 'al', 'fr'}. Indica el idioma al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(al) y Francés(fr).
+    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. Indica el idioma al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(de) y Francés(fr).
     :return: string del texto traducido.
     """
     traductor = Translator()
@@ -72,11 +72,11 @@ dict_lenguajes_simplificado = {
 
 
 def definir_lenguaje(lenguaje, simplificado=True):
-    """ Función auxiliar - permite determinar el lenguaje a partir de una entrada
+    """ Función auxiliar - permite determinar el lenguaje a partir de una entrada.
 
-    :param lenguaje: (str) Corresponde al nombre del lenguaje a definir
-    :param simplificado: (bool) {True, False}, valor por defecto: True. Indica si se utiliza el dictionario de dict_lenguajes o dict_lenguajes_simplificado
-    :return: string correspondiente al lenguaje identificado
+    :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
+    :param simplificado: (bool) {True, False}, valor por defecto: True. Indica si se utiliza el dictionario de dict_lenguajes o dict_lenguajes_simplificado.
+    :return: string correspondiente al lenguaje identificado.
     """
     leng = None
     lenguaje = lenguaje.lower()

@@ -91,7 +91,7 @@ def grafica_nube(
         titulo='Términos más frecuentes',
         ubicacion_archivo='',
         graficar=True):
-    """ Permite graficar o guardar una nube de palabras
+    """ Permite graficar o guardar una nube de palabras.
 
     :param nube: (WordCloud) Objeto tipo WordCloud correspondiente a la nube de palabras.
     :param dim_figura: (float, float) valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.
@@ -161,7 +161,7 @@ def matriz_coocurrencias(
 
     :param texto: (str) Corresponde al texto que se desea analizar o un conjunto de documentos.
     :param min_frec: (int) valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec dicha palabra es excluida de la matriz.
-    :param max_num: (int) valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se cogen las más frecuentes)
+    :param max_num: (int) valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se cogen las más frecuentes).
     :param modo: (str) {'documento', 'ventana'} valor por defecto: 'documento'. Corresponde al modo de análisis, con 'documento' se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con 'ventana' se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.
     :param ventana: (int) valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo='ventana'). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.
     :param tri_sup: (bool) {True, False} valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de co-ocurrencias, si es False devuelve la matriz completa.
@@ -230,7 +230,6 @@ def diag_superior(df):
 
 def graficar_coocurrencias(
     mat,
-    tipo=None,
     prop_fuera=0,
     ubicacion_archivo='',
     graficar=True,
@@ -239,11 +238,10 @@ def graficar_coocurrencias(
     color_nodo='silver',
     semilla=123,
     dim_figura=(13, 13)):
-    """ Grafica una matriz de co-ocurrencias como un grafo no dirigido.
+    """ Grafica una matriz de co-ocurrencias de términos como un grafo no dirigido.
 
     :param mat: (dataframe) Matriz de co-ocurrencias que desea graficar.
-    :param tipo: -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen
+    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen.
     :param ubicacion_archivo: (str) valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
     :param K: (float) valor por defecto: 5. Distancia óptima entre nodos, aumente este valor para separar los nodos. 
@@ -252,9 +250,6 @@ def graficar_coocurrencias(
     :param semilla: (int) valor por defecto: 123. Estado inicial del generador aleatorio para establecer la posición de los nodos.
     :param dim_figura: (float, float) valor por defecto: (13, 13). Corresponden al ancho y alto de la figura en pulgadas.    
     """
-    # Detectar tipo de matriz de co-ocurrencias
-    if tipo is None:
-        tipo = 'ventana' if mat.sum().sum() == np.sum(np.triu(mat)) else 'documento'
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
     max_diag = max(np.diag(mat))
@@ -340,7 +335,7 @@ def grafica_barchart_frecuencias(
     :param n_grama: (int) valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.
     :param dim_figura: (float, float) valor por defecto: (8, 5). Corresponden al ancho y alto de la figura en pulgadas.
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
-    :param ascendente: (bool) {True, False} valor por defecto: True. 
+    :param ascendente: (bool) {True, False} valor por defecto: True. Determina si las barras de términos se muestran de menos (abajo) a más (arriba) frecuentes en la gráfica.
     :param ubicacion_archivo: (str) valor por defecto: vacío. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
     :param n_terminos: (int) valor por defecto: 15. Cantidad de n-gramas a graficar.
