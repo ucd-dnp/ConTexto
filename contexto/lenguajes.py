@@ -4,11 +4,11 @@ from limpieza import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
-    """
+    """ Identifica el idioma en el que está escrito el texto de entrada.
 
-    :param texto:
-    :param devolver_proba:
-    :return:
+    :param texto: (str) Corresponde al texto que se desea analizar. 
+    :param devolver_proba: (bool) {True, False}, valor por defecto: False. Indica si se retorna el porcentaje de confiabilidad del lenguaje identificado.
+    :return: string del idioma identificado siguiendo el estandar `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. Si devolver_proba es True retorna una tupla.
     """
     identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
@@ -18,11 +18,11 @@ def detectar_lenguaje(texto, devolver_proba=False):
 
 
 def traducir_texto(texto, lenguaje_destino):
-    """
+    """ Permite hacer traducciones a un texto de interés.
 
-    :param texto:
-    :param lenguaje_destino:
-    :return:
+    :param texto: (str) Corresponde al texto que se desea traducir. 
+    :param lenguaje_destino: (str) {'es', 'en', 'al', 'fr'}. Indica el idioma al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(al) y Francés(fr).
+    :return: string del texto traducido.
     """
     traductor = Translator()
     # Adecuar el lenguaje de destino al formato de la API
@@ -70,15 +70,13 @@ dict_lenguajes_simplificado = {
     'german': 'de'
 }
 
-# Función para determinar el lenguaje a partir de una entrada
-
 
 def definir_lenguaje(lenguaje, simplificado=True):
-    """
+    """ Función auxiliar - permite determinar el lenguaje a partir de una entrada
 
-    :param lenguaje:
-    :param simplificado:
-    :return:
+    :param lenguaje: (str) Corresponde al nombre del lenguaje a definir
+    :param simplificado: (bool) {True, False}, valor por defecto: True. Indica si se utiliza el dictionario de dict_lenguajes o dict_lenguajes_simplificado
+    :return: string correspondiente al lenguaje identificado
     """
     leng = None
     lenguaje = lenguaje.lower()
