@@ -4,11 +4,11 @@ from limpieza import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
-    """ Identifica el idioma en el que está escrito el texto de entrada.
+    """ Identifica el lenguaje en el que está escrito el texto de entrada.
 
     :param texto: (str) Corresponde al texto que se desea analizar. 
     :param devolver_proba: (bool) {True, False}, valor por defecto: False. Indica si se retorna el porcentaje de confiabilidad del lenguaje identificado.
-    :return: string del idioma identificado siguiendo el estandar `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. Si devolver_proba es True retorna una tupla.
+    :return: string del lenguaje identificado siguiendo el estandar `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. Si devolver_proba es True retorna una tupla.
     """
     identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
@@ -21,7 +21,7 @@ def traducir_texto(texto, lenguaje_destino):
     """ Permite hacer traducciones a un texto de interés.
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
-    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. Indica el idioma al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(de) y Francés(fr).
+    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. Indica el lenguaje al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(de) y Francés(fr).
     :return: string del texto traducido.
     """
     traductor = Translator()
