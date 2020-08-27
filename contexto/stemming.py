@@ -11,9 +11,10 @@ class Stemmer():
         Constructor por defecto de la clase Stemmer. Esta clase se encarga \
         de hacer la operación de *stemming*, o reducción de palabras a su \
         raíz, en textos.
+
         :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los\
-            textos a los que se va a aplicar stemming.
-        :return: Objeto del tipo de la clase Stemmer
+            textos a los que se va a aplicar *stemming*.
+        :return: (Stemmer). Objeto del tipo de la clase Stemmer
         """
         # Definir lenguaje del stemmer
         self.establecer_lenguaje(lenguaje)
@@ -32,8 +33,9 @@ class Stemmer():
 
     def iniciar_stemmer(self):
         """
-        Inicializa el objeto de la clase `SnowballStemmer`, de la librería NLTk, \
-            para el lenguaje definido previamente.
+        Inicializa el objeto de la clase `SnowballStemmer` de la librería NLTk, \
+        para el lenguaje definido previamente, y lo asigna al atributo "stemmer" \
+        del objeto de clase Stemmer. 
         """
         if self.lenguaje is not None:
             self.stemmer = nltk.stem.SnowballStemmer(self.lenguaje)
@@ -50,7 +52,7 @@ class Stemmer():
             opcional que define si se desea hacer una limpieza básica (\
             aplicando la función `limpieza_basica` del módulo `limpieza`) al \
             texto antes de aplicar el *stemming*.
-        :return: Texto luego de la aplicación del *stemming*.
+        :return: (string). Texto luego de la aplicación del *stemming*.
         """
         if limpiar:
             texto = limpieza_basica(texto)
@@ -72,13 +74,12 @@ def stem_texto(texto, lenguaje='es', limpiar=True, stemmer=None):
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada,  \
         antes de aplicar el *stemming*.
-    :param stemmer: Parámetro opcional. Objeto de la clase \ 
-        `nltk.stem.SnowballStemmer` para aplicar *stemming* sobre el texto \
-        de entrada. Se puede utilizar para aplicar *stemming* a varios textos \
-        a la vez, sin necesidad de inicializar un SnowballStemmer en cada \
-        texto. Esto puede representar ahorro en tiempos al momento de aplicar \
-        la función.
-    :return: Texto luego de la aplicación del *stemming*.
+    :param stemmer: (Stemmer). Parámetro opcional. Objeto de la clase Stemmer para aplicar \
+        *stemming* sobre el texto de entrada. Se puede utilizar para aplicar \
+        *stemming* a varios textos a la vez, sin necesidad de inicializar una \
+        instancia de la clase Stemmer en cada ocasión. Esto puede representar \
+        ahorro en tiempos al momento de aplicar la función.
+    :return: (string). Texto luego de la aplicación del *stemming*.
     """
     # Si no se provee un stemmer, este debe ser inicializado
     if stemmer is None:
