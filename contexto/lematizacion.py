@@ -17,13 +17,14 @@ class LematizadorSpacy():
             lenguaje del texto a ser tratado. Los lenguajes posibles son español \
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-            español: {'es', 'espanol', 'esp', 'spanish', 'sp', 'spa'}
-            inglés: {'en', 'eng' .'english', 'ingles', 'ing', 'in'}
-            francés: {'fr', 'fra', 'fre', 'french', 'frances'}
-            alemán: {'ge', 'de', 'german', 'al', 'ale', 'ale'}
-        :param dict_lemmas: (dict). Diccionario que permite modificar y agregar \
-            lemas. Las llaves del diccionario son las palabras completas y los \
-            valores del diccionario son los lemas escogidos para cada palabra
+            español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
+            inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
+            francés: {'fr', 'fra', 'fre', 'french', 'francés'}
+            alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
+        :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
+            archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
+            llaves del diccionario son las palabras completas y los valores del \
+            diccionario son los lemas escogidos para cada palabra.
         :param dim_modelo: (string) {'lg', 'md', 'sm'}. Se define el tamaño \ 
             del modelo. 'lg' es grande (large), 'md' es mediano (medium) y 'sm' es \
             pequeño (small). Los modelos más grandes obtienen mejores predicciones \
@@ -53,10 +54,10 @@ class LematizadorSpacy():
             lenguaje del texto a ser tratado. Los lenguajes posibles son español \
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-            español: {'es', 'espanol', 'esp', 'spanish', 'sp', 'spa'}
-            inglés: {'en', 'eng' .'english', 'ingles', 'ing', 'in'}
-            francés: {'fr', 'fra', 'fre', 'french', 'frances'}
-            alemán: {'ge', 'de', 'german', 'al', 'ale', 'ale'}
+            español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
+            inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
+            francés: {'fr', 'fra', 'fre', 'french', 'francés'}
+            alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -121,26 +122,26 @@ class LematizadorStanza():
         encarga de manejar todas las funciones asociadas a la lematización \
         del texto con la librería Stanza
 
-        :param lenguaje: (string). {'es', 'en', 'fr', 'de'}.  Se define el 
+        :param lenguaje: (string). {'es', 'en', 'fr', 'de'}. Se define el 
             lenguaje del texto a ser tratado. Los lenguajes posibles son español \
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-            español: {'es', 'espanol', 'esp', 'spanish', 'sp', 'spa'}
-            inglés: {'en', 'eng' .'english', 'ingles', 'ing', 'in'}
-            francés: {'fr', 'fra', 'fre', 'french', 'frances'}
-            alemán: {'ge', 'de', 'german', 'al', 'ale', 'ale'}
+            español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
+            inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
+            francés: {'fr', 'fra', 'fre', 'french', 'francés'}
+            alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
         :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
             el modelo genérico de lemas de Stanza
-        :param dict_lemmas: (dict). Diccionario que permite modificar y agregar \
-            lemas. Las llaves del diccionario son las palabras completas y los \
-            valores del diccionario son los lemas escogidos para cada palabra
+        :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
+            archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
+            llaves del diccionario son las palabras completas y los valores del \
+            diccionario son los lemas escogidos para cada palabra.
         :param archivo_salida: (string). Valor por defecto: None. Especifica la ruta \
             del archivo de salida del modelo de lemas modificado. En caso de ser \
             vacío, el resultado de la lematizacción se guarda en un archivo \
             temporal que eventualmente será borrado
         """
-
         
         # Definir lenguaje del lematizador
         self.establecer_lenguaje(lenguaje)
@@ -164,9 +165,10 @@ class LematizadorStanza():
             lenguaje del texto a ser tratado. Los lenguajes posibles son español \
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-            español: {'es', 'espanol', 'esp', 'spanish', 'sp', 'spa'}
-            inglés: {'en', 'eng' .'english', 'ingles', 'ing', 'in'}
-            francés: {'fr', 'fra', 'fre', 'french', 'frances'}
+            español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
+            inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
+            francés: {'fr', 'fra', 'fre', 'french', 'francés'}
+            alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -256,9 +258,10 @@ def lematizar_texto(
         ('es'), inglés ('en'), francés ('fr'), alemán ('de') y automático ('auto', \
         se adivina el lenguaje). Se aceptan las siguientes variaciones para cada \
         idioma (sin importar acentos ni mayúsculas): \
-        español: {'es', 'espanol', 'esp', 'spanish', 'sp', 'spa'}
-        inglés: {'en', 'eng' .'english', 'ingles', 'ing', 'in'}
-        francés: {'fr', 'fra', 'fre', 'french', 'frances'}
+        español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
+        inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
+        francés: {'fr', 'fra', 'fre', 'french', 'francés'}
+        alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
     :param libreria: (string). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
         Se define la librería de Python de lematización para ser utilizada en '
         el texto. Las opciones son las librerías Spacy y Stanza
