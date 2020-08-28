@@ -2,6 +2,7 @@ import json
 from spellchecker import SpellChecker
 from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
+from utils.tokenizacion import TokenizadorNLTK
 
 ### Definir clase para el corrector ortográfico ###
 
@@ -38,6 +39,7 @@ class Corrector():
         # Inicializar corrector
         self.iniciar_corrector(diccionario)
         self.establecer_distancia(distancia)
+        self.tokenizador = TokenizadorNLTK()
 
     def establecer_lenguaje(self, lenguaje):
         """
@@ -213,7 +215,7 @@ class Corrector():
         """
         return self.corrector.word_probability(palabra)
 
-    def correccion_ortografia(self, texto, limpieza=True):
+    def correccion_ortografia(self, texto, limpieza=False):
         """
         Realiza corrección ortográfica sobre un texto de entrada, identificando las palabras \
             que no están en el diccionario del corrector y cambiándolas por su candidata más \
@@ -221,7 +223,7 @@ class Corrector():
             que cumpla con la máxima distancia de Levenshtein permitida.
 
         :param texto: (string). Texto al cuál se desea aplicar corrección ortográfica.
-        :param limpieza: (bool) {True, False}. Valor por defecto: True. Argumento \
+        :param limpieza: (bool) {True, False}. Valor por defecto: False. Argumento \
             opcional que define si se desea hacer una limpieza básica (\
             aplicando la función `limpieza_basica` del módulo `limpieza`) al \
             texto antes de aplicar la corrección ortográfica.
@@ -230,16 +232,16 @@ class Corrector():
         if limpieza:
             # Limpieza básica del texto para que no afecte la corrección
             texto = limpieza_basica(texto, quitar_numeros=False)
-        lista_palabras = texto.split()
+        lista_palabras = self.tokenizador.tokenizar(texto)
         desconocidas = self.corrector.unknown(lista_palabras)
-        texto_corregido = [self.corrector.correction(palabra) if palabra in desconocidas
-                           else palabra for palabra in lista_palabras]
-        return ' '.join(texto_corregido)
+        texto_corregido = [self.corrector.correction(p) if len(p) > 1 and p in desconocidas
+                           else p for p in lista_palabras]
+        return self.tokenizador.destokenizar(texto_corregido)
 
 
 # Función que envuelve la funcionalidad básica de la clase
 
-def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2, limpieza=True):
+def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2, limpieza=False):
     """ 
     Función que aprovecha la clase Corrector para realizar corrección \
         ortográfica sobre un texto de entrada.
@@ -270,7 +272,7 @@ def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, dista
     :param distancia: (int). Valor por defecto: 2. Máxima distancia de Levenshtein que puede haber \
         entre una palabra incorrecta (o no reconocida) y las palabras del diccionario para \
         determinar si hay palabras candidatas para realizar la corrección.
-    :param limpieza: (bool) {True, False}. Valor por defecto: True. Argumento \
+    :param limpieza: (bool) {True, False}. Valor por defecto: False. Argumento \
         opcional que define si se desea hacer una limpieza básica (\
         aplicando la función `limpieza_basica` del módulo `limpieza`) al \
         texto antes de aplicar la corrección ortográfica.
