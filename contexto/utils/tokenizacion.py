@@ -61,3 +61,4 @@ def destokenizar(tokens, tokenizador=None):
     if tokenizador is None:
         tokenizador = TokenizadorNLTK()
     return tokenizador.destokenizar(tokens)
+

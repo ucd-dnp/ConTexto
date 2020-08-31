@@ -162,7 +162,8 @@ class Corrector():
         :param texto: (string). Texto para el que se desean hayar las palabras conocidas.
         :return: (set). Conjunto de palabras conocidas presentes en el texto de entrada.
         """
-        return self.corrector.known(texto.split())
+        tokens = self.tokenizador.tokenizar(texto)
+        return self.corrector.known(tokens)
 
     def palabras_desconocidas(self, texto):
         """
@@ -173,7 +174,8 @@ class Corrector():
         :param texto: (string). Texto para el que se desean hayar las palabras desconocidas.
         :return: (set). Conjunto de palabras desconocidas presentes en el texto de entrada.
         """
-        return self.corrector.unknown(texto.split())
+        tokens = self.tokenizador.tokenizar(texto)
+        return self.corrector.unknown(tokens)
 
     def palabras_candidatas(self, palabra):
         """
