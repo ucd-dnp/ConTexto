@@ -1,6 +1,7 @@
 import nltk.stem
 from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
+from utils.tokenizacion import TokenizadorNLTK
 
 ### Definir clase para el stemmer ###
 
@@ -20,6 +21,8 @@ class Stemmer():
         self.establecer_lenguaje(lenguaje)
         # Inicializar stemmer
         self.iniciar_stemmer()
+        # Para tokenizar los textos antes de aplicar el stemming
+        self.tokenizador = TokenizadorNLTK()
 
     def establecer_lenguaje(self, lenguaje):
         """
@@ -42,13 +45,13 @@ class Stemmer():
         else:
             self.stemmer = None
 
-    def stemming(self, texto, limpiar=True):
+    def stemming(self, texto, limpiar=False):
         """
         Aplica *stemming* sobre un texto de entrada, y devuelve el texto \
             resultante.
 
         :param texto: (string). Texto al que se le desea aplicar el *stemming*. 
-        :param limpiar: (bool) {True, False}. Valor por defecto: True. Argumento \
+        :param limpiar: (bool) {True, False}. Valor por defecto: False. Argumento \
             opcional que define si se desea hacer una limpieza básica (\
             aplicando la función `limpieza_basica` del módulo `limpieza`) al \
             texto antes de aplicar el *stemming*.
@@ -56,13 +59,13 @@ class Stemmer():
         """
         if limpiar:
             texto = limpieza_basica(texto)
-        return ' '.join([self.stemmer.stem(palabra)
-                         for palabra in texto.split(" ")])
-
+        tokens = self.tokenizador.tokenizar(texto)
+        salida = [self.stemmer.stem(p) for p in tokens]
+        return self.tokenizador.destokenizar(salida)
 
 ### Definir función que envuelva la funcionalidad básica de la clase ###
 
-def stem_texto(texto, lenguaje='es', limpiar=True, stemmer=None):
+def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     """
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
         reducción de palabras a su raíz, en un texto de entrada.

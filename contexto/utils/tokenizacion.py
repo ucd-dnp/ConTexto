@@ -37,6 +37,7 @@ class TokenizadorNLTK():
         texto = texto.replace('¿ ', '¿')
         texto = texto.replace('¡ ', '¡')
         texto = texto.replace("' ", "'")
+        texto = texto.replace(" .", ".")
         return texto
     
     def destokenizar(self, lista_tokens):
