@@ -197,17 +197,24 @@ def lista_stopwords(lenguaje='es'):
     """
     from lenguajes import definir_lenguaje
     lenguaje = definir_lenguaje(lenguaje, False)
+
+    from nltk.corpus import stopwords
+    try:
+        sw = stopwords.words(lenguaje)
+    except:
+        import nltk
+        nltk.download("stopwords") 
+        sw = stopwords.words(lenguaje)
+    # Si se quieren en español, se intenta sacar las stopwords
+    # desde la lista predfinida que viene con la librería
     if lenguaje == 'spanish':
         try:
             ruta = pkg_resources.resource_filename(
                 __name__, 'data/listas_stopwords/sw_es.txt')
             sw = cargar_stopwords(ruta, 'latin-1')[0]
         except BaseException:
-            from nltk.corpus import stopwords
-            sw = stopwords.words(lenguaje)
-    else:
-        from nltk.corpus import stopwords
-        sw = stopwords.words(lenguaje)
+            pass
+    # Devolver stopwords
     return sw
 
 # Función para cargar lista general de stopwords
