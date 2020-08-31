@@ -348,8 +348,8 @@ def grafica_barchart_frecuencias(
     df = df.sort_values(by='frecuencia', ascending=ascendente)
     # Crear gráfica
     plt.rcdefaults()
-    fig, ax = plt.subplots(figsize=dim_figura)
-    y_pos = np.arange(n_terminos)
+    fig, ax = plt.subplots(figsize=dim_figura)    
+    y_pos = np.arange(len(df['frecuencia']))
     ax.barh(y_pos, df['frecuencia'], align='center')
     ax.set_yticks(y_pos)
     ax.set_yticklabels(df['n_grama'])
