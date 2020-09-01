@@ -164,10 +164,10 @@ class Lector():
                 'Formato desconocido. Por favor ingrese un archivo en formato adecuado.')
             return None
         # Quitar caracteres extraños de los archivos
-        if por_paginas:
-            return [adecuar_xml(i) for i in salida]
-        else:
+        if isinstance(salida, str):
             return adecuar_xml(salida)
+        else:
+            return [adecuar_xml(i) for i in salida]
 
 # Función que encapsula el proceso de lectura de archivos de texto
 
