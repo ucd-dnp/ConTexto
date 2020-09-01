@@ -2,6 +2,7 @@ import itertools
 import re
 import unicodedata
 import pkg_resources
+from utils.tokenizacion import tokenizar, destokenizar
 
 ####### Definición de funciones para limpiar el texto  #########
 
@@ -48,8 +49,8 @@ def remover_stopwords(
         texto = texto.replace(expresion, ' ')
     # Dejar solo las palabras que no aparecen en la lista de palabras no
     # deseadas
-    texto = ' '.join([palabra for palabra in texto.split()
-                      if palabra not in set(lista_palabras)])
+    tokens = tokenizar(texto)
+    texto = destokenizar([p for p in tokens if p not in set(lista_palabras)])
     # Reemplaza espacios múltiples por un solo espacio
     texto = re.sub(r" +", " ", texto)
     return texto

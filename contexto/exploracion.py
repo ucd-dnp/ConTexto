@@ -4,17 +4,24 @@ import numpy as np
 import pandas as pd
 from collections import Counter, Iterable
 from wordcloud import WordCloud
+from limpieza import limpieza_basica
+from utils.tokenizacion import tokenizar, TokenizadorNLTK
 
 
-def obtener_ngramas(texto, n=1, devolver_lista=True):
+def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False):
     """ Permite generar n-gramas a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n: (int) Cantidad de elementos a tener en cuenta en la generación de n-gramas.
-    :param devolver_lista: (bool) {True, False} valor por defecto: True. Si el valor es True se retorna un objeto tipo lista, si el valor es False se retorna un objeto tipo generador.
+    :param n: (int) Cantidad de elementos a tener en cuenta en la generación de n-gramas. Por ejemplo, si n=1 se retornarán palabras, y si n=2 se retornarán bigramas.
+    :param devolver_lista: (bool) {True, False} valor por defecto: True. Si el valor es True se retorna un objeto tipo lista; si el valor es False se retorna un objeto tipo generador.
+    :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
+        si se desea hacer una limpieza básica (aplicando la función  \
+        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes de encontrar los n-gramas.
     :return: n-gramas generados.
     """
-    lista = texto.split(' ')
+    if limpiar:
+        texto = limpieza_basica(texto)
+    lista = tokenizar(texto)
     n_gramas = (' '.join(lista[i:i + n])
                 for i in range(len(lista)) if i + n <= len(lista))
     if devolver_lista:
@@ -156,16 +163,20 @@ def matriz_coocurrencias(
         max_num=200,
         modo='documento', 
         ventana=3,
-        tri_sup=True):
+        tri_sup=True,
+        limpiar=False):
     """ Calcula la matriz de co-ocurrencias de un texto.
 
-    :param texto: (str) Corresponde al texto que se desea analizar o un conjunto de documentos.
+    :param texto: (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.
     :param min_frec: (int) valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec dicha palabra es excluida de la matriz.
     :param max_num: (int) valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se cogen las más frecuentes).
     :param modo: (str) {'documento', 'ventana'} valor por defecto: 'documento'. Corresponde al modo de análisis, con 'documento' se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con 'ventana' se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.
     :param ventana: (int) valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo='ventana'). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.
     :param tri_sup: (bool) {True, False} valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de co-ocurrencias, si es False devuelve la matriz completa.
-    :return: dataframe de co-ocurrencias.
+    :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
+        si se desea hacer una limpieza básica (aplicando la función `limpieza_basica` \
+        del módulo `limpieza`) al texto de entrada, antes de calcular las co-ocurrencias.
+    :return: dataframe de pandas con las co-ocurrencias de los textos de entrada.
     """
 
     # Generar un solo texto con todos los documentos
@@ -174,8 +185,14 @@ def matriz_coocurrencias(
     else:
         texto_entero = str(texto)
         texto = [texto_entero]  # Convertir variable "texto" en un iterable
+    
+    if limpiar:
+        texto = [limpieza_basica(t) for t in texto]
+        texto_entero = ' '.join([texto])
+    # Se inicializa un solo tokenizador, para ahorrar un poco de tiempo
+    tok = TokenizadorNLTK()
     # Generar lista de palabras en todos los textos juntos
-    palabras = texto_entero.split()
+    palabras = tokenizar(texto_entero, tok)
     # Dejar solo las palabras con mayor frecuencia y/o que cumplan una
     # frecuencia mínima
     cuenta = dict(Counter(palabras).most_common(max_num))
@@ -186,7 +203,7 @@ def matriz_coocurrencias(
         np.zeros([len(nombres), len(nombres)]), columns=nombres, index=nombres)
     if modo == 'ventana':
         for t in texto:
-            palabras_t = t.split()
+            palabras_t = tokenizar(t, tok)
             # Ciclo a través de las palabras para obtener las co-ocurrencias:
             for i, p1 in enumerate(palabras_t):
                 inicio = max(0, i - ventana)
@@ -200,7 +217,7 @@ def matriz_coocurrencias(
                                 mat_oc[p2][p1] += 1
     elif modo == 'documento':
         for t in texto:
-            cuenta_t = dict(Counter(t.split()))
+            cuenta_t = dict(Counter(tokenizar(t, tok)))
             for p1 in nombres:
                 for p2 in nombres:
                     if p1 != p2:

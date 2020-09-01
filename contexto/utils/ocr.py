@@ -1,14 +1,13 @@
-# import the necessary packages
+import cv2
+import os
+import pytesseract
+import shutil
+from glob import glob
 from pdf2image.exceptions import PDFInfoNotInstalledError
 from pdf2image import convert_from_path
-from auxiliares import verificar_crear_dir
 from PIL import Image
-from glob import glob
+from auxiliares import verificar_crear_dir
 from pre_ocr import procesar_img_1, procesar_img_2, procesar_img_3, procesar_img_4, procesar_img_5
-import os
-import cv2
-import shutil
-import pytesseract
 
 from pytesseract import TesseractNotFoundError, get_tesseract_version
 

@@ -73,7 +73,7 @@ def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     :param texto: (string). Texto al que se le desea aplicar el *stemming*.
     :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje del \
         texto al que se va a aplicar *stemming*.
-    :param limpiar: (bool) {True, False}. Valor por defecto: True. Define \
+    :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada,  \
         antes de aplicar el *stemming*.
