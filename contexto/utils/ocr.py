@@ -1,4 +1,5 @@
 # import the necessary packages
+from pdf2image.exceptions import PDFInfoNotInstalledError
 from pdf2image import convert_from_path
 from auxiliares import verificar_crear_dir
 from PIL import Image
@@ -8,8 +9,15 @@ import os
 import cv2
 import shutil
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+from pytesseract import TesseractNotFoundError, get_tesseract_version
+
+#TODO: corregir mensaje mostrado en consola
+try:
+    TESSERACT_VERSION = tuple(get_tesseract_version().version)
+except TesseractNotFoundError as e:
+    print("Tesseract no está en el path, para mayor información revisar XXXXXXXXX")
+    exit(1)
 
 class OCR():
     def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/'):
@@ -42,8 +50,13 @@ class OCR():
         tempo_dir = self.dir_temporal + '/tempo/'
         verificar_crear_dir(self.dir_temporal)
         verificar_crear_dir(tempo_dir)
-        paginas = convert_from_path(
-            ubicacion_pdf, thread_count=8, output_folder=tempo_dir)
+        #TODO: corregir mensaje  mostrado en consola
+        try:
+            paginas = convert_from_path(
+                ubicacion_pdf, thread_count=8, output_folder=tempo_dir)
+        except PDFInfoNotInstalledError as e:
+            print("Poppler no está instalado o no está en el path del sistema, para mas información consulte XXXX")
+            exit(1)
         # Counter to store images of each page of PDF to image
         countador_img = 0
         for pagina in paginas:
