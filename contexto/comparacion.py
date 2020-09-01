@@ -43,7 +43,12 @@ class Similitud():
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
-    def establecer_vectorizador(self, vectorizador):        
+    def establecer_vectorizador(self, vectorizador):
+        """
+
+        :param vectorizador:
+        :return:
+        """
         # Definir modelo para vectorizar
         if vectorizador is None:
             # vectorizador por defecto
@@ -54,6 +59,11 @@ class Similitud():
             self.vectorizador = vectorizador
 
     def coseno(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         if isinstance(textos, str) or len(textos) < 2:
             print ('Debe ingresar una lista de por lo menos dos textos para hacer la comparación.')
             return None
@@ -66,6 +76,12 @@ class Similitud():
             return cosine_similarity(textos)
 
     def jaccard(self, textos, vectorizar=False):
+        """
+
+        :param textos:
+        :param vectorizar:
+        :return:
+        """
         n_textos = len(textos)
         if isinstance(textos, str) or n_textos < 2:
             print ('Debe ingresar una lista de por lo menos dos textos para hacer la comparación.')
@@ -117,7 +133,12 @@ class Distancia():
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
-    def establecer_vectorizador(self, vectorizador):        
+    def establecer_vectorizador(self, vectorizador):
+        """
+
+        :param vectorizador:
+        :return:
+        """
         # Definir modelo para vectorizar
         if vectorizador is None:
             # vectorizador por defecto
@@ -128,6 +149,13 @@ class Distancia():
             self.vectorizador = vectorizador
 
     def distancia_pares(self, textos, tipo_distancia, **kwds):
+        """
+
+        :param textos:
+        :param tipo_distancia:
+        :param kwds:
+        :return:
+        """
         # Para tipo_distancia se puede utilizar cualquiera de las soportadas acá:
         # https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
         if isinstance(textos, str) or len(textos) < 2:
@@ -142,12 +170,28 @@ class Distancia():
             return pairwise_distances(textos, metric=tipo_distancia, **kwds)
 
     def l1(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         return self.distancia_pares(textos, tipo_distancia='l1')   
 
     def l2(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         return self.distancia_pares(textos, tipo_distancia='l2')
     
     def minkowski(self, textos, p):
+        """
+
+        :param textos:
+        :param p:
+        :return:
+        """
         if p == 1:
             return self.distancia_pares(textos, tipo_distancia='l1')
         elif p == 2:
@@ -156,15 +200,33 @@ class Distancia():
             return self.distancia_pares(textos, tipo_distancia='minkowski', p=p)
 
     def jaccard(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         return self.distancia_pares(textos, tipo_distancia='jaccard')
 
     def hamming(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         return self.distancia_pares(textos, tipo_distancia='hamming')
 
 ### Clase DiferenciaStrings ----------------------------------------------------
 
 class DiferenciaStrings():
     def comparacion_pares(self, texto1, texto2, tipo='levenshtein', norm=None):
+        """
+
+        :param texto1:
+        :param texto2:
+        :param tipo:
+        :param norm:
+        :return:
+        """
         tipo = tipo.lower()
         if 'damerau' in tipo:
             salida = jellyfish.damerau_levenshtein_distance(texto1, texto2)
@@ -187,6 +249,13 @@ class DiferenciaStrings():
         return salida
 
     def comparacion_lista(self, textos, tipo='levenshtein', norm=None):
+        """
+
+        :param textos:
+        :param tipo:
+        :param norm:
+        :return:
+        """
         n_textos = len(textos)
         if isinstance(textos, str) or n_textos < 2:
             print ('Debe ingresar una lista de por lo menos dos textos para hacer la comparación.')
@@ -205,16 +274,44 @@ class DiferenciaStrings():
             return diferencias
 
     def distancia_levenshtein(self, textos, norm=None):
+        """
+
+        :param textos:
+        :param norm:
+        :return:
+        """
         return self.comparacion_lista(textos, 'levenshtein', norm)
 
     def distancia_damerau_levenshtein(self, textos, norm=None):
+        """
+
+        :param textos:
+        :param norm:
+        :return:
+        """
         return self.comparacion_lista(textos, 'damerau_levenshtein', norm)        
 
     def distancia_hamming(self, textos, norm=None):
+        """
+
+        :param textos:
+        :param norm:
+        :return:
+        """
         return self.comparacion_lista(textos, 'hamming', norm)
 
     def similitud_jaro(self, textos):
+        """
+
+        :param textos:
+        :return:
+        """
         return self.comparacion_lista(textos, 'jaro')
 
     def similitud_jaro_winkler(self, textos):
+        """
+        
+        :param textos:
+        :return:
+        """
         return self.comparacion_lista(textos, 'jaro_winkler')
