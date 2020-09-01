@@ -17,10 +17,11 @@ class Corrector():
             textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son español \
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas): \
-            	español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
-            	inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
-            	francés: {'fr', 'fra', 'fre', 'french', 'francés'}
-            	alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
+            	|ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
+            	|li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+            	|li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
+            	|li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
+
         :param diccionario: (dict, list o string). Valor por defecto: None. Diccionario (o string con ubicación del \
             archivo JSON que lo contiene), o lista que permite modificar y agregar palabras. \
             Si es una lista, contiene las palabras que serán consideradas como válidas o correctas. \
@@ -50,10 +51,10 @@ class Corrector():
             textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son \
             español ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas): \
-            	español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
-            	inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
-            	francés: {'fr', 'fra', 'fre', 'french', 'francés'}
-            	alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
+            	|ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
+            	|li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+            	|li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
+            	|li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -253,10 +254,10 @@ def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, dista
         textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son español \
         ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
         siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas): \
-        español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'}
-        inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'}
-        francés: {'fr', 'fra', 'fre', 'french', 'francés'}
-        alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'}
+            |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
+            |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+            |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
+            |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
     :param corrector: (Corrector). Parámetro opcional. Objeto de la clase Corrector para aplicar \
         corrección ortográfica sobre el texto de entrada. Se puede utilizar para \
         corregir varios textos a la vez, sin necesidad de inicializar una instancia de \
