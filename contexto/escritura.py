@@ -3,33 +3,33 @@
 class Escritor():
     def __init__(self, ubicacion_archivo, texto):
         """
-
-        :param ubicacion_archivo:
-        :param texto:
+        Constructor por defecto de la clase Escritor. Esta clase se encarga de guardar \
+            texto en archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e \
+            imágenes
+        :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
+            con el texto deseado
+        :param texto: (string). Texto que se desea guardar en un archivo
         """
         self.establecer_ubicacion(ubicacion_archivo)
         self.establecer_texto(texto)
 
     def establecer_ubicacion(self, ubicacion_archivo):
-        """
+        """ Define la ruta del archivo con el texto que se desea guardar 
 
-        :param ubicacion_archivo:
-        :return:
+        :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
+            con el texto deseado 
         """
         self.ubicacion_archivo = ubicacion_archivo
 
     def establecer_texto(self, texto):
-        """
+        """ Define el texto que será guardado en un archivo
 
-        :param texto:
-        :return:
+        :param texto: (string). Texto que será guardado en un archivo 
         """
         self.texto = texto
 
     def escribir_txt(self):
-        """
-
-        :return:
+        """ Especifica que el texto deseado se guardará en un archivo con extensión '.txt'
         """
         if isinstance(self.texto, list):
             self.texto = '\n\n|**|\n\n'.join(self.texto)
@@ -38,9 +38,7 @@ class Escritor():
             fp.write(self.texto)
 
     def escribir_word(self):
-        """
-
-        :return:
+        """ Especifica que el texto deseado se guardará en un archivo con extensión '.docx'
         """
         from docx import Document
         documento = Document()
@@ -54,9 +52,7 @@ class Escritor():
         documento.save(self.ubicacion_archivo)
 
     def escribir_pdf(self):
-        """
-
-        :return:
+        """ Especifica que el texto deseado se guardará en un archivo con extensión '.pdf'
         """
         import PyPDF2
         from reportlab.pdfgen import canvas
@@ -65,11 +61,7 @@ class Escritor():
         from textwrap import wrap
 
         def escribir_pagina(texto):
-            """
 
-            :param texto:
-            :return:
-            """
             texto = texto.split('\n')
             temp = BytesIO()
             can = canvas.Canvas(temp, pagesize=letter)
@@ -102,10 +94,10 @@ class Escritor():
             salida.write(fp)
 
     def texto_a_archivo(self, tipo='inferir'):
-        """
+        """ Especifica el tipo de archivo en el que se quiere guardar el texto
 
-        :param tipo:
-        :return:
+        :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}. Valor por defecto: 'inferir'. \
+            Define el tipo del archivo en el que se desea guardar el texto
         """
         if tipo == 'inferir':
             tipo = self.ubicacion_archivo.split('.')[-1]
@@ -126,12 +118,14 @@ class Escritor():
 # Función que encapsula el proceso de escritura de archivos de texto
 
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
-    """
+    """ Función que guarda texto en un archivo específico. Permite escoger la \
+        ruta del archivo, su tipo y el texto a ser guardado dentro de este archivo
 
-    :param ubicacion_archivo:
-    :param texto:
-    :param tipo:
-    :return:
+    :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
+        con el texto deseado
+    :param texto: (string). El texto que se desea guardar en un archivo
+    :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}. Valor por defecto: 'inferir'. \
+         Define el tipo del archivo en el que se desea guardar el texto
     """
     es = Escritor(ubicacion_archivo, texto)
     es.texto_a_archivo(tipo)
