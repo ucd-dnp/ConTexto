@@ -289,8 +289,8 @@ class Lector():
             8: trata la imagen como una única palabra
             9: trata la imagen como una única palabra dentro de un círculo
             10: trata la imagen como un único carácter
-                11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-                12: Buscador de texto disperso con OSD
+            11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
+            12: Buscador de texto disperso con OSD
             13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
@@ -392,8 +392,8 @@ def leer_texto(
         8: trata la imagen como una única palabra
         9: trata la imagen como una única palabra dentro de un círculo
         10: trata la imagen como un único carácter
-            11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-            12: Buscador de texto disperso con OSD
+        11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
+        12: Buscador de texto disperso con OSD
         13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
     :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
         extraer, en caso de requerirlo
