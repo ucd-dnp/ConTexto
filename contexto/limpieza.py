@@ -6,20 +6,11 @@ from utils.tokenizacion import tokenizar, destokenizar
 
 
 def remover_acentos(texto):
-    """Quita los acentos de un texto.
-    
-    Esta función quita los acentos y la letra 'ñ', haciendo remplazos por \
+    """Quita los acentos de un texto. Esta función quita los acentos y la letra 'ñ', haciendo remplazos por \
     su equivalente sin acento.
-    
-    Parameters
-    ----------
-    texto : str
-        Texto al que se le quieren quitar los acentos.
-    
-    Returns
-    -------
-    str
-        Texto sin acentos después de la limpieza.
+
+    :param texto: (str) Texto al que se le quieren quitar los acentos.
+    :return: (str) Texto sin acentos después de la limpieza.
     """
     try:
         texto = unicode(texto, 'utf-8')
@@ -32,35 +23,22 @@ def remover_acentos(texto):
 
 def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
         ubicacion_archivo = None):
-    """Quita las palabras y expresiones determinadas de un texto
-    
-    Esta función quita del texto de entrada, palabras específicas 
-    contenidas en `lista_palabras`, o expresiones de palabras contenidas en `lista_expresiones`. 
-    
-    Parameters
-    ----------
-    texto : str
-        Texto al cual se le quitarán palabras y expresiones 
-        contenidas en `lista_palabras` y `lista_expresiones`.
-    lista_palabras : list, optional
-        Lista de palabras que se quieren quitar del texto. Por ejemplo,
-        la lista `['hola', 'de', 'a']` eliminará esas palabras. 
-    lista_expresiones : list, optional
-        Lista de expresiones que se quieren quitar al texto. A
-        diferencia de `lista_palabras`, esta puede contener palabras compuestas. Por ejemplo, 
-        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas palabras
-        compuestas del texto de entrada.
-    ubicacion_archivo : None, optional
-        Ubicación del archivo plano que contiene la lista de palabras
-        y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en 
-        caso contrario no es necesario especificar los parametros `lista_palabras` y `lista_expresiones`.
-    
-    Returns
-    -------
-    str
-        Texto sin las palabras y expresiones incluidas en la limpieza.
-    """
+    """Quita las palabras y expresiones determinadas de un texto. Esta función quita del texto de entrada, \
+    palabras específicas contenidas en `lista_palabras`, o expresiones de palabras contenidas en `lista_expresiones`.
 
+    :param texto: (str) Texto al cual se le quitarán palabras y expresiones contenidas en `lista_palabras` \
+    y `lista_expresiones`.
+    :param lista_palabras: list, optional. Lista de palabras que se quieren quitar del texto. Por ejemplo, \
+        la lista `['hola', 'de', 'a']` eliminará esas palabras.
+    :param lista_expresiones: list, optional. Lista de expresiones que se quieren quitar al texto. \
+        A diferencia de `lista_palabras`, esta puede contener palabras compuestas. Por ejemplo, \
+        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas palabras \
+        compuestas del texto de entrada.
+    :param ubicacion_archivo: None, optional. Ubicación del archivo plano que contiene la lista de palabras \
+        y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en \
+        caso contrario no es necesario especificar los parametros `lista_palabras` y `lista_expresiones`.
+    :return: (str) Texto sin las palabras y expresiones incluidas en la limpieza.
+    """
     if ubicacion_archivo:
         lista_palabras, lista_expresiones = cargar_stopwords(ubicacion_archivo)
     # Quitar las expresiones no deseadas
@@ -76,42 +54,24 @@ def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
 
 def remover_palabras_cortas(texto, n_min):
     """Quita las palabras en el texto con longitud estrictamente menor a `n_min`.
-    
-    Parameters
-    ----------
-    texto : str
-        Texto de entrada al que se quitarán las palabras menores a `n_min`
-    n_min : int
-        Longitud mínima de las palabras aceptadas en el texto de entrada.
-    
-    Returns
-    -------
-    str
-        Texto sin las palabras de longitud menor a `n_min`.
+
+    :param texto: (str) Texto de entrada al que se quitarán las palabras menores a `n_min`.
+    :param n_min: (int) Longitud mínima de las palabras aceptadas en el texto de entrada.
+    :return: (str) Texto sin las palabras de longitud menor a `n_min`.
     """
     palabras = texto.split(' ')
     return ' '.join([palabra for palabra in palabras if len(palabra) >= n_min])
 
 def limpieza_basica(texto, quitar_numeros=True):
-    """Limpieza básica del texto
-    
-    Esta función realiza una limpieza básica del texto de entrada, transforma
-    todo el texto a letras minúsculas, quita signos de puntuación y caracteres 
-    especiales, remueve espacios múltiples dejando solo espacio sencillo y caracteres
+    """Limpieza básica del texto. Esta función realiza una limpieza básica del texto de entrada, \
+    transforma todo el texto a letras minúsculas, quita signos de puntuación y caracteres \
+    especiales, remueve espacios múltiples dejando solo espacio sencillo y caracteres \
     de salto de línea o tabulaciones.
-    
-    Parameters
-    ----------
-    texto : str
-        Texto de entrada al que se le aplicará la limpieza básica.
-    quitar_numeros : bool, optional
-        Parámetro para quitar los números dentro del 
+
+    :param texto: (str) Texto de entrada al que se le aplicará la limpieza básica.
+    :param quitar_numeros: (bool), optional. Parámetro para quitar los números dentro del \
         texto. Por defecto `True`, se quitan los números dentro del texto.
-    
-    Returns
-    -------
-    str
-        Texto después de la limpieza básica.
+    :return: (str) Texto después de la limpieza básica.
     """
 
     # Texto a minúsculas
@@ -132,41 +92,26 @@ def limpieza_basica(texto, quitar_numeros=True):
 def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         ubicacion_archivo = None, n_min=0, quitar_numeros = True,
         quitar_acentos = True):
-    """Limpieza completa de texto
-    
-    Esta función hace una limpieza exhaustiva del texto de entrada. Es capaz
-    de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`,
-    quita acentos de las palabras, números y palabras de longitud menor a `n_min`. 
-    
-    Parameters
-    ----------
-    texto : str
-        Texto de entrada al que se le aplicará el proceso de limpieza.
-    lista_palabras : list, optional
-        Lista de palabras que se quieren quitar del texto. Por ejemplo,
-        la lista `['hola', 'de', 'a']` eliminará esas palabras. 
-    lista_expresiones : list, optional
-        Lista de expresiones que se quieren quitar al texto. A
-        diferencia de `lista_palabras`, esta puede contener palabras compuestas. Por ejemplo, 
-        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas palabras
+    """Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada. \
+    Es capaz de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`, \
+    quita acentos de las palabras, números y palabras de longitud menor a `n_min`.
+
+    :param texto: (str) Texto de entrada al que se le aplicará el proceso de limpieza.
+    :param lista_palabras: (list), optional. Lista de palabras que se quieren quitar del texto. Por ejemplo, \
+        la lista `['hola', 'de', 'a']` eliminará esas palabras.
+    :param lista_expresiones: (list), optional. Lista de expresiones que se quieren quitar al texto. \
+        A diferencia de `lista_palabras`, esta puede contener palabras compuestas. Por ejemplo, \
+        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas palabras \
         compuestas del texto de entrada.
-    ubicacion_archivo : None, optional
-        Ubicación del archivo plano que contiene la lista de palabras
-        y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en 
+    :param ubicacion_archivo: None, optional. Ubicación del archivo plano que contiene la lista de palabras \
+        y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en \
         caso contrario no es necesario especificar los parámetros `lista_palabras` y `lista_expresiones`.
-    n_min : int, optional
-        Longitud mínima de las palabras aceptadas en el texto de entrada.
-    quitar_numeros : bool, optional
-        Por defecto `True`. Si `False`, no se quitan los números dentro del 
-        texto de entrada 
-    quitar_acentos : bool, optional
-        Por defecto `True`. Si `False`, no se quitan los acentos en el texto 
-        ni la letra ñ.
-    
-    Returns
-    -------
-    str
-        Texto después de la limpieza completa.
+    :param n_min: (int), optional. Longitud mínima de las palabras aceptadas en el texto de entrada.
+    :param quitar_numeros: (bool), optional. Por defecto `True`. Si `False`, no se quitan los números dentro \
+        del texto de entrada
+    :param quitar_acentos: (bool), optional. Por defecto `True`. Si `False`, no se quitan los acentos en el \
+        texto ni la letra ñ.
+    :return: (str) Texto después de la limpieza completa.
     """
 
     # Quitar palabras y expresiones no deseadas. Se hace al texto original porque la palabra/expresión
@@ -189,37 +134,22 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
 
 def limpiar_extremos(texto):
     """Quita los espacios presentes al inicio y al final de una cadena de texto
-    
-    Parameters
-    ----------
-    texto : str
-        Cadena de texto de entrada.
-    
-    Returns
-    -------
-    str
-        Cadena de texto sin espacios en el inicio y en el final.
+
+    :param texto: (str) Cadena de texto de entrada.
+    :return: (str) Cadena de texto sin espacios en el inicio y en el final.
     """
     return texto[::-1].rstrip()[::-1].rstrip()
 
 def quitar_repetidos(texto, sep='|', remover_espacios=True):
-    """Función para quitar frases o palabras repetidas que están separadas por un 
-    caracter en específico. 
-    
-    Parameters
-    ----------
-    texto : str
-        Texto de entrada.
-    sep : str, optional
-        Separador determinado para encontrar palabras repetidas. 
+    """Función para quitar frases o palabras repetidas que están separadas por un \
+    caracter en específico.
+
+    :param texto: (str) Texto de entrada.
+    :param sep: (str), optional. Separador determinado para encontrar palabras repetidas. \
         Por defecto es '|'.
-    remover_espacios : bool, optional
-        Si `True` quita los espacios presentes al inicio y al final de una palabra.
-    
-    Returns
-    -------
-    str
-        Texto sin palabras o expresiones repetidas.
+    :param remover_espacios: (bool), optional. Si `True` quita los espacios presentes al inicio \
+        y al final de una palabra.
+    :return: (str) Texto sin palabras o expresiones repetidas.
     """
     lista = texto.split(sep)
     if remover_espacios:
@@ -228,24 +158,16 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
     return ' '.join(lista)
 
 def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
-    """Función para cargar las listas de palabras y expresiones que se desean
+    """Función para cargar las listas de palabras y expresiones que se desean \
     eliminar de un texto a partir de un archivo plano
-    
-    Parameters
-    ----------
-    ubicacion_archivo : str
-        Ubicación del archivo plano que contiene la lista de palabras
+
+    :param ubicacion_archivo: (str) Ubicación del archivo plano que contiene la lista de palabras \
         y/o lista de palabras separadas por espacios, comas o saltos de línea.
-    encoding : str, optional
-        Codificación del archivo de texto. Por defecto 'utf-8'.
-    
-    Returns
-    -------
-    tuple
-        tupla que contiene:
-    
-        lista_palabras (list): Lista que contiene las palabras que se desean quitar en un texto.
-        lista_expresiones (list): Lista que contiene las expresiones que se desean quitar de un texto. 
+    :param encoding: (str), optional. Codificación del archivo de texto. Por defecto 'utf-8'.
+    :return: (tuple). tupla que contiene: |br|
+
+        |ul|  |li| lista_palabras (list): Lista que contiene las palabras que se desean quitar en un texto. |/li|
+        |li| lista_expresiones (list): Lista que contiene las expresiones que se desean quitar de un texto. |/li|  |/ul|
     """
     lista_palabras = []
     lista_expresiones = []
@@ -263,21 +185,13 @@ def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
     return lista_palabras, lista_expresiones
 
 def lista_stopwords(lenguaje='es'):
-    """Genera una lista de stopwords (palabras que se quieren quitar de un texto).
-    
-    Funcion que genera una lista de stopwords de un idioma predeterminado. Por defecto,
-    genera stopwrods en español.
-    
-    Parameters
-    ----------
-    lenguaje : str, optional
-        Lenguaje de las stopwords. Por defecto `es`, que 
+    """Genera una lista de stopwords (palabras que se quieren quitar de un texto). \
+    Funcion que genera una lista de stopwords de un idioma predeterminado. \
+    Por defecto, genera stopwords en español.
+
+    :param lenguaje: (str), optional.Lenguaje de las stopwords. Por defecto `es`, que \
         genera las stopwords más comunes del español.
-    
-    Returns
-    -------
-    list
-        Lista de palabras stopwords del idioma seleccionado.
+    :return: (list) Lista de palabras stopwords del idioma seleccionado.
     """
     from lenguajes import definir_lenguaje
     lenguaje = definir_lenguaje(lenguaje, False)
@@ -303,23 +217,14 @@ def lista_stopwords(lenguaje='es'):
 
 
 def lista_nombres(tipo='todos'):
-    """Genera lista de nombres más comunes del español.
-    
-    Retorna lista con los nombres más comunes, tanto para hombre y
-    mujer del idioma español. La función permite generar lista de
-    nombres solo de mujeres o solo de hombres con el párametro `tipo`.
-    
-    Parameters
-    ----------
-    tipo : {'todos','mujeres','hombres'}, optional
-        Permite generar lista de nombres de: solo nombres de mujeres 
-        (`tipo = 'mujeres'`), solo nombres de hombres. (`tipo='hombres'`) 
-        o ambos (`tipo='todos'`). Por defecto `tipo='todos'`.
-    
-    Returns
-    -------
-    list
-        Lista de nombres en español.
+    """Genera lista de nombres más comunes del español. Retorna lista con los nombres \
+    más comunes, tanto para hombre y mujer del idioma español. La función permite generar \
+    lista de nombres solo de mujeres o solo de hombres con el párametro `tipo`.
+
+    :param tipo: {'todos','mujeres','hombres'}, optional. Permite generar lista de nombres \
+        de: solo nombres de mujeres (`tipo = 'mujeres'`), solo nombres de hombres. \
+        (`tipo='hombres'`) o ambos (`tipo='todos'`). Por defecto `tipo='todos'`.
+    :return: (list) Lista de nombres en español.
     """
     if tipo.lower() in ['m', 'masculino', 'hombre', 'hombres']:
         ruta = pkg_resources.resource_filename(
@@ -347,11 +252,8 @@ def lista_nombres(tipo='todos'):
 
 def lista_apellidos():
     """Genera lista de apellidos más comunes del español.
-    
-    Returns
-    -------
-    list
-        Lista de apellidos más comunes del español.
+
+    :return: (list) Lista de apellidos más comunes del español.
     """
     ruta = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/apellidos.txt')
@@ -359,19 +261,12 @@ def lista_apellidos():
 
 def lista_geo_colombia(tipo='todos'):
     """Genera lista de nombres de municipios y departamentos de Colombia.
-    
-    Parameters
-    ----------
-    tipo : {'todos','municipios','departamentos'}, optional
-        Permite la selección de los nombres en la lista. Por defecto `tipo='todos'`, 
-        genera nombres de municipios y departamentos, `tipo='municipios'` genera 
-        nombres solo de municipios y `tipo='departamentos'` genera nombres solo 
-        de departamentos.
-    
-    Returns
-    -------
-    list
-        Lista de nombres de municipios, departamentos o ambos.
+
+    :param tipo: {'todos','municipios','departamentos'}, optional. Permite la selección de los \
+        nombres en la lista. Por defecto `tipo='todos'`, genera nombres de municipios y departamentos, \
+        `tipo='municipios'` genera nombres solo de municipios y `tipo='departamentos'` genera nombres \
+        solo de departamentos.
+    :return: (list) Lista de nombres de municipios, departamentos o ambos.
     """
     ruta_mun = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/municipios_col.txt')
