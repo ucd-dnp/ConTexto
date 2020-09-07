@@ -66,8 +66,7 @@ class Lector():
             temp = self.ubicacion_archivo
             archivo_pdf = word_a_pdf(self.ubicacion_archivo)
             if archivo_pdf is None:
-                print('No se pudo convertir el documento Word a PDF. intente leer el archivo completo (por_paginas=False)')
-                return None
+                print('No se pudo convertir el documento Word a PDF, por lo que se retornará el texto completo y no por páginas.')
             else:
                 self.establecer_ubicacion(archivo_pdf)
                 paginas = self.leer_pdf(por_paginas, False, 0, '', 0, 0)
@@ -294,8 +293,7 @@ class Lector():
             13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
-        :return: (string). Texto extraído del archivo con la clase Lector
-            
+        :return: (string). Texto extraído del archivo con la clase Lector            
         """
 
         if tipo == 'inferir':
@@ -315,7 +313,9 @@ class Lector():
                 'Formato desconocido. Por favor ingrese un archivo en formato adecuado.')
             return None
         # Quitar caracteres extraños de los archivos
-        if isinstance(salida, str):
+        if salida is None:
+            return None
+        elif isinstance(salida, str):
             return adecuar_xml(salida)
         else:
             return [adecuar_xml(i) for i in salida]

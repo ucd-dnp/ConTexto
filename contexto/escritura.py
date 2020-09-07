@@ -127,5 +127,8 @@ def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
     :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}. Valor por defecto: 'inferir'. \
          Define el tipo del archivo en el que se desea guardar el texto
     """
-    es = Escritor(ubicacion_archivo, texto)
-    es.texto_a_archivo(tipo)
+    if isinstance(texto, str)::
+        es = Escritor(ubicacion_archivo, texto)
+        es.texto_a_archivo(tipo)
+    else:
+        print('El argumento "texto" debe ser de tipo string.')
