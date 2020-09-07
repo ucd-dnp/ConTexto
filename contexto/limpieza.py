@@ -91,7 +91,7 @@ def limpieza_basica(texto, quitar_numeros=True):
 
 def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         ubicacion_archivo = None, n_min=0, quitar_numeros = True,
-        quitar_acentos = True):
+        quitar_acentos = False):
     """Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada. \
     Es capaz de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`, \
     quita acentos de las palabras, números y palabras de longitud menor a `n_min`.
@@ -109,8 +109,8 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
     :param n_min: (int), optional. Longitud mínima de las palabras aceptadas en el texto de entrada.
     :param quitar_numeros: (bool), optional. Por defecto `True`. Si `False`, no se quitan los números dentro \
         del texto de entrada
-    :param quitar_acentos: (bool), optional. Por defecto `True`. Si `False`, no se quitan los acentos en el \
-        texto ni la letra ñ.
+    :param quitar_acentos: (bool), optional. Por defecto `False`. Opción para determinar si se quitan \
+        acentos (tildes, diéresis, virgulilla) del texto.
     :return: (str) Texto después de la limpieza completa.
     """
 
