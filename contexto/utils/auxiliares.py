@@ -3,45 +3,59 @@ import pickle
 import re
 import time
 
-######### Definición de funciones para buscar en el texto  #########
-def buscar_en_texto(texto, lista=[]):
-    return any(i in texto for i in lista)
+def buscar_en_texto(texto, lista=[], sep=None):
+    """
+    Determina si por lo menos un elemento de una lista de términos o expresiones \
+        específica está presente en un texto de entrada.
 
+    :param texto: (string). Texto en el que se desea hacer la búsqueda.
+    :param lista: (list). Lista de términos o expresiones que se desean buscar en el \
+        texto de entrada.
+    :param sep: (string). Valor por defecto: None. Parámetro opcional que permite evaluar la \
+        presencia de dos o más términos en un texto, a pesar de que no estén juntos. Por ejemplo, \
+        si sep='|' y un elemento de *lista* es 'cambio|plan', se determinará que este elemento está \
+        en el texto tanto si aparece junto ("cambio plan") como si aparece con palabras en el medio \
+        ("cambio en el plan").
+    :return: (bool). Retorna "True" si por lo menos un elemento (término o expresión) de la lista \
+        se encuentra presente en el texto de entrada. 
+    """
+    if sep is None:
+        return any(i in texto for i in lista)
+    else:
+        return any(all(e in texto for e in i.split(sep)) for i in lista)
 
-def esta_en_texto(texto, lista=[], lista_2=[]):
-    isin = False
-    cuenta = 0
-    for string in lista:
-        if all(i in texto for i in string.split('|')):
-            if string not in lista_2:
-                return True
-            else:
-                cuenta += 1
-                if cuenta > 1:
-                    return True
-    return isin
-
-# Función para quitar caracteres extraños que no se puedan escribir sobre archivos
-# Obtenida de https://stackoverflow.com/a/25920392
-def adecuar_xml(texto):
-    exp_reg = u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+'
-    return re.sub(exp_reg, '', texto)
-
-# Función para verificar si un directorio existe o no.
-# Si el directorio no existe, lo crea
 def verificar_crear_dir(ubicacion_directorio):
+    """
+    Verifica si existe un directorio en la ubicación determinada por \
+        el usuario. Si el directorio no existe, la función lo crea.
+        
+    :param ubicacion_directorio: (string). Ubicación del directorio que se desea \
+        verificar o crear.
+    """    
     if not os.path.exists(ubicacion_directorio):
         os.makedirs(ubicacion_directorio)
 
-
-## Funciones auxiliares para la lectura de documentos de texto ##
-
-# Función para pasar de texto enriquecido a texto plano
-def striprtf(text):
+### Funciones auxiliares para la lectura de documentos de texto ---
+def adecuar_xml(texto):
     """
-    Extrae texto de archivos RTF.
-    Tomado de: http://stackoverflow.com/a/188877
-    función creada por Markus Jarderot: http://mizardx.blogspot.com
+    Utiliza una expresión regular para eliminar elementos del texto que no son \
+        compatibles con lenguaje XML. Esto facilita la compatibilidad del texto y su \
+        uso en algunos tipos de archivos. Función tomada de https://stackoverflow.com/a/25920392
+        
+    :param texto: (string). Texto que se desea adecuar.
+    :return: (sting). Texto compatible con XML. 
+    """
+    exp_reg = u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+'
+    return re.sub(exp_reg, '', texto)
+
+def striprtf(texto):
+    """
+    Recibe un texto en formato RTF y remueve el formato para devolver el texto plano. \
+        Función tomada de http://stackoverflow.com/a/188877 y atribuida a Markus \
+        Jarderot (http://mizardx.blogspot.com).
+
+    :param texto: (string). Texto extraído de un archivo de tipo RTF.
+    :return: (sting). Texto plano.         
     """
     pattern = re.compile(
         r"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)",
@@ -114,8 +128,8 @@ def striprtf(text):
     ucskip = 1
     curskip = 0             # Number of ASCII characters left to skip
     out = []                # Output buffer.
-    #    for match in pattern.finditer(text.decode()):
-    for match in pattern.finditer(text):
+    
+    for match in pattern.finditer(texto):
         word, arg, hex, char, brace, tchar = match.groups()
         if brace:
             curskip = 0
@@ -173,9 +187,18 @@ def striprtf(text):
                 out.append(tchar)
     return ''.join(out)
 
-# Funciones para convertir un archivo word a pdf
+### Funciones para convertir un archivo word a pdf ----
 
 def doc_a_pdf(archivo_entrada, archivo_salida):
+    """
+    Carga un archivo de Word (.doc o .docx) de una ruta especificada por el usuario \
+        y lo convierte a PDF. El archivo PDF es guardado en otra ruta especificada \
+        por el usuario. Se necesita tener Microsoft Word instalado para utilizar esta \
+        función.
+
+    :param archivo_entrada: (string). Ubicación del archivo de Word que se desea convertir.
+    :param archivo_salida: (string). Ubicación en donde se desea guardar el archivo PDF generado.
+    """        
     from win32com import client
     # Para que no haya problema con paths relativos
     archivo_entrada = os.path.realpath(archivo_entrada)
@@ -187,13 +210,31 @@ def doc_a_pdf(archivo_entrada, archivo_salida):
     doc = word.Documents.Open(archivo_entrada)
     doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
     doc.Close()
-    return
 
 def docx_a_pdf(archivo_entrada, archivo_salida):
+    """
+    Carga un archivo de Word (sólo .docx) de una ruta especificada por el usuario \
+        y lo convierte a PDF. El archivo PDF es guardado en otra ruta especificada \
+        por el usuario. 
+
+    :param archivo_entrada: (string). Ubicación del archivo de Word que se desea convertir.
+    :param archivo_salida: (string). Ubicación en donde se desea guardar el archivo PDF generado.
+    """    
     from docx2pdf import convert
     convert(archivo_entrada, archivo_salida)
 
 def word_a_pdf(archivo_entrada, archivo_salida=None):
+    """
+    Carga un archivo de Word (.doc o .docx) de una ruta especificada por el usuario \
+        y lo convierte a PDF. El archivo PDF es guardado en otra ruta que puede ser \
+        especificada por el usuario o generada automáticamente. 
+
+    :param archivo_entrada: (string). Ubicación del archivo de Word que se desea convertir.
+    :param archivo_salida: (string). Valor por defecto: None. Ubicación en donde se desea \
+        guardar el archivo PDF generado. Si no se asigna un valor a este argumento, la \
+        función guardará el archivo PDF generado en una ubicación generada automáticamente.
+    :return: (sting). Ubicación en la que quedó guardado el archivo PDF.
+    """        
     if archivo_salida is None:
         archivo_salida = f'temp_pdf_{os.getpid()}.pdf'
     # Realizar la conversión
@@ -206,8 +247,17 @@ def word_a_pdf(archivo_entrada, archivo_salida=None):
             return None
     return archivo_salida
 
-# Función para leer un archivo pdf utilizando la libería PyPDF2
+### Funciones para leer archivos PDF ---
+
 def leer_pdf_pypdf(ubicacion_archivo, password=None):
+    """
+    Utiliza la librería PyPDF2 para cargar un archivo PDF y extraer el texto de sus páginas. 
+
+    :param ubicacion_archivo: (string). Ubicación del archivo PDF que se desea leer.
+    :param password: (string). Valor por defecto: None. Parámetro opcional para leer archivos \
+        PDF que están protegidos por contraseña.
+    :return: (list). Lista de strings, que contienen el texto extraído de cada página del PDF.
+    """        
     import PyPDF2	            
     # Función interna para manejar errores de lectura de página
     def leer_pag(lector, pag, ubicacion_archivo):	            
@@ -227,8 +277,15 @@ def leer_pdf_pypdf(ubicacion_archivo, password=None):
     # Retornar textos extraídos	
     return paginas
 
-# Función para leer un archivo pdf utilizando la libería slate3k
 def leer_pdf_slate(ubicacion_archivo, password=None):
+    """
+    Utiliza la librería slate3k para cargar un archivo PDF y extraer el texto de sus páginas. 
+
+    :param ubicacion_archivo: (string). Ubicación del archivo PDF que se desea leer.
+    :param password: (string). Valor por defecto: None. Parámetro opcional para leer archivos \
+        PDF que están protegidos por contraseña.
+    :return: (list). Lista de strings, que contienen el texto extraído de cada página del PDF.
+    """       
     import slate3k as slate
     # Para no mostrar warnings de slate
     import logging
@@ -242,13 +299,26 @@ def leer_pdf_slate(ubicacion_archivo, password=None):
     # Retornar el texto extraído
     return paginas
 
-######### Definición de funciones para guardar y cargar objetos Python  #########
+### Funciones para guardar y cargar objetos en Python ---
 
 def guardar_objeto(objeto, nombre_archivo):
+    """
+    Guarda, en un archivo Pickle, un objeto de Python determinado por el usuario. 
+
+    :param objeto: (objeto Python). Objeto que se desea guardar.
+    :param nombre_archivo: (string). Ubicación y nombre del archivo en donde se desea guardar \
+        el objeto.
+    """         
     with open(nombre_archivo, 'wb') as handle:
         pickle.dump(objeto, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 def cargar_objeto(nombre_archivo):
+    """
+    Carga un objeto en Python, desde un archivo Pickle cuya ubicación es determinada por el usuario. 
+
+    :param nombre_archivo: (string). Ubicación del archivo que contiene el objeto que se desea cargar.
+    :return: (objeto Python). Objeto en Python contenido en el archivo.
+    """       
     with open(nombre_archivo, 'rb') as handle:
         objeto = pickle.load(handle)
     return objeto
