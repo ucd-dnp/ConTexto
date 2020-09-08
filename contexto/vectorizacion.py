@@ -326,8 +326,8 @@ class VectorizadorWord2Vec():
     def similitud_textos(self, t1, t2):
         """Calcula la similitud coseno entre 2 palabras o textos.
 
-        :param t1: (str) primer texto de interes para el cálculo de similitud.
-        :param t2: (str) segundo texto de interes para el cálculo de similitud.
+        :param t1: (str) primer texto de interés para el cálculo de similitud.
+        :param t2: (str) segundo texto de interés para el cálculo de similitud.
         :return: (float) valor entre 0 y 1, donde 1 representa que los textos \ 
             son iguales.
         """

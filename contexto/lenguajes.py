@@ -4,11 +4,16 @@ from limpieza import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
-    """ Identifica el lenguaje en el que está escrito el texto de entrada. :ref:`Ver ejemplo <detectar_lenguaje>`
+    """ Identifica el lenguaje en el que está escrito el texto de entrada. \ 
+        :ref:`Ver ejemplo <detectar_lenguaje>`
 
     :param texto: (str) Corresponde al texto que se desea analizar. 
-    :param devolver_proba: (bool) {True, False}, valor por defecto: False. Indica si se retorna el porcentaje de confiabilidad del lenguaje identificado.
-    :return: string del lenguaje identificado siguiendo el estandar `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. Si devolver_proba es True retorna una tupla.
+    :param devolver_proba: (bool) {True, False}, valor por defecto: False. \ 
+        Indica si se retorna el porcentaje de confiabilidad del \ 
+        lenguaje identificado.
+    :return: string del lenguaje identificado siguiendo el estandar \ 
+        `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. \ 
+        Si devolver_proba es True retorna una tupla.
     """
     identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
@@ -21,7 +26,9 @@ def traducir_texto(texto, lenguaje_destino):
     """ Permite hacer traducciones a un texto de interés.
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
-    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. Indica el lenguaje al que desea traducir el texto, soporta Español(es), Inglés(en), Alemán(de) y Francés(fr).
+    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. \ 
+        Indica el lenguaje al que desea traducir el texto, soporta \ 
+        Español(es), Inglés(en), Alemán(de) y Francés(fr).
     :return: string del texto traducido.
     """
     traductor = Translator()
@@ -75,7 +82,9 @@ def definir_lenguaje(lenguaje, simplificado=True):
     """ Función auxiliar - permite determinar el lenguaje a partir de una entrada.
 
     :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
-    :param simplificado: (bool) {True, False}, valor por defecto: True. Indica si se utiliza el dictionario de dict_lenguajes o dict_lenguajes_simplificado.
+    :param simplificado: (bool) {True, False}, valor por defecto: True. \ 
+        Indica si se utiliza el dictionario de dict_lenguajes o \ 
+        dict_lenguajes_simplificado.
     :return: string correspondiente al lenguaje identificado.
     """
     leng = None

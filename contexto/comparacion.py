@@ -25,29 +25,41 @@ def jaccard_textos(texto1, texto2):
 
 class Similitud():
     def __init__(self, vectorizador=None, lenguaje='es'):
-        """
+        """Constructor de la clase Similitud. \ 
+            Permite calcular la similitud coseno y jaccard entre textos.
 
-        :param lenguaje:
-        :param modelo:
-        :return:
+        :param vectorizador: objeto tipo vectorizador. \ 
+            valor por defecto: None. \ 
+            Carga y establece el vectorizador del objeto Similitud. \ 
+            Si no se especifica un \ 
+            vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
+            vectorizador al objeto de Similitud, este ya debe estar ajustado.
+        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
+            Alemán(de) y Francés(fr).        
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
         
     def establecer_lenguaje(self, lenguaje):
-        """
+        """Establece el lenguaje del objeto Similitud.
 
-        :param lenguaje:
-        :return:
+        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
+            Alemán(de) y Francés(fr).
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def establecer_vectorizador(self, vectorizador):
-        """
+        """Establece el vectorizador del objeto Similitud.
 
-        :param vectorizador:
-        :return:
+        :param vectorizador: objeto tipo vectorizador. Carga y establece el \ 
+            vectorizador del objeto Similitud. Si no se especifica un \ 
+            vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
+            vectorizador al objeto de Similitud, este ya debe estar ajustado.
         """
         # Definir modelo para vectorizar
         if vectorizador is None:
@@ -59,10 +71,13 @@ class Similitud():
             self.vectorizador = vectorizador
 
     def coseno(self, textos):
-        """
+        """Calcula la similitud coseno entre textos.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de similitud. También es posible ingresar directamente \ 
+            los vectores pre-calculados de los textos.
+        :return: array con el valor de similitud entre textos. valor entre  \ 
+            0 y 1, donde 1 representa que los textos son iguales.
         """
         if isinstance(textos, str) or len(textos) < 2:
             print ('Debe ingresar una lista de por lo menos dos textos para hacer la comparación.')
@@ -76,11 +91,17 @@ class Similitud():
             return cosine_similarity(textos)
 
     def jaccard(self, textos, vectorizar=False):
-        """
+        """Calcula la similitud de jaccard entre textos.
 
-        :param textos:
-        :param vectorizar:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de similitud. También es posible ingresar directamente \ 
+            los vectores pre-calculados de los textos utilizando \ 
+            vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).
+        :param vectorizar: (bool) {True, False} valor por defecto: False. \ 
+            Si el parámetro *textos* corresponde a una lista de textos, \ 
+            el parámentro vectorizar debe ser True, de lo contrario False.
+        :return: array con el valor de similitud entre textos. valor entre  \ 
+            0 y 1, donde 1 representa que los textos son iguales.
         """
         n_textos = len(textos)
         if isinstance(textos, str) or n_textos < 2:
@@ -115,29 +136,41 @@ class Similitud():
 
 class Distancia():
     def __init__(self, vectorizador=None, lenguaje='es'):
-        """
+        """Constructor de la clase Distacia. \ 
+            Permite calcular la diferentes tipos de distancias entre textos.
 
-        :param lenguaje:
-        :param modelo:
-        :return:
+        :param vectorizador: objeto tipo vectorizador. \ 
+            valor por defecto: None. \ 
+            Carga y establece el vectorizador del objeto Distancia. \ 
+            Si no se especifica un \ 
+            vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
+            vectorizador al objeto de Distancia, este ya debe estar ajustado.
+        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
+            Alemán(de) y Francés(fr).
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
         
     def establecer_lenguaje(self, lenguaje):
-        """
+        """Establece el lenguaje del objeto Distancia.
 
-        :param lenguaje:
-        :return:
-        """
+        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
+            Alemán(de) y Francés(fr).
+        """        
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def establecer_vectorizador(self, vectorizador):
-        """
+        """Establece el vectorizador del objeto Distancia.
 
-        :param vectorizador:
-        :return:
+        :param vectorizador: objeto tipo vectorizador. Carga y establece el \ 
+            vectorizador del objeto Distancia. Si no se especifica un \ 
+            vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
+            vectorizador al objeto de Distancia, este ya debe estar ajustado.
         """
         # Definir modelo para vectorizar
         if vectorizador is None:
@@ -149,12 +182,15 @@ class Distancia():
             self.vectorizador = vectorizador
 
     def distancia_pares(self, textos, tipo_distancia, **kwds):
-        """
+        """Permite calcular diferentes tipos de distancias entre textos.
 
-        :param textos:
-        :param tipo_distancia:
-        :param kwds:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia.
+        :param tipo_distancia: (str) {'l1', 'l2', 'minkowski', 'jaccard', \ 
+            'hamming', 'chebyshev', 'rogerstanimoto', 'braycurtis'}. \ 
+            Hace referentia al tipo de distancia a calcular.
+        :param kwds: otros parámetros opcionales.
+        :return: array con el valor de distancia entre textos.
         """
         # Para tipo_distancia se puede utilizar cualquiera de las soportadas acá:
         # https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
@@ -170,27 +206,34 @@ class Distancia():
             return pairwise_distances(textos, metric=tipo_distancia, **kwds)
 
     def l1(self, textos):
-        """
+        """Calcula la distancia L1 entre textos. También conocida como la \ 
+        la distancia Manhattan.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia.
+        :return: array con el valor de distancia entre textos.
         """
         return self.distancia_pares(textos, tipo_distancia='l1')   
 
-    def l2(self, textos):
-        """
+    def l2(self, textos):        
+        """Calcula la distancia L2 entre textos. También conocida como la \ 
+        la distancia Euclidiana.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia
+        :return: array con el valor de distancia entre textos.
         """
         return self.distancia_pares(textos, tipo_distancia='l2')
     
     def minkowski(self, textos, p):
-        """
+        """Calcula la distancia minkowski entre textos.
 
-        :param textos:
-        :param p:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia.
+        :param p: (int) orden con el que se calcula la distancia.  \ 
+            Cuando p=1 es equivalente a la distancia de Manhattan  \ 
+            y cuando p=2 es equivalente a la distancia euclidiana.
+        :return: array con el valor de distancia entre textos.
         """
         if p == 1:
             return self.distancia_pares(textos, tipo_distancia='l1')
@@ -200,32 +243,45 @@ class Distancia():
             return self.distancia_pares(textos, tipo_distancia='minkowski', p=p)
 
     def jaccard(self, textos):
-        """
+        """Calcula la distancia jaccard entre textos.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia
+        :return: array con el valor de distancia entre textos.
         """
         return self.distancia_pares(textos, tipo_distancia='jaccard')
 
     def hamming(self, textos):
-        """
+        """Calcula la distancia hamming entre textos.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para el \ 
+            cálculo de distancia
+        :return: array con el valor de distancia entre textos.
         """
         return self.distancia_pares(textos, tipo_distancia='hamming')
 
 ### Clase DiferenciaStrings ----------------------------------------------------
 
 class DiferenciaStrings():
+    """ Esta clase se recomienda para comparaciones de strings \ 
+        relativamente cortos, como nombres, direcciones y otras cadenas \ 
+        de caracteres similares. Para textos más extensos, se recomiendan las \ 
+        clases :py:meth:`comparacion.Similitud` o \ 
+        :py:meth:`comparacion.Distancia`
+    """
     def comparacion_pares(self, texto1, texto2, tipo='levenshtein', norm=None):
-        """
+        """ Permite hacer comparaciones entre dos textos.
 
-        :param texto1:
-        :param texto2:
-        :param tipo:
-        :param norm:
-        :return:
+        :param texto1: (str) primer texto de interés a comparar.
+        :param texto2: (str) segundo texto de interés a comparar.
+        :param tipo: (str) {'damerau_levenshtein', 'levenshtein', 'hamming', \ 
+            'jaro_winkler', 'jaro'} valor por defecto: 'levenshtein'. \ 
+            Criterio de comparación a utilizar entre los textos.
+        :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
+            los resultados en función de la longitud de los textos. \ 
+            Si norm=1 se normaliza en función al texto más corto, \ 
+            si nomr=2 se normaliza en función al texto de mayor extensión.
+        :return: valor (float) o (int) resultado de la comparación.
         """
         tipo = tipo.lower()
         if 'damerau' in tipo:
@@ -249,12 +305,19 @@ class DiferenciaStrings():
         return salida
 
     def comparacion_lista(self, textos, tipo='levenshtein', norm=None):
-        """
+        """ Permite hacer comparaciones entre una lista de textos.
 
-        :param textos:
-        :param tipo:
-        :param norm:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            la comparación.
+        :param tipo: (str) {'damerau', 'levenshtein', 'hamming', 'winkler', \ 
+            'jaro'} valor por defecto: 'levenshtein'. Criterio de comparación \ 
+            a utilizar entre los textos.
+        :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
+            los resultados en función de la longitud de los textos. \ 
+            Si norm=1 se normaliza en función al texto más corto, \ 
+            si nomr=2 se normaliza en función al texto de mayor extensión.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         n_textos = len(textos)
         if isinstance(textos, str) or n_textos < 2:
@@ -274,44 +337,63 @@ class DiferenciaStrings():
             return diferencias
 
     def distancia_levenshtein(self, textos, norm=None):
-        """
+        """ Permite calcular la distancia levenshtein entre textos.
 
-        :param textos:
-        :param norm:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            el cálculo de distancia.
+        :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
+            los resultados en función de la longitud de los textos. \ 
+            Si norm=1 se normaliza en función al texto más corto, \ 
+            si nomr=2 se normaliza en función al texto de mayor extensión.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         return self.comparacion_lista(textos, 'levenshtein', norm)
 
     def distancia_damerau_levenshtein(self, textos, norm=None):
-        """
+        """ Permite calcular la distancia damerau levenshtein entre textos.
 
-        :param textos:
-        :param norm:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            el cálculo de distancia.
+        :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
+            los resultados en función de la longitud de los textos. \ 
+            Si norm=1 se normaliza en función al texto más corto, \ 
+            si nomr=2 se normaliza en función al texto de mayor extensión.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         return self.comparacion_lista(textos, 'damerau_levenshtein', norm)        
 
     def distancia_hamming(self, textos, norm=None):
-        """
+        """ Permite calcular la distancia hamming entre textos.
 
-        :param textos:
-        :param norm:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            el cálculo de distancia.
+        :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
+            los resultados en función de la longitud de los textos. \ 
+            Si norm=1 se normaliza en función al texto más corto, \ 
+            si nomr=2 se normaliza en función al texto de mayor extensión.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         return self.comparacion_lista(textos, 'hamming', norm)
 
     def similitud_jaro(self, textos):
-        """
+        """ Permite calcular la similitiud jaro entre textos.
 
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            el cálculo de similitud.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         return self.comparacion_lista(textos, 'jaro')
 
     def similitud_jaro_winkler(self, textos):
-        """
+        """ Permite calcular la similitiud jaro entre textos.
         
-        :param textos:
-        :return:
+        :param textos: (list) lista de textos (str) de interés para realizar \ 
+            el cálculo de similitud.
+        :return: array con el valor resultante de la comparación entre los \ 
+            textos.
         """
         return self.comparacion_lista(textos, 'jaro_winkler')
