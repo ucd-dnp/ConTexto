@@ -34,6 +34,7 @@ def blur_img(img):
     """ Función que aplica blurring o 'borrosidad' a una imagen con el fin de \
         eliminar ruido y facilitar la extracción de texto
     :param img: (array). Imagen sobre la cual se aplica blurring
+    :return: (array). Imagen con blurring
     """
     return cv2.medianBlur(img, 5)
 
@@ -44,6 +45,7 @@ def umbral_otsu(img):
     """ Función que aplica el umbral de OTSU sobre una imagen, con el fin de \
     facilitar la extracción del texto
     :param img: (array). Imagen sobre la cual se aplica el umbral de OTSU
+    :return: (array). Imagen con umbral OTSU
     """
     return cv2.threshold(img, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
 
@@ -57,6 +59,7 @@ def umbral_adaptivo(img, tipo='gaussian'):
         del umbral es igual a la suma ponderada gaussiana de los valores vecinos \
         menos una constante. En caso de ser None, el valor del umbral es igual \
         al promedio de los valores vecino menos una constante ()
+    return: (array). Imagen con umbral adaptativo
     """
 
     if tipo == 'gaussian':
@@ -80,6 +83,7 @@ def umbral_adaptivo(img, tipo='gaussian'):
 def corregir_giro(img):
     """ Función que corrige el alineamiento del texto dentro de una imagen
     :param img: (array). Imagen sobre la cual se aplica la correcciónd e alineamiento
+    return: (array). Imagen con alineamiento del texto corregido
     """
     # Adaptada de
     # https://www.pyimagesearch.com/2017/02/20/text-skew-correction-opencv-python/
@@ -101,7 +105,7 @@ def corregir_giro(img):
 def procesar_img_1(img, enderezar=True):
     """ Primera función de preprocesamiento. Se encarga de convertir una imagen a escala de grises
     :param img: (array). Imagen sobre la cual aplica el preprocesamiento
-
+    return: (array). Imagen con escala de grises
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     return gris
@@ -111,6 +115,7 @@ def procesar_img_2(img, enderezar=True):
     """ Segunda función de preprocesamiento. Se encarga de convertir una imagen a escala de grises \
         y aplicar blurring ('borrosidad')
     :param img: (array). Imagen sobre la cual aplica el preprocesamiento 
+    return: (array). Imagen con escala de grises y blurring
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     borrosa = blur_img(gris)
@@ -121,6 +126,7 @@ def procesar_img_3(img, enderezar=True):
     """ Tercera función de preprocesamiento. Se encarga de convertir una imagen a escala de grises \
         y aplicar el umbral de imagen con el método OTSU
     :param img: (array). Imagen sobre la cual aplica el preprocesamiento 
+    return: (array). Imagen con escala de grises y umbral de OTSU
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gris = umbral_otsu(gris)
@@ -134,6 +140,8 @@ def procesar_img_4(img, enderezar=True):
     :param img: (array). Imagen sobre la cual aplica el preprocesamiento 
     :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
         de la imagen para obtener mejores resultados durante el proceso de extracción de texto
+    return: (array). Imagen con escala de grises, umbral adaptativo y, si enderezar es True, \
+        con el alineamiento del texto corregido
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     borrosa = blur_img(gris)
@@ -150,6 +158,8 @@ def procesar_img_5(img, enderezar=True):
     :param img: (array). Imagen sobre la cual aplica el preprocesamiento
     :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
         de la imagen para obtener mejores resultados durante el proceso de extracción de texto
+    return: (array). Imagen con escala de grises, umbral de OTSU, blurring, umbral adaptativo y, \
+        si enderezar es True, con el alineamiento del texto corregido
     """
 
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

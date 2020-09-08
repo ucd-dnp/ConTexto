@@ -77,6 +77,7 @@ class OCR():
         """ Se encarga de leer el texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg', \
             luego de aplicar el preprocesamiento definido al iniciar la clase OCR
         :param ubicacion_imagen: (string). Ruta de la imagen que se desea leer
+        :return: (string). Texto del archivo tipo imagen leído con la clase OCR
         """
         # Cargar la imagen de entrada        
         imagen = cv2.imread(ubicacion_imagen)
@@ -124,6 +125,7 @@ class OCR():
         """ Se encarga de leer el texto de archivos PDF ('.pdf'), \
             luego de aplicar el preprocesamiento definido al iniciar la clase OCR
         :param ubicacion_imagen: (string). Ruta deL archivo PDF que se desea leer
+        :return: (string). Texto del archivo tipo PDF leído con la clase OCR
         """
         self.pdf_a_imagen(ubicacion_pdf)
         imagenes = glob(self.dir_temporal + '/*.jpg')
