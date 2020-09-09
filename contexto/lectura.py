@@ -47,7 +47,7 @@ class Lector():
     def leer_word(self, por_paginas, extraer_medios, dir_medios):
         """ Se lleva a cabo la lectura del texto de archivos con extensión '.docx' o '.doc'
 
-        :por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
+        :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
             archivo Word con separador de páginas. Este separador se encuentra como '|**|' \
             dentro del texto extraído.
         :param extraer_medios: (bool) {True, False}. Especifica si se desean extraer las \
@@ -86,7 +86,7 @@ class Lector():
     def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
         """ Se lleva a cabo la lectura del texto de archivos con extensión '.pdf'
 
-        :por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
+        :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
             archivo Word con separador de páginas. Este separador se encuentra como '|**|' \
             dentro del texto extraído.
         :param ocr: (bool) {True, False}. Especifica si se desea utilizar reconocimiento \

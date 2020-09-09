@@ -2,10 +2,10 @@
 
 class Escritor():
     def __init__(self, ubicacion_archivo, texto):
-        """
-        Constructor por defecto de la clase Escritor. Esta clase se encarga de guardar \
+        """ Constructor por defecto de la clase Escritor. Esta clase se encarga de guardar \
             texto en archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e \
             imágenes
+
         :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
             con el texto deseado
         :param texto: (string). Texto que se desea guardar en un archivo
