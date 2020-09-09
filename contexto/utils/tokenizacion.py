@@ -96,7 +96,10 @@ class TokenizadorNLTK():
         lista de tokens.
         :return: (str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens. \
             Si se introdujeron varias listas de tokens, devuelve una lista de strings.
-        """        
+        """       
+        # Si la lista está vacía, se devuelve un string vacío
+        if len(lista_tokens) < 1:
+            return '' 
         # Si es una sola lista de tokens se aplica el procedimiento directamente
         if isinstance(lista_tokens[0], str):
             texto = self.destokenizador.detokenize(lista_tokens)
