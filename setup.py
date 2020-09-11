@@ -19,7 +19,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license = 'MIT',
-    keywords= 'python OCR textp'
+    keywords= 'python OCR texto'
     url='https://github.com/ucd-dnp/ConTexto',
     packages=setuptools.find_packages(),
     include_package_data = True,
