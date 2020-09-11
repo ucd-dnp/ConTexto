@@ -1,1 +1,2 @@
-include leila/templates/template.html
+recursive-include contexto/utils
+recursive-include contexto/data/listas_stopwords *.txt
