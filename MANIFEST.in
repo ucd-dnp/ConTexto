@@ -1,2 +1,2 @@
-recursive-include contexto/utils
+recursive-include contexto/utils *.py
 recursive-include contexto/data/listas_stopwords *.txt
