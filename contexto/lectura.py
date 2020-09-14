@@ -295,9 +295,9 @@ class Lector():
             extraer, en caso de requerirlo
         :return: (string). Texto extraído del archivo con la clase Lector            
         """
-
+        tipo = tipo.lower()
         if tipo == 'inferir':
-            tipo = self.ubicacion_archivo.split('.')[-1]
+            tipo = self.ubicacion_archivo.split('.')[-1].lower()
         if tipo in ['txt', 'csv']:
             salida = self.leer_txt(encoding)
         elif tipo == 'pdf':
