@@ -6,8 +6,8 @@ from utils.tokenizacion import tokenizar, destokenizar
 
 
 def remover_acentos(texto):
-    """Quita los acentos de un texto. Esta función quita los acentos y la letra 'ñ', haciendo remplazos por \
-    su equivalente sin acento.
+    """Quita los acentos (tildes, diéresis, virgulilla) de un texto de entrada. Esta reemplaza \
+        cada carácter con acento en el texto por su equivalente sin acento.
 
     :param texto: (str) Texto al que se le quieren quitar los acentos.
     :return: (str) Texto sin acentos después de la limpieza.
