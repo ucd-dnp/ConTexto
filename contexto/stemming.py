@@ -50,7 +50,7 @@ class Stemmer():
         Aplica *stemming* sobre un texto de entrada, y devuelve el texto \
             resultante.
 
-        :param texto: (string). Texto al que se le desea aplicar el *stemming*. 
+        :param texto: (string). Texto al que se desea aplicar el *stemming*. 
         :param limpiar: (bool) {True, False}. Valor por defecto: False. Argumento \
             opcional que define si se desea hacer una limpieza básica (\
             aplicando la función `limpieza_basica` del módulo `limpieza`) al \
@@ -70,7 +70,7 @@ def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
         reducción de palabras a su raíz, en un texto de entrada.
         
-    :param texto: (string). Texto al que se le desea aplicar el *stemming*.
+    :param texto: (string). Texto al que se desea aplicar el *stemming*.
     :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje del \
         texto al que se va a aplicar *stemming*.
     :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \

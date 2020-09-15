@@ -17,7 +17,7 @@ def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False):
     :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes de encontrar los n-gramas.
-    :return: n-gramas generados.
+    :return: n-gramas generados con las características especificadas.
     """
     if limpiar:
         texto = limpieza_basica(texto)
@@ -30,7 +30,7 @@ def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False):
 
 
 def frecuencia_ngramas(texto, n_grama=1, n_max=None):
-    """ Genera un diccionario de n-gramas más frecuentes con sus respectivas frecuencias de ocurrencias en el texto.
+    """ Genera un diccionario con los n-gramas y sus respectivas frecuencias de ocurrencia en el texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
     :param n_grama: (int) valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.
@@ -63,12 +63,12 @@ def nube_palabras(
     :param texto: (str) Corresponde al texto que se desea analizar.
     :param n_grama: (int) valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.
     :param n_terminos: (int) valor por defecto: 100. Cantidad de n-gramas a graficar.
-    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
+    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     :param dim_figura: (float, float) valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.
     :param hor: (float) (valor de 0 a 1). Corresponde a la orientación de las palabras en el gráfico, siendo 0 una distribución vertical, 1 una distribución horizontal y una distribución mixta a cualquier valor entre 0 y 1.
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
     :param ubicacion_archivo: (str) valor por defecto: vacío. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
-    :param mask: (array) o None, valor por defecto: None. Correspondiente a la máscara base donde se dibujan las palabras, por defecto se utiliza una máscara circulas.
+    :param mask: (array) o None, valor por defecto: None. Correspondiente a la máscara base donde se dibujan las palabras, por defecto se utiliza una máscara circular.
     :param semilla: (int) valor por defecto: 1234. Corresponde al estado inicial del generador, este incide en la posición y color de las palabras. En caso de querer replicar la nube de palabras, se recomienda utilizar un mismo valor de semilla.
     :param devolver_nube: (bool) {True, False} valor por defecto: False. Indica si desea obtener la nube de palabras como un objeto tipo WordCloud.
     :return: objeto tipo WordCloud, solo si la variable devolver_nube=True.
@@ -104,7 +104,7 @@ def grafica_nube(
     :param dim_figura: (float, float) valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
     :param ubicacion_archivo: (str) valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
+    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     """
 
     fig = plt.figure(figsize=dim_figura)
@@ -128,7 +128,7 @@ def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graf
     :param n2: (int) valor por defecto: 2. Cantidad de elementos a tener en cuenta en la generación de n-gramas de la nube de palabras derecha.
     :param dim_figura: (float, float) valor por defecto: (20, 10). Corresponden al ancho y alto de la figura en pulgadas.
     :param ubicacion_archivo: (str) valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
+    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     """
 
     # Obtener nubes de palabras
@@ -168,8 +168,8 @@ def matriz_coocurrencias(
     """ Calcula la matriz de co-ocurrencias de un texto.
 
     :param texto: (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.
-    :param min_frec: (int) valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec dicha palabra es excluida de la matriz.
-    :param max_num: (int) valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se cogen las más frecuentes).
+    :param min_frec: (int) valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec, dicha palabra es excluida de la matriz.
+    :param max_num: (int) valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se eligen las más frecuentes).
     :param modo: (str) {'documento', 'ventana'} valor por defecto: 'documento'. Corresponde al modo de análisis, con 'documento' se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con 'ventana' se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.
     :param ventana: (int) valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo='ventana'). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.
     :param tri_sup: (bool) {True, False} valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de co-ocurrencias, si es False devuelve la matriz completa.
@@ -260,7 +260,7 @@ def graficar_coocurrencias(
     :param mat: (dataframe) Matriz de co-ocurrencias que desea graficar.
     :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen.
     :param ubicacion_archivo: (str) valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
+    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     :param K: (float) valor por defecto: 5. Distancia óptima entre nodos, aumente este valor para separar los nodos. 
     :param color_borde: (str) valor por defecto: 'orchid'. Corresponde al color de los bordes de la red, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.
     :param color_nodo: (str) valor por defecto: 'silver'. Corresponde al color de los nodos, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.
@@ -354,7 +354,7 @@ def grafica_barchart_frecuencias(
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
     :param ascendente: (bool) {True, False} valor por defecto: True. Determina si las barras de términos se muestran de menos (abajo) a más (arriba) frecuentes en la gráfica.
     :param ubicacion_archivo: (str) valor por defecto: vacío. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el IDE que esté utilizando.
+    :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     :param n_terminos: (int) valor por defecto: 15. Cantidad de n-gramas a graficar.
     """
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)

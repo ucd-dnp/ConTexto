@@ -84,7 +84,7 @@ class VectorizadorFrecuencias():
 
     def vectorizar(self, textos, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documentos-términos
+        Transformando los textos en una matriz documentos-términos
 
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
@@ -103,7 +103,7 @@ class VectorizadorFrecuencias():
     # Para mantener "nomenclatura sklearn"
     def transform(self, x, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documento-términos. \ 
+        Transformando los textos en una matriz documento-términos. \ 
         **Llama la función vectorizar**.
 
         :param x: string (str) o lista (list) con textos de interés \ 
@@ -165,7 +165,7 @@ class VectorizadorHash():
 
     def vectorizar(self, textos, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documentos-términos
+        Transformando los textos en una matriz documentos-términos
 
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
@@ -184,7 +184,7 @@ class VectorizadorHash():
     # Para mantener "nomenclatura sklearn"
     def transform(self, x, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documento-términos. \ 
+        Transformando los textos en una matriz documento-términos. \ 
         **Llama la función vectorizar**.
 
         :param x: string (str) o lista (list) con textos de interés \ 
@@ -275,7 +275,7 @@ class VectorizadorWord2Vec():
 
     def vectorizar(self, textos, quitar_desconocidas: bool=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documentos-términos. \ 
+        Transformando los textos en una matriz documentos-términos. \ 
         **Llama la función vectorizar_texto**.
 
         :param textos: string (str) o lista (list) con textos de interés \ 
@@ -441,7 +441,7 @@ class VectorizadorDoc2Vec():
     # Función para vectorizar una lista de textos
     def vectorizar(self, textos, alpha=0.025, num_pasos=50, semilla=13):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matríz documentos-términos. \ 
+        Transformando los textos en una matriz documentos-términos. \ 
         **Llama la función vectorizar_texto**.
 
         :param textos: string (str) o lista (list) con textos de interés \ 

@@ -78,7 +78,7 @@ class TokenizadorNLTK():
             función de limpieza previamente), la salida será igual a la entrada.
 
         :param texto: (str). Texto que resulta de detokenizar una lista de tokens.
-        :return: (str). Texto con sus signos de puntuación ajustados.         
+        :return: (str). Texto con los signos de puntuación ajustados.         
         """        
         texto = texto.replace('¿ ', '¿')
         texto = texto.replace('¡ ', '¡')

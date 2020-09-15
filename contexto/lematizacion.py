@@ -95,11 +95,11 @@ class LematizadorSpacy():
             self.lematizador.add_pipe(cambiar_propiedades_lemma, first=True)
 
     def lematizar(self, texto, limpiar=True):
-        """ Se lleva a cabo el proceso de lematización del texto, el cual puede \ 
+        """ Se lleva a cabo el proceso de lematización del texto, el cual puede \
             ser limpiado antes de la lematización.
 
-        :param texto: (string) El texto que se desea lematizar
-        :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \ 
+        :param texto: (string). El texto que se desea lematizar
+        :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \
             si se desea hacer una limpieza básica del texto antes de la lematización
         :return: (string). Retorna el texto lematizado.
         """
@@ -222,11 +222,11 @@ class LematizadorStanza():
             gpu)
 
     def lematizar(self, texto, limpiar=True):
-        """ Se lleva a cabo el proceso de lematización del texto, el cual puede \ 
+        """ Se lleva a cabo el proceso de lematización del texto, el cual puede \
             ser limpiado antes de la lematización.
 
         :param texto: (string). El texto que se desea lematizar
-        :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \ 
+        :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \
             si se desea hacer una limpieza básica del texto antes de la lematización
         :return: (string). Retorna el texto lematizado.
         """

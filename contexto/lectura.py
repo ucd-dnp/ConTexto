@@ -55,7 +55,7 @@ class Lector():
             de imágenes. Funciona únicamente para archivos '.docx' (no '.doc') y si el \
             parámetro 'por_paginas' es False.
         :param dir_medios: (string)- Ruta de la carpeta donde se guardan las imágenes del \
-            archivo Word cuyas imágenes se decidieron extraer (se especificó \
+            archivo Word cuyas imágenes se extrajeron (se especificó \
             extraer_medios = True)
         :return: (string). Texto del archivo '.docx' o '.doc' leído con la clase Lector
         """
@@ -90,19 +90,21 @@ class Lector():
             archivo Word con separador de páginas. Este separador se encuentra como '|**|' \
             dentro del texto extraído.
         :param ocr: (bool) {True, False}. Especifica si se desea utilizar reconocimiento \
-            óptico de caracteres sobre el archivo cuyo texto se desea extraer. Se utiliza \
+            óptico de caracteres sobre el archivo cuyo texto se quiere extraer. Se utiliza \
             usualmente cuando el archivo es una imagen o documento escaneado
         :param preprocesamiento: (int) {1,2,3,4,5}. Especifica el nivel de preprocesamiento \
             que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \
             reconocimiento óptico de caracteres (parámetro ocr es True). Las opciones son las siguientes: \
-            1: se convierte la imagen a escala de grises
-            2: se convierte la imagen a escala de grises y se aplica blurring
-            3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
-                 método de OTSU
-            4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo
-            5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
-                de imagen con el método de OTSU, blurring y umbral adaptativo             
+             |ul| 
+             |li| 1: se convierte la imagen a escala de grises. |/li| 
+             |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
+             |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
+                 método de OTSU. |/li| 
+             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
+                adaptativo. |/li| 
+             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
+                de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |/ul| 
         :param lenguaje: (string). {'es', 'en'}  Se define el \
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
             óptico de caracteres (el parámetro ocr es True). Tiene las opciones de español \
@@ -111,27 +113,31 @@ class Lector():
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
             automáticamente: 
-            0: utilizar únicamente el motor Legacy
-            1: utilizar únicamente el motor de redes neuronales LSTM  
-            2: utilizar los motores Legacy y LSTM
-            3: escoger el motor según lo que hay disponible
+             |ul| 
+             |li| 0: utilizar únicamente el motor Legacy. |/li| 
+             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
+             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
+             |li| 3: escoger el motor según lo que hay disponible. |/li| 
+             |/ul| 
         :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a \
             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
             librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-            0: orientation y detección de script (OSD) únicamente
-            1: segmentación automática de páginas con OSD
-            2: segmentación automática de págpinas sin OSD ni OCR
-            3: segmentación completamente automática de páginas sin OSD
-            4: supone una única columna de texto de tamaños variables
-            5: supone un único bloque uniforme de texto alineado de forma vertical
-            6: asume un único bloque uniforme de texto
-            7: trata la imagen como una única línea de texto
-            8: trata la imagen como una única palabra
-            9: trata la imagen como una única palabra dentro de un círculo
-            10: trata la imagen como un único carácter
-            11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-            12: Buscador de texto disperso con OSD
-            13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
+             |ul| 
+             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
+             |li| 1: segmentación automática de páginas con OSD. |/li| 
+             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
+             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
+             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
+             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
+             |li| 6: asume un único bloque uniforme de texto. |/li| 
+             |li| 7: trata la imagen como una única línea de texto. |/li| 
+             |li| 8: trata la imagen como una única palabra. |/li| 
+             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
+             |li| 10: trata la imagen como un único carácter. |/li| 
+             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
+             |li| 12: Buscador de texto disperso con OSD. |/li| 
+             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
+             |/ul| 
         :return: (string). Texto del archivo '.pdf' leído con la clase Lector
             """
         if ocr:
@@ -176,41 +182,44 @@ class Lector():
         :param preprocesamiento: (int) {1,2,3,4,5}. Especifica el nivel de preprocesamiento \
             que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \
             reconocimiento óptico de caracteres (parámetro ocr es True). Las opciones son las siguientes: \
-            1: se convierte la imagen a escala de grises
-            2: se convierte la imagen a escala de grises y se aplica blurring
-            3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
-                 método de OTSU
-            4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo
-            5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
-                de imagen con el método de OTSU, blurring y umbral adaptativo             
+             |ul| 
+             |li| 1: se convierte la imagen a escala de grises. |/li| 
+             |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
+             |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
+             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
+             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |/ul| 
         :param lenguaje: (string). {'es', 'en'}  Se define el lenguaje del texto que se desea extraer. \
             Tiene las opciones de español ('es') e inglés ('en')
         :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-            automáticamente: 
-            0: utilizar únicamente el motor Legacy
-            1: utilizar únicamente el motor de redes neuronales LSTM  
-            2: utilizar los motores Legacy y LSTM
-            3: escoger el motor según lo que hay disponible
+            automáticamente: \
+             |ul| 
+             |li| 0: utilizar únicamente el motor Legacy. |/li| 
+             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
+             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
+             |li| 3: escoger el motor según lo que hay disponible. |/li| 
+             |/ul| 
         :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a \
             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
             librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-            0: orientation y detección de script (OSD) únicamente
-            1: segmentación automática de páginas con OSD
-            2: segmentación automática de págpinas sin OSD ni OCR
-            3: segmentación completamente automática de páginas sin OSD
-            4: supone una única columna de texto de tamaños variables
-            5: supone un único bloque uniforme de texto alineado de forma vertical
-            6: asume un único bloque uniforme de texto
-            7: trata la imagen como una única línea de texto
-            8: trata la imagen como una única palabra
-            9: trata la imagen como una única palabra dentro de un círculo
-            10: trata la imagen como un único carácter
-            11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-            12: Buscador de texto disperso con OSD
-            13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
+             |ul| 
+             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
+             |li| 1: segmentación automática de páginas con OSD. |/li| 
+             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
+             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
+             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
+             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
+             |li| 6: asume un único bloque uniforme de texto. |/li| 
+             |li| 7: trata la imagen como una única línea de texto. |/li| 
+             |li| 8: trata la imagen como una única palabra. |/li| 
+             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
+             |li| 10: trata la imagen como un único carácter. |/li| 
+             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
+             |li| 12: Buscador de texto disperso con OSD. |/li| 
+             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
+             |/ul| 
         :return: (string). Texto del archivo tipo imagen leído con la clase Lector
         """
         from utils.ocr import OCR
@@ -232,8 +241,8 @@ class Lector():
             psm=3,
             password=None):
 
-        """ Se lleva a cabo la lectura del texto de un archivo y permite escoger el tipo, si por páginas, \
-            la codificación, si utilizar OCR, el tipo de preprocesamiento, entre otros. 
+        """ Se lleva a cabo la lectura del texto de un archivo y permite escoger el tipo, si es por páginas, \
+            la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 
         :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', 'docx', 'npg', \
             'jpg', 'jpeg'} Valor por defecto: 'inferir'. Se define el tipo (o extensión) del \
@@ -243,54 +252,57 @@ class Lector():
             de imágenes. Funciona únicamente para archivos '.docx' (no '.doc') y si el \
             parámetro 'por_paginas' es False.
         :param dir_medios: (string). Valor por defecto: 'temp/img_dir/' Ruta de la carpeta \
-            donde se guardan las imágenes del archivo Word cuyas imágenes se decidieron extraer (se especificó \
+            donde se guardan las imágenes del archivo Word cuyas imágenes se extrajeron (se especificó \
             extraer_medios = True)
         :param por_paginas: (bool) {True, False}. Valor por defecto: False. Se define si se \
             desea extraer el texto por páginas. 
         :param encoding: (string). Valor por defecto: 'utf-8'. Especifica la codificación \
             del texto que se desea leer
         :param ocr: (bool) {True, False}. Valor por defecto: False Especifica si se desea utilizar reconocimiento \
-            óptico de caracteres sobre el archivo cuyo texto se desea extraer. Se utiliza \
+            óptico de caracteres sobre el archivo cuyo texto se quiere extraer. Se utiliza \
             usualmente cuando el archivo es una imagen o documento escaneado
         :param preprocesamiento: (int) {1,2,3,4,5}. Valor por defecto: 3 Especifica el nivel de preprocesamiento \
             que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \
             reconocimiento óptico de caracteres (parámetro ocr es True). Las opciones son las siguientes: \
-            1: se convierte la imagen a escala de grises
-            2: se convierte la imagen a escala de grises y se aplica blurring
-            3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
-                    método de OTSU
-            4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo
-            5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
-                de imagen con el método de OTSU, blurring y umbral adaptativo             
+             |ul| 
+             |li| 1: se convierte la imagen a escala de grises. |/li| 
+             |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
+             |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
+             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
+             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |/ul| 
         :param lenguaje: (string). {'es', 'en'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
             Tiene las opciones de español ('es') e inglés ('en'). Aplica cuando se extrae el texto de \
             imágenes o archivos escaneados
         :param oem: (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-            automáticamente: 
-            0: utilizar únicamente el motor Legacy
-            1: utilizar únicamente el motor de redes neuronales LSTM  
-            2: utilizar los motores Legacy y LSTM
-            3: escoger el motor según lo que hay disponible
+            automáticamente:
+             |ul| 
+             |li| 0: utilizar únicamente el motor Legacy. |/li| 
+             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
+             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
+             |li| 3: escoger el motor según lo que hay disponible. |/li| 
+             |/ul| 
         :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a \
             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
             librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-            0: orientation y detección de script (OSD) únicamente
-            1: segmentación automática de páginas con OSD
-            2: segmentación automática de págpinas sin OSD ni OCR
-            3: segmentación completamente automática de páginas sin OSD
-            4: supone una única columna de texto de tamaños variables
-            5: supone un único bloque uniforme de texto alineado de forma vertical
-            6: asume un único bloque uniforme de texto
-            7: trata la imagen como una única línea de texto
-            8: trata la imagen como una única palabra
-            9: trata la imagen como una única palabra dentro de un círculo
-            10: trata la imagen como un único carácter
-            11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-            12: Buscador de texto disperso con OSD
-            13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
+             |ul| 
+             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
+             |li| 1: segmentación automática de páginas con OSD. |/li| 
+             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
+             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
+             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
+             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
+             |li| 6: asume un único bloque uniforme de texto. |/li| 
+             |li| 7: trata la imagen como una única línea de texto. |/li| 
+             |li| 8: trata la imagen como una única palabra. |/li| 
+             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
+             |li| 10: trata la imagen como un único carácter. |/li| 
+             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
+             |li| 12: Buscador de texto disperso con OSD. |/li| 
+             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
+             |/ul| 
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
         :return: (string). Texto extraído del archivo con la clase Lector            
@@ -336,7 +348,7 @@ def leer_texto(
         psm=3, 
         password=None):        
     """ Función que se encarga de extraer el texto de un archivo. Permite especificar la ruta del archivo, \
-        escoger el tipo, si por páginas, la codificación, si utilizar OCR, el tipo de preprocesamiento, entre otros. 
+        escoger el tipo, si es por páginas, la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 
     :param ubicacion_archivo: (string). Ruta del archivo que se desea leer
     :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', 'docx', 'npg', \
@@ -347,26 +359,25 @@ def leer_texto(
         de imágenes. Funciona únicamente para archivos '.docx' (no '.doc') y si el \
         parámetro 'por_paginas' es False.
     :param dir_medios: (string). Valor por defecto: 'temp/img_dir/' Ruta de la carpeta \
-        donde se guardan las imágenes del archivo Word cuyas imágenes se decidieron extraer (se especificó \
+        donde se guardan las imágenes del archivo Word cuyas imágenes se extrajeron (se especificó \
         extraer_medios = True)
     :param por_paginas: (bool) {True, False}. Valor por defecto: False. Se define si se \
         desea extraer el texto por páginas. 
     :param encoding: (string). Valor por defecto: 'utf-8'. Especifica la codificación \
         del texto que se desea leer
     :param ocr: (bool) {True, False}. Valor por defecto: False Especifica si se desea utilizar reconocimiento \
-        óptico de caracteres sobre el archivo cuyo texto se desea extraer. Se utiliza \
+        óptico de caracteres sobre el archivo cuyo texto se quiere extraer. Se utiliza \
         usualmente cuando el archivo es una imagen o documento escaneado
     :param preprocesamiento: (int) {1,2,3,4,5}. Valor por defecto: 3 Especifica el nivel de preprocesamiento \
         que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \
         reconocimiento óptico de caracteres (parámetro ocr es True). Las opciones son las siguientes: \
-        1: se convierte la imagen a escala de grises
-        2: se convierte la imagen a escala de grises y se aplica blurring
-        3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
-                método de OTSU
-        4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-            adaptativo
-        5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
-            de imagen con el método de OTSU, blurring y umbral adaptativo             
+         |ul| 
+         |li| 1: se convierte la imagen a escala de grises. |/li| 
+         |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
+         |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
+         |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
+         |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+         |/ul| 
     :param lenguaje: (string). {'es', 'en'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
         Tiene las opciones de español ('es') e inglés ('en'). Aplica cuando se extrae el texto de \
         imágenes o archivos escaneados
@@ -374,27 +385,31 @@ def leer_texto(
         en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
         permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
         automáticamente: 
-        0: utilizar únicamente el motor Legacy
-        1: utilizar únicamente el motor de redes neuronales LSTM  
-        2: utilizar los motores Legacy y LSTM
-        3: escoger el motor según lo que hay disponible
+         |ul| 
+         |li| 0: utilizar únicamente el motor Legacy. |/li| 
+         |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
+         |li| 2: utilizar los motores Legacy y LSTM. |/li| 
+         |li| 3: escoger el motor según lo que hay disponible. |/li| 
+         |/ul| 
     :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a \
         los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
         librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-        0: orientation y detección de script (OSD) únicamente
-        1: segmentación automática de páginas con OSD
-        2: segmentación automática de págpinas sin OSD ni OCR
-        3: segmentación completamente automática de páginas sin OSD
-        4: supone una única columna de texto de tamaños variables
-        5: supone un único bloque uniforme de texto alineado de forma vertical
-        6: asume un único bloque uniforme de texto
-        7: trata la imagen como una única línea de texto
-        8: trata la imagen como una única palabra
-        9: trata la imagen como una única palabra dentro de un círculo
-        10: trata la imagen como un único carácter
-        11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular
-        12: Buscador de texto disperso con OSD
-        13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
+         |ul| 
+         |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
+         |li| 1: segmentación automática de páginas con OSD. |/li| 
+         |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
+         |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
+         |li| 4: supone una única columna de texto de tamaños variables. |/li| 
+         |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
+         |li| 6: asume un único bloque uniforme de texto. |/li| 
+         |li| 7: trata la imagen como una única línea de texto. |/li| 
+         |li| 8: trata la imagen como una única palabra. |/li| 
+         |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
+         |li| 10: trata la imagen como un único carácter. |/li| 
+         |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
+         |li| 12: Buscador de texto disperso con OSD. |/li| 
+         |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
+         |/ul| 
     :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
         extraer, en caso de requerirlo
     :return: (string). Texto extraído del archivo especificado con la función 'leer_texto'

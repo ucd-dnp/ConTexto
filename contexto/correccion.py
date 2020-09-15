@@ -45,7 +45,7 @@ class Corrector():
     def establecer_lenguaje(self, lenguaje):
         """
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
-        va a aplicarse el objeto de la case Corrector.
+        va a aplicarse el objeto de la clase Corrector.
             
         :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los \
             textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son \
@@ -147,7 +147,7 @@ class Corrector():
             correctas al momento de hacer corrección ortográfica.
 
         :param palabras: (string o list). Palabra o lista de palabras que se desean añadir al \
-            diccionario del objeto de la clase Corrector, para que sean recnocidas como \
+            diccionario del objeto de la clase Corrector, para que sean reconocidas como \
             correctas al momento de hacer la corrección ortográfica.
         """
         if isinstance(palabras, str):
@@ -169,10 +169,10 @@ class Corrector():
     def palabras_desconocidas(self, texto):
         """
         A partir de un texto de entrada, devuelve un conjunto (objeto de clase *set* de \
-            Python) con las palabras del texto que no estan incluídas en \
+            Python) con las palabras del texto que no están incluídas en \
             el diccionario del corrector y por lo tanto no se reconocen.
 
-        :param texto: (string). Texto para el que se desean hayar las palabras desconocidas.
+        :param texto: (string). Texto para el que se desean hallar las palabras desconocidas.
         :return: (set). Conjunto de palabras desconocidas presentes en el texto de entrada.
         """
         tokens = self.tokenizador.tokenizar(texto)

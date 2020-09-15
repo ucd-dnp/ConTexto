@@ -29,13 +29,13 @@ class Similitud():
             Permite calcular la similitud coseno y jaccard entre textos.
 
         :param vectorizador: objeto tipo vectorizador. \ 
-            valor por defecto: None. \ 
+            Valor por defecto: None. \ 
             Carga y establece el vectorizador del objeto Similitud. \ 
             Si no se especifica un \ 
             vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de Similitud, este ya debe estar ajustado.
         :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
             vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
             Alemán(de) y Francés(fr).        
         """
@@ -47,7 +47,7 @@ class Similitud():
         """Establece el lenguaje del objeto Similitud.
 
         :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            Valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
             vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
             Alemán(de) y Francés(fr).
         """
@@ -140,13 +140,13 @@ class Distancia():
             Permite calcular la diferentes tipos de distancias entre textos.
 
         :param vectorizador: objeto tipo vectorizador. \ 
-            valor por defecto: None. \ 
+            Valor por defecto: None. \ 
             Carga y establece el vectorizador del objeto Distancia. \ 
             Si no se especifica un \ 
             vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de Distancia, este ya debe estar ajustado.
         :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
             vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
             Alemán(de) y Francés(fr).
         """
@@ -158,7 +158,7 @@ class Distancia():
         """Establece el lenguaje del objeto Distancia.
 
         :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizara el \ 
+            Valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
             vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
             Alemán(de) y Francés(fr).
         """        
@@ -188,7 +188,7 @@ class Distancia():
             cálculo de distancia.
         :param tipo_distancia: (str) {'l1', 'l2', 'minkowski', 'jaccard', \ 
             'hamming', 'chebyshev', 'rogerstanimoto', 'braycurtis'}. \ 
-            Hace referentia al tipo de distancia a calcular.
+            Hace referencia al tipo de distancia a calcular.
         :param kwds: otros parámetros opcionales.
         :return: array con el valor de distancia entre textos.
         """
@@ -315,7 +315,7 @@ class DiferenciaStrings():
         :param norm: (int) {1, 2} valor por defecto: None. Permite normalizar \ 
             los resultados en función de la longitud de los textos. \ 
             Si norm=1 se normaliza en función al texto más corto, \ 
-            si nomr=2 se normaliza en función al texto de mayor extensión.
+            si norm=2 se normaliza en función al texto de mayor extensión.
         :return: array con el valor resultante de la comparación entre los \ 
             textos.
         """
