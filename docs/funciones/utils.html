@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Utils &mdash; documentación de ConTexto - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="Vectorización" href="vectorizacion.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ConTexto
+          
+
+          
+            
+            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                sept. 14 11:04 p. m.
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">ConTexto:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pendientes_borrar.html">Pendientes - BORRAR</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="comparacion.html">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploracion.html">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-utils.auxiliares">Auxiliares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quitar-repetidos">Quitar repetidos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-utils.tokenizacion">Tokenizacion</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConTexto</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="section" id="module-utils.auxiliares">
+<span id="auxiliares"></span><h2>Auxiliares<a class="headerlink" href="#module-utils.auxiliares" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="py function">
+<dt id="utils.auxiliares.cargar_objeto">
+<code class="descclassname">utils.auxiliares.</code><code class="descname">cargar_objeto</code><span class="sig-paren">(</span><em><span class="n">nombre_archivo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.cargar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Carga un objeto en Python, desde un archivo Pickle cuya ubicación es determinada por el usuario.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>nombre_archivo</strong> – (str). Ubicación del archivo que contiene el objeto que se desea cargar.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(objeto Python). Objeto en Python contenido en el archivo.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utils.auxiliares.guardar_objeto">
+<code class="descclassname">utils.auxiliares.</code><code class="descname">guardar_objeto</code><span class="sig-paren">(</span><em><span class="n">objeto</span></em>, <em><span class="n">nombre_archivo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.guardar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Guarda, en un archivo Pickle, un objeto de Python determinado por el usuario.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>objeto</strong> – (objeto Python). Objeto que se desea guardar.</li>
+<li><strong>nombre_archivo</strong> – (str). Ubicación y nombre del archivo en donde se desea guardar         el objeto.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utils.auxiliares.verificar_crear_dir">
+<code class="descclassname">utils.auxiliares.</code><code class="descname">verificar_crear_dir</code><span class="sig-paren">(</span><em><span class="n">ubicacion_directorio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.verificar_crear_dir" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Verifica si existe un directorio en la ubicación determinada por         el usuario. Si el directorio no existe, la función lo crea.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>ubicacion_directorio</strong> – (str). Ubicación del directorio que se desea         verificar o crear.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="quitar-repetidos">
+<h2>Quitar repetidos<a class="headerlink" href="#quitar-repetidos" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-utils.tokenizacion">
+<span id="tokenizacion"></span><h2>Tokenizacion<a class="headerlink" href="#module-utils.tokenizacion" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="py class">
+<dt id="utils.tokenizacion.TokenizadorNLTK">
+<em class="property">class </em><code class="descclassname">utils.tokenizacion.</code><code class="descname">TokenizadorNLTK</code><span class="sig-paren">(</span><em><span class="n">tokenizador</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">destokenizador</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor por defecto de la clase TokenizadorNLTK. Esta clase se apoya         en la librería NLTK para definir acciones de tokenización y detokenización         (operación inversa en la que se pasa de tokens a texto) de textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tokenizador</strong> – (objeto de tokenización de NLTK) Valor por defecto: None. Objeto             encargado de la tokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>ToktokTokenizer</em>, de la librería NLTK.</li>
+<li><strong>detokenizador</strong> – (objeto de detokenización de NLTK) Valor por defecto: None. Objeto             encargado de la detokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>TreebankWordDetokenizer</em>, de la librería NLTK.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="utils.tokenizacion.TokenizadorNLTK.destokenizar">
+<code class="descname">destokenizar</code><span class="sig-paren">(</span><em><span class="n">lista_tokens</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de detokenización (unir una lista de tokens, produciendo un texto) sobre             una o varias listas de tokens de entrada.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lista_tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es para varios         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una         lista de tokens.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens.             Si se introdujeron varias listas de tokens, devuelve una lista de strings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador">
+<code class="descname">establecer_destokenizador</code><span class="sig-paren">(</span><em><span class="n">destokenizador</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite definir o cambiar el detokenizador a utilizar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>detokenizador</strong> – (objeto de detokenización de NLTK). Objeto             encargado de la detokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>TreebankWordDetokenizer</em>, de la librería NLTK.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador">
+<code class="descname">establecer_tokenizador</code><span class="sig-paren">(</span><em><span class="n">tokenizador</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite definir o cambiar el tokenizador a utilizar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>tokenizador</strong> – (objeto de tokenización de NLTK). Objeto             encargado de la tokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>ToktokTokenizer</em>, de la librería NLTK.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.tokenizacion.TokenizadorNLTK.post_destokenizacion">
+<code class="descname">post_destokenizacion</code><span class="sig-paren">(</span><em><span class="n">texto</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.post_destokenizacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Hace algunos ajustes al texto, una vez ha pasado por la detokenización, para que             cumpla con las reglas de puntuación de los idiomas español e inglés. Es posible             que para otros idiomas sea necesario incluir ajustes adicionales. Si el texto de             entrada no contiene signos de puntuación (por ejemplo, si fue pasado por alguna             función de limpieza previamente), la salida será igual a la entrada.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str). Texto que resulta de detokenizar una lista de tokens.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(str). Texto con los signos de puntuación ajustados.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.tokenizacion.TokenizadorNLTK.tokenizar">
+<code class="descname">tokenizar</code><span class="sig-paren">(</span><em><span class="n">texto</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de tokenización (separar un texto en componentes sueltos, o tokens) sobre             uno o varios textos de entrada.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los cuales se desea             aplicar la tokenización.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se             ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de             tokens, con un elemento para cada texto de entrada.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="utils.tokenizacion.destokenizar">
+<code class="descclassname">utils.tokenizacion.</code><code class="descname">destokenizar</code><span class="sig-paren">(</span><em><span class="n">tokens</span></em>, <em><span class="n">tokenizador</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función de detokenización     (unir una lista de tokens, produciendo un texto) sobre una o varias listas de tokens de entrada.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es para varios         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una         lista de tokens.</li>
+<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens.         Si se introdujeron varias listas de tokens, devuelve una lista de strings.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utils.tokenizacion.tokenizar">
+<code class="descclassname">utils.tokenizacion.</code><code class="descname">tokenizar</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">tokenizador</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función de tokenización         (separar un texto en componentes sueltos, o tokens) sobre uno o varios textos de entrada.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los cuales se desea         aplicar la tokenización.</li>
+<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se         ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de         tokens, con un elemento para cada texto de entrada.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="vectorizacion.html" class="btn btn-neutral float-left" title="Vectorización" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, UCD - DNP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

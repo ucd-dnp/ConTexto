@@ -1,21 +1,38 @@
-.. analitica texto documentation master file, created by
-   sphinx-quickstart on Mon Aug  3 17:40:27 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to analitica texto's documentation!
-===========================================
+ConTexto - Librería de procesamiento y análisis de textos
+=========================================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: ConTexto:
+   :hidden:
 
-   vectorizacion_texto
+   seccion_introduccion
+   seccion_instalacion
+   seccion_ejemplos
+   pendientes_borrar
 
-Indices and tables
-==================
+.. toctree::
+   :maxdepth: 2
+   :caption: Módulos y funciones:
+   :hidden:
+   
+   funciones/comparacion
+   funciones/correccion
+   funciones/escritura
+   funciones/exploracion
+   funciones/lectura
+   funciones/lematizacion
+   funciones/lenguajes
+   funciones/limpieza   
+   funciones/stemming   
+   funciones/vectorizacion
+   funciones/utils
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. figure:: _static/image/contexto.jpg
+    :align: center
+    :alt: 
+    :figclass: align-center
 
+
+.. include:: seccion_introduccion.rst
+   :start-line: 5

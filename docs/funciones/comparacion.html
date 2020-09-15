@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Comparación &mdash; documentación de ConTexto - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Corrección" href="correccion.html" />
+    <link rel="prev" title="Pendientes - BORRAR" href="../pendientes_borrar.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ConTexto
+          
+
+          
+            
+            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                sept. 14 11:04 p. m.
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">ConTexto:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pendientes_borrar.html">Pendientes - BORRAR</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploracion.html">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConTexto</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Comparación</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-comparacion">
+<span id="comparacion"></span><h1>Comparación<a class="headerlink" href="#module-comparacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="py class">
+<dt id="comparacion.DiferenciaStrings">
+<em class="property">class </em><code class="descclassname">comparacion.</code><code class="descname">DiferenciaStrings</code><a class="headerlink" href="#comparacion.DiferenciaStrings" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Esta clase se recomienda para comparaciones de strings 
+relativamente cortos, como nombres, direcciones y otras cadenas 
+de caracteres similares. Para textos más extensos, se recomiendan las 
+clases <a class="reference internal" href="#comparacion.Similitud" title="comparacion.Similitud"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comparacion.Similitud()</span></code></a> o 
+<a class="reference internal" href="#comparacion.Distancia" title="comparacion.Distancia"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comparacion.Distancia()</span></code></a></p>
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.comparacion_lista">
+<code class="descname">comparacion_lista</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">tipo</span><span class="o">=</span><span class="default_value">'levenshtein'</span></em>, <em><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.comparacion_lista" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite hacer comparaciones entre una lista de textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+la comparación.</li>
+<li><strong>tipo</strong> – (str) {“damerau”, “levenshtein”, “hamming”, “winkler”, 
+“jaro”} valor por defecto: “levenshtein”. Criterio de comparación 
+a utilizar entre los textos.</li>
+<li><strong>norm</strong> – (int) {1, 2} valor por defecto: None. Permite normalizar 
+los resultados en función de la longitud de los textos. 
+Si norm=1 se normaliza en función al texto más corto, 
+si norm=2 se normaliza en función al texto de mayor extensión.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor resultante de la comparación entre los 
+textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.comparacion_pares">
+<code class="descname">comparacion_pares</code><span class="sig-paren">(</span><em><span class="n">texto1</span></em>, <em><span class="n">texto2</span></em>, <em><span class="n">tipo</span><span class="o">=</span><span class="default_value">'levenshtein'</span></em>, <em><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.comparacion_pares" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite hacer comparaciones entre dos textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto1</strong> – (str) primer texto de interés a comparar.</li>
+<li><strong>texto2</strong> – (str) segundo texto de interés a comparar.</li>
+<li><strong>tipo</strong> – (str) {“damerau_levenshtein”, “levenshtein”, “hamming”, 
+“jaro_winkler”, “jaro”} valor por defecto: “levenshtein”. 
+Criterio de comparación a utilizar entre los textos.</li>
+<li><strong>norm</strong> – (int) {1, 2} valor por defecto: None. Permite normalizar 
+los resultados en función de la longitud de los textos. 
+Si norm=1 se normaliza en función al texto más corto, 
+si nomr=2 se normaliza en función al texto de mayor extensión.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">valor (float) o (int) resultado de la comparación.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.distancia_damerau_levenshtein">
+<code class="descname">distancia_damerau_levenshtein</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.distancia_damerau_levenshtein" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular la distancia damerau levenshtein entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+el cálculo de distancia.</li>
+<li><strong>norm</strong> – (int) {1, 2} valor por defecto: None. Permite normalizar 
+los resultados en función de la longitud de los textos. 
+Si norm=1 se normaliza en función al texto más corto, 
+si nomr=2 se normaliza en función al texto de mayor extensión.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor resultante de la comparación entre los 
+textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.distancia_hamming">
+<code class="descname">distancia_hamming</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.distancia_hamming" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular la distancia hamming entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+el cálculo de distancia.</li>
+<li><strong>norm</strong> – (int) {1, 2} valor por defecto: None. Permite normalizar 
+los resultados en función de la longitud de los textos. 
+Si norm=1 se normaliza en función al texto más corto, 
+si nomr=2 se normaliza en función al texto de mayor extensión.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor resultante de la comparación entre los 
+textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.distancia_levenshtein">
+<code class="descname">distancia_levenshtein</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">norm</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.distancia_levenshtein" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular la distancia levenshtein entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+el cálculo de distancia.</li>
+<li><strong>norm</strong> – (int) {1, 2} valor por defecto: None. Permite normalizar 
+los resultados en función de la longitud de los textos. 
+Si norm=1 se normaliza en función al texto más corto, 
+si nomr=2 se normaliza en función al texto de mayor extensión.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor resultante de la comparación entre los 
+textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.similitud_jaro">
+<code class="descname">similitud_jaro</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.similitud_jaro" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular la similitiud jaro entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+el cálculo de similitud.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor resultante de la comparación entre los 
+textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.DiferenciaStrings.similitud_jaro_winkler">
+<code class="descname">similitud_jaro_winkler</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.DiferenciaStrings.similitud_jaro_winkler" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular la similitiud jaro entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para realizar 
+el cálculo de similitud.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor resultante de la comparación entre los 
+textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comparacion.Distancia">
+<em class="property">class </em><code class="descclassname">comparacion.</code><code class="descname">Distancia</code><span class="sig-paren">(</span><em><span class="n">vectorizador</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">lenguaje</span><span class="o">=</span><span class="default_value">'es'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="docutils">
+<dt>Constructor de la clase Distacia. </dt><dd>Permite calcular la diferentes tipos de distancias entre textos.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vectorizador</strong> – objeto tipo vectorizador. 
+Valor por defecto: None. 
+Carga y establece el vectorizador del objeto Distancia. 
+Si no se especifica un 
+vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un 
+vectorizador al objeto de Distancia, este ya debe estar ajustado.</li>
+<li><strong>lenguaje</strong> – (str) {“es”, “en”, “de”, “fr”}. 
+valor por defecto: “es”. Indica el lenguaje que utilizará el 
+vectorizador, soporta los lenguajes Español(es), Inglés(en), 
+Alemán(de) y Francés(fr).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comparacion.Distancia.distancia_pares">
+<code class="descname">distancia_pares</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">tipo_distancia</span></em>, <em><span class="o">**</span><span class="n">kwds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.distancia_pares" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite calcular diferentes tipos de distancias entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia.</li>
+<li><strong>tipo_distancia</strong> – (str) {“l1”, “l2”, “minkowski”, “jaccard”, 
+“hamming”, “chebyshev”, “rogerstanimoto”, “braycurtis”}. 
+Hace referencia al tipo de distancia a calcular.</li>
+<li><strong>kwds</strong> – otros parámetros opcionales.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor de distancia entre textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.establecer_lenguaje">
+<code class="descname">establecer_lenguaje</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Establece el lenguaje del objeto Distancia.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (str) {“es”, “en”, “de”, “fr”}. 
+Valor por defecto: “es”. Indica el lenguaje que utilizará el 
+vectorizador, soporta los lenguajes Español(es), Inglés(en), 
+Alemán(de) y Francés(fr).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.establecer_vectorizador">
+<code class="descname">establecer_vectorizador</code><span class="sig-paren">(</span><em><span class="n">vectorizador</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.establecer_vectorizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Establece el vectorizador del objeto Distancia.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>vectorizador</strong> – objeto tipo vectorizador. Carga y establece el 
+vectorizador del objeto Distancia. Si no se especifica un 
+vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un 
+vectorizador al objeto de Distancia, este ya debe estar ajustado.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.hamming">
+<code class="descname">hamming</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.hamming" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la distancia hamming entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor de distancia entre textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.jaccard">
+<code class="descname">jaccard</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.jaccard" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la distancia jaccard entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor de distancia entre textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.l1">
+<code class="descname">l1</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.l1" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la distancia L1 entre textos. También conocida como la 
+la distancia Manhattan.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor de distancia entre textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.l2">
+<code class="descname">l2</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.l2" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la distancia L2 entre textos. También conocida como la 
+la distancia Euclidiana.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor de distancia entre textos.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Distancia.minkowski">
+<code class="descname">minkowski</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Distancia.minkowski" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la distancia minkowski entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de distancia.</li>
+<li><strong>p</strong> – (int) orden con el que se calcula la distancia.  
+Cuando p=1 es equivalente a la distancia de Manhattan  
+y cuando p=2 es equivalente a la distancia euclidiana.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor de distancia entre textos.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="comparacion.Similitud">
+<em class="property">class </em><code class="descclassname">comparacion.</code><code class="descname">Similitud</code><span class="sig-paren">(</span><em><span class="n">vectorizador</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">lenguaje</span><span class="o">=</span><span class="default_value">'es'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Similitud" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="docutils">
+<dt>Constructor de la clase Similitud. </dt><dd>Permite calcular la similitud coseno y jaccard entre textos.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vectorizador</strong> – objeto tipo vectorizador. 
+Valor por defecto: None. 
+Carga y establece el vectorizador del objeto Similitud. 
+Si no se especifica un 
+vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un 
+vectorizador al objeto de Similitud, este ya debe estar ajustado.</li>
+<li><strong>lenguaje</strong> – (str) {“es”, “en”, “de”, “fr”}. 
+valor por defecto: “es”. Indica el lenguaje que utilizará el 
+vectorizador, soporta los lenguajes Español(es), Inglés(en), 
+Alemán(de) y Francés(fr).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="comparacion.Similitud.coseno">
+<code class="descname">coseno</code><span class="sig-paren">(</span><em><span class="n">textos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Similitud.coseno" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la similitud coseno entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de similitud. También es posible ingresar directamente 
+los vectores pre-calculados de los textos.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">array con el valor de similitud entre textos. valor entre  
+0 y 1, donde 1 representa que los textos son iguales.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Similitud.establecer_lenguaje">
+<code class="descname">establecer_lenguaje</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Similitud.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Establece el lenguaje del objeto Similitud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (str) {“es”, “en”, “de”, “fr”}. 
+Valor por defecto: “es”. Indica el lenguaje que utilizará el 
+vectorizador, soporta los lenguajes Español(es), Inglés(en), 
+Alemán(de) y Francés(fr).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Similitud.establecer_vectorizador">
+<code class="descname">establecer_vectorizador</code><span class="sig-paren">(</span><em><span class="n">vectorizador</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Similitud.establecer_vectorizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Establece el vectorizador del objeto Similitud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>vectorizador</strong> – objeto tipo vectorizador. Carga y establece el 
+vectorizador del objeto Similitud. Si no se especifica un 
+vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un 
+vectorizador al objeto de Similitud, este ya debe estar ajustado.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="comparacion.Similitud.jaccard">
+<code class="descname">jaccard</code><span class="sig-paren">(</span><em><span class="n">textos</span></em>, <em><span class="n">vectorizar</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#comparacion.Similitud.jaccard" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la similitud de jaccard entre textos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>textos</strong> – (list) lista de textos (str) de interés para el 
+cálculo de similitud. También es posible ingresar directamente 
+los vectores pre-calculados de los textos utilizando 
+vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).</li>
+<li><strong>vectorizar</strong> – (bool) {True, False} valor por defecto: False. 
+Si el parámetro <em>textos</em> corresponde a una lista de textos, 
+el parámentro vectorizar debe ser True, de lo contrario False.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">array con el valor de similitud entre textos. valor entre  
+0 y 1, donde 1 representa que los textos son iguales.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="correccion.html" class="btn btn-neutral float-right" title="Corrección" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../pendientes_borrar.html" class="btn btn-neutral float-left" title="Pendientes - BORRAR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, UCD - DNP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

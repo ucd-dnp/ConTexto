@@ -1,8 +1,8 @@
 
-vectorizacion texto
-===================
+Stemming
+=========
 
-.. automodule:: vectorizacion_texto
+.. automodule:: stemming
    :members:
    :undoc-members:
    :show-inheritance:
