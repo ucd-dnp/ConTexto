@@ -96,7 +96,7 @@ def quitar_coincidenias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
 # Establece los criterios (de repetidos y consecutivos) 
 # dependiendo de la longitud de la palabra de entrada.
 dict_condiciones = {
-    1: 0,
+    1: 999,
     2: 2,
     3: 2,
     4: 3
