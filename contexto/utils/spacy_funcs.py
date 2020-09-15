@@ -1,10 +1,31 @@
 import os
 import spacy
 
-# Información sobre los modelos disponibles para cada idioma: 
-# https://spacy.io/models/
-
 def cargar_modelo(dim_modelo, lenguaje):
+    """
+    Carga y retorna un modelo de lenguaje de spaCy del tamaño y lenguaje especificados por \
+        el usuario. Para mayor información sobre estos modelos se puede consultar la página \
+        de spaCy (https://spacy.io/models/).
+
+    :param dim_modelo: (str). Tamaño del modelo de spaCy que se desea utilizar. Puede ser \
+        una de las siguientes opciones, sin hacer distinción entre mayúsculas y minúsculas:
+            |ul|  |li| pequeño: {'pequeño', 'pequeno', 'small', 's', 'sm'} |/li|
+            |li| mediano: {'mediano', 'medio', 'md', 'medium', 'm'} |/li|
+            |li| grande: {'grande', 'large', 'lg', 'gr'} |/li|  |/ul|
+
+        Entre más grande sea el modelo es posible que tenga un soporte de sus características para \
+        un vocabulario más amplio. También aumentará el tamaño del archivo de cada modelo. Si un \
+        modelo de determinado lenguaje y tamaño no se encuentra en el computador del usuario, la \
+        función lo descargará. Una vez descargado el modelo correspondiente, el usuario debe correr \
+        la función de nuevo.
+    :param lenguaje: (str). Lenguaje para el que se desea cargar el modelo de spaCy. spaCy tiene modelos \
+        disponibles para varios lenguajes. Para mayor información, visitar https://spacy.io/models/
+    :return: Modelo de spaCy, del tamaño y lenguaje especificados. Si el modelo requerido no está disponible \
+        en el computador del usuario, la función descargará el modelo correspondiente, lo cual puede tardar \
+        algunos minutos, dependiendo del tamaño de los modelos y la velocidad de conexión a internet del usuario. \
+        Si este es el caso, la función retornará un modelo en blanco, del lenguaje especificado por el usuario. \
+        A partir de la siguiente vez que se corra la función, esta retornará el modelo ya descargado.
+    """
     dim_modelo = dim_modelo.lower()
     # Estandarizar el tamaño del modelo
     if dim_modelo in ['grande', 'large', 'lg', 'gr']:
@@ -24,7 +45,7 @@ def cargar_modelo(dim_modelo, lenguaje):
         language_model = f'{lenguaje}_core_news_{dim_modelo}'
     # Se intenta cargar el modelo
     try:
-        lematizador = spacy.load(language_model)
+        modelo = spacy.load(language_model)
     # Si no funciona, se trata de descargar el modelo, o se usa uno vacío
     except BaseException:
         try:
@@ -38,6 +59,6 @@ def cargar_modelo(dim_modelo, lenguaje):
         except BaseException:
             print(
                 '\n[INFO] El modelo no pudo ser descargado, se cargará un modelo vacío.\n')
-        lematizador = spacy.blank(lenguaje)
-    # Devolver el lematizador
-    return lematizador
+        modelo = spacy.blank(lenguaje)
+    # Devolver el modelo
+    return modelo
