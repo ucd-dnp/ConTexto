@@ -8,4 +8,4 @@ sphinx
 test
 ejemplos/salida/*
 !ejemplos/salida/readme.md
-ejemplos/.ipynb_checkpoints
+*/.ipynb_checkpoints/*
