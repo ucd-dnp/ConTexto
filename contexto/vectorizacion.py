@@ -370,7 +370,7 @@ class VectorizadorDoc2Vec():
             self.vectorizador = doc2vec.Doc2Vec(vector_size=n_elementos, min_count=minima_cuenta, epochs=epocas, seed=semilla)
 
     # Función para procesar una lista de textos y dejarla lista para el modelo
-    def preparar_textos(self, lista_textos):
+    def __preparar_textos(self, lista_textos):
         """ Convierte una lista de textos a una lista de tokens luego de
             aplicar un preprocesamiento, para luego ser utilizados \ 
             por el modelo.
@@ -401,7 +401,7 @@ class VectorizadorDoc2Vec():
         :return:
         """
         # Pre procesar los textos de entrenamiento
-        corpus_entrenamiento = list(self.preparar_textos(corpus_entrenamiento))
+        corpus_entrenamiento = list(self.__preparar_textos(corpus_entrenamiento))
         # Construir vocabulario del modelo
         self.vectorizador.build_vocab(corpus_entrenamiento, update=actualizar)
         # Entrenar modelo

@@ -11,15 +11,6 @@ import warnings
 from sklearn.exceptions import DataConversionWarning
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-# Función auxiliar
-def jaccard_textos(texto1, texto2):
-    if type(texto1) == str:
-        texto1 = texto1.split()
-    if type(texto2) == str:
-        texto2 = texto2.split()
-    intersection = set(texto1).intersection(set(texto2))
-    union = set(texto1).union(set(texto2))
-    return np.array([[len(intersection)/len(union)]])
 
 ### Clase Similitud ----------------------------------------------------
 
@@ -42,6 +33,17 @@ class Similitud():
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
+
+
+    # Función auxiliar
+    def __jaccard_textos(self,texto1, texto2):
+        if type(texto1) == str:
+            texto1 = texto1.split()
+        if type(texto2) == str:
+            texto2 = texto2.split()
+        intersection = set(texto1).intersection(set(texto2))
+        union = set(texto1).union(set(texto2))
+        return np.array([[len(intersection)/len(union)]])
         
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Similitud.
@@ -113,7 +115,7 @@ class Similitud():
                     textos = self.vectorizador.vectorizar(textos)
                     return 1 - pairwise_distances(textos[None,0], textos[None,1], metric='jaccard')
                 else:
-                    return jaccard_textos(textos[0], textos[1])
+                    return self.__jaccard_textos(textos[0], textos[1])
             else:
                 return 1 - pairwise_distances(textos[None,0], textos[None,1], metric='jaccard')
         else:
@@ -125,7 +127,7 @@ class Similitud():
                     similitudes = np.zeros((n_textos, n_textos))
                     for i in range(n_textos):
                         for j in range(i, n_textos):
-                            similitudes[i, j] = jaccard_textos(textos[i], textos[j])
+                            similitudes[i, j] = self.__jaccard_textos(textos[i], textos[j])
                     # Para que la matriz de similitudes quede simétrica
                     similitudes += similitudes.T - np.diag(np.diag(similitudes))
             else:

@@ -4,17 +4,6 @@ import sys
 with open("README.md", "r", encoding ='utf-8') as fh:
     long_description = fh.read()
 
-
-TORCH36 = 'torch @ https://download.pytorch.org/whl/cpu/torch-1.6.0%2Bcpu-cp36-cp36m-win_amd64.whl'
-TORCH_VISION36 = 'torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.7.0%2Bcpu-cp36-cp36m-win_amd64.whl'
-
-TORCH37 = 'torch @ https://download.pytorch.org/whl/cpu/torch-1.6.0%2Bcpu-cp37-cp37m-win_amd64.whl'
-TORCH_VISION37 = 'torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.7.0%2Bcpu-cp37-cp37m-win_amd64.whl'
-
-TORCH38 = 'torch @ https://download.pytorch.org/whl/cpu/torch-1.6.0%2Bcpu-cp38-cp38-win_amd64.whl'
-TORCH_VISION38 = 'torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.7.0%2Bcpu-cp38-cp38-win_amd64.whl'
-
-
 INSTALL_REQUIRES = ['gensim==3.8.3',
                     'googletrans==3.0.0',
                     'jellyfish==0.8.2',
@@ -34,9 +23,6 @@ INSTALL_REQUIRES = ['gensim==3.8.3',
                     'reportlab==3.5.48',
                     'scikit-learn==0.23.2',
                     'spacy==2.3.2',
-                    'stanza==1.1.1',
-                    TORCH36,
-                    TORCH_VISION36,
                     'wordcloud==1.8.0']
 
 PACKAGE_NAME = 'ConTexto'
