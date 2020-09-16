@@ -5,3 +5,8 @@ dist
 __pycache__
 sphinx
 test
+# exclude everything
+ejemplos/salida/*
+
+# exception to the rule
+!ejemplos/salida/readme.md
