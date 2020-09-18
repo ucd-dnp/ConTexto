@@ -9,3 +9,4 @@ test
 ejemplos/salida/*
 !ejemplos/salida/readme.md
 */.ipynb_checkpoints/*
+*/*/.ipynb_checkpoints/*
