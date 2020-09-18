@@ -76,6 +76,7 @@ def quitar_coincidenias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
         
         Cada coincidencia encontrada entre la lista de textos es reemplazada de los textos de \
         entrada por un espacio en blanco.
+
     :param lista_textos: (list). Lista de textos sobre los cuales se desea buscar coincidencias.
     :param prop: (float). Valor por defecto: 0.5. Número entre 0 y 1 que determina la proporción \
         mínima de la lista de textos en los que debe estar presente una cadena de caracteres para \
@@ -191,6 +192,7 @@ def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_con
         determinado.
 
     Al final, devuelve el texto de entrada sin las palabras identificadas.
+
     :param texto: (str). Texto al que se desean quitar palabras potencialmente problemáticas.
     :param n_repetidas: (int). Valor por defecto: None. Número mínimo de veces seguidas que se debe repetir \
         un caracter en una palabra para que cumpla este criterio. Si n_repetidas=None, la función no identificará \
