@@ -346,13 +346,13 @@ class VectorizadorDoc2Vec():
         """Constructor de la clase VectorizadorDoc2Vec.  \ 
             Permite hacer vectorizaciones usando Doc2Vec.
 
-        :param n_elementos: (int) valor por defecto: 100. Número de términos \ 
-            a ser tenidos en cuenta en la vectorización.
+        :param n_elementos: (int) valor por defecto: 100. Número de elementos \ 
+            que tendrán los vectores generados por el vectorizador.
         :param minima_cuenta: (int) valor por defecto: 5. Frecuencia \ 
             mínima que debe tener cada término para ser tenido en cuenta \ 
             en el modelo.
         :param epocas: (int) valor por defecto: 20. Número de iteraciones \ 
-            que realiza la red neuronal para entrenar el modelo.
+            que realiza la red neuronal al entrenar el modelo.
         :param semilla: (int) valor por defecto: 1. El modelo tiene un \ 
             componente aleatorio. Se establece una semilla para poder \ 
             replicar los resultados.
