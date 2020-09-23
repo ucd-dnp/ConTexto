@@ -32,8 +32,6 @@ nivel 2
 nivel 3
 ~~~~~~~
 
-
-
 Notas
 =====
 
@@ -44,4 +42,33 @@ Notas
 * agregar descripción en módulo de Utils
 * agregar descripción en introducción
 * agregar descripción en ejemplos
+
+.. centered:: LICENSE AGREEMENT
+
+.. hlist::
+   :columns: 3
+
+   * A list of
+   * short items
+   * that should be
+   * displayed
+   * horizontally
+
+.. seealso::
+
+   Module :py:mod:`correccion`
+      Documentation of the :py:mod:`Módulo de Lectura <lectura>` standard module.
+
+   `GNU tar manual, Basic Tar Format <http://link>`_
+      Documentation for tar archive files, including GNU tar extensions.
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 3,5
+
+   def some_function():
+       interesting = False
+       print 'This line is highlighted.'
+       print 'This one is not...'
+       print '...but this one is.'
 

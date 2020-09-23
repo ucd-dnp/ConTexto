@@ -14,7 +14,7 @@ ConTexto - Librería de procesamiento y análisis de textos
 .. toctree::
    :maxdepth: 2
    :caption: Módulos y funciones:
-   :hidden:
+   :hidden:   
    
    funciones/comparacion
    funciones/correccion
