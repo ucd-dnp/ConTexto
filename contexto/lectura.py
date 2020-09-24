@@ -105,10 +105,10 @@ class Lector():
              |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
                 de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
-        :param lenguaje: (string). {'es', 'en'}  Se define el \
+        :param lenguaje: (string). {'spa', 'eng'}  Se define el \
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
-            óptico de caracteres (el parámetro ocr es True). Tiene las opciones de español \
-            ('es') e inglés ('en')
+            óptico de caracteres (el parámetro ocr es True). Tiene las opciones de los lenguajes\
+            que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
         :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
@@ -189,8 +189,8 @@ class Lector():
              |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
              |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
-        :param lenguaje: (string). {'es', 'en'}  Se define el lenguaje del texto que se desea extraer. \
-            Tiene las opciones de español ('es') e inglés ('en')
+        :param lenguaje: (string). {'spa', 'eng'}  Se define el lenguaje del texto que se desea extraer. \
+            Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
         :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
@@ -271,8 +271,8 @@ class Lector():
              |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
              |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
-        :param lenguaje: (string). {'es', 'en'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
-            Tiene las opciones de español ('es') e inglés ('en'). Aplica cuando se extrae el texto de \
+        :param lenguaje: (string). {'spa', 'eng'}. Valor por defecto: 'spa'  Tiene las opciones de los lenguajes que se descargan \
+            de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng'). Aplica cuando se extrae el texto de \
             imágenes o archivos escaneados
         :param oem: (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
@@ -378,8 +378,9 @@ def leer_texto(
          |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
          |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
          |/ul| 
-    :param lenguaje: (string). {'es', 'en'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
-        Tiene las opciones de español ('es') e inglés ('en'). Aplica cuando se extrae el texto de \
+    :param lenguaje: (string). {'spa', 'eng'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
+        Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés \
+        ('eng'). Aplica cuando se extrae el texto de \
         imágenes o archivos escaneados
     :param oem: (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
         en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \

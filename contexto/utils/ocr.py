@@ -35,7 +35,7 @@ class OCR():
                 adaptativo
             5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
                 de imagen con el método de OTSU, blurring y umbral adaptativo             
-        :param lenguaje: (string). {'es', 'en'}  Se define el \
+        :param lenguaje: (string). {'spa', 'en'}  Se define el \
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
             óptico de caracteres (el parámetro ocr es True). Tiene las opciones de español \
             ('es') e inglés ('en')

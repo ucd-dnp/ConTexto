@@ -18,7 +18,7 @@ class LematizadorSpacy():
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
                 |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
                 |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
                 |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
 
@@ -56,7 +56,7 @@ class LematizadorSpacy():
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
                 |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
                 |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
                 |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
         """
@@ -128,7 +128,7 @@ class LematizadorStanza():
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
                 |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
                 |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
                 |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
         :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
@@ -167,7 +167,7 @@ class LematizadorStanza():
             ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
                 |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
                 |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
                 |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
         """
@@ -261,7 +261,7 @@ def lematizar_texto(
         se adivina el lenguaje). Se aceptan las siguientes variaciones para cada \
         idioma (sin importar acentos ni mayúsculas): \
             |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-            |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing', 'in'} |/li|
+            |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
             |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
             |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
     :param libreria: (string). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
