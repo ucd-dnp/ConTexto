@@ -18,7 +18,7 @@ La librería surge como solución a tres principales aspectos, primero, la neces
 
 ## Ejemplo
 
-En esta sección presentaremos dos ejemplos de funciones de la librería, el primero correspondiente a la limpieza de textos y el segundo sobre la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
+En esta sección nos enfocaremos en presentar unos cortos ejemplos de algunas funciones de la librería teniendo dos enfoques en particular, el primero correspondiente a la limpieza de textos y el segundo sobre la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
 
 ### Ejemplo - Limpieza de textos
 
@@ -96,9 +96,89 @@ hola prueba verificar limpieza hecha precision empeno calidad esperamos todo des
 
 ### Ejemplo - Visualización de textos
 
+Para este ejemplo, se va a trabajar con el texto de la novela **"Don Quijote de la Mancha"**, escrita por Miguel de Cervantes Saavedra. El texto completo de esta novela está en la carpeta de ejemplos/entrada del repositorio, y fue descargado desde la página del [Proyecto Gutenberg](https://www.gutenberg.org/), que tiene a su disposición miles de libros de forma gratuita.
+
+Procedemos a importar los módulos necesarios.
+
+```
+from contexto.lectura import leer_texto
+from contexto.limpieza import limpieza_texto, lista_stopwords, remover_stopwords
+from contexto.exploracion import grafica_barchart_frecuencias
+from contexto.exploracion import obtener_ngramas, nube_palabras, par_nubes
+```
+
+La función **leer_texto** del módulo **lectura** es utilizada para extraer el texto del archivo que contiene la novela. Luego, se realiza una limpieza estándar del texto, para que esté mejor adecuado para su exploración. Para esto, se utilizan las funciones **limpieza_texto** y **lista_stopwords**, del módulo **limpieza**.
+
+Finalmente, en el texto aparece en varias ocasiones la expresión "project gutenberg", el nombre del proyecto que pone a disposición la novela. Como esta información no está directamente relacionada al texto que nos interesa, se va a remover utilizando la función **remover_stopwords**.
+
+* Cargar y limpiar texto de prueba
+
+```
+ruta_cuento = 'entrada/cervantes_don_quijote.txt'
+
+texto_prueba = leer_texto(ruta_cuento)
+texto = limpieza_texto(texto_prueba, quitar_numeros=False, n_min=3, lista_palabras=lista_stopwords())
+texto = remover_stopwords(texto, lista_expresiones=['project gutenberg'])
+```
+
+Una vez limpio el texto, procedemos a utilizar la función **obtener_ngramas** que permite encontrar n-gramas, o conjuntos de n palabras seguidas donde n es un número entero mayor a cero. Por ejemplo, si n=1 o n=2, la función obtendrá las palabras o los bigramas del texto, respectivamente.
+
+Con esta información se puede obtener la frecuencia de cada n-grama, y así conocer cuales son los más mencionados en el texto. Esto puede ser graficado de varias maneras, como por ejemplo mediante nubes de palabras, en las cuales el tamaño de un término es proporcional a su frecuencia de aparición.
+
+* Obtener listas de palabras y bigramas más frecuentes
+
+```
+unigramas = obtener_ngramas(texto, 1)
+bigramas = obtener_ngramas(texto, 2)
+
+bigramas[98:105]
+```
+```
+['ingenioso hidalgo',
+ 'hidalgo mancha',
+ 'mancha compuesto',
+ 'compuesto miguel',
+ 'miguel cervantes',
+ 'cervantes saavedra',
+ 'saavedra tasaron']
+```
+
+* Graficar y guardar nubes de palabras y bigramas
+
+```
+# El parámetro "dim_figura" permite definir el tamaño de la gráfica
+# Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada
+
+nube_palabras(texto, n_grama=2, ubicacion_archivo='salida/nube_bi.jpg', hor=0.9, dim_figura=(10,10))
+```
+
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_bi.jpg "Nube de palabras")
+
+La función **par_nubes** permite generar un par de nubes de palabras (una junto a otra).
+
+```
+par_nubes(texto, n1=1, n2=2, ubicacion_archivo='salida/nube_uni_bi.jpg')
+```
+
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_uni_bi.jpg "Nube de palabras")
+
+* Gráficas de barras con las frecuencias
+
+Los n-gramas más frecuentes también se pueden visualizar mediante gráficas más estándar como, por ejemplo, gráficos de barras que muestren los términos más frecuentes. La función **grafica_barchart_frecuencias** permite obtener estas gráficas.
+
+```
+grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jpg', 
+                             titulo='Frecuencias de palabras', dim_figura=(7,4))
+```
+
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
+
+Si se cambia el parámetro "ascendente" a False, los términos más frecuentes saldrán en la parte de abajo
+```
+grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_bigramas.jpg', 
+                             n_grama=2, ascendente=False, dim_figura=(7,4))
+```
+
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_bigramas.jpg "Nube de palabras")
 
 
