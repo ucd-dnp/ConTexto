@@ -18,17 +18,100 @@ La librería surge como solución a tres principales aspectos, primero, la neces
 
 ## Ejemplo
 
-Lorem ipsum dolor sit amet, ... PENDIENTE
+En esta sección presentaremos dos ejemplos de funciones de la librería, el primero correspondiente a la limpieza de textos y el segundo sobre la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
+
+### Ejemplo - Limpieza de textos
+
+Para este ejemplo utilizaremos el siguiente texto de prueba.
+```
+texto_prueba = '''hola, esto es una prueba para verificar que la limpieza
+sea hecha con precisión, empeño y calidad! Esperamos que esté todo de 10.
+
+Desde Amazonas hasta la Guajira y san andrés, desde John y María hasta Ernesto,
+esperamos       que todo funcione de manera correcta.'''
+```
+
+Se debe importar el módulo de limpieza.
+
+```
+from contexto.limpieza import *
+```
+
+La librería cuenta con varias funciones de limpieza como son:
+
+* **limpieza_basica**, pasa el texto a minúsculas, elimina signos de puntuación y números.
+```
+limpio_basico = limpieza_basica(texto_prueba)
+print(limpio_basico)
+```
+```
+hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
+```
+Si desea mantener los caracteres numéricos se debe asignar el parámetro quitar_numeros como *False*
+```
+limpio_basico_nums = limpieza_basica(texto_prueba, quitar_numeros=False)
+print(limpio_basico_nums)
+```
+```
+hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
+```
+
+* **remover_acentos**, remueve acentos del texto (diéresis, tildes y virgulillas).
+```
+sin_acentos = remover_acentos(limpio_basico)
+print(sin_acentos)
+```
+```
+hola esto es una prueba para verificar que la limpieza sea hecha con precision empeno y calidad esperamos que este todo de desde amazonas hasta la guajira y san andres desde john y maria hasta ernesto esperamos que todo funcione de manera correcta
+```
+
+* **remover_palabras_cortas**, permite remover palabras con una longitud estrictamente menor a *n_min*.
+```
+quitar_caracteres = remover_palabras_cortas(sin_acentos, n_min=5)
+print(quitar_caracteres)
+```
+```
+prueba verificar limpieza hecha precision empeno calidad esperamos desde amazonas hasta guajira andres desde maria hasta ernesto esperamos funcione manera correcta
+```
+
+* La función **limpieza_texto** permite realizar una limpieza más completa del texto, ya que contiene las funcionalidades descritas anteriormente y otras.
+La función permite:
+  
+	- Pasar todo el texto a minúsculas
+	- Quitar signos de puntuación
+	- Quitar stopwords (palabras y/o expresiones). Para esto, se pueden pasar directamente las listas de palabras y expresiones a quitar, o se puede pasar un archivo que contenga esta información.
+	- Quitar palabras de una longitud menor a n caracteres (configurable)
+	- Quitar números (configurable)
+	- Quitar acentos (configurable)
+  
+```
+limpio_completo = limpieza_texto(texto_prueba, n_min=3, quitar_acentos=True, 
+	lista_palabras = ['esto','sea', 'con', 'que', 'para', 'este', 'una'])
+
+print(limpio_completo)
+```
+```
+hola prueba verificar limpieza hecha precision empeno calidad esperamos todo desde amazonas hasta guajira san andres desde john maria hasta ernesto esperamos todo funcione manera correcta
+```
+
+### Ejemplo - Visualización de textos
+
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_bi.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_uni_bi.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_bigramas.jpg "Nube de palabras")
+
+
 
 ## Documentación
 
 La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta, para acceder a la documentación siga el siguiente link:
 
-[Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/contexto/)
+[Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/ConTexto/)
 
 ## Instalación
 
-Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``, por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales, para más información consultar la sección de instalación en la página de [documentación](https://ucd-dnp.github.io/contexto/instalacion.html).
+Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``, por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales, para más información consultar la sección de instalación en la página de [documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
 
 ```
 pip install contexto
