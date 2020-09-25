@@ -5,7 +5,7 @@ with open("README.md", "r", encoding ='utf-8') as fh:
     long_description = fh.read()
 
 INSTALL_REQUIRES = ['gensim==3.8.3',
-                    'googletrans==3.0.0',
+                    'googletrans==2.4.0',
                     'jellyfish==0.8.2',
                     'langid==1.1.6',
                     'matplotlib==3.3.1',
@@ -29,7 +29,7 @@ PACKAGE_NAME = 'ConTexto'
 
 setuptools.setup(
     name=PACKAGE_NAME,
-    version='0.1.0',
+    version='0.1.1',
     author="Departamento Nacional de Planeación - DNP",
     author_email='ucd@dnp.gov.co',
     maintainer='Unidad de Científicos de Datos - UCD',
