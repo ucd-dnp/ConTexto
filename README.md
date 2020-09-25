@@ -146,13 +146,9 @@ bigramas[98:105]
 * Graficar y guardar nubes de palabras y bigramas
 
 ```
-# El parámetro "dim_figura" permite definir el tamaño de la gráfica
-# Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada
-
-nube_palabras(texto, n_grama=2, ubicacion_archivo='salida/nube_bi.jpg', hor=0.9, dim_figura=(10,10))
+El parámetro "dim_figura" permite definir el tamaño de la gráfica
+Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada
 ```
-
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_bi.jpg "Nube de palabras")
 
 La función **par_nubes** permite generar un par de nubes de palabras (una junto a otra).
 
@@ -172,15 +168,6 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 ```
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
-
-Si se cambia el parámetro "ascendente" a False, los términos más frecuentes saldrán en la parte de abajo
-```
-grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_bigramas.jpg', 
-                             n_grama=2, ascendente=False, dim_figura=(7,4))
-```
-
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_bigramas.jpg "Nube de palabras")
-
 
 
 ## Documentación
