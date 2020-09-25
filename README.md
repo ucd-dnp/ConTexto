@@ -40,20 +40,14 @@ from contexto.limpieza import *
 La librería cuenta con varias funciones de limpieza como son:
 
 * **limpieza_basica**, pasa el texto a minúsculas, elimina signos de puntuación y números.
+
+  Si desea mantener los caracteres numéricos se debe asignar el parámetro quitar_numeros como *False*
 ```
 limpio_basico = limpieza_basica(texto_prueba)
 print(limpio_basico)
 ```
 ```
 hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
-```
-Si desea mantener los caracteres numéricos se debe asignar el parámetro quitar_numeros como *False*
-```
-limpio_basico_nums = limpieza_basica(texto_prueba, quitar_numeros=False)
-print(limpio_basico_nums)
-```
-```
-hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
 ```
 
 * **remover_acentos**, remueve acentos del texto (diéresis, tildes y virgulillas).
@@ -104,7 +98,7 @@ Procedemos a importar los módulos necesarios.
 from contexto.lectura import leer_texto
 from contexto.limpieza import limpieza_texto, lista_stopwords, remover_stopwords
 from contexto.exploracion import grafica_barchart_frecuencias
-from contexto.exploracion import obtener_ngramas, nube_palabras, par_nubes
+from contexto.exploracion import obtener_ngramas, par_nubes
 ```
 
 La función **leer_texto** del módulo **lectura** es utilizada para extraer el texto del archivo que contiene la novela. Luego, se realiza una limpieza estándar del texto, para que esté mejor adecuado para su exploración. Para esto, se utilizan las funciones **limpieza_texto** y **lista_stopwords**, del módulo **limpieza**.
@@ -146,7 +140,6 @@ bigramas[98:105]
 * Graficar y guardar nubes de palabras y bigramas
 
 ```
-El parámetro "dim_figura" permite definir el tamaño de la gráfica
 Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada
 ```
 
