@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                sept. 24 11:16 a. m.
+                Versión 0.1
               </div>
             
           
@@ -101,6 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pendientes_borrar.html">Pendientes - BORRAR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
@@ -218,30 +220,11 @@ diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).</p>
 <li> 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. </li> 
 <li> 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. </li> 
 </ul></li>
-<li><strong>lenguaje</strong> – (string). {“es”, “en”}. Valor por defecto: “spa”  Se define el lenguaje del texto que se desea extraer.             Tiene las opciones de español (“es”) e inglés (“en”). Aplica cuando se extrae el texto de             imágenes o archivos escaneados</li>
-<li><strong>oem</strong> – (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de “oem”             permiten escoger cada uno de estos motores por separado, ambos al tiempo o             automáticamente:
-<ul> 
-<li> 0: utilizar únicamente el motor Legacy. </li> 
-<li> 1: utilizar únicamente el motor de redes neuronales LSTM. </li> 
-<li> 2: utilizar los motores Legacy y LSTM. </li> 
-<li> 3: escoger el motor según lo que hay disponible. </li> 
-</ul></li>
-<li><strong>psm</strong> – (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la             librería Pytesseract. Cada número hace referencia a un modo de segmentación:              <ul> 
-<li> 0: orientation y detección de script (OSD) únicamente. </li> 
-<li> 1: segmentación automática de páginas con OSD. </li> 
-<li> 2: segmentación automática de páginas sin OSD ni OCR. </li> 
-<li> 3: segmentación completamente automática de páginas sin OSD. </li> 
-<li> 4: supone una única columna de texto de tamaños variables. </li> 
-<li> 5: supone un único bloque uniforme de texto alineado de forma vertical. </li> 
-<li> 6: asume un único bloque uniforme de texto. </li> 
-<li> 7: trata la imagen como una única línea de texto. </li> 
-<li> 8: trata la imagen como una única palabra. </li> 
-<li> 9: trata la imagen como una única palabra dentro de un círculo. </li> 
-<li> 10: trata la imagen como un único carácter. </li> 
-<li> 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. </li> 
-<li> 12: Buscador de texto disperso con OSD. </li> 
-<li> 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. </li> 
-</ul></li>
+<li><strong>lenguaje</strong> – (string). {“spa”, “eng”}. Valor por defecto: “spa”  Tiene las opciones de los lenguajes que se descargan             de la página de Tesseract. por ejemplo: español (“spa”) e inglés (“eng”). Aplica cuando se extrae el texto de             imágenes o archivos escaneados</li>
+<li><strong>oem</strong> – (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Para mayor información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
+<li><strong>psm</strong> – (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación 
+de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. 
+Para mayor información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
 <li><strong>password</strong> – (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea             extraer, en caso de requerirlo</li>
 </ul>
 </td>
@@ -283,29 +266,10 @@ diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).</p>
 <li> 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. </li> 
 <li> 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. </li> 
 </ul></li>
-<li><strong>lenguaje</strong> – (string). {“es”, “en”}  Se define el lenguaje del texto que se desea extraer.             Tiene las opciones de español (“es”) e inglés (“en”)</li>
-<li><strong>oem</strong> – (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de “oem”             permiten escoger cada uno de estos motores por separado, ambos al tiempo o             automáticamente:              <ul> 
-<li> 0: utilizar únicamente el motor Legacy. </li> 
-<li> 1: utilizar únicamente el motor de redes neuronales LSTM. </li> 
-<li> 2: utilizar los motores Legacy y LSTM. </li> 
-<li> 3: escoger el motor según lo que hay disponible. </li> 
-</ul></li>
-<li><strong>psm</strong> – (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la             librería Pytesseract. Cada número hace referencia a un modo de segmentación:              <ul> 
-<li> 0: orientation y detección de script (OSD) únicamente. </li> 
-<li> 1: segmentación automática de páginas con OSD. </li> 
-<li> 2: segmentación automática de páginas sin OSD ni OCR. </li> 
-<li> 3: segmentación completamente automática de páginas sin OSD. </li> 
-<li> 4: supone una única columna de texto de tamaños variables. </li> 
-<li> 5: supone un único bloque uniforme de texto alineado de forma vertical. </li> 
-<li> 6: asume un único bloque uniforme de texto. </li> 
-<li> 7: trata la imagen como una única línea de texto. </li> 
-<li> 8: trata la imagen como una única palabra. </li> 
-<li> 9: trata la imagen como una única palabra dentro de un círculo. </li> 
-<li> 10: trata la imagen como un único carácter. </li> 
-<li> 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. </li> 
-<li> 12: Buscador de texto disperso con OSD. </li> 
-<li> 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. </li> 
-</ul></li>
+<li><strong>lenguaje</strong> – (string). {“spa”, “eng”}  Se define el lenguaje del texto que se desea extraer.             Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español (“spa”) e inglés (“eng”)</li>
+<li><strong>oem</strong> – (int) OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Para mayor información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
+<li><strong>psm</strong> – (int) PSM hace referencia a los modos de segmentación de las páginas             (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor 
+información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
 </ul>
 </td>
 </tr>
@@ -334,30 +298,12 @@ diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).</p>
 <li> 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral                 adaptativo. </li> 
 <li> 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral                 de imagen con el método de OTSU, blurring y umbral adaptativo. </li> 
 </ul></li>
-<li><strong>lenguaje</strong> – (string). {“es”, “en”}  Se define el             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento             óptico de caracteres (el parámetro ocr es True). Tiene las opciones de español             (“es”) e inglés (“en”)</li>
-<li><strong>oem</strong> – (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de “oem”             permiten escoger cada uno de estos motores por separado, ambos al tiempo o             automáticamente: 
-<ul> 
-<li> 0: utilizar únicamente el motor Legacy. </li> 
-<li> 1: utilizar únicamente el motor de redes neuronales LSTM. </li> 
-<li> 2: utilizar los motores Legacy y LSTM. </li> 
-<li> 3: escoger el motor según lo que hay disponible. </li> 
-</ul></li>
-<li><strong>psm</strong> – (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a             los modos de segmentación de las páginas (page segmentation modes, en inglés) de la             librería Pytesseract. Cada número hace referencia a un modo de segmentación:              <ul> 
-<li> 0: orientation y detección de script (OSD) únicamente. </li> 
-<li> 1: segmentación automática de páginas con OSD. </li> 
-<li> 2: segmentación automática de páginas sin OSD ni OCR. </li> 
-<li> 3: segmentación completamente automática de páginas sin OSD. </li> 
-<li> 4: supone una única columna de texto de tamaños variables. </li> 
-<li> 5: supone un único bloque uniforme de texto alineado de forma vertical. </li> 
-<li> 6: asume un único bloque uniforme de texto. </li> 
-<li> 7: trata la imagen como una única línea de texto. </li> 
-<li> 8: trata la imagen como una única palabra. </li> 
-<li> 9: trata la imagen como una única palabra dentro de un círculo. </li> 
-<li> 10: trata la imagen como un único carácter. </li> 
-<li> 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. </li> 
-<li> 12: Buscador de texto disperso con OSD. </li> 
-<li> 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. </li> 
-</ul></li>
+<li><strong>lenguaje</strong> – (string). {“spa”, “eng”}  Se define el             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento             óptico de caracteres (el parámetro ocr es True). Tiene las opciones de los lenguajes            que se descargan de la página de Tesseract. por ejemplo: español (“spa”) e inglés (“eng”)</li>
+<li><strong>oem</strong> – (int) OEM hace referencia al modo del motor OCR (OCR engine mode             en inglés). Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
+<li><strong>psm</strong> – (int) PSM hace referencia a los modos de segmentación de las páginas 
+(page segmentation modes, en inglés) de la librería Pytesseract. Para mayor 
+información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
 </ul>
 </td>
 </tr>
@@ -445,30 +391,11 @@ diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).</p>
 <li> 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. </li> 
 <li> 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. </li> 
 </ul></li>
-<li><strong>lenguaje</strong> – (string). {“es”, “en”}. Valor por defecto: “spa”  Se define el lenguaje del texto que se desea extraer.         Tiene las opciones de español (“es”) e inglés (“en”). Aplica cuando se extrae el texto de         imágenes o archivos escaneados</li>
-<li><strong>oem</strong> – (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode         en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de “oem”         permiten escoger cada uno de estos motores por separado, ambos al tiempo o         automáticamente: 
-<ul> 
-<li> 0: utilizar únicamente el motor Legacy. </li> 
-<li> 1: utilizar únicamente el motor de redes neuronales LSTM. </li> 
-<li> 2: utilizar los motores Legacy y LSTM. </li> 
-<li> 3: escoger el motor según lo que hay disponible. </li> 
-</ul></li>
-<li><strong>psm</strong> – (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a         los modos de segmentación de las páginas (page segmentation modes, en inglés) de la         librería Pytesseract. Cada número hace referencia a un modo de segmentación:          <ul> 
-<li> 0: orientation y detección de script (OSD) únicamente. </li> 
-<li> 1: segmentación automática de páginas con OSD. </li> 
-<li> 2: segmentación automática de páginas sin OSD ni OCR. </li> 
-<li> 3: segmentación completamente automática de páginas sin OSD. </li> 
-<li> 4: supone una única columna de texto de tamaños variables. </li> 
-<li> 5: supone un único bloque uniforme de texto alineado de forma vertical. </li> 
-<li> 6: asume un único bloque uniforme de texto. </li> 
-<li> 7: trata la imagen como una única línea de texto. </li> 
-<li> 8: trata la imagen como una única palabra. </li> 
-<li> 9: trata la imagen como una única palabra dentro de un círculo. </li> 
-<li> 10: trata la imagen como un único carácter. </li> 
-<li> 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. </li> 
-<li> 12: Buscador de texto disperso con OSD. </li> 
-<li> 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. </li> 
-</ul></li>
+<li><strong>lenguaje</strong> – (string). {“spa”, “eng”}. Valor por defecto: “spa”  Se define el lenguaje del texto que se desea extraer.         Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español (“spa”) e inglés         (“eng”). Aplica cuando se extrae el texto de         imágenes o archivos escaneados</li>
+<li><strong>oem</strong> – (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode         en inglés). Para mayor información consultar la sección de  <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
+<li><strong>psm</strong> – (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación 
+de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. 
+Para mayor información consultar la sección de <a class="reference internal" href="../seccion_ocr.html#seccion-ocr"><span class="std std-ref">OCR</span></a>.</li>
 <li><strong>password</strong> – (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea         extraer, en caso de requerirlo</li>
 </ul>
 </td>

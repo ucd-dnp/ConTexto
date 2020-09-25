@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                sept. 24 11:16 a. m.
+                Versión 0.1
               </div>
             
           
@@ -101,6 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pendientes_borrar.html">Pendientes - BORRAR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
@@ -191,10 +193,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lenguaje</strong> – (string) {“es”, “en”, “fr”, “de”}. Lenguaje de los             textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son español             (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas):                   <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></li>
+<li><strong>lenguaje</strong> – (str) Lenguaje de los textos a los que se les va a aplicar 
+corrección ortográfica. Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 <li><strong>diccionario</strong> – (dict, list o string). Valor por defecto: None. Diccionario (o string con ubicación del             archivo JSON que lo contiene), o lista que permite modificar y agregar palabras.             Si es una lista, contiene las palabras que serán consideradas como válidas o correctas.             Si es un diccionario, las llaves del diccionario son las palabras que serán consideradas
 como válidas o correctas, y los valores del diccionario son las frecuencias de cada palabra             en el diccionario. Las frecuencias son utilizadas como criterio de desempate, cuando una             palabra incorrecta tiene más de una palabra candidata para la corrección. Si se deja este             parámetro como None, se cargará el diccionario por defecto que trae la librería <cite>spellchecker</cite>             para el lenguaje determinado.</li>
 <li><strong>distancia</strong> – (int). Valor por defecto: 2. Máxima distancia de Levenshtein que puede haber 
@@ -227,7 +228,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabras</strong> – (string o list). Palabra o lista de palabras que se desean añadir al             diccionario del objeto de la clase Corrector, para que sean reconocidas como             correctas al momento de hacer la corrección ortográfica.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabras</strong> – (str o list). Palabra o lista de palabras que se desean añadir al             diccionario del objeto de la clase Corrector, para que sean reconocidas como             correctas al momento de hacer la corrección ortográfica.</td>
 </tr>
 </tbody>
 </table>
@@ -242,12 +243,12 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (string). Texto al cuál se desea aplicar corrección ortográfica.</li>
+<li><strong>texto</strong> – (str). Texto al cuál se desea aplicar corrección ortográfica.</li>
 <li><strong>limpieza</strong> – (bool) {True, False}. Valor por defecto: False. Argumento             opcional que define si se desea hacer una limpieza básica (            aplicando la función <cite>limpieza_basica</cite> del módulo <cite>limpieza</cite>) al             texto antes de aplicar la corrección ortográfica.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(string). Texto de entrada luego de la corrección ortográfica.</p>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(str). Texto de entrada luego de la corrección ortográfica.</p>
 </td>
 </tr>
 </tbody>
@@ -277,10 +278,8 @@ entre una palabra incorrecta (o no reconocida) y las palabras del diccionario pa
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (string) {“es”, “en”, “fr”, “de”}. Lenguaje de los             textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son             español (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas):                   <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (str) Lenguaje de los textos a los que se les va a aplicar             corrección ortográfica. Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -294,7 +293,7 @@ entre una palabra incorrecta (o no reconocida) y las palabras del diccionario pa
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (string). Palabra para la cual se desea conocer la frecuencia de             aparición en el diccionario del corrector.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (str). Palabra para la cual se desea conocer la frecuencia de             aparición en el diccionario del corrector.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(int) Número mayor o igual a cero que indica la frecuencia de la palabra             consultada en el diccionario del corrector.</td>
 </tr>
@@ -325,7 +324,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (string). Palabra para la que se quieren conocer palabras candidatas             para su corrección ortográfica.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (str). Palabra para la que se quieren conocer palabras candidatas             para su corrección ortográfica.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(set). Conjunto de palabras candidatas para corregir la palabra de entrada.</td>
 </tr>
@@ -341,7 +340,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (string). Texto para el que se desean hayar las palabras conocidas.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str). Texto para el que se desean hayar las palabras conocidas.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(set). Conjunto de palabras conocidas presentes en el texto de entrada.</td>
 </tr>
@@ -357,7 +356,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (string). Texto para el que se desean hallar las palabras desconocidas.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str). Texto para el que se desean hallar las palabras desconocidas.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(set). Conjunto de palabras desconocidas presentes en el texto de entrada.</td>
 </tr>
@@ -373,7 +372,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (string). Palabra para la cual se desea conocer la probabilidad             de aparición en el diccionario del corrector.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabra</strong> – (str). Palabra para la cual se desea conocer la probabilidad             de aparición en el diccionario del corrector.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(float). Probabilidad, entre 0 y 1, de aparición de la palabra.</td>
 </tr>
@@ -389,7 +388,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabras</strong> – (string o list). Palabra o lista de palabras que se desean quitar del             diccionario del objeto de la clase Corrector, para que no sean recnocidas como             correctas al momento de hacer la corrección ortográfica.</td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>palabras</strong> – (str o list). Palabra o lista de palabras que se desean quitar del             diccionario del objeto de la clase Corrector, para que no sean recnocidas como             correctas al momento de hacer la corrección ortográfica.</td>
 </tr>
 </tbody>
 </table>
@@ -406,20 +405,19 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (string). Texto al cuál se desea aplicar corrección ortográfica.</li>
-<li><strong>lenguaje</strong> – (string) {“es”, “en”, “fr”, “de”}. Lenguaje de los         textos a los que se les va a aplicar corrección ortográfica. Los lenguajes posibles son español         (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las         siguientes variaciones para cada lenguaje (sin importar acentos ni mayúsculas):             <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></li>
+<li><strong>texto</strong> – (str). Texto al cuál se desea aplicar corrección ortográfica.</li>
+<li><strong>lenguaje</strong> – (str) Lenguaje de los textos a los que se les va a aplicar 
+corrección ortográfica. Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 <li><strong>corrector</strong> – (Corrector). Parámetro opcional. Objeto de la clase Corrector para aplicar         corrección ortográfica sobre el texto de entrada. Se puede utilizar para         corregir varios textos a la vez, sin necesidad de inicializar una instancia de         la clase Corrector en cada ocasión. Esto puede representar ahorro en tiempos al         momento de aplicar la función.</li>
-<li><strong>diccionario</strong> – (dict, list o string). Valor por defecto: None. Diccionario (o string con ubicación del         archivo JSON que lo contiene), o lista que permite modificar y agregar palabras.         Si es una lista, contiene las palabras que serán consideradas como válidas o correctas.         Si es un diccionario, las llaves del diccionario son las palabras que serán consideradas
+<li><strong>diccionario</strong> – (dict, list o str). Valor por defecto: None. Diccionario (o string con ubicación del         archivo JSON que lo contiene), o lista que permite modificar y agregar palabras.         Si es una lista, contiene las palabras que serán consideradas como válidas o correctas.         Si es un diccionario, las llaves del diccionario son las palabras que serán consideradas
 como válidas o correctas, y los valores del diccionario son las frecuencias de cada palabra         en el diccionario. Las frecuencias son utilizadas como criterio de desempate, cuando una         palabra incorrecta tiene más de una palabra candidata para la corrección. Si se deja este         parámetro como None, se cargará el diccionario por defecto que trae la librería <cite>spellchecker</cite>         para el lenguaje determinado.</li>
 <li><strong>distancia</strong> – (int). Valor por defecto: 2. Máxima distancia de Levenshtein que puede haber         entre una palabra incorrecta (o no reconocida) y las palabras del diccionario para         determinar si hay palabras candidatas para realizar la corrección.</li>
 <li><strong>limpieza</strong> – (bool) {True, False}. Valor por defecto: False. Argumento         opcional que define si se desea hacer una limpieza básica (        aplicando la función <cite>limpieza_basica</cite> del módulo <cite>limpieza</cite>) al         texto antes de aplicar la corrección ortográfica.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(string). Texto de entrada luego de la corrección ortográfica.</p>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(str). Texto de entrada luego de la corrección ortográfica.</p>
 </td>
 </tr>
 </tbody>

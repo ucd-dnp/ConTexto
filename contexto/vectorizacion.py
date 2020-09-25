@@ -20,26 +20,26 @@ class VectorizadorFrecuencias():
             max_elementos=None,
             idf=True,
             archivo_modelo=''):
-        """Constructor de la clase VectorizadorFrecuencias.  \ 
-        	Permite hacer vectorizaciones usando Bag of Words (BOW) o TF-IDF.
+        """ Constructor de la clase VectorizadorFrecuencias. \ 
+        Permite hacer vectorizaciones usando Bag of Words (BOW) o TF-IDF.
 
         :param tipo: (str) {'bow', 'tfidf'}, valor por defecto: 'bow'. \ 
-        	Determina el tipo de vectorizador a inicializar. 
+            Determina el tipo de vectorizador a inicializar. 
         :param rango_ngramas: (tupla) (int, int) valor por defecto: (1, 1). \ 
-			Límite inferior y superior del rango de valores n para los \ 
-			diferentes n-gramas que se van a extraer. Por ejemplo, \ 
-			un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \ 
-			significa unigramas y bigramas, y (2, 2) significa solo bigramas.
+            Límite inferior y superior del rango de valores n para los \ 
+            diferentes n-gramas que se van a extraer. Por ejemplo, \ 
+            un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \ 
+            significa unigramas y bigramas, y (2, 2) significa solo bigramas.
         :param max_elementos: (int) valor por defecto: None. Número máximo \ 
-        	de términos a ser tenidos en cuenta, se ecogen los max_elementos  \ 
-        	términos más frecuentes.
+            de términos a ser tenidos en cuenta, se ecogen los max_elementos  \ 
+            términos más frecuentes.
         :param idf: (bool) {True, False} valor por defecto: True. Habilita la \ 
-        	reponderación de pesos de los términos usando IDF.
+            reponderación de pesos de los términos usando IDF.
         :param archivo_modelo: (str) valor por defecto: vacío. Ruta de archivo \ 
-        	de un vectorizador en formato pickle (pk). Permite cargar un \ 
-        	vectorizador generado previamente, los demás parámetros de \ 
-        	inicialización no serán tenidos en cuenta, pues se tomarán del \ 
-        	vectorizador cargado.
+            de un vectorizador en formato pickle (pk). Permite cargar un \ 
+            vectorizador generado previamente, los demás parámetros de \ 
+            inicialización no serán tenidos en cuenta, pues se tomarán del \ 
+            vectorizador cargado.
         """
         tipo = tipo.lower()
         if archivo_modelo != '':
@@ -61,9 +61,9 @@ class VectorizadorFrecuencias():
         los textos de entrada.
 
         :param x: objeto iterable con textos (str), unicode u archivos de \ 
-        	texto de interés para ser procesados por el vectorizador.
+            texto de interés para ser procesados por el vectorizador.
         :param archivo_salida: (str) valor por defecto: vacío. Ruta donde \ 
-        	desea exportar el vectorizador ajustado. Usar formato pickle (pk)
+            desea exportar el vectorizador ajustado. Usar formato pickle (pk)
         """
         self.vectorizador.fit(x)
         # Si se proporcionó un archivo, se guarda el modelo entrenado en esta ubicación
@@ -76,9 +76,9 @@ class VectorizadorFrecuencias():
         los textos de entrada. **Llama la función ajustar**.
 
         :param x: objeto iterable con textos (str), unicode u archivos de \ 
-        	texto de interés para ser procesados por el vectorizador.
+            texto de interés para ser procesados por el vectorizador.
         :param archivo_salida: (str) valor por defecto: vacío. Ruta donde \ 
-        	desea exportar el vectorizador ajustado. Usar formato pickle (pk)        
+            desea exportar el vectorizador ajustado. Usar formato pickle (pk)        
         """
         self.ajustar(x, archivo_salida)
 
@@ -89,8 +89,8 @@ class VectorizadorFrecuencias():
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
         :param disperso: (bool) {True, False} valor por defecto: False. \ 
-			Si es True retorna los resultados como una matriz dispersa \ 
-			(csr_matrix). Si es False retorna los resultados como un numpy array
+            Si es True retorna los resultados como una matriz dispersa \ 
+            (csr_matrix). Si es False retorna los resultados como un numpy array
         :return: vectores documentos-términos de la vectorización de los textos.
         """
         if isinstance(textos, str):
@@ -109,8 +109,8 @@ class VectorizadorFrecuencias():
         :param x: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
         :param disperso: (bool) {True, False} valor por defecto: False. \ 
-			Si es True retorna los resultados como una matriz dispersa \ 
-			(csr_matrix). Si es False retorna los resultados como un numpy array
+            Si es True retorna los resultados como una matriz dispersa \ 
+            (csr_matrix). Si es False retorna los resultados como un numpy array
         :return: vectores documentos-términos de la vectorización de los textos.
         """
         return self.vectorizar(x, disperso)
@@ -137,9 +137,9 @@ class VectorizadorFrecuencias():
         con frecuencia mayor a 0 en el documento.
 
         :param x: vector o grupo de vectores correspondientes a la \ 
-        	vectorización de textos generada por un vectorizador.
+            vectorización de textos generada por un vectorizador.
         :return: (list) lista de arrays con los términos más frecuentes \ 
-        	correspondientes a los vectores de cada texto/documento.
+            correspondientes a los vectores de cada texto/documento.
         """
         return self.vectorizador.inverse_transform(x)
 
@@ -149,16 +149,16 @@ class VectorizadorFrecuencias():
 
 class VectorizadorHash():
     def __init__(self, n_elementos=100, rango_ngramas=(1, 1)):
-        """Constructor de la clase VectorizadorHash.  \ 
-        	Permite hacer vectorizaciones usando hashing.
+        """ Constructor de la clase VectorizadorHash.  \ 
+        Permite hacer vectorizaciones usando hashing.
 
         :param n_elementos: (int) Hace referencia al número de elementos o  \ 
-        	características (columnas) en las matrices de salida.
+            características (columnas) en las matrices de salida.
         :param rango_ngramas: (tupla) (int, int) valor por defecto: (1, 1). \ 
-			Límite inferior y superior del rango de valores n para los \ 
-			diferentes n-gramas que se van a extraer. Por ejemplo, \ 
-			un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \ 
-			significa unigramas y bigramas, y (2, 2) significa solo bigramas.
+            Límite inferior y superior del rango de valores n para los \ 
+            diferentes n-gramas que se van a extraer. Por ejemplo, \ 
+            un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \ 
+            significa unigramas y bigramas, y (2, 2) significa solo bigramas.
         """
         self.model = HashingVectorizer(
             n_features=n_elementos, ngram_range=rango_ngramas)
@@ -170,8 +170,8 @@ class VectorizadorHash():
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
         :param disperso: (bool) {True, False} valor por defecto: False. \ 
-			Si es True retorna los resultados como una matriz dispersa \ 
-			(csr_matrix). Si es False retorna los resultados como un numpy array
+            Si es True retorna los resultados como una matriz dispersa \ 
+            (csr_matrix). Si es False retorna los resultados como un numpy array
         :return: vectores documentos-términos de la vectorización de los textos.
         """
         if isinstance(textos, str):
@@ -190,30 +190,29 @@ class VectorizadorHash():
         :param x: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
         :param disperso: (bool) {True, False} valor por defecto: False. \ 
-			Si es True retorna los resultados como una matriz dispersa \ 
-			(csr_matrix).Si es False retorna los resultados como un numpy array.
+            Si es True retorna los resultados como una matriz dispersa \ 
+            (csr_matrix).Si es False retorna los resultados como un numpy array.
         :return: vectores documentos-términos de la vectorización de los textos.
         """
         return self.vectorizar(x, disperso)
-	
-	
+    
+    
 ####### Word2Vec con spacy #########
 
 
 class VectorizadorWord2Vec():
     def __init__(self, lenguaje='es', dim_modelo='md'):
-        """Constructor de la clase VectorizadorWord2Vec. \ 
-        	Permite hacer vectorizaciones utilizando Word2Vec. \ 
-        	Utiliza un modelo pre entrenado.
+        """ Constructor de la clase VectorizadorWord2Vec. \ 
+        Permite hacer vectorizaciones utilizando Word2Vec. \ 
+        Utiliza un modelo pre entrenado.
 
-        :param lenguaje: (string) {“es”, “en”, “fr”, “it”} Define el \ 
-        	lenguaje del corpus utilizado al pre entrenar el vectorizador, \ 
-        	el lenguaje debe corresponder al idioma del texto a ser analizado. \ 
-        	Los lenguajes posibles son español (“es”), inglés (“en”),  \ 
-        	francés (“fr”), italiano (“it”) y otros.
+        :param lenguaje: (string) Define el lenguaje del corpus utilizado \ 
+            al pre entrenar el vectorizador, el lenguaje debe corresponder \ 
+            al idioma del texto a ser analizado. Para mayor información consultar \ 
+            la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param dim_modelo: (str) {'sm', 'md', 'lg'}, valor por defecto: 'md'. \ 
-        	Define el tamaño del corpus utilizado al pre entrenar \ 
-        	el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
+            Define el tamaño del corpus utilizado al pre entrenar \ 
+            el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
         """
         # Definir lenguaje del vectorizador
         self.establecer_lenguaje(lenguaje)
@@ -221,22 +220,21 @@ class VectorizadorWord2Vec():
         self.iniciar_vectorizador(dim_modelo)
 
     def establecer_lenguaje(self, lenguaje):
-        """Permite establecer el lenguaje a ser utilizado por el vectorizador.
+        """ Permite establecer el lenguaje a ser utilizado por el vectorizador.
 
-        :param lenguaje: (string) {“es”, “en”, “fr”, “it”} Define el \ 
-        	lenguaje del corpus utilizado al pre entrenar el vectorizador, \ 
-        	el lenguaje debe corresponder al idioma del texto a ser analizado. \ 
-        	Los lenguajes posibles son español (“es”), inglés (“en”),  \ 
-        	francés (“fr”), italiano (“it”) y otros.
+        :param lenguaje: (string) Define el lenguaje del corpus utilizado \ 
+            al pre entrenar el vectorizador, el lenguaje debe corresponder \ 
+            al idioma del texto a ser analizado. Para mayor información consultar \ 
+            la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def iniciar_vectorizador(self, dim_modelo):
-        """Permite cargar el modelo de vectorizador a utilizar.
+        """ Permite cargar el modelo de vectorizador a utilizar.
 
         :param dim_modelo: (str) {'sm', 'md', 'lg'}, valor por defecto: 'md'. \ 
-        	Define el tamaño del corpus utilizado al pre entrenar \ 
-        	el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
+            Define el tamaño del corpus utilizado al pre entrenar \ 
+            el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
         """
         self.vectorizador = None
         if self.lenguaje is not None:
@@ -249,11 +247,11 @@ class VectorizadorWord2Vec():
 
         :param texto: string de interés para ser vectorizado.
         :param quitar_desconocidas: (bool) {True, False} valor por defecto: False. \ 
-             Cuando este argumento es False, para cada palabra desconocida \ 
-             se incluirá un vector de solo ceros, lo que afectará el vector \ 
-             promedio resultante. Si es True hará que la función sea \ 
-             ligeramente más demorada, pero quizás más precisa, al no tener \ 
-             en cuenta palabras que no están incluídas en el modelo.
+            Cuando este argumento es False, para cada palabra desconocida \ 
+            se incluirá un vector de solo ceros, lo que afectará el vector \ 
+            promedio resultante. Si es True hará que la función sea \ 
+            ligeramente más demorada, pero quizás más precisa, al no tener \ 
+            en cuenta palabras que no están incluídas en el modelo.
         :return: vector (numpy.ndarray) documento-términos de la \ 
             vectorización del texto.
         """
@@ -281,11 +279,11 @@ class VectorizadorWord2Vec():
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
         :param quitar_desconocidas: (bool) {True, False} valor por defecto: False. \ 
-             Cuando este argumento es False, para cada palabra desconocida \ 
-             se incluirá un vector de solo ceros, lo que afectará el vector \ 
-             promedio resultante. Si es True hará que la función sea \ 
-             ligeramente más demorada, pero quizás más precisa, al no tener \ 
-             en cuenta palabras que no están incluídas en el modelo.
+            Cuando este argumento es False, para cada palabra desconocida \ 
+            se incluirá un vector de solo ceros, lo que afectará el vector \ 
+            promedio resultante. Si es True hará que la función sea \ 
+            ligeramente más demorada, pero quizás más precisa, al no tener \ 
+            en cuenta palabras que no están incluídas en el modelo.
         :return: vectores (numpy.ndarray) documentos-términos de la \ 
             vectorización de los textos.
         """
@@ -324,7 +322,7 @@ class VectorizadorWord2Vec():
             return None
 
     def similitud_textos(self, t1, t2):
-        """Calcula la similitud coseno entre 2 palabras o textos.
+        """ Calcula la similitud coseno entre 2 palabras o textos.
 
         :param t1: (str) primer texto de interés para el cálculo de similitud.
         :param t2: (str) segundo texto de interés para el cálculo de similitud.
@@ -343,8 +341,8 @@ class VectorizadorWord2Vec():
 
 class VectorizadorDoc2Vec():
     def __init__(self, n_elementos=100, minima_cuenta=5, epocas=20, semilla=1, archivo_modelo=''):
-        """Constructor de la clase VectorizadorDoc2Vec.  \ 
-            Permite hacer vectorizaciones usando Doc2Vec.
+        """ Constructor de la clase VectorizadorDoc2Vec. \ 
+        Permite hacer vectorizaciones usando Doc2Vec.
 
         :param n_elementos: (int) valor por defecto: 100. Número de elementos \ 
             que tendrán los vectores generados por el vectorizador.
@@ -372,8 +370,8 @@ class VectorizadorDoc2Vec():
     # Función para procesar una lista de textos y dejarla lista para el modelo
     def __preparar_textos(self, lista_textos):
         """ Convierte una lista de textos a una lista de tokens luego de
-            aplicar un preprocesamiento, para luego ser utilizados \ 
-            por el modelo.
+        aplicar un preprocesamiento, para luego ser utilizados \ 
+        por el modelo.
 
         :param lista_textos: string u objeto iterable con textos (str) \ 
             de interés para ser preprocesados.

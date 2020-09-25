@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ConTexto - Librería de procesamiento y análisis de textos &mdash; documentación de ConTexto - 0.1</title>
+  <title>OCR &mdash; documentación de ConTexto - 0.1</title>
   
 
   
@@ -43,7 +43,8 @@
     
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Introducción" href="seccion_introduccion.html" /> 
+    <link rel="next" title="Pendientes - BORRAR" href="pendientes_borrar.html" />
+    <link rel="prev" title="Lenguajes soportados" href="seccion_lenguajes_soportados.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -57,7 +58,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> ConTexto
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> ConTexto
           
 
           
@@ -96,12 +97,12 @@
             
             
               <p class="caption"><span class="caption-text">ConTexto:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seccion_instalacion.html">Instalación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seccion_ejemplos.html">Ejemplos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seccion_ocr.html">OCR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OCR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pendientes_borrar.html">Pendientes - BORRAR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
@@ -132,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">ConTexto</a>
+          <a href="index.html">ConTexto</a>
         
       </nav>
 
@@ -161,9 +162,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>ConTexto - Librería de procesamiento y análisis de textos</li>
+      <li>OCR</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,18 +181,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="contexto-libreria-de-procesamiento-y-analisis-de-textos">
-<h1>ConTexto - Librería de procesamiento y análisis de textos<a class="headerlink" href="#contexto-libreria-de-procesamiento-y-analisis-de-textos" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="align-center figure">
-<img alt="" src="_images/contexto.jpg" />
-</div>
-<p>La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas, para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.</p>
-<p>La librería surge como solución a tres principales aspectos, primero, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto, segundo, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, contribuir en la reducción de la escasez de librerías enfocadas en el análisis de texto en español que existe actualmente.</p>
-<p>Esta página contiene toda la información relacionada con la librería, en el panel de navegación se tiene acceso a las diferentes secciones, las cuales cubren la instalación de la librería, la documentación de los módulos y funciones, ejemplos y demás información de interés.</p>
+  <div class="section" id="ocr">
+<span id="seccion-ocr"></span><h1>OCR<a class="headerlink" href="#ocr" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En esta sección se brinda mayor información relacionada con los
+parámetros <em>psm</em> y <em>oem</em> utilizados por la función de OCR
+(Reconocimiento Óptico de Caracteres) de la librería.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">oem:</th><td class="field-body"><p class="first">(int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de “oem” permiten escoger cada uno de estos motores por separado, ambos al tiempo o automáticamente:</p>
+<p><ul>
+<br />
+<li> 0: utilizar únicamente el motor Legacy. </li>
+<li> 1: utilizar únicamente el motor de redes neuronales LSTM. </li>
+<li> 2: utilizar los motores Legacy y LSTM. </li>
+<li> 3: escoger el motor según lo que hay disponible. </li>
+</ul></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">psm:</th><td class="field-body"><p class="first">(int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a los modos de segmentación de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. Cada número hace referencia a un modo de segmentación: </p>
+<p class="last"><ul>
+<br />
+<li> 0: orientation y detección de script (OSD) únicamente. </li>
+<li> 1: segmentación automática de páginas con OSD. </li>
+<li> 2: segmentación automática de páginas sin OSD ni OCR. </li>
+<li> 3: segmentación completamente automática de páginas sin OSD. </li>
+<li> 4: supone una única columna de texto de tamaños variables. </li>
+<li> 5: supone un único bloque uniforme de texto alineado de forma vertical. </li>
+<li> 6: asume un único bloque uniforme de texto. </li>
+<li> 7: trata la imagen como una única línea de texto. </li>
+<li> 8: trata la imagen como una única palabra. </li>
+<li> 9: trata la imagen como una única palabra dentro de un círculo. </li>
+<li> 10: trata la imagen como un único carácter. </li>
+<li> 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. </li>
+<li> 12: Buscador de texto disperso con OSD. </li>
+<li> 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. </li>
+</ul></p>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -202,8 +232,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="seccion_introduccion.html" class="btn btn-neutral float-right" title="Introducción" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pendientes_borrar.html" class="btn btn-neutral float-right" title="Pendientes - BORRAR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="seccion_lenguajes_soportados.html" class="btn btn-neutral float-left" title="Lenguajes soportados" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -25,10 +25,10 @@ class Similitud():
             Si no se especifica un \ 
             vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de Similitud, este ya debe estar ajustado.
-        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
-            Alemán(de) y Francés(fr).        
+        :param lenguaje: (str) valor por defecto: 'es'. \ 
+            Indica el lenguaje que utilizará el \ 
+            vectorizador. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
@@ -48,10 +48,9 @@ class Similitud():
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Similitud.
 
-        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            Valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
-            Alemán(de) y Francés(fr).
+        :param lenguaje: (str) Indica el lenguaje que utilizará el \ 
+            vectorizador. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -147,10 +146,10 @@ class Distancia():
             Si no se especifica un \ 
             vectorizador se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de Distancia, este ya debe estar ajustado.
-        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
-            Alemán(de) y Francés(fr).
+        :param lenguaje: (str) valor por defecto: 'es'. \ 
+            Indica el lenguaje que utilizará el \ 
+            vectorizador. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
@@ -159,10 +158,9 @@ class Distancia():
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Distancia.
 
-        :param lenguaje: (str) {'es', 'en', 'de', 'fr'}. \ 
-            Valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador, soporta los lenguajes Español(es), Inglés(en), \ 
-            Alemán(de) y Francés(fr).
+        :param lenguaje: (str) Indica el lenguaje que utilizará el \ 
+            vectorizador. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """        
         self.lenguaje = definir_lenguaje(lenguaje)
 

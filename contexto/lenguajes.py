@@ -5,7 +5,7 @@ from limpieza import remover_acentos
 
 def detectar_lenguaje(texto, devolver_proba=False):
     """ Identifica el lenguaje en el que está escrito el texto de entrada. \ 
-        :ref:`Ver ejemplo <detectar_lenguaje>`
+    :ref:`Ver ejemplo <detectar_lenguaje>`
 
     :param texto: (str) Corresponde al texto que se desea analizar. 
     :param devolver_proba: (bool) {True, False}, valor por defecto: False. \ 
@@ -26,9 +26,9 @@ def traducir_texto(texto, lenguaje_destino):
     """ Permite hacer traducciones a un texto de interés.
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
-    :param lenguaje_destino: (str) {'es', 'en', 'de', 'fr'}. \ 
-        Indica el lenguaje al que desea traducir el texto, soporta \ 
-        Español(es), Inglés(en), Alemán(de) y Francés(fr).
+    :param lenguaje_destino: (str)  Indica el lenguaje al que desea \ 
+        traducir el texto. Para mayor información consultar la \ 
+        sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.        
     :return: string del texto traducido.
     """
     traductor = Translator()

@@ -109,35 +109,12 @@ class Lector():
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
             óptico de caracteres (el parámetro ocr es True). Tiene las opciones de los lenguajes\
             que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
-        :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
-            permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-            automáticamente: 
-             |ul| 
-             |li| 0: utilizar únicamente el motor Legacy. |/li| 
-             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
-             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
-             |li| 3: escoger el motor según lo que hay disponible. |/li| 
-             |/ul| 
-        :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a \
-            los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
-            librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-             |ul| 
-             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
-             |li| 1: segmentación automática de páginas con OSD. |/li| 
-             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
-             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
-             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
-             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
-             |li| 6: asume un único bloque uniforme de texto. |/li| 
-             |li| 7: trata la imagen como una única línea de texto. |/li| 
-             |li| 8: trata la imagen como una única palabra. |/li| 
-             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
-             |li| 10: trata la imagen como un único carácter. |/li| 
-             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
-             |li| 12: Buscador de texto disperso con OSD. |/li| 
-             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
-             |/ul| 
+        :param oem: (int) OEM hace referencia al modo del motor OCR (OCR engine mode \
+            en inglés). Para mayor información consultar la sección de \ 
+            :ref:`OCR <seccion_ocr>`.
+        :param psm: (int) PSM hace referencia a los modos de segmentación de las páginas \ 
+            (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor \ 
+            información consultar la sección de :ref:`OCR <seccion_ocr>`.
         :return: (string). Texto del archivo '.pdf' leído con la clase Lector
             """
         if ocr:
@@ -191,35 +168,11 @@ class Lector():
              |/ul| 
         :param lenguaje: (string). {'spa', 'eng'}  Se define el lenguaje del texto que se desea extraer. \
             Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
-        :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
-            permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-            automáticamente: \
-             |ul| 
-             |li| 0: utilizar únicamente el motor Legacy. |/li| 
-             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
-             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
-             |li| 3: escoger el motor según lo que hay disponible. |/li| 
-             |/ul| 
-        :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. PSM hace referencia a \
-            los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
-            librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-             |ul| 
-             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
-             |li| 1: segmentación automática de páginas con OSD. |/li| 
-             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
-             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
-             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
-             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
-             |li| 6: asume un único bloque uniforme de texto. |/li| 
-             |li| 7: trata la imagen como una única línea de texto. |/li| 
-             |li| 8: trata la imagen como una única palabra. |/li| 
-             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
-             |li| 10: trata la imagen como un único carácter. |/li| 
-             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
-             |li| 12: Buscador de texto disperso con OSD. |/li| 
-             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
-             |/ul| 
+        :param oem: (int) OEM hace referencia al modo del motor OCR (OCR engine mode \
+            en inglés). Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+        :param psm: (int) PSM hace referencia a los modos de segmentación de las páginas \
+            (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor \ 
+            información consultar la sección de :ref:`OCR <seccion_ocr>`.
         :return: (string). Texto del archivo tipo imagen leído con la clase Lector
         """
         from utils.ocr import OCR
@@ -274,35 +227,11 @@ class Lector():
         :param lenguaje: (string). {'spa', 'eng'}. Valor por defecto: 'spa'  Tiene las opciones de los lenguajes que se descargan \
             de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng'). Aplica cuando se extrae el texto de \
             imágenes o archivos escaneados
-        :param oem: (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
-            permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-            automáticamente:
-             |ul| 
-             |li| 0: utilizar únicamente el motor Legacy. |/li| 
-             |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
-             |li| 2: utilizar los motores Legacy y LSTM. |/li| 
-             |li| 3: escoger el motor según lo que hay disponible. |/li| 
-             |/ul| 
-        :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a \
-            los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
-            librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-             |ul| 
-             |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
-             |li| 1: segmentación automática de páginas con OSD. |/li| 
-             |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
-             |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
-             |li| 4: supone una única columna de texto de tamaños variables. |/li| 
-             |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
-             |li| 6: asume un único bloque uniforme de texto. |/li| 
-             |li| 7: trata la imagen como una única línea de texto. |/li| 
-             |li| 8: trata la imagen como una única palabra. |/li| 
-             |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
-             |li| 10: trata la imagen como un único carácter. |/li| 
-             |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
-             |li| 12: Buscador de texto disperso con OSD. |/li| 
-             |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
-             |/ul| 
+        :param oem: (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
+            en inglés). Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+        :param psm: (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación \ 
+            de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. \ 
+            Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
         :return: (string). Texto extraído del archivo con la clase Lector            
@@ -382,35 +311,11 @@ def leer_texto(
         Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés \
         ('eng'). Aplica cuando se extrae el texto de \
         imágenes o archivos escaneados
-    :param oem: (int) {0, 1, 2, 3}. Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
-        en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
-        permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
-        automáticamente: 
-         |ul| 
-         |li| 0: utilizar únicamente el motor Legacy. |/li| 
-         |li| 1: utilizar únicamente el motor de redes neuronales LSTM. |/li| 
-         |li| 2: utilizar los motores Legacy y LSTM. |/li| 
-         |li| 3: escoger el motor según lo que hay disponible. |/li| 
-         |/ul| 
-    :param psm: (int) {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}. Valor por defecto: 3 PSM hace referencia a \
-        los modos de segmentación de las páginas (page segmentation modes, en inglés) de la \
-        librería Pytesseract. Cada número hace referencia a un modo de segmentación: \
-         |ul| 
-         |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
-         |li| 1: segmentación automática de páginas con OSD. |/li| 
-         |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
-         |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 
-         |li| 4: supone una única columna de texto de tamaños variables. |/li| 
-         |li| 5: supone un único bloque uniforme de texto alineado de forma vertical. |/li| 
-         |li| 6: asume un único bloque uniforme de texto. |/li| 
-         |li| 7: trata la imagen como una única línea de texto. |/li| 
-         |li| 8: trata la imagen como una única palabra. |/li| 
-         |li| 9: trata la imagen como una única palabra dentro de un círculo. |/li| 
-         |li| 10: trata la imagen como un único carácter. |/li| 
-         |li| 11: Buscador de texto disperso. Encontrar la mayor cantidad de texto posible sin un orden en particular. |/li| 
-         |li| 12: Buscador de texto disperso con OSD. |/li| 
-         |li| 13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract. |/li| 
-         |/ul| 
+    :param oem: (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
+        en inglés). Para mayor información consultar la sección de  :ref:`OCR <seccion_ocr>`.
+    :param psm: (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación \ 
+        de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. \ 
+        Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
     :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
         extraer, en caso de requerirlo
     :return: (string). Texto extraído del archivo especificado con la función 'leer_texto'

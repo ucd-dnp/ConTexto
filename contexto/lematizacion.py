@@ -13,15 +13,9 @@ class LematizadorSpacy():
         encarga de manejar todas las funciones asociadas a la lematización \
         del texto con la librería Spacy
 
-        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}  Se define el \
-            lenguaje del texto a ser tratado. Los lenguajes posibles son español \
-            ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
-            siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-                |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
-                |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
-                |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
-
+        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
+            Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
             llaves del diccionario son las palabras completas y los valores del \
@@ -51,14 +45,9 @@ class LematizadorSpacy():
     def establecer_lenguaje(self, lenguaje):
         """ Define el lenguaje del lematizador
 
-        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}.  Se define el \
-            lenguaje del texto a ser tratado. Los lenguajes posibles son español \
-            ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
-            siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-                |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
-                |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
-                |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
+        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
+            Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -123,14 +112,9 @@ class LematizadorStanza():
         encarga de manejar todas las funciones asociadas a la lematización \
         del texto con la librería Stanza
 
-        :param lenguaje: (string). {'es', 'en', 'fr', 'de'}. Se define el \
-            lenguaje del texto a ser tratado. Los lenguajes posibles son español \
-            ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
-            siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-                |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
-                |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
-                |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
+        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+            Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
             el modelo genérico de lemas de Stanza
@@ -162,14 +146,9 @@ class LematizadorStanza():
     def establecer_lenguaje(self, lenguaje):
         """ Define el lenguaje del lematizador
 
-        :param lenguaje: (string). {'es', 'en', 'fr', 'de'}  Se define el \
-            lenguaje del texto a ser tratado. Los lenguajes posibles son español \
-            ('es'), inglés ('en'), francés ('fr') y alemán ('de'). Se aceptan las \
-            siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas): \
-                |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-                |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
-                |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
-                |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
+        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+            Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -255,15 +234,9 @@ def lematizar_texto(
         modificados
 
     :param texto: (string). Texto de entrada a ser lematizado
-    :param lenguaje: (string). {'es', 'en', 'fr', 'de', 'auto'}  Se define el \
-        lenguaje del texto a ser tratado. Los lenguajes posibles son español \
-        ('es'), inglés ('en'), francés ('fr'), alemán ('de') y automático ('auto', \
-        se adivina el lenguaje). Se aceptan las siguientes variaciones para cada \
-        idioma (sin importar acentos ni mayúsculas): \
-            |ul|  |li| español: {'es', 'español', 'esp', 'spanish', 'sp', 'spa'} |/li|
-            |li| inglés: {'en', 'eng' .'english', 'inglés', 'ing'} |/li|
-            |li| francés: {'fr', 'fra', 'fre', 'french', 'francés'} |/li|
-            |li| alemán: {'ge', 'de', 'german', 'al', 'alemán', 'ale'} |/li|  |/ul|
+    :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+        Para mayor información consultar la sección de \ 
+        :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
     :param libreria: (string). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
         Se define la librería de Python de lematización para ser utilizada en '
         el texto. Las opciones son las librerías Spacy y Stanza

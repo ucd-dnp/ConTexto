@@ -13,8 +13,9 @@ class Stemmer():
         de hacer la operación de *stemming*, o reducción de palabras a su \
         raíz, en textos.
 
-        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los\
-            textos a los que se va a aplicar *stemming*.
+        :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
+            a aplicar *stemming*. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :return: (Stemmer). Objeto del tipo de la clase Stemmer
         """
         # Definir lenguaje del stemmer
@@ -29,8 +30,9 @@ class Stemmer():
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
             va a aplicarse el objeto de la case Stemmer.
 
-        :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje de los\
-            textos a los que se va a aplicar stemming.
+        :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
+            a aplicar stemming. Para mayor información consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje, simplificado=False)
 
@@ -71,8 +73,9 @@ def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
         reducción de palabras a su raíz, en un texto de entrada.
         
     :param texto: (string). Texto al que se desea aplicar el *stemming*.
-    :param lenguaje: (string) {'es', 'en', 'fr', 'de'}. Lenguaje del \
-        texto al que se va a aplicar *stemming*.
+    :param lenguaje: (string) Lenguaje del  texto al que se va \ 
+        a aplicar *stemming*. Para mayor información consultar la sección de \ 
+        :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
     :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada,  \

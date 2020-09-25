@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                sept. 24 11:16 a. m.
+                Versión 0.1
               </div>
             
           
@@ -101,6 +101,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pendientes_borrar.html">Pendientes - BORRAR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
@@ -191,10 +193,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>lenguaje</strong> – (string) {“es”, “en”, “fr”, “de”}  Se define el             lenguaje del texto a ser tratado. Los lenguajes posibles son español             (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas):                 <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></li>
+<li><strong>lenguaje</strong> – (string) Define el lenguaje del texto a ser tratado. 
+Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 <li><strong>diccionario</strong> – (dict o string). Diccionario (o <em>string</em> con ubicación del             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las             llaves del diccionario son las palabras completas y los valores del             diccionario son los lemas escogidos para cada palabra.</li>
 <li><strong>dim_modelo</strong> – (string) {“lg”, “md”, “sm”}. Se define el tamaño 
 del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” es             pequeño (small). Los modelos más grandes obtienen mejores predicciones             pero requieren mayor tiempo de carga</li>
@@ -214,10 +215,9 @@ del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (string) {“es”, “en”, “fr”, “de”}.  Se define el             lenguaje del texto a ser tratado. Los lenguajes posibles son español             (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas):                 <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (string) Define el lenguaje del texto a ser tratado. 
+Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -284,10 +284,8 @@ del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lenguaje</strong> – (string). {“es”, “en”, “fr”, “de”}. Se define el             lenguaje del texto a ser tratado. Los lenguajes posibles son español             (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas):                 <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></li>
+<li><strong>lenguaje</strong> – (string) Define el lenguaje del texto a ser tratado.             Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 <li><strong>modelo_lemas</strong> – (string). Valor por defecto: None. Especifica la ruta             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza             el modelo genérico de lemas de Stanza</li>
 <li><strong>diccionario</strong> – (dict o string). Diccionario (o <em>string</em> con ubicación del             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las             llaves del diccionario son las palabras completas y los valores del             diccionario son los lemas escogidos para cada palabra.</li>
 <li><strong>archivo_salida</strong> – (string). Valor por defecto: None. Especifica la ruta             del archivo de salida del modelo de lemas modificado. En caso de ser             vacío, el resultado de la lematizacción se guarda en un archivo             temporal que eventualmente será borrado</li>
@@ -304,10 +302,8 @@ del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (string). {“es”, “en”, “fr”, “de”}  Se define el             lenguaje del texto a ser tratado. Los lenguajes posibles son español             (“es”), inglés (“en”), francés (“fr”) y alemán (“de”). Se aceptan las             siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas):                 <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></td>
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (string) Define el lenguaje del texto a ser tratado.             Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -380,10 +376,8 @@ del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” 
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
 <li><strong>texto</strong> – (string). Texto de entrada a ser lematizado</li>
-<li><strong>lenguaje</strong> – (string). {“es”, “en”, “fr”, “de”, “auto”}  Se define el         lenguaje del texto a ser tratado. Los lenguajes posibles son español         (“es”), inglés (“en”), francés (“fr”), alemán (“de”) y automático (“auto”,         se adivina el lenguaje). Se aceptan las siguientes variaciones para cada         idioma (sin importar acentos ni mayúsculas):             <ul>  <li> español: {“es”, “español”, “esp”, “spanish”, “sp”, “spa”} </li>
-<li> inglés: {“en”, “eng” .”english”, “inglés”, “ing”, “in”} </li>
-<li> francés: {“fr”, “fra”, “fre”, “french”, “francés”} </li>
-<li> alemán: {“ge”, “de”, “german”, “al”, “alemán”, “ale”} </li>  </ul></li>
+<li><strong>lenguaje</strong> – (string) Define el lenguaje del texto a ser tratado.         Para mayor información consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 <li><strong>libreria</strong> – (string). {“spacy”, “stanza”}. Valor por defecto: “spacy”         Se define la librería de Python de lematización para ser utilizada en “
 el texto. Las opciones son las librerías Spacy y Stanza</li>
 <li><strong>limpiar</strong> – (bool) {True, False}. Valor por defecto: True. Especifica         si se desea hacer una limpieza básica del texto antes de la lematización</li>

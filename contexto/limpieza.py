@@ -221,7 +221,7 @@ def lista_nombres(tipo='todos'):
     más comunes, tanto para hombre y mujer del idioma español. La función permite generar \
     lista de nombres solo de mujeres o solo de hombres con el párametro `tipo`.
 
-    :param tipo: {'todos','mujeres','hombres'}, optional. Permite generar lista de nombres \
+    :param tipo: {'todos', 'mujeres', 'hombres'}, optional. Permite generar lista de nombres \
         de: solo nombres de mujeres (`tipo = 'mujeres'`), solo nombres de hombres. \
         (`tipo='hombres'`) o ambos (`tipo='todos'`). Por defecto `tipo='todos'`.
     :return: (list) Lista de nombres en español.
@@ -262,7 +262,7 @@ def lista_apellidos():
 def lista_geo_colombia(tipo='todos'):
     """Genera lista de nombres de municipios y departamentos de Colombia.
 
-    :param tipo: {'todos','municipios','departamentos'}, optional. Permite la selección de los \
+    :param tipo: {'todos', 'municipios', 'departamentos'}, optional. Permite la selección de los \
         nombres en la lista. Por defecto `tipo='todos'`, genera nombres de municipios y departamentos, \
         `tipo='municipios'` genera nombres solo de municipios y `tipo='departamentos'` genera nombres \
         solo de departamentos.

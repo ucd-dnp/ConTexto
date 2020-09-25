@@ -9,6 +9,8 @@ ConTexto - Librería de procesamiento y análisis de textos
    seccion_introduccion
    seccion_instalacion
    seccion_ejemplos
+   seccion_lenguajes_soportados
+   seccion_ocr
    pendientes_borrar
 
 .. toctree::
