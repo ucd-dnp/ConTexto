@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lenguajes &mdash; documentación de ConTexto - 0.1</title>
+  <title>7. Vectorizacion de textos &mdash; documentación de ConTexto - 0.1</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Limpieza" href="limpieza.html" />
-    <link rel="prev" title="Lematización" href="lematizacion.html" /> 
+    <link rel="next" title="8. Comparación de textos" href="08_comparacion_de_textos.html" />
+    <link rel="prev" title="6. Stemming de textos" href="06_stemming_de_textos.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,26 +97,37 @@
             
             
               <p class="caption"><span class="caption-text">ConTexto:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_lectura_y_escritura_de_documentos.html">1. Lectura y escritura de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_limpieza_de_textos.html">2. Limpieza de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_exploracion_y_visualizacion.html">3. Análisis exploratorio y visualización de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_correccion_ortografica.html">4. Corrección ortográfica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_lematizacion_de_textos.html">5. Lematizacion de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_stemming_de_textos.html">6. Stemming de textos</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. Vectorizacion de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_comparacion_de_textos.html">8. Comparación de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_caso_de_uso.html">9. Caso de uso - Agrupar textos por temas</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="comparacion.html">Comparación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
-<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploracion.html">Exploración</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lenguajes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectorizacion.html">Vectorización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/comparacion.html">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/escritura.html">Escritura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/exploracion.html">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/utils.html">Utils</a></li>
 </ul>
 
             
@@ -163,7 +174,9 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Lenguajes</li>
+          <li><a href="../seccion_ejemplos.html">Ejemplos</a> &raquo;</li>
+        
+      <li><span class="section-number">7. </span>Vectorizacion de textos</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,56 +193,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-lenguajes">
-<span id="lenguajes"></span><h1>Lenguajes<a class="headerlink" href="#module-lenguajes" title="Enlazar permanentemente con este título">¶</a></h1>
-<dl class="py function">
-<dt id="lenguajes.detectar_lenguaje">
-<code class="descclassname">lenguajes.</code><code class="descname">detectar_lenguaje</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">devolver_proba</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lenguajes.detectar_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Identifica el lenguaje en el que está escrito el texto de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
-<li><strong>devolver_proba</strong> – (bool) {True, False}, valor por defecto: False. 
-Indica si se retorna el porcentaje de confiabilidad del 
-lenguaje identificado.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">string del lenguaje identificado siguiendo el estandar 
-<a class="reference external" href="https://es.wikipedia.org/wiki/ISO_639-1" target="_blank">ISO 639-1</a>. 
-Si devolver_proba es True retorna una tupla.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py function">
-<dt id="lenguajes.traducir_texto">
-<code class="descclassname">lenguajes.</code><code class="descname">traducir_texto</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">lenguaje_destino</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lenguajes.traducir_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite hacer traducciones a un texto de interés.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Corresponde al texto que se desea traducir.</li>
-<li><strong>lenguaje_destino</strong> – (str)  Indica el lenguaje al que desea 
-traducir el texto. Para mayor información consultar la 
-sección de <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">string del texto traducido.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+  <div class="section" id="vectorizacion-de-textos">
+<span id="id1"></span><h1><span class="section-number">7. </span>Vectorizacion de textos<a class="headerlink" href="#vectorizacion-de-textos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
 
@@ -240,10 +211,10 @@ sección de <a class="reference internal" href="../seccion_lenguajes_soportados.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="limpieza.html" class="btn btn-neutral float-right" title="Limpieza" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="08_comparacion_de_textos.html" class="btn btn-neutral float-right" title="8. Comparación de textos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lematizacion.html" class="btn btn-neutral float-left" title="Lematización" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="06_stemming_de_textos.html" class="btn btn-neutral float-left" title="6. Stemming de textos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

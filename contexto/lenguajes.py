@@ -4,8 +4,7 @@ from limpieza import remover_acentos
 
 
 def detectar_lenguaje(texto, devolver_proba=False):
-    """ Identifica el lenguaje en el que está escrito el texto de entrada. \ 
-    :ref:`Ver ejemplo <detectar_lenguaje>`
+    """ Identifica el lenguaje en el que está escrito el texto de entrada.   
 
     :param texto: (str) Corresponde al texto que se desea analizar. 
     :param devolver_proba: (bool) {True, False}, valor por defecto: False. \ 

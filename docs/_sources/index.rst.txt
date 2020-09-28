@@ -10,8 +10,7 @@ ConTexto - Librería de procesamiento y análisis de textos
    seccion_instalacion
    seccion_ejemplos
    seccion_lenguajes_soportados
-   seccion_ocr
-   pendientes_borrar
+   seccion_ocr   
 
 .. toctree::
    :maxdepth: 2
@@ -34,7 +33,6 @@ ConTexto - Librería de procesamiento y análisis de textos
     :align: center
     :alt: 
     :figclass: align-center
-
 
 .. include:: seccion_introduccion.rst
    :start-line: 5
