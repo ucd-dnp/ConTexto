@@ -207,7 +207,7 @@ entre una palabra incorrecta (o no reconocida) y las palabras del diccionario pa
 <dl class="py method">
 <dt id="correccion.Corrector.actualizar_diccionario">
 <code class="descname">actualizar_diccionario</code><span class="sig-paren">(</span><em><span class="n">diccionario</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.actualizar_diccionario" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Actualiza el diccionario que contiene las palabras válidas o reconocidas disponibles para             realizar la corrección ortográfica. Las palabras contenidas en el argumento <em>diccionario</em>             de esta función serán añadidas (o sus frecuencias serán actualizadas) en el diccionario             que ya existe en el objeto de la clase Corrector.</p>
+<dd><p>Actualiza el diccionario que contiene las palabras válidas o reconocidas disponibles para         realizar la corrección ortográfica. Las palabras contenidas en el argumento <em>diccionario</em>         de esta función serán añadidas (o sus frecuencias serán actualizadas) en el diccionario         que ya existe en el objeto de la clase Corrector.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -222,7 +222,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.agregar_palabras">
 <code class="descname">agregar_palabras</code><span class="sig-paren">(</span><em><span class="n">palabras</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.agregar_palabras" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Añade al diccionario del corrector una o más palabras proporcionadas en el argumento             <em>palabras</em>, haciendo que estas sean reconocidas como palabras válidas o             correctas al momento de hacer corrección ortográfica.</p>
+<dd><p>Añade al diccionario del corrector una o más palabras proporcionadas en el argumento         <em>palabras</em>, haciendo que estas sean reconocidas como palabras válidas o         correctas al momento de hacer corrección ortográfica.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -236,7 +236,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.correccion_ortografia">
 <code class="descname">correccion_ortografia</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">limpieza</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.correccion_ortografia" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Realiza corrección ortográfica sobre un texto de entrada, identificando las palabras             que no están en el diccionario del corrector y cambiándolas por su candidata más             frecuente o probable, siempre y cuando haya por lo menos una palabra candidata             que cumpla con la máxima distancia de Levenshtein permitida.</p>
+<dd><p>Realiza corrección ortográfica sobre un texto de entrada, identificando las palabras         que no están en el diccionario del corrector y cambiándolas por su candidata más         frecuente o probable, siempre y cuando haya por lo menos una palabra candidata         que cumpla con la máxima distancia de Levenshtein permitida.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -287,7 +287,7 @@ entre una palabra incorrecta (o no reconocida) y las palabras del diccionario pa
 <dl class="py method">
 <dt id="correccion.Corrector.frecuencia_palabra">
 <code class="descname">frecuencia_palabra</code><span class="sig-paren">(</span><em><span class="n">palabra</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.frecuencia_palabra" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Para una palabra de entrada, devuelve la frecuencia de la misma, de acuerdo al             diccionario del corrector. Si la palabra es desconocida (no se encuentra en             el diccionario), la frecuencia retornada será de cero.</p>
+<dd><p>Para una palabra de entrada, devuelve la frecuencia de la misma, de acuerdo al         diccionario del corrector. Si la palabra es desconocida (no se encuentra en         el diccionario), la frecuencia retornada será de cero.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -318,7 +318,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.palabras_candidatas">
 <code class="descname">palabras_candidatas</code><span class="sig-paren">(</span><em><span class="n">palabra</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.palabras_candidatas" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Para una palabra de entrada, retorna un conjunto de palabras que podrían ser utilizadas             para corregirla. Si la palabra de entrada es correcta (está dentro del diccionario             del corrector) o no tienen ninguna palabra candidata con una distancia menor o igual             a la establecida en el parámetro <em>distancia</em> de la clase Corrector, la función             devolverá la misma palabra de entrada.</p>
+<dd><p>Para una palabra de entrada, retorna un conjunto de palabras que podrían ser utilizadas         para corregirla. Si la palabra de entrada es correcta (está dentro del diccionario         del corrector) o no tienen ninguna palabra candidata con una distancia menor o igual         a la establecida en el parámetro <em>distancia</em> de la clase Corrector, la función         devolverá la misma palabra de entrada.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -334,7 +334,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.palabras_conocidas">
 <code class="descname">palabras_conocidas</code><span class="sig-paren">(</span><em><span class="n">texto</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.palabras_conocidas" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>A partir de un texto de entrada, devuelve un conjunto (objeto de clase <em>set</em> de             Python) con las palabras del texto que se reconocen por estar presentes en             el diccionario del corrector.</p>
+<dd><p>A partir de un texto de entrada, devuelve un conjunto (objeto de clase <em>set</em> de         Python) con las palabras del texto que se reconocen por estar presentes en         el diccionario del corrector.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -350,7 +350,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.palabras_desconocidas">
 <code class="descname">palabras_desconocidas</code><span class="sig-paren">(</span><em><span class="n">texto</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.palabras_desconocidas" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>A partir de un texto de entrada, devuelve un conjunto (objeto de clase <em>set</em> de             Python) con las palabras del texto que no están incluídas en             el diccionario del corrector y por lo tanto no se reconocen.</p>
+<dd><p>A partir de un texto de entrada, devuelve un conjunto (objeto de clase <em>set</em> de         Python) con las palabras del texto que no están incluidas en         el diccionario del corrector y por lo tanto no se reconocen.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -366,7 +366,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.probabilidad_palabra">
 <code class="descname">probabilidad_palabra</code><span class="sig-paren">(</span><em><span class="n">palabra</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.probabilidad_palabra" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Para una palabra de entrada, devuelve la probabilidad de aparición de la misma,             entendida como su frecuencia sobre la suma de las frecuencias de todas las palabras            disponibles, de acuerdo al diccionario del corrector. Si la palabra es desconocida             (no se encuentra en el diccionario), la probabilidad retornada será de cero.</p>
+<dd><p>Para una palabra de entrada, devuelve la probabilidad de aparición de la misma,         entendida como su frecuencia sobre la suma de las frecuencias de todas las palabras        disponibles, de acuerdo al diccionario del corrector. Si la palabra es desconocida         (no se encuentra en el diccionario), la probabilidad retornada será de cero.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -382,7 +382,7 @@ como válidas o correctas, y los valores del diccionario son las frecuencias de 
 <dl class="py method">
 <dt id="correccion.Corrector.quitar_palabras">
 <code class="descname">quitar_palabras</code><span class="sig-paren">(</span><em><span class="n">palabras</span></em><span class="sig-paren">)</span><a class="headerlink" href="#correccion.Corrector.quitar_palabras" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Quita del diccionario del corrector una o más palabras proporcionadas en el argumento             <em>palabras</em>, haciendo que estas ya no sean reconocidas como palabras válidas o             correctas al momento de hacer corrección ortográfica.</p>
+<dd><p>Quita del diccionario del corrector una o más palabras proporcionadas en el argumento         <em>palabras</em>, haciendo que estas ya no sean reconocidas como palabras válidas o         correctas al momento de hacer corrección ortográfica.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

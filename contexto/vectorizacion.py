@@ -57,7 +57,7 @@ class VectorizadorFrecuencias():
             return None
 
     def ajustar(self, x, archivo_salida=''):
-        """ Permite al vectorizador aprender el vocabulario de acuerdo a \ 
+        """ Permite al vectorizador aprender el vocabulario de acuerdo con \ 
         los textos de entrada.
 
         :param x: objeto iterable con textos (str), unicode u archivos de \ 
@@ -72,7 +72,7 @@ class VectorizadorFrecuencias():
 
     # Para mantener "nomenclatura sklearn"
     def fit(self, x, archivo_salida=''):
-        """ Permite al vectorizador aprender el vocabulario de acuerdo a \ 
+        """ Permite al vectorizador aprender el vocabulario de acuerdo con \ 
         los textos de entrada. **Llama la función ajustar**.
 
         :param x: objeto iterable con textos (str), unicode u archivos de \ 
@@ -84,7 +84,7 @@ class VectorizadorFrecuencias():
 
     def vectorizar(self, textos, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matriz documentos-términos
+        Transformando los textos en una matriz documentos-términos.
 
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.
@@ -165,7 +165,7 @@ class VectorizadorHash():
 
     def vectorizar(self, textos, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
-        Transformando los textos en una matriz documentos-términos
+        Transformando los textos en una matriz documentos-términos.
 
         :param textos: string (str) o lista (list) con textos de interés \ 
             para ser vectorizados.

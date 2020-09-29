@@ -209,7 +209,7 @@ del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” 
 <dl class="py method">
 <dt id="lematizacion.LematizadorSpacy.establecer_lenguaje">
 <code class="descname">establecer_lenguaje</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Define el lenguaje del lematizador</p>
+<dd><p>Define el lenguaje del lematizador.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -225,7 +225,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorSpacy.iniciar_lematizador">
 <code class="descname">iniciar_lematizador</code><span class="sig-paren">(</span><em><span class="n">dim_modelo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.iniciar_lematizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Inicia el lematizador con el tamaño del modelo de lematización basado en             en los tamaños de la librería Spacy. Los modelos más grandes obtienen mejores             predicciones pero requieren mayor tiempo de carga</p>
+<dd><p>Inicia el lematizador con el tamaño del modelo de lematización basado en         en los tamaños de la librería Spacy. Los modelos más grandes obtienen mejores         predicciones, pero requieren mayor tiempo de carga.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -260,7 +260,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorSpacy.modificar_lemmas">
 <code class="descname">modificar_lemmas</code><span class="sig-paren">(</span><em><span class="n">dict_lemmas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.modificar_lemmas" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Define lemas asociados a palabras escogidas por el usuario. Estos nuevos             lemas serán adicionados al diccionario de lemas del lematizador</p>
+<dd><p>Define lemas asociados a palabras escogidas por el usuario. Estos nuevos         lemas serán adicionados al diccionario de lemas del lematizador.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -277,7 +277,7 @@ Para mayor información consultar la sección de
 <dt id="lematizacion.LematizadorStanza">
 <em class="property">class </em><code class="descclassname">lematizacion.</code><code class="descname">LematizadorStanza</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em>, <em><span class="n">modelo_lemas</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">dict_lemmas</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">archivo_salida</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor por defecto de la clase LematizadorStanza. Esta clase se         encarga de manejar todas las funciones asociadas a la lematización         del texto con la librería Stanza</p>
+<p>Constructor por defecto de la clase LematizadorStanza. Esta clase se         encarga de manejar todas las funciones asociadas a la lematización         del texto con la librería Stanza.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -296,7 +296,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorStanza.establecer_lenguaje">
 <code class="descname">establecer_lenguaje</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Define el lenguaje del lematizador</p>
+<dd><p>Define el lenguaje del lematizador.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -311,7 +311,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorStanza.iniciar_lematizador">
 <code class="descname">iniciar_lematizador</code><span class="sig-paren">(</span><em><span class="n">modelo_lemas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.iniciar_lematizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Inicia el lematizador de Stanza y permite ingresar la ruta de un modelo             de lematización personalizado. En caso de no especificar la ruta             se utilizaría un modelo genérico</p>
+<dd><p>Inicia el lematizador de Stanza y permite ingresar la ruta de un modelo         de lematización personalizado. En caso de no especificar la ruta         se utilizaría un modelo genérico.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -325,7 +325,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorStanza.lematizar">
 <code class="descname">lematizar</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">limpiar</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.lematizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Se lleva a cabo el proceso de lematización del texto, el cual puede             ser limpiado antes de la lematización.</p>
+<dd><p>Se lleva a cabo el proceso de lematización del texto, el cual puede         ser limpiado antes de la lematización.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -346,7 +346,7 @@ Para mayor información consultar la sección de
 <dl class="py method">
 <dt id="lematizacion.LematizadorStanza.modificar_lemmas">
 <code class="descname">modificar_lemmas</code><span class="sig-paren">(</span><em><span class="n">dict_lemmas</span></em>, <em><span class="n">archivo_entrada</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">archivo_salida</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">gpu</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.modificar_lemmas" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite modificar o añadir nuevos lemas al modelo original de             lematización. Adicionalmente, permite ingresar un modelo personalizado             desde una ruta específica.</p>
+<dd><p>Permite modificar o añadir nuevos lemas al modelo original de         lematización. Adicionalmente, permite ingresar un modelo personalizado         desde una ruta específica.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -368,7 +368,7 @@ Para mayor información consultar la sección de
 <dl class="py function">
 <dt id="lematizacion.lematizar_texto">
 <code class="descclassname">lematizacion.</code><code class="descname">lematizar_texto</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">lenguaje</span><span class="o">=</span><span class="default_value">'es'</span></em>, <em><span class="n">libreria</span><span class="o">=</span><span class="default_value">'spacy'</span></em>, <em><span class="n">limpiar</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">lematizador</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">dict_lemmas</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">dim_modelo</span><span class="o">=</span><span class="default_value">'md'</span></em>, <em><span class="n">modelo_lemas</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">archivo_salida</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.lematizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Función que retorna un texto lematizado por la librería Spacy o Stanza.         Permite escoger el idioma de lematización, si hacer limpieza del texto,         modificar los modelos de lematizaciones originales y guardar los modelos         modificados</p>
+<dd><p>Función que retorna un texto lematizado por la librería Spacy o Stanza.         Permite escoger el idioma de lematización, si hacer limpieza del texto,         modificar los modelos de lematizaciones originales y guardar los modelos         modificados.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

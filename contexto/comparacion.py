@@ -206,8 +206,8 @@ class Distancia():
             return pairwise_distances(textos, metric=tipo_distancia, **kwds)
 
     def l1(self, textos):
-        """Calcula la distancia L1 entre textos. También conocida como la \ 
-        la distancia Manhattan.
+        """Calcula la distancia L1 entre textos. También conocida como \ 
+        distancia Manhattan.
 
         :param textos: (list) lista de textos (str) de interés para el \ 
             cálculo de distancia.
@@ -216,8 +216,8 @@ class Distancia():
         return self.distancia_pares(textos, tipo_distancia='l1')   
 
     def l2(self, textos):        
-        """Calcula la distancia L2 entre textos. También conocida como la \ 
-        la distancia Euclidiana.
+        """Calcula la distancia L2 entre textos. También conocida como \ 
+        distancia Euclidiana.
 
         :param textos: (list) lista de textos (str) de interés para el \ 
             cálculo de distancia

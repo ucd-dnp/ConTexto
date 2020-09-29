@@ -12,22 +12,22 @@ class Lector():
     def __init__(self, ubicacion_archivo):
         """
         Constructor por defecto de la clase Lector. Esta clase se encarga de extraer \
-            el texto de archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e \
-            imágenes
+        el texto de archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e \
+        imágenes.
 
         :param ubicacion_archivo: (string). Ruta del archivo que se desea leer
         """
         self.establecer_ubicacion(ubicacion_archivo)
 
     def establecer_ubicacion(self, ubicacion_archivo):
-        """ Define la ubicación del archivo que se desea leer
+        """ Define la ubicación del archivo que se desea leer.
 
         :param ubicacion_archivo: (string). Ruta del archivo que se desea leer
         """
         self.ubicacion_archivo = ubicacion_archivo
 
     def leer_txt(self, encoding="utf-8"):
-        """ Se lleva a cabo la lectura del texto de archivos con extensión '.txt'
+        """ Se lleva a cabo la lectura del texto de archivos con extensión '.txt'.
 
         :param encoding: (string). Valor por defecto: 'utf-8'. Especifica la codificación \
             del texto que se desea leer
@@ -45,7 +45,7 @@ class Lector():
         return '\n'.join(salida)
 
     def leer_word(self, por_paginas, extraer_medios, dir_medios):
-        """ Se lleva a cabo la lectura del texto de archivos con extensión '.docx' o '.doc'
+        """ Se lleva a cabo la lectura del texto de archivos con extensión '.docx' o '.doc'.
 
         :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
             archivo Word con separador de páginas. Este separador se encuentra como '|**|' \
@@ -84,7 +84,7 @@ class Lector():
         return texto
 
     def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
-        """ Se lleva a cabo la lectura del texto de archivos con extensión '.pdf'
+        """ Se lleva a cabo la lectura del texto de archivos con extensión '.pdf'.
 
         :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
             archivo Word con separador de páginas. Este separador se encuentra como '|**|' \
@@ -135,7 +135,7 @@ class Lector():
             return ' '.join(paginas)
 
     def leer_rtf(self):
-        """ Se lleva a cabo la lectura del texto de archivos con extensión '.rtf'
+        """ Se lleva a cabo la lectura del texto de archivos con extensión '.rtf'.
 
         :return: (string). Texto del archivo '.rtf' leído con la clase Lector
         """
@@ -154,7 +154,7 @@ class Lector():
         return texto
 
     def leer_imagen(self, preprocesamiento, lenguaje, oem, psm):
-        """ Se lleva a cabo la lectura del texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg'
+        """ Se lleva a cabo la lectura del texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg'.
 
         :param preprocesamiento: (int) {1,2,3,4,5}. Especifica el nivel de preprocesamiento \
             que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \

@@ -28,7 +28,7 @@ class Stemmer():
     def establecer_lenguaje(self, lenguaje):
         """
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
-            va a aplicarse el objeto de la case Stemmer.
+        va a aplicarse el objeto de la case Stemmer.
 
         :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
             a aplicar stemming. Para mayor información consultar la sección de \ 
@@ -50,7 +50,7 @@ class Stemmer():
     def stemming(self, texto, limpiar=False):
         """
         Aplica *stemming* sobre un texto de entrada, y devuelve el texto \
-            resultante.
+        resultante.
 
         :param texto: (string). Texto al que se desea aplicar el *stemming*. 
         :param limpiar: (bool) {True, False}. Valor por defecto: False. Argumento \
@@ -70,7 +70,7 @@ class Stemmer():
 def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     """
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
-        reducción de palabras a su raíz, en un texto de entrada.
+    reducción de palabras a su raíz, en un texto de entrada.
         
     :param texto: (string). Texto al que se desea aplicar el *stemming*.
     :param lenguaje: (string) Lenguaje del  texto al que se va \ 

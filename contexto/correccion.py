@@ -87,9 +87,9 @@ class Corrector():
     def actualizar_diccionario(self, diccionario):
         """
         Actualiza el diccionario que contiene las palabras válidas o reconocidas disponibles para \
-            realizar la corrección ortográfica. Las palabras contenidas en el argumento *diccionario* \
-            de esta función serán añadidas (o sus frecuencias serán actualizadas) en el diccionario \
-            que ya existe en el objeto de la clase Corrector.
+        realizar la corrección ortográfica. Las palabras contenidas en el argumento *diccionario* \
+        de esta función serán añadidas (o sus frecuencias serán actualizadas) en el diccionario \
+        que ya existe en el objeto de la clase Corrector.
 
         :param diccionario: (dict, list o string). Diccionario (o string con ubicación del \
             archivo JSON que lo contiene), o lista que permite modificar y agregar palabras. \
@@ -115,8 +115,8 @@ class Corrector():
     def quitar_palabras(self, palabras):
         """
         Quita del diccionario del corrector una o más palabras proporcionadas en el argumento \
-            *palabras*, haciendo que estas ya no sean reconocidas como palabras válidas o \
-            correctas al momento de hacer corrección ortográfica.
+        *palabras*, haciendo que estas ya no sean reconocidas como palabras válidas o \
+        correctas al momento de hacer corrección ortográfica.
 
         :param palabras: (str o list). Palabra o lista de palabras que se desean quitar del \
             diccionario del objeto de la clase Corrector, para que no sean recnocidas como \
@@ -132,8 +132,8 @@ class Corrector():
     def agregar_palabras(self, palabras):
         """
         Añade al diccionario del corrector una o más palabras proporcionadas en el argumento \
-            *palabras*, haciendo que estas sean reconocidas como palabras válidas o \
-            correctas al momento de hacer corrección ortográfica.
+        *palabras*, haciendo que estas sean reconocidas como palabras válidas o \
+        correctas al momento de hacer corrección ortográfica.
 
         :param palabras: (str o list). Palabra o lista de palabras que se desean añadir al \
             diccionario del objeto de la clase Corrector, para que sean reconocidas como \
@@ -146,8 +146,8 @@ class Corrector():
     def palabras_conocidas(self, texto):
         """
         A partir de un texto de entrada, devuelve un conjunto (objeto de clase *set* de \
-            Python) con las palabras del texto que se reconocen por estar presentes en \
-            el diccionario del corrector.
+        Python) con las palabras del texto que se reconocen por estar presentes en \
+        el diccionario del corrector.
 
         :param texto: (str). Texto para el que se desean hayar las palabras conocidas.
         :return: (set). Conjunto de palabras conocidas presentes en el texto de entrada.
@@ -158,8 +158,8 @@ class Corrector():
     def palabras_desconocidas(self, texto):
         """
         A partir de un texto de entrada, devuelve un conjunto (objeto de clase *set* de \
-            Python) con las palabras del texto que no están incluídas en \
-            el diccionario del corrector y por lo tanto no se reconocen.
+        Python) con las palabras del texto que no están incluidas en \
+        el diccionario del corrector y por lo tanto no se reconocen.
 
         :param texto: (str). Texto para el que se desean hallar las palabras desconocidas.
         :return: (set). Conjunto de palabras desconocidas presentes en el texto de entrada.
@@ -170,10 +170,10 @@ class Corrector():
     def palabras_candidatas(self, palabra):
         """
         Para una palabra de entrada, retorna un conjunto de palabras que podrían ser utilizadas \
-            para corregirla. Si la palabra de entrada es correcta (está dentro del diccionario \
-            del corrector) o no tienen ninguna palabra candidata con una distancia menor o igual \
-            a la establecida en el parámetro *distancia* de la clase Corrector, la función \
-            devolverá la misma palabra de entrada. 
+        para corregirla. Si la palabra de entrada es correcta (está dentro del diccionario \
+        del corrector) o no tienen ninguna palabra candidata con una distancia menor o igual \
+        a la establecida en el parámetro *distancia* de la clase Corrector, la función \
+        devolverá la misma palabra de entrada.
 
         :param palabra: (str). Palabra para la que se quieren conocer palabras candidatas \
             para su corrección ortográfica.
@@ -184,8 +184,8 @@ class Corrector():
     def frecuencia_palabra(self, palabra):
         """
         Para una palabra de entrada, devuelve la frecuencia de la misma, de acuerdo al \
-            diccionario del corrector. Si la palabra es desconocida (no se encuentra en \
-            el diccionario), la frecuencia retornada será de cero.
+        diccionario del corrector. Si la palabra es desconocida (no se encuentra en \
+        el diccionario), la frecuencia retornada será de cero.
 
         :param palabra: (str). Palabra para la cual se desea conocer la frecuencia de \
             aparición en el diccionario del corrector.
@@ -197,9 +197,9 @@ class Corrector():
     def probabilidad_palabra(self, palabra):
         """
         Para una palabra de entrada, devuelve la probabilidad de aparición de la misma, \
-            entendida como su frecuencia sobre la suma de las frecuencias de todas las palabras\
-            disponibles, de acuerdo al diccionario del corrector. Si la palabra es desconocida \
-            (no se encuentra en el diccionario), la probabilidad retornada será de cero.
+        entendida como su frecuencia sobre la suma de las frecuencias de todas las palabras\
+        disponibles, de acuerdo al diccionario del corrector. Si la palabra es desconocida \
+        (no se encuentra en el diccionario), la probabilidad retornada será de cero.
 
         :param palabra: (str). Palabra para la cual se desea conocer la probabilidad \
             de aparición en el diccionario del corrector.
@@ -210,9 +210,9 @@ class Corrector():
     def correccion_ortografia(self, texto, limpieza=False):
         """
         Realiza corrección ortográfica sobre un texto de entrada, identificando las palabras \
-            que no están en el diccionario del corrector y cambiándolas por su candidata más \
-            frecuente o probable, siempre y cuando haya por lo menos una palabra candidata \
-            que cumpla con la máxima distancia de Levenshtein permitida.
+        que no están en el diccionario del corrector y cambiándolas por su candidata más \
+        frecuente o probable, siempre y cuando haya por lo menos una palabra candidata \
+        que cumpla con la máxima distancia de Levenshtein permitida.
 
         :param texto: (str). Texto al cuál se desea aplicar corrección ortográfica.
         :param limpieza: (bool) {True, False}. Valor por defecto: False. Argumento \

@@ -55,7 +55,8 @@ Instalación de Poppler
    
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen07.jpg
        :align: center
-       
+
+.. _instalacion_tesseract:
 
 Instalación de Tesseract
 ------------------------

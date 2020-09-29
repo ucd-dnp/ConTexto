@@ -7,7 +7,7 @@ from utils.tokenizacion import tokenizar, destokenizar
 
 def remover_acentos(texto):
     """Quita los acentos (tildes, diéresis, virgulilla) de un texto de entrada. Esta reemplaza \
-        cada carácter con acento en el texto por su equivalente sin acento.
+    cada carácter con acento en el texto por su equivalente sin acento.
 
     :param texto: (str) Texto al que se le quieren quitar los acentos.
     :return: (str) Texto sin acentos después de la limpieza.
@@ -133,7 +133,7 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
     return texto
 
 def limpiar_extremos(texto):
-    """Quita los espacios presentes al inicio y al final de una cadena de texto
+    """Quita los espacios presentes al inicio y al final de una cadena de texto.
 
     :param texto: (str) Cadena de texto de entrada.
     :return: (str) Cadena de texto sin espacios en el inicio y en el final.
@@ -159,7 +159,7 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
 
 def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
     """Función para cargar las listas de palabras y expresiones que se desean \
-    eliminar de un texto a partir de un archivo plano
+    eliminar de un texto a partir de un archivo plano.
 
     :param ubicacion_archivo: (str) Ubicación del archivo plano que contiene la lista de palabras \
         y/o lista de palabras separadas por espacios, comas o saltos de línea.
@@ -186,7 +186,7 @@ def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
 
 def lista_stopwords(lenguaje='es'):
     """Genera una lista de stopwords (palabras que se quieren quitar de un texto). \
-    Funcion que genera una lista de stopwords de un idioma predeterminado. \
+    Función que genera una lista de stopwords de un idioma predeterminado. \
     Por defecto, genera stopwords en español.
 
     :param lenguaje: (str), optional.Lenguaje de las stopwords. Por defecto `es`, que \
@@ -219,7 +219,7 @@ def lista_stopwords(lenguaje='es'):
 def lista_nombres(tipo='todos'):
     """Genera lista de nombres más comunes del español. Retorna lista con los nombres \
     más comunes, tanto para hombre y mujer del idioma español. La función permite generar \
-    lista de nombres solo de mujeres o solo de hombres con el párametro `tipo`.
+    lista de nombres solo de mujeres o solo de hombres con el parámetro `tipo`.
 
     :param tipo: {'todos', 'mujeres', 'hombres'}, optional. Permite generar lista de nombres \
         de: solo nombres de mujeres (`tipo = 'mujeres'`), solo nombres de hombres. \
