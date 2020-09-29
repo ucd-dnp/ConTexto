@@ -1,6 +1,6 @@
 '''
 Código, funciones y clases relacionadas a la carga y lectura de
-diferentes tipos de archivo (word, txt, rtf, pdf inicialmente).
+diferentes tipos de archivo (word, txt, rtf, pdf, png, jpg inicialmente).
 '''
 import os
 from utils.auxiliares import verificar_crear_dir, adecuar_xml
@@ -83,7 +83,7 @@ class Lector():
             texto = docx2txt.process(self.ubicacion_archivo, dir_medios)
         return texto
 
-    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None):
+    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None, enderezar=True):
         """ Se lleva a cabo la lectura del texto de archivos con extensión '.pdf'.
 
         :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
@@ -100,26 +100,31 @@ class Lector():
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
                  método de OTSU. |/li| 
-             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo. |/li| 
-             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
-                de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
+                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 5: se convierte la imagen a escala de grises, se aplica umbral \
+                de imagen con el método de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede \
+                enderezar el texto de la imagen.|/li| 
              |/ul| 
-        :param lenguaje: (string). {'spa', 'eng'}  Se define el \
-            lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
-            óptico de caracteres (el parámetro ocr es True). Tiene las opciones de los lenguajes\
-            que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
+        :param lenguaje: (string). Se define el lenguaje del texto que se desea extraer. Aplica cuando \
+            se utilia reconocimiento óptico de caracteres (el parámetro ocr es True). Para mayor información, \
+            consultar la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param oem: (int) OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Para mayor información consultar la sección de \ 
+            en inglés). Para mayor información, consultar la sección de \ 
             :ref:`OCR <seccion_ocr>`.
         :param psm: (int) PSM hace referencia a los modos de segmentación de las páginas \ 
             (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor \ 
             información consultar la sección de :ref:`OCR <seccion_ocr>`.
-        :return: (string). Texto del archivo '.pdf' leído con la clase Lector
+        :param password: (str). Valor por defecto: None. Contraseña del documento PDF que se quiere \
+            leer, en caso de que se necesite.
+        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
+        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando ocr=True y el parámetro preprocesamiento es igual a 4 o 5.
+        :return: (string). Texto del archivo '.pdf' leído con la clase Lector.
             """
         if ocr:
             from utils.ocr import OCR
-            recog = OCR(preprocesamiento, lenguaje, oem, psm)
+            recog = OCR(preprocesamiento, lenguaje, oem, psm, enderezar=enderezar)
             paginas = recog.pdf_a_texto(self.ubicacion_archivo)
         else:
             try:
@@ -137,7 +142,7 @@ class Lector():
     def leer_rtf(self):
         """ Se lleva a cabo la lectura del texto de archivos con extensión '.rtf'.
 
-        :return: (string). Texto del archivo '.rtf' leído con la clase Lector
+        :return: (string). Texto del archivo '.rtf' leído con la clase Lector.
         """
         from utils.auxiliares import striprtf
         texto = []
@@ -153,7 +158,7 @@ class Lector():
         texto = ' '.join(texto)
         return texto
 
-    def leer_imagen(self, preprocesamiento, lenguaje, oem, psm):
+    def leer_imagen(self, preprocesamiento, lenguaje, oem, psm, enderezar=True):
         """ Se lleva a cabo la lectura del texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg'.
 
         :param preprocesamiento: (int) {1,2,3,4,5}. Especifica el nivel de preprocesamiento \
@@ -163,20 +168,25 @@ class Lector():
              |li| 1: se convierte la imagen a escala de grises. |/li| 
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
-             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
+                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
+                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
              |/ul| 
-        :param lenguaje: (string). {'spa', 'eng'}  Se define el lenguaje del texto que se desea extraer. \
-            Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng')
+        :param lenguaje: (string). Se define el lenguaje del texto que se desea extraer. Para mayor información, \
+            consultar la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param oem: (int) OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+            en inglés). Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param psm: (int) PSM hace referencia a los modos de segmentación de las páginas \
             (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor \ 
             información consultar la sección de :ref:`OCR <seccion_ocr>`.
+        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
+        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando el parámetro preprocesamiento es igual a 4 o 5.
         :return: (string). Texto del archivo tipo imagen leído con la clase Lector
         """
         from utils.ocr import OCR
-        recog = OCR(preprocesamiento, lenguaje, oem, psm)
+        recog = OCR(preprocesamiento, lenguaje, oem, psm, enderezar=enderezar)
         texto = recog.imagen_a_texto(self.ubicacion_archivo)
         return texto
 
@@ -192,7 +202,8 @@ class Lector():
             lenguaje='spa',
             oem=2,
             psm=3,
-            password=None):
+            password=None,
+            enderezar=True):
 
         """ Se lleva a cabo la lectura del texto de un archivo y permite escoger el tipo, si es por páginas, \
             la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
@@ -221,20 +232,25 @@ class Lector():
              |li| 1: se convierte la imagen a escala de grises. |/li| 
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-             |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
-             |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
+                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
+                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
              |/ul| 
-        :param lenguaje: (string). {'spa', 'eng'}. Valor por defecto: 'spa'  Tiene las opciones de los lenguajes que se descargan \
-            de la página de Tesseract. por ejemplo: español ('spa') e inglés ('eng'). Aplica cuando se extrae el texto de \
-            imágenes o archivos escaneados
+        :param lenguaje: (string). Valor por defecto: 'spa'  Aplica cuando se aplica OCR para extraer el texto de \
+            imágenes o archivos escaneados. Para mayor información, consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param oem: (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
-            en inglés). Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+            en inglés). Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param psm: (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación \ 
             de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. \ 
-            Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+            Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
-        :return: (string). Texto extraído del archivo con la clase Lector            
+        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
+        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento es igual a 4 o 5.
+        :return: (string). Texto extraído del archivo con la clase Lector  .          
         """
         tipo = tipo.lower()
         if tipo == 'inferir':
@@ -242,13 +258,13 @@ class Lector():
         if tipo in ['txt', 'csv']:
             salida = self.leer_txt(encoding)
         elif tipo == 'pdf':
-            salida = self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password)
+            salida = self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password, enderezar)
         elif tipo == 'rtf':
             salida = self.leer_rtf()
         elif tipo in ['doc', 'docx']:
             salida = self.leer_word(por_paginas, extraer_medios, dir_medios)
         elif tipo in ['png', 'jpg', 'jpeg']:
-            return self.leer_imagen(preprocesamiento, lenguaje, oem, psm)
+            return self.leer_imagen(preprocesamiento, lenguaje, oem, psm, enderezar)
         else:
             print(
                 'Formato desconocido. Por favor ingrese un archivo en formato adecuado.')
@@ -275,28 +291,29 @@ def leer_texto(
         lenguaje='spa',
         oem=2,
         psm=3, 
-        password=None):        
+        password=None,
+        enderezar=True):        
     """ Función que se encarga de extraer el texto de un archivo. Permite especificar la ruta del archivo, \
         escoger el tipo, si es por páginas, la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 
-    :param ubicacion_archivo: (string). Ruta del archivo que se desea leer
+    :param ubicacion_archivo: (string). Ruta del archivo que se desea leer.
     :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', 'docx', 'npg', \
         'jpg', 'jpeg'} Valor por defecto: 'inferir'. Se define el tipo (o extensión) del \
-        archivo que se desea leer
+        archivo que se desea leer.
     :param extraer_medios: (bool) {True, False}. Valor por defecto: False. Especifica si se desean extraer las \
         imágenes dentro del archivo de Word para ser guardadas aparte como archivos \
         de imágenes. Funciona únicamente para archivos '.docx' (no '.doc') y si el \
         parámetro 'por_paginas' es False.
     :param dir_medios: (string). Valor por defecto: 'temp/img_dir/' Ruta de la carpeta \
         donde se guardan las imágenes del archivo Word cuyas imágenes se extrajeron (se especificó \
-        extraer_medios = True)
+        extraer_medios=True).
     :param por_paginas: (bool) {True, False}. Valor por defecto: False. Se define si se \
         desea extraer el texto por páginas. 
     :param encoding: (string). Valor por defecto: 'utf-8'. Especifica la codificación \
-        del texto que se desea leer
+        del texto que se desea leer.
     :param ocr: (bool) {True, False}. Valor por defecto: False Especifica si se desea utilizar reconocimiento \
         óptico de caracteres sobre el archivo cuyo texto se quiere extraer. Se utiliza \
-        usualmente cuando el archivo es una imagen o documento escaneado
+        usualmente cuando el archivo es una imagen o documento escaneado.
     :param preprocesamiento: (int) {1,2,3,4,5}. Valor por defecto: 3 Especifica el nivel de preprocesamiento \
         que se lleva a cabo antes de extraer el texto del archivo. Aplica cuando se utiliza \
         reconocimiento óptico de caracteres (parámetro ocr es True). Las opciones son las siguientes: \
@@ -304,21 +321,25 @@ def leer_texto(
          |li| 1: se convierte la imagen a escala de grises. |/li| 
          |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
          |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-         |li| 4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
-         |li| 5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
+         |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
+                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+         |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
+                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
          |/ul| 
-    :param lenguaje: (string). {'spa', 'eng'}. Valor por defecto: 'spa'  Se define el lenguaje del texto que se desea extraer. \
-        Tiene las opciones de los lenguajes que se descargan de la página de Tesseract. por ejemplo: español ('spa') e inglés \
-        ('eng'). Aplica cuando se extrae el texto de \
-        imágenes o archivos escaneados
+    :param lenguaje: (string). Valor por defecto: 'spa'. Define el lenguaje del texto que se desea extraer. \
+        Aplica cuando se utiliza el OCR para extraer el texto de imágenes o archivos escaneados. Para mayor \
+        información, consultar la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
     :param oem: (int) Valor por defecto: 2. OEM hace referencia al modo del motor OCR (OCR engine mode \
-        en inglés). Para mayor información consultar la sección de  :ref:`OCR <seccion_ocr>`.
+        en inglés). Para mayor información, consultar la sección de  :ref:`OCR <seccion_ocr>`.
     :param psm: (int) Valor por defecto: 3 PSM hace referencia a los modos de segmentación \ 
         de las páginas (page segmentation modes, en inglés) de la librería Pytesseract. \ 
-        Para mayor información consultar la sección de :ref:`OCR <seccion_ocr>`.
+        Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
     :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
-        extraer, en caso de requerirlo
-    :return: (string). Texto extraído del archivo especificado con la función 'leer_texto'
+        extraer, en caso de requerirlo.
+    :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
+        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+        solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento es igual a 4 o 5.
+    :return: (string). Texto extraído del archivo especificado con la función 'leer_texto'.
     """
     le = Lector(ubicacion_archivo)
     return le.archivo_a_texto(
@@ -332,4 +353,5 @@ def leer_texto(
         lenguaje,
         oem,
         psm,
-        password)
+        password,
+        enderezar)
