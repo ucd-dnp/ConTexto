@@ -3,8 +3,7 @@
 class Escritor():
     def __init__(self, ubicacion_archivo, texto):
         """ Constructor por defecto de la clase Escritor. Esta clase se encarga de guardar \
-            texto en archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e \
-            imágenes
+        texto en archivos de distintos tipos como Word, PDF, CSV, TXT, RTF e imágenes.
 
         :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
             con el texto deseado
@@ -14,7 +13,7 @@ class Escritor():
         self.establecer_texto(texto)
 
     def establecer_ubicacion(self, ubicacion_archivo):
-        """ Define la ruta del archivo con el texto que se desea guardar 
+        """ Define la ruta del archivo con el texto que se desea guardar.
 
         :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
             con el texto deseado 
@@ -22,7 +21,7 @@ class Escritor():
         self.ubicacion_archivo = ubicacion_archivo
 
     def establecer_texto(self, texto):
-        """ Define el texto que será guardado en un archivo
+        """ Define el texto que será guardado en un archivo.
 
         :param texto: (string). Texto que será guardado en un archivo 
         """
@@ -94,7 +93,7 @@ class Escritor():
             salida.write(fp)
 
     def texto_a_archivo(self, tipo='inferir'):
-        """ Especifica el tipo de archivo en el que se quiere guardar el texto
+        """ Especifica el tipo de archivo en el que se quiere guardar el texto.
 
         :param tipo: (string) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}. Valor por defecto: 'inferir'. \
             Define el tipo del archivo en el que se desea guardar el texto
@@ -119,7 +118,7 @@ class Escritor():
 
 def escribir_texto(ubicacion_archivo, texto, tipo='inferir'):
     """ Función que guarda texto en un archivo específico. Permite escoger la \
-        ruta del archivo, su tipo y el texto a ser guardado dentro de este archivo
+        ruta del archivo, su tipo y el texto a ser guardado dentro de este archivo.
 
     :param ubicacion_archivo: (string). Ruta del archivo que será guardado \
         con el texto deseado
