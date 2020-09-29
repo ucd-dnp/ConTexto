@@ -7,3 +7,4 @@ Lematización
    :undoc-members:
    :show-inheritance:
    :exclude-members: 
+   

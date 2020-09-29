@@ -3,7 +3,7 @@
 Limpieza de textos
 ==================
 
-Este ejemplo muestra las principales funcionalidades del módulo `limpieza`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
 
 Funciones de limpieza de textos
 -------------------------------

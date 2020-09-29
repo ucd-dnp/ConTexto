@@ -1,9 +1,9 @@
 .. _03_exploracion_y_visualizacion:
 
-Análisis exploratorio y visualización de textos
-===============================================
+Análisis exploratorio y visualización
+=====================================
 
-Este ejemplo muestra las principales funcionalidades del módulo `exploracion`, de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos, y tener mejor idea de qué contienen y sobre qué hablan.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Exploración <exploracion>`, de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos, y tener mejor idea de qué contienen y sobre qué hablan.
 
 Importar paquetes necesarios y adecuar texto de prueba
 ------------------------------------------------------
