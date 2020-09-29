@@ -95,45 +95,60 @@ def corregir_giro(img):
     return rotada
 
 
-def procesar_img_1(img):
+def procesar_img_1(img, enderezar=False):
     """ Primera función de preprocesamiento. Se encarga de convertir una imagen a escala de grises
     :param img: (numpy array). Imagen sobre la cual se desea aplicar el preprocesamiento.
-    return: (numpy array). Imagen en escala de grises.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido \
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+    return: (numpy array). Imagen en escala de grises y, si \
+        enderezar=True, con el alineamiento del texto corregido.
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    if enderezar:
+        gris = corregir_giro(gris)    
     return gris
 
 
-def procesar_img_2(img):
+def procesar_img_2(img, enderezar=False):
     """ Segunda función de preprocesamiento. Se encarga de convertir una imagen a escala de grises \
         y aplicar blurring ('borrosidad').
 
     :param img: (numpy array). Imagen sobre la cual se desea aplicar el preprocesamiento.
-    return: (numpy array). Imagen en escala de grises y después de aplicar blurring.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido \
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+    return: (numpy array). Imagen en escala de grises y después de aplicar blurring y, si \
+        enderezar=True, con el alineamiento del texto corregido.
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     borrosa = blur_img(gris)
+    if enderezar:
+        borrosa = corregir_giro(borrosa)    
     return borrosa
 
 
-def procesar_img_3(img):
+def procesar_img_3(img, enderezar=False):
     """ Tercera función de preprocesamiento. Se encarga de convertir una imagen a escala de grises \
         y aplicar el umbral de imagen con el método OTSU.
     :param img: (numpy array). Imagen sobre la cual se desea aplicar el preprocesamiento.
-    return: (numpy array). Imagen en escala de grises y después de aplicar umbral de OTSU.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido \
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+    return: (numpy array). Imagen en escala de grises y después de aplicar umbral de OTSU y, si \
+        enderezar=True, con el alineamiento del texto corregido.
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gris = umbral_otsu(gris)
+    if enderezar:
+        gris = corregir_giro(gris)
     return gris
 
 
-def procesar_img_4(img, enderezar=True):
+def procesar_img_4(img, enderezar=False):
     """ Cuarta función de preprocesamiento. Se encarga de convertir una imagen a escala de grises, \
         aplicar blurring ('borrosidad') y umbral adaptativo. Adicionalmente, permite enderezar el 
         texto de la imagen.
     :param img: (numpy array). Imagen sobre la cual se desea aplicar el preprocesamiento.
-    :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido \
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
     return: (numpy array). Imagen en escala de grises, despues de aplicar umbral adaptativo y, si \
         enderezar=True, con el alineamiento del texto corregido.
     """
@@ -145,14 +160,14 @@ def procesar_img_4(img, enderezar=True):
     return salida
 
 
-def procesar_img_5(img, enderezar=True):
+def procesar_img_5(img, enderezar=False):
     """ Quinta función de preprocesamiento. Se encarga de convertir una imagen a escala de grises, \
     aplicar blurring ('borrosidad') y, umbral de OTSU y umbral adaptativo. Adicionalmente, permite enderezar el 
     texto de la imagen.
 
     :param img: (numpy array). Imagen sobre la cual se desea aplicar el preprocesamiento.
-    :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido \
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
     return: (numpy array). Imagen en escala de grises luego de aplicar umbral de OTSU, blurring, umbral \
         adaptativo y, si enderezar=True, con el alineamiento del texto corregido.
     """

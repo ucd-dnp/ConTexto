@@ -83,7 +83,7 @@ class Lector():
             texto = docx2txt.process(self.ubicacion_archivo, dir_medios)
         return texto
 
-    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None, enderezar=True):
+    def leer_pdf(self, por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password=None, enderezar=False):
         """ Se lleva a cabo la lectura del texto de archivos con extensión '.pdf'.
 
         :param por_paginas: (bool) {True, False}. Especifica si se desea extraer el texto del \
@@ -100,11 +100,9 @@ class Lector():
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
                  método de OTSU. |/li| 
-             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
              |li| 5: se convierte la imagen a escala de grises, se aplica umbral \
-                de imagen con el método de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede \
-                enderezar el texto de la imagen.|/li| 
+                de imagen con el método de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
         :param lenguaje: (string). Se define el lenguaje del texto que se desea extraer. Aplica cuando \
             se utilia reconocimiento óptico de caracteres (el parámetro ocr es True). Para mayor información, \
@@ -117,9 +115,9 @@ class Lector():
             información consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param password: (str). Valor por defecto: None. Contraseña del documento PDF que se quiere \
             leer, en caso de que se necesite.
-        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
-            solo se utiliza cuando ocr=True y el parámetro preprocesamiento es igual a 4 o 5.
+        :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando se aplica OCR (ocr=True) y el parámetro preprocesamiento está entre 1 y 5.
         :return: (string). Texto del archivo '.pdf' leído con la clase Lector.
             """
         if ocr:
@@ -158,7 +156,7 @@ class Lector():
         texto = ' '.join(texto)
         return texto
 
-    def leer_imagen(self, preprocesamiento, lenguaje, oem, psm, enderezar=True):
+    def leer_imagen(self, preprocesamiento, lenguaje, oem, psm, enderezar=False):
         """ Se lleva a cabo la lectura del texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg'.
 
         :param preprocesamiento: (int) {1,2,3,4,5}. Especifica el nivel de preprocesamiento \
@@ -168,10 +166,9 @@ class Lector():
              |li| 1: se convierte la imagen a escala de grises. |/li| 
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
              |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
-                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+                de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
         :param lenguaje: (string). Se define el lenguaje del texto que se desea extraer. Para mayor información, \
             consultar la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
@@ -180,9 +177,9 @@ class Lector():
         :param psm: (int) PSM hace referencia a los modos de segmentación de las páginas \
             (page segmentation modes, en inglés) de la librería Pytesseract. Para mayor \ 
             información consultar la sección de :ref:`OCR <seccion_ocr>`.
-        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
-            solo se utiliza cuando el parámetro preprocesamiento es igual a 4 o 5.
+        :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando el parámetro preprocesamiento está entre 1 y 5.
         :return: (string). Texto del archivo tipo imagen leído con la clase Lector
         """
         from utils.ocr import OCR
@@ -203,7 +200,7 @@ class Lector():
             oem=2,
             psm=3,
             password=None,
-            enderezar=True):
+            enderezar=False):
 
         """ Se lleva a cabo la lectura del texto de un archivo y permite escoger el tipo, si es por páginas, \
             la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
@@ -232,10 +229,9 @@ class Lector():
              |li| 1: se convierte la imagen a escala de grises. |/li| 
              |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
              |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-             |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+             |li| 4: se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
              |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
-                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+                de OTSU, blurring y umbral adaptativo. |/li| 
              |/ul| 
         :param lenguaje: (string). Valor por defecto: 'spa'  Aplica cuando se aplica OCR para extraer el texto de \
             imágenes o archivos escaneados. Para mayor información, consultar la sección de \ 
@@ -247,9 +243,9 @@ class Lector():
             Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
         :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
             extraer, en caso de requerirlo
-        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
-            solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento es igual a 4 o 5.
+        :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+            solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento está entre 1 y 5.
         :return: (string). Texto extraído del archivo con la clase Lector  .          
         """
         tipo = tipo.lower()
@@ -292,7 +288,7 @@ def leer_texto(
         oem=2,
         psm=3, 
         password=None,
-        enderezar=True):        
+        enderezar=False):        
     """ Función que se encarga de extraer el texto de un archivo. Permite especificar la ruta del archivo, \
         escoger el tipo, si es por páginas, la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 
@@ -321,10 +317,9 @@ def leer_texto(
          |li| 1: se convierte la imagen a escala de grises. |/li| 
          |li| 2: se convierte la imagen a escala de grises y se aplica blurring. |/li| 
          |li| 3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el método de OTSU. |/li| 
-         |li| 4: se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+         |li| 4: se convierte la imagen a escala de grises y se aplica umbral adaptativo. |/li| 
          |li| 5: se convierte la imagen a escala de grises, se aplica umbral de imagen con el método \
-                de OTSU, blurring y umbral adaptativo. Opcionalmente, se puede enderezar el texto de la imagen.|/li| 
+                de OTSU, blurring y umbral adaptativo. |/li| 
          |/ul| 
     :param lenguaje: (string). Valor por defecto: 'spa'. Define el lenguaje del texto que se desea extraer. \
         Aplica cuando se utiliza el OCR para extraer el texto de imágenes o archivos escaneados. Para mayor \
@@ -336,9 +331,9 @@ def leer_texto(
         Para mayor información, consultar la sección de :ref:`OCR <seccion_ocr>`.
     :param password: (string). Valor por defecto: None. Contraseña del archivo cuyo texto se desea \
         extraer, en caso de requerirlo.
-    :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
-        solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento es igual a 4 o 5.
+    :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto. Este parámetro \
+        solo se utiliza cuando se aplica OCR y el parámetro preprocesamiento está entre 1 y 5.
     :return: (string). Texto extraído del archivo especificado con la función 'leer_texto'.
     """
     le = Lector(ubicacion_archivo)

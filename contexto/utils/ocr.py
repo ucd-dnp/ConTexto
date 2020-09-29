@@ -20,7 +20,7 @@ except TesseractNotFoundError as e:
     exit(1)
 
 class OCR():
-    def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/', enderezar=True):
+    def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/', enderezar=False):
 
         """ Constructor por defecto de la clase OCR. Esta clase se encarga de extraer \
         con la metodología de reconocimiento óptico de caracteres (OCR, en inglés)
@@ -32,9 +32,8 @@ class OCR():
             2: se convierte la imagen a escala de grises y se aplica blurring
             3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
                  método de OTSU
-            4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo
-            5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
+            4: se convierte la imagen a escala de grises y se aplica umbral adaptativo
+            5: se convierte la imagen a escala de grises, se aplica umbral \
                 de imagen con el método de OTSU, blurring y umbral adaptativo             
         :param lenguaje: (string). {'spa', 'en'}  Se define el \
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
@@ -67,8 +66,8 @@ class OCR():
             13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
         :param dir_temporal: (string). Ruta donde se guardan páginas temporales de apoyo como imágenes \
             durante el proceso de extracción de texto
-        :param enderezar: (bool) {True, False}. Valor por defecto: True. Permite enderezar el texto \
-        de la imagen para obtener mejores resultados durante el proceso de extracción de texto.
+        :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
         """
         self.preprocesamiento = preprocesamiento
         self.dir_temporal = dir_temporal
@@ -87,9 +86,7 @@ class OCR():
         imagen = cv2.imread(ubicacion_imagen)
         # Se define el preprocesamiento a aplicar 
         # (si el número está fuera de rango, no se aplica ningún preprocesmiento)
-        if 0 < self.preprocesamiento <= 3:
-            imagen = eval(f'procesar_img_{self.preprocesamiento}(imagen)')
-        elif 3 < self.preprocesamiento < 6:
+        if 0 < self.preprocesamiento < 6:
             imagen = eval(f'procesar_img_{self.preprocesamiento}(imagen, {self.enderezar})')    
         # Se guarda la imagen en un archivo temporal
         nombre_archivo = "{}.png".format(os.getpid())
