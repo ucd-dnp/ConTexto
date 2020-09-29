@@ -26,7 +26,7 @@ def traducir_texto(texto, lenguaje_destino):
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
     :param lenguaje_destino: (str)  Indica el lenguaje al que desea \ 
-        traducir el texto. Para mayor información consultar la \ 
+        traducir el texto. Para mayor información, consultar la \ 
         sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.        
     :return: string del texto traducido.
     """

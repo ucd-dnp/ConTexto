@@ -25,7 +25,7 @@ class Similitud():
             Si no se especifica un vectorizador, se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de clase Similitud, este ya debe estar ajustado.
         :param lenguaje: (str) valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador. Para mayor información consultar la sección de \ 
+            vectorizador. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se pasa un vectorizador ya \
             ajustado, este parámetro no será utilizado.
         """
@@ -167,7 +167,7 @@ class Distancia():
             Si no se especifica un vectorizador, se utilizará uno de tipo Word2Vec. Si se pasa un \ 
             vectorizador al objeto de clase Distancia, este ya debe estar ajustado.
         :param lenguaje: (str) valor por defecto: 'es'. Indica el lenguaje que utilizará el \ 
-            vectorizador. Para mayor información consultar la sección de \ 
+            vectorizador. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se pasa un vectorizador ya \
             ajustado, este parámetro no será utilizado.
         """
@@ -179,7 +179,7 @@ class Distancia():
         """Establece el lenguaje del objeto Distancia.
 
         :param lenguaje: (str) Indica el lenguaje que utilizará el vectorizador. Para \
-            mayor información consultar la sección de :ref:`Lenguajes soportados \
+            mayor información, consultar la sección de :ref:`Lenguajes soportados \
             <seccion_lenguajes_soportados>`. Si se pasa un vectorizador ya ajustado, este \
             parámetro no será utilizado.
         """        

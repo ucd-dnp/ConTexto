@@ -208,7 +208,7 @@ class VectorizadorWord2Vec():
 
         :param lenguaje: (string) Define el lenguaje del corpus utilizado \ 
             al pre entrenar el vectorizador, el lenguaje debe corresponder \ 
-            al idioma del texto a ser analizado. Para mayor información consultar \ 
+            al idioma del texto a ser analizado. Para mayor información, consultar \ 
             la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param dim_modelo: (str) {'sm', 'md', 'lg'}, valor por defecto: 'md'. \ 
             Define el tamaño del corpus utilizado al pre entrenar \ 
@@ -224,7 +224,7 @@ class VectorizadorWord2Vec():
 
         :param lenguaje: (string) Define el lenguaje del corpus utilizado \ 
             al pre entrenar el vectorizador, el lenguaje debe corresponder \ 
-            al idioma del texto a ser analizado. Para mayor información consultar \ 
+            al idioma del texto a ser analizado. Para mayor información, consultar \ 
             la sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
