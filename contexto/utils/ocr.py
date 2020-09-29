@@ -11,11 +11,11 @@ from pre_ocr import procesar_img_1, procesar_img_2, procesar_img_3, procesar_img
 
 from pytesseract import TesseractNotFoundError, get_tesseract_version
 
-#TODO: corregir mensaje mostrado en consola
 try:
     TESSERACT_VERSION = tuple(get_tesseract_version().version)
 except TesseractNotFoundError as e:
-    print("Tesseract no está en el path, para mayor información revisar XXXXXXXXX")
+    print("Tesseract no está instalado, o su ubicación no está definida como una variable de entorno.")
+    print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
     exit(1)
 
 class OCR():
@@ -104,12 +104,12 @@ class OCR():
         tempo_dir = self.dir_temporal + '/tempo/'
         verificar_crear_dir(self.dir_temporal)
         verificar_crear_dir(tempo_dir)
-        #TODO: corregir mensaje  mostrado en consola
         try:
             paginas = convert_from_path(
                 ubicacion_pdf, thread_count=8, output_folder=tempo_dir)
         except PDFInfoNotInstalledError as e:
-            print("Poppler no está instalado o no está en el path del sistema, para mas información consulte XXXX")
+            print("Poppler no está instalado, o su ubicación no está definida como una variable de entorno.")
+            print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
             exit(1)
         # Counter to store images of each page of PDF to image
         countador_img = 0
