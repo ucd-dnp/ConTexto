@@ -208,6 +208,22 @@ Si devolver_proba es True retorna una tupla.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="lenguajes.lenguaje_tesseract">
+<code class="descclassname">lenguajes.</code><code class="descname">lenguaje_tesseract</code><span class="sig-paren">(</span><em><span class="n">lenguaje</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lenguajes.lenguaje_tesseract" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función auxiliar - Para un lenguaje de entrada, busca su equivalente en Tesseract.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (str) Corresponde al nombre del lenguaje a definir.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">string correspondiente al lenguaje identificado, de acuerdo a lo aceptado por         Tesseract.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
 <dt id="lenguajes.traducir_texto">
 <code class="descclassname">lenguajes.</code><code class="descname">traducir_texto</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">lenguaje_destino</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lenguajes.traducir_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Permite hacer traducciones a un texto de interés.</p>
@@ -218,7 +234,7 @@ Si devolver_proba es True retorna una tupla.</p>
 <tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
 <li><strong>texto</strong> – (str) Corresponde al texto que se desea traducir.</li>
 <li><strong>lenguaje_destino</strong> – (str)  Indica el lenguaje al que desea 
-traducir el texto. Para mayor información consultar la 
+traducir el texto. Para mayor información, consultar la 
 sección de <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
 </ul>
 </td>
