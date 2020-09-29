@@ -14,7 +14,7 @@ class LematizadorSpacy():
         del texto con la librería Spacy
 
         :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
-            Para mayor información consultar la sección de \ 
+            Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
@@ -46,7 +46,7 @@ class LematizadorSpacy():
         """ Define el lenguaje del lematizador.
 
         :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
-            Para mayor información consultar la sección de \ 
+            Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
@@ -113,7 +113,7 @@ class LematizadorStanza():
         del texto con la librería Stanza.
 
         :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
-            Para mayor información consultar la sección de \ 
+            Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
@@ -147,7 +147,7 @@ class LematizadorStanza():
         """ Define el lenguaje del lematizador.
 
         :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
-            Para mayor información consultar la sección de \ 
+            Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
@@ -235,7 +235,7 @@ def lematizar_texto(
 
     :param texto: (string). Texto de entrada a ser lematizado
     :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
-        Para mayor información consultar la sección de \ 
+        Para mayor información, consultar la sección de \ 
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
     :param libreria: (string). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
         Se define la librería de Python de lematización para ser utilizada en '

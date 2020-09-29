@@ -14,7 +14,7 @@ class Corrector():
         de realizar corrección ortográfica sobre textos.
 
         :param lenguaje: (str) Lenguaje de los textos a los que se les va a aplicar \ 
-            corrección ortográfica. Para mayor información consultar la sección de \ 
+            corrección ortográfica. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param diccionario: (dict, list o string). Valor por defecto: None. Diccionario (o string con ubicación del \
             archivo JSON que lo contiene), o lista que permite modificar y agregar palabras. \
@@ -42,7 +42,7 @@ class Corrector():
         va a aplicarse el objeto de la clase Corrector.
             
         :param lenguaje: (str) Lenguaje de los textos a los que se les va a aplicar \
-            corrección ortográfica. Para mayor información consultar la sección de \ 
+            corrección ortográfica. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
@@ -240,7 +240,7 @@ def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, dista
 
     :param texto: (str). Texto al cuál se desea aplicar corrección ortográfica.
     :param lenguaje: (str) Lenguaje de los textos a los que se les va a aplicar \ 
-        corrección ortográfica. Para mayor información consultar la sección de \ 
+        corrección ortográfica. Para mayor información, consultar la sección de \ 
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
     :param corrector: (Corrector). Parámetro opcional. Objeto de la clase Corrector para aplicar \
         corrección ortográfica sobre el texto de entrada. Se puede utilizar para \

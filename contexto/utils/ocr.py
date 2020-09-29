@@ -8,18 +8,19 @@ from pdf2image import convert_from_path
 from PIL import Image
 from auxiliares import verificar_crear_dir
 from pre_ocr import procesar_img_1, procesar_img_2, procesar_img_3, procesar_img_4, procesar_img_5
+from ..lenguajes import lenguaje_tesseract
 
 from pytesseract import TesseractNotFoundError, get_tesseract_version
 
-#TODO: corregir mensaje mostrado en consola
 try:
     TESSERACT_VERSION = tuple(get_tesseract_version().version)
 except TesseractNotFoundError as e:
-    print("Tesseract no está en el path, para mayor información revisar XXXXXXXXX")
+    print("Tesseract no está instalado, o su ubicación no está definida como una variable de entorno.")
+    print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
     exit(1)
 
 class OCR():
-    def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/'):
+    def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/', enderezar=False):
 
         """ Constructor por defecto de la clase OCR. Esta clase se encarga de extraer \
         con la metodología de reconocimiento óptico de caracteres (OCR, en inglés)
@@ -31,14 +32,13 @@ class OCR():
             2: se convierte la imagen a escala de grises y se aplica blurring
             3: se convierte la imagen a escala de grises y se aplica el umbral de imagen con el \
                  método de OTSU
-            4: se endereza el texto, se convierte la imagen a escala de grises y se aplica umbral \
-                adaptativo
-            5: se endereza el texto, se convierte la imagen a escala de grises, se aplica umbral \
+            4: se convierte la imagen a escala de grises y se aplica umbral adaptativo
+            5: se convierte la imagen a escala de grises, se aplica umbral \
                 de imagen con el método de OTSU, blurring y umbral adaptativo             
         :param lenguaje: (string). {'spa', 'en'}  Se define el \
             lenguaje del texto que se desea extraer. Aplica cuando se utilia reconocimiento \
-            óptico de caracteres (el parámetro ocr es True). Tiene las opciones de español \
-            ('es') e inglés ('en')
+            óptico de caracteres (el parámetro ocr es True). Para mayor información, consultar la sección de \ 
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
             en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
             permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
@@ -66,12 +66,15 @@ class OCR():
             13: trata el texto como una única línea, sin utilizar métodos específicos de Tesseract
         :param dir_temporal: (string). Ruta donde se guardan páginas temporales de apoyo como imágenes \
             durante el proceso de extracción de texto
+        :param enderezar: (bool) {True, False}. Valor por defecto: False. Permite enderezar texto torcido\
+        en la imagen para obtener mejores resultados durante el proceso de extracción de texto.
         """
         self.preprocesamiento = preprocesamiento
         self.dir_temporal = dir_temporal
-        self.lenguaje = lenguaje
+        self.lenguaje = lenguaje_tesseract(lenguaje)
         self.oem = oem
         self.psm = psm
+        self.enderezar = enderezar
 
     def imagen_a_texto(self, ubicacion_imagen):
         """ Se encarga de leer el texto de archivos de tipo imagen, con extensión 'png', 'jpg' o 'jpeg', \
@@ -84,7 +87,7 @@ class OCR():
         # Se define el preprocesamiento a aplicar 
         # (si el número está fuera de rango, no se aplica ningún preprocesmiento)
         if 0 < self.preprocesamiento < 6:
-            imagen = eval('procesar_img_{}(imagen)'.format(str(self.preprocesamiento)))
+            imagen = eval(f'procesar_img_{self.preprocesamiento}(imagen, {self.enderezar})')    
         # Se guarda la imagen en un archivo temporal
         nombre_archivo = "{}.png".format(os.getpid())
         cv2.imwrite(nombre_archivo, imagen)
@@ -104,12 +107,12 @@ class OCR():
         tempo_dir = self.dir_temporal + '/tempo/'
         verificar_crear_dir(self.dir_temporal)
         verificar_crear_dir(tempo_dir)
-        #TODO: corregir mensaje  mostrado en consola
         try:
             paginas = convert_from_path(
                 ubicacion_pdf, thread_count=8, output_folder=tempo_dir)
         except PDFInfoNotInstalledError as e:
-            print("Poppler no está instalado o no está en el path del sistema, para mas información consulte XXXX")
+            print("Poppler no está instalado, o su ubicación no está definida como una variable de entorno.")
+            print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
             exit(1)
         # Counter to store images of each page of PDF to image
         countador_img = 0

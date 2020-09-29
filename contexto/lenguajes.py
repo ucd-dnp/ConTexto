@@ -26,7 +26,7 @@ def traducir_texto(texto, lenguaje_destino):
 
     :param texto: (str) Corresponde al texto que se desea traducir. 
     :param lenguaje_destino: (str)  Indica el lenguaje al que desea \ 
-        traducir el texto. Para mayor información consultar la \ 
+        traducir el texto. Para mayor información, consultar la \ 
         sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.        
     :return: string del texto traducido.
     """
@@ -57,6 +57,7 @@ dict_lenguajes = {
     'ing': 'english',
     'ge': 'german',
     'de': 'german',
+    'deu': 'german',
     'german': 'german',
     'aleman': 'german',
     'al': 'german',
@@ -76,6 +77,13 @@ dict_lenguajes_simplificado = {
     'german': 'de'
 }
 
+# Diccionario para traducir el lenguaje a la forma aceptada por Tesseract
+dict_tesseract = {
+    'spanish': 'spa',
+    'english': 'eng',
+    'french': 'fra',
+    'german': 'deu'    
+}
 
 def definir_lenguaje(lenguaje, simplificado=True):
     """ Función auxiliar - permite determinar el lenguaje a partir de una entrada.
@@ -93,4 +101,19 @@ def definir_lenguaje(lenguaje, simplificado=True):
         leng = dict_lenguajes[lenguaje]
         if simplificado:
             leng = dict_lenguajes_simplificado[leng]
+    return leng
+
+def lenguaje_tesseract(lenguaje):
+    """ Función auxiliar - Para un lenguaje de entrada, busca su equivalente en Tesseract.
+
+    :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
+    :return: string correspondiente al lenguaje identificado, de acuerdo a lo aceptado por \
+        Tesseract.
+    """
+    leng = None
+    lenguaje = lenguaje.lower()
+    lenguaje = remover_acentos(lenguaje)
+    if lenguaje in dict_lenguajes.keys():
+        leng = dict_lenguajes[lenguaje]
+        leng = dict_tesseract[leng]
     return leng
