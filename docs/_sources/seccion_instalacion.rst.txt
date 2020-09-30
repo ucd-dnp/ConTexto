@@ -10,8 +10,11 @@ Instalación
    instalacion/instalacion_contexto.rst
    instalacion/instalacion_popple_teseract.rst
    
-La instalación de la librería se divide en dos pasos principales. El primer paso consiste en la instalación de los paquetes con el gestor de paquetes pip para las versiones 3.6, 3.7 y 3.8. De esta manera se instalan la mayoría de requerimientos. El segundo paso explica cómo instalar Poppler y Tesseract, los cuales tienen que instalarse desde archivos descargados de internet y agregados al path del sistema. Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto.
+La instalación de la librería se divide en dos pasos principales. El primer paso consiste en la instalación de los paquetes con el gestor de paquetes pip para diferentes versiones de Python, de esta manera se instalan la mayoría de requerimientos. 
 
 * :ref:`Instalación ConTexto <instalacion_basica>`
-* :ref:`Instalación de Poppler y Tesseract <instalacion_poppler_tesseract>`
+
+El segundo paso explica cómo instalar Poppler y Tesseract, los cuales tienen que instalarse desde archivos descargados de internet. Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto.
+
+* :ref:`Instalación de Poppler y Tesseract (opcional) <instalacion_poppler_tesseract>`
 

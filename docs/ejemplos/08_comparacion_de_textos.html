@@ -114,18 +114,21 @@
 <li class="toctree-l4"><a class="reference internal" href="#inicializar-los-objetos-de-clase-similitud">8.2.1. Inicializar los objetos de clase <cite>Similitud</cite></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#similitud-coseno">8.2.2. Similitud coseno</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#similitud-de-jaccard">8.2.3. Similitud de Jaccard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#similitudes-entre-dos-grupos-de-textos-distintos">8.2.4. Similitudes entre dos grupos de textos distintos</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#medidas-de-distancia-entre-textos">8.3. Medidas de distancia entre textos</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#inicializar-los-objetos-de-clase-distancia">8.3.1. Inicializar los objetos de clase <cite>Distancia</cite></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#metricas-de-distancias">8.3.2. Métricas de distancias</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#otras-metricas-de-distancias">8.3.3. Otras métricas de distancias</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#distancias-entre-dos-grupos-de-textos-distintos">8.3.4. Distancias entre dos grupos de textos distintos</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#diferencias-entre-textos-a-nivel-de-caracteres">8.4. Diferencias entre textos a nivel de caracteres</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#definir-textos-de-prueba-e-inicializar-objeto-de-clase-diferenciastrings">8.4.1. Definir textos de prueba e inicializar objeto de clase DiferenciaStrings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calculo-de-medidas-de-distancia-y-similitud">8.4.2. Cálculo de medidas de distancia y similitud</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#normalizacion-de-medidas-de-distancia">8.4.3. Normalización de medidas de distancia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparaciones-entre-dos-grupos-de-strings-distintos">8.4.4. Comparaciones entre dos grupos de strings distintos</a></li>
 </ul>
 </li>
 </ul>
@@ -230,6 +233,11 @@
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;una tercera oración que se empieza a alejar de los textos anteriores&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;este no tiene ninguna relación con nada&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">otros_textos</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;primer texto del segundo grupo de prueba&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;segundo de la segunda lista de textos&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Adicionalmente, para el cálculo de varias distancias y similitudes es necesaria una representación numérica o vectorial de los textos. Para esto se puede trabajar directamente con los vectores que representan cada uno de los textos, o se puede utilizar alguno de los vectorizadores del módulo <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>.</p>
@@ -279,6 +287,7 @@
 <ul class="simple">
 <li>Dos textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la similitud entre las dos entradas.</li>
 <li>Una lista de <em>n</em> textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>nxn</em> simétrica, en donde la posición <em>i,j</em> muestra la similitud del texto/vector <em>i</em> con el texto/vector <em>j</em>.</li>
+<li>Dos listas de <em>n1</em> y <em>n2</em> textos (o vectores), respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>n1xn2</em>, en donde la posición <em>i,j</em> muestra la similitud del texto/vector <em>i</em> de la primera lista con el texto/vector <em>j</em> de la segunda lista.</li>
 </ul>
 <p>Los vectorizadores basados en frecuencias (sin consideraciones adicionales, como tener en cuenta la frecuencia inversa IDF) arrojarán resultados muy similares al medir la similitud coseno, incluso si los valores de los vectores generados no son los mismos.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Calcular similitudes con vectorizadores basados en frecuencias de términos</span>
@@ -354,15 +363,53 @@
 </div>
 <p>Mientras los vectorizadores utilizados sean basados en frecuencias, el cálculo de similitud Jaccard funcionará bien. Por el otro lado, los vectorizadores word2vec y doc2vec generan una representación densa, por lo que no dan buenos resultados al utilizarse en este caso.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cálculo utilizando vectorizadores basados en frecuencias</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_tfidf</span> <span class="o">=</span> <span class="n">s_tfidf</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_hashing</span> <span class="o">=</span> <span class="n">s_hashing</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_tfidf</span> <span class="o">=</span> <span class="n">s_tfidf</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">vectorizar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_hashing</span> <span class="o">=</span> <span class="n">s_hashing</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">vectorizar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Similitudes entre los textos de prueba (TF-IDF o HASHING):&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">jaccard_tfidf</span><span class="p">)</span>
-
+<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cálculo utilizando word2vec</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_word2vec</span> <span class="o">=</span> <span class="n">s_word2vec</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_word2vec</span> <span class="o">=</span> <span class="n">s_word2vec</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">vectorizar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------</span><span class="se">\n</span><span class="s1">Similitudes entre los textos de prueba (Word2Vec):&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">jaccard_word2vec</span><span class="p">)</span>
+
+<span class="go">Similitudes entre los textos de prueba (TF-IDF o HASHING):</span>
+<span class="go">[[1.         0.375      0.21428571 0.        ]</span>
+<span class="go"> [0.375      1.         0.23076923 0.        ]</span>
+<span class="go"> [0.21428571 0.23076923 1.         0.        ]</span>
+<span class="go"> [0.         0.         0.         1.        ]]</span>
+<span class="go">-------</span>
+<span class="go">Similitudes entre los textos de prueba (Word2Vec):</span>
+<span class="go">[[1. 1. 1. 1.]</span>
+<span class="go"> [1. 1. 1. 1.]</span>
+<span class="go"> [1. 1. 1. 1.]</span>
+<span class="go"> [1. 1. 1. 1.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="similitudes-entre-dos-grupos-de-textos-distintos">
+<h3><span class="section-number">8.2.4. </span>Similitudes entre dos grupos de textos distintos<a class="headerlink" href="#similitudes-entre-dos-grupos-de-textos-distintos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Como se mencionó anteriormente, es posible medir la similitud entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase <a class="reference internal" href="../funciones/comparacion.html#comparacion.Similitud" title="comparacion.Similitud"><code class="xref py py-class docutils literal notranslate"><span class="pre">Similitud</span></code></a> calcularán la similitud indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jaccard_bow</span> <span class="o">=</span> <span class="n">s_bow</span><span class="o">.</span><span class="n">jaccard</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">otros_textos</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coseno_word2vec</span> <span class="o">=</span> <span class="n">s_word2vec</span><span class="o">.</span><span class="n">coseno</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">otros_textos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Similitudes de Jaccard entre dos grupos de textos (BOW):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">jaccard_bow</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------</span><span class="se">\n</span><span class="s1">Similitudes coseno entre los textos de prueba y otro texto (Word2Vec):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">coseno_word2vec</span><span class="p">)</span>
+
+<span class="go">Similitudes de Jaccard entre dos grupos de textos (BOW):</span>
+<span class="go">[[0.18181818 0.2       ]</span>
+<span class="go"> [0.2        0.375     ]</span>
+<span class="go"> [0.05555556 0.125     ]</span>
+<span class="go"> [0.         0.        ]]</span>
+<span class="go">-------</span>
+<span class="go">Similitudes coseno entre los textos de prueba y otro texto (Word2Vec):</span>
+<span class="go">[[0.70599896]</span>
+<span class="go"> [0.77385116]</span>
+<span class="go"> [0.4849984 ]</span>
+<span class="go"> [0.24222623]]</span>
 </pre></div>
 </div>
 </div>
@@ -385,10 +432,11 @@
 </div>
 <div class="section" id="metricas-de-distancias">
 <h3><span class="section-number">8.3.2. </span>Métricas de distancias<a class="headerlink" href="#metricas-de-distancias" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>La clase <code class="xref py py-class docutils literal notranslate"><span class="pre">Distancia</span></code> permite calcular más de 5 métricas de distancia distintas, que se muestran en las siguientes celdas de este cuaderno. En general, los argumentos de entrada y las salidas funcionan igual al caso de las similitudes:</p>
+<p>La clase <code class="xref py py-class docutils literal notranslate"><span class="pre">Distancia</span></code> permite calcular más de 5 métricas de distancia distintas, que se muestran en las siguientes celdas de este cuaderno. En general, los argumentos de entrada y las salidas funcionan igual al caso de las similitudes. Se tienen los siguientes casos:</p>
 <ul class="simple">
-<li>Si se pasan dos textos (o vectores), se retornará un arreglo de numpy de dos dimensiones, con el valor de la distancia entre las dos entradas.</li>
-<li>Si se pasa una lista de <em>n</em> textos (o vectores), se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>nxn</em> simétrica, en donde la posición <em>i,j</em> muestra la distancia del texto/vector <em>i</em> con el texto/vector <em>j</em>.</li>
+<li>Dos textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la distancia entre las dos entradas.</li>
+<li>Una lista de <em>n</em> textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>nxn</em> simétrica, en donde la posición <em>i,j</em> muestra la distancia del texto/vector <em>i</em> con el texto/vector <em>j</em>.</li>
+<li>Dos listas de <em>n1</em> y <em>n2</em> textos (o vectores), respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>n1xn2</em>, en donde la posición <em>i,j</em> muestra la distancia del texto/vector <em>i</em> de la primera lista con el texto/vector <em>j</em> de la segunda lista.</li>
 </ul>
 <p>En este caso, los valores de distancias generalmente variarán dependiendo del vectorizador utilizado (a diferencia de las similitudes, que en algunos casos calculaban los mismos valores para vectorizadores distintos). En todo caso, a pesar de que cambien los valores y las escalas, en general sí se debería mantener un mismo orden. Es decir, textos más cercanos y más lejanos entre sí deberían mantener este comportameniento sin importar el vectorizador utilizado.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Métricas de distancia definidas</span>
@@ -465,8 +513,8 @@
 <p>Algunas de estas métricas pueden requerir o aceptar argumentos adicionales. Estos parámetros pueden ser pasados al método <a class="reference internal" href="../funciones/comparacion.html#comparacion.Distancia.distancia_pares" title="comparacion.Distancia.distancia_pares"><code class="xref py py-meth docutils literal notranslate"><span class="pre">distancia_pares()</span></code></a> con el mismo nombre con el que aparezcan en la documentación de scikit-learn y <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html" target="_blank">la documentación de scipy</a> .</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Algunos ejemplos:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chebyshev_word2vec</span> <span class="o">=</span> <span class="n">d_word2vec</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">tipo_distancia</span><span class="o">=</span><span class="s1">&#39;chebyshev&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rogerstanimoto_bow</span> <span class="o">=</span> <span class="n">d_bow</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="s1">&#39;rogerstanimoto&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">braycurtis_tfidf</span> <span class="o">=</span> <span class="n">d_tfidf</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="s1">&#39;braycurtis&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rogerstanimoto_bow</span> <span class="o">=</span> <span class="n">d_bow</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">tipo_distancia</span><span class="o">=</span><span class="s1">&#39;rogerstanimoto&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">braycurtis_tfidf</span> <span class="o">=</span> <span class="n">d_tfidf</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">tipo_distancia</span><span class="o">=</span><span class="s1">&#39;braycurtis&#39;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> ::: Distancia chebyshev&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">chebyshev_word2vec</span><span class="p">)</span>
@@ -497,6 +545,33 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="distancias-entre-dos-grupos-de-textos-distintos">
+<h3><span class="section-number">8.3.4. </span>Distancias entre dos grupos de textos distintos<a class="headerlink" href="#distancias-entre-dos-grupos-de-textos-distintos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Como se mencionó anteriormente, es posible medir la distancia entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase <code class="xref py py-class docutils literal notranslate"><span class="pre">Distancia</span></code> calcularán la distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.</p>
+<p>Esto aplica para cualquiera de los métodos de la clase <code class="xref py py-class docutils literal notranslate"><span class="pre">Distancia</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l1_hash</span> <span class="o">=</span> <span class="n">d_hashing</span><span class="o">.</span><span class="n">l1</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">otros_textos</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">braycurtis_tfidf</span> <span class="o">=</span> <span class="n">d_tfidf</span><span class="o">.</span><span class="n">distancia_pares</span><span class="p">(</span><span class="n">vectores</span><span class="p">[</span><span class="s1">&#39;tfidf&#39;</span><span class="p">],</span> <span class="n">otros_textos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tipo_distancia</span><span class="o">=</span><span class="s1">&#39;braycurtis&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distancias L1 entre dos grupos de textos (HASHING):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">l1_hash</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------</span><span class="se">\n</span><span class="s1">Distancias (disimilitud) de Bray–Curtis entre los textos de prueba y otro texto (TF-IDF):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">braycurtis_tfidf</span><span class="p">)</span>
+
+<span class="go">Distancias L1 entre dos grupos de textos (HASHING):</span>
+<span class="go">[[3.55648903 2.66666667]</span>
+<span class="go"> [3.30403593 1.78798701]</span>
+<span class="go"> [5.35935341 4.44391275]</span>
+<span class="go"> [5.29150262 4.97908464]]</span>
+<span class="go">-------</span>
+<span class="go">Distancias (disimilitud) de Bray–Curtis entre los textos de prueba y otro texto (TF-IDF):</span>
+<span class="go">[[0.58829081]</span>
+<span class="go"> [0.54109359]</span>
+<span class="go"> [0.91533873]</span>
+<span class="go"> [1.        ]]</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="diferencias-entre-textos-a-nivel-de-caracteres">
 <h2><span class="section-number">8.4. </span>Diferencias entre textos a nivel de caracteres<a class="headerlink" href="#diferencias-entre-textos-a-nivel-de-caracteres" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -520,10 +595,16 @@
 <h3><span class="section-number">8.4.2. </span>Cálculo de medidas de distancia y similitud<a class="headerlink" href="#calculo-de-medidas-de-distancia-y-similitud" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>La clase <a class="reference internal" href="../funciones/comparacion.html#comparacion.DiferenciaStrings" title="comparacion.DiferenciaStrings"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiferenciaStrings</span></code></a> utiliza por debajo la librería jellyfish para calcular las diferencias y similitudes a niveles de caracteres. Para mayor información sobre las medidas disponibles y en qué consiste cada una, se puede consultar la
 <a class="reference external" href="https://jellyfish.readthedocs.io/en/latest/comparison.html" target="_blank">documentación de jellyfish</a>.</p>
-<p>Para todos los métodos de esta clase, es necesario como entrada proporcionar una lista de los n strings o textos a comparar. La salida sertá un arreglo de numpy de dos dimensiones de nxn simétrica, en donde la posición i,j muestra la métrica de distancia/similitud elegida del string i con el string j.</p>
+<p>Para todos los métodos de esta clase, las entradas y salidas funcionan muy similar a los vistos anteriormente para <cite>Similitud</cite> y <cite>Distancia</cite>:</p>
+<ul class="simple">
+<li>Dos textos. En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la comparación entre las dos entradas.</li>
+<li>Una lista de <em>n</em> textos. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>nxn</em> simétrica, en donde la posición <em>i,j</em> muestra la comparación del texto/vector <em>i</em> con el texto/vector <em>j</em>.</li>
+<li>Dos listas de <em>n1</em> y <em>n2</em> textos, respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de <em>n1xn2</em>, en donde la posición <em>i,j</em> muestra la comparación del texto <em>i</em> de la primera lista con el texto <em>j</em> de la segunda lista.</li>
+</ul>
+<p>La gran diferencia en este caso es que la clase <a class="reference internal" href="../funciones/comparacion.html#comparacion.DiferenciaStrings" title="comparacion.DiferenciaStrings"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiferenciaStrings</span></code></a> no utiliza representaciones vectoriales de los textos, por lo que siempre deben ingresarse los textos a comparar en forma de <em>strings</em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Diferencia entre dos textos</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_levenshtein</span><span class="p">([</span><span class="n">t3</span><span class="p">,</span><span class="n">t4</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_damerau_levenshtein</span><span class="p">([</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_levenshtein</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span><span class="n">t4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_damerau_levenshtein</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d3</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_hamming</span><span class="p">(</span><span class="n">strings</span><span class="p">)</span>
 <span class="go">​&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distancia de Levenshtein entre 2 textos de prueba:&#39;</span><span class="p">)</span>
@@ -532,7 +613,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d3</span><span class="p">)</span>
 
 <span class="go">Distancia de Levenshtein entre 2 textos de prueba:</span>
-<span class="go">[[3]]</span>
+<span class="go">[[3.]]</span>
 <span class="go">------</span>
 <span class="go">Distancias de Hamming entre los textos de prueba:</span>
 <span class="go">[[ 0.  2. 17. 17.]</span>
@@ -545,7 +626,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Similitud entre strings</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Similitud entre dos textos</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">similitud_jaro</span><span class="p">([</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">similitud_jaro</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Similitud entre lista de textos</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">similitud_jaro_winkler</span><span class="p">(</span><span class="n">strings</span><span class="p">)</span>
 <span class="go">​</span>
@@ -602,6 +683,33 @@
 <span class="go"> [0.14285714 0.         0.94444444 0.94117647]</span>
 <span class="go"> [0.94444444 0.94444444 0.         0.16666667]</span>
 <span class="go"> [0.94117647 0.94117647 0.16666667 0.        ]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comparaciones-entre-dos-grupos-de-strings-distintos">
+<h3><span class="section-number">8.4.4. </span>Comparaciones entre dos grupos de strings distintos<a class="headerlink" href="#comparaciones-entre-dos-grupos-de-strings-distintos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Como se mencionó anteriormente, es posible comparar dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos distintas. Los métodos de la clase <a class="reference internal" href="../funciones/comparacion.html#comparacion.DiferenciaStrings" title="comparacion.DiferenciaStrings"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiferenciaStrings</span></code></a> calcularán la métrica de similitud o distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.</p>
+<p>Esto aplica para cualquiera de los métodos de la clase <a class="reference internal" href="../funciones/comparacion.html#comparacion.DiferenciaStrings" title="comparacion.DiferenciaStrings"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiferenciaStrings</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">distancia_levenshtein</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="s1">&#39;pescados&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">dif_strings</span><span class="o">.</span><span class="n">similitud_jaro_winkler</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pescador&#39;</span><span class="p">,</span> <span class="s1">&#39;John Díaz&#39;</span><span class="p">])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Distancias de Levenshtein entre un grupo de strings y otro texto, dividiendo por longitud de texto largo:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------</span><span class="se">\n</span><span class="s1">Similitudes de Jaro-Winkler entre dos grupos de strings:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+
+<span class="go">Distancias de Levenshtein entre un grupo de strings y otro texto, dividiendo por longitud de texto largo:</span>
+<span class="go">[[0.125     ]</span>
+<span class="go"> [0.375     ]</span>
+<span class="go"> [0.94444444]</span>
+<span class="go"> [0.88235294]]</span>
+<span class="go">-------</span>
+<span class="go">Similitudes de Jaro-Winkler entre dos grupos de strings:</span>
+<span class="go">[[0.975      0.41798942]</span>
+<span class="go"> [0.92857143 0.41798942]</span>
+<span class="go"> [0.28703704 0.62698413]</span>
+<span class="go"> [0.28921569 0.54989107]]</span>
 </pre></div>
 </div>
 </div>

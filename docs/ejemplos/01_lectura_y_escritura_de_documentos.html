@@ -104,7 +104,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1. Lectura y escritura de documentos</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#importar-paquetes-necesarios-y-definir-documentos-para-la-prueba">1.1. Importar paquetes necesarios y definir documentos para la prueba</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extraer-texto-de-los-documentos-y-escribir-el-texto-extraido-en-nuevos-archivos">1.2. Extraer texto de los documentos, y escribir el texto extraído en nuevos archivos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#utilizar-las-clases-lector-y-escritor">1.3. Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilizar-el-ocr-para-extraer-textos-de-imagenes">1.3. Utilizar el OCR para extraer textos de imágenes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enderezar-textos-en-imagenes">1.3.1. Enderezar textos en imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utilizar-las-clases-lector-y-escritor">1.4. Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="02_limpieza_de_textos.html">2. Limpieza de textos</a></li>
@@ -273,10 +277,11 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="utilizar-las-clases-lector-y-escritor">
-<h2><span class="section-number">1.3. </span>Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite><a class="headerlink" href="#utilizar-las-clases-lector-y-escritor" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Si se desea, también es posible utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite> para leer y escribir archivos. En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura.</p>
-<p>En primer lugar se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo la graficamos por motivos didácticos.</p>
+<div class="section" id="utilizar-el-ocr-para-extraer-textos-de-imagenes">
+<h2><span class="section-number">1.3. </span>Utilizar el OCR para extraer textos de imágenes<a class="headerlink" href="#utilizar-el-ocr-para-extraer-textos-de-imagenes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El OCR (reconocimiento óptico de caracteres) se utiliza para extraer texto de archivos de imagen. <strong>ConTexto</strong> incorpora el OCR de Tesseract para extraer texto de imágenes (como, por ejemplo, documentos escaneados). Actualmente, la librería soporta archivos en formatos «.png», «.jpg» y «.jpeg». Para archivos PDF, la librería primero convierte las páginas a imágenes, y luego aplica el OCR.</p>
+<p>Adicionalmente, la librería permite realizar algunas operaciones de preprocesamiento sobre las imágenes antes de aplicar el OCR. Estos preprocesamientos pueden permitir hacer una lectura más acertada de los textos de las imágenes.</p>
+<p>En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura. En primer lugar, se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo se grafica acá por motivos didácticos.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 
@@ -291,25 +296,22 @@
 <div class="align-center figure">
 <img alt="" src="../_images/prueba_in.jpg" />
 </div>
-<p>El OCR (Reconocimiento Óptico de Caracteres) se utiliza para extraer texto de archivos de imagen (actualmente, la librería soporta archivos en formatos «.png», «.jpg» y «.jpeg»). <strong>ConTexto</strong> cuenta con algunas operaciones de preprocesamiento para la imagen de entrada, de forma que el OCR pueda tener un mejor desempeño al extraer el texto. El parámetro «preprocesamiento» permite elegir entre 5 diferentes tratamientos previos a la imagen. Si el valor de «preprocesamiento» no está en el rango de 1 a 5, no se realizará ningún preprocesamiento sobre la imagen.</p>
+<p>El parámetro <em>preprocesamiento</em> de la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> y de la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> permite elegir entre 5 diferentes tratamientos previos a la imagen. Si el valor de <em>preprocesamiento</em> no está en el rango de 1 a 5, no se realizará ningún preprocesamiento sobre la imagen.</p>
 <p>A continuación, se lee la imagen sin preprocesar y con dos tipos distintos de procesamiento, imprimiendo el resultado en cada caso.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Crear objeto de clase Lector</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lector</span> <span class="o">=</span> <span class="n">Lector</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">procesamientos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">procesamientos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">procesamientos</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preprocesamiento: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> (sin Preprocesamiento)&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preprocesamiento: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">lector</span><span class="o">.</span><span class="n">archivo_a_texto</span><span class="p">(</span><span class="n">preprocesamiento</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">leer_texto</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">,</span> <span class="n">preprocesamiento</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
 
 <span class="go">---------------</span>
 <span class="go">Preprocesamiento: 0 (sin Preprocesamiento)</span>
-<span class="go">- Texto coníruidó de .</span>
-<span class="go">fondo para probar</span>
+<span class="go">fTextó contruidó de Í&quot;</span>
+<span class="go">fondo, paré probar</span>
 <span class="go">Tesseract</span>
 
 <span class="go">---------------</span>
@@ -323,11 +325,62 @@
 </pre></div>
 </div>
 <p>Se puede observar que el mejor desempeño se obtiene con <em>preprocesamiento=2</em>. Cuando no se hace ningún procesamiento, el ruido de fondo de la imagen afecta el texto extraído. Por otro lado, con <em>preprocesamiento=4</em> la función no encuentra ningún texto. Dependiendo de la calidad de la imagen (o archivo PDF escaneado) de entrada, diferentes preprocesamientos (o no aplicar ninguno) tendrán mejor o peor desempeño.</p>
-<p>Lo último que falta es utilizar la clase <cite>Escritor</cite> para escribir el texto extraído en un nuevo archivo.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Se lee el texto con el mejor procesamiento encontrado</span>
+<div class="section" id="enderezar-textos-en-imagenes">
+<h3><span class="section-number">1.3.1. </span>Enderezar textos en imágenes<a class="headerlink" href="#enderezar-textos-en-imagenes" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Además del parámetro <em>preprocesamiento</em>, la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> y de la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> cuentan con el parámetro <em>enderezar</em>, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.</p>
+<p>Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro <em>preprocesamiento</em>. La corrección de giro puede ser bastante útil para textos torcidos (por ejemplo, porque quedaron así al escanear un documento).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_torcido</span> <span class="o">=</span> <span class="s1">&#39;entrada/texto_torcido.jpg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">texto_torcido</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="align-center figure">
+<img alt="" src="../_images/texto_torcido.jpg" />
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enderezar</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">enderezar</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*Utilizando el parámetro enderezar=</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">:*&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">leer_texto</span><span class="p">(</span><span class="n">texto_torcido</span><span class="p">,</span> <span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">enderezar</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+
+<span class="go">---------------</span>
+<span class="go">*Utilizando el parámetro enderezar=False:*</span>
+<span class="go">Texto tºfCido (Cºn</span>
+
+<span class="go">algún grado de</span>
+<span class="go">inclinación)</span>
+
+<span class="go">---------------</span>
+<span class="go">*Utilizando el parámetro enderezar=True:*</span>
+<span class="go">Texto torcido (con</span>
+<span class="go">algún grado de</span>
+<span class="go">inclinación)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="utilizar-las-clases-lector-y-escritor">
+<h2><span class="section-number">1.4. </span>Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite><a class="headerlink" href="#utilizar-las-clases-lector-y-escritor" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si se desea, también es posible utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite> para leer y escribir archivos, respectivamente</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir objeto de clase Lector y extraer el texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lector</span> <span class="o">=</span> <span class="n">Lector</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">texto</span> <span class="o">=</span> <span class="n">lector</span><span class="o">.</span><span class="n">archivo_a_texto</span><span class="p">(</span><span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*El texto extraído es:* </span><span class="se">\n</span><span class="si">{</span><span class="n">texto</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir objeto de clase Escritor y escribir el texto en un nuevo archivo</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">escritor</span> <span class="o">=</span> <span class="n">Escritor</span><span class="p">(</span><span class="s1">&#39;salida/prueba.txt&#39;</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">escritor</span><span class="o">.</span><span class="n">escribir_txt</span><span class="p">()</span>
+
+<span class="go">*El texto extraído es:*</span>
+<span class="go">Texto con ruido de</span>
+<span class="go">fondo, para probar</span>
+<span class="go">Tesseract</span>
 </pre></div>
 </div>
 </div>

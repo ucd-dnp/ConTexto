@@ -36,3 +36,7 @@ div[role=contentinfo]:after {
     left: 0;
     content: "DNP - 2020";
 }
+
+tbody tr[class="row-even"] td {
+    background-color: #e7f2fa !important;    
+}

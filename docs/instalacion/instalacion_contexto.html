@@ -100,7 +100,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Instalación ConTexto</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Instalación ConTexto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.1. Instalación básica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-completa">1.2. Instalación completa</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="instalacion_popple_teseract.html">2. Instalación de Poppler y Tesseract</a></li>
 </ul>
 </li>
@@ -188,34 +192,57 @@
             
   <div class="section" id="instalacion-contexto">
 <span id="instalacion-basica"></span><h1><span class="section-number">1. </span>Instalación ConTexto<a class="headerlink" href="#instalacion-contexto" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">1.1. </span>Instalación básica<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para la instalación de la librería se debe utilizar el gestor de paquetes <code class="docutils literal notranslate"><span class="pre">pip</span></code>, por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Esta instalación no presenta restricciones de arquitectura, es decir, funciona tanto para arquitecturas de 32 bits como arquitecturas de 64 bits.</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install contexto</span>
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="instalacion-completa">
+<h2><span class="section-number">1.2. </span>Instalación completa<a class="headerlink" href="#instalacion-completa" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Otra alternativa de instalación corresponde a utilizar los archivos compilados wheel que se encuentran cargados en el repositorio de GitHub de la librería. Al utilizar los archivos wheel instalará las dependencias de ConTexto, equivalente a utilizar el comando <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">contexto</span></code> y adicionalmente instalará el framework <a class="reference external" href="https://pytorch.org/" target="_blank">PyTorch</a> (con instalación para uso de CPU) y el paquete <a class="reference external" href="https://stanfordnlp.github.io/stanza/" target="_blank">Stanza</a> , estos últimos se utilizan en el módulo de <a class="reference internal" href="../funciones/lematizacion.html#module-lematizacion" title="lematizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lematización</span></code></a>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Advertencia</p>
 <ul class="last simple">
-<li>La instalación utilizando los archivos wheel solo soporta Python en arquitecturas de 64 bits (x64)</li>
+<li>La instalación utilizando los archivos wheel solo soportan Python en arquitecturas de 64 bits (x64)</li>
 <li>Versión máxima soportada de Python v3.8.5</li>
 </ul>
 </div>
-<dl class="docutils">
-<dt>Para <em>Python 3.8x</em> usar:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py38-none-any.whl?raw=true</span>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Versión de Python</th>
+<th class="head">Comando a ejecutar</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>Python 3.8x</em></td>
+<td><div class="first last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py38-none-any.whl?raw=true</span>
 </pre></div>
 </div>
-</dd>
-<dt>Para <em>Python 3.7x</em> usar:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py37-none-any.whl?raw=true</span>
+</td>
+</tr>
+<tr class="row-odd"><td><em>Python 3.7x</em></td>
+<td><div class="first last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py37-none-any.whl?raw=true</span>
 </pre></div>
 </div>
-</dd>
-<dt>Para <em>Python 3.6x</em> usar:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py36-none-any.whl?raw=true</span>
+</td>
+</tr>
+<tr class="row-even"><td><em>Python 3.6x</em></td>
+<td><div class="first last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install https://github.com/ucd-dnp/ConTexto/blob/master/bin/ConTexto-0.1.0-py36-none-any.whl?raw=true</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 

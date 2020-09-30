@@ -81,39 +81,39 @@ A continuación se hace un recorrido por la lista de documentos de entrada, y pa
     entrada/prueba_in.png
     Formato desconocido. Se escribirá en un formato plano (.txt).
 
-Utilizar las clases `Lector` y `Escritor`
------------------------------------------
 
-Si se desea, también es posible utilizar las clases `Lector` y `Escritor` para leer y escribir archivos. En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura.
+Utilizar el OCR para extraer textos de imágenes
+-----------------------------------------------
 
-En primer lugar se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo la graficamos por motivos didácticos.
+El OCR (reconocimiento óptico de caracteres) se utiliza para extraer texto de archivos de imagen. **ConTexto** incorpora el OCR de Tesseract para extraer texto de imágenes (como, por ejemplo, documentos escaneados). Actualmente, la librería soporta archivos en formatos ".png", ".jpg" y ".jpeg". Para archivos PDF, la librería primero convierte las páginas a imágenes, y luego aplica el OCR.
+
+Adicionalmente, la librería permite realizar algunas operaciones de preprocesamiento sobre las imágenes antes de aplicar el OCR. Estos preprocesamientos pueden permitir hacer una lectura más acertada de los textos de las imágenes. 
+
+En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura. En primer lugar, se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo se grafica acá por motivos didácticos.
 
 .. code-block:: python
 
     >>> import matplotlib.pyplot as plt
     >>> import matplotlib.image as mpimg
-
+    
     >>> img = mpimg.imread(archivo_img)
-
+    
     >>> plt.figure(figsize=(8,10))
     >>> imgplot = plt.imshow(img)
     >>> plt.axis('off')
     >>> plt.show()
-
 
 .. figure:: ../_static/image/graficos/prueba_in.jpg
     :align: center
     :alt: 
     :figclass: align-center
 
-El OCR (Reconocimiento Óptico de Caracteres) se utiliza para extraer texto de archivos de imagen (actualmente, la librería soporta archivos en formatos ".png", ".jpg" y ".jpeg"). **ConTexto** cuenta con algunas operaciones de preprocesamiento para la imagen de entrada, de forma que el OCR pueda tener un mejor desempeño al extraer el texto. El parámetro "preprocesamiento" permite elegir entre 5 diferentes tratamientos previos a la imagen. Si el valor de "preprocesamiento" no está en el rango de 1 a 5, no se realizará ningún preprocesamiento sobre la imagen.
+
+El parámetro *preprocesamiento* de la función :py:func:`lectura.leer_texto` y de la clase :py:class:`Lector <lectura.Lector>` permite elegir entre 5 diferentes tratamientos previos a la imagen. Si el valor de *preprocesamiento* no está en el rango de 1 a 5, no se realizará ningún preprocesamiento sobre la imagen.
 
 A continuación, se lee la imagen sin preprocesar y con dos tipos distintos de procesamiento, imprimiendo el resultado en cada caso.
 
 .. code-block:: python
-
-    >>> # Crear objeto de clase Lector
-    >>> lector = Lector(archivo_img)
 
     >>> procesamientos = [0, 2, 4]
     >>> for p in procesamientos:
@@ -122,13 +122,13 @@ A continuación, se lee la imagen sin preprocesar y con dos tipos distintos de p
     >>>         print(f'Preprocesamiento: {p} (sin Preprocesamiento)')
     >>>     else:
     >>>         print(f'Preprocesamiento: {p}')
-    >>>     texto = lector.archivo_a_texto(preprocesamiento=p)
+    >>>     texto = leer_texto(archivo_img, preprocesamiento=p)
     >>>     print(texto)
 
     ---------------
     Preprocesamiento: 0 (sin Preprocesamiento)
-    - Texto coníruidó de .
-    fondo para probar
+    fTextó contruidó de Í"
+    fondo, paré probar
     Tesseract
 
     ---------------
@@ -140,13 +140,73 @@ A continuación, se lee la imagen sin preprocesar y con dos tipos distintos de p
     ---------------
     Preprocesamiento: 4
 
+
 Se puede observar que el mejor desempeño se obtiene con *preprocesamiento=2*. Cuando no se hace ningún procesamiento, el ruido de fondo de la imagen afecta el texto extraído. Por otro lado, con *preprocesamiento=4* la función no encuentra ningún texto. Dependiendo de la calidad de la imagen (o archivo PDF escaneado) de entrada, diferentes preprocesamientos (o no aplicar ninguno) tendrán mejor o peor desempeño.
 
-Lo último que falta es utilizar la clase `Escritor` para escribir el texto extraído en un nuevo archivo.
+Enderezar textos en imágenes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` y de la clase :py:class:`Lector <lectura.Lector>` cuentan con el parámetro *enderezar*, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
+
+Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro *preprocesamiento*. La corrección de giro puede ser bastante útil para textos torcidos (por ejemplo, porque quedaron así al escanear un documento).
 
 .. code-block:: python
 
-    >>> # Se lee el texto con el mejor procesamiento encontrado
+    >>> texto_torcido = 'entrada/texto_torcido.jpg'
+    >>> img = mpimg.imread(texto_torcido)
+    
+    >>> plt.figure(figsize=(8,10))
+    >>> imgplot = plt.imshow(img)
+    >>> plt.axis('off')
+    >>> plt.show()
+
+.. figure:: ../_static/image/graficos/texto_torcido.jpg
+    :align: center
+    :alt: 
+    :figclass: align-center
+
+
+.. code-block:: python
+
+    >>> enderezar = [False, True]
+    >>> for e in enderezar:
+    >>>     print('---------------')
+    >>>     print(f'*Utilizando el parámetro enderezar={e}:*')
+    >>>     texto = leer_texto(texto_torcido, preprocesamiento=4, enderezar=e)
+    >>>     print(texto)
+
+    ---------------
+    *Utilizando el parámetro enderezar=False:*
+    Texto tºfCido (Cºn
+
+    algún grado de
+    inclinación)
+    
+    ---------------
+    *Utilizando el parámetro enderezar=True:*
+    Texto torcido (con
+    algún grado de
+    inclinación)
+
+
+Utilizar las clases `Lector` y `Escritor`
+-----------------------------------------
+
+Si se desea, también es posible utilizar las clases `Lector` y `Escritor` para leer y escribir archivos, respectivamente
+
+.. code-block:: python
+
+    >>> # Definir objeto de clase Lector y extraer el texto
+    >>> lector = Lector(archivo_img)
     >>> texto = lector.archivo_a_texto(preprocesamiento=2)
+    
+    >>> print(f'*El texto extraído es:* \n{texto}')
+    
+    >>> # Definir objeto de clase Escritor y escribir el texto en un nuevo archivo
     >>> escritor = Escritor('salida/prueba.txt', texto)
     >>> escritor.escribir_txt()
+    
+    *El texto extraído es:* 
+    Texto con ruido de
+    fondo, para probar
+    Tesseract

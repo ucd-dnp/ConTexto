@@ -23,6 +23,11 @@ El primer paso es importar las tres clases del módulo de `comparacion` con las 
     >>>     'este no tiene ninguna relación con nada'
     >>> ]
 
+    >>> otros_textos = [
+    >>>     'primer texto del segundo grupo de prueba',
+    >>>     'segundo de la segunda lista de textos'
+    >>> ]
+
 Adicionalmente, para el cálculo de varias distancias y similitudes es necesaria una representación numérica o vectorial de los textos. Para esto se puede trabajar directamente con los vectores que representan cada uno de los textos, o se puede utilizar alguno de los vectorizadores del módulo :py:mod:`Vectorización <vectorizacion>`.
 
 En este ejemplo se van a probar ambas opciones, por lo que es necesario inicializar los vectorizadores que se van a utilizar y también obtener las representaciones vectoriales de los textos de prueba.
@@ -79,6 +84,7 @@ La similitud coseno es un valor entre -1 y 1 que mide qué tan "alineados" está
 
 * Dos textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la similitud entre las dos entradas.
 * Una lista de *n* textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *nxn* simétrica, en donde la posición *i,j* muestra la similitud del texto/vector *i* con el texto/vector *j*.
+* Dos listas de *n1* y *n2* textos (o vectores), respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *n1xn2*, en donde la posición *i,j* muestra la similitud del texto/vector *i* de la primera lista con el texto/vector *j* de la segunda lista.
 
 Los vectorizadores basados en frecuencias (sin consideraciones adicionales, como tener en cuenta la frecuencia inversa IDF) arrojarán resultados muy similares al medir la similitud coseno, incluso si los valores de los vectores generados no son los mismos.
 
@@ -166,15 +172,56 @@ Mientras los vectorizadores utilizados sean basados en frecuencias, el cálculo 
 .. code-block:: python
 
     >>> # Cálculo utilizando vectorizadores basados en frecuencias
-    >>> jaccard_tfidf = s_tfidf.jaccard(textos_prueba, True)
-    >>> jaccard_hashing = s_hashing.jaccard(textos_prueba, True)
+    >>> jaccard_tfidf = s_tfidf.jaccard(textos_prueba, vectorizar=True)
+    >>> jaccard_hashing = s_hashing.jaccard(textos_prueba, vectorizar=True)
     >>> print('Similitudes entre los textos de prueba (TF-IDF o HASHING):')
     >>> print(jaccard_tfidf)
-    
+    >>> 
     >>> # Cálculo utilizando word2vec
-    >>> jaccard_word2vec = s_word2vec.jaccard(textos_prueba, True)
+    >>> jaccard_word2vec = s_word2vec.jaccard(textos_prueba, vectorizar=True)
     >>> print('-------\nSimilitudes entre los textos de prueba (Word2Vec):')
     >>> print(jaccard_word2vec)
+    
+    Similitudes entre los textos de prueba (TF-IDF o HASHING):
+    [[1.         0.375      0.21428571 0.        ]
+     [0.375      1.         0.23076923 0.        ]
+     [0.21428571 0.23076923 1.         0.        ]
+     [0.         0.         0.         1.        ]]
+    -------
+    Similitudes entre los textos de prueba (Word2Vec):
+    [[1. 1. 1. 1.]
+     [1. 1. 1. 1.]
+     [1. 1. 1. 1.]
+     [1. 1. 1. 1.]]
+
+
+Similitudes entre dos grupos de textos distintos 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Como se mencionó anteriormente, es posible medir la similitud entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase :py:class:`Similitud <comparacion.Similitud>` calcularán la similitud indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
+
+.. code-block:: python
+
+    >>> jaccard_bow = s_bow.jaccard(textos_prueba, otros_textos)
+    >>> coseno_word2vec = s_word2vec.coseno(textos_prueba, otros_textos[0])
+    >>> 
+    >>> print('Similitudes de Jaccard entre dos grupos de textos (BOW):')
+    >>> print(jaccard_bow)
+    >>> 
+    >>> print('-------\nSimilitudes coseno entre los textos de prueba y otro texto (Word2Vec):')
+    >>> print(coseno_word2vec)
+    
+    Similitudes de Jaccard entre dos grupos de textos (BOW):
+    [[0.18181818 0.2       ]
+     [0.2        0.375     ]
+     [0.05555556 0.125     ]
+     [0.         0.        ]]
+    -------
+    Similitudes coseno entre los textos de prueba y otro texto (Word2Vec):
+    [[0.70599896]
+     [0.77385116]
+     [0.4849984 ]
+     [0.24222623]]
 
 
 Medidas de distancia entre textos
@@ -202,10 +249,11 @@ Es importante recalcar que si se pasa un vectorizador al objeto de Similitud, es
 Métricas de distancias
 ~~~~~~~~~~~~~~~~~~~~~~
 
-La clase :py:class:`Distancia <comparacion.distancia>` permite calcular más de 5 métricas de distancia distintas, que se muestran en las siguientes celdas de este cuaderno. En general, los argumentos de entrada y las salidas funcionan igual al caso de las similitudes:
+La clase :py:class:`Distancia <comparacion.distancia>` permite calcular más de 5 métricas de distancia distintas, que se muestran en las siguientes celdas de este cuaderno. En general, los argumentos de entrada y las salidas funcionan igual al caso de las similitudes. Se tienen los siguientes casos:
 
-* Si se pasan dos textos (o vectores), se retornará un arreglo de numpy de dos dimensiones, con el valor de la distancia entre las dos entradas.
-* Si se pasa una lista de *n* textos (o vectores), se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *nxn* simétrica, en donde la posición *i,j* muestra la distancia del texto/vector *i* con el texto/vector *j*.
+* Dos textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la distancia entre las dos entradas.
+* Una lista de *n* textos (o vectores). En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *nxn* simétrica, en donde la posición *i,j* muestra la distancia del texto/vector *i* con el texto/vector *j*.
+* Dos listas de *n1* y *n2* textos (o vectores), respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *n1xn2*, en donde la posición *i,j* muestra la distancia del texto/vector *i* de la primera lista con el texto/vector *j* de la segunda lista.
 
 En este caso, los valores de distancias generalmente variarán dependiendo del vectorizador utilizado (a diferencia de las similitudes, que en algunos casos calculaban los mismos valores para vectorizadores distintos). En todo caso, a pesar de que cambien los valores y las escalas, en general sí se debería mantener un mismo orden. Es decir, textos más cercanos y más lejanos entre sí deberían mantener este comportameniento sin importar el vectorizador utilizado.
 
@@ -293,8 +341,8 @@ Algunas de estas métricas pueden requerir o aceptar argumentos adicionales. Est
 
     >>> # Algunos ejemplos:
     >>> chebyshev_word2vec = d_word2vec.distancia_pares(textos_prueba, tipo_distancia='chebyshev')
-    >>> rogerstanimoto_bow = d_bow.distancia_pares(textos_prueba, 'rogerstanimoto')
-    >>> braycurtis_tfidf = d_tfidf.distancia_pares(textos_prueba, 'braycurtis')
+    >>> rogerstanimoto_bow = d_bow.distancia_pares(textos_prueba, tipo_distancia='rogerstanimoto')
+    >>> braycurtis_tfidf = d_tfidf.distancia_pares(textos_prueba, tipo_distancia='braycurtis')
     >>> 
     >>> print('\n ::: Distancia chebyshev')
     >>> print(chebyshev_word2vec)
@@ -322,6 +370,37 @@ Algunas de estas métricas pueden requerir o aceptar argumentos adicionales. Est
      [0.51793548 0.         0.76752362 1.        ]
      [0.77659126 0.76752362 0.         1.        ]
      [1.         1.         1.         0.        ]]
+
+
+Distancias entre dos grupos de textos distintos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Como se mencionó anteriormente, es posible medir la distancia entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase :py:class:`Distancia <comparacion.distancia>` calcularán la distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
+
+Esto aplica para cualquiera de los métodos de la clase :py:class:`Distancia <comparacion.distancia>`.
+
+.. code-block:: python
+
+    >>> l1_hash = d_hashing.l1(textos_prueba, otros_textos)
+    >>> braycurtis_tfidf = d_tfidf.distancia_pares(vectores['tfidf'], otros_textos[0], tipo_distancia='braycurtis')
+    >>> 
+    >>> print('Distancias L1 entre dos grupos de textos (HASHING):')
+    >>> print(l1_hash)
+    >>> 
+    >>> print('-------\nDistancias (disimilitud) de Bray–Curtis entre los textos de prueba y otro texto (TF-IDF):')
+    >>> print(braycurtis_tfidf)
+
+    Distancias L1 entre dos grupos de textos (HASHING):
+    [[3.55648903 2.66666667]
+     [3.30403593 1.78798701]
+     [5.35935341 4.44391275]
+     [5.29150262 4.97908464]]
+    -------
+    Distancias (disimilitud) de Bray–Curtis entre los textos de prueba y otro texto (TF-IDF):
+    [[0.58829081]
+     [0.54109359]
+     [0.91533873]
+     [1.        ]]
 
 
 Diferencias entre textos a nivel de caracteres
@@ -353,13 +432,19 @@ Cálculo de medidas de distancia y similitud
 La clase :py:class:`DiferenciaStrings <comparacion.DiferenciaStrings>` utiliza por debajo la librería jellyfish para calcular las diferencias y similitudes a niveles de caracteres. Para mayor información sobre las medidas disponibles y en qué consiste cada una, se puede consultar la 
 `documentación de jellyfish <https://jellyfish.readthedocs.io/en/latest/comparison.html>`_.
 
-Para todos los métodos de esta clase, es necesario como entrada proporcionar una lista de los n strings o textos a comparar. La salida sertá un arreglo de numpy de dos dimensiones de nxn simétrica, en donde la posición i,j muestra la métrica de distancia/similitud elegida del string i con el string j.
+Para todos los métodos de esta clase, las entradas y salidas funcionan muy similar a los vistos anteriormente para `Similitud` y `Distancia`:
+
+* Dos textos. En este caso se retornará un arreglo de numpy de dos dimensiones, con el valor de la comparación entre las dos entradas.
+* Una lista de *n* textos. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *nxn* simétrica, en donde la posición *i,j* muestra la comparación del texto/vector *i* con el texto/vector *j*.
+* Dos listas de *n1* y *n2* textos, respectivamente. En este caso se retornará un arreglo de numpy de dos dimensiones, que representa una matriz de *n1xn2*, en donde la posición *i,j* muestra la comparación del texto *i* de la primera lista con el texto *j* de la segunda lista.
+
+La gran diferencia en este caso es que la clase :py:class:`DiferenciaStrings <comparacion.DiferenciaStrings>` no utiliza representaciones vectoriales de los textos, por lo que siempre deben ingresarse los textos a comparar en forma de *strings*.
 
 .. code-block:: python
 
     >>> ## Diferencia entre dos textos
-    >>> d1 = dif_strings.distancia_levenshtein([t3,t4])
-    >>> d2 = dif_strings.distancia_damerau_levenshtein([t1,t2])
+    >>> d1 = dif_strings.distancia_levenshtein(t3,t4)
+    >>> d2 = dif_strings.distancia_damerau_levenshtein(t1,t2)
     >>> d3 = dif_strings.distancia_hamming(strings) 
     ​>>> 
     >>> print('Distancia de Levenshtein entre 2 textos de prueba:')
@@ -368,7 +453,7 @@ Para todos los métodos de esta clase, es necesario como entrada proporcionar un
     >>> print(d3)
 
     Distancia de Levenshtein entre 2 textos de prueba:
-    [[3]]
+    [[3.]]
     ------
     Distancias de Hamming entre los textos de prueba:
     [[ 0.  2. 17. 17.]
@@ -381,7 +466,7 @@ Para todos los métodos de esta clase, es necesario como entrada proporcionar un
     >>> ## Similitud entre strings
     
     >>> # Similitud entre dos textos
-    >>> s1 = dif_strings.similitud_jaro([t1,t2])
+    >>> s1 = dif_strings.similitud_jaro(t1,t2)
     >>> # Similitud entre lista de textos
     >>> s2 = dif_strings.similitud_jaro_winkler(strings)
     ​
@@ -442,3 +527,34 @@ Si norm=1, se dividirá la distancia encontrada por la longitud (número de cara
      [0.94444444 0.94444444 0.         0.16666667]
      [0.94117647 0.94117647 0.16666667 0.        ]]
 
+
+Comparaciones entre dos grupos de strings distintos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Como se mencionó anteriormente, es posible comparar dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos distintas. Los métodos de la clase :py:class:`DiferenciaStrings <comparacion.DiferenciaStrings>` calcularán la métrica de similitud o distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
+
+Esto aplica para cualquiera de los métodos de la clase :py:class:`DiferenciaStrings <comparacion.DiferenciaStrings>`.
+
+.. code-block:: python
+
+    >>> d1 = dif_strings.distancia_levenshtein(strings, 'pescados', norm=2)
+    >>> s1 = dif_strings.similitud_jaro_winkler(strings, ['pescador', 'John Díaz'])
+
+    >>> print('Distancias de Levenshtein entre un grupo de strings y otro texto, dividiendo por longitud de texto largo:')
+    >>> print(d1)
+
+    >>> print('-------\nSimilitudes de Jaro-Winkler entre dos grupos de strings:')
+    >>> print(s1)
+
+    Distancias de Levenshtein entre un grupo de strings y otro texto, dividiendo por longitud de texto largo:
+    [[0.125     ]
+     [0.375     ]
+     [0.94444444]
+     [0.88235294]]
+    -------
+    Similitudes de Jaro-Winkler entre dos grupos de strings:
+    [[0.975      0.41798942]
+     [0.92857143 0.41798942]
+     [0.28703704 0.62698413]
+     [0.28921569 0.54989107]]
+     
