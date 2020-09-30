@@ -29,7 +29,7 @@ PACKAGE_NAME = 'ConTexto'
 
 setuptools.setup(
     name=PACKAGE_NAME,
-    version='0.1.1',
+    version='0.1.2',
     author="Departamento Nacional de Planeación - DNP",
     author_email='ucd@dnp.gov.co',
     maintainer='Unidad de Científicos de Datos - UCD',
