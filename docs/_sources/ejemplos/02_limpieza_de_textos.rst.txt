@@ -3,7 +3,7 @@
 Limpieza de textos
 ==================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
 
 Funciones de limpieza de textos
 -------------------------------
@@ -19,7 +19,6 @@ Importar módulo de ConTexto y definir texto de prueba
 
     >>> texto_prueba = '''hola, esto es una prueba para verificar que la limpieza
     >>> sea hecha con precisión, empeño y calidad! Esperamos que esté todo de 10.
-
     >>> Desde Amazonas hasta la Guajira y san andrés, desde John y María hasta Ernesto,
     >>> esperamos       que todo funcione de manera correcta.'''
 
