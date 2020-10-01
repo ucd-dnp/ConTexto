@@ -4,7 +4,8 @@ import sys
 with open("README.md", "r", encoding ='utf-8') as fh:
     long_description = fh.read()
 
-INSTALL_REQUIRES = ['gensim==3.8.3',
+INSTALL_REQUIRES = ['docx2txt==0.8'
+                    'gensim==3.8.3',
                     'googletrans==2.4.0',
                     'jellyfish==0.8.2',
                     'langid==1.1.6',
