@@ -201,7 +201,7 @@ class VectorizadorHash():
 
 
 class VectorizadorWord2Vec():
-    def __init__(self, lenguaje='es', dim_modelo='md'):
+    def __init__(self, lenguaje='es', dim_modelo='md', maxima_longitud=None):
         """ Constructor de la clase VectorizadorWord2Vec. \ 
         Permite hacer vectorizaciones utilizando Word2Vec. \ 
         Utiliza un modelo pre entrenado.
@@ -213,11 +213,15 @@ class VectorizadorWord2Vec():
         :param dim_modelo: (str) {'sm', 'md', 'lg'}, valor por defecto: 'md'. \ 
             Define el tamaño del corpus utilizado al pre entrenar \ 
             el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
+        :param maxima_longitud: (int), valor por defecto: None. Parámetro opcional que \ 
+            permite establecer la máxima longitud (número de caracteres) que acepta el \
+            vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará \
+            la máxima longitud que trae Spacy por defecto (1 millón de caracteres).
         """
         # Definir lenguaje del vectorizador
         self.establecer_lenguaje(lenguaje)
         # Inicializar vectorizador
-        self.iniciar_vectorizador(dim_modelo)
+        self.iniciar_vectorizador(dim_modelo, maxima_longitud)
 
     def establecer_lenguaje(self, lenguaje):
         """ Permite establecer el lenguaje a ser utilizado por el vectorizador.
@@ -229,17 +233,21 @@ class VectorizadorWord2Vec():
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
-    def iniciar_vectorizador(self, dim_modelo):
+    def iniciar_vectorizador(self, dim_modelo, maxima_longitud):
         """ Permite cargar el modelo de vectorizador a utilizar.
 
         :param dim_modelo: (str) {'sm', 'md', 'lg'}, valor por defecto: 'md'. \ 
             Define el tamaño del corpus utilizado al pre entrenar \ 
             el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.
+        :param maxima_longitud: (int). Parámetro opcional que \ 
+            permite establecer la máxima longitud (número de caracteres) que acepta el \
+            vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará \
+            la máxima longitud que trae Spacy por defecto (1 millón de caracteres).
         """
         self.vectorizador = None
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.vectorizador = cargar_modelo(dim_modelo, self.lenguaje)
+            self.vectorizador = cargar_modelo(dim_modelo, self.lenguaje, maxima_longitud)
 
     def vectorizar_texto(self, texto, quitar_desconocidas: bool=False):
         """ Vectoriza el texto utilizando el vectorizador. \ 
@@ -256,7 +264,7 @@ class VectorizadorWord2Vec():
             vectorización del texto.
         """
         # Aplicar el modelo al texto
-        tokens = self.vectorizador(texto)
+        tokens = self.vectorizador(texto, disable = ['ner', 'parser'])
         vector_doc = tokens.vector
         if quitar_desconocidas:
             # Crear lista con todos los vectores de palabras reconocidas

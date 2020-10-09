@@ -1,7 +1,7 @@
 import os
 import spacy
 
-def cargar_modelo(dim_modelo, lenguaje):
+def cargar_modelo(dim_modelo, lenguaje, maxima_longitud=None):
     """
     Carga y retorna un modelo de lenguaje de spaCy del tamaño y lenguaje especificados por \
         el usuario. Para mayor información sobre estos modelos se puede consultar la página \
@@ -20,6 +20,10 @@ def cargar_modelo(dim_modelo, lenguaje):
         la función de nuevo.
     :param lenguaje: (str). Lenguaje para el que se desea cargar el modelo de spaCy. spaCy tiene modelos \
         disponibles para varios lenguajes. Para mayor información, visitar https://spacy.io/models/
+    :param maxima_longitud: (int), valor por defecto: None. Parámetro opcional que permite establecer \
+        la máxima longitud (número de caracteres) que acepta el vectorizador en un texto de entrada. \
+        Si este valor se deja en None, se utilizará la máxima longitud que trae Spacy por defecto \
+        (1 millón de caracteres).
     :return: Modelo de spaCy, del tamaño y lenguaje especificados. Si el modelo requerido no está disponible \
         en el computador del usuario, la función descargará el modelo correspondiente, lo cual puede tardar \
         algunos minutos, dependiendo del tamaño de los modelos y la velocidad de conexión a internet del usuario. \
@@ -60,5 +64,8 @@ def cargar_modelo(dim_modelo, lenguaje):
             print(
                 '\n[INFO] El modelo no pudo ser descargado, se cargará un modelo vacío.\n')
         modelo = spacy.blank(lenguaje)
+    # Se ajusta la máxima longitud, si se especificó
+    if maxima_longitud is not None:
+        modelo.max_length = maxima_longitud
     # Devolver el modelo
     return modelo
