@@ -19,7 +19,7 @@ class VectorizadorFrecuencias():
             rango_ngramas=(1, 1),
             max_elementos=None,
             idf=True,
-            archivo_modelo=''):
+            archivo_modelo='', **kwargs):
         """ Constructor de la clase VectorizadorFrecuencias. \ 
         Permite hacer vectorizaciones usando Bag of Words (BOW) o TF-IDF.
 
@@ -40,6 +40,11 @@ class VectorizadorFrecuencias():
             vectorizador generado previamente, los demás parámetros de \ 
             inicialización no serán tenidos en cuenta, pues se tomarán del \ 
             vectorizador cargado.
+        :param kwargs: Parámetros adicionales que aceptan las clases `CountVectorizer` y \
+            `TfidfVectorizer` de la librería scikit-learn. Para mayor información sobre \
+            estas clases, y los elementos adicionales que se pueden configurar, se puede \
+            consultar su documentacion: \
+            https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text.            
         """
         tipo = tipo.lower()
         if archivo_modelo != '':
@@ -47,11 +52,11 @@ class VectorizadorFrecuencias():
         elif tipo == 'bow':
             self.tipo = tipo
             self.vectorizador = CountVectorizer(   
-                ngram_range=rango_ngramas, max_features=max_elementos)
+                ngram_range=rango_ngramas, max_features=max_elementos, **kwargs)
         elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
             self.tipo = 'tfidf'
             self.vectorizador = TfidfVectorizer(
-                ngram_range=rango_ngramas, max_features=max_elementos, use_idf=idf)
+                ngram_range=rango_ngramas, max_features=max_elementos, use_idf=idf, **kwargs)
         else:
             print('Por favor seleccionar un tipo de modelo válido (bow o tfidf)')
             return None
@@ -148,7 +153,7 @@ class VectorizadorFrecuencias():
 
 
 class VectorizadorHash():
-    def __init__(self, n_elementos=100, rango_ngramas=(1, 1)):
+    def __init__(self, n_elementos=100, rango_ngramas=(1, 1), **kwargs):
         """ Constructor de la clase VectorizadorHash.  \ 
         Permite hacer vectorizaciones usando hashing.
 
@@ -159,9 +164,13 @@ class VectorizadorHash():
             diferentes n-gramas que se van a extraer. Por ejemplo, \ 
             un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \ 
             significa unigramas y bigramas, y (2, 2) significa solo bigramas.
+        :param kwargs: Parámetros adicionales que acepta la clase `HashingVectorizer` de \
+            la librería scikit-learn. Para mayor información sobre esta clase, y los \
+            elementos adicionales que se pueden configurar, se puede consultar su documentacion: \
+            https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text.            
         """
         self.model = HashingVectorizer(
-            n_features=n_elementos, ngram_range=rango_ngramas)
+            n_features=n_elementos, ngram_range=rango_ngramas, **kwargs)
 
     def vectorizar(self, textos, disperso=False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
@@ -264,7 +273,7 @@ class VectorizadorWord2Vec():
             vectorización del texto.
         """
         # Aplicar el modelo al texto
-        tokens = self.vectorizador(texto, disable = ['ner', 'parser'])
+        tokens = self.vectorizador(texto, disable = ['ner', 'parser', 'tagger'])
         vector_doc = tokens.vector
         if quitar_desconocidas:
             # Crear lista con todos los vectores de palabras reconocidas
