@@ -5,10 +5,10 @@ import pandas as pd
 from collections import Counter, Iterable
 from wordcloud import WordCloud
 from limpieza import limpieza_basica
-from utils.tokenizacion import tokenizar, TokenizadorNLTK
+from utils.tokenizacion import tokenizar, TokenizadorNLTK, TokenizadorEspacios
 
 
-def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False):
+def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False, tokenizador=None):
     """ Permite generar n-gramas a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
@@ -17,11 +17,13 @@ def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False):
     :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes de encontrar los n-gramas.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: n-gramas generados con las características especificadas.
     """
     if limpiar:
         texto = limpieza_basica(texto)
-    lista = tokenizar(texto)
+    lista = tokenizar(texto, tokenizador)
     n_gramas = (' '.join(lista[i:i + n])
                 for i in range(len(lista)) if i + n <= len(lista))
     if devolver_lista:
@@ -164,7 +166,8 @@ def matriz_coocurrencias(
         modo='documento', 
         ventana=3,
         tri_sup=True,
-        limpiar=False):
+        limpiar=False,
+        tokenizador=None):
     """ Calcula la matriz de co-ocurrencias de un texto.
 
     :param texto: (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.
@@ -176,9 +179,10 @@ def matriz_coocurrencias(
     :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función `limpieza_basica` \
         del módulo `limpieza`) al texto de entrada, antes de calcular las co-ocurrencias.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: dataframe de pandas con las co-ocurrencias de los textos de entrada.
     """
-
     # Generar un solo texto con todos los documentos
     if isinstance(texto, Iterable) and not isinstance(texto, str):
         texto_entero = ' '.join([str(i) for i in texto])
@@ -190,7 +194,7 @@ def matriz_coocurrencias(
         texto = [limpieza_basica(t) for t in texto]
         texto_entero = ' '.join([texto])
     # Se inicializa un solo tokenizador, para ahorrar un poco de tiempo
-    tok = TokenizadorNLTK()
+    tok = TokenizadorNLTK() if tokenizador is None else tokenizador
     # Generar lista de palabras en todos los textos juntos
     palabras = tokenizar(texto_entero, tok)
     # Dejar solo las palabras con mayor frecuencia y/o que cumplan una

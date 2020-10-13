@@ -446,12 +446,12 @@ class VectorizadorDoc2Vec():
             vectorización de los textos.
         """
         # Vectorizar el texto de entrada
-        tokenizado = simple_preprocess(texto)
+        texto_tokenizado = simple_preprocess(texto)
         # La vectorización tiene un componente aleatorio. Se establece una semilla
         # para que la función siempre devuelva el mismo vector para el mismo texto
         self.vectorizador.random.seed(semilla)
         # Se devuelve el vector
-        return self.vectorizador.infer_vector(tokenizado, alpha=alpha, steps=num_pasos)           
+        return self.vectorizador.infer_vector(texto_tokenizado, alpha=alpha, steps=num_pasos)           
 
     # Función para vectorizar una lista de textos
     def vectorizar(self, textos, alpha=0.025, num_pasos=50, semilla=13):

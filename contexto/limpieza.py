@@ -22,7 +22,7 @@ def remover_acentos(texto):
     return str(texto)
 
 def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
-        ubicacion_archivo = None):
+        ubicacion_archivo=None, tokenizador=None):
     """Quita las palabras y expresiones determinadas de un texto. Esta función quita del texto de entrada, \
     palabras específicas contenidas en `lista_palabras`, o expresiones de palabras contenidas en `lista_expresiones`.
 
@@ -37,6 +37,8 @@ def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
     :param ubicacion_archivo: None, optional. Ubicación del archivo plano que contiene la lista de palabras \
         y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en \
         caso contrario no es necesario especificar los parametros `lista_palabras` y `lista_expresiones`.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: (str) Texto sin las palabras y expresiones incluidas en la limpieza.
     """
     if ubicacion_archivo:
@@ -46,8 +48,8 @@ def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
         texto = texto.replace(expresion, ' ')
     # Dejar solo las palabras que no aparecen en la lista de palabras no
     # deseadas
-    tokens = tokenizar(texto)
-    texto = destokenizar([p for p in tokens if p not in set(lista_palabras)])
+    tokens = tokenizar(texto, tokenizador)
+    texto = destokenizar([p for p in tokens if p not in set(lista_palabras)], tokenizador)
     # Reemplaza espacios múltiples por un solo espacio
     texto = re.sub(r" +", " ", texto)
     return texto
@@ -91,7 +93,7 @@ def limpieza_basica(texto, quitar_numeros=True):
 
 def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         ubicacion_archivo = None, n_min=0, quitar_numeros = True,
-        quitar_acentos = False):
+        quitar_acentos=False, tokenizador=None):
     """Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada. \
     Es capaz de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`, \
     quita acentos de las palabras, números y palabras de longitud menor a `n_min`.
@@ -111,14 +113,17 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         del texto de entrada
     :param quitar_acentos: (bool), optional. Por defecto `False`. Opción para determinar si se quitan \
         acentos (tildes, diéresis, virgulilla) del texto.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos al momento de quitar stopwords. Si el valor es 'None', se utilizará por defecto una instancia \
+        de la clase *TokenizadorNLTK*.        
     :return: (str) Texto después de la limpieza completa.
     """
 
     # Quitar palabras y expresiones no deseadas. Se hace al texto original porque la palabra/expresión
     # a remover puede tener tildes/mayúsculas/signos o estar compuesta por
     # palabras cortas
-    texto = remover_stopwords(texto, lista_palabras,
-                              lista_expresiones, ubicacion_archivo)
+    texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                             ubicacion_archivo, tokenizador)
     # Se verifica si se desean quitar acentos/tildes
     if quitar_acentos:
         texto = remover_acentos(texto)
@@ -128,8 +133,8 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
     texto = remover_palabras_cortas(texto, n_min)
     # Se hace esto de nuevo, por si habían palabras que después de su limpieza quedan en
     # la lista de palabras/expresiones no deseadas
-    texto = remover_stopwords(texto, lista_palabras,
-                              lista_expresiones, ubicacion_archivo)
+    texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                             ubicacion_archivo, tokenizador)
     return texto
 
 def limpiar_extremos(texto):

@@ -5,9 +5,8 @@ from utils.tokenizacion import TokenizadorNLTK
 
 ### Definir clase para el stemmer ###
 
-
 class Stemmer():
-    def __init__(self, lenguaje):
+    def __init__(self, lenguaje, tokenizador=None):
         """
         Constructor por defecto de la clase Stemmer. Esta clase se encarga \
         de hacer la operación de *stemming*, o reducción de palabras a su \
@@ -16,6 +15,8 @@ class Stemmer():
         :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
             a aplicar *stemming*. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
+        :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+            de textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.            
         :return: (Stemmer). Objeto del tipo de la clase Stemmer
         """
         # Definir lenguaje del stemmer
@@ -23,7 +24,7 @@ class Stemmer():
         # Inicializar stemmer
         self.iniciar_stemmer()
         # Para tokenizar los textos antes de aplicar el stemming
-        self.tokenizador = TokenizadorNLTK()
+        self.tokenizador = TokenizadorNLTK() if tokenizador is None else tokenizador
 
     def establecer_lenguaje(self, lenguaje):
         """

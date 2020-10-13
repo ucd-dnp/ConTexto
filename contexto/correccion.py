@@ -8,7 +8,7 @@ from utils.tokenizacion import TokenizadorNLTK
 
 
 class Corrector():
-    def __init__(self, lenguaje, diccionario=None, distancia=2):
+    def __init__(self, lenguaje, diccionario=None, distancia=2, tokenizador=None):
         """
         Constructor por defecto de la clase Corrector. Esta clase se encarga \
         de realizar corrección ortográfica sobre textos.
@@ -28,13 +28,15 @@ class Corrector():
         :param distancia: (int). Valor por defecto: 2. Máxima distancia de Levenshtein que puede haber \ 
             entre una palabra incorrecta (o no reconocida) y las palabras del diccionario para \
             determinar si hay palabras candidatas para realizar la corrección.
+        :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización de \
+            textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.
         """
         # Definir lenguaje del corrector ortográfico
         self.establecer_lenguaje(lenguaje)
         # Inicializar corrector
         self.iniciar_corrector(diccionario)
         self.establecer_distancia(distancia)
-        self.tokenizador = TokenizadorNLTK()
+        self.tokenizador = TokenizadorNLTK() if tokenizador is None else tokenizador
 
     def establecer_lenguaje(self, lenguaje):
         """
@@ -233,7 +235,8 @@ class Corrector():
 
 # Función que envuelve la funcionalidad básica de la clase
 
-def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2, limpieza=False):
+def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2,
+                  limpieza=False, tokenizador=None):
     """ 
     Función que aprovecha la clase Corrector para realizar corrección \
         ortográfica sobre un texto de entrada.
@@ -263,12 +266,14 @@ def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, dista
         opcional que define si se desea hacer una limpieza básica (\
         aplicando la función `limpieza_basica` del módulo `limpieza`) al \
         texto antes de aplicar la corrección ortográfica.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización de \
+        textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: (str). Texto de entrada luego de la corrección ortográfica.
     """
     if corrector is None:
         if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
-        corrector = Corrector(lenguaje, diccionario, distancia)
+        corrector = Corrector(lenguaje, diccionario, distancia, tokenizador)
 
     if corrector.corrector is None:
         print('Lenguaje no válido.')

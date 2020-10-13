@@ -112,6 +112,52 @@ class TokenizadorNLTK():
             print('Tipo de entrada no válido. Debe ingresar una lista de tokens o una lista de listas de tokens.')
             return None
 
+class TokenizadorEspacios():
+    def tokenizar(self, texto):
+        """
+        Realiza la función de tokenización (separar un texto en componentes sueltos, o tokens) sobre \
+            uno o varios textos de entrada. 
+
+        :param texto: (str o lista de strings). Texto o lista de textos sobre los cuales se desea \
+            aplicar la tokenización.
+        :return: (list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se \
+            ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de \
+            tokens, con un elemento para cada texto de entrada.
+        """
+        # Si es un string se aplica el procedimiento directamente
+        if isinstance(texto, str):
+            return texto.split()
+        # Si es una lista o colección de strings, se aplica a cada uno
+        elif isinstance(texto, Iterable):
+            return [i.split() for i in texto]
+        else:
+            print('Tipo de entrada no válido. Debe ingresar un string o una lista de strings.')
+            return None
+
+    def destokenizar(self, lista_tokens):
+        """
+        Realiza la función de detokenización (unir una lista de tokens, produciendo un texto) sobre \
+            una o varias listas de tokens de entrada. 
+
+        :param lista_tokens: (list). Lista de tokens, si es para un solo texto. Si es para varios \
+        textos, se introduce una lista en la que cada elemento (uno para cada texto) es una \
+        lista de tokens.
+        :return: (str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens. \
+            Si se introdujeron varias listas de tokens, devuelve una lista de strings.
+        """       
+        # Si la lista está vacía, se devuelve un string vacío
+        if len(lista_tokens) < 1:
+            return '' 
+        # Si es una sola lista de tokens se aplica el procedimiento directamente
+        if isinstance(lista_tokens[0], str):
+            return ' '.join(lista_tokens)
+        # Si es una lista de listas de tokens, se aplica a cada elemento
+        elif isinstance(lista_tokens[0], Iterable):
+            return [' '.join(i) for i in lista_tokens]
+        else:
+            print('Tipo de entrada no válido. Debe ingresar una lista de tokens o una lista de listas de tokens.')
+            return None
+
 def tokenizar(texto, tokenizador=None):
     """
     Función que aprovecha la clase TokenizadorNLTK para realizar la función de tokenización \
