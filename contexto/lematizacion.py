@@ -5,7 +5,6 @@ from lenguajes import detectar_lenguaje, definir_lenguaje
 
 ### Definir clases para el lematizador ###
 
-
 class LematizadorSpacy():
     def __init__(self, lenguaje, dict_lemmas=None, dim_modelo='md'):
         """
@@ -64,6 +63,9 @@ class LematizadorSpacy():
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
             self.lematizador = cargar_modelo(dim_modelo, self.lenguaje)
+            # Se añade este proceso para poder deshabilitar el parser.
+            # Tomado de https://stackoverflow.com/questions/51372724/how-to-speed-up-spacy-lemmatization
+            self.lematizador.add_pipe(self.lematizador.create_pipe('sentencizer'))
 
     def modificar_lemmas(self, dict_lemmas):
         """ Define lemas asociados a palabras escogidas por el usuario. Estos nuevos \
@@ -94,10 +96,10 @@ class LematizadorSpacy():
         """
         if limpiar:
             texto = limpieza_basica(texto)
-        return ' '.join([token.lemma_ for token in self.lematizador(texto)])
+        lemas = self.lematizador(texto, disable=['ner', 'parser'])
+        return ' '.join([token.lemma_ for token in lemas])
 
 # Implementación alternativa, utilizando stanza
-
 
 class LematizadorStanza():
     def __init__(
