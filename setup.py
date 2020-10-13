@@ -23,6 +23,7 @@ INSTALL_REQUIRES = ['docx2txt==0.8',
                     'pytesseract==0.3.5',
                     'reportlab==3.5.48',
                     'scikit-learn==0.23.2',
+                    'slate3k==0.5.3',
                     'spacy==2.3.2',
                     'wordcloud==1.8.0']
 
@@ -30,7 +31,7 @@ PACKAGE_NAME = 'ConTexto'
 
 setuptools.setup(
     name=PACKAGE_NAME,
-    version='0.1.2',
+    version='0.1.6',
     author="Departamento Nacional de Planeación - DNP",
     author_email='ucd@dnp.gov.co',
     maintainer='Unidad de Científicos de Datos - UCD',
