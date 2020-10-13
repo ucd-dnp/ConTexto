@@ -1,5 +1,6 @@
 import jellyfish
 import numpy as np
+from scipy.sparse import issparse
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import pairwise_distances
 from lenguajes import definir_lenguaje
@@ -32,7 +33,6 @@ class Similitud():
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
-
 
     # Función auxiliar
     def __jaccard_textos(self,texto1, texto2):
@@ -75,12 +75,12 @@ class Similitud():
         """Calcula la similitud coseno entre uno o dos grupos de textos o vectores de entrada.
 
         :param lista1: (str o list) texto o lista de textos de interés para el \ 
-            cálculo de similitud. También es posible ingresar directamente \ 
-            los vectores pre-calculados de los textos.
+            cálculo de similitud. También es posible ingresar directamente los vectores \
+            pre-calculados de los textos en un arreglo de numpy o una matriz dispersa.
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calculará la similitud entre \
-            cada uno de los textos de lista1 con cada uno de los textos de lista2. También es posible \
-            ingresar directamente los vectores pre-calculados de los textos.            
+            cada uno de los textos de lista1 con cada uno de los textos de lista2. También es posible ingresar \
+            directamente los vectores pre-calculados de los textos en un arreglo de numpy o una matriz dispersa.         
         :return: (numpy array) Matriz de dos dimensiones con las similitudes coseno entre los textos/vectores de \
             entrada. Sí solo se utilizó el parámetro lista1 con *n* textos/vectores, devolverá una matriz de *nxn* \
             simétrica, con las similitudes coseno entre todos los elementos de lista1. Si se utilizan los parámetros \
@@ -91,12 +91,20 @@ class Similitud():
             lista1 = [lista1]
         if isinstance(lista2, str):
             lista2 = [lista2]
+        # Cantidad de elementos en lista2
+        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]            
         # Si se ingresan textos, estos se pasan por el vectorizador
         if isinstance(lista1[0], str):
-            lista1 = self.vectorizador.vectorizar(lista1)
-        if len(lista2) > 0 and isinstance(lista2[0], str):
-            lista2 = self.vectorizador.vectorizar(lista2)        
-        if len(lista2) < 1:
+            try:
+                lista1 = self.vectorizador.vectorizar(lista1, disperso=True)
+            except:
+                lista1 = self.vectorizador.vectorizar(lista1)
+        if n2 > 0 and isinstance(lista2[0], str):
+            try:
+                lista2 = self.vectorizador.vectorizar(lista2, disperso=True)
+            except:
+                lista2 = self.vectorizador.vectorizar(lista2)                     
+        if n2 < 1:
             return cosine_similarity(lista1)
         else:
             return cosine_similarity(lista1, lista2)
@@ -106,12 +114,13 @@ class Similitud():
 
         :param lista1: (str o list) texto o lista de textos de interés para el cálculo de \
             similitud. También es posible ingresar directamente los vectores pre-calculados de los \
-            textos, utilizando vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).
+            textos en un arreglo de numpy, utilizando vectorizadores basados en frecuencias \
+            (BOW, TF-IDF, Hashing).
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calculará la similitud entre \
             cada uno de los textos de lista1 con cada uno de los textos de lista2. También es posible \
-            ingresar directamente los vectores pre-calculados de los textos, utilizando \ 
-            vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).            
+            ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy, \
+            utilizando vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).            
         :param vectorizar: (bool) {True, False} valor por defecto: False. Parámetro opcional que indica\ 
             si se desean vectorizar los textos de entrada pertenecientes a lista1 y (opcionalmente) a \
             lista2. Si vectorizar=False, se calculará la similitud de Jaccard de cada par de textos \
@@ -126,14 +135,20 @@ class Similitud():
             lista1 = [lista1]
         if isinstance(lista2, str):
             lista2 = [lista2]
-        if vectorizar:
-            if isinstance(lista1[0], str):
-                lista1 = self.vectorizador.vectorizar(lista1)
-            if len(lista2) > 0 and isinstance(lista2[0], str):
-                lista2 = self.vectorizador.vectorizar(lista2)
+        # Esta función no acepta matrices dispersas, por lo que se pasan a numpy array
+        if issparse(lista1):
+            lista1 = lista1.toarray()
+        if issparse(lista2):
+            lista2 = lista2.toarray()
         # Cantidad de elementos en cada lista
         n1, n2 = len(lista1), len(lista2)
-        if len(lista2) < 1:
+        # Si se indicó, se calculan los vectores de las listas de textos de entrada
+        if vectorizar:
+            if isinstance(lista1[0], str):
+                lista1 = self.vectorizador.vectorizar(lista1)                
+            if n2 > 0 and isinstance(lista2[0], str):
+                lista2 = self.vectorizador.vectorizar(lista2)
+        if n2 < 1:
             if isinstance(lista1[0], str):
                 similitudes = np.zeros((n1, n1))
                 for i in range(n1):
@@ -174,6 +189,9 @@ class Distancia():
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
+        # Distancias de sklearn que aceptan matrices dispersas
+        self.aceptan_dispersas = ['cityblock', 'cosine', 'euclidean', 
+                                 'l1', 'l2', 'manhattan']
         
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Distancia.
@@ -203,22 +221,23 @@ class Distancia():
         else:
             self.vectorizador = vectorizador
 
-    def distancia_pares(self, lista1, lista2=[], tipo_distancia='l2', **kwds):
+    def distancia_pares(self, lista1, lista2=[], tipo_distancia='l2', **kwargs):
         """Permite calcular diferentes métricas de distancias entre uno o dos grupos de \
             textos y/o vectores de entrada.
 
         :param lista1: (str o list) texto o lista de textos de interés para el \ 
-            cálculo de las distancias. También es posible ingresar directamente \ 
-            los vectores pre-calculados de los textos.
+            cálculo de las distancias. También es posible ingresar directamente los vectores \
+            pre-calculados de los textos en un arreglo de numpy o una matriz dispersa.
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calculará la distancia entre \
-            cada uno de los textos/vectores de lista1 con cada uno de los elementos de lista2. También \
-            es posible ingresar directamente los vectores pre-calculados de los textos.             
+            cada uno de los textos/vectores de lista1 con cada uno de los elementos de lista2. También es \
+            posible ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy \
+            o una matriz dispersa.            
         :param tipo_distancia: (str). Valor por defecto: "l2". Métrica de distancia que se desea calcular. \
             Para una lista de todas las distancias que se pueden calcular por medio de esta función, se \
             puede consultar la documentación de scikit-learn y scipy: \
             https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
-        :param kwds: Parámetros opcionales que pueden ser ajustables, dependiendo de la métrica de \
+        :param kwargs: Parámetros opcionales que pueden ser ajustables, dependiendo de la métrica de \
             distancia elegida.
         :return: (numpy array) Matriz de dos dimensiones con las distancias calculadas entre los textos/vectores de \
             entrada. Sí solo se utilizó el parámetro lista1 con *n* textos/vectores, devolverá una matriz de *nxn* \
@@ -230,26 +249,42 @@ class Distancia():
             lista1 = [lista1]
         if isinstance(lista2, str):
             lista2 = [lista2]        
+        # Cantidad de elementos en lista2
+        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]    
         # Si se ingresan textos, estos se pasan por el vectorizador
         if isinstance(lista1[0], str):
-            lista1 = self.vectorizador.vectorizar(lista1)
-        if len(lista2) > 0 and isinstance(lista2[0], str):
-            lista2 = self.vectorizador.vectorizar(lista2)  
-        if len(lista2) < 1:
-            return pairwise_distances(lista1, metric=tipo_distancia, **kwds)
+            try:
+                lista1 = self.vectorizador.vectorizar(lista1, disperso=True)
+            except:
+                lista1 = self.vectorizador.vectorizar(lista1)                
+        if n2 > 0 and isinstance(lista2[0], str):
+            try:
+                lista2 = self.vectorizador.vectorizar(lista2, disperso=True)
+            except:
+                lista2 = self.vectorizador.vectorizar(lista2)
+        # Si la distancia a calcular no soporta matrices dispersas, se asegura de que no hayan
+        if tipo_distancia not in self.aceptan_dispersas:
+            if issparse(lista1):
+                lista1 = lista1.toarray()
+            if issparse(lista2):
+                lista2 = lista2.toarray()                
+        if n2 < 1:
+            return pairwise_distances(lista1, metric=tipo_distancia, **kwargs)
         else:
-            return pairwise_distances(lista1, lista2, metric=tipo_distancia, **kwds)
+            return pairwise_distances(lista1, lista2, metric=tipo_distancia, **kwargs)
 
     def l1(self, lista1, lista2=[]):
         """Calcula la distancia L1, también conocida como la distancia Manhattan, entre uno o dos grupos de \
             textos y/o vectores de entrada.
 
         :param lista1: (str o list) texto o lista de textos de interés para el cálculo de las distancias. \
-            También es posible ingresar directamente los vectores pre-calculados de los textos.
+            También es posible ingresar directamente los vectores pre-calculados de los textos en un arreglo \
+            de numpy o una matriz dispersa.
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calcularán la distancias entre \
             cada uno de los textos/vectores de lista1 con cada uno de los elementos de lista2. También es \
-            posible ingresar directamente los vectores pre-calculados de los textos.  
+            posible ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy o \
+            una matriz dispersa. 
         :return: (numpy array) Matriz de dos dimensiones con las distancias L1 calculadas entre los textos/vectores \
             de entrada. Sí solo se utilizó el parámetro lista1 con *n* textos/vectores, devolverá una matriz de *nxn* \
             simétrica, con las distancias L1 entre todos los elementos de lista1. Si se utilizan los parámetros \
@@ -263,11 +298,13 @@ class Distancia():
             textos y/o vectores de entrada.
 
         :param lista1: (str o list) texto o lista de textos de interés para el cálculo de las distancias. \
-            También es posible ingresar directamente los vectores pre-calculados de los textos.
+            También es posible ingresar directamente los vectores pre-calculados de los textos en un arreglo \
+            de numpy o una matriz dispersa.
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calcularán la distancias entre \
             cada uno de los textos/vectores de lista1 con cada uno de los textos de lista2. También es posible \
-            ingresar directamente los vectores pre-calculados de los textos.  
+            ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy o una matriz \
+            dispersa.
         :return: (numpy array) Matriz de dos dimensiones con las distancias L2 calculadas entre los textos/vectores \
             de entrada. Sí solo se utilizó el parámetro lista1 con *n* textos/vectores, devolverá una matriz de *nxn* \
             simétrica, con las distancias L2 entre todos los elementos de lista1. Si se utilizan los parámetros \
@@ -280,11 +317,14 @@ class Distancia():
         """Calcula la distancia de Minkowski entre uno o dos grupos de textos y/o vectores de entrada.
 
         :param lista1: (str o list) texto o lista de textos de interés para el cálculo de las distancias. \
-            También es posible ingresar directamente los vectores pre-calculados de los textos.
+            También es posible ingresar directamente los vectores pre-calculados de los textos. También es \
+            posible ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy o \
+            una matriz dispersa.
         :param lista2: (str o list) Valor por defecto: []. Parámetro opcional con un segundo texto o \
             lista de textos para comparar. Si se utiliza este parámetro, se calcularán la distancias entre \
             cada uno de los textos/vectores de lista1 con cada uno de los textos de lista2. También es posible \
-            ingresar directamente los vectores pre-calculados de los textos.
+            ingresar directamente los vectores pre-calculados de los textos en un arreglo de numpy o una matriz \
+            dispersa.
         :param p: (int). Valor por defecto: 2. Orden o grado de la distancia de Minkowski que se desea calcular. \
             Si p=1, la distancia calculada es equivalente a la distancia de Manhattan (L1) \ 
             y cuando p=2 la distancia calculada es equivalente a la distancia euclidiana (L2).
