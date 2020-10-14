@@ -73,7 +73,7 @@ def nube_palabras(
     :param mask: (array) o None, valor por defecto: None. Correspondiente a la máscara base donde se dibujan las palabras, por defecto se utiliza una máscara circular.
     :param semilla: (int) valor por defecto: 1234. Corresponde al estado inicial del generador, este incide en la posición y color de las palabras. En caso de querer replicar la nube de palabras, se recomienda utilizar un mismo valor de semilla.
     :param devolver_nube: (bool) {True, False} valor por defecto: False. Indica si desea obtener la nube de palabras como un objeto tipo WordCloud.
-    :return: objeto tipo WordCloud, solo si la variable devolver_nube=True.
+    :return: objeto tipo WordCloud, solo si devolver_nube=True.
     """
 
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
@@ -122,7 +122,8 @@ def grafica_nube(
     plt.close()
 
 
-def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graficar=True):
+def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', 
+            graficar=True, devolver_grafica=False):
     """ Permite graficar o exportar un par de nubes de palabras (una junto a otra) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
@@ -131,6 +132,9 @@ def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graf
     :param dim_figura: (float, float) valor por defecto: (20, 10). Corresponden al ancho y alto de la figura en pulgadas.
     :param ubicacion_archivo: (str) valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param devolver_grafica: (bool) {True, False} valor por defecto: False. Indica si se desea obtener \
+        el gráfico con el par de nubes de palabras como un objeto de Matplotlib.
+    :return: Figura (objeto Figure de Matplotlib) con el par de nubes de palabras, solo si devolver_grafica=True.    
     """
 
     # Obtener nubes de palabras
@@ -155,6 +159,8 @@ def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', graf
         plt.show()
     if ubicacion_archivo != '':
         fig.savefig(ubicacion_archivo)
+    if devolver_grafica:
+        return fig
     # Cerrar gráfica
     plt.close()
 
@@ -334,7 +340,7 @@ def graficar_coocurrencias(
         plt.text(x, y, s=key, horizontalalignment='center', fontsize=10)
     plt.axis('off')
     if ubicacion_archivo != '':
-        plt.savefig(ubicacion_archivo)  # save as png
+        plt.savefig(ubicacion_archivo)
     if graficar:
         plt.show()
     # Cerrar gráfica
@@ -349,7 +355,8 @@ def grafica_barchart_frecuencias(
         ascendente=True,
         ubicacion_archivo='',
         graficar=True,
-        n_terminos=15):
+        n_terminos=15,
+        devolver_grafica=False):
     """ Permite graficar o exportar un gráfico de barras horizontales de la frecuencia de palabras (n-gramas) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
@@ -357,9 +364,12 @@ def grafica_barchart_frecuencias(
     :param dim_figura: (float, float) valor por defecto: (8, 5). Corresponden al ancho y alto de la figura en pulgadas.
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
     :param ascendente: (bool) {True, False} valor por defecto: True. Determina si las barras de términos se muestran de menos (abajo) a más (arriba) frecuentes en la gráfica.
-    :param ubicacion_archivo: (str) valor por defecto: vacío. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param ubicacion_archivo: (str) valor por defecto: vacío (''). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param graficar: (bool) {True, False} valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     :param n_terminos: (int) valor por defecto: 15. Cantidad de n-gramas a graficar.
+    :param devolver_grafica: (bool) {True, False} valor por defecto: False. Indica si se desea obtener \
+        el gráfico de barras como un objeto de Matplotlib.
+    :return: Figura (objeto Figure de Matplotlib) con el gráfico de barras, solo si devolver_grafica=True.    
     """
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Ordenar datos en un dataframe
@@ -379,13 +389,15 @@ def grafica_barchart_frecuencias(
     ax.set_xlabel('Frecuencia')
     ax.set_ylabel('Término')
     plt.tight_layout()
-
+    #
     for i, v in enumerate(df['frecuencia']):
         ax.text(v, i, v, fontsize=10, verticalalignment="center")
-
+    # Si se dio una ubicación, se guarda ahí la figura
     if ubicacion_archivo != '':
-        plt.savefig(ubicacion_archivo)  # save as png
+        plt.savefig(ubicacion_archivo)
     if graficar:
         plt.show()
+    if devolver_grafica:
+        return fig
     # Cerrar gráfica
     plt.close()
