@@ -69,7 +69,7 @@ def nube_palabras(
     :param dim_figura: (float, float) valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.
     :param hor: (float) (valor de 0 a 1). Corresponde a la orientación de las palabras en el gráfico, siendo 0 una distribución vertical, 1 una distribución horizontal y una distribución mixta a cualquier valor entre 0 y 1.
     :param titulo: (str) valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
-    :param ubicacion_archivo: (str) valor por defecto: vacío. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param ubicacion_archivo: (str) valor por defecto: vacío (''). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param mask: (array) o None, valor por defecto: None. Correspondiente a la máscara base donde se dibujan las palabras, por defecto se utiliza una máscara circular.
     :param semilla: (int) valor por defecto: 1234. Corresponde al estado inicial del generador, este incide en la posición y color de las palabras. En caso de querer replicar la nube de palabras, se recomienda utilizar un mismo valor de semilla.
     :param devolver_nube: (bool) {True, False} valor por defecto: False. Indica si desea obtener la nube de palabras como un objeto tipo WordCloud.
