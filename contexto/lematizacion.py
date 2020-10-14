@@ -2,34 +2,41 @@ import json
 import spacy
 from limpieza import limpieza_basica
 from lenguajes import detectar_lenguaje, definir_lenguaje
+from utils.tokenizacion import TokenizadorEspacios
 
 ### Definir clases para el lematizador ###
 
 class LematizadorSpacy():
-    def __init__(self, lenguaje, dict_lemmas=None, dim_modelo='md'):
+    def __init__(self, lenguaje, dim_modelo='md', dict_lemmas=None, 
+                maxima_longitud=None, tokenizador=None):
         """
         Constructor por defecto de la clase LematizadorSpacy. Esta clase se \
         encarga de manejar todas las funciones asociadas a la lematización \
-        del texto con la librería Spacy
+        del texto con la librería Spacy.
 
-        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
+        :param lenguaje: (str) Define el lenguaje del texto a ser tratado. \ 
             Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-        :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
+        :param dim_modelo: (str) {'lg', 'md', 'sm'}. Se define el tamaño \ 
+            del modelo. 'lg' es grande (large), 'md' es mediano (medium) y 'sm' es \
+            pequeño (small). Los modelos más grandes usualmente obtienen mejores resultados, \
+            pero requieren mayor tiempo de carga.
+        :param dict_lemmas: (dict o str). Diccionario (o *string* con ubicación del \
             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
             llaves del diccionario son las palabras completas y los valores del \
             diccionario son los lemas escogidos para cada palabra.
-        :param dim_modelo: (string) {'lg', 'md', 'sm'}. Se define el tamaño \ 
-            del modelo. 'lg' es grande (large), 'md' es mediano (medium) y 'sm' es \
-            pequeño (small). Los modelos más grandes obtienen mejores predicciones \
-            pero requieren mayor tiempo de carga
-        :return: objeto del tipo de la clase LematizadorSpacy
+        :param maxima_longitud: (int), valor por defecto: None. Parámetro opcional que \ 
+            permite establecer la máxima longitud (número de caracteres) que acepta el \
+            lematizador en un texto de entrada. Si este valor se deja en None, se utilizará \
+            la máxima longitud que trae Spacy por defecto (1 millón de caracteres).
+        :param tokenizador: Valor por defecto: None. Objeto encargado de la detokenización \
+            de textos después de lematizar. Si el valor es 'None', se cargará por defecto una \
+            instancia de la clase *TokenizadorEspacios*.
         """
-
         # Definir lenguaje del lematizador
         self.establecer_lenguaje(lenguaje)
         # Inicializar lematizador
-        self.iniciar_lematizador(dim_modelo)
+        self.iniciar_lematizador(dim_modelo, maxima_longitud)
         # Si se introdujo un diccionario personalizado, se utiliza
         if isinstance(dict_lemmas, dict):
             self.modificar_lemmas(dict_lemmas)
@@ -40,29 +47,34 @@ class LematizadorSpacy():
                 self.modificar_lemmas(dict_lemmas)
             except BaseException:
                 print('No se pudo cargar el diccionario de lemas')
+        self.tokenizador = TokenizadorEspacios() if tokenizador is None else tokenizador
 
     def establecer_lenguaje(self, lenguaje):
         """ Define el lenguaje del lematizador.
 
-        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \ 
+        :param lenguaje: (str) Define el lenguaje del texto a ser tratado. \ 
             Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
-    def iniciar_lematizador(self, dim_modelo):
+    def iniciar_lematizador(self, dim_modelo, maxima_longitud):
         """ Inicia el lematizador con el tamaño del modelo de lematización basado en \
-        en los tamaños de la librería Spacy. Los modelos más grandes obtienen mejores \
-        predicciones, pero requieren mayor tiempo de carga.
+        en los tamaños de la librería Spacy. Los modelos más grandes usualmente obtienen mejores \
+        resultados, pero requieren mayor tiempo de carga.
 
-        :param dim_modelo: (string) {'lg', 'md', 'sm'}. Valor por defecto: "md". Se define \
+        :param dim_modelo: (str) {'lg', 'md', 'sm'}. Valor por defecto: "md". Se define \
             el tamaño del modelo. 'lg' es grande (large), 'md' es mediano (medium) y 'sm' es \
             pequeño (small). 
+        :param maxima_longitud: (int). Parámetro opcional que \ 
+            permite establecer la máxima longitud (número de caracteres) que acepta el \
+            vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará \
+            la máxima longitud que trae Spacy por defecto (1 millón de caracteres).
         """
         self.lematizador = None
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.lematizador = cargar_modelo(dim_modelo, self.lenguaje)
+            self.lematizador = cargar_modelo(dim_modelo, self.lenguaje, maxima_longitud)
             # Se añade este proceso para poder deshabilitar el parser.
             # Tomado de https://stackoverflow.com/questions/51372724/how-to-speed-up-spacy-lemmatization
             self.lematizador.add_pipe(self.lematizador.create_pipe('sentencizer'))
@@ -73,7 +85,7 @@ class LematizadorSpacy():
 
         :param dict_lemmas: (dict). Diccionario que permite modificar y agregar \
             lemas. Las llaves del diccionario son las palabras completas y los \
-            valores del diccionario son los lemas escogidos para cada palabra
+            valores del diccionario son los lemas escogidos para cada palabra.
         """
         # Definir función auxiliar
         def cambiar_propiedades_lemma(doc):
@@ -89,15 +101,15 @@ class LematizadorSpacy():
         """ Se lleva a cabo el proceso de lematización del texto, el cual puede \
             ser limpiado antes de la lematización.
 
-        :param texto: (string). El texto que se desea lematizar
+        :param texto: (str). El texto que se desea lematizar.
         :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \
-            si se desea hacer una limpieza básica del texto antes de la lematización
-        :return: (string). Retorna el texto lematizado.
+            si se desea hacer una limpieza básica del texto antes de la lematización.
+        :return: (str). Retorna el texto lematizado.
         """
         if limpiar:
             texto = limpieza_basica(texto)
         lemas = self.lematizador(texto, disable=['ner', 'parser'])
-        return ' '.join([token.lemma_ for token in lemas])
+        return self.tokenizador.destokenizar([token.lemma_ for token in lemas])
 
 # Implementación alternativa, utilizando stanza
 
@@ -107,29 +119,31 @@ class LematizadorStanza():
             lenguaje,
             modelo_lemas='',
             dict_lemmas=None,
-            archivo_salida=''):
-
+            archivo_salida='',
+            tokenizador=None):
         """
         Constructor por defecto de la clase LematizadorStanza. Esta clase se \
         encarga de manejar todas las funciones asociadas a la lematización \
         del texto con la librería Stanza.
 
-        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+        :param lenguaje: (str) Define el lenguaje del texto a ser tratado. \
             Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-        :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
+        :param modelo_lemas: (str). Valor por defecto: None. Especifica la ruta \
             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
-            el modelo genérico de lemas de Stanza
-        :param diccionario: (dict o string). Diccionario (o *string* con ubicación del \
+            el modelo genérico de lemas de Stanza.
+        :param dict_lemmas: (dict o str). Diccionario (o *string* con ubicación del \
             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las \
             llaves del diccionario son las palabras completas y los valores del \
             diccionario son los lemas escogidos para cada palabra.
-        :param archivo_salida: (string). Valor por defecto: None. Especifica la ruta \
+        :param archivo_salida: (str). Valor por defecto: ''. Especifica la ruta \
             del archivo de salida del modelo de lemas modificado. En caso de ser \
             vacío, el resultado de la lematizacción se guarda en un archivo \
-            temporal que eventualmente será borrado
+            temporal que eventualmente será borrado.
+        :param tokenizador: Valor por defecto: None. Objeto encargado de la detokenización \
+            de textos después de lematizar. Si el valor es 'None', se cargará por defecto una \
+            instancia de la clase *TokenizadorEspacios*.            
         """
-        
         # Definir lenguaje del lematizador
         self.establecer_lenguaje(lenguaje)
         # Inicializar lematizador
@@ -144,11 +158,12 @@ class LematizadorStanza():
                 self.modificar_lemmas(dict_lemmas)
             except BaseException:
                 print('No se pudo cargar el diccionario de lemas')
+        self.tokenizador = TokenizadorEspacios() if tokenizador is None else tokenizador
 
     def establecer_lenguaje(self, lenguaje):
         """ Define el lenguaje del lematizador.
 
-        :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+        :param lenguaje: (str) Define el lenguaje del texto a ser tratado. \
             Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
@@ -157,11 +172,11 @@ class LematizadorStanza():
     def iniciar_lematizador(self, modelo_lemas):
         """ Inicia el lematizador de Stanza y permite ingresar la ruta de un modelo \
         de lematización personalizado. En caso de no especificar la ruta \
-        se utilizaría un modelo genérico.
+        se utilizará el modelo que trae Stanza por defecto para el lenguaje seleccionado.
 
-        :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
+        :param modelo_lemas: (str). Valor por defecto: None. Especifica la ruta \
             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
-            el modelo genérico de lemas de Stanza
+            el modelo que trae Stanza por defecto para el lenguaje seleccionado.
         """
         from utils.stanza_funcs import stanza_pipeline
         self.lematizador = None
@@ -181,15 +196,15 @@ class LematizadorStanza():
 
         :param dict_lemmas: (dict). Diccionario que permite modificar y agregar \
             lemas. Las llaves del diccionario son las palabras completas \
-            y el valor el lema escogido para cada palabra
-        :param archivo_entrada: (string). Valor por defecto: None. En caso de \
+            y el valor el lema escogido para cada palabra.
+        :param archivo_entrada: (str). Valor por defecto: ''. En caso de \
             ser vacío, se escoge un modelo de lematización genérico. De lo contrario, \
             se especifica la ruta del modelo de lematización personalizado a ser \
-            utilizado 
-        :param archivo_salida: (string). Valor por defecto: None. Especifica la ruta \
+            utilizado.
+        :param archivo_salida: (str). Valor por defecto: ''. Especifica la ruta \
             del archivo de salida del modelo de lemas modificado. En caso de ser \
-            vacío, el resultado de la lematizacción se guarda en un archivo \
-            temporal que eventualmente será borrado
+            vacío, el modelo modificado de lematizacción se guarda en un archivo \
+            temporal que eventualmente será borrado.
         :param gpu: (bool) {True, False}. Valor por defecto: False. Se escoge si \
             correr el proceso de lematización con GPU (True) o CPU (False)
         """
@@ -206,16 +221,16 @@ class LematizadorStanza():
         """ Se lleva a cabo el proceso de lematización del texto, el cual puede \
         ser limpiado antes de la lematización.
 
-        :param texto: (string). El texto que se desea lematizar
+        :param texto: (str). El texto que se desea lematizar
         :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \
             si se desea hacer una limpieza básica del texto antes de la lematización
-        :return: (string). Retorna el texto lematizado.
+        :return: (str). Retorna el texto lematizado.
         """
         if limpiar:
             texto = limpieza_basica(texto)
         doc = self.lematizador(texto)
         # Extraer los lemas de cada palabra, de cada frase, y juntarlos
-        return ' '.join([w.lemma for s in doc.sentences for w in s.words])
+        return self.tokenizador.destokenizar([w.lemma for s in doc.sentences for w in s.words])
 
 
 ### Definir función que envuelva la funcionalidad básica de las clases ###
@@ -229,51 +244,62 @@ def lematizar_texto(
         dict_lemmas=None,
         dim_modelo='md',
         modelo_lemas='',
-        archivo_salida=''):
+        archivo_salida='',
+        maxima_longitud=None,
+        tokenizador=None):
     """ Función que retorna un texto lematizado por la librería Spacy o Stanza. \
         Permite escoger el idioma de lematización, si hacer limpieza del texto, \
         modificar los modelos de lematizaciones originales y guardar los modelos \
         modificados.
 
-    :param texto: (string). Texto de entrada a ser lematizado
-    :param lenguaje: (string) Define el lenguaje del texto a ser tratado. \
+    :param texto: (str). Texto de entrada a ser lematizado.
+    :param lenguaje: (str) Define el lenguaje del texto a ser tratado. \
         Para mayor información, consultar la sección de \ 
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-    :param libreria: (string). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
+    :param libreria: (str). {'spacy', 'stanza'}. Valor por defecto: 'spacy' \
         Se define la librería de Python de lematización para ser utilizada en '
-        el texto. Las opciones son las librerías Spacy y Stanza
+        el texto. Las opciones son las librerías Spacy y Stanza.
     :param limpiar: (bool) {True, False}. Valor por defecto: True. Especifica \
-        si se desea hacer una limpieza básica del texto antes de la lematización
-    :param lematizador: objeto de lematización de la librería Spacy o Stanza \
-        (LematizadorSpacy o LematizadorStanza). Permite utilizar un solo \
-        lematizador para varios textos
+        si se desea hacer una limpieza básica del texto antes de la lematización.
+    :param lematizador: Parámetro opcional. Objeto de la clase LematizadorSpacy o \
+        LematizadorStanzapara aplicar lematización sobre el texto de entrada. Se puede \
+        utilizar para aplicar lematización a varios textos a la vez, sin necesidad de inicializar \
+        un lematizador en cada ocasión. Esto puede representar ahorro en tiempos al momento de aplicar la función.
     :param dict_lemmas: (dict). Diccionario que permite modificar y agregar \
         lemas. Las llaves del diccionario son las palabras completas y los \
-        valores del diccionario son los lemas escogidos para cada palabra
-    :param dim_modelo: (string) {'lg', 'md', 'sm'}. Valor por defecto: 'md' \
+        valores del diccionario son los lemas escogidos para cada palabra.
+    :param dim_modelo: (str) {'lg', 'md', 'sm'}. Valor por defecto: 'md' \
         Se define el tamaño del modelo. 'lg' es grande (large), 'md' es mediano \
-        (medium) y 'sm' es pequeño (small). Aplica únicamente para el lematizador \
-        Spacy
-    :param modelo_lemas: (string). Valor por defecto: None. Especifica la ruta \
+        (medium) y 'sm' es pequeño (small). Aplica únicamente para el lematizador Spacy.
+    :param modelo_lemas: (str). Valor por defecto: None. Especifica la ruta \
         de un modelo de lemas personalizado. En caso de ser vacío, se utiliza \
         el modelo genérico de lemas de Stanza. Aplica únicamente para la \
-        lematización con Stanza
-    :param archivo_salida: (string). Valor por defecto: None. Especifica la ruta \
+        lematización con Stanza.
+    :param archivo_salida: (str). Valor por defecto: ''. Especifica la ruta \
         del archivo de salida del modelo de lemas modificado. En caso de ser \
         vacío, el resultado de la lematizacción se guarda en un archivo \
         temporal que eventualmente será borrado. Aplica únicamente para la \
-        lematización con Stanza
-    :return: (string). Texto lematizado 
+        lematización con Stanza.
+    :param maxima_longitud: (int), valor por defecto: None. Parámetro opcional que \ 
+        permite establecer la máxima longitud (número de caracteres) que acepta el \
+        LematizadorSpacy en un texto de entrada. Si este valor se deja en None, se utilizará \
+        la máxima longitud que trae Spacy por defecto (1 millón de caracteres). Aplica únicamente \
+        para la lematización con Spacy.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la detokenización \
+        de textos después de lematizar. Si el valor es 'None', se cargará por defecto una \
+        instancia de la clase *TokenizadorEspacios*.
+    :return: (str). Texto lematizado. 
     """
     # Si no se provee un lematizador, este debe ser inicializado
     if lematizador is None:
         if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
         if libreria.lower() == 'spacy':
-            lematizador = LematizadorSpacy(lenguaje, dict_lemmas, dim_modelo)
+            lematizador = LematizadorSpacy( 
+                lenguaje, dim_modelo, dict_lemmas, maxima_longitud, tokenizador)
         elif libreria.lower() == 'stanza':
             lematizador = LematizadorStanza(
-                lenguaje, modelo_lemas, dict_lemmas, archivo_salida)
+                lenguaje, modelo_lemas, dict_lemmas, archivo_salida, tokenizador)
         else:
             print(
                 'Por favor escoja una librería válida para el lematizador (Spacy o Stanza)')
