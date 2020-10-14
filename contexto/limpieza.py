@@ -75,16 +75,16 @@ def limpieza_basica(texto, quitar_numeros=True):
         texto. Por defecto `True`, se quitan los números dentro del texto.
     :return: (str) Texto después de la limpieza básica.
     """
-
     # Texto a minúsculas
     texto = texto.lower()
     # Pone un espacio antes y después de cada signo de puntuación
     texto = re.sub(r"([\.\",\(\)!\?;:])", " \\1 ", texto)
     # Quita caracteres especiales del texto.
+    # RegEx adaptada de https://stackoverflow.com/a/56280214
     if quitar_numeros:
-        texto = re.sub(r"[^a-zA-ZñÑáéíóúÁÉÍÓÚ ]", " ", texto)
+        texto = re.sub(r'[^ a-zA-ZÀ-ÖØ-öø-ÿ]+', ' ', texto)
     else:
-        texto = re.sub(r"[^a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]", " ", texto)
+        texto = re.sub(r'[^ a-zA-ZÀ-ÖØ-öø-ÿ0-9]+', ' ', texto)
     # Reemplaza espacios múltiples por un solo espacio
     texto = re.sub(r" +", " ", texto)
     # Quitar espacios, tabs y enters en los extremos del texto
@@ -93,7 +93,7 @@ def limpieza_basica(texto, quitar_numeros=True):
 
 def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         ubicacion_archivo = None, n_min=0, quitar_numeros = True,
-        quitar_acentos=False, tokenizador=None):
+        quitar_acentos = False, tokenizador = None, momento_stopwords='ambos'):
     """Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada. \
     Es capaz de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`, \
     quita acentos de las palabras, números y palabras de longitud menor a `n_min`.
@@ -102,12 +102,12 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
     :param lista_palabras: (list), optional. Lista de palabras que se quieren quitar del texto. Por ejemplo, \
         la lista `['hola', 'de', 'a']` eliminará esas palabras.
     :param lista_expresiones: (list), optional. Lista de expresiones que se quieren quitar al texto. \
-        A diferencia de `lista_palabras`, esta puede contener palabras compuestas. Por ejemplo, \
-        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas palabras \
-        compuestas del texto de entrada.
-    :param ubicacion_archivo: None, optional. Ubicación del archivo plano que contiene la lista de palabras \
-        y/o lista de palabras separadas por espacios, comas o saltos de línea. Por defecto es `None`, en \
-        caso contrario no es necesario especificar los parámetros `lista_palabras` y `lista_expresiones`.
+        A diferencia de `lista_palabras`, esta puede contener expresiones compuestas. Por ejemplo, \
+        ['San juan de Dios', 'Distrito Capital, 'fuente de agua']; esta lista quitará esas expresiones \
+        del texto de entrada.
+    :param ubicacion_archivo (str): Valor por defecto: None. Parámetro opcional con la ubicación del archivo \
+        plano que contiene la lista de palabras y/o expresiones separadas por comas o saltos de línea. \
+        Si se usa este parámetro, no se tendrán en cuenta los parámetros `lista_palabras` y `lista_expresiones`.
     :param n_min: (int), optional. Longitud mínima de las palabras aceptadas en el texto de entrada.
     :param quitar_numeros: (bool), optional. Por defecto `True`. Si `False`, no se quitan los números dentro \
         del texto de entrada
@@ -115,15 +115,23 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
         acentos (tildes, diéresis, virgulilla) del texto.
     :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
         de textos al momento de quitar stopwords. Si el valor es 'None', se utilizará por defecto una instancia \
-        de la clase *TokenizadorNLTK*.        
+        de la clase *TokenizadorNLTK*.
+    :param momento_stopwords: (str) {'antes', 'después', 'ambos'}. Valor por defecto: 'ambos'. Parámetro que \
+        permite indicar en qué momento remover las *stopwords* del texto. Las opciones son hacerlo antes o después \
+        de las demás operaciones de limpieza del texto de entrada, eligiendo los valores "antes" o "después", \
+        respectivamente (la función acepta los valores con o sin tildes y/o mayúsculas). También es posible remover \
+        stopwords de los textos tanto antes como despúes de las otras operaciones de limpieza, al asignar el valor \
+        "ambos" a este parámetro. Cualquier otro valor que se asigne a este parámetro ocasionará que no se haga \
+        remoción de stopwords en el texto.
     :return: (str) Texto después de la limpieza completa.
     """
-
+    # Estandarizar parámetro de momento_stopwords
+    momento_stopwords = remover_acentos(momento_stopwords).lower()
     # Quitar palabras y expresiones no deseadas. Se hace al texto original porque la palabra/expresión
-    # a remover puede tener tildes/mayúsculas/signos o estar compuesta por
-    # palabras cortas
-    texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
-                             ubicacion_archivo, tokenizador)
+    # a remover puede tener tildes/mayúsculas/signos o estar compuesta por palabras cortas
+    if momento_stopwords in ('antes', 'ambos'):
+        texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                                ubicacion_archivo, tokenizador)
     # Se verifica si se desean quitar acentos/tildes
     if quitar_acentos:
         texto = remover_acentos(texto)
@@ -131,10 +139,11 @@ def limpieza_texto(texto, lista_palabras = [], lista_expresiones = [],
     texto = limpieza_basica(texto, quitar_numeros)
     # Quita palabras cortas y palabras pertenecientes a una lista específica
     texto = remover_palabras_cortas(texto, n_min)
-    # Se hace esto de nuevo, por si habían palabras que después de su limpieza quedan en
+    # Se quitan stopwords de nuevo, por si habían palabras que después de su limpieza quedan en
     # la lista de palabras/expresiones no deseadas
-    texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
-                             ubicacion_archivo, tokenizador)
+    if momento_stopwords in ('despues', 'ambos'):
+        texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                                ubicacion_archivo, tokenizador)
     return texto
 
 def limpiar_extremos(texto):
@@ -217,9 +226,11 @@ def lista_stopwords(lenguaje='es'):
             sw = cargar_stopwords(ruta, 'latin-1')[0]
         except BaseException:
             pass
+    # Quitar elemento vacío de la lista, si está
+    if '' in sw:
+        sw.remove('')   
     # Devolver stopwords
     return sw
-
 
 def lista_nombres(tipo='todos'):
     """Genera lista de nombres más comunes del español. Retorna lista con los nombres \
