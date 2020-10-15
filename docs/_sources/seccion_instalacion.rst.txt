@@ -10,7 +10,7 @@ Instalación
    instalacion/instalacion_contexto.rst
    instalacion/instalacion_popple_teseract.rst
    
-La instalación de la librería se divide en dos pasos principales. El primer paso consiste en la instalación de los paquetes con el gestor de paquetes pip para diferentes versiones de Python, de esta manera se instalan la mayoría de requerimientos. 
+La instalación de la librería se divide en dos pasos principales. El primer paso consiste en la instalación de los paquetes requeridos para el correcto funcionamiento de la librería utilizando el gestor de paquetes ``pip`` para diferentes versiones de Python, de esta manera se instalan la mayoría de requerimientos. 
 
 * :ref:`Instalación ConTexto <instalacion_basica>`
 

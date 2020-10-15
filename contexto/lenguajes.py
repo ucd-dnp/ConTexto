@@ -7,10 +7,10 @@ def detectar_lenguaje(texto, devolver_proba=False):
     """ Identifica el lenguaje en el que está escrito el texto de entrada.   
 
     :param texto: (str) Corresponde al texto que se desea analizar. 
-    :param devolver_proba: (bool) {True, False}, valor por defecto: False. \ 
+    :param devolver_proba: (bool) {True, False} Valor por defecto: False. \ 
         Indica si se retorna el porcentaje de confiabilidad del \ 
         lenguaje identificado.
-    :return: string del lenguaje identificado siguiendo el estandar \ 
+    :return: (str) Texto del lenguaje identificado siguiendo el estandar \ 
         `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. \ 
         Si devolver_proba es True retorna una tupla.
     """
@@ -28,7 +28,7 @@ def traducir_texto(texto, lenguaje_destino):
     :param lenguaje_destino: (str)  Indica el lenguaje al que desea \ 
         traducir el texto. Para mayor información, consultar la \ 
         sección de :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.        
-    :return: string del texto traducido.
+    :return: (str) Texto traducido.
     """
     traductor = Translator()
     # Adecuar el lenguaje de destino al formato de la API
@@ -89,10 +89,10 @@ def definir_lenguaje(lenguaje, simplificado=True):
     """ Función auxiliar - permite determinar el lenguaje a partir de una entrada.
 
     :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
-    :param simplificado: (bool) {True, False}, valor por defecto: True. \ 
+    :param simplificado: (bool) {True, False} Valor por defecto: True. \ 
         Indica si se utiliza el dictionario de dict_lenguajes o \ 
         dict_lenguajes_simplificado.
-    :return: string correspondiente al lenguaje identificado.
+    :return: (str) Texto correspondiente al lenguaje identificado.
     """
     leng = None
     lenguaje = lenguaje.lower()
@@ -107,7 +107,7 @@ def lenguaje_tesseract(lenguaje):
     """ Función auxiliar - Para un lenguaje de entrada, busca su equivalente en Tesseract.
 
     :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
-    :return: string correspondiente al lenguaje identificado, de acuerdo a lo aceptado por \
+    :return: (str) Texto correspondiente al lenguaje identificado, de acuerdo a lo aceptado por \
         Tesseract.
     """
     leng = None

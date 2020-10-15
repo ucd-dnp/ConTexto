@@ -3,13 +3,13 @@
 Vectorización de textos
 =======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>`, de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para análisis posteriores de textos, tales como comparaciones, agrupaciones ,entrenamiento de modelos de clasificación, entre otros.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>` de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para análisis posteriores de textos, tales como comparaciones, agrupaciones, entrenamiento de modelos de clasificación, entre otros.
 
 
 Importar paquetes necesarios y adecuar el texto de prueba
 ---------------------------------------------------------
 
-El primer paso es importar las funciones del módulo de :py:mod:`Vectorización <vectorizacion>`, y definir los textos para correr los ejemplos. Adicionalmente, se importan y utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords` del módulo :py:mod:`Limpieza <limpieza`, para hacer un procesamiento previo de los textos, antes de generar sus representaciones vectoriales.
+El primer paso es importar las funciones del módulo de :py:mod:`Vectorización <vectorizacion>`, y definir los textos para correr los ejemplos. Adicionalmente, se importan y utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords` del módulo :py:mod:`Limpieza <limpieza>`, para hacer un procesamiento previo de los textos, antes de generar sus representaciones vectoriales.
 
 .. code-block:: python
 
@@ -160,10 +160,10 @@ inversa.
     >>> print(textos_limpios[2])
     >>> print(v_tfidf.inversa(v_tfidf.vectorizar(textos_prueba))[2])
     
-    >>> primer texto prueba vectorización elementos
-    >>> ['elementos' 'primer' 'prueba' 'texto' 'vectorización']
-    >>> tercera frase consiste texto complementario palabras comúnmente utilizadas
-    >>> ['frase' 'palabras' 'palabras comúnmente' 'texto']
+    primer texto prueba vectorización elementos
+    ['elementos' 'primer' 'prueba' 'texto' 'vectorización']
+    tercera frase consiste texto complementario palabras comúnmente utilizadas
+    ['frase' 'palabras' 'palabras comúnmente' 'texto']
 
 
 Cargar un vectorizador ajustado previamente

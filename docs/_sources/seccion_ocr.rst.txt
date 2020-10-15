@@ -31,8 +31,8 @@ parámetros *psm* y *oem* utilizados por la función de OCR
         * Los lenguajes disponibles para el OCR dependen de los idiomas instalados en Tesseract. Para mayor información sobre como instalar nuevos idioma, referirse a la sección :ref:`Instalación de Tessereact <instalacion_tesseract>`.
         
 :oem: (int) {0, 1, 2, 3}. OEM hace referencia al modo del motor OCR (OCR engine mode \
-    en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y los parámetros de 'oem' \
-    permiten escoger cada uno de estos motores por separado, ambos al tiempo o \
+    en inglés). Tesseract tiene 2 motores, Legacy Tesseract y LSTM, y el parámetro oem \
+    permite escoger cada uno de estos motores por separado, ambos al tiempo o \
     automáticamente:
 
     |ul| 

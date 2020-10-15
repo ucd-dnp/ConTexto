@@ -46,12 +46,12 @@ Instalación de Poppler
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen05.jpg
        :align: center
        
-   * Se debe copiar la ruta donde se encuentra la carpeta bin de poppler, la ruta debería ser 'C:\\Program Files\\poppler-0.68.0\\bin' si el archivo binario de poppler se extrajo en archivos de programa.
+   * Se debe copiar la ruta donde se encuentra la carpeta bin de poppler, la ruta debería ser **'C:\\Program Files\\poppler-0.68.0\\bin'** si el archivo binario de poppler se extrajo en archivos de programa.
 
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen06.jpg
        :align: center
        
-   * Finalmente se agrega la ruta 'C:\\Program Files\\poppler-0.68.0\\bin' en la ventana de edición de variables de entorno y se hace clic en 'OK' ('Aceptar') para guardar los cambios y cerrar las ventanas.
+   * Finalmente se agrega la ruta **'C:\\Program Files\\poppler-0.68.0\\bin'** en la ventana de edición de variables de entorno y se hace clic en 'OK' ('Aceptar') para guardar los cambios y cerrar las ventanas.
    
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen07.jpg
        :align: center
@@ -64,14 +64,17 @@ Instalación de Tesseract
 #. Desde https://github.com/UB-Mannheim/tesseract/wiki se debe descargar la versión más reciente de tesseract, aquí se descargará un archivo ejecutable (.exe) el cual se debe instalar haciendo doble clic sobre el archivo descargado y siguiendo las instrucciones de instalación.
 #. Añadir otros idiomas al reconocimiento óptico de caracteres (OCR).
 
-   * Para añadir otros idiomas al OCR se deben descargar los archivos de entrenamiento en el idioma deseado, los cuales se encuentran disponibles en:  https://github.com/tesseract-ocr/tessdata . (Para el desarrollo de este manual se hará el ejemplo con el idioma español.)
+   .. note::
+        * Para añadir otros idiomas al OCR se deben descargar los archivos de entrenamiento en el idioma deseado, los cuales se encuentran disponibles en:  https://github.com/tesseract-ocr/tessdata . (Para el desarrollo de este manual se hará el ejemplo con el idioma español.)
 
-       Para el idioma español se descargarán los archivos **spa.traineddata** y **spa_old.traineddata** los cuales están disponibles en los siguientes enlaces:
+        * Por defecto en la instalación se cargan los archivos del idioma Inglés, sin embargo, estos corresponden a un corpus pequeño, por lo que se recomienda descargar nuevamente los archivos para este idioma desde el enlace mencionado anteriormente.
 
-       * https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata
-       * https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata
+   Para el idioma español se descargarán los archivos **spa.traineddata** y **spa_old.traineddata** los cuales están disponibles en los siguientes enlaces:
 
-   Los archivos descargados se deben copiar y pegar en la carpeta tessdata que se encuentra en la carpeta tesseract-OCR que se creó al instalar el archivo .exe de tesseract. La ruta podría verse como 'C:\\Program Files\\Tesseract-OCR\\tessdata' que fue la ruta que se creó al momento de hacer el desarrollo de este manual.
+   * https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata
+   * https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata
+
+   Los archivos descargados se deben copiar y pegar en la carpeta tessdata que se encuentra en la carpeta tesseract-OCR que se creó al instalar el archivo .exe de tesseract. La ruta podría verse como **'C:\\Program Files\\Tesseract-OCR\\tessdata'** que fue la ruta que se creó al momento de hacer el desarrollo de este manual.
 
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen08.jpg
        :align: center       
@@ -81,7 +84,7 @@ Instalación de Tesseract
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen09.jpg
        :align: center       
 
-#. En el editor de las variables de entorno se debe hacer clic cobre el botón 'New' ('Nuevo') y colocar la ruta que se creó al momento de hacer la instalación de tessereact, la ruta podría verse como 'C:\\Program Files\\Tesseract-OCR'. Hacer clic en 'OK' ('Aceptar') para guardar los cambios y cerrar las ventanas.
+#. En el editor de las variables de entorno se debe hacer clic cobre el botón 'New' ('Nuevo') y colocar la ruta que se creó al momento de hacer la instalación de tessereact, la ruta podría verse como **'C:\\Program Files\\Tesseract-OCR'**. Hacer clic en 'OK' ('Aceptar') para guardar los cambios y cerrar las ventanas.
 
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen10.jpg
        :align: center       

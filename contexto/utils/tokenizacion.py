@@ -52,7 +52,7 @@ class TokenizadorNLTK():
 
         :param texto: (str o lista de strings). Texto o lista de textos sobre los cuales se desea \
             aplicar la tokenización.
-        :return: (list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se \
+        :return: (list) Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se \
             ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de \
             tokens, con un elemento para cada texto de entrada.
         """
@@ -78,7 +78,7 @@ class TokenizadorNLTK():
             función de limpieza previamente), la salida será igual a la entrada.
 
         :param texto: (str). Texto que resulta de detokenizar una lista de tokens.
-        :return: (str). Texto con los signos de puntuación ajustados.         
+        :return: (str) Texto con los signos de puntuación ajustados.         
         """        
         texto = texto.replace('¿ ', '¿')
         texto = texto.replace('¡ ', '¡')
@@ -94,7 +94,7 @@ class TokenizadorNLTK():
         :param lista_tokens: (list). Lista de tokens, si es para un solo texto. Si es para varios \
         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una \
         lista de tokens.
-        :return: (str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens. \
+        :return: (str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens. \
             Si se introdujeron varias listas de tokens, devuelve una lista de strings.
         """       
         # Si la lista está vacía, se devuelve un string vacío
@@ -142,7 +142,7 @@ class TokenizadorEspacios():
         :param lista_tokens: (list). Lista de tokens, si es para un solo texto. Si es para varios \
         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una \
         lista de tokens.
-        :return: (str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens. \
+        :return: (str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens. \
             Si se introdujeron varias listas de tokens, devuelve una lista de strings.
         """       
         # Si la lista está vacía, se devuelve un string vacío
@@ -185,7 +185,7 @@ def destokenizar(tokens, tokenizador=None):
         lista de tokens.
     :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
         de textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.
-    :return: (str o lista de strings). Devuelve un solo string si se introdujo solo una lista de tokens. \
+    :return: (str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens. \
         Si se introdujeron varias listas de tokens, devuelve una lista de strings.
     """          
     if tokenizador is None:

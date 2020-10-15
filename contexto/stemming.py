@@ -12,12 +12,12 @@ class Stemmer():
         de hacer la operación de *stemming*, o reducción de palabras a su \
         raíz, en textos.
 
-        :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
+        :param lenguaje: (str) Lenguaje de los textos a los que se va \ 
             a aplicar *stemming*. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
             de textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.            
-        :return: (Stemmer). Objeto del tipo de la clase Stemmer
+        :return: (Stemmer) Objeto del tipo de la clase Stemmer
         """
         # Definir lenguaje del stemmer
         self.establecer_lenguaje(lenguaje)
@@ -31,7 +31,7 @@ class Stemmer():
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
         va a aplicarse el objeto de la case Stemmer.
 
-        :param lenguaje: (string) Lenguaje de los textos a los que se va \ 
+        :param lenguaje: (str) Lenguaje de los textos a los que se va \ 
             a aplicar stemming. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
@@ -53,12 +53,12 @@ class Stemmer():
         Aplica *stemming* sobre un texto de entrada, y devuelve el texto \
         resultante.
 
-        :param texto: (string). Texto al que se desea aplicar el *stemming*. 
-        :param limpiar: (bool) {True, False}. Valor por defecto: False. Argumento \
+        :param texto: (str) Texto al que se desea aplicar el *stemming*. 
+        :param limpiar: (bool) {True, False} Valor por defecto: False. Argumento \
             opcional que define si se desea hacer una limpieza básica (\
             aplicando la función `limpieza_basica` del módulo `limpieza`) al \
             texto antes de aplicar el *stemming*.
-        :return: (string). Texto luego de la aplicación del *stemming*.
+        :return: (str) Texto luego de la aplicación del *stemming*.
         """
         if limpiar:
             texto = limpieza_basica(texto)
@@ -73,11 +73,11 @@ def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
     reducción de palabras a su raíz, en un texto de entrada.
         
-    :param texto: (string). Texto al que se desea aplicar el *stemming*.
-    :param lenguaje: (string) Lenguaje del  texto al que se va \ 
+    :param texto: (str) Texto al que se desea aplicar el *stemming*.
+    :param lenguaje: (str) Valor por defecto: 'es'. Lenguaje del  texto al que se va \ 
         a aplicar *stemming*. Para mayor información, consultar la sección de \ 
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-    :param limpiar: (bool) {True, False}. Valor por defecto: False. Define \
+    :param limpiar: (bool) {True, False} Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función  \
         `limpieza_basica` del módulo `limpieza`) al texto de entrada,  \
         antes de aplicar el *stemming*.
@@ -86,7 +86,7 @@ def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
         *stemming* a varios textos a la vez, sin necesidad de inicializar una \
         instancia de la clase Stemmer en cada ocasión. Esto puede representar \
         ahorro en tiempos al momento de aplicar la función.
-    :return: (string). Texto luego de la aplicación del *stemming*.
+    :return: (str) Texto luego de la aplicación del *stemming*.
     """
     # Si no se provee un stemmer, este debe ser inicializado
     if stemmer is None:

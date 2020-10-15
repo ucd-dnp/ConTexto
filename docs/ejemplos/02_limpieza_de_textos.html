@@ -280,7 +280,8 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Especificar el separador entre documentos/frases</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
 
-<span class="go">&#39;hola tu como estas hola&#39;</span>
+<span class="go">&#39;hola como estas hola tu&#39;</span>
+<span class="go">&#39;como estas hola hola tu&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
@@ -288,7 +289,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deshabilitar opción de quitar espacios al inicio y al final</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">remover_espacios</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="go">&#39; como estas  hola hola  hola tu&#39;</span>
+<span class="go">&#39; hola  hola tu  como estas hola&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -342,7 +343,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Corpus de prueba</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">textos_prueba</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Este es el primer texto de prueba para la detección de coincidencias.&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Una segunda oración permite evaluar si hay cadanea de caracteres elementos en común.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Una segunda oración permite evaluar si hay coincidencia de caracteres con elementos en común.&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Tercera frase que consiste en un texto complementario con palabras comúnmente utilizadas.&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.&#39;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Finalmente, esta frase cierra un grupo de 5 oraciones para probar la detección de coincidencias.&#39;</span><span class="p">,</span>

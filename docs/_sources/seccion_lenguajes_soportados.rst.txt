@@ -4,13 +4,13 @@ Lenguajes soportados
 ++++++++++++++++++++
 
 En esta sección se detallan los lenguajes soportados por la librería en varias funciones de esta.
-Se aceptan las siguientes variaciones para cada idioma (sin importar acentos ni mayúsculas):
+Se aceptan las siguientes variaciones para cada idioma:
 
 ========  ==================================================
 Lenguaje  Variaciones de string para indicar el lenguaje
 ========  ==================================================
-Español   'es', 'español', 'esp', 'spanish', 'sp', 'spa'
-Inglés    'en', 'eng', 'english', 'inglés', 'ing'
-Francés   'fr', 'fra', 'fre', 'french', 'francés'
-Alemán    'ge', 'de', 'deu', 'german', 'al', 'alemán', 'ale'
+Español   'es', 'esp', 'sp', 'spa', 'español', 'spanish'
+Inglés    'en', 'eng', 'ing', 'inglés', 'english'
+Francés   'fr', 'fra', 'fre', 'francés', 'french'
+Alemán    'ge', 'de', 'deu', 'al', 'ale', 'alemán', 'german'
 ========  ==================================================

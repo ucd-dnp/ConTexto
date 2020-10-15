@@ -3,7 +3,7 @@
 Lematización de textos
 ======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lematización <lematizacion>`, de la librería. Este módulo permite realizar lematización de textos, una operación que consiste en transormar las palabras de su forma flexionada (plural, femenino, conjugaciones, etc.) a su lema correspondiente, el cual es el representante de todas las formas flexionadas de una misma palabra. Por ejemplo, las palabras niños, niña y niñito tienen todas el mismo lema: niño. Realizar lematización sobre textos puede simplificarlos, al unificar palabras que comparten el mismo lema, y evitando así tener un vocabulario más grande de lo necesario.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lematización <lematizacion>`, de la librería. Este módulo permite realizar lematización de textos, una operación que consiste en transformar las palabras de su forma flexionada (plural, femenino, conjugaciones, etc.) a su lema correspondiente, el cual es el representante de todas las formas flexionadas de una misma palabra. Por ejemplo, las palabras niños, niña y niñito tienen todas el mismo lema: niño. Realizar lematización sobre textos puede simplificarlos, al unificar palabras que comparten el mismo lema, y evitando así tener un vocabulario más grande de lo necesario.
 
 
 Definir textos de prueba
