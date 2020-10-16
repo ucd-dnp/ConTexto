@@ -27,7 +27,7 @@ def traducir_texto(texto, lenguaje_destino):
     .. note::
         Es importante tener en cuenta los siguientes aspectos al utilizar la función **traducir_texto**:
 
-        * La función utiliza la librería googletrans, que hace uso de la API de Google Translate. Por lo tanto se requiere tener una conexión a internet para su funcionamiento.        
+        * La función utiliza la librería googletrans, que hace uso de la API de Google Translate. Por lo tanto, se requiere tener una conexión a internet para su funcionamiento.        
         * El límite máximo de caracteres en un solo texto es de 15.000.
         * Debido a las limitaciones de la versión web del traductor de Google, el uso de la API no garantiza que la librería funcione correctamente en todo momento.
         * Si desea utilizar una API estable, se recomienda el uso de la `API de traducción oficial de Google <https://cloud.google.com/translate/docs>`_.
