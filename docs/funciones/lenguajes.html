@@ -227,6 +227,18 @@ Si devolver_proba es True retorna una tupla.</p>
 <dt id="lenguajes.traducir_texto">
 <code class="descclassname">lenguajes.</code><code class="descname">traducir_texto</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">lenguaje_destino</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lenguajes.traducir_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Permite hacer traducciones a un texto de interés.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Es importante tener en cuenta los siguientes aspectos al utilizar la función <strong>traducir_texto</strong>:</p>
+<ul class="last simple">
+<li>La función utiliza la librería googletrans, que hace uso de la API de Google Translate. Por lo tanto se requiere tener una conexión a internet para su funcionamiento.</li>
+<li>El límite máximo de caracteres en un solo texto es de 15.000.</li>
+<li>Debido a las limitaciones de la versión web del traductor de Google, el uso de la API no garantiza que la librería funcione correctamente en todo momento.</li>
+<li>Si desea utilizar una API estable, se recomienda el uso de la <a class="reference external" href="https://cloud.google.com/translate/docs" target="_blank">API de traducción oficial de Google</a>.</li>
+<li>Si recibe un error HTTP 5xx, probablemente se deba a que Google ha bloqueado su dirección IP.</li>
+<li>Para mayor información puede consultar la <a class="reference external" href="https://py-googletrans.readthedocs.io/en/latest/" target="_blank">documentación de la librería googletrans</a>.</li>
+</ul>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

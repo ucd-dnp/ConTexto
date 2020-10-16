@@ -24,6 +24,16 @@ def detectar_lenguaje(texto, devolver_proba=False):
 def traducir_texto(texto, lenguaje_destino):
     """ Permite hacer traducciones a un texto de interés.
 
+    .. note::
+        Es importante tener en cuenta los siguientes aspectos al utilizar la función **traducir_texto**:
+
+        * La función utiliza la librería googletrans, que hace uso de la API de Google Translate. Por lo tanto se requiere tener una conexión a internet para su funcionamiento.        
+        * El límite máximo de caracteres en un solo texto es de 15.000.
+        * Debido a las limitaciones de la versión web del traductor de Google, el uso de la API no garantiza que la librería funcione correctamente en todo momento.
+        * Si desea utilizar una API estable, se recomienda el uso de la `API de traducción oficial de Google <https://cloud.google.com/translate/docs>`_.
+        * Si recibe un error HTTP 5xx, probablemente se deba a que Google ha bloqueado su dirección IP.
+        * Para mayor información puede consultar la `documentación de la librería googletrans <https://py-googletrans.readthedocs.io/en/latest/>`_.
+
     :param texto: (str) Corresponde al texto que se desea traducir. 
     :param lenguaje_destino: (str)  Indica el lenguaje al que desea \ 
         traducir el texto. Para mayor información, consultar la \ 
