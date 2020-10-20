@@ -18,7 +18,7 @@ INSTALL_REQUIRES = ['docx2txt==0.8',
                     'pyspellchecker==0.5.5',
                     'PyPDF2==1.26.0',
                     'python-docx==0.8.10',
-                    'pywin32==228',
+                    'pywin32==228; platform_system=="Windows"',
                     'opencv-python==4.4.0.42',
                     'pytesseract==0.3.5',
                     'reportlab==3.5.48',
@@ -31,7 +31,7 @@ PACKAGE_NAME = 'ConTexto'
 
 setuptools.setup(
     name=PACKAGE_NAME,
-    version='0.1.6',
+    version='0.1.8',
     author="Departamento Nacional de Planeación - DNP",
     author_email='ucd@dnp.gov.co',
     maintainer='Unidad de Científicos de Datos - UCD',
@@ -49,6 +49,8 @@ setuptools.setup(
     install_requires = INSTALL_REQUIRES,
     classifiers=[
         "License :: OSI Approved :: MIT License",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
