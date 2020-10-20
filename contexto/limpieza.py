@@ -167,7 +167,7 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
     lista = texto.split(sep)
     if remover_espacios:
         lista = [limpiar_extremos(i) for i in lista]
-    lista = set(lista)
+    lista = sorted(list(set(lista)))
     return ' '.join(lista)
 
 def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
