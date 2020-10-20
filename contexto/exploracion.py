@@ -174,20 +174,20 @@ def matriz_coocurrencias(
         tri_sup=True,
         limpiar=False,
         tokenizador=None):
-    """ Calcula la matriz de co-ocurrencias de un texto.
+    """ Calcula la matriz de coocurrencias de un texto.
 
     :param texto: (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.
     :param min_frec: (int) Valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec, dicha palabra es excluida de la matriz.
     :param max_num: (int) Valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se eligen las más frecuentes).
     :param modo: (str) {'documento', 'ventana'} Valor por defecto: 'documento'. Corresponde al modo de análisis, con 'documento' se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con 'ventana' se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.
     :param ventana: (int) Valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo='ventana'). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.
-    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de co-ocurrencias, si es False devuelve la matriz completa.
+    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de coocurrencias, si es False devuelve la matriz completa.
     :param limpiar: (bool) {True, False} Valor por defecto: False. Define \
         si se desea hacer una limpieza básica (aplicando la función `limpieza_basica` \
-        del módulo `limpieza`) al texto de entrada, antes de calcular las co-ocurrencias.
+        del módulo `limpieza`) al texto de entrada, antes de calcular las coocurrencias.
     :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
         de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
-    :return: (dataframe) Co-ocurrencias de los textos de entrada.
+    :return: (dataframe) Coocurrencias de los textos de entrada.
     """
     # Generar un solo texto con todos los documentos
     if isinstance(texto, Iterable) and not isinstance(texto, str):
@@ -208,13 +208,13 @@ def matriz_coocurrencias(
     cuenta = dict(Counter(palabras).most_common(max_num))
     cuenta_filt = {k: v for k, v in cuenta.items() if v >= min_frec}
     nombres = list(set(cuenta_filt.keys()))
-    # Inicializar en ceros la matriz de co-ocurrencias
+    # Inicializar en ceros la matriz de coocurrencias
     mat_oc = pd.DataFrame(
         np.zeros([len(nombres), len(nombres)]), columns=nombres, index=nombres)
     if modo == 'ventana':
         for t in texto:
             palabras_t = tokenizar(t, tok)
-            # Ciclo a través de las palabras para obtener las co-ocurrencias:
+            # Ciclo a través de las palabras para obtener las coocurrencias:
             for i, p1 in enumerate(palabras_t):
                 inicio = max(0, i - ventana)
                 fin = min(len(palabras), i + ventana + 1)
@@ -264,10 +264,11 @@ def graficar_coocurrencias(
     color_borde='orchid',
     color_nodo='silver',
     semilla=123,
-    dim_figura=(13, 13)):
-    """ Grafica una matriz de co-ocurrencias de términos como un grafo no dirigido.
+    dim_figura=(13, 13),
+    devolver_grafica=False):
+    """ Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
 
-    :param mat: (dataframe) Matriz de co-ocurrencias que desea graficar.
+    :param mat: (dataframe) Matriz de coocurrencias que desea graficar.
     :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen.
     :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
     :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
@@ -276,6 +277,9 @@ def graficar_coocurrencias(
     :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al color de los nodos, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.
     :param semilla: (int) Valor por defecto: 123. Estado inicial del generador aleatorio para establecer la posición de los nodos.
     :param dim_figura: (float, float) Valor por defecto: (13, 13). Corresponden al ancho y alto de la figura en pulgadas.    
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. Indica si se desea obtener \
+        el gráfico de barras como un objeto de Matplotlib.
+    :return: (objeto Figure de Matplotlib) Figura con el grafo de coocurrencias, solo si devolver_grafica=True.    
     """
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
@@ -343,9 +347,10 @@ def graficar_coocurrencias(
         plt.savefig(ubicacion_archivo)
     if graficar:
         plt.show()
+    if devolver_grafica:
+        return plt        
     # Cerrar gráfica
     plt.close()
-
 
 def grafica_barchart_frecuencias(
         texto,
