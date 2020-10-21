@@ -9,13 +9,36 @@ La librería de procesamiento y análisis de texto, ConTexto, tiene como objetiv
 La librería surge como solución a tres principales aspectos. En primer lugar, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto; en segundo lugar, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, contribuir en la reducción de la escasez de librerías enfocadas en el análisis de texto en español que existe actualmente. 
 
 - A continuación podrá consultar la siguiente información:
-  - [Ejemplo](#ejemplo)
-  - [Documentación](#documentaci%C3%B3n)  
+   
   - [Prerrequisitos](#prerrequisitos)
   - [Instalación](#instalaci%C3%B3n)
+  - [Documentación](#documentaci%C3%B3n)
+  - [Ejemplo](#ejemplo)
   - [Contribuciones](#contribuciones)
   - [Licencia](#licencia)
-  - [Contacto](#contacto)
+  - [Contacto](#contacto)   
+
+## Prerrequisitos
+
+Antes de proceder con la instalación de ConTexto asegúrese de tener instalado (Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto):
+
+* Tesseract
+* Poppler v0.68.0
+
+Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html)
+
+## Instalación
+
+Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
+
+```
+pip install contexto
+```
+## Documentación
+
+La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta. Para acceder a la documentación, siga el siguiente enlace:
+
+[Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/ConTexto/)
 
 ## Ejemplo
 
@@ -38,39 +61,9 @@ Se debe importar el módulo de limpieza.
 from contexto.limpieza import *
 ```
 
-La librería cuenta con varias funciones de limpieza como son:
+La librería cuenta con varias funciones de limpieza como son limpieza_basica, limpieza_texto, remover_acentos, remover_palabras_cortas y otras.
 
-* **limpieza_basica**, pasa el texto a minúsculas, elimina signos de puntuación y números.
-
-  Si desea mantener los caracteres numéricos se debe asignar el parámetro quitar_numeros como *False*
-```
-limpio_basico = limpieza_basica(texto_prueba)
-print(limpio_basico)
-```
-```
-hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
-```
-
-* **remover_acentos**, remueve acentos del texto (diéresis, tildes y virgulillas).
-```
-sin_acentos = remover_acentos(limpio_basico)
-print(sin_acentos)
-```
-```
-hola esto es una prueba para verificar que la limpieza sea hecha con precision empeno y calidad esperamos que este todo de desde amazonas hasta la guajira y san andres desde john y maria hasta ernesto esperamos que todo funcione de manera correcta
-```
-
-* **remover_palabras_cortas**, permite remover palabras con una longitud estrictamente menor a *n_min*.
-```
-quitar_caracteres = remover_palabras_cortas(sin_acentos, n_min=5)
-print(quitar_caracteres)
-```
-```
-prueba verificar limpieza hecha precision empeno calidad esperamos desde amazonas hasta guajira andres desde maria hasta ernesto esperamos funcione manera correcta
-```
-
-* La función **limpieza_texto** permite realizar una limpieza más completa del texto, ya que contiene las funcionalidades descritas anteriormente y otras.
-La función permite:
+* La función **limpieza_texto** permite realizar una limpieza más completa del texto. La función permite:
   
 	- Pasar todo el texto a minúsculas
 	- Quitar signos de puntuación
@@ -162,30 +155,6 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 ```
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
-
-
-## Documentación
-
-La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta. Para acceder a la documentación, siga el siguiente enlace:
-
-[Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/ConTexto/)
-
-## Prerrequisitos
-
-Antes de proceder con la instalación de ConTexto asegúrese de tener instalado (Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto):
-
-* Tesseract
-* Poppler v0.68.0
-
-Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html)
-
-## Instalación
-
-Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
-
-```
-pip install contexto
-```
 
 ## Contribuciones
 
