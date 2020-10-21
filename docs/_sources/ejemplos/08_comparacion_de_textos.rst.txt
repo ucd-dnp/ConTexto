@@ -138,6 +138,21 @@ También es posible ingresar directamente los vectores pre-calculados. Esto debe
     -----------
     Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: False
 
+En este caso la validación dio que las representaciones vectoriales no son exactamente iguales. Esto se debe al grado de precisión que tiene Python para manejar números muy pequeños, el cual tiene cierto margen de error.
+
+Sin embargo, si se mira la diferencia entre ambos objetos, se puede ver que son prácticamente la mísma representación numérica.
+
+.. code-block:: python
+
+    >>> print('Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:\n')
+    >>> print(coseno_tfidf - coseno_tfidf_vec)
+
+    Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:
+
+    [[0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]
+     [0.00000000e+00 2.22044605e-16 0.00000000e+00 0.00000000e+00]
+     [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]
+     [0.00000000e+00 0.00000000e+00 0.00000000e+00 2.22044605e-16]]
 
 Similitud de Jaccard
 ~~~~~~~~~~~~~~~~~~~~

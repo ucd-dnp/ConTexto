@@ -336,6 +336,19 @@
 <span class="go">Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: False</span>
 </pre></div>
 </div>
+<p>En este caso la validación dio que las representaciones vectoriales no son exactamente iguales. Esto se debe al grado de precisión que tiene Python para manejar números muy pequeños, el cual tiene cierto margen de error.</p>
+<p>Sin embargo, si se mira la diferencia entre ambos objetos, se puede ver que son prácticamente la mísma representación numérica.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">coseno_tfidf</span> <span class="o">-</span> <span class="n">coseno_tfidf_vec</span><span class="p">)</span>
+
+<span class="go">Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:</span>
+
+<span class="go">[[0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]</span>
+<span class="go"> [0.00000000e+00 2.22044605e-16 0.00000000e+00 0.00000000e+00]</span>
+<span class="go"> [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]</span>
+<span class="go"> [0.00000000e+00 0.00000000e+00 0.00000000e+00 2.22044605e-16]]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="similitud-de-jaccard">
 <h3><span class="section-number">8.2.3. </span>Similitud de Jaccard<a class="headerlink" href="#similitud-de-jaccard" title="Enlazar permanentemente con este título">¶</a></h3>
