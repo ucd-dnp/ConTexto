@@ -4,9 +4,9 @@
 
 ## Descripción
 
-La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas, para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.
+La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren procesamiento y análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.
 
-La librería surge como solución a tres principales aspectos, primero, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto, segundo, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, contribuir en la reducción de la escasez de librerías enfocadas en el análisis de texto en español que existe actualmente. 
+La librería surge como solución a tres principales aspectos. En primer lugar, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto; en segundo lugar, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, contribuir en la reducción de la escasez de librerías enfocadas en el análisis de texto en español que existe actualmente. 
 
 - A continuación podrá consultar la siguiente información:
   - [Ejemplo](#ejemplo)
@@ -18,7 +18,7 @@ La librería surge como solución a tres principales aspectos, primero, la neces
 
 ## Ejemplo
 
-En esta sección nos enfocaremos en presentar unos cortos ejemplos de algunas funciones de la librería teniendo dos enfoques en particular, el primero correspondiente a la limpieza de textos y el segundo sobre la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
+En esta sección nos enfocaremos en presentar unos cortos ejemplos de uso de algunas funciones de la librería teniendo dos enfoques en particular: la limpieza de textos y la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, se puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
 
 ### Ejemplo - Limpieza de textos
 
@@ -73,7 +73,7 @@ La función permite:
   
 	- Pasar todo el texto a minúsculas
 	- Quitar signos de puntuación
-	- Quitar stopwords (palabras y/o expresiones). Para esto, se pueden pasar directamente las listas de palabras y expresiones a quitar, o se puede pasar un archivo que contenga esta información.
+	- Quitar stopwords (palabras y/o expresiones). Para esto, se pueden pasar directamente las listas de palabras y expresiones a quitar, o se puede pasar un archivo que contenga esta información. (configurable)
 	- Quitar palabras de una longitud menor a n caracteres (configurable)
 	- Quitar números (configurable)
 	- Quitar acentos (configurable)
@@ -90,7 +90,7 @@ hola prueba verificar limpieza hecha precision empeno calidad esperamos todo des
 
 ### Ejemplo - Visualización de textos
 
-Para este ejemplo, se va a trabajar con el texto de la novela **"Don Quijote de la Mancha"**, escrita por Miguel de Cervantes Saavedra. El texto completo de esta novela está en la carpeta de ejemplos/entrada del repositorio, y fue descargado desde la página del [Proyecto Gutenberg](https://www.gutenberg.org/), que tiene a su disposición miles de libros de forma gratuita.
+Para este ejemplo, se va a trabajar con el texto de la novela **"Don Quijote de la Mancha"**, escrita por Miguel de Cervantes Saavedra. El texto completo de esta novela está en la carpeta de `ejemplos/entrada` del repositorio, y fue descargado desde la página del [Proyecto Gutenberg](https://www.gutenberg.org/), que tiene a su disposición miles de libros de forma gratuita.
 
 Procedemos a importar los módulos necesarios.
 
@@ -165,13 +165,13 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 
 ## Documentación
 
-La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta, para acceder a la documentación siga el siguiente link:
+La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta. Para acceder a la documentación, siga el siguiente enlace:
 
 [Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/ConTexto/)
 
 ## Instalación
 
-Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``, por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales, para más información consultar la sección de instalación en la página de [documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
+Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
 
 ```
 pip install contexto
@@ -183,7 +183,7 @@ Para sugerir mejoras, cambios en la librería o seguir el avance de la solución
 
 ## Licencia
 
-La librería LEILA - Calidad de datos se encuentra publicada bajo la licencia MIT <br />
+La librería ConTexto - Librería de procesamiento y análisis de textos se encuentra publicada bajo la licencia MIT <br />
 Copyleft (c) 2020 Departamento Nacional de Planeación - DNP Colombia
 
 Para mayor información puede consultar el archivo de [Licencia](https://github.com/ucd-dnp/contexto/blob/master/LICENSE)
