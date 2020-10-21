@@ -234,6 +234,13 @@
 <span class="go">hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Si se desea mantener los caracteres numéricos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limpio_basico_nums</span> <span class="o">=</span> <span class="n">limpieza_basica</span><span class="p">(</span><span class="n">texto_prueba</span><span class="p">,</span> <span class="n">quitar_numeros</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">limpio_basico_nums</span><span class="p">)</span>
+
+<span class="go">hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Para quitar acentos (diéresis, tildes y virgulillas)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sin_acentos</span> <span class="o">=</span> <span class="n">remover_acentos</span><span class="p">(</span><span class="n">limpio_basico</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sin_acentos</span><span class="p">)</span>
@@ -270,26 +277,31 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Aplicar función directamente</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, utilizando el separador por defecto (&quot;|&quot;):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">))</span>
 
-<span class="go">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
+<span class="go">texto quitando partes repetidas, utilizando el separador por defecto (&quot;|&quot;):</span>
+<span class="go">hola, hola, como estas,hola, hola tu</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Especificar el separador entre documentos/frases</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, separadas por coma:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">))</span>
 
-<span class="go">&#39;hola como estas hola tu&#39;</span>
-<span class="go">&#39;como estas hola hola tu&#39;</span>
+<span class="go">texto quitando partes repetidas, separadas por coma:</span>
+<span class="go">hola como estas hola tu</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deshabilitar opción de quitar espacios al inicio y al final</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">remover_espacios</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">remover_espacios</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
-<span class="go">&#39; hola  hola tu  como estas hola&#39;</span>
+<span class="go">texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:</span>
+<span class="go">hola  hola  como estas  hola tu</span>
 </pre></div>
 </div>
 </div>
@@ -383,7 +395,7 @@
 </div>
 <div class="section" id="detectar-y-quitar-palabras-o-valores-atipicos">
 <h3><span class="section-number">2.2.3. </span>Detectar y quitar palabras o valores atípicos<a class="headerlink" href="#detectar-y-quitar-palabras-o-valores-atipicos" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya «ruido» en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como «abcde» o «0000000»). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.</p>
+<p>Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya “ruido” en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como “abcde” o “0000000”). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.</p>
 <p>Para evitar este problema, la función <a class="reference internal" href="../funciones/utils.html#utils.limpieza_aux.quitar_palabras_atipicas" title="utils.limpieza_aux.quitar_palabras_atipicas"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.quitar_palabras_atipicas()</span></code></a> (que a su vez utiliza las funciones <a class="reference internal" href="../funciones/utils.html#utils.limpieza_aux.caracteres_repetidos" title="utils.limpieza_aux.caracteres_repetidos"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.caracteres_repetidos()</span></code></a>, <a class="reference internal" href="../funciones/utils.html#utils.limpieza_aux.caracteres_consecutivos" title="utils.limpieza_aux.caracteres_consecutivos"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.caracteres_consecutivos()</span></code></a> y <a class="reference internal" href="../funciones/utils.html#utils.limpieza_aux.consonantes_consecutivas" title="utils.limpieza_aux.consonantes_consecutivas"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.consonantes_consecutivas()</span></code></a>) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:</p>
 <ul class="simple">
 <li>Que tengan un número o letra repetidos de forma seguida más veces de lo permitido</li>

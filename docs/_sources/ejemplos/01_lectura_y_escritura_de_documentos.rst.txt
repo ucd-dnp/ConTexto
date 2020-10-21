@@ -177,9 +177,9 @@ Este procesamiento adicional se puede combinar con cualquiera de los 5 preproces
 
     ---------------
     *Utilizando el parámetro enderezar=False:*
-    Texto tºfCido (Cºn
+    Texto torcido (con
 
-    algún grado de
+    lgún grado de
     inclinación)
     
     ---------------

@@ -193,7 +193,7 @@ Vectorización por medio de *Hashing*
 
 La clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` utiliza el *hashing trick* para determinar directamente (sin necesidad de ajustar sobre un corpus) la posición de cada término de un texto dentro de un vector numérico. Esta técnica es rápida y ligera en memoria, pues no requiere aprender ni guardar un vocabulario. Esto también tiene algunas desventajas; por ejemplo, a partir de un vector no se puede aplicar una transformada inversa para conocer qué palabras contenía el texto.
 
-Adicionalmente, para muchos textos, o textos muy grandes, existe la posibilidad de que se presenten "colisiones". Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
+Adicionalmente, para muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
 
 .. code-block:: python
 
@@ -226,14 +226,17 @@ Vectorización utilizando *word embeddings* - Word2Vec
 La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` utiliza por debajo las funcionalidades de la librería 
 `spaCy <https://spacy.io/>`_ para cargar *embeddings*, o representaciones vectoriales densas, de palabras en diferentes idiomas. Estas *embeddings* son representaciones de 300 elementos para cada palabra que exista en el diccionario del modelo, y ya han sido previamente entrenadas sobre un corpus de texto muy grande, utilizando de técnicas como *Word2Vec* y *GloVe*.
 
-La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` permite acceder a y utilizar estas representaciones ya entrenadas que, a diferencia de los vectores basados en frecuencias, permiten a través del entrenamiento previo capturar información del contexto de las palabras. De esta manera, las representaciones densas de las palabras "hombre" y "niño" van a ser similares entre sí en ese espacio de 300 dimensiones, mientas que las palabras "hombre" y "cuchara" van a estar más alejadas.
+La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` permite acceder a y utilizar estas representaciones ya entrenadas que, a diferencia de los vectores basados en frecuencias, permiten a través del entrenamiento previo capturar información del contexto de las palabras. De esta manera, las representaciones densas de las palabras 'hombre' y 'niño' van a ser similares entre sí en ese espacio de 300 dimensiones, mientas que las palabras 'hombre' y 'cuchara' van a estar más alejadas.
 
 Inicializar y aplicar el vectorizador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al definir un objeto de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` es necesario definir el lenguaje y el tamaño del modelo que se desea utilizar. De manera similar al caso de lematización, en este caso spaCy tiene modelos de varios tamaños para cada lenguaje. Entre más grande sea el modelo, este contará con vectores para un vocabulario más grande. Los modelos de spaCy que soportan la vectorización son el mediano ("md") y el grande ("lg").
+Al definir un objeto de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` es necesario definir el lenguaje y el tamaño del modelo que se desea utilizar. De manera similar al caso de lematización, en este caso spaCy tiene modelos de varios tamaños para cada lenguaje. Entre más grande sea el modelo, este contará con vectores para un vocabulario más grande. Los modelos de spaCy que soportan la vectorización son el mediano ('md') y el grande ('lg').
 
 Dado que se carga un modelo previamente entrenado, no es necesario ajustar este vectorizador. Al igual que con el `VectorizadorHash`, los objetos de clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` pueden ser aplicados directamente a una palabra o texto de entrada para obtener su vector. Cuando el texto de entrada tiene dos o más palabras, la función `vectorizar` obtendrá el vector de cada palabra que compone el texto, y luego calculará el promedio de todos los vectores para obtener un único vector de salida.
+
+.. note::
+    La primera vez que se utilice una combinación particular de lenguaje + tamaño, la librería descargará el modelo correspondiente en el computador del usuario. Para poder usar este modelo, se debe reiniciar la sesión de Python y correr la función de nuevo.
 
 .. code-block:: python
 
@@ -244,10 +247,11 @@ Dado que se carga un modelo previamente entrenado, no es necesario ajustar este 
     >>> 
     >>> vector = v_word2vec.vectorizar(texto_nuevo)
     >>> print("Dimensiones del vector:", vector.shape)
-    >>> print("Primeros 10 elementos del vector:", vector[0,:10])
+    >>> print("Primeros 10 elementos del vector:\n", vector[0,:10])
     
     Dimensiones del vector: (1, 300)
-    Primeros 10 elementos del vector: [ 0.3364028   0.7943878  -0.5733206   1.1075957   1.1357956  -1.3824669
+    Primeros 10 elementos del vector: 
+     [ 0.3364028   0.7943878  -0.5733206   1.1075957   1.1357956  -1.3824669
       0.53068686  0.662284   -0.33499992  0.22997226]
 
 
@@ -400,11 +404,12 @@ Sin embargo, la clase :py:class:`VectorizadorDoc2Vec <vectorizacion.Vectorizador
 
     >>> vector = v_doc2vec.vectorizar(texto_nuevo)
     >>> print("Dimensiones del vector:", vector.shape)
-    >>> print("Primeros 10 elementos del vector:", vector[0,:10])
+    >>> print("Primeros 10 elementos del vector:\n", vector[0,:10])
 
     Dimensiones del vector: (1, 100)
-    Primeros 10 elementos del vector: [ 0.00087042 -0.00293244 -0.00237903 -0.00463854  0.0007365  -0.00148556
-     -0.00124002 -0.00291916  0.00408043 -0.00118847]
+    Primeros 10 elementos del vector: 
+     [ 0.00011651 -0.00289909 -0.00298333 -0.00355879  0.00197437  0.00171644
+      0.00276862  0.00240826  0.00056794 -0.00210888]
 
 
 Cargar un vectorizador entrenado previamente

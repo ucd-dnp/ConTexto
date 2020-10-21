@@ -128,7 +128,7 @@ También es posible ingresar directamente los vectores pre-calculados. Esto debe
     >>> coseno_tfidf_vec = s_tfidf.coseno(vectores['tfidf'])
     >>> iguales = (coseno_tfidf == coseno_tfidf_vec).all()
     >>> print('-----------')
-    >>> print('Igualdad entre utilizar los textos directamente o sus representaciones vectoriales:', iguales)
+    >>> print('Igualdad entre utilizar los textos directamente o sus representaciones vectoriales:', iguales,'\n')
     
     Similitudes entre los textos de prueba (Word2Vec):
     [[1.0000001  0.9347326  0.6558729  0.23863341]
@@ -136,7 +136,7 @@ También es posible ingresar directamente los vectores pre-calculados. Esto debe
      [0.6558729  0.64198124 0.9999997  0.49457312]
      [0.23863341 0.22747502 0.49457312 1.0000004 ]]
     -----------
-    Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: True
+    Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: False
 
 
 Similitud de Jaccard
