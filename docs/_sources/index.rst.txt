@@ -10,7 +10,7 @@ ConTexto - Librería de procesamiento y análisis de textos
    seccion_instalacion
    seccion_ejemplos
    seccion_lenguajes_soportados
-   seccion_ocr   
+   seccion_ocr
 
 .. toctree::
    :maxdepth: 2
