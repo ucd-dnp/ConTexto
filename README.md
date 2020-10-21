@@ -169,6 +169,15 @@ La librería cuenta con una documentación que detalla las funciones que la conf
 
 [Documentación - ConTexto - Librería de procesamiento y análisis de textos.](https://ucd-dnp.github.io/ConTexto/)
 
+## Prerrequisitos
+
+Antes de proceder con la instalación de ConTexto asegúrese de tener instalado (Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto):
+
+* Tesseract
+* Poppler v0.68.0
+
+Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html)
+
 ## Instalación
 
 Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
