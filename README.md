@@ -11,6 +11,7 @@ La librería surge como solución a tres principales aspectos. En primer lugar, 
 - A continuación podrá consultar la siguiente información:
   - [Ejemplo](#ejemplo)
   - [Documentación](#documentaci%C3%B3n)  
+  - [Prerrequisitos](#prerrequisitos)
   - [Instalación](#instalaci%C3%B3n)
   - [Contribuciones](#contribuciones)
   - [Licencia](#licencia)
