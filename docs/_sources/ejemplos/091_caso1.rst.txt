@@ -1,4 +1,4 @@
-.. _09_caso_de_uso:
+.. _caso_de_uso_1:
 
 Caso de uso - Agrupar textos por temas
 ======================================
@@ -11,7 +11,7 @@ Una vez se tengan los vectores en 2 dimensiones, se graficarán con un color cor
 Cargar librerías necesarias y definir parámetros importantes para el caso de uso
 --------------------------------------------------------------------------------
 
-El primer paso es cargar los módulos y las librerías necesarias para correr el caso de estudio. De parte de **ConTexto** se necesitan funciones del módulo de :py:mod:`Limpieza <limpieza`, para hacer un procesamiento básico de los textos y remover *stopwords* y el módulo de :py:mod:`Vectorización <vectorizacion>`, para generar las representaciones vectoriales de los textos.
+El primer paso es cargar los módulos y las librerías necesarias para correr el caso de estudio. De parte de **ConTexto** se necesitan funciones del módulo de :py:mod:`Limpieza <limpieza>`, para hacer un procesamiento básico de los textos y remover *stopwords* y el módulo de :py:mod:`Vectorización <vectorizacion>`, para generar las representaciones vectoriales de los textos.
 
 Adicionalmente, se importan los siguientes paquetes externos:
 
@@ -87,6 +87,7 @@ A continuación se definen dos funciones, que se encargan de llevar a cabo lo si
     >>> # Función para graficar los puntos
     >>> def graficar_textos(X, y, titulo, num_grupo, norm, nombres, dir_salida='salida/caso_uso_vectores/'): 
     >>>     num_cats = len(np.unique(y))
+
     >>>     # Hasta 8 diferentes categorías
     >>>     colores = ['black', 'blue', 'yellow', 'red', 'green', 'orange', 'brown', 'purple']
     >>>     color_dict = {i:colores[i] for i in range(num_cats)}
@@ -95,10 +96,12 @@ A continuación se definen dos funciones, que se encargan de llevar a cabo lo si
     >>>     for g in range(num_cats):
     >>>         ix = np.where(y == g)
     >>>         ax.scatter(X[ix,0], X[ix,1], c=color_dict[g], label=label_dict[g])
+
     >>>     # Convenciones
     >>>     plt.legend(loc="lower right", title="Clases")
     >>>     plt.xticks([]), plt.yticks([])
     >>>     plt.title(titulo)
+
     >>>     # Guardar la imagen resultante
     >>>     verificar_crear_dir(dir_salida)
     >>>     norm_str = '_norm' if norm else ''
@@ -110,13 +113,16 @@ A continuación se definen dos funciones, que se encargan de llevar a cabo lo si
 
     >>> def comparacion_vectorizadores(num_grupo, normalizar, vectorizadores=vectorizadores, dir_salida='salida/caso_uso_vectores/'):
     >>>     grupo = grupo_1 if num_grupo == 1 else grupo_2 
+
     >>>     # Obtener dataset de las categorías seleccionadas
     >>>     dataset = fetch_20newsgroups(subset='all', categories=grupo, shuffle=True, random_state=42)
     >>>     clases = dataset.target
     >>>     nombres_clases = dataset.target_names
+
     >>>     # Limpieza básica a los textos para quitar ruido
     >>>     # Tener en cuenta que los textos están en inglés
     >>>     textos_limpios = [limpieza_texto(i, lista_stopwords('en')) for i in dataset.data]
+
     >>>     # Inicializar los 5 vectorizadores. Todos se configuran para tener 300 elementos,
     >>>     # de modo que estén en igualdad de condiciones
     >>>     v_bow = VectorizadorFrecuencias(tipo='bow', max_elementos=500)
@@ -124,10 +130,12 @@ A continuación se definen dos funciones, que se encargan de llevar a cabo lo si
     >>>     v_hash = VectorizadorHash(n_elementos=500)
     >>>     v_word2vec = VectorizadorWord2Vec('en')
     >>>     v_doc2vec = VectorizadorDoc2Vec(n_elementos=300)
+
     >>>     # Ajustar los modelos que deben ser ajustados sobre el corpus
     >>>     v_bow.ajustar(textos_limpios)
     >>>     v_tfidf.ajustar(textos_limpios)
     >>>     v_doc2vec.entrenar_modelo(textos_limpios)
+
     >>>     # Obtener los vectores para cada vectorizador
     >>>     dict_vectores = {}
     >>>     for v in vectorizadores:
@@ -137,17 +145,20 @@ A continuación se definen dos funciones, que se encargan de llevar a cabo lo si
     >>>             dict_vectores[v] = eval(f'v_{v_mod}.vectorizar(textos_limpios, quitar_desconocidas=True)')
     >>>         else:
     >>>             dict_vectores[v] = eval(f'v_{v}.vectorizar(textos_limpios)')
+
     >>>     # Normalizar los vectores
     >>>     if normalizar:
     >>>         for v in vectorizadores:
     >>>             min_v = dict_vectores[v].min(axis=0)
     >>>             max_v = dict_vectores[v].max(axis=0)
     >>>             dict_vectores[v] = (dict_vectores[v] - min_v) / (max_v - min_v)
+
     >>>     # Aplicar t-sne para dejar vectores en 2 dimensiones
     >>>     dict_tsne = {}
     >>>     for v in vectorizadores:
     >>>         print(f'Reducción de dimensionalidad a vector {v}...')
     >>>         dict_tsne[v] = manifold.TSNE(n_components=2, init="pca").fit_transform(dict_vectores[v])
+
     >>>     # Graficar los puntos para cada técnica
     >>>     for v in vectorizadores:
     >>>         graficar_textos(dict_tsne[v], clases, v, num_grupo, normalizar, nombres_clases, dir_salida=dir_salida)

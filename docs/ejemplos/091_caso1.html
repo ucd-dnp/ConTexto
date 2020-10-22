@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Caso de uso - Agrupar textos por temas &mdash; documentación de ConTexto - 0.1</title>
+  <title>1. Caso de uso - Agrupar textos por temas &mdash; documentación de ConTexto - 0.1</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Lenguajes soportados" href="../seccion_lenguajes_soportados.html" />
-    <link rel="prev" title="8. Comparación de textos" href="08_comparacion_de_textos.html" /> 
+    <link rel="next" title="2. Caso de uso - Exploración y comparación de fábulas" href="092_caso2.html" />
+    <link rel="prev" title="Casos de uso" href="09_casos_de_uso.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -109,11 +109,15 @@
 <li class="toctree-l2"><a class="reference internal" href="06_stemming_de_textos.html">6. Stemming de textos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07_vectorizacion_de_textos.html">7. Vectorización de textos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="08_comparacion_de_textos.html">8. Comparación de textos</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Caso de uso - Agrupar textos por temas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso">9.1. Cargar librerías necesarias y definir parámetros importantes para el caso de uso</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funciones-de-apoyo">9.2. Funciones de apoyo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#realizar-el-barrido-para-generar-las-graficas-y-comparar">9.3. Realizar el barrido, para generar las gráficas y comparar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#resultados">9.4. Resultados</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="09_casos_de_uso.html">Casos de uso</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1. Caso de uso - Agrupar textos por temas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso">1.1. Cargar librerías necesarias y definir parámetros importantes para el caso de uso</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#funciones-de-apoyo">1.2. Funciones de apoyo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#realizar-el-barrido-para-generar-las-graficas-y-comparar">1.3. Realizar el barrido, para generar las gráficas y comparar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resultados">1.4. Resultados</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="092_caso2.html">2. Caso de uso - Exploración y comparación de fábulas</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +186,9 @@
         
           <li><a href="../seccion_ejemplos.html">Ejemplos</a> &raquo;</li>
         
-      <li><span class="section-number">9. </span>Caso de uso - Agrupar textos por temas</li>
+          <li><a href="09_casos_de_uso.html">Casos de uso</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Caso de uso - Agrupar textos por temas</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,12 +206,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="caso-de-uso-agrupar-textos-por-temas">
-<span id="caso-de-uso"></span><h1><span class="section-number">9. </span>Caso de uso - Agrupar textos por temas<a class="headerlink" href="#caso-de-uso-agrupar-textos-por-temas" title="Enlazar permanentemente con este título">¶</a></h1>
+<span id="caso-de-uso-1"></span><h1><span class="section-number">1. </span>Caso de uso - Agrupar textos por temas<a class="headerlink" href="#caso-de-uso-agrupar-textos-por-temas" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Este es un caso de uso que utiliza varias funcionalidades de la librería ConTexto para procesar y vectorizar textos de noticias sobre diferentes temas. Luego, sobre estos vectores se aplica t-SNE, una técnica no lineal de reducción de dimensionalidad, para transformar los vectores a un espacio bidimensional.</p>
 <p>Una vez se tengan los vectores en 2 dimensiones, se graficarán con un color correspondiente al tema de cada texto. Esto permite observar si los puntos de cada tema quedan juntos entre sí y separados de los otros temas.</p>
 <div class="section" id="cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso">
-<h2><span class="section-number">9.1. </span>Cargar librerías necesarias y definir parámetros importantes para el caso de uso<a class="headerlink" href="#cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>El primer paso es cargar los módulos y las librerías necesarias para correr el caso de estudio. De parte de <strong>ConTexto</strong> se necesitan funciones del módulo de <code class="xref py py-mod docutils literal notranslate"><span class="pre">Limpieza</span> <span class="pre">&lt;limpieza</span></code>, para hacer un procesamiento básico de los textos y remover <em>stopwords</em> y el módulo de <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>, para generar las representaciones vectoriales de los textos.</p>
+<h2><span class="section-number">1.1. </span>Cargar librerías necesarias y definir parámetros importantes para el caso de uso<a class="headerlink" href="#cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El primer paso es cargar los módulos y las librerías necesarias para correr el caso de estudio. De parte de <strong>ConTexto</strong> se necesitan funciones del módulo de <a class="reference internal" href="../funciones/limpieza.html#module-limpieza" title="limpieza"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Limpieza</span></code></a>, para hacer un procesamiento básico de los textos y remover <em>stopwords</em> y el módulo de <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>, para generar las representaciones vectoriales de los textos.</p>
 <p>Adicionalmente, se importan los siguientes paquetes externos:</p>
 <ul class="simple">
 <li><cite>pyplot</cite>: para generar y mostrar las gráficas</li>
@@ -272,7 +278,7 @@
 </div>
 </div>
 <div class="section" id="funciones-de-apoyo">
-<h2><span class="section-number">9.2. </span>Funciones de apoyo<a class="headerlink" href="#funciones-de-apoyo" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Funciones de apoyo<a class="headerlink" href="#funciones-de-apoyo" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>A continuación se definen dos funciones, que se encargan de llevar a cabo lo siguiente:</p>
 <p>-<strong>graficar_textos</strong>: Recibe un arreglo de vectores (de dos dimensiones) y sus respectivas etiquetas (el tema de cada texto). Esta función se encarga de pintar los vectores bidimensionales y asignar un color a cada punto, dependiendo de su respectivo tema. El parámetro <em>dir_salida</em> permite definir la carpeta en donde se guardarán los resultados. El nombre de cada gráfica depende del grupo de temas utilizado, de si se realizó normalización sobre los vectores de los textos y de un título que se asigne a la gráfica (parámetro <em>titulo</em>).</p>
 <p>-<strong>comparacion_vectorizadores</strong>: Recibe el número que indica qué grupo de temas se va a tratar, una lista de vectorizadores a utilizar y un parámetro <em>normalizar</em>, que indica si se quiere hacer normalización min-max sobre los vectores generados para el grupo de textos. Esta normalización puede mejorar los resultados para algunos vectorizadores, en particular los basados en frecuencias (menos el TF-IDF, que ya hace una especie de normalización al tener en cuenta la frecuencia inversa en documentos de los términos). Ests función realiza todo el proceso, que consiste en:</p>
@@ -290,6 +296,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Función para graficar los puntos</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">graficar_textos</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">titulo</span><span class="p">,</span> <span class="n">num_grupo</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">nombres</span><span class="p">,</span> <span class="n">dir_salida</span><span class="o">=</span><span class="s1">&#39;salida/caso_uso_vectores/&#39;</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">num_cats</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Hasta 8 diferentes categorías</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">colores</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">colores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cats</span><span class="p">)}</span>
@@ -298,10 +305,12 @@
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cats</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">g</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color_dict</span><span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label_dict</span><span class="p">[</span><span class="n">g</span><span class="p">])</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Convenciones</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Clases&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Guardar la imagen resultante</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">verificar_crear_dir</span><span class="p">(</span><span class="n">dir_salida</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">norm_str</span> <span class="o">=</span> <span class="s1">&#39;_norm&#39;</span> <span class="k">if</span> <span class="n">norm</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
@@ -312,13 +321,16 @@
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">comparacion_vectorizadores</span><span class="p">(</span><span class="n">num_grupo</span><span class="p">,</span> <span class="n">normalizar</span><span class="p">,</span> <span class="n">vectorizadores</span><span class="o">=</span><span class="n">vectorizadores</span><span class="p">,</span> <span class="n">dir_salida</span><span class="o">=</span><span class="s1">&#39;salida/caso_uso_vectores/&#39;</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">grupo</span> <span class="o">=</span> <span class="n">grupo_1</span> <span class="k">if</span> <span class="n">num_grupo</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">grupo_2</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Obtener dataset de las categorías seleccionadas</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">grupo</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">clases</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">nombres_clases</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Limpieza básica a los textos para quitar ruido</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Tener en cuenta que los textos están en inglés</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">textos_limpios</span> <span class="o">=</span> <span class="p">[</span><span class="n">limpieza_texto</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lista_stopwords</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Inicializar los 5 vectorizadores. Todos se configuran para tener 300 elementos,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># de modo que estén en igualdad de condiciones</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_bow</span> <span class="o">=</span> <span class="n">VectorizadorFrecuencias</span><span class="p">(</span><span class="n">tipo</span><span class="o">=</span><span class="s1">&#39;bow&#39;</span><span class="p">,</span> <span class="n">max_elementos</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
@@ -326,10 +338,12 @@
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_hash</span> <span class="o">=</span> <span class="n">VectorizadorHash</span><span class="p">(</span><span class="n">n_elementos</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_word2vec</span> <span class="o">=</span> <span class="n">VectorizadorWord2Vec</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_doc2vec</span> <span class="o">=</span> <span class="n">VectorizadorDoc2Vec</span><span class="p">(</span><span class="n">n_elementos</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Ajustar los modelos que deben ser ajustados sobre el corpus</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_bow</span><span class="o">.</span><span class="n">ajustar</span><span class="p">(</span><span class="n">textos_limpios</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_tfidf</span><span class="o">.</span><span class="n">ajustar</span><span class="p">(</span><span class="n">textos_limpios</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">v_doc2vec</span><span class="o">.</span><span class="n">entrenar_modelo</span><span class="p">(</span><span class="n">textos_limpios</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Obtener los vectores para cada vectorizador</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">dict_vectores</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectorizadores</span><span class="p">:</span>
@@ -339,17 +353,20 @@
 <span class="gp">&gt;&gt;&gt; </span>            <span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;v_</span><span class="si">{</span><span class="n">v_mod</span><span class="si">}</span><span class="s1">.vectorizar(textos_limpios, quitar_desconocidas=True)&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="k">else</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>            <span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;v_</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">.vectorizar(textos_limpios)&#39;</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Normalizar los vectores</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">normalizar</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectorizadores</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>            <span class="n">min_v</span> <span class="o">=</span> <span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>            <span class="n">max_v</span> <span class="o">=</span> <span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>            <span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_v</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_v</span> <span class="o">-</span> <span class="n">min_v</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Aplicar t-sne para dejar vectores en 2 dimensiones</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">dict_tsne</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectorizadores</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Reducción de dimensionalidad a vector </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">...&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">dict_tsne</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dict_vectores</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Graficar los puntos para cada técnica</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectorizadores</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">graficar_textos</span><span class="p">(</span><span class="n">dict_tsne</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">clases</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">num_grupo</span><span class="p">,</span> <span class="n">normalizar</span><span class="p">,</span> <span class="n">nombres_clases</span><span class="p">,</span> <span class="n">dir_salida</span><span class="o">=</span><span class="n">dir_salida</span><span class="p">)</span>
@@ -357,7 +374,7 @@
 </div>
 </div>
 <div class="section" id="realizar-el-barrido-para-generar-las-graficas-y-comparar">
-<h2><span class="section-number">9.3. </span>Realizar el barrido, para generar las gráficas y comparar<a class="headerlink" href="#realizar-el-barrido-para-generar-las-graficas-y-comparar" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Realizar el barrido, para generar las gráficas y comparar<a class="headerlink" href="#realizar-el-barrido-para-generar-las-graficas-y-comparar" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>A continuación se hace un barrido para ambos grupos de noticias (1 y 2) y ambas opciones de normalizar (hacerlo o no hacerlo), para generar todas las gráficas, y así poder determinar qué vectorizadores generar vectores más «separables» en cada caso.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Barrido para realizar las pruebas</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">num_grupo</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
@@ -424,7 +441,7 @@
 </div>
 </div>
 <div class="section" id="resultados">
-<h2><span class="section-number">9.4. </span>Resultados<a class="headerlink" href="#resultados" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Resultados<a class="headerlink" href="#resultados" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las imágenes de los resultados quedarán guardadas en la carpeta especificada en el parámetro <em>dir_salida</em>. Todas las combinaciones de vectorizadores, grupo y normalización producen 24 imágenes.</p>
 <p>A continuación se muestra la imagen obtenida para el grupo uno con el vectorizador Word2Vec, sin tener en cuenta palabras desconocidas y sin normalizar. Se puede ver que en este caso los textos aparecen agrupados por temas, con algunas pocas excepciones.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
@@ -462,10 +479,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../seccion_lenguajes_soportados.html" class="btn btn-neutral float-right" title="Lenguajes soportados" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="092_caso2.html" class="btn btn-neutral float-right" title="2. Caso de uso - Exploración y comparación de fábulas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="08_comparacion_de_textos.html" class="btn btn-neutral float-left" title="8. Comparación de textos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="09_casos_de_uso.html" class="btn btn-neutral float-left" title="Casos de uso" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

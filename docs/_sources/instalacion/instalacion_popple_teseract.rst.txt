@@ -24,12 +24,12 @@ Instalación de Poppler
    * En el explorador de archivos hacer clic derecho sobre 'This PC' ('Este equipo') (* se presentarán los nombres en español dentro de paréntesis como referencia para los usuarios que tengan el sistema operativo en ese idioma.) y luego clic en 'Properties' ('Propiedades').
 
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen01.jpg
-       :align: center       
+       :align: center
 
    * Hacer clic en la opción 'Advanced system settings' ('Configuración avanzada del sistema') ubicada en la parte superior izquierda.
 
    .. image:: ../_static/image/instalacion_poppler_teseract/Imagen02.jpg
-       :align: center       
+       :align: center
 
    * Se abrirá una nueva ventana de 'System Properties' ('Propiedades del sistema'), aquí se debe hacer clic en la opción de 'Environment Variables...' ('Variables de entorno...').
 

@@ -3,7 +3,7 @@
 Ejemplos
 ++++++++
 
-.. toctree::   
+.. toctree::
    :hidden:
    :numbered:
 
@@ -14,8 +14,12 @@ Ejemplos
    ejemplos/05_lematizacion_de_textos.rst
    ejemplos/06_stemming_de_textos.rst
    ejemplos/07_vectorizacion_de_textos.rst
-   ejemplos/08_comparacion_de_textos.rst
-   ejemplos/09_caso_de_uso.rst   
+   ejemplos/08_comparacion_de_textos.rst   
+
+.. toctree::
+   :hidden:
+   
+   ejemplos/09_casos_de_uso.rst
 
 En esta sección se presentan ejemplos de uso de las diferentes funciones de la librería, el código usado y el resultado esperado de estas.
 
@@ -30,4 +34,4 @@ En esta sección se presentan ejemplos de uso de las diferentes funciones de la 
 * :ref:`Stemming de textos <06_stemming_de_textos>`
 * :ref:`Vectoriazación de textos <07_vectorizacion_de_textos>`
 * :ref:`Comparación de textos <08_comparacion_de_textos>`
-* :ref:`Caso de uso - Agrupar textos por temas <09_caso_de_uso>`
+* :ref:`Casos de uso <09_casos_de_uso>`
