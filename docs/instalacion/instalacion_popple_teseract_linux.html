@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Instalación de Poppler y Tesseract &mdash; documentación de ConTexto - 0.1</title>
+  <title>2.1. Instalación de Poppler y Tesseract en Linux &mdash; documentación de ConTexto - 0.1</title>
   
 
   
@@ -43,8 +43,8 @@
     
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="2.1. Instalación de Poppler y Tesseract en Linux" href="instalacion_popple_teseract_linux.html" />
-    <link rel="prev" title="1. Instalación ConTexto" href="instalacion_contexto.html" /> 
+    <link rel="next" title="2.2. Instalación de Poppler y Tesseract en Windows" href="instalacion_popple_teseract_windows.html" />
+    <link rel="prev" title="2. Instalación de Poppler y Tesseract" href="instalacion_popple_teseract.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,8 +101,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="instalacion_contexto.html">1. Instalación ConTexto</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Instalación de Poppler y Tesseract</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="instalacion_popple_teseract_linux.html">2.1. Instalación de Poppler y Tesseract en Linux</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="instalacion_popple_teseract.html">2. Instalación de Poppler y Tesseract</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.1. Instalación de Poppler y Tesseract en Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instalacion-de-poppler">2.1.1. Instalación de Poppler.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instalacion-de-tesseract">2.1.2. Instalación de Tesseract.</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="instalacion_popple_teseract_windows.html">2.2. Instalación de Poppler y Tesseract en Windows</a></li>
 </ul>
 </li>
@@ -173,7 +177,9 @@
         
           <li><a href="../seccion_instalacion.html">Instalación</a> &raquo;</li>
         
-      <li><span class="section-number">2. </span>Instalación de Poppler y Tesseract</li>
+          <li><a href="instalacion_popple_teseract.html"><span class="section-number">2. </span>Instalación de Poppler y Tesseract</a> &raquo;</li>
+        
+      <li><span class="section-number">2.1. </span>Instalación de Poppler y Tesseract en Linux</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -190,15 +196,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="instalacion-de-poppler-y-tesseract">
-<span id="instalacion-poppler-tesseract"></span><h1><span class="section-number">2. </span>Instalación de Poppler y Tesseract<a class="headerlink" href="#instalacion-de-poppler-y-tesseract" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>En esta sección se presenta el proceso de instalación de las librerías <code class="docutils literal notranslate"><span class="pre">Poppler</span></code> y <code class="docutils literal notranslate"><span class="pre">Pytesseract</span></code> de Python, requeridas para poder ejecutar de manera satisfactoria las funciones <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.archivo_a_texto" title="lectura.Lector.archivo_a_texto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.archivo_a_texto()</span></code></a>, <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.leer_pdf" title="lectura.Lector.leer_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.leer_pdf()</span></code></a> y <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> del módulo <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> utilizando  el OCR (Reconocimiento óptico de caracteres, OCR por sus siglas en ingles) de la librería ConTexto.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="instalacion-de-poppler-y-tesseract-en-linux">
+<span id="instalacion-poppler-tesseract-linux"></span><h1><span class="section-number">2.1. </span>Instalación de Poppler y Tesseract en Linux<a class="headerlink" href="#instalacion-de-poppler-y-tesseract-en-linux" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para la instalación de paquetes en linux utilizaremos el comando <code class="docutils literal notranslate"><span class="pre">sudo</span></code>, por lo que se requiere contar con permisos de administrador.</p>
 </div>
-<ul class="simple">
-<li><a class="reference internal" href="instalacion_popple_teseract_linux.html#instalacion-poppler-tesseract-linux"><span class="std std-ref">Instalación de Poppler y Tesseract en Linux</span></a></li>
-<li><a class="reference internal" href="instalacion_popple_teseract_windows.html#instalacion-poppler-tesseract-windows"><span class="std std-ref">Instalación de Poppler y Tesseract en Windows</span></a></li>
-</ul>
+<p>Como primer paso procedemos a actualizar el gestor de paquetes de linux utilizando el siguiente comando:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<div class="section" id="instalacion-de-poppler">
+<h2><span class="section-number">2.1.1. </span>Instalación de Poppler.<a class="headerlink" href="#instalacion-de-poppler" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para realizar la instalación de Poppler solo se necesita ejecutar el siguiente comando:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">poppler</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalacion-de-tesseract">
+<h2><span class="section-number">2.1.2. </span>Instalación de Tesseract.<a class="headerlink" href="#instalacion-de-tesseract" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para realizar la instalación de Tesseract solo se necesita ejecutar el siguiente comando:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">tesseract</span><span class="o">-</span><span class="n">ocr</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -209,10 +230,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="instalacion_popple_teseract_linux.html" class="btn btn-neutral float-right" title="2.1. Instalación de Poppler y Tesseract en Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="instalacion_popple_teseract_windows.html" class="btn btn-neutral float-right" title="2.2. Instalación de Poppler y Tesseract en Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="instalacion_contexto.html" class="btn btn-neutral float-left" title="1. Instalación ConTexto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="instalacion_popple_teseract.html" class="btn btn-neutral float-left" title="2. Instalación de Poppler y Tesseract" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
