@@ -6,9 +6,10 @@ from utils.tokenizacion import TokenizadorEspacios
 
 ### Definir clases para el lematizador ###
 
+
 class LematizadorSpacy():
-    def __init__(self, lenguaje, dim_modelo='md', dict_lemmas=None, 
-                maxima_longitud=None, tokenizador=None):
+    def __init__(self, lenguaje, dim_modelo='md', dict_lemmas=None,
+                 maxima_longitud=None, tokenizador=None):
         """
         Constructor por defecto de la clase LematizadorSpacy. Esta clase se \
         encarga de manejar todas las funciones asociadas a la lematización \
@@ -74,10 +75,12 @@ class LematizadorSpacy():
         self.lematizador = None
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.lematizador = cargar_modelo(dim_modelo, self.lenguaje, maxima_longitud)
+            self.lematizador = cargar_modelo(
+                dim_modelo, self.lenguaje, maxima_longitud)
             # Se añade este proceso para poder deshabilitar el parser.
             # Tomado de https://stackoverflow.com/questions/51372724/how-to-speed-up-spacy-lemmatization
-            self.lematizador.add_pipe(self.lematizador.create_pipe('sentencizer'))
+            self.lematizador.add_pipe(
+                self.lematizador.create_pipe('sentencizer'))
 
     def modificar_lemmas(self, dict_lemmas):
         """ Define lemas asociados a palabras escogidas por el usuario. Estos nuevos \
@@ -112,6 +115,7 @@ class LematizadorSpacy():
         return self.tokenizador.destokenizar([token.lemma_ for token in lemas])
 
 # Implementación alternativa, utilizando stanza
+
 
 class LematizadorStanza():
     def __init__(
@@ -295,7 +299,7 @@ def lematizar_texto(
         if lenguaje == 'auto':
             lenguaje = detectar_lenguaje(texto)
         if libreria.lower() == 'spacy':
-            lematizador = LematizadorSpacy( 
+            lematizador = LematizadorSpacy(
                 lenguaje, dim_modelo, dict_lemmas, maxima_longitud, tokenizador)
         elif libreria.lower() == 'stanza':
             lematizador = LematizadorStanza(

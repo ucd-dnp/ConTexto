@@ -99,37 +99,39 @@ def nube_palabras(
         forma = 255 * forma.astype(int)
     else:
         # Si se pasó la ubicación de una imagen, se carga
-        if isinstance(forma,str):
-            forma = cv2.imread(forma) 
+        if isinstance(forma, str):
+            forma = cv2.imread(forma)
         # Si se pasó una imagen a color, se conservan sus colores y se convierte a escala de grises
         colores_nube = None
         if len(forma.shape) == 3:
             colores_nube = ImageColorGenerator(forma)
             forma = cv2.cvtColor(forma, cv2.COLOR_BGR2GRAY)
-        # Se aplica un umbral para eliminar ruido y marcas de agua de la máscara        
-        forma = cv2.threshold(forma, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+        # Se aplica un umbral para eliminar ruido y marcas de agua de la máscara
+        forma = cv2.threshold(
+            forma, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
         # Si la mayoría de la imagen está en negro, se invierte la imagen máscara
         if np.mean(forma) < 100:
             forma = 255 - forma
         # Operación de "closing" para rellenar huecos en la imagen máscara
-        kernel = np.ones((5,5), np.uint8)
+        kernel = np.ones((5, 5), np.uint8)
         forma = 255 - cv2.morphologyEx(255-forma, cv2.MORPH_CLOSE, kernel)
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Crear la nube de palabras
     nube = WordCloud(background_color=color_fondo, contour_color=color_contorno,
-                       prefer_horizontal=hor, mask=forma, random_state=semilla,
-                       contour_width=grosor_contorno)
+                     prefer_horizontal=hor, mask=forma, random_state=semilla,
+                     contour_width=grosor_contorno)
     figura = nube.generate_from_frequencies(dictu)
     # Si se eligió mantener los colores de la imagen de forma, se cambian los colores a la nube
     if colores_forma == True and colores_nube is not None:
-        nube =nube.recolor(color_func=colores_nube)
+        nube = nube.recolor(color_func=colores_nube)
     # Devolver el objeto de la nube, para graficarlo de otra manera
     if devolver_nube:
         return figura
     else:
         # Graficar y/o guardar la imagen generada
         grafica_nube(figura, dim_figura, titulo, ubicacion_archivo, graficar)
+
 
 def grafica_nube(
         nube,
@@ -159,8 +161,8 @@ def grafica_nube(
     plt.close()
 
 
-def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='', 
-            graficar=True, devolver_grafica=False):
+def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='',
+              graficar=True, devolver_grafica=False):
     """ Permite graficar o exportar un par de nubes de palabras (una junto a otra) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
@@ -179,8 +181,8 @@ def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='',
     nube_2 = nube_palabras(texto, n_grama=n2, hor=1, devolver_nube=True)
 
     # Graficar nubes y mostrarlas
-    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=dim_figura, 
-                                    gridspec_kw={'hspace': 0, 'wspace': 0})
+    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=dim_figura,
+                                   gridspec_kw={'hspace': 0, 'wspace': 0})
 
     ax1.imshow(nube_1, interpolation='bilinear')
     tit = 'términos' if n1 == 1 else f"n_gramas ({n1})"
@@ -206,7 +208,7 @@ def matriz_coocurrencias(
         texto,
         min_frec=1,
         max_num=200,
-        modo='documento', 
+        modo='documento',
         ventana=3,
         tri_sup=True,
         limpiar=False,
@@ -232,7 +234,7 @@ def matriz_coocurrencias(
     else:
         texto_entero = str(texto)
         texto = [texto_entero]  # Convertir variable "texto" en un iterable
-    
+
     if limpiar:
         texto = [limpieza_basica(t) for t in texto]
         texto_entero = ' '.join([texto])
@@ -293,16 +295,16 @@ def diag_superior(df):
 
 
 def graficar_coocurrencias(
-    mat,
-    prop_fuera=0,
-    ubicacion_archivo='',
-    graficar=True,
-    K=5,
-    color_borde='orchid',
-    color_nodo='silver',
-    semilla=123,
-    dim_figura=(13, 13),
-    devolver_grafica=False):
+        mat,
+        prop_fuera=0,
+        ubicacion_archivo='',
+        graficar=True,
+        K=5,
+        color_borde='orchid',
+        color_nodo='silver',
+        semilla=123,
+        dim_figura=(13, 13),
+        devolver_grafica=False):
     """ Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
 
     :param mat: (dataframe) Matriz de coocurrencias que desea graficar.
@@ -385,9 +387,10 @@ def graficar_coocurrencias(
     if graficar:
         plt.show()
     if devolver_grafica:
-        return plt        
+        return plt
     # Cerrar gráfica
     plt.close()
+
 
 def grafica_barchart_frecuencias(
         texto,
@@ -421,7 +424,7 @@ def grafica_barchart_frecuencias(
     df = df.sort_values(by='frecuencia', ascending=ascendente)
     # Crear gráfica
     plt.rcdefaults()
-    fig, ax = plt.subplots(figsize=dim_figura)    
+    fig, ax = plt.subplots(figsize=dim_figura)
     y_pos = np.arange(len(df['frecuencia']))
     ax.barh(y_pos, df['frecuencia'], align='center')
     ax.set_yticks(y_pos)

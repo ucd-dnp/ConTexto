@@ -5,6 +5,7 @@ from utils.tokenizacion import TokenizadorNLTK
 
 ### Definir clase para el stemmer ###
 
+
 class Stemmer():
     def __init__(self, lenguaje, tokenizador=None):
         """
@@ -68,11 +69,12 @@ class Stemmer():
 
 ### Definir función que envuelva la funcionalidad básica de la clase ###
 
+
 def stem_texto(texto, lenguaje='es', limpiar=False, stemmer=None):
     """
     Función que aprovecha la clase Stemmer para realizar *stemming*, o \
     reducción de palabras a su raíz, en un texto de entrada.
-        
+
     :param texto: (str) Texto al que se desea aplicar el *stemming*.
     :param lenguaje: (str) Valor por defecto: 'es'. Lenguaje del  texto al que se va \ 
         a aplicar *stemming*. Para mayor información, consultar la sección de \ 
