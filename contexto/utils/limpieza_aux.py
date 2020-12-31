@@ -4,6 +4,7 @@ from difflib import SequenceMatcher
 from tokenizacion import TokenizadorNLTK
 from ..limpieza import remover_acentos
 
+
 def substrings_en_comun(str1, str2, longitud_min=10):
     """
     Encuentra los *substrings*, o cadena de caracteres internas, que tienen en común \
@@ -16,7 +17,7 @@ def substrings_en_comun(str1, str2, longitud_min=10):
     :return: (list) Lista de *substrings* o cadenas de caracteres en común que cumplan \
         con el requisito de longitud mínima. Si no hay ningúna cadena de caracteres que cumpla \
         esta condición, se devuelve una lista vacía. 
-    """    
+    """
     # Inicializar objeto de SequenceMatcher con los dos textos
     seqMatch = SequenceMatcher(None, str1, str2)
     # Hallar el sub-string común de mayor longitud
@@ -26,6 +27,7 @@ def substrings_en_comun(str1, str2, longitud_min=10):
     coincidencias = [i for i in coincidencias if i.size >= longitud_min]
     # Se devuelve la lista de strings con las coincidencias
     return [str1[i.a: i.a + i.size] for i in coincidencias]
+
 
 def detectar_coincidencias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
     """
@@ -49,12 +51,13 @@ def detectar_coincidencias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
     :return: (list) Lista de coincidencias encontradas entre los textos de entrada, que cumplan \
         con las condiciones con los valores establecidos por el usuario. Si no hay ningúna cadena \
         de caracteres que cumpla estas condiciones, se devuelve una lista vacía. 
-    """        
+    """
     # Lista general de coincidencias entre los textos (que cumplan con longitud_min)
     coincidencias = []
     for i in range(len(lista_textos)):
         for j in range(i+1, len(lista_textos)):
-            con = substrings_en_comun(lista_textos[i], lista_textos[j], longitud_min)
+            con = substrings_en_comun(
+                lista_textos[i], lista_textos[j], longitud_min)
             coincidencias += con
     # Cantidad de veces que aparece cada coincidencia
     contador = Counter(coincidencias)
@@ -63,6 +66,7 @@ def detectar_coincidencias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
                for x in contador if contador[x] >= len(lista_textos) * prop}
     # Se devuelven las coincidencias que tengan igual o más palabras que n_min
     return [i for i in comunes if i is not None and len(i.split()) >= n_min]
+
 
 def quitar_coincidenias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
     """
@@ -73,7 +77,7 @@ def quitar_coincidenias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
         * Que aparezcan en por lo menos una proporción determinada de todos los textos.
         * Que tengan por lo menos un número determinado de palabras.
         * Que tengan un número de caracteres mayor o igual a una longitud mínima establecida.
-        
+
         Cada coincidencia encontrada entre la lista de textos es reemplazada de los textos de \
         entrada por un espacio en blanco.
 
@@ -88,13 +92,15 @@ def quitar_coincidenias(lista_textos, prop=0.5, n_min=2, longitud_min=10):
         entre los textos de entrada, para ser considerada.        
     :return: (list) Lista de textos de entrada, luego de remover todas las coincidencias \
         encontradas que cumplan con las condiciones con los valores establecidos por el usuario. 
-    """     
-    coincidencias = detectar_coincidencias(lista_textos, prop, n_min, longitud_min)
+    """
+    coincidencias = detectar_coincidencias(
+        lista_textos, prop, n_min, longitud_min)
     for con in coincidencias:
         lista_textos = [i.replace(con, ' ') for i in lista_textos]
     return lista_textos
 
-# Establece los criterios (de repetidos y consecutivos) 
+
+# Establece los criterios (de repetidos y consecutivos)
 # dependiendo de la longitud de la palabra de entrada.
 dict_condiciones = {
     1: 999,
@@ -103,7 +109,9 @@ dict_condiciones = {
     4: 3
 }
 
-## Funciones basadas en expresiones regulares
+# Funciones basadas en expresiones regulares
+
+
 def caracteres_repetidos(palabra, n, limpiar_palabra=True):
     """
     Determina si en una palabra de entrada se repiten caracteres (letras o números) de forma \
@@ -123,9 +131,10 @@ def caracteres_repetidos(palabra, n, limpiar_palabra=True):
         y False en caso contrario. 
     """
     if limpiar_palabra:
-        palabra = remover_acentos(palabra).lower()      
+        palabra = remover_acentos(palabra).lower()
     cond_repetido = "([a-zA-Z0-9])" + "\\1" * (n - 1)
     return bool(re.search(cond_repetido, palabra))
+
 
 def caracteres_consecutivos(palabra, n, limpiar_palabra=True):
     """
@@ -144,11 +153,12 @@ def caracteres_consecutivos(palabra, n, limpiar_palabra=True):
         'ABcde' solo contabilizarán 3 caracteres consecutivos seguidos. 
     :return: (bool) Devuelve True si se cumple la condición de caracteres consecutivos seguidos, \
         y False en caso contrario. 
-    """        
+    """
     if limpiar_palabra:
-        palabra = remover_acentos(palabra).lower()       
+        palabra = remover_acentos(palabra).lower()
     cond_consecutivo = f"(?:(?:0(?=1)|1(?=2)|2(?=3)|3(?=4)|4(?=5)|5(?=6)|6(?=7)|7(?=8)|8(?=9)){{{n-1},}}\d|(?:a(?=b)|b(?=c)|c(?=d)|d(?=e)|e(?=f)|f(?=g)|g(?=h)|h(?=i)|i(?=j)|j(?=k)|k(?=l)|l(?=m)|m(?=n)|n(?=o)|o(?=p)|p(?=q)|q(?=r)|r(?=s)|s(?=t)|t(?=u)|u(?=v)|v(?=w)|w(?=x)|x(?=y)|y(?=z)){{{n-1},}})"
     return bool(re.search(cond_consecutivo, palabra))
+
 
 def consonantes_consecutivas(palabra, n, incluir_y=True, limpiar_palabra=True):
     """
@@ -167,7 +177,7 @@ def consonantes_consecutivas(palabra, n, incluir_y=True, limpiar_palabra=True):
         las consonantes con acentos como 'ç'' o 'ñ' no serán contabilizadas en la búsqueda de consonantes seguidas.
     :return: (bool) Devuelve True si se cumple la condición de consonantes seguidas, y \
         False en caso contrario. 
-    """         
+    """
     if limpiar_palabra:
         palabra = remover_acentos(palabra)
     # Decidir si se cuenta la "y" como vocal
@@ -180,8 +190,10 @@ def consonantes_consecutivas(palabra, n, incluir_y=True, limpiar_palabra=True):
 
 # Función para quitar de un texto las palabras que cumplan los criterios de caracteres
 # repetidos y/o consecutivos
-def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_consonantes=True, 
-                            incluir_y=True, limpiar_palabras=True, tokenizador=None):
+
+
+def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_consonantes=True,
+                             incluir_y=True, limpiar_palabras=True, tokenizador=None):
     """
     Para un texto de entrada, busca y elimina palabras que cumplan una o varias de las siguientes condiciones, \
         ajustadas por el usuario:
@@ -216,16 +228,16 @@ def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_con
         de textos. Si el valor es 'None', se cargará por defecto una instancia de la clase *TokenizadorNLTK*.
     :return: (str) Devuelve el texto de entrada sin las palabras que hayan sido identificadas de acuerdo a los \
         criterios especificados por el usuario. 
-    """                   
+    """
     if tokenizador is None:
         tokenizador = TokenizadorNLTK()
     # Guardar tokens del texto original para devolver las palabras originales al final
     palabras_orig = tokenizador.tokenizar(texto)
     # Si se eligió limpiar el texto, se quitan acentos y se pasa todo a minúsculas
     if limpiar_palabras:
-        texto = remover_acentos(texto).lower() 
+        texto = remover_acentos(texto).lower()
     # Se parte el texto en palabras y se inicializa la lista de salida
-    palabras = tokenizador.tokenizar(texto)    
+    palabras = tokenizador.tokenizar(texto)
     salida = []
     for i, p in enumerate(palabras):
         # Longitud de la palabra
@@ -233,9 +245,9 @@ def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_con
         # Valor por reglas "duras", por si se necesita
         n = dict_condiciones[l] if l in dict_condiciones else 4
         # Ajustar valores mínimos, si aplica
-        n_repetidas = n if n_repetidas==0 else n_repetidas 
-        n_consecutivas = n if n_consecutivas==0 else n_consecutivas
-        n_consonantes = n if n_consonantes==0 else n_consonantes
+        n_repetidas = n if n_repetidas == 0 else n_repetidas
+        n_consecutivas = n if n_consecutivas == 0 else n_consecutivas
+        n_consonantes = n if n_consonantes == 0 else n_consonantes
         # Se inicializan las dos condiciones, y si está indicado en los
         # parámetros, se calculan
         cond1 = cond2 = cond3 = False
@@ -244,7 +256,8 @@ def quitar_palabras_atipicas(texto, n_repetidas=None, n_consecutivas=None, n_con
         if n_consecutivas is not None:
             cond2 = caracteres_consecutivos(p, n_consecutivas, False)
         if n_consonantes is not None:
-            cond3 = consonantes_consecutivas(p, n_consonantes, incluir_y, False)
+            cond3 = consonantes_consecutivas(
+                p, n_consonantes, incluir_y, False)
         # La palabra solo se incluye en la salida si no cumple ninguna condición
         if not any([cond1, cond2, cond3]):
             salida.append(palabras_orig[i])

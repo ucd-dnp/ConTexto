@@ -51,7 +51,7 @@ class VectorizadorFrecuencias():
             self.vectorizador = cargar_objeto(archivo_modelo)
         elif tipo == 'bow':
             self.tipo = tipo
-            self.vectorizador = CountVectorizer(   
+            self.vectorizador = CountVectorizer(
                 ngram_range=rango_ngramas, max_features=max_elementos, **kwargs)
         elif tipo in ['tfidf', 'tf-idf', 'tf_idf', 'tf idf']:
             self.tipo = 'tfidf'
@@ -136,7 +136,7 @@ class VectorizadorFrecuencias():
         except BaseException:
             print('Debe ajustar primero el vectorizador para que exista un vocabulario.')
             return None
-    
+
     def inversa(self, x):
         """ A partir de un vector o grupo de vectores, devuelve los términos \ 
         con frecuencia mayor a 0 en el documento.
@@ -204,8 +204,8 @@ class VectorizadorHash():
         :return: (numpy.ndarray) Vectores documentos-términos de la vectorización de los textos.
         """
         return self.vectorizar(x, disperso)
-    
-    
+
+
 ####### Word2Vec con spacy #########
 
 
@@ -256,9 +256,10 @@ class VectorizadorWord2Vec():
         self.vectorizador = None
         if self.lenguaje is not None:
             from utils.spacy_funcs import cargar_modelo
-            self.vectorizador = cargar_modelo(dim_modelo, self.lenguaje, maxima_longitud)
+            self.vectorizador = cargar_modelo(
+                dim_modelo, self.lenguaje, maxima_longitud)
 
-    def vectorizar_texto(self, texto, quitar_desconocidas: bool=False):
+    def vectorizar_texto(self, texto, quitar_desconocidas: bool = False):
         """ Vectoriza el texto utilizando el vectorizador. \ 
         Transformando el texto en un vector documento-términos.
 
@@ -273,7 +274,7 @@ class VectorizadorWord2Vec():
             vectorización del texto.
         """
         # Aplicar el modelo al texto
-        tokens = self.vectorizador(texto, disable = ['ner', 'parser', 'tagger'])
+        tokens = self.vectorizador(texto, disable=['ner', 'parser', 'tagger'])
         vector_doc = tokens.vector
         if quitar_desconocidas:
             # Crear lista con todos los vectores de palabras reconocidas
@@ -281,14 +282,14 @@ class VectorizadorWord2Vec():
             for token in tokens:
                 if token.has_vector:
                     vectores.append(token.vector)
-            # Convertir lista en un array, y sacar el vector promedio     
+            # Convertir lista en un array, y sacar el vector promedio
             if len(vectores) > 0:
                 vectores = np.array(vectores)
                 vector_doc = np.mean(vectores, axis=0)
-        # Devolver vector del texto            
+        # Devolver vector del texto
         return vector_doc
 
-    def vectorizar(self, textos, quitar_desconocidas: bool=False):
+    def vectorizar(self, textos, quitar_desconocidas: bool = False):
         """ Vectoriza los textos utilizando el vectorizador. \ 
         Transformando los textos en una matriz documentos-términos. \ 
         **Llama la función vectorizar_texto**.
@@ -306,7 +307,8 @@ class VectorizadorWord2Vec():
         """
         if isinstance(textos, str):
             textos = [textos]
-        vectores = [self.vectorizar_texto(t, quitar_desconocidas) for t in textos]
+        vectores = [self.vectorizar_texto(
+            t, quitar_desconocidas) for t in textos]
         return np.array(vectores)
 
     def vectores_palabras(self, texto, tipo='diccionario'):
@@ -320,7 +322,7 @@ class VectorizadorWord2Vec():
         :return: (dict o dataframe) Palabras y vectores del texto.
         """
         # Aplicar el modelo al texto
-        tokens = self.vectorizador(texto)   
+        tokens = self.vectorizador(texto)
         # Iniciar el diccionario y empezar a llenarlo
         vectores = {}
         for token in tokens:
@@ -332,7 +334,8 @@ class VectorizadorWord2Vec():
         elif tipo.lower() in ['tabla', 'dataframe', 'df']:
             vectores = pd.DataFrame(vectores).T
             vectores.reset_index(level=0, inplace=True)
-            vectores.columns = ['palabra'] + [f'x_{i}' for i in range(1, vectores.shape[1])]
+            vectores.columns = ['palabra'] + \
+                [f'x_{i}' for i in range(1, vectores.shape[1])]
             return vectores
         else:
             print('Debe escoger una estructura válida (diccionario o dataframe)')
@@ -382,7 +385,8 @@ class VectorizadorDoc2Vec():
             self.vectorizador = cargar_objeto(archivo_modelo)
         else:
             # Inicializar modelo
-            self.vectorizador = doc2vec.Doc2Vec(vector_size=n_elementos, min_count=minima_cuenta, epochs=epocas, seed=semilla)
+            self.vectorizador = doc2vec.Doc2Vec(
+                vector_size=n_elementos, min_count=minima_cuenta, epochs=epocas, seed=semilla)
 
     # Función para procesar una lista de textos y dejarla lista para el modelo
     def __preparar_textos(self, lista_textos):
@@ -415,11 +419,13 @@ class VectorizadorDoc2Vec():
             desea exportar el vectorizador ajustado. Usar formato pickle (pk)        
         """
         # Pre procesar los textos de entrenamiento
-        corpus_entrenamiento = list(self.__preparar_textos(corpus_entrenamiento))
+        corpus_entrenamiento = list(
+            self.__preparar_textos(corpus_entrenamiento))
         # Construir vocabulario del modelo
         self.vectorizador.build_vocab(corpus_entrenamiento, update=actualizar)
         # Entrenar modelo
-        self.vectorizador.train(corpus_entrenamiento, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
+        self.vectorizador.train(
+            corpus_entrenamiento, total_examples=self.vectorizador.corpus_count, epochs=self.vectorizador.epochs)
         # Si se proporcionó un archivo, se guarda el modelo entrenado en esta ubicación
         if archivo_salida != '':
             guardar_objeto(self.vectorizador, archivo_salida)
@@ -450,7 +456,7 @@ class VectorizadorDoc2Vec():
         # para que la función siempre devuelva el mismo vector para el mismo texto
         self.vectorizador.random.seed(semilla)
         # Se devuelve el vector
-        return self.vectorizador.infer_vector(texto_tokenizado, alpha=alpha, steps=num_pasos)           
+        return self.vectorizador.infer_vector(texto_tokenizado, alpha=alpha, steps=num_pasos)
 
     # Función para vectorizar una lista de textos
     def vectorizar(self, textos, alpha=0.025, num_pasos=50, semilla=13):
@@ -476,5 +482,6 @@ class VectorizadorDoc2Vec():
         """
         if isinstance(textos, str):
             textos = [textos]
-        vectores = [self.vectorizar_texto(t, alpha, num_pasos, semilla) for t in textos]
+        vectores = [self.vectorizar_texto(
+            t, alpha, num_pasos, semilla) for t in textos]
         return np.array(vectores)

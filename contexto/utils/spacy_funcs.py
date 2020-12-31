@@ -1,6 +1,7 @@
 import os
 import spacy
 
+
 def cargar_modelo(dim_modelo, lenguaje, maxima_longitud=None):
     """
     Carga y retorna un modelo de lenguaje de spaCy del tamaño y lenguaje especificados por \

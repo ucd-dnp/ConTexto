@@ -13,7 +13,7 @@ from sklearn.exceptions import DataConversionWarning
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
 
-### Clase Similitud ----------------------------------------------------
+# Clase Similitud ----------------------------------------------------
 
 class Similitud():
     def __init__(self, vectorizador=None, lenguaje='es'):
@@ -35,7 +35,7 @@ class Similitud():
         self.establecer_vectorizador(vectorizador)
 
     # Función auxiliar
-    def __jaccard_textos(self,texto1, texto2):
+    def __jaccard_textos(self, texto1, texto2):
         if type(texto1) == str:
             texto1 = texto1.split()
         if type(texto2) == str:
@@ -43,7 +43,7 @@ class Similitud():
         interseccion = set(texto1).intersection(set(texto2))
         union = set(texto1).union(set(texto2))
         return np.array([[len(interseccion)/len(union)]])
-        
+
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Similitud.
 
@@ -92,7 +92,7 @@ class Similitud():
         if isinstance(lista2, str):
             lista2 = [lista2]
         # Cantidad de elementos en lista2
-        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]            
+        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]
         # Si se ingresan textos, estos se pasan por el vectorizador
         if isinstance(lista1[0], str):
             try:
@@ -103,7 +103,7 @@ class Similitud():
             try:
                 lista2 = self.vectorizador.vectorizar(lista2, disperso=True)
             except:
-                lista2 = self.vectorizador.vectorizar(lista2)                     
+                lista2 = self.vectorizador.vectorizar(lista2)
         if n2 < 1:
             return cosine_similarity(lista1)
         else:
@@ -145,7 +145,7 @@ class Similitud():
         # Si se indicó, se calculan los vectores de las listas de textos de entrada
         if vectorizar:
             if isinstance(lista1[0], str):
-                lista1 = self.vectorizador.vectorizar(lista1)                
+                lista1 = self.vectorizador.vectorizar(lista1)
             if n2 > 0 and isinstance(lista2[0], str):
                 lista2 = self.vectorizador.vectorizar(lista2)
         if n2 < 1:
@@ -153,9 +153,10 @@ class Similitud():
                 similitudes = np.zeros((n1, n1))
                 for i in range(n1):
                     for j in range(i, n1):
-                        similitudes[i, j] = self.__jaccard_textos(lista1[i], lista1[j])
+                        similitudes[i, j] = self.__jaccard_textos(
+                            lista1[i], lista1[j])
                 # Para que la matriz de similitudes quede simétrica
-                similitudes += similitudes.T - np.diag(np.diag(similitudes))                
+                similitudes += similitudes.T - np.diag(np.diag(similitudes))
             else:
                 similitudes = 1 - pairwise_distances(lista1, metric='jaccard')
         else:
@@ -163,13 +164,16 @@ class Similitud():
                 similitudes = np.zeros((n1, n2))
                 for i in range(n1):
                     for j in range(n2):
-                        similitudes[i, j] = self.__jaccard_textos(lista1[i], lista2[j])
+                        similitudes[i, j] = self.__jaccard_textos(
+                            lista1[i], lista2[j])
             else:
-                similitudes = 1 - pairwise_distances(lista1, lista2, metric='jaccard')
+                similitudes = 1 - \
+                    pairwise_distances(lista1, lista2, metric='jaccard')
         # Devolver matriz de similitudes
         return similitudes
-        
-### Clase Distancia ----------------------------------------------------
+
+# Clase Distancia ----------------------------------------------------
+
 
 class Distancia():
     def __init__(self, vectorizador=None, lenguaje='es'):
@@ -190,9 +194,9 @@ class Distancia():
         self.establecer_lenguaje(lenguaje)
         self.establecer_vectorizador(vectorizador)
         # Distancias de sklearn que aceptan matrices dispersas
-        self.aceptan_dispersas = ['cityblock', 'cosine', 'euclidean', 
-                                 'l1', 'l2', 'manhattan']
-        
+        self.aceptan_dispersas = ['cityblock', 'cosine', 'euclidean',
+                                  'l1', 'l2', 'manhattan']
+
     def establecer_lenguaje(self, lenguaje):
         """Establece el lenguaje del objeto Distancia.
 
@@ -200,7 +204,7 @@ class Distancia():
             mayor información, consultar la sección de :ref:`Lenguajes soportados \
             <seccion_lenguajes_soportados>`. Si se pasa un vectorizador ya ajustado, este \
             parámetro no será utilizado.
-        """        
+        """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def establecer_vectorizador(self, vectorizador):
@@ -248,15 +252,15 @@ class Distancia():
         if isinstance(lista1, str):
             lista1 = [lista1]
         if isinstance(lista2, str):
-            lista2 = [lista2]        
+            lista2 = [lista2]
         # Cantidad de elementos en lista2
-        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]    
+        n2 = len(lista2) if not issparse(lista2) else lista2.shape[0]
         # Si se ingresan textos, estos se pasan por el vectorizador
         if isinstance(lista1[0], str):
             try:
                 lista1 = self.vectorizador.vectorizar(lista1, disperso=True)
             except:
-                lista1 = self.vectorizador.vectorizar(lista1)                
+                lista1 = self.vectorizador.vectorizar(lista1)
         if n2 > 0 and isinstance(lista2[0], str):
             try:
                 lista2 = self.vectorizador.vectorizar(lista2, disperso=True)
@@ -267,7 +271,7 @@ class Distancia():
             if issparse(lista1):
                 lista1 = lista1.toarray()
             if issparse(lista2):
-                lista2 = lista2.toarray()                
+                lista2 = lista2.toarray()
         if n2 < 1:
             return pairwise_distances(lista1, metric=tipo_distancia, **kwargs)
         else:
@@ -291,9 +295,9 @@ class Distancia():
             lista1 y lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá una matriz de *n1xn2*, con las \
             distancias entre los elementos de lista1 y los elementos de lista2.
         """
-        return self.distancia_pares(lista1, lista2, tipo_distancia='l1')   
+        return self.distancia_pares(lista1, lista2, tipo_distancia='l1')
 
-    def l2(self, lista1, lista2=[]):        
+    def l2(self, lista1, lista2=[]):
         """Calcula la distancia L2, también conocida como la distancia euclidiana, entre uno o dos grupos de \
             textos y/o vectores de entrada.
 
@@ -312,7 +316,7 @@ class Distancia():
             distancias entre los elementos de lista1 y los elementos de lista2.
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia='l2')
-    
+
     def minkowski(self, lista1, lista2=[], p=2):
         """Calcula la distancia de Minkowski entre uno o dos grupos de textos y/o vectores de entrada.
 
@@ -375,13 +379,15 @@ class Distancia():
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia='hamming')
 
-### Clase DiferenciaStrings ----------------------------------------------------
+# Clase DiferenciaStrings ----------------------------------------------------
+
 
 class DiferenciaStrings():
     """ Esta clase se recomienda para comparaciones de strings relativamente cortos, como nombres, \
         direcciones y otras cadenas de caracteres similares. Para textos más extensos, se recomiendan \
         las clases :py:meth:`comparacion.Similitud` o :py:meth:`comparacion.Distancia`.
     """
+
     def comparacion_pares(self, texto1, texto2, tipo='levenshtein', norm=None):
         """ Permite hacer comparaciones entre dos textos de entrada, de acuerdo a un tipo de \
             distancia o similitud determinado.
@@ -445,14 +451,16 @@ class DiferenciaStrings():
             diferencias = np.zeros((n1, n1))
             for i in range(n1):
                 for j in range(i, n1):
-                    diferencias[i, j] = self.comparacion_pares(lista1[i], lista1[j], tipo, norm)
+                    diferencias[i, j] = self.comparacion_pares(
+                        lista1[i], lista1[j], tipo, norm)
             # Para que la matriz quede simétrica
             diferencias += diferencias.T - np.diag(np.diag(diferencias))
         else:
             diferencias = np.zeros((n1, n2))
             for i in range(n1):
                 for j in range(n2):
-                    diferencias[i, j] = self.comparacion_pares(lista1[i], lista2[j], tipo, norm)
+                    diferencias[i, j] = self.comparacion_pares(
+                        lista1[i], lista2[j], tipo, norm)
         return diferencias
 
     def distancia_levenshtein(self, lista1, lista2=[], norm=None):
@@ -491,7 +499,7 @@ class DiferenciaStrings():
             con *n1* y *n2* textos respectivamente, devolverá una matriz de *n1xn2*, con las distancias entre \
             los elementos de lista1 y los elementos de lista2.
         """
-        return self.comparacion_lista(lista1, lista2, 'damerau_levenshtein', norm)        
+        return self.comparacion_lista(lista1, lista2, 'damerau_levenshtein', norm)
 
     def distancia_hamming(self, lista1, lista2=[], norm=None):
         """ Permite calcular la distancia de Hamming entre una o dos listas de textos de entrada.

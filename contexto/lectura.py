@@ -65,7 +65,8 @@ class Lector():
             temp = self.ubicacion_archivo
             archivo_pdf = word_a_pdf(self.ubicacion_archivo)
             if archivo_pdf is None:
-                print('No se pudo convertir el documento Word a PDF, por lo que se retornará el texto completo y no por páginas.')
+                print(
+                    'No se pudo convertir el documento Word a PDF, por lo que se retornará el texto completo y no por páginas.')
             else:
                 self.establecer_ubicacion(archivo_pdf)
                 paginas = self.leer_pdf(por_paginas, False, 0, '', 0, 0)
@@ -121,7 +122,8 @@ class Lector():
             """
         if ocr:
             from utils.ocr import OCR
-            recog = OCR(preprocesamiento, lenguaje, oem, psm, enderezar=enderezar)
+            recog = OCR(preprocesamiento, lenguaje,
+                        oem, psm, enderezar=enderezar)
             paginas = recog.pdf_a_texto(self.ubicacion_archivo)
         else:
             try:
@@ -200,7 +202,6 @@ class Lector():
             psm=3,
             password=None,
             enderezar=False):
-
         """ Se lleva a cabo la lectura del texto de un archivo y permite escoger el tipo, si es por páginas, \
             la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 
@@ -253,7 +254,8 @@ class Lector():
         if tipo in ['txt', 'csv']:
             salida = self.leer_txt(encoding)
         elif tipo == 'pdf':
-            salida = self.leer_pdf(por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password, enderezar)
+            salida = self.leer_pdf(
+                por_paginas, ocr, preprocesamiento, lenguaje, oem, psm, password, enderezar)
         elif tipo == 'rtf':
             salida = self.leer_rtf()
         elif tipo in ['doc', 'docx']:
@@ -274,6 +276,7 @@ class Lector():
 
 # Función que encapsula el proceso de lectura de archivos de texto
 
+
 def leer_texto(
         ubicacion_archivo,
         tipo='inferir',
@@ -285,9 +288,9 @@ def leer_texto(
         preprocesamiento=3,
         lenguaje='spa',
         oem=2,
-        psm=3, 
+        psm=3,
         password=None,
-        enderezar=False):        
+        enderezar=False):
     """ Función que se encarga de extraer el texto de un archivo. Permite especificar la ruta del archivo, \
         escoger el tipo, si es por páginas, la codificación, si se utiliza OCR, el tipo de preprocesamiento, entre otros. 
 

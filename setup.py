@@ -1,7 +1,7 @@
 import setuptools
 import sys
 
-with open("README.md", "r", encoding ='utf-8') as fh:
+with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
 INSTALL_REQUIRES = ['docx2txt==0.8',
@@ -38,15 +38,15 @@ setuptools.setup(
     maintainer_email='ucd@dnp.gov.co',
     description=(
         "Librería para el procesamiento y análisis de texto con Python"
-        ),
+    ),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    license = 'MIT',
-    keywords= 'python OCR texto',
+    license='MIT',
+    keywords='python OCR texto',
     url='https://github.com/ucd-dnp/ConTexto',
     packages=setuptools.find_packages(),
-    include_package_data = True,
-    install_requires = INSTALL_REQUIRES,
+    include_package_data=True,
+    install_requires=INSTALL_REQUIRES,
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
@@ -54,8 +54,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",        
+        "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.6.*"
 )
-
