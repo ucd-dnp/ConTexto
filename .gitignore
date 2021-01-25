@@ -4,7 +4,7 @@ _setup.py
 *.pyc
 .idea
 __pycache__
-sphinx
+sphinx*
 test
 ejemplos/salida/*
 !ejemplos/salida/readme.md
