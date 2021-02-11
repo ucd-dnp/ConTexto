@@ -161,7 +161,7 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 
 ## Contribuciones a ConTexto
 
-Todas las contribuciones, reportes de errores, corrección de errores, las mejoras de las documentación y las ideas son bienvenidas.
+Todas las contribuciones, reportes de errores, corrección de errores, las mejoras de la documentación y las ideas son bienvenidas.
 
 Puede encontrar una descripción detallada de cómo contribuir en la [Wiki de ConTexto](https://github.com/ucd-dnp/ConTexto/wiki/)
 
