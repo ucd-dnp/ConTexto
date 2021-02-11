@@ -2,6 +2,9 @@
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/docs/_images/contexto.jpg "LEILA")
 
+[![PyPI version fury.io](https://badge.fury.io/py/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ConTexto.svg)](https://pypi.org/project/ConTexto/)
+ [![PyPI license](https://img.shields.io/pypi/l/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![Downloads](https://pepy.tech/badge/contexto)](https://pepy.tech/project/contexto) [![GitHub forks](https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/ucd-dnp/ConTexto/)
+
 ## Descripción
 
 La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren procesamiento y análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.
@@ -156,17 +159,23 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
 
-## Contribuciones
+## Contribuciones a ConTexto
 
-Para sugerir mejoras, cambios en la librería o seguir el avance de la solución de errores reportados, lo invitamos a consultar la sección de [Wiki](https://github.com/ucd-dnp/ConTexto/wiki/:::-Wiki-ConTexto-:-P%C3%A1gina-de-inicio-:::) del repositorio, en donde se dan lineamientos para hacer contribuciones e interactuar con la comunidad y la Unidad de Científicos de Datos.
+Todas las contribuciones, reportes de errores, corrección de errores, las mejoras de las documentación y las ideas son bienvenidas.
 
-## Licencia
+Puede encontrar una descripción detallada de cómo contribuir en la [Wiki de ConTexto](https://github.com/ucd-dnp/ConTexto/wiki/)
+
+También lo invitamos a revisar el [:calendar: Tablero **TODO** de ConTexto](https://github.com/users/ucd-dnp/projects/1), donde hay una serie de temas listados en los que el equipo UCD se encuentra trabajando.
+
+## Licencia [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+### **MIT License** 
 
 La librería ConTexto - Librería de procesamiento y análisis de textos se encuentra publicada bajo la licencia MIT <br />
 Copyleft (c) 2020 Departamento Nacional de Planeación - DNP Colombia
 
 Para mayor información puede consultar el archivo de [Licencia](https://github.com/ucd-dnp/contexto/blob/master/LICENSE)
 
-## Contacto
+## :telephone_receiver: Contacto
 
 Para comunicarse con la Unidad de Científicos de Datos (UCD) de la Dirección de Desarrollo Digital (DDD) del DNP, lo puede hacer mediante el correo electrónico ucd@dnp.gov.co
