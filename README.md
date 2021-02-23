@@ -1,6 +1,6 @@
 # ConTexto - Librería de procesamiento y análisis de textos
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/docs/_images/contexto.jpg "LEILA")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/recursos/contexto.jpg "LEILA")
 
 [![PyPI version fury.io](https://badge.fury.io/py/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ConTexto.svg)](https://pypi.org/project/ConTexto/)
  [![PyPI license](https://img.shields.io/pypi/l/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![Downloads](https://pepy.tech/badge/contexto)](https://pepy.tech/project/contexto) [![GitHub forks](https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/ucd-dnp/ConTexto/)
@@ -146,7 +146,7 @@ La función **par_nubes** permite generar un par de nubes de palabras (una junto
 par_nubes(texto, n1=1, n2=2, ubicacion_archivo='salida/nube_uni_bi.jpg')
 ```
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/nube_uni_bi.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/nube_uni_bi.jpg "Nube de palabras")
 
 * Gráficas de barras con las frecuencias
 
@@ -157,7 +157,7 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
                              titulo='Frecuencias de palabras', dim_figura=(7,4))
 ```
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/docs/_static/image/graficos/barras_palabras.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/barras_palabras.jpg "Nube de palabras")
 
 ## Contribuciones a ConTexto
 
