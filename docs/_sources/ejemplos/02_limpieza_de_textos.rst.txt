@@ -35,14 +35,6 @@ Aplicar funciones de limpieza de textos
 
 .. code-block:: python
 
-    >>> # Si se desea mantener los caracteres numéricos
-    >>> limpio_basico_nums = limpieza_basica(texto_prueba, quitar_numeros=False)
-    >>> print(limpio_basico_nums)
-
-    hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
-
-.. code-block:: python
-
     >>> # Para quitar acentos (diéresis, tildes y virgulillas)
     >>> sin_acentos = remover_acentos(limpio_basico)
     >>> print(sin_acentos)
@@ -84,33 +76,28 @@ La función :py:func:`limpieza.quitar_repetidos` permite quitar elementos repeti
     >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
 
     >>> # Aplicar función directamente
-    >>> print('texto quitando partes repetidas, utilizando el separador por defecto ("|"):')
-    >>> print(quitar_repetidos(texto_repetido))
-    
-    texto quitando partes repetidas, utilizando el separador por defecto ("|"):
-    hola, hola, como estas,hola, hola tu
+    >>> quitar_repetidos(texto_repetido)
+
+    'hola, hola, como estas,hola, hola tu'
 
 .. code-block:: python
 
     >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
 
     >>> # Especificar el separador entre documentos/frases
-    >>> print('texto quitando partes repetidas, separadas por coma:')
-    >>> print(quitar_repetidos(texto_repetido, ","))
+    >>> quitar_repetidos(texto_repetido, ',')
 
-    texto quitando partes repetidas, separadas por coma:
-    hola como estas hola tu
+    'hola como estas hola tu'
+    'como estas hola hola tu'
 
 .. code-block:: python
 
     >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
 
     >>> # Deshabilitar opción de quitar espacios al inicio y al final
-    >>> print('texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:')
-    >>> print(quitar_repetidos(texto_repetido, ",", remover_espacios=False))
+    >>> quitar_repetidos(texto_repetido, ',', remover_espacios=False) 
 
-    texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:
-    hola  hola  como estas  hola tu
+    ' hola  hola tu  como estas hola'
 
 
 Cargar listas de *stopwords*, predefinidas y definidas por el usuario
@@ -218,7 +205,7 @@ Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coinc
 Detectar y quitar palabras o valores atípicos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya 'ruido' en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como 'abcde' o '0000000'). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.
+Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya "ruido" en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como "abcde" o "0000000"). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.
 
 Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_palabras_atipicas` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.caracteres_repetidos`, :py:func:`utils.limpieza_aux.caracteres_consecutivos` y :py:func:`utils.limpieza_aux.consonantes_consecutivas`) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:
 

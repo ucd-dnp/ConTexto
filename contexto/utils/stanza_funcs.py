@@ -2,9 +2,8 @@ import os
 import stanza
 import torch
 
-
 def stanza_pipeline(lenguaje, procesadores='tokenize, pos, lemma', modelo_lemas='',
-                    modelo_ner='', modelo_pos=''):
+        modelo_ner='', modelo_pos=''):
     """
     Carga y retorna un pipeline, o flujo de trabajo, de Stanza del y lenguaje y con los procesos \
         especificados por el usuario. Los procesos que el usuario puede elegir añadir al pipeline incluyen \
@@ -31,7 +30,7 @@ def stanza_pipeline(lenguaje, procesadores='tokenize, pos, lemma', modelo_lemas=
         el usuario. Si los modelos requeridos no están disponibles en el computador del usuario, la función descargará \
         los modelos correspondientes, lo cual puede tardar algunos minutos dependiendo del tamaño de los modelos y la \
         velocidad de conexión a internet del usuario. 
-    """
+    """        
     # Configuración básica del pipeline
     config = {
         'processors': procesadores,
@@ -57,7 +56,7 @@ def stanza_pipeline(lenguaje, procesadores='tokenize, pos, lemma', modelo_lemas=
 
 
 def modificar_modelo(nlp_pipe, tipo, nuevo_diccionario, archivo_entrada='',
-                     archivo_salida='', gpu=False):
+        archivo_salida='', gpu=False):
     """
     A partir de un diccionario de entrada, modifica un procesador de un pipeline existente de Stanza.
 
@@ -78,12 +77,11 @@ def modificar_modelo(nlp_pipe, tipo, nuevo_diccionario, archivo_entrada='',
         va a utilizar una GPU para cargar y modificar los objetos (modelos) de PyTorch.     
     :return: (stanza Pipeline). Pipeline de entrada, después de modificar el procesador o modelo determinado \
         por el usuario. 
-    """
+    """        
     # Definir ubicación del modelo
     tipo = tipo.lower()
     if archivo_entrada == '':
-        procesador = [
-            i for i in nlp_pipe.loaded_processors if tipo in str(i).lower()][0]
+        procesador = [i for i in nlp_pipe.loaded_processors if tipo in str(i).lower()][0]
         archivo_entrada = procesador.config['model_path']
     # Cargar modelo y diccionarios del modelo
     locacion = 'gpu' if gpu else 'cpu'
@@ -96,7 +94,7 @@ def modificar_modelo(nlp_pipe, tipo, nuevo_diccionario, archivo_entrada='',
                 dict_compuesto[key] = nuevo_diccionario[key]
             else:
                 dict_palabras[key] = nuevo_diccionario[key]
-    # TODO: falta completar los otros casos, se mirará cuando se incluya POS y NER en la librería
+    #TODO: falta completar los otros casos, se mirará cuando se incluya POS y NER en la librería
     else:
         dict_vocab = modelo['vocab']
         # Acá falta seguir el proceso para cada caso

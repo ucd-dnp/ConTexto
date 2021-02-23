@@ -19,9 +19,9 @@ except TesseractNotFoundError as e:
     print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
     exit(1)
 
-
 class OCR():
     def __init__(self, preprocesamiento, lenguaje, oem, psm, dir_temporal='temp_pags/', enderezar=False):
+
         """ Constructor por defecto de la clase OCR. Esta clase se encarga de extraer \
         con la metodología de reconocimiento óptico de caracteres (OCR, en inglés)
 
@@ -82,19 +82,17 @@ class OCR():
         :param ubicacion_imagen: (string). Ruta de la imagen que se desea leer
         :return: (string). Texto del archivo tipo imagen leído con la clase OCR
         """
-        # Cargar la imagen de entrada
+        # Cargar la imagen de entrada        
         imagen = cv2.imread(ubicacion_imagen)
-        # Se define el preprocesamiento a aplicar
+        # Se define el preprocesamiento a aplicar 
         # (si el número está fuera de rango, no se aplica ningún preprocesmiento)
         if 0 < self.preprocesamiento < 6:
-            imagen = eval(
-                f'procesar_img_{self.preprocesamiento}(imagen, {self.enderezar})')
+            imagen = eval(f'procesar_img_{self.preprocesamiento}(imagen, {self.enderezar})')    
         # Se guarda la imagen en un archivo temporal
         nombre_archivo = "{}.png".format(os.getpid())
         cv2.imwrite(nombre_archivo, imagen)
         # Se establecen las opciones para el OCR
-        config = (
-            "-l {} --oem {} --psm {}".format(self.lenguaje, self.oem, self.psm))
+        config = ("-l {} --oem {} --psm {}".format(self.lenguaje, self.oem, self.psm))
         # Se carga la imagen como un objeto PIL/Pillow image y se aplica el OCR
         texto = pytesseract.image_to_string(
             Image.open(nombre_archivo), config=config)
@@ -113,8 +111,7 @@ class OCR():
             paginas = convert_from_path(
                 ubicacion_pdf, thread_count=8, output_folder=tempo_dir)
         except PDFInfoNotInstalledError as e:
-            print(
-                "Poppler no está instalado, o su ubicación no está definida como una variable de entorno.")
+            print("Poppler no está instalado, o su ubicación no está definida como una variable de entorno.")
             print("Para mayor información, consulte la documentación de instalación: https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html")
             exit(1)
         # Counter to store images of each page of PDF to image

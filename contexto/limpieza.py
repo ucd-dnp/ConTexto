@@ -21,9 +21,8 @@ def remover_acentos(texto):
         .decode("utf-8")
     return str(texto)
 
-
-def remover_stopwords(texto, lista_palabras=[], lista_expresiones=[],
-                      ubicacion_archivo=None, tokenizador=None):
+def remover_stopwords(texto, lista_palabras = [], lista_expresiones = [],
+        ubicacion_archivo=None, tokenizador=None):
     """Quita las palabras y expresiones determinadas de un texto. Esta función quita del texto de entrada, \
     palabras específicas contenidas en `lista_palabras`, o expresiones de palabras contenidas en `lista_expresiones`.
 
@@ -50,12 +49,10 @@ def remover_stopwords(texto, lista_palabras=[], lista_expresiones=[],
     # Dejar solo las palabras que no aparecen en la lista de palabras no
     # deseadas
     tokens = tokenizar(texto, tokenizador)
-    texto = destokenizar(
-        [p for p in tokens if p not in set(lista_palabras)], tokenizador)
+    texto = destokenizar([p for p in tokens if p not in set(lista_palabras)], tokenizador)
     # Reemplaza espacios múltiples por un solo espacio
     texto = re.sub(r" +", " ", texto)
     return texto
-
 
 def remover_palabras_cortas(texto, n_min):
     """Quita las palabras en el texto con longitud estrictamente menor a `n_min`.
@@ -66,7 +63,6 @@ def remover_palabras_cortas(texto, n_min):
     """
     palabras = texto.split(' ')
     return ' '.join([palabra for palabra in palabras if len(palabra) >= n_min])
-
 
 def limpieza_basica(texto, quitar_numeros=True):
     """Limpieza básica del texto. Esta función realiza una limpieza básica del texto de entrada, \
@@ -95,10 +91,9 @@ def limpieza_basica(texto, quitar_numeros=True):
     texto = texto.strip(' \t\n\r')
     return texto
 
-
 def limpieza_texto(texto, lista_palabras=[], lista_expresiones=[],
-                   ubicacion_archivo=None, n_min=0, quitar_numeros=True,
-                   quitar_acentos=False, tokenizador=None, momento_stopwords='ambos'):
+        ubicacion_archivo=None, n_min=0, quitar_numeros=True,
+        quitar_acentos=False, tokenizador=None, momento_stopwords='ambos'):
     """Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada. \
     Es capaz de quitar palabras y expresiones contenidas en `lista_palabras` y `lista_expresiones`, \
     quita acentos de las palabras, números y palabras de longitud menor a `n_min`.
@@ -135,8 +130,8 @@ def limpieza_texto(texto, lista_palabras=[], lista_expresiones=[],
     # Quitar palabras y expresiones no deseadas. Se hace al texto original porque la palabra/expresión
     # a remover puede tener tildes/mayúsculas/signos o estar compuesta por palabras cortas
     if momento_stopwords in ('antes', 'ambos'):
-        texto = remover_stopwords(texto, lista_palabras, lista_expresiones,
-                                  ubicacion_archivo, tokenizador)
+        texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                                ubicacion_archivo, tokenizador)
     # Se verifica si se desean quitar acentos/tildes
     if quitar_acentos:
         texto = remover_acentos(texto)
@@ -147,10 +142,9 @@ def limpieza_texto(texto, lista_palabras=[], lista_expresiones=[],
     # Se quitan stopwords de nuevo, por si habían palabras que después de su limpieza quedan en
     # la lista de palabras/expresiones no deseadas
     if momento_stopwords in ('despues', 'ambos'):
-        texto = remover_stopwords(texto, lista_palabras, lista_expresiones,
-                                  ubicacion_archivo, tokenizador)
+        texto = remover_stopwords(texto, lista_palabras, lista_expresiones, 
+                                ubicacion_archivo, tokenizador)
     return texto
-
 
 def limpiar_extremos(texto):
     """Quita los espacios presentes al inicio y al final de una cadena de texto.
@@ -159,7 +153,6 @@ def limpiar_extremos(texto):
     :return: (str) Cadena de texto sin espacios en el inicio y en el final.
     """
     return texto[::-1].rstrip()[::-1].rstrip()
-
 
 def quitar_repetidos(texto, sep='|', remover_espacios=True):
     """Función para quitar frases o palabras repetidas que están separadas por un \
@@ -178,7 +171,6 @@ def quitar_repetidos(texto, sep='|', remover_espacios=True):
     seen = set()
     lista = [i for i in lista if not (i in seen or seen.add(i))]
     return ' '.join(lista)
-
 
 def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
     """Función para cargar las listas de palabras y expresiones que se desean \
@@ -207,7 +199,6 @@ def cargar_stopwords(ubicacion_archivo, encoding='utf8'):
             line = fp.readline()
     return lista_palabras, lista_expresiones
 
-
 def lista_stopwords(lenguaje='es'):
     """Genera una lista de stopwords (palabras que se quieren quitar de un texto). \
     Función que genera una lista de stopwords de un idioma predeterminado.
@@ -224,7 +215,7 @@ def lista_stopwords(lenguaje='es'):
         sw = stopwords.words(lenguaje)
     except:
         import nltk
-        nltk.download("stopwords")
+        nltk.download("stopwords") 
         sw = stopwords.words(lenguaje)
     # Si se quieren en español, se intenta sacar las stopwords
     # desde la lista predfinida que viene con la librería
@@ -237,10 +228,9 @@ def lista_stopwords(lenguaje='es'):
             pass
     # Quitar elemento vacío de la lista, si está
     if '' in sw:
-        sw.remove('')
+        sw.remove('')   
     # Devolver stopwords
     return sw
-
 
 def lista_nombres(tipo='todos'):
     """Genera lista de nombres más comunes del español. Retorna lista con los nombres \
@@ -276,7 +266,6 @@ def lista_nombres(tipo='todos'):
             'Por favor ingresar un tipo válido de nombres ("hombres", "mujeres" o "todos").')
         return [], []
 
-
 def lista_apellidos():
     """Genera lista de apellidos más comunes del español.
 
@@ -285,7 +274,6 @@ def lista_apellidos():
     ruta = pkg_resources.resource_filename(
         __name__, 'data/listas_stopwords/apellidos.txt')
     return cargar_stopwords(ruta)
-
 
 def lista_geo_colombia(tipo='todos'):
     """Genera lista de nombres de municipios y departamentos de Colombia.

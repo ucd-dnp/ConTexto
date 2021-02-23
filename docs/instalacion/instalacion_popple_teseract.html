@@ -43,7 +43,7 @@
     
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="2.1. Instalación de Poppler y Tesseract en Linux" href="instalacion_popple_teseract_linux.html" />
+    <link rel="next" title="Ejemplos" href="../seccion_ejemplos.html" />
     <link rel="prev" title="1. Instalación ConTexto" href="instalacion_contexto.html" /> 
 </head>
 
@@ -102,8 +102,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="instalacion_contexto.html">1. Instalación ConTexto</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2. Instalación de Poppler y Tesseract</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="instalacion_popple_teseract_linux.html">2.1. Instalación de Poppler y Tesseract en Linux</a></li>
-<li class="toctree-l3"><a class="reference internal" href="instalacion_popple_teseract_windows.html">2.2. Instalación de Poppler y Tesseract en Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-poppler">2.1. Instalación de Poppler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-tesseract">2.2. Instalación de Tesseract</a></li>
 </ul>
 </li>
 </ul>
@@ -193,12 +193,79 @@
   <div class="section" id="instalacion-de-poppler-y-tesseract">
 <span id="instalacion-poppler-tesseract"></span><h1><span class="section-number">2. </span>Instalación de Poppler y Tesseract<a class="headerlink" href="#instalacion-de-poppler-y-tesseract" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>En esta sección se presenta el proceso de instalación de las librerías <code class="docutils literal notranslate"><span class="pre">Poppler</span></code> y <code class="docutils literal notranslate"><span class="pre">Pytesseract</span></code> de Python, requeridas para poder ejecutar de manera satisfactoria las funciones <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.archivo_a_texto" title="lectura.Lector.archivo_a_texto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.archivo_a_texto()</span></code></a>, <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.leer_pdf" title="lectura.Lector.leer_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.leer_pdf()</span></code></a> y <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> del módulo <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> utilizando  el OCR (Reconocimiento óptico de caracteres, OCR por sus siglas en ingles) de la librería ConTexto.</p>
-<div class="toctree-wrapper compound">
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Los usuarios necesitarán contar con uno de los siguientes sistemas operativos, Windows 7, 8, 8.1 o 10 y con permisos de administrador, adicionalmente tener instalada la versión 3.6 de Python o una versión superior.</p>
+<p class="last">La guía presentada a continuación se desarrolló utilizando la versión de Python 3.8.5 sobre el sistema operativo de Windows 10.</p>
 </div>
+<div class="section" id="instalacion-de-poppler">
+<h2><span class="section-number">2.1. </span>Instalación de Poppler<a class="headerlink" href="#instalacion-de-poppler" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Descargar el último archivo binario de poppler desde <a class="reference external" href="http://blog.alivate.com.au/poppler-windows/" target="_blank">http://blog.alivate.com.au/poppler-windows/</a></p>
+</li>
+<li><p class="first">Extraer el archivo dentro del disco local “C:” en la carpeta de archivos de programa “C:\Program Files”. Para esto debe tener instalado un programa que permita descomprimir archivos (como <a class="reference external" href="https://www.winrar.es/" target="_blank">WinRAR</a> o <a class="reference external" href="https://www.7-zip.org/" target="_blank">7zip</a>), ya que el archivo binario se descarga en formato comprimido.</p>
+</li>
+<li><p class="first">Agregar la ruta de la carpeta bin de poppler “C:\Program Files\poppler-0.68.0_x86\bin” al path del sistema haciendo lo siguiente:</p>
 <ul class="simple">
-<li><a class="reference internal" href="instalacion_popple_teseract_linux.html#instalacion-poppler-tesseract-linux"><span class="std std-ref">Instalación de Poppler y Tesseract en Linux</span></a></li>
-<li><a class="reference internal" href="instalacion_popple_teseract_windows.html#instalacion-poppler-tesseract-windows"><span class="std std-ref">Instalación de Poppler y Tesseract en Windows</span></a></li>
+<li>En el explorador de archivos hacer clic derecho sobre “This PC” (“Este equipo”) (* se presentarán los nombres en español dentro de paréntesis como referencia para los usuarios que tengan el sistema operativo en ese idioma.) y luego clic en “Properties” (“Propiedades”).</li>
 </ul>
+<img alt="../_images/Imagen01.jpg" class="align-center" src="../_images/Imagen01.jpg" />
+<ul class="simple">
+<li>Hacer clic en la opción “Advanced system settings” (“Configuración avanzada del sistema”) ubicada en la parte superior izquierda.</li>
+</ul>
+<img alt="../_images/Imagen02.jpg" class="align-center" src="../_images/Imagen02.jpg" />
+<ul class="simple">
+<li>Se abrirá una nueva ventana de “System Properties” (“Propiedades del sistema”), aquí se debe hacer clic en la opción de “Environment Variables…” (“Variables de entorno…”).</li>
+</ul>
+<img alt="../_images/Imagen03.jpg" class="align-center" src="../_images/Imagen03.jpg" />
+<ul class="simple">
+<li>En la sección de “System variables” (“Variables del sistema”) se debe hacer doble clic en la variable “Path”.</li>
+</ul>
+<img alt="../_images/Imagen04.jpg" class="align-center" src="../_images/Imagen04.jpg" />
+<ul class="simple">
+<li>Se abrirá una nueva ventana de edición de las variables de entorno, al hacer clic en el botón “New” (“Nuevo”) se podrá ingresar la ruta de la carpeta bin que está dentro del archivo que se extrajo previamente.</li>
+</ul>
+<img alt="../_images/Imagen05.jpg" class="align-center" src="../_images/Imagen05.jpg" />
+<ul class="simple">
+<li>Se debe copiar la ruta donde se encuentra la carpeta bin de poppler, la ruta debería ser <strong>“C:\Program Files\poppler-0.68.0\bin”</strong> si el archivo binario de poppler se extrajo en archivos de programa.</li>
+</ul>
+<img alt="../_images/Imagen06.jpg" class="align-center" src="../_images/Imagen06.jpg" />
+<ul class="simple">
+<li>Finalmente se agrega la ruta <strong>“C:\Program Files\poppler-0.68.0\bin”</strong> en la ventana de edición de variables de entorno y se hace clic en “OK” (“Aceptar”) para guardar los cambios y cerrar las ventanas.</li>
+</ul>
+<img alt="../_images/Imagen07.jpg" class="align-center" src="../_images/Imagen07.jpg" />
+</li>
+</ol>
+</div>
+<div class="section" id="instalacion-de-tesseract">
+<span id="instalacion-tesseract"></span><h2><span class="section-number">2.2. </span>Instalación de Tesseract<a class="headerlink" href="#instalacion-de-tesseract" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Desde <a class="reference external" href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank">https://github.com/UB-Mannheim/tesseract/wiki</a> se debe descargar la versión más reciente de tesseract, aquí se descargará un archivo ejecutable (.exe) el cual se debe instalar haciendo doble clic sobre el archivo descargado y siguiendo las instrucciones de instalación.</p>
+</li>
+<li><p class="first">Añadir otros idiomas al reconocimiento óptico de caracteres (OCR).</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<ul class="last simple">
+<li>Para añadir otros idiomas al OCR se deben descargar los archivos de entrenamiento en el idioma deseado, los cuales se encuentran disponibles en:  <a class="reference external" href="https://github.com/tesseract-ocr/tessdata" target="_blank">https://github.com/tesseract-ocr/tessdata</a> . (Para el desarrollo de este manual se hará el ejemplo con el idioma español.)</li>
+<li>Por defecto en la instalación se cargan los archivos del idioma Inglés, sin embargo, estos corresponden a un corpus pequeño, por lo que se recomienda descargar nuevamente los archivos para este idioma desde el enlace mencionado anteriormente.</li>
+</ul>
+</div>
+<p>Para el idioma español se descargarán los archivos <strong>spa.traineddata</strong> y <strong>spa_old.traineddata</strong> los cuales están disponibles en los siguientes enlaces:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata" target="_blank">https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata</a></li>
+<li><a class="reference external" href="https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata" target="_blank">https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata</a></li>
+</ul>
+<p>Los archivos descargados se deben copiar y pegar en la carpeta tessdata que se encuentra en la carpeta tesseract-OCR que se creó al instalar el archivo .exe de tesseract. La ruta podría verse como <strong>“C:\Program Files\Tesseract-OCR\tessdata”</strong> que fue la ruta que se creó al momento de hacer el desarrollo de este manual.</p>
+<img alt="../_images/Imagen08.jpg" class="align-center" src="../_images/Imagen08.jpg" />
+</li>
+<li><p class="first">Abrir la ventana de variables de entorno de la misma forma que se hizo para la <a class="reference internal" href="#instalacion-de-poppler"><span class="std std-ref">Instalación de Poppler</span></a>, y hacer doble clic en la variable “Path”, para abrir el editor de las variables de entorno.</p>
+<img alt="../_images/Imagen09.jpg" class="align-center" src="../_images/Imagen09.jpg" />
+</li>
+<li><p class="first">En el editor de las variables de entorno se debe hacer clic cobre el botón “New” (“Nuevo”) y colocar la ruta que se creó al momento de hacer la instalación de tessereact, la ruta podría verse como <strong>“C:\Program Files\Tesseract-OCR”</strong>. Hacer clic en “OK” (“Aceptar”) para guardar los cambios y cerrar las ventanas.</p>
+<img alt="../_images/Imagen10.jpg" class="align-center" src="../_images/Imagen10.jpg" />
+</li>
+</ol>
+</div>
 </div>
 
 
@@ -209,7 +276,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="instalacion_popple_teseract_linux.html" class="btn btn-neutral float-right" title="2.1. Instalación de Poppler y Tesseract en Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../seccion_ejemplos.html" class="btn btn-neutral float-right" title="Ejemplos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="instalacion_contexto.html" class="btn btn-neutral float-left" title="1. Instalación ConTexto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

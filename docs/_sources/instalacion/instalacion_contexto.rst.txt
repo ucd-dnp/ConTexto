@@ -16,7 +16,7 @@ Para la instalación de la librería se debe utilizar el gestor de paquetes ``pi
 Instalación completa
 --------------------
 
-Otra alternativa de instalación corresponde a utilizar los archivos compilados wheel que se encuentran cargados en el repositorio de GitHub de la librería. Al utilizar los archivos wheel se instalarán las dependencias de ConTexto, equivalente a utilizar el comando ``pip install contexto`` y adicionalmente se instalará el framework `PyTorch <https://pytorch.org/>`_ (con instalación para uso de CPU) y el paquete `Stanza <https://stanfordnlp.github.io/stanza/>`_, estos últimos se utilizan en el módulo de :py:mod:`Lematización <lematizacion>`, sin embargo, su instalación no es de caracter obligatorio, ya que por defecto se utiliza el lematizador de `spaCy <https://spacy.io/>`_.
+Otra alternativa de instalación corresponde a utilizar los archivos compilados wheel que se encuentran cargados en el repositorio de GitHub de la librería. Al utilizar los archivos wheel instalará las dependencias de ConTexto, equivalente a utilizar el comando ``pip install contexto`` y adicionalmente instalará el framework `PyTorch <https://pytorch.org/>`_ (con instalación para uso de CPU) y el paquete `Stanza <https://stanfordnlp.github.io/stanza/>`_ , estos últimos se utilizan en el módulo de :py:mod:`Lematización <lematizacion>`.
 
 .. warning::
         * La instalación utilizando los archivos wheel solo soportan Python en arquitecturas de 64 bits (x64) para Windows. Para Linux no se presenta esta restricción.

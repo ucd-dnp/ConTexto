@@ -43,7 +43,7 @@
     
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Casos de uso" href="09_casos_de_uso.html" />
+    <link rel="next" title="9. Caso de uso - Agrupar textos por temas" href="09_caso_de_uso.html" />
     <link rel="prev" title="7. Vectorización de textos" href="07_vectorizacion_de_textos.html" /> 
 </head>
 
@@ -133,7 +133,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="09_casos_de_uso.html">Casos de uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_caso_de_uso.html">9. Caso de uso - Agrupar textos por temas</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
@@ -325,7 +325,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coseno_tfidf_vec</span> <span class="o">=</span> <span class="n">s_tfidf</span><span class="o">.</span><span class="n">coseno</span><span class="p">(</span><span class="n">vectores</span><span class="p">[</span><span class="s1">&#39;tfidf&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iguales</span> <span class="o">=</span> <span class="p">(</span><span class="n">coseno_tfidf</span> <span class="o">==</span> <span class="n">coseno_tfidf_vec</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Igualdad entre utilizar los textos directamente o sus representaciones vectoriales:&#39;</span><span class="p">,</span> <span class="n">iguales</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Igualdad entre utilizar los textos directamente o sus representaciones vectoriales:&#39;</span><span class="p">,</span> <span class="n">iguales</span><span class="p">)</span>
 
 <span class="go">Similitudes entre los textos de prueba (Word2Vec):</span>
 <span class="go">[[1.0000001  0.9347326  0.6558729  0.23863341]</span>
@@ -333,20 +333,7 @@
 <span class="go"> [0.6558729  0.64198124 0.9999997  0.49457312]</span>
 <span class="go"> [0.23863341 0.22747502 0.49457312 1.0000004 ]]</span>
 <span class="go">-----------</span>
-<span class="go">Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: False</span>
-</pre></div>
-</div>
-<p>En este caso la validación dio que las representaciones vectoriales no son exactamente iguales. Esto se debe al grado de precisión que tiene Python para manejar números muy pequeños, el cual tiene cierto margen de error.</p>
-<p>Sin embargo, si se mira la diferencia entre ambos objetos, se puede ver que son prácticamente la mísma representación numérica.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">coseno_tfidf</span> <span class="o">-</span> <span class="n">coseno_tfidf_vec</span><span class="p">)</span>
-
-<span class="go">Diferencia entre utilizar los textos directamente o sus representaciones vectoriales:</span>
-
-<span class="go">[[0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]</span>
-<span class="go"> [0.00000000e+00 2.22044605e-16 0.00000000e+00 0.00000000e+00]</span>
-<span class="go"> [0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00]</span>
-<span class="go"> [0.00000000e+00 0.00000000e+00 0.00000000e+00 2.22044605e-16]]</span>
+<span class="go">Igualdad entre utilizar los textos directamente o sus representaciones vectoriales: True</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +724,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="09_casos_de_uso.html" class="btn btn-neutral float-right" title="Casos de uso" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="09_caso_de_uso.html" class="btn btn-neutral float-right" title="9. Caso de uso - Agrupar textos por temas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="07_vectorizacion_de_textos.html" class="btn btn-neutral float-left" title="7. Vectorización de textos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

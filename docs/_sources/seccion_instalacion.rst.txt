@@ -14,6 +14,7 @@ La instalación de la librería se divide en dos pasos. El primer paso consiste 
 
 * :ref:`Instalación ConTexto <instalacion_basica>`
 
-El segundo paso explica cómo instalar Poppler y Tesseract. Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto.
+El segundo paso explica cómo instalar Poppler y Tesseract, los cuales tienen que instalarse desde archivos descargados de internet. Estos dos paquetes son necesarios para utilizar el reconocimiento óptico de caracteres (OCR) de ConTexto.
 
 * :ref:`Instalación de Poppler y Tesseract <instalacion_poppler_tesseract>`
+

@@ -92,9 +92,8 @@ dict_tesseract = {
     'spanish': 'spa',
     'english': 'eng',
     'french': 'fra',
-    'german': 'deu'
+    'german': 'deu'    
 }
-
 
 def definir_lenguaje(lenguaje, simplificado=True):
     """ Función auxiliar - permite determinar el lenguaje a partir de una entrada.
@@ -113,7 +112,6 @@ def definir_lenguaje(lenguaje, simplificado=True):
         if simplificado:
             leng = dict_lenguajes_simplificado[leng]
     return leng
-
 
 def lenguaje_tesseract(lenguaje):
     """ Función auxiliar - Para un lenguaje de entrada, busca su equivalente en Tesseract.

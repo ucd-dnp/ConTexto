@@ -35,8 +35,7 @@ Lematización de textos utilizando spaCy
 
 La función :py:func:`lematizacion.lematizar_texto` se encarga de aplicar lematización a todas las palabras de un texto de entrada. Al realizarse con el lematizador de spaCy, que se utiliza por defecto, el usuario puede elegir el lenguaje y el tamaño del modelo. Para la mayoría de lenguajes hay 3 tamaños de modelos: pequeño ('sm'), mediano ('md') y grande ('lg'). Entre más grande sea el modelo, es posible que tenga un vocabulario más amplio o características adicionales, pero también el archivo del modelo será más grande.
 
-.. note::
-    La primera vez que se utilice una combinación particular de lenguaje + tamaño, la librería descargará el modelo correspondiente en el computador del usuario. Para usarlo, se debe reiniciar la sesión y correr la función de nuevo.
+La primera vez que se utilice una combinación particular de lenguaje + tamaño, la librería descargará el modelo correspondiente en el computador del usuario. Para usarlo, se debe reiniciar la sesión y correr la función de nuevo.
 
 .. code-block:: python
 
@@ -57,7 +56,7 @@ La función :py:func:`lematizacion.lematizar_texto` se encarga de aplicar lemati
 Agregar lemas personalizados al `LematizadorSpacy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Los modelos cuentan con algunos diccionarios de lemas, que utilizan para aplicar la lematización. Así, por ejemplo, el lematizador sabe que para la palabra 'iba', su lema debería ser 'ir'.
+Los modelos cuentan con algunos diccionarios de lemas, que utilizan para aplicar la lematización. Así, por ejemplo, el lematizador sabe que para la palabra "iba", su lema debería ser "ir".
 
 Es posible que el diccionario del lematizador no contenga todos los casos que nos interesan, por lo que es necesario complementar el lematizador. Esto se puede hacer desde un archivo JSON o desde un diccionario de Python.
 
@@ -133,9 +132,9 @@ A continuación se muestra una comparación de tiempos para dos opciones:
 
     ***************
 
-    Tiempo con opción 1: 10.844398021697998 segundos
+    Tiempo con opción 1: 17.106500387191772 segundos
 
-    Tiempo con opción 2: 2.4355220794677734 segundos
+    Tiempo con opción 2: 3.785933494567871 segundos
 
 
 Lematización de textos utilizando Stanza
@@ -246,6 +245,6 @@ A continuación se muestra una comparación de tiempos para dos opciones:
 
     ***************
 
-    Tiempo con opción 1: 3.8512158393859863 segundos
+    Tiempo con opción 1: 4.91388726234436 segundos
 
-    Tiempo con opción 2: 1.04310941696167 segundos
+    Tiempo con opción 2: 1.47633695602417 segundos

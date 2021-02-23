@@ -42,7 +42,7 @@ class Corrector():
         """
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
         va a aplicarse el objeto de la clase Corrector.
-
+            
         :param lenguaje: (str) Lenguaje de los textos a los que se les va a aplicar \
             corrección ortográfica. Para mayor información, consultar la sección de \ 
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
@@ -236,7 +236,7 @@ class Corrector():
 # Función que envuelve la funcionalidad básica de la clase
 
 def corregir_texto(texto, lenguaje='es', corrector=None, diccionario=None, distancia=2,
-                   limpieza=False, tokenizador=None):
+                  limpieza=False, tokenizador=None):
     """ 
     Función que aprovecha la clase Corrector para realizar corrección \
         ortográfica sobre un texto de entrada.
