@@ -143,7 +143,7 @@ La función **par_nubes** permite generar un par de nubes de palabras (una junto
 par_nubes(texto, n1=1, n2=2, ubicacion_archivo='salida/nube_uni_bi.jpg')
 ```
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/graficos/nube_uni_bi.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/nube_uni_bi.jpg "Nube de palabras")
 
 * Gráficas de barras con las frecuencias
 
@@ -154,7 +154,7 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
                              titulo='Frecuencias de palabras', dim_figura=(7,4))
 ```
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/graficos/barras_palabras.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/barras_palabras.jpg "Nube de palabras")
 
 ## Contribuciones
 
