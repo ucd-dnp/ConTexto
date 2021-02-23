@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. Limpieza de textos &mdash; documentación de ConTexto - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="3. Análisis exploratorio y visualización" href="03_exploracion_y_visualizacion.html" />
+    <link rel="prev" title="1. Lectura y escritura de documentos" href="01_lectura_y_escritura_de_documentos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ConTexto
+          
+
+          
+            
+            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest - v0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">ConTexto:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_lectura_y_escritura_de_documentos.html">1. Lectura y escritura de documentos</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Limpieza de textos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#funciones-de-limpieza-de-textos">2.1. Funciones de limpieza de textos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importar-modulo-de-contexto-y-definir-texto-de-prueba">2.1.1. Importar módulo de ConTexto y definir texto de prueba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aplicar-funciones-de-limpieza-de-textos">2.1.2. Aplicar funciones de limpieza de textos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quitar-elementos-repetidos-de-un-texto">2.1.3. Quitar elementos repetidos de un texto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cargar-listas-de-stopwords-predefinidas-y-definidas-por-el-usuario">2.1.4. Cargar listas de <em>stopwords</em>, predefinidas y definidas por el usuario</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#funciones-auxiliares-para-limpieza-de-textos">2.2. Funciones auxiliares para limpieza de textos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importar-funciones-auxiliares-y-definir-textos-de-prueba">2.2.1. Importar funciones auxiliares y definir textos de prueba</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detectar-y-quitar-coincidencias-entre-un-conjunto-de-textos">2.2.2. Detectar y quitar coincidencias entre un conjunto de textos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detectar-y-quitar-palabras-o-valores-atipicos">2.2.3. Detectar y quitar palabras o valores atípicos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_exploracion_y_visualizacion.html">3. Análisis exploratorio y visualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_correccion_ortografica.html">4. Corrección ortográfica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_lematizacion_de_textos.html">5. Lematización de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_stemming_de_textos.html">6. Stemming de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_vectorizacion_de_textos.html">7. Vectorización de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_comparacion_de_textos.html">8. Comparación de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_casos_de_uso.html">Casos de uso</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/comparacion.html">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/escritura.html">Escritura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/exploracion.html">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConTexto</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../seccion_ejemplos.html">Ejemplos</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Limpieza de textos</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="limpieza-de-textos">
+<span id="id1"></span><h1><span class="section-number">2. </span>Limpieza de textos<a class="headerlink" href="#limpieza-de-textos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Este ejemplo muestra las principales funcionalidades del módulo <a class="reference internal" href="../funciones/limpieza.html#module-limpieza" title="limpieza"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Limpieza</span></code></a>, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar <cite>limpieza_aux</cite>, que hace parte de <cite>utils</cite>.</p>
+<div class="section" id="funciones-de-limpieza-de-textos">
+<h2><span class="section-number">2.1. </span>Funciones de limpieza de textos<a class="headerlink" href="#funciones-de-limpieza-de-textos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En esta sección se muestra cómo se pueden hacer distintos procesamientos de un texto de entrada para remover elementos como signos de puntuación, <em>stopwords</em>, números y acentos, que pueden llegar a entorpecer el análisis de un conjunto de documentos.</p>
+<div class="section" id="importar-modulo-de-contexto-y-definir-texto-de-prueba">
+<h3><span class="section-number">2.1.1. </span>Importar módulo de ConTexto y definir texto de prueba<a class="headerlink" href="#importar-modulo-de-contexto-y-definir-texto-de-prueba" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.limpieza</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_prueba</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;hola, esto es una prueba para verificar que la limpieza</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">sea hecha con precisión, empeño y calidad! Esperamos que esté todo de 10.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">Desde Amazonas hasta la Guajira y san andrés, desde John y María hasta Ernesto,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">esperamos       que todo funcione de manera correcta.&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aplicar-funciones-de-limpieza-de-textos">
+<h3><span class="section-number">2.1.2. </span>Aplicar funciones de limpieza de textos<a class="headerlink" href="#aplicar-funciones-de-limpieza-de-textos" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Limpieza básica, se pasa todo a minúsculas, se eliminan signos de puntuación y caracteres numéricos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limpio_basico</span> <span class="o">=</span> <span class="n">limpieza_basica</span><span class="p">(</span><span class="n">texto_prueba</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">limpio_basico</span><span class="p">)</span>
+
+<span class="go">hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Si se desea mantener los caracteres numéricos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limpio_basico_nums</span> <span class="o">=</span> <span class="n">limpieza_basica</span><span class="p">(</span><span class="n">texto_prueba</span><span class="p">,</span> <span class="n">quitar_numeros</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">limpio_basico_nums</span><span class="p">)</span>
+
+<span class="go">hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Para quitar acentos (diéresis, tildes y virgulillas)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sin_acentos</span> <span class="o">=</span> <span class="n">remover_acentos</span><span class="p">(</span><span class="n">limpio_basico</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sin_acentos</span><span class="p">)</span>
+
+<span class="go">hola esto es una prueba para verificar que la limpieza sea hecha con precision empeno y calidad esperamos que este todo de desde amazonas hasta la guajira y san andres desde john y maria hasta ernesto esperamos que todo funcione de manera correcta</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Quitar palabras con menos de 4 caracteres</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quitar_caracteres</span> <span class="o">=</span> <span class="n">remover_palabras_cortas</span><span class="p">(</span><span class="n">sin_acentos</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_caracteres</span><span class="p">)</span>
+
+<span class="go">hola esto prueba para verificar limpieza hecha precision empeno calidad esperamos este todo desde amazonas hasta guajira andres desde john maria hasta ernesto esperamos todo funcione manera correcta</span>
+</pre></div>
+</div>
+<p>Utilizando la función <a class="reference internal" href="../funciones/limpieza.html#limpieza.limpieza_texto" title="limpieza.limpieza_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.limpieza_texto()</span></code></a> se puede, a la vez:</p>
+<ul class="simple">
+<li>Pasar todo el texto a minúsculas</li>
+<li>Quitar signos de puntuación</li>
+<li>Quitar <em>stopwords</em> (palabras y/o expresiones). Para esto, se pueden pasar directamente las listas de palabras y expresiones a quitar, o se puede pasar un archivo que contenga esta información.</li>
+<li>Quitar palabras de una longitud menor a <em>n</em> caracteres (configurable)</li>
+<li>Quitar números (configurable)</li>
+<li>Quitar acentos (configurable)</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">limpio_completo</span> <span class="o">=</span> <span class="n">limpieza_texto</span><span class="p">(</span><span class="n">texto_prueba</span><span class="p">,</span> <span class="n">ubicacion_archivo</span><span class="o">=</span><span class="s1">&#39;entrada/stopwords_prueba.txt&#39;</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">limpio_completo</span><span class="p">)</span>
+
+<span class="go">hola esto una prueba para verificar que sea hecha con precisión empeño esté todo desde amazonas hasta san andrés desde maría hasta ernesto todo funcione manera correcta</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="quitar-elementos-repetidos-de-un-texto">
+<h3><span class="section-number">2.1.3. </span>Quitar elementos repetidos de un texto<a class="headerlink" href="#quitar-elementos-repetidos-de-un-texto" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La función <a class="reference internal" href="../funciones/limpieza.html#limpieza.quitar_repetidos" title="limpieza.quitar_repetidos"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.quitar_repetidos()</span></code></a> permite quitar elementos repetidos de un texto, de acuerdo a un separador definido por el usuario.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Aplicar función directamente</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, utilizando el separador por defecto (&quot;|&quot;):&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">))</span>
+
+<span class="go">texto quitando partes repetidas, utilizando el separador por defecto (&quot;|&quot;):</span>
+<span class="go">hola, hola, como estas,hola, hola tu</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Especificar el separador entre documentos/frases</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, separadas por coma:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">))</span>
+
+<span class="go">texto quitando partes repetidas, separadas por coma:</span>
+<span class="go">hola como estas hola tu</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_repetido</span> <span class="o">=</span> <span class="s1">&#39;hola, hola, como estas,hola, hola tu&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deshabilitar opción de quitar espacios al inicio y al final</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_repetidos</span><span class="p">(</span><span class="n">texto_repetido</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">remover_espacios</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="go">texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:</span>
+<span class="go">hola  hola  como estas  hola tu</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cargar-listas-de-stopwords-predefinidas-y-definidas-por-el-usuario">
+<h3><span class="section-number">2.1.4. </span>Cargar listas de <em>stopwords</em>, predefinidas y definidas por el usuario<a class="headerlink" href="#cargar-listas-de-stopwords-predefinidas-y-definidas-por-el-usuario" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><strong>ConTexto</strong> trae algunas listas predefinidas de <em>stopwords</em> que pueden ser cargadas y utilizadas directamente. Las listas incluidas son:</p>
+<ul class="simple">
+<li>Palabras comunes del lenguaje castellano (solo palabras)</li>
+<li>Nombres comunes de hombres y mujeres (solo palabras)</li>
+<li>Nombres de municipios y departamentos de Colombia (palabras y expresiones: nombres compuestos como «San Andrés»)</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cargar listas de stopwords predefinidas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nombres_hombres</span> <span class="o">=</span> <span class="n">lista_nombres</span><span class="p">(</span><span class="s1">&#39;hombre&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nombres_mujeres</span> <span class="o">=</span> <span class="n">lista_nombres</span><span class="p">(</span><span class="s1">&#39;mujer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nombres_todos</span> <span class="o">=</span> <span class="n">lista_nombres</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apellidos</span> <span class="o">=</span> <span class="n">lista_apellidos</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">municipios</span> <span class="o">=</span> <span class="n">lista_geo_colombia</span><span class="p">(</span><span class="s1">&#39;municipios&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">departamentos</span> <span class="o">=</span> <span class="n">lista_geo_colombia</span><span class="p">(</span><span class="s1">&#39;departamentos&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">todos_geo</span> <span class="o">=</span> <span class="n">lista_geo_colombia</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Además de estas listas, la función <a class="reference internal" href="../funciones/limpieza.html#limpieza.lista_stopwords" title="limpieza.lista_stopwords"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.lista_stopwords()</span></code></a> permite cargar listas predefinidas de las <em>stopwords</em> más comunes para varios lenguajes, utilizando la librería NLTK.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Stopwords comunes de varios lenguajes (por defecto se devuelven las de español)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stopwords</span> <span class="o">=</span> <span class="n">lista_stopwords</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stopwords_ingles</span> <span class="o">=</span> <span class="n">lista_stopwords</span><span class="p">(</span><span class="s1">&#39;ingles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finalmente, la función <a class="reference internal" href="../funciones/limpieza.html#limpieza.cargar_stopwords" title="limpieza.cargar_stopwords"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.cargar_stopwords()</span></code></a> permite al usuario cargar <em>stopwords</em> (tanto palabras como expresiones) desde un archivo plano. Las palabras/expresiones deben ir separadas por comas o ir en renglones separados para ser tenidas en cuenta por aparte.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">La carpeta <a class="reference external" href="https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada" target="_blank">entrada</a> de la sección de ejemplos del <a class="reference external" href="https://github.com/ucd-dnp/ConTexto" target="_blank">Repositorio de GitHub de ConTexto</a> tiene insumos que servirán para correr varios ejemplos de la librería <strong>ConTexto</strong>. En este caso en particular, se va a utilizar el archivo <em>stopwords_prueba.txt</em>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cargar archivo con lista de términos y expresiones que se desean remover</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_sw</span> <span class="o">=</span> <span class="n">cargar_stopwords</span><span class="p">(</span><span class="s1">&#39;entrada/stopwords_prueba.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">custom_sw</span><span class="p">)</span>
+
+<span class="go">([&#39;calidad&#39;, &#39;limpieza&#39;, &#39;guajira&#39;, &#39;john&#39;, &#39;maria&#39;, &#39;elías&#39;], [&#39;Pedro pablo&#39;, &#39;esperamos que&#39;])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="funciones-auxiliares-para-limpieza-de-textos">
+<h2><span class="section-number">2.2. </span>Funciones auxiliares para limpieza de textos<a class="headerlink" href="#funciones-auxiliares-para-limpieza-de-textos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Adicionalmente, el módulo auxiliar <cite>limpieza_aux</cite> contiene algunas funciones complementarias que permiten identificar y remover elementos adicionales que puedan entorpecer el análisis de un conjunto de textos.</p>
+<div class="section" id="importar-funciones-auxiliares-y-definir-textos-de-prueba">
+<h3><span class="section-number">2.2.1. </span>Importar funciones auxiliares y definir textos de prueba<a class="headerlink" href="#importar-funciones-auxiliares-y-definir-textos-de-prueba" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.utils.limpieza_aux</span> <span class="kn">import</span> <span class="n">substrings_en_comun</span><span class="p">,</span> <span class="n">detectar_coincidencias</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.utils.limpieza_aux</span> <span class="kn">import</span> <span class="n">caracteres_repetidos</span><span class="p">,</span> <span class="n">caracteres_consecutivos</span><span class="p">,</span> <span class="n">consonantes_consecutivas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.utils.limpieza_aux</span> <span class="kn">import</span> <span class="n">quitar_coincidenias</span><span class="p">,</span> <span class="n">quitar_palabras_atipicas</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Corpus de prueba</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">textos_prueba</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Este es el primer texto de prueba para la detección de coincidencias.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Una segunda oración permite evaluar si hay coincidencia de caracteres con elementos en común.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Tercera frase que consiste en un texto complementario con palabras comúnmente utilizadas.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Finalmente, esta frase cierra un grupo de 5 oraciones para probar la detección de coincidencias.&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Una última frase para ampliar un poco el grupo.&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="detectar-y-quitar-coincidencias-entre-un-conjunto-de-textos">
+<h3><span class="section-number">2.2.2. </span>Detectar y quitar coincidencias entre un conjunto de textos<a class="headerlink" href="#detectar-y-quitar-coincidencias-entre-un-conjunto-de-textos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En ocasiones un documento puede tener un encabezado o pie de nota común en casi todas sus páginas. Esto puede entorpecer ciertos análisis, al darle un peso demasiado grande a estas coincidencias.</p>
+<p>Para evitar este problema, la función <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.quitar_coincidenias()</span></code> (que a su vez utiliza las funciones <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.substrings_en_comun()</span></code> y <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.detectar_coincidencias()</span></code>) permite, para un conjunto de textos, encontrar y remover coincidencias (cadenas de caracteres) que cumplan una o varias de estas condiciones:</p>
+<ul class="simple">
+<li>Que aparezcan en mínimo una proporción determinada de todos los textos</li>
+<li>Que su longitud (cantidad de caracteres) sea mayor o igual a un valor determinado</li>
+<li>Que la cadena tenga un número de palabras mayor o igual a un valor determinado</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Detectar coincidencias de por lo menos 4 y 10 caracteres</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">substrings_en_comun</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">textos_prueba</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">longitud_min</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">substrings_en_comun</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">textos_prueba</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">longitud_min</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="go">[&#39;a frase &#39;, &#39; grupo&#39;]</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Detectar cadenas de caracteres de mínimo 2 palabras que estén en mínimo la mitad de los textos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">detectar_coincidencias</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">longitud_min</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="go">[&#39;a frase &#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Quitar las coincidencias encontradas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">quitar_coincidenias</span><span class="p">(</span><span class="n">textos_prueba</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">longitud_min</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="go">[&#39;Este es el primer texto de prueba para la detección de coincidencias.&#39;, &#39;Una segunda oración permite evaluar si hay cadanea de caracteres elementos en común.&#39;, &#39;Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.&#39;, &#39;En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.&#39;, &#39;Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.&#39;, &#39;Una últim para ampliar un poco el grupo.&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="detectar-y-quitar-palabras-o-valores-atipicos">
+<h3><span class="section-number">2.2.3. </span>Detectar y quitar palabras o valores atípicos<a class="headerlink" href="#detectar-y-quitar-palabras-o-valores-atipicos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya “ruido” en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como “abcde” o “0000000”). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.</p>
+<p>Para evitar este problema, la función <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.quitar_palabras_atipicas()</span></code> (que a su vez utiliza las funciones <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.caracteres_repetidos()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.caracteres_consecutivos()</span></code> y <code class="xref py py-func docutils literal notranslate"><span class="pre">utils.limpieza_aux.consonantes_consecutivas()</span></code>) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:</p>
+<ul class="simple">
+<li>Que tengan un número o letra repetidos de forma seguida más veces de lo permitido</li>
+<li>Que tengan números o letras consecutivas de forma seguida en un número mayor de lo permitido</li>
+<li>Que tengan más consonantes seguidas de lo permitido</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Detectar si una palabra tiene una cantidad determinada de caracteres repetidos seguidos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">caracteres_repetidos</span><span class="p">(</span><span class="s1">&#39;123444321&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># La función por defecto quita acentos y pasa todo a minúsculas, para que esto no afecte la búsqueda de repetidos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">caracteres_repetidos</span><span class="p">(</span><span class="s1">&#39;GóOol&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Detectar si una palabra tiene una cantidad determinada de caracteres consecutivos seguidos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">caracteres_consecutivos</span><span class="p">(</span><span class="s1">&#39;123444321&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">caracteres_consecutivos</span><span class="p">(</span><span class="s1">&#39;aBCdE&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Detectar si una palabra tiene una cantidad determinada de consonantes seguidas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonantes_consecutivas</span><span class="p">(</span><span class="s1">&#39;AbStracto&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">consonantes_consecutivas</span><span class="p">(</span><span class="s1">&#39;Lynyrd Skynyrd&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># El resultado cambia si se deja de incluir la letra &quot;Y&quot; como vocal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonantes_consecutivas</span><span class="p">(</span><span class="s1">&#39;Lynyrd Skynyrd&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">incluir_y</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># La función quita acentos por defecto, por lo que puede trabajar con consonantes que tengan algún tipo de acento o tilde</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consonantes_consecutivas</span><span class="p">(</span><span class="s1">&#39;mñçs&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prueba de quitar palabras con problemas en un texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_prueba</span> <span class="o">=</span> <span class="s1">&#39;HolaAá! esta es una pruebba para ver si, En 12345, se pueden abstraer las reglas del abcdario.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_sin_atipicas</span> <span class="o">=</span> <span class="n">quitar_palabras_atipicas</span><span class="p">(</span><span class="n">texto_prueba</span><span class="p">,</span> <span class="n">n_repetidas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_consecutivas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_consonantes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;---------------</span><span class="se">\n</span><span class="s2">Texto original:</span><span class="se">\n</span><span class="si">{</span><span class="n">texto_prueba</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;---------------</span><span class="se">\n</span><span class="s2">Texto sin palabras detectadas como atípicas:</span><span class="se">\n</span><span class="si">{</span><span class="n">texto_sin_atipicas</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="go">---------------</span>
+<span class="go">Texto original:</span>
+<span class="go">HolaAá! esta es una pruebba para ver si, En 12345, se pueden abstraer las reglas del abcdario.</span>
+<span class="go">---------------</span>
+<span class="go">Texto sin palabras detectadas como atípicas:</span>
+<span class="go">! esta es una pruebba para ver si, En, se pueden las reglas del.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="03_exploracion_y_visualizacion.html" class="btn btn-neutral float-right" title="3. Análisis exploratorio y visualización" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_lectura_y_escritura_de_documentos.html" class="btn btn-neutral float-left" title="1. Lectura y escritura de documentos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2021, UCD - DNP.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Otras versiones</span>
+        v: latest
+      
+
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Ramas</dt>
+          <dd><a href="02_limpieza_de_textos.html">latest</a></dd>        
+        
+    </dl>    
+
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

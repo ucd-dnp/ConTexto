@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Lectura y escritura de documentos &mdash; documentación de ConTexto - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="2. Limpieza de textos" href="02_limpieza_de_textos.html" />
+    <link rel="prev" title="Ejemplos" href="../seccion_ejemplos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ConTexto
+          
+
+          
+            
+            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest - v0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">ConTexto:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Lectura y escritura de documentos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importar-paquetes-necesarios-y-definir-documentos-para-la-prueba">1.1. Importar paquetes necesarios y definir documentos para la prueba</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extraer-texto-de-los-documentos-y-escribir-el-texto-extraido-en-nuevos-archivos">1.2. Extraer texto de los documentos, y escribir el texto extraído en nuevos archivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilizar-el-ocr-para-extraer-textos-de-imagenes">1.3. Utilizar el OCR para extraer textos de imágenes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enderezar-textos-en-imagenes">1.3.1. Enderezar textos en imágenes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utilizar-las-clases-lector-y-escritor">1.4. Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_limpieza_de_textos.html">2. Limpieza de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_exploracion_y_visualizacion.html">3. Análisis exploratorio y visualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_correccion_ortografica.html">4. Corrección ortográfica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_lematizacion_de_textos.html">5. Lematización de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_stemming_de_textos.html">6. Stemming de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_vectorizacion_de_textos.html">7. Vectorización de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_comparacion_de_textos.html">8. Comparación de textos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_casos_de_uso.html">Casos de uso</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/comparacion.html">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/escritura.html">Escritura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/exploracion.html">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../funciones/utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConTexto</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../seccion_ejemplos.html">Ejemplos</a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Lectura y escritura de documentos</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lectura-y-escritura-de-documentos">
+<span id="id1"></span><h1><span class="section-number">1. </span>Lectura y escritura de documentos<a class="headerlink" href="#lectura-y-escritura-de-documentos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Este ejemplo muestra las principales funcionalidades de los módulos <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> y <a class="reference internal" href="../funciones/escritura.html#module-escritura" title="escritura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Escritura</span></code></a>, de la librería. Estos módulos permiten extraer textos de archivos en diferentes formatos, así como escribir texto en nuevos archivos.</p>
+<div class="section" id="importar-paquetes-necesarios-y-definir-documentos-para-la-prueba">
+<h2><span class="section-number">1.1. </span>Importar paquetes necesarios y definir documentos para la prueba<a class="headerlink" href="#importar-paquetes-necesarios-y-definir-documentos-para-la-prueba" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>La carpeta <a class="reference external" href="https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada" target="_blank">entrada</a> de la sección de ejemplos del <a class="reference external" href="https://github.com/ucd-dnp/ConTexto" target="_blank">Repositorio de GitHub de ConTexto</a> tiene insumos que servirán para correr varios ejemplos de la librería <strong>ConTexto</strong>. En este caso en particular, se van a utilizar documentos de esta carpeta, que están en los siguientes formatos:</p>
+<ul class="last simple">
+<li>Archivo plano (.txt)</li>
+<li>Archivos .PDF; uno digitalizado y uno escaneado (se requiere aplicar OCR para leer este)</li>
+<li>Archivos de Microsoft Word (.doc y .docx)</li>
+<li>Archivo tipo <em>Rich Text Format</em> (.rtf)</li>
+<li>Imagen con texto (.png)</li>
+</ul>
+</div>
+<p>El módulo de <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> de <strong>ConTexto</strong> permite extraer texto de todos estos tipos de archivos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Importar módulos y paquetes necesarios</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.lectura</span> <span class="kn">import</span> <span class="n">Lector</span><span class="p">,</span> <span class="n">leer_texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.escritura</span> <span class="kn">import</span> <span class="n">Escritor</span><span class="p">,</span> <span class="n">escribir_texto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Rutas de los archivos de los cuales se va a extraer texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_txt</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.txt&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_pdf</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.pdf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_pdf_ocr</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in_ocr.pdf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_docx</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.docx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_doc</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.doc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_rtf</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.rtf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivo_img</span> <span class="o">=</span> <span class="s1">&#39;entrada/prueba_in.png&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extraer-texto-de-los-documentos-y-escribir-el-texto-extraido-en-nuevos-archivos">
+<h2><span class="section-number">1.2. </span>Extraer texto de los documentos, y escribir el texto extraído en nuevos archivos<a class="headerlink" href="#extraer-texto-de-los-documentos-y-escribir-el-texto-extraido-en-nuevos-archivos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A continuación se definen dos listas, una de los documentos a leer y otra de los documentos en los que se quiere guardar el texto extraído. Los nuevos documentos quedarán guardados en la carpeta <em>salida</em>, una vez se corra el ejemplo.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir lista de archivos de entrada</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivos_in</span> <span class="o">=</span> <span class="p">[</span><span class="n">archivo_docx</span><span class="p">,</span> <span class="n">archivo_pdf</span><span class="p">,</span> <span class="n">archivo_pdf_ocr</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">archivo_txt</span><span class="p">,</span> <span class="n">archivo_rtf</span><span class="p">,</span> <span class="n">archivo_img</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir lista de archivos de salida, simplemente cambiando el nombre de la carpeta (&quot;salida&quot; en vez de &quot;entrada&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archivos_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;entrada&#39;</span><span class="p">,</span> <span class="s1">&#39;salida&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">archivos_in</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>A continuación se hace un recorrido por la lista de documentos de entrada, y para cada uno:</p>
+<ul class="simple">
+<li>Se determina si se necesita utilizar OCR (solo es necesario definirlo para el archivo de PDF escaneado. En las imagenes se utiliza OCR por defecto).</li>
+<li>Se utiliza la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> para extraer el texto del documento.</li>
+<li>El texto extraído se guarda en el archivo de salida, utilizando la función <a class="reference internal" href="../funciones/escritura.html#escritura.escribir_texto" title="escritura.escribir_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">escritura.escribir_texto()</span></code></a>. Esta función permite guardar texto en archivos planos (.txt), PDF y Word (.docx). Si el nombre del archivo especificado es de otro tipo, la función guarda el texto como un archivo plano.</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">archivo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">archivos_in</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">aplicar_ocr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s1">&#39;ocr&#39;</span> <span class="ow">in</span> <span class="n">archivo</span> <span class="k">else</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">leer_texto</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">por_paginas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ocr</span><span class="o">=</span><span class="n">aplicar_ocr</span><span class="p">,</span> <span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">escribir_texto</span><span class="p">(</span><span class="n">archivos_out</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">texto</span><span class="p">)</span>
+
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in.docx</span>
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in.pdf</span>
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in_ocr.pdf</span>
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in.txt</span>
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in.rtf</span>
+<span class="go">Formato desconocido. Se escribirá en un formato plano (.txt).</span>
+<span class="go">------------</span>
+<span class="go">entrada/prueba_in.png</span>
+<span class="go">Formato desconocido. Se escribirá en un formato plano (.txt).</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="utilizar-el-ocr-para-extraer-textos-de-imagenes">
+<h2><span class="section-number">1.3. </span>Utilizar el OCR para extraer textos de imágenes<a class="headerlink" href="#utilizar-el-ocr-para-extraer-textos-de-imagenes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El OCR (reconocimiento óptico de caracteres) se utiliza para extraer texto de archivos de imagen. <strong>ConTexto</strong> incorpora el OCR de Tesseract para extraer texto de imágenes (como, por ejemplo, documentos escaneados). Actualmente, la librería soporta archivos en formatos «.png», «.jpg» y «.jpeg». Para archivos PDF, la librería primero convierte las páginas a imágenes, y luego aplica el OCR.</p>
+<p>Adicionalmente, la librería permite realizar algunas operaciones de preprocesamiento sobre las imágenes antes de aplicar el OCR. Estos preprocesamientos pueden permitir hacer una lectura más acertada de los textos de las imágenes.</p>
+<p>En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura. En primer lugar, se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo se grafica acá por motivos didácticos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="align-center figure">
+<img alt="" src="../_images/prueba_in.jpg" />
+</div>
+<p>El parámetro <em>preprocesamiento</em> de la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> y de la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> permite elegir entre 5 diferentes tratamientos previos a la imagen. Si el valor de <em>preprocesamiento</em> no está en el rango de 1 a 5, no se realizará ningún preprocesamiento sobre la imagen.</p>
+<p>A continuación, se lee la imagen sin preprocesar y con dos tipos distintos de procesamiento, imprimiendo el resultado en cada caso.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">procesamientos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">procesamientos</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preprocesamiento: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> (sin Preprocesamiento)&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Preprocesamiento: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">leer_texto</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">,</span> <span class="n">preprocesamiento</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+
+<span class="go">---------------</span>
+<span class="go">Preprocesamiento: 0 (sin Preprocesamiento)</span>
+<span class="go">fTextó contruidó de Í&quot;</span>
+<span class="go">fondo, paré probar</span>
+<span class="go">Tesseract</span>
+
+<span class="go">---------------</span>
+<span class="go">Preprocesamiento: 2</span>
+<span class="go">Texto con ruido de</span>
+<span class="go">fondo, para probar</span>
+<span class="go">Tesseract</span>
+
+<span class="go">---------------</span>
+<span class="go">Preprocesamiento: 4</span>
+</pre></div>
+</div>
+<p>Se puede observar que el mejor desempeño se obtiene con <em>preprocesamiento=2</em>. Cuando no se hace ningún procesamiento, el ruido de fondo de la imagen afecta el texto extraído. Por otro lado, con <em>preprocesamiento=4</em> la función no encuentra ningún texto. Dependiendo de la calidad de la imagen (o archivo PDF escaneado) de entrada, diferentes preprocesamientos (o no aplicar ninguno) tendrán mejor o peor desempeño.</p>
+<div class="section" id="enderezar-textos-en-imagenes">
+<h3><span class="section-number">1.3.1. </span>Enderezar textos en imágenes<a class="headerlink" href="#enderezar-textos-en-imagenes" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Además del parámetro <em>preprocesamiento</em>, la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> y de la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> cuentan con el parámetro <em>enderezar</em>, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.</p>
+<p>Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro <em>preprocesamiento</em>. La corrección de giro puede ser bastante útil para textos torcidos (por ejemplo, porque quedaron así al escanear un documento).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_torcido</span> <span class="o">=</span> <span class="s1">&#39;entrada/texto_torcido.jpg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">texto_torcido</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="align-center figure">
+<img alt="" src="../_images/texto_torcido.jpg" />
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">enderezar</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">enderezar</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---------------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*Utilizando el parámetro enderezar=</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">:*&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">texto</span> <span class="o">=</span> <span class="n">leer_texto</span><span class="p">(</span><span class="n">texto_torcido</span><span class="p">,</span> <span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">enderezar</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+
+<span class="go">---------------</span>
+<span class="go">*Utilizando el parámetro enderezar=False:*</span>
+<span class="go">Texto torcido (con</span>
+
+<span class="go">lgún grado de</span>
+<span class="go">inclinación)</span>
+
+<span class="go">---------------</span>
+<span class="go">*Utilizando el parámetro enderezar=True:*</span>
+<span class="go">Texto torcido (con</span>
+<span class="go">algún grado de</span>
+<span class="go">inclinación)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="utilizar-las-clases-lector-y-escritor">
+<h2><span class="section-number">1.4. </span>Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite><a class="headerlink" href="#utilizar-las-clases-lector-y-escritor" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si se desea, también es posible utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite> para leer y escribir archivos, respectivamente</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir objeto de clase Lector y extraer el texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lector</span> <span class="o">=</span> <span class="n">Lector</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto</span> <span class="o">=</span> <span class="n">lector</span><span class="o">.</span><span class="n">archivo_a_texto</span><span class="p">(</span><span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*El texto extraído es:* </span><span class="se">\n</span><span class="si">{</span><span class="n">texto</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir objeto de clase Escritor y escribir el texto en un nuevo archivo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">escritor</span> <span class="o">=</span> <span class="n">Escritor</span><span class="p">(</span><span class="s1">&#39;salida/prueba.txt&#39;</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">escritor</span><span class="o">.</span><span class="n">escribir_txt</span><span class="p">()</span>
+
+<span class="go">*El texto extraído es:*</span>
+<span class="go">Texto con ruido de</span>
+<span class="go">fondo, para probar</span>
+<span class="go">Tesseract</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="02_limpieza_de_textos.html" class="btn btn-neutral float-right" title="2. Limpieza de textos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../seccion_ejemplos.html" class="btn btn-neutral float-left" title="Ejemplos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Derechos de autor 2021, UCD - DNP.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Otras versiones</span>
+        v: latest
+      
+
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Ramas</dt>
+          <dd><a href="01_lectura_y_escritura_de_documentos.html">latest</a></dd>        
+        
+    </dl>    
+
+  </div>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
