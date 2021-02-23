@@ -12,6 +12,7 @@ from PIL import Image
 
 # Función auxiliar para graficar las imágenes
 
+
 def graficar_img(img, titulo='', dims=(15, 10)):
     """ Función que grafica y muestra una imagen con Pyplot de Matplotlib.
 
@@ -36,13 +37,14 @@ def graficar_img(img, titulo='', dims=(15, 10)):
 def blur_img(img):
     """ Función que aplica blurring o 'borrosidad' a una imagen con el fin de \
         eliminar ruido y facilitar la extracción de texto.
-        
+
     :param img: (numpy array). Imagen sobre la cual se aplica blurring.
     :return: (numpy array). Imagen con blurring.
     """
     return cv2.medianBlur(img, 5)
 
 # Aplicar 'thresholding' (umbral para decidir valores)
+
 
 def umbral_otsu(img):
     """ Función que aplica el umbral de OTSU sobre una imagen, con el fin de \
@@ -68,10 +70,11 @@ def umbral_adaptivo(img, tipo='gaussian'):
     """
     if tipo == 'gaussian':
         return cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-            cv2.THRESH_BINARY, 75, 15)
+                                     cv2.THRESH_BINARY, 75, 15)
     else:
         return cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C,
-            cv2.THRESH_BINARY, 75, 15)
+                                     cv2.THRESH_BINARY, 75, 15)
+
 
 def corregir_giro(img):
     """ Función que corrige el alineamiento del texto dentro de una imagen. Función adaptada \
@@ -105,7 +108,7 @@ def procesar_img_1(img, enderezar=False):
     """
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     if enderezar:
-        gris = corregir_giro(gris)    
+        gris = corregir_giro(gris)
     return gris
 
 
@@ -122,7 +125,7 @@ def procesar_img_2(img, enderezar=False):
     gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     borrosa = blur_img(gris)
     if enderezar:
-        borrosa = corregir_giro(borrosa)    
+        borrosa = corregir_giro(borrosa)
     return borrosa
 
 

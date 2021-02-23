@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exploración &mdash; documentación de ConTexto - 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Lectura" href="lectura.html" />
+    <link rel="prev" title="Escritura" href="escritura.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ConTexto
+          
+
+          
+            
+            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                Versión 0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">ConTexto:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="comparacion.html">Comparación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
+<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exploración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lenguajes.html">Lenguajes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectorizacion.html">Vectorización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConTexto</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Exploración</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-exploracion">
+<span id="exploracion"></span><h1>Exploración<a class="headerlink" href="#module-exploracion" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="py function">
+<dt id="exploracion.frecuencia_ngramas">
+<code class="descclassname">exploracion.</code><code class="descname">frecuencia_ngramas</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">n_grama</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">n_max</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.frecuencia_ngramas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera un diccionario con los n-gramas y sus respectivas frecuencias de ocurrencia en el texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
+<li><strong>n_grama</strong> – (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.</li>
+<li><strong>n_max</strong> – (int) Valor por defecto: None. Cantidad máxima de n-gramas a generar.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(dict) diccionario de n-gramas más frecuentes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.grafica_barchart_frecuencias">
+<code class="descclassname">exploracion.</code><code class="descname">grafica_barchart_frecuencias</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">n_grama</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">dim_figura</span><span class="o">=</span><span class="default_value">(8, 5)</span></em>, <em><span class="n">titulo</span><span class="o">=</span><span class="default_value">'Términos más frecuentes'</span></em>, <em><span class="n">ascendente</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">ubicacion_archivo</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">graficar</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">n_terminos</span><span class="o">=</span><span class="default_value">15</span></em>, <em><span class="n">devolver_grafica</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.grafica_barchart_frecuencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite graficar o exportar un gráfico de barras horizontales de la frecuencia de palabras (n-gramas) a partir de un texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
+<li><strong>n_grama</strong> – (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.</li>
+<li><strong>dim_figura</strong> – (float, float) Valor por defecto: (8, 5). Corresponden al ancho y alto de la figura en pulgadas.</li>
+<li><strong>titulo</strong> – (str) Valor por defecto: “Términos más frecuentes”. Corresponde al título de la nube de palabras.</li>
+<li><strong>ascendente</strong> – (bool) {True, False} Valor por defecto: True. Determina si las barras de términos se muestran de menos (abajo) a más (arriba) frecuentes en la gráfica.</li>
+<li><strong>ubicacion_archivo</strong> – (str) Valor por defecto: vacío (“”). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.</li>
+<li><strong>graficar</strong> – (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el <a class="reference external" href="https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado" target="_blank">IDE</a> que esté utilizando.</li>
+<li><strong>n_terminos</strong> – (int) Valor por defecto: 15. Cantidad de n-gramas a graficar.</li>
+<li><strong>devolver_grafica</strong> – (bool) {True, False} Valor por defecto: False. Indica si se desea obtener         el gráfico de barras como un objeto de Matplotlib.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(objeto Figure de Matplotlib) Figura con el gráfico de barras, solo si devolver_grafica=True.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.graficar_coocurrencias">
+<code class="descclassname">exploracion.</code><code class="descname">graficar_coocurrencias</code><span class="sig-paren">(</span><em><span class="n">mat</span></em>, <em><span class="n">prop_fuera</span><span class="o">=</span><span class="default_value">0</span></em>, <em><span class="n">ubicacion_archivo</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">graficar</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">K</span><span class="o">=</span><span class="default_value">5</span></em>, <em><span class="n">color_borde</span><span class="o">=</span><span class="default_value">'orchid'</span></em>, <em><span class="n">color_nodo</span><span class="o">=</span><span class="default_value">'silver'</span></em>, <em><span class="n">semilla</span><span class="o">=</span><span class="default_value">123</span></em>, <em><span class="n">dim_figura</span><span class="o">=</span><span class="default_value">(13, 13)</span></em>, <em><span class="n">devolver_grafica</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.graficar_coocurrencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Grafica una matriz de coocurrencias de términos como un grafo no dirigido.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>mat</strong> – (dataframe) Matriz de coocurrencias que desea graficar.</li>
+<li><strong>prop_fuera</strong> – (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen.</li>
+<li><strong>ubicacion_archivo</strong> – (str) Valor por defecto: “”. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.</li>
+<li><strong>graficar</strong> – (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el <a class="reference external" href="https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado" target="_blank">IDE</a> que esté utilizando.</li>
+<li><strong>K</strong> – (float) Valor por defecto: 5. Distancia óptima entre nodos, aumente este valor para separar los nodos.</li>
+<li><strong>color_borde</strong> – (str) Valor por defecto: “orchid”. Corresponde al color de los bordes de la red, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.</li>
+<li><strong>color_nodo</strong> – (str) Valor por defecto: “silver”. Corresponde al color de los nodos, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.</li>
+<li><strong>semilla</strong> – (int) Valor por defecto: 123. Estado inicial del generador aleatorio para establecer la posición de los nodos.</li>
+<li><strong>dim_figura</strong> – (float, float) Valor por defecto: (13, 13). Corresponden al ancho y alto de la figura en pulgadas.</li>
+<li><strong>devolver_grafica</strong> – (bool) {True, False} Valor por defecto: False. Indica si se desea obtener         el gráfico de barras como un objeto de Matplotlib.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(objeto Figure de Matplotlib) Figura con el grafo de coocurrencias, solo si devolver_grafica=True.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.matriz_coocurrencias">
+<code class="descclassname">exploracion.</code><code class="descname">matriz_coocurrencias</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">min_frec</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">max_num</span><span class="o">=</span><span class="default_value">200</span></em>, <em><span class="n">modo</span><span class="o">=</span><span class="default_value">'documento'</span></em>, <em><span class="n">ventana</span><span class="o">=</span><span class="default_value">3</span></em>, <em><span class="n">tri_sup</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">limpiar</span><span class="o">=</span><span class="default_value">False</span></em>, <em><span class="n">tokenizador</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.matriz_coocurrencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la matriz de coocurrencias de un texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.</li>
+<li><strong>min_frec</strong> – (int) Valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec, dicha palabra es excluida de la matriz.</li>
+<li><strong>max_num</strong> – (int) Valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se eligen las más frecuentes).</li>
+<li><strong>modo</strong> – (str) {“documento”, “ventana”} Valor por defecto: “documento”. Corresponde al modo de análisis, con “documento” se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con “ventana” se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.</li>
+<li><strong>ventana</strong> – (int) Valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo=”ventana”). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.</li>
+<li><strong>tri_sup</strong> – (bool) {True, False} Valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de coocurrencias, si es False devuelve la matriz completa.</li>
+<li><strong>limpiar</strong> – (bool) {True, False} Valor por defecto: False. Define         si se desea hacer una limpieza básica (aplicando la función <cite>limpieza_basica</cite>         del módulo <cite>limpieza</cite>) al texto de entrada, antes de calcular las coocurrencias.</li>
+<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se utilizará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(dataframe) Coocurrencias de los textos de entrada.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.nube_palabras">
+<code class="descclassname">exploracion.</code><code class="descname">nube_palabras</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">n_grama</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">n_terminos</span><span class="o">=</span><span class="default_value">100</span></em>, <em><span class="n">graficar</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">dim_figura</span><span class="o">=</span><span class="default_value">(10, 10)</span></em>, <em><span class="n">hor</span><span class="o">=</span><span class="default_value">0.6</span></em>, <em><span class="n">titulo</span><span class="o">=</span><span class="default_value">'Términos más frecuentes'</span></em>, <em><span class="n">ubicacion_archivo</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">mask</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">semilla</span><span class="o">=</span><span class="default_value">1234</span></em>, <em><span class="n">devolver_nube</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.nube_palabras" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite graficar o exportar una nube de palabras (n-gramas) a partir de un texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
+<li><strong>n_grama</strong> – (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.</li>
+<li><strong>n_terminos</strong> – (int) Valor por defecto: 100. Cantidad de n-gramas a graficar.</li>
+<li><strong>graficar</strong> – (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el <a class="reference external" href="https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado" target="_blank">IDE</a> que esté utilizando.</li>
+<li><strong>dim_figura</strong> – (float, float) Valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.</li>
+<li><strong>hor</strong> – (float) (valor entre 0 y 1). Corresponde a la orientación de las palabras en el gráfico, siendo 0 una distribución vertical, 1 una distribución horizontal y una distribución mixta a cualquier valor entre 0 y 1.</li>
+<li><strong>titulo</strong> – (str) Valor por defecto: “Términos más frecuentes”. Corresponde al título de la nube de palabras.</li>
+<li><strong>ubicacion_archivo</strong> – (str) Valor por defecto: vacío (“”). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.</li>
+<li><strong>mask</strong> – (array) o None, Valor por defecto: None. Correspondiente a la máscara base donde se dibujan las palabras, por defecto se utiliza una máscara circular.</li>
+<li><strong>semilla</strong> – (int) Valor por defecto: 1234. Corresponde al estado inicial del generador, este incide en la posición y color de las palabras. En caso de querer replicar la nube de palabras, se recomienda utilizar un mismo valor de semilla.</li>
+<li><strong>devolver_nube</strong> – (bool) {True, False} Valor por defecto: False. Indica si desea obtener la nube de palabras como un objeto tipo WordCloud.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">objeto tipo WordCloud, solo si devolver_nube=True.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.obtener_ngramas">
+<code class="descclassname">exploracion.</code><code class="descname">obtener_ngramas</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">devolver_lista</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">limpiar</span><span class="o">=</span><span class="default_value">False</span></em>, <em><span class="n">tokenizador</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.obtener_ngramas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite generar n-gramas a partir de un texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
+<li><strong>n</strong> – (int) Cantidad de elementos a tener en cuenta en la generación de n-gramas. Por ejemplo, si n=1 se retornarán palabras, y si n=2 se retornarán bigramas.</li>
+<li><strong>devolver_lista</strong> – (bool) {True, False} Valor por defecto: True. Si el valor es True se retorna un objeto tipo lista; si el valor es False se retorna un objeto tipo generador.</li>
+<li><strong>limpiar</strong> – (bool) {True, False} Valor por defecto: False. Define         si se desea hacer una limpieza básica (aplicando la función          <cite>limpieza_basica</cite> del módulo <cite>limpieza</cite>) al texto de entrada, antes de encontrar los n-gramas.</li>
+<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se utilizará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">n-gramas generados con las características especificadas.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="exploracion.par_nubes">
+<code class="descclassname">exploracion.</code><code class="descname">par_nubes</code><span class="sig-paren">(</span><em><span class="n">texto</span></em>, <em><span class="n">n1</span><span class="o">=</span><span class="default_value">1</span></em>, <em><span class="n">n2</span><span class="o">=</span><span class="default_value">2</span></em>, <em><span class="n">dim_figura</span><span class="o">=</span><span class="default_value">(20, 11)</span></em>, <em><span class="n">ubicacion_archivo</span><span class="o">=</span><span class="default_value">''</span></em>, <em><span class="n">graficar</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">devolver_grafica</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#exploracion.par_nubes" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite graficar o exportar un par de nubes de palabras (una junto a otra) a partir de un texto.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>texto</strong> – (str) Corresponde al texto que se desea analizar.</li>
+<li><strong>n1</strong> – (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas de la nube de palabras izquierda.</li>
+<li><strong>n2</strong> – (int) Valor por defecto: 2. Cantidad de elementos a tener en cuenta en la generación de n-gramas de la nube de palabras derecha.</li>
+<li><strong>dim_figura</strong> – (float, float) Valor por defecto: (20, 10). Corresponden al ancho y alto de la figura en pulgadas.</li>
+<li><strong>ubicacion_archivo</strong> – (str) Valor por defecto: “”. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.</li>
+<li><strong>graficar</strong> – (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el <a class="reference external" href="https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado" target="_blank">IDE</a> que esté utilizando.</li>
+<li><strong>devolver_grafica</strong> – (bool) {True, False} Valor por defecto: False. Indica si se desea obtener         el gráfico con el par de nubes de palabras como un objeto de Matplotlib.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(objeto Figure de Matplotlib) Figura con el par de nubes de palabras, solo si devolver_grafica=True.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lectura.html" class="btn btn-neutral float-right" title="Lectura" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="escritura.html" class="btn btn-neutral float-left" title="Escritura" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, UCD - DNP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
