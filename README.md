@@ -2,6 +2,9 @@
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/recursos/contexto.jpg "LEILA")
 
+[![PyPI version fury.io](https://badge.fury.io/py/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ConTexto.svg)](https://pypi.org/project/ConTexto/)
+ [![PyPI license](https://img.shields.io/pypi/l/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![Downloads](https://pepy.tech/badge/contexto)](https://pepy.tech/project/contexto) [![GitHub forks](https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/ucd-dnp/ConTexto/)
+
 ## Descripción
 
 La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren procesamiento y análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.
