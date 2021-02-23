@@ -1,6 +1,5 @@
 dist
 _setup.py
-*.bat
 *.pyc
 .idea
 __pycache__
