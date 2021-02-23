@@ -34,5 +34,25 @@ ConTexto - Librería de procesamiento y análisis de textos
     :alt: 
     :figclass: align-center
 
+.. image:: https://badge.fury.io/py/ConTexto.svg
+  :target: https://pypi.org/project/ConTexto/)
+  :alt:
+
+.. image:: https://img.shields.io/pypi/pyversions/ConTexto.svg
+  :target: https://pypi.org/project/ConTexto/)
+  :alt:
+
+.. image:: https://img.shields.io/pypi/l/ConTexto.svg
+  :target: https://pypi.org/project/ConTexto/)
+  :alt:
+
+.. image:: https://pepy.tech/badge/contexto
+  :target: https://pepy.tech/project/contexto)
+  :alt:
+
+.. image:: https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000
+  :target: https://github.com/ucd-dnp/ConTexto/)
+  :alt:
+
 .. include:: seccion_introduccion.rst
    :start-line: 5
