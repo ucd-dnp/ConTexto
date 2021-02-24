@@ -1,6 +1,6 @@
 # ConTexto - Librería de procesamiento y análisis de textos
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/recursos/contexto.jpg "LEILA")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/contexto/master/recursos/contexto.jpg "ConTexto")
 
 [![PyPI version fury.io](https://badge.fury.io/py/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ConTexto.svg)](https://pypi.org/project/ConTexto/)
  [![PyPI license](https://img.shields.io/pypi/l/ConTexto.svg)](https://pypi.org/project/ConTexto/) [![Downloads](https://pepy.tech/badge/contexto)](https://pepy.tech/project/contexto) [![GitHub forks](https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/ucd-dnp/ConTexto/)
@@ -28,11 +28,11 @@ Antes de proceder con la instalación de ConTexto asegúrese de tener instalado 
 * Tesseract
 * Poppler v0.68.0
 
-Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html)
+Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html)
 
 ## Instalación
 
-Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/seccion_instalacion.html).
+Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html).
 
 ```
 pip install contexto
@@ -45,7 +45,7 @@ La librería cuenta con una documentación que detalla las funciones que la conf
 
 ## Ejemplo
 
-En esta sección nos enfocaremos en presentar unos cortos ejemplos de uso de algunas funciones de la librería teniendo dos enfoques en particular: la limpieza de textos y la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, se puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/seccion_ejemplos.html) de la documentación.
+En esta sección nos enfocaremos en presentar unos cortos ejemplos de uso de algunas funciones de la librería teniendo dos enfoques en particular: la limpieza de textos y la visualización de textos. Para mayor información y detalle sobre ejemplos de estas y otras funciones de la librería, se puede consultar la [sección de ejemplos]( https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_ejemplos.html) de la documentación.
 
 ### Ejemplo - Limpieza de textos
 
@@ -157,7 +157,7 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
                              titulo='Frecuencias de palabras', dim_figura=(7,4))
 ```
 
-![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/barras_palabras.jpg "Nube de palabras")
+![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/barras_palabras.jpg "Frecuencia de palabras")
 
 ## Contribuciones
 
