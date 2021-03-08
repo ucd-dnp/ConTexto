@@ -234,6 +234,6 @@ class dispersionPlot:
             warnings.warn(
                 'por favor fije un directorio para guardar la imagen')
             plt.show()
-        if return_fig:
+        if self.return_fig:
             return fig
         return ax
