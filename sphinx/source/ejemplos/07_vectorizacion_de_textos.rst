@@ -40,13 +40,13 @@ La clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuenci
 Inicializar y ajustar los vectorizadores
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Para utilizar estos tipos de vectorización, es necesario definir un objeto de clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`, especificando aspector tales como:
+Para utilizar estos tipos de vectorización, es necesario definir un objeto de clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`, especificando aspectos tales como:
 
 - Qué tipo de técnica aplicar (BOW, TF o TF-IDF).
 - El rango de n-gramas que se desea tener en cuenta (solo palabras, palabras y bigramas, etc.).
 - Si se quiere limitar el tamaño del vocabulario del vectorizador a los *n* términos más frecuentes. Esto puede ser útil cuando se tienen muchos textos de larga longitud, lo que puede llegar a generar un vocabulario demasiado grande si no se acota.
 
-Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un corpus, para que aprenda el vocabulario que va a utilizar. Al momento de ajustar el vectorizador se puede utilizar el parámetro *archivo_salida*. Si este parámetro se utiliza, el vectorizador ajustado va a quedar guardado como un objeto tipo Pickle en la ubicación definida por el usuario.
+Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un corpus, para que aprenda el vocabulario que va a utilizar. Al momento de ajustar el vectorizador se puede utilizar el parámetro *archivo_salida*. Si este parámetro se utiliza, el vectorizador ajustado va a quedar guardado como un objeto tipo *Pickle* en la ubicación definida por el usuario.
 
 .. code-block:: python
 
@@ -114,7 +114,7 @@ posición  palabra
 Vectorizar textos utilizando los vectorizadores entrenados
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Una vez se tiene el vectorizador ajustado, la función `vectorizar` permite obtener, para uno o varios textos de entrada, un arreglo (*array*) en numpy de 2 dimensiones. La cantidad de filas de este arreglo corresponde al número de textos vectorizados, y la cantidad de columnas corresponde al tamaño del vocabulario del vectorizador. El argumento *disperso*, por defecto igual a False, permite obtener la salida como una matriz dispersa, en vez de un arreglo de numpy. Esto puede traducirse en un ahorro significativo de memoria en el caso de que se tengan muchos textos y/o un vocabulario muy grande.
+Una vez se tiene el vectorizador ajustado, la función `vectorizar` permite obtener, para uno o varios textos de entrada, un arreglo (*array*) en numpy de 2 dimensiones. La cantidad de filas de este arreglo corresponde al número de textos vectorizados, y la cantidad de columnas corresponde al tamaño del vocabulario del vectorizador. El argumento *disperso* permite  obtener como salida una matriz dispersa (disperso=True) o un arreglo de numpy (disperso=False). Esto puede traducirse en un ahorro significativo de memoria en el caso de que se tengan muchos textos y/o un vocabulario muy grande.
 
 Es importante anotar que si algún texto de entrada tiene palabras que no hacen parte del vocabulario del vectorizador, estas no serán tenidas en cuenta.
 
@@ -193,7 +193,7 @@ Vectorización por medio de *Hashing*
 
 La clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` utiliza el *hashing trick* para determinar directamente (sin necesidad de ajustar sobre un corpus) la posición de cada término de un texto dentro de un vector numérico. Esta técnica es rápida y ligera en memoria, pues no requiere aprender ni guardar un vocabulario. Esto también tiene algunas desventajas; por ejemplo, a partir de un vector no se puede aplicar una transformada inversa para conocer qué palabras contenía el texto.
 
-Adicionalmente, para muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
+Adicionalmente, cuando se consideran muchos textos, o textos muy grande, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
 
 .. code-block:: python
 

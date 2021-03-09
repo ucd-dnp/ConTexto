@@ -146,7 +146,7 @@ Se puede observar que el mejor desempeño se obtiene con *preprocesamiento=2*. C
 Enderezar textos en imágenes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` y de la clase :py:class:`Lector <lectura.Lector>` cuentan con el parámetro *enderezar*, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
+Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` de la clase :py:class:`Lector <lectura.Lector>` cuentan con el parámetro *enderezar*, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
 
 Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro *preprocesamiento*. La corrección de giro puede ser bastante útil para textos torcidos (por ejemplo, porque quedaron así al escanear un documento).
 
