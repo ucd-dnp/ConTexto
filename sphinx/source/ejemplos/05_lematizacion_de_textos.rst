@@ -9,7 +9,7 @@ Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lemati
 Definir textos de prueba
 ------------------------
 
-El módulo de lematización de **ConTexto** cuenta con dos lematizadores distintos, cada uno apoyado en una librería de NLP (Procesamiento del Lenguaje Natural) distinta: `spaCy <https://spacy.io/>`_ y `Stanza <https://stanfordnlp.github.io/stanza/>`_. En este ejemplo se mostrará el usto de ambas clases, :py:class:`LematizadorSpacy <lematizacion.LematizadorSpacy>` y :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`, y de la función :py:func:`lematizacion.lematizar_texto`, que puede utilizar cualquiera de los dos lematizadores.
+El módulo de lematización de **ConTexto** cuenta con dos lematizadores distintos, cada uno apoyado en una librería de NLP (Procesamiento del Lenguaje Natural) distinta: `spaCy <https://spacy.io/>`_ y `Stanza <https://stanfordnlp.github.io/stanza/>`_. En este ejemplo se mostrará el uso de ambas clases, :py:class:`LematizadorSpacy <lematizacion.LematizadorSpacy>` y :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`, y de la función :py:func:`lematizacion.lematizar_texto`, que puede utilizar cualquiera de los dos lematizadores.
 
 En primer lugar, se definen los textos que se utilizarán para correr los ejemplos.
 
@@ -57,7 +57,7 @@ La función :py:func:`lematizacion.lematizar_texto` se encarga de aplicar lemati
 Agregar lemas personalizados al `LematizadorSpacy`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Los modelos cuentan con algunos diccionarios de lemas, que utilizan para aplicar la lematización. Así, por ejemplo, el lematizador sabe que para la palabra 'iba', su lema debería ser 'ir'.
+Los modelos cuentan con algunos diccionarios de lemas, que se utilizan para aplicar la lematización. Así, por ejemplo, el lematizador sabe que para la palabra 'iba', su lema debería ser 'ir'.
 
 Es posible que el diccionario del lematizador no contenga todos los casos que nos interesan, por lo que es necesario complementar el lematizador. Esto se puede hacer desde un archivo JSON o desde un diccionario de Python.
 
