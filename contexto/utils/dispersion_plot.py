@@ -282,6 +282,6 @@ class dispersionPlot:
         if not self._show and self._outpath is None:
             warnings.warn("Por favor fije una ruta para guardar la imagen")
             plt.show()
-        if self.return_fig:
+        if self._return_fig:
             return fig
         return ax
