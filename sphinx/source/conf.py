@@ -100,7 +100,7 @@ html_show_sourcelink = False
 
 html_theme_options = {    
     'display_version': True,
-    'style_external_links' : True    
+    'style_external_links' : False
 }
 
 
