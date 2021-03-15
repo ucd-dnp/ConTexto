@@ -58,7 +58,7 @@ class dispersionPlot:
     @textos.setter
     def textos(self, text):
         if isinstance(text, str):
-            self._textos = list(text)
+            self._textos = [text]
             all_words = " ".join(self._textos).split()
         elif isinstance(text, list):
             self._textos = text
