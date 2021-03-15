@@ -54,6 +54,9 @@ Con esta información se puede obtener la frecuencia de cada n-grama, y así con
      'cervantes saavedra',
      'saavedra tasaron']
 
+Nubes de palabras
+~~~~~~~~~~~~~~~~~
+
 .. code-block:: python
 
     >>> ## Graficar y guardar nubes de palabras y bigramas
@@ -81,6 +84,31 @@ Con esta información se puede obtener la frecuencia de cada n-grama, y así con
     :alt: 
     :figclass: align-center
 
+La función de nubes de palabras tiene algunos parámetros que permiten personalizar la estética de la gráfica. En particular, se puede configurar:
+
+- La forma de la nube: Para esto, se puede ingresar una imagen de referencia con la forma que uno quiera utilizar. Por defecto, esta forma es circular.
+- El color de fondo
+- El color y grosor del contorno: Esto permite delinear la forma de la nube de palabras
+
+.. code-block:: python
+
+    >>> # Nube de palabras con forma personalizada
+    >>> nube_palabras(texto, n_grama=1, semilla=130, hor=0.9, color_contorno='gold', 
+    >>>               grosor_contorno=1, color_fondo='black', forma='entrada/quijote.jpg')
+
+.. figure:: ../_static/image/graficos/quijote.png
+    :align: center
+    :alt:
+    :figclass: align-center
+
+.. figure:: ../_static/image/graficos/nube_quijote.png
+    :align: center
+    :alt: 
+    :figclass: align-center
+
+Gráficos de barras
+~~~~~~~~~~~~~~~~~~
+
 Los n-gramas más frecuentes también se pueden visualizar mediante gráficas más estándar como, por ejemplo, gráficos de barras que muestren los términos más frecuentes. La función :py:func:`exploracion.grafica_barchart_frecuencias` permite obtener estas gráficas.
 
 .. code-block:: python
@@ -105,6 +133,56 @@ Los n-gramas más frecuentes también se pueden visualizar mediante gráficas m�
     :alt: 
     :figclass: align-center
 
+Gráficos de dispersión léxica
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Además de la frecuencia, la importancia de una palabra se puede ponderar por su dispersión en el texto. La dispersión léxica es una medida de la homogeneidad de una palabra en diferentes partes del texto. Esta medida puede ser visualizada usando el gráfico de dispersión léxica, en donde en el eje horizontal se marca con una línea cada una de las ocurrencias de una palabra, y en el eje vertical se muestran las palabras de interés. La función :py:func:`exploracion.graficar_dispersion` permite obtener estas gráficas.
+
+En el siguiente ejemplo se definen algunas palabras de interés y se hace el gráfico correspondiente. Palabras como *obispo* y *esparto* aparecen hacía al final del texto, mientras que palabras como *caballero* y *merced* aparecen en todo el texto.
+
+.. code-block:: python
+
+    >>> from contexto.exploracion import graficar_dispersion
+
+    >>> # Se definen las palabras de interés
+    >>> mis_palabras = ['caballero', 'merced', 'enamorado', 'leyes', 'molino', 'esparto', 'obispos']
+
+    >>> # Gráfico de dispersión
+    >>> graficar_dispersion(texto, mis_palabras, dim_figura=(6,3))
+
+.. figure:: ../_static/image/graficos/dispersion_plot_1.png
+    :align: center
+    :alt: 
+    :figclass: align-center
+
+También se puede graficar un conjunto de documentos o textos independientes. Estos textos deben ser pasados como una lista.
+
+.. code-block:: python
+
+    >>> # Diferentes textos en una lista
+    >>> textos = [
+    >>>     'Un campesino alimentaba al mismo tiempo a una cabra y a un asno. La cabra, envidiosa porque su compañero estaba mejor atendido, le dio el siguiente consejo: - La noria y la carga hacen de tu vida un tormento interminable; simula una enfermedad y déjate caer en un foso, pues así te dejarán reposar.',
+    >>>     'Al salir la cabra de su establo encargó a su hijo el cuidado de la casa, advirtiéndole el peligro de los animales que rondaban por los alrededores con intención de entrar a los establos y devorar los ganados.',
+    >>>     'Bien sé que eres nuestro mayor adversario y que, imitando la voz de mi madre, pretendes entrar para devorarme. Puedes marcharte, odiado animal, que no seré yo quien te abra la puerta.',
+    >>>     'Cierta cabra robó un queso y, llevando su botín fue a saborearlo en la copa de un árbol. En estas circunstancias lo vio un asno muy astuto, y comenzó a adularlo con la intención de arrebatárselo.'
+    >>> ]
+
+    >>> # Palabras de interés
+    >>> mis_palabras = ['el', 'la', 'en', 'campesino', 'cuidado', 'cabra', 'asno']
+
+En el caso en que se considera más de un texto, el gráfico es dividido de acuerdo a la cantidad de textos, y en cada división se muestran las ocurrencias de las palabras.
+
+.. code-block:: python
+
+    >>> graficar_dispersion(textos, mis_palabras, titulo = 'Comparación de textos', rotacion = 0, 
+    >>>                     etiquetas = ['Texto 1', 'Texto 2', 'Texto 3', 'Texto 4'],
+    >>>                     mapa_color='jet', auto_etiquetas = True, leyenda = True, dim_figura=(8,5), 
+    >>>                     ubicacion_archivo='salida/dispersion.jpg')
+
+.. figure:: ../_static/image/graficos/dispersion_plot_2.png
+    :align: center
+    :alt: 
+    :figclass: align-center
 
 Calcular coocurrencias y graficarlas
 ------------------------------------
