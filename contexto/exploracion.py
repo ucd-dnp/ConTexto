@@ -638,8 +638,8 @@ def graficar_dispersion(
         y de la figura.
     :param etiquetas: (None o str) Valor por defecto: None. Lista de identifi\
         cadores de los documentos analizados. Esta debe ser de la misma longi\
-        tud de la lista de documentos de entrada. Si el valor es None y auto_\
-        etiquetas = True, se generan etiquetas automáticas por defecto.
+        tud de la lista de documentos de entrada. Si el valor es None y \
+        auto_etiquetas = True, se generan etiquetas automáticas por defecto.
     :param auto_etiquetas: (bool) {True, False} Valor por defecto: True. Si e\
         tiquetas = None, Genera etiquetas automáticas para los documentos de \
         entrada {doc1, doc2, ..., docn}.
