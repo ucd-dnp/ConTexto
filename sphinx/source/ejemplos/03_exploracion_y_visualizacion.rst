@@ -134,7 +134,7 @@ Los n-gramas más frecuentes también se pueden visualizar mediante gráficas m�
     :figclass: align-center
 
 Gráficos de dispersión léxica
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Además de la frecuencia, la importancia de una palabra se puede ponderar por su dispersión en el texto. La dispersión léxica es una medida de la homogeneidad de una palabra en diferentes partes del texto. Esta medida puede ser visualizada usando el gráfico de dispersión léxica, en donde en el eje horizontal se marca con una línea cada una de las ocurrencias de una palabra, y en el eje vertical se muestran las palabras de interés. La función :py:func:`exploracion.graficar_dispersion` permite obtener estas gráficas.
 
