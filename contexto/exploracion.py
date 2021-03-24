@@ -1,5 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.colors as cl
 import networkx as nx
 import numpy as np
 import pandas as pd
@@ -7,55 +9,38 @@ import warnings
 from collections import Counter, Iterable
 from wordcloud import WordCloud, ImageColorGenerator
 from limpieza import limpieza_basica
-from utils.tokenizacion import tokenizar, TokenizadorNLTK
-from utils.dispersion_plot import dispersionPlot
+from utils.tokenizacion import tokenizar, TokenizadorNLTK, TokenizadorEspacios
 
 
-def obtener_ngramas(
-    texto, n=1, devolver_lista=True, limpiar=False, tokenizador=None
-):
-    """
-    Permite generar n-gramas a partir de un texto.
+def obtener_ngramas(texto, n=1, devolver_lista=True, limpiar=False, tokenizador=None):
+    """ Permite generar n-gramas a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n: (int) Cantidad de elementos a tener en cuenta en la generación \
-        de n-gramas. Por ejemplo, si n = 1 se retornarán palabras, y si n = 2\
-         se retornarán bigramas.
-    :param devolver_lista: (bool) {True, False} Valor por defecto: True. Si e\
-        l valor es True se retorna un objeto tipo lista; si el valor es False\
-         se retorna un objeto tipo generador.
-    :param limpiar: (bool) {True, False} Valor por defecto: False. Define si \
-        se desea hacer una limpieza básica (aplicando la función \
-        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes d\
-        e encontrar los n-gramas.
-    :param tokenizador: Valor por defecto: None. Objeto encargado de la token\
-        ización y detokenización de textos. Si el valor es 'None', se utiliza\
-        rá por defecto una instancia de la clase *TokenizadorNLTK*.
+    :param n: (int) Cantidad de elementos a tener en cuenta en la generación de n-gramas. Por ejemplo, si n=1 se retornarán palabras, y si n=2 se retornarán bigramas.
+    :param devolver_lista: (bool) {True, False} Valor por defecto: True. Si el valor es True se retorna un objeto tipo lista; si el valor es False se retorna un objeto tipo generador.
+    :param limpiar: (bool) {True, False} Valor por defecto: False. Define \
+        si se desea hacer una limpieza básica (aplicando la función  \
+        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes de encontrar los n-gramas.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: n-gramas generados con las características especificadas.
     """
     if limpiar:
         texto = limpieza_basica(texto)
     lista = tokenizar(texto, tokenizador)
-    n_gramas = (
-        " ".join(lista[i : i + n])
-        for i in range(len(lista))
-        if i + n <= len(lista)
-    )
+    n_gramas = (' '.join(lista[i:i + n])
+                for i in range(len(lista)) if i + n <= len(lista))
     if devolver_lista:
         n_gramas = list(n_gramas)
     return n_gramas
 
 
 def frecuencia_ngramas(texto, n_grama=1, n_max=None):
-    """
-    Genera un diccionario con los n-gramas y sus respectivas frecuencias de oc\
-    urrencia en el texto.
+    """ Genera un diccionario con los n-gramas y sus respectivas frecuencias de ocurrencia en el texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener\
-         en cuenta en la generación de n-gramas.
-    :param n_max: (int) Valor por defecto: None. Cantidad máxima de n-gramas \
-        a generar.
+    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.
+    :param n_max: (int) Valor por defecto: None. Cantidad máxima de n-gramas a generar.
     :return: (dict) diccionario de n-gramas más frecuentes.
     """
     lista = obtener_ngramas(texto, n_grama)
@@ -68,84 +53,45 @@ def frecuencia_ngramas(texto, n_grama=1, n_max=None):
 
 
 def nube_palabras(
-    texto,
-    n_grama=1,
-    n_terminos=100,
-    graficar=True,
-    dim_figura=(10, 10),
-    hor=0.6,
-    titulo="Términos más frecuentes",
-    ubicacion_archivo="",
-    forma=None,
-    color_fondo="white",
-    color_contorno="blue",
-    grosor_contorno=0,
-    colores_forma=False,
-    semilla=1234,
-    devolver_nube=False,
-    mask=None,
-):
-    """
-    Permite graficar o exportar una nube de palabras (o n-gramas) a partir de\
-     un texto de entrada.
+        texto,
+        n_grama=1,
+        n_terminos=100,
+        graficar=True,
+        dim_figura=(10, 10),
+        hor=0.6,
+        titulo='Términos más frecuentes',
+        ubicacion_archivo='',
+        forma=None,
+        color_fondo='white',
+        color_contorno='blue',
+        grosor_contorno=0,
+        colores_forma=False,
+        semilla=1234,
+        devolver_nube=False,
+        mask=None):
+    """ Permite graficar o exportar una nube de palabras (o n-gramas) a partir de un texto de entrada.
 
     :param texto: (str) Texto de entrada que se desea analizar.
-    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener\
-         en cuenta en la generación de n-gramas. Por ejemplo, con n = 1 y n =\
-         2 se graficarán palabras y bigramas, respectivamente.
-    :param n_terminos: (int) Valor por defecto: 100. Cantidad de n-gramas a i\
-        ncluir en la nube. Se graficaran los n_terminos más frecuentes en el \
-        texto.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param dim_figura: (float, float) Valor por defecto: (10, 10). Correspond\
-        en al tamaño (ancho y alto) de la figura a generar.
-    :param hor: (float) (valor entre 0 y 1). Proporción de los términos que s\
-        e mostrarán de manera horizontal en la nube. Para hor=0 todos los tér\
-        monos se mostrarán verticalmente; para hor=1 todos los términos se mo\
-        strarán horizontalmente, y para valores intermedios habrá una combina\
-        ción de términos en ambas representaciones.
-    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corres\
-        ponde al título de la nube de palabras.
-    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde\
-         desea exportar la gráfica como archivo tipo imagen. Al nombrar el ar\
-        chivo se recomienda utilizar la extensión jpg. Si no se especifica un\
-        a ruta, la gráfica no será exportada.
-    :param forma: (str o numpy array) o None, Valor por defecto: None. Arregl\
-        o de Numpy o ubicación de archivo de imagen que contenga la forma que\
-         se le desea dar a la nube de palabras. Si forma es None, se ordenará\
-        n los términos de la nube en un círculo.
-    :param color_fondo: (str o tuple) Valor por defecto: 'white'. Color de fo\
-        ndo de la nube de palabras. Se puede ingresar como el nombre del colo\
-        r (si Python lo reconoce), código hexadecimal o como una tupla con su\
-        s valores (R, G, B).
-    :param color_contorno: (str o tuple) Valor por defecto: 'blue'. Color del\
-         contorno de la forma de la nube de palabras. Se puede ingresar como \
-        el nombre del color (si Python lo reconoce), código hexadecimal o com\
-        o una tupla con sus valores (R, G, B).
-    :param grosor_contorno: (int) Valor por defecto: 0. Grosor de la línea (c\
-        ontorno) que define la forma de la nube de palabras. Si grosor_contor\
-        no=0, no se graficará el contorno.
-    :param colores_forma: (bool) {True, False} Valor por defecto: False. Indi\
-        ca si se quieren utilizar en la nube de palabras los colores extraído\
-        s de la imagen o numpy array utilizada para definir la forma de la nu\
-        be.
-    :param semilla: (int) Valor por defecto: 1234. Corresponde al estado inic\
-        ial del generador. Este parámetro incide en la posición y color de la\
-        s palabras. En caso de querer replicar la nube de palabras, se recomi\
-        enda utilizar un mismo valor de semilla.
-    :param devolver_nube: (bool) {True, False} Valor por defecto: False. Indi\
-        ca si se desea obtener la nube de palabras como un objeto tipo WordCl\
-        oud.
+    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas. Por ejemplo, con n=1 y n=2 se graficarán palabras y bigramas, respectivamente.
+    :param n_terminos: (int) Valor por defecto: 100. Cantidad de n-gramas a incluir en la nube. Se graficaran los n_terminos más frecuentes en el texto.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param dim_figura: (float, float) Valor por defecto: (10, 10). Corresponden al tamaño (ancho y alto) de la figura a generar.
+    :param hor: (float) (valor entre 0 y 1). Proporción de los términos que se mostrarán de manera horizontal en la nube. Para hor=0 todos los térmonos se mostrarán verticalmente; para hor=1 todos los términos se mostrarán horizontalmente, y para valores intermedios habrá una combinación de términos en ambas representaciones.
+    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
+    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no será exportada.
+    :param forma: (str o numpy array) o None, Valor por defecto: None. Arreglo de Numpy o ubicación de archivo de imagen que contenga la forma que se le desea dar a la nube de palabras. Si forma es None, se ordenarán los términos de la nube en un círculo.
+    :param color_fondo: (str o tuple) Valor por defecto: 'white'. Color de fondo de la nube de palabras. Se puede ingresar como el nombre del color (si Python lo reconoce), código hexadecimal o como una tupla con sus valores (R, G, B). 
+    :param color_contorno: (str o tuple) Valor por defecto: 'blue'. Color del contorno de la forma de la nube de palabras. Se puede ingresar como el nombre del color (si Python lo reconoce), código hexadecimal o como una tupla con sus valores (R, G, B).
+    :param grosor_contorno: (int) Valor por defecto: 0. Grosor de la línea (contorno) que define la forma de la nube de palabras. Si grosor_contorno=0, no se graficará el contorno.
+    :param colores_forma: (bool) {True, False} Valor por defecto: False. Indica si se quieren utilizar en la nube de palabras los colores extraídos de la imagen o numpy array utilizada para definir la forma de la nube.
+    :param semilla: (int) Valor por defecto: 1234. Corresponde al estado inicial del generador. Este parámetro incide en la posición y color de las palabras. En caso de querer replicar la nube de palabras, se recomienda utilizar un mismo valor de semilla.
+    :param devolver_nube: (bool) {True, False} Valor por defecto: False. Indica si se desea obtener la nube de palabras como un objeto tipo WordCloud.
     :return: objeto tipo WordCloud, solo si devolver_nube=True.
     """
-    # Si se usa el parámetro anterior (mask) se pone la deprecation warning y
-    # se asigna su valor a "forma"
+    # Si se usa el parámetro anterior (mask) se pone la deprecation warning y se asigna su valor a "forma"
     if forma is None and mask is not None:
-        msj = (
-            "El parámetro 'mask' fue remplazado por el parámetro 'forma'. "
-            "Futuras versiones no contarán con el parámetro 'mask'."
-        )
+        msj = """El parámetro 'mask' ha sido reemplazado por el parámetro 'forma'.
+            Futuras versiones de la librería no contarán con el parámetro 'mask'."""
         warnings.warn(msj, DeprecationWarning, stacklevel=2)
         forma = mask
     # Por defecto se crea una máscara circular para ordenar la nube
@@ -157,39 +103,29 @@ def nube_palabras(
         # Si se pasó la ubicación de una imagen, se carga
         if isinstance(forma, str):
             forma = cv2.imread(forma)
-        # Si se pasó una imagen a color, se conservan sus colores y se
-        # convierte a escala de grises
+        # Si se pasó una imagen a color, se conservan sus colores y se convierte a escala de grises
         colores_nube = None
         if len(forma.shape) == 3:
             colores_nube = ImageColorGenerator(forma)
             forma = cv2.cvtColor(forma, cv2.COLOR_BGR2GRAY)
-        # Se aplica un umbral para eliminar ruido y marcas de agua de la
-        # máscara
+        # Se aplica un umbral para eliminar ruido y marcas de agua de la máscara
         forma = cv2.threshold(
-            forma, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU
-        )[1]
-        # Si la mayoría de la imagen está en negro, se invierte la imagen
-        # máscara
+            forma, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+        # Si la mayoría de la imagen está en negro, se invierte la imagen máscara
         if np.mean(forma) < 100:
             forma = 255 - forma
         # Operación de "closing" para rellenar huecos en la imagen máscara
         kernel = np.ones((5, 5), np.uint8)
-        forma = 255 - cv2.morphologyEx(255 - forma, cv2.MORPH_CLOSE, kernel)
+        forma = 255 - cv2.morphologyEx(255-forma, cv2.MORPH_CLOSE, kernel)
     # Obtener diccionario de 'n_terminos' más frecuentes con sus frecuencias
     dictu = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Crear la nube de palabras
-    nube = WordCloud(
-        background_color=color_fondo,
-        contour_color=color_contorno,
-        prefer_horizontal=hor,
-        mask=forma,
-        random_state=semilla,
-        contour_width=grosor_contorno,
-    )
+    nube = WordCloud(background_color=color_fondo, contour_color=color_contorno,
+                     prefer_horizontal=hor, mask=forma, random_state=semilla,
+                     contour_width=grosor_contorno)
     figura = nube.generate_from_frequencies(dictu)
-    # Si se eligió mantener los colores de la imagen de forma, se cambian los
-    # colores a la nube
-    if colores_forma and colores_nube is not None:
+    # Si se eligió mantener los colores de la imagen de forma, se cambian los colores a la nube
+    if colores_forma == True and colores_nube is not None:
         nube = nube.recolor(color_func=colores_nube)
     # Devolver el objeto de la nube, para graficarlo de otra manera
     if devolver_nube:
@@ -200,73 +136,46 @@ def nube_palabras(
 
 
 def grafica_nube(
-    nube,
-    dim_figura=(10, 10),
-    titulo="Términos más frecuentes",
-    ubicacion_archivo="",
-    graficar=True,
-):
-    """
-    Permite graficar o guardar una nube de palabras.
+        nube,
+        dim_figura=(10, 10),
+        titulo='Términos más frecuentes',
+        ubicacion_archivo='',
+        graficar=True):
+    """ Permite graficar o guardar una nube de palabras.
 
-    :param nube: (WordCloud) Objeto tipo WordCloud correspondiente a la nube \
-        de palabras.
-    :param dim_figura: (float, float) Valor por defecto: (10, 10). Correspond\
-        en al ancho y alto de la figura en pulgadas.
-    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corres\
-        ponde al título de la nube de palabras.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea e\
-        xportar la gráfica como archivo tipo imagen. Al nombrar el archivo se\
-         recomienda utilizar la extensión jpg. Si no se especifica una ruta, \
-        la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE` que esté utilizando.
+    :param nube: (WordCloud) Objeto tipo WordCloud correspondiente a la nube de palabras.
+    :param dim_figura: (float, float) Valor por defecto: (10, 10). Corresponden al ancho y alto de la figura en pulgadas.
+    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
+    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
     """
 
     fig = plt.figure(figsize=dim_figura)
-    plt.imshow(nube, interpolation="bilinear")
-    if titulo != "":
+    plt.imshow(nube, interpolation='bilinear')
+    if titulo != '':
         plt.title(titulo)
     plt.axis("off")
     if graficar:
         plt.show()
-    if ubicacion_archivo != "":
+    if ubicacion_archivo != '':
         fig.savefig(ubicacion_archivo)
     # Cerrar gráfica
     plt.close()
 
 
-def par_nubes(
-    texto,
-    n1=1,
-    n2=2,
-    dim_figura=(20, 11),
-    ubicacion_archivo="",
-    graficar=True,
-    devolver_grafica=False,
-):
-    """
-    Permite graficar o exportar un par de nubes de palabras (una junto a otra\
-    ) a partir de un texto.
+def par_nubes(texto, n1=1, n2=2, dim_figura=(20, 11), ubicacion_archivo='',
+              graficar=True, devolver_grafica=False):
+    """ Permite graficar o exportar un par de nubes de palabras (una junto a otra) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n1: (int) Valor por defecto: 1. Cantidad de elementos a tener en c\
-        uenta en la generación de n-gramas de la nube de palabras izquierda.
-    :param n2: (int) Valor por defecto: 2. Cantidad de elementos a tener en c\
-        uenta en la generación de n-gramas de la nube de palabras derecha.
-    :param dim_figura: (float, float) Valor por defecto: (20, 10). Correspond\
-        en al ancho y alto de la figura en pulgadas.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea e\
-        xportar la gráfica como archivo tipo imagen. Al nombrar el archivo se\
-         recomienda utilizar la extensión jpg. Si no se especifica una ruta, \
-        la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico con el par de nubes de palabras \
-        como un objeto de Matplotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el par de nubes de pala\
-        bras, solo si devolver_grafica=True.
+    :param n1: (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas de la nube de palabras izquierda.
+    :param n2: (int) Valor por defecto: 2. Cantidad de elementos a tener en cuenta en la generación de n-gramas de la nube de palabras derecha.
+    :param dim_figura: (float, float) Valor por defecto: (20, 10). Corresponden al ancho y alto de la figura en pulgadas.
+    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. Indica si se desea obtener \
+        el gráfico con el par de nubes de palabras como un objeto de Matplotlib.
+    :return: (objeto Figure de Matplotlib) Figura con el par de nubes de palabras, solo si devolver_grafica=True.    
     """
 
     # Obtener nubes de palabras
@@ -274,26 +183,22 @@ def par_nubes(
     nube_2 = nube_palabras(texto, n_grama=n2, hor=1, devolver_nube=True)
 
     # Graficar nubes y mostrarlas
-    fig, (ax1, ax2) = plt.subplots(
-        nrows=1,
-        ncols=2,
-        figsize=dim_figura,
-        gridspec_kw={"hspace": 0, "wspace": 0},
-    )
+    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=dim_figura,
+                                   gridspec_kw={'hspace': 0, 'wspace': 0})
 
-    ax1.imshow(nube_1, interpolation="bilinear")
-    tit = "términos" if n1 == 1 else f"n_gramas ({n1})"
-    ax1.set_title(f"Nube de palabras: {tit}", size=18)
+    ax1.imshow(nube_1, interpolation='bilinear')
+    tit = 'términos' if n1 == 1 else f"n_gramas ({n1})"
+    ax1.set_title(f'Nube de palabras: {tit}', size=18)
 
-    ax2.imshow(nube_2, interpolation="bilinear")
-    tit = "términos" if n2 == 1 else f"n_gramas ({n2})"
-    ax2.set_title(f"Nube de palabras: {tit}", size=18)
+    ax2.imshow(nube_2, interpolation='bilinear')
+    tit = 'términos' if n2 == 1 else f"n_gramas ({n2})"
+    ax2.set_title(f'Nube de palabras: {tit}', size=18)
 
-    fig.suptitle("Términos más frecuentes", size=28, y=0.99)
+    fig.suptitle('Términos más frecuentes', size=28, y=0.99)
     plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[])
     if graficar:
         plt.show()
-    if ubicacion_archivo != "":
+    if ubicacion_archivo != '':
         fig.savefig(ubicacion_archivo)
     if devolver_grafica:
         return fig
@@ -302,55 +207,39 @@ def par_nubes(
 
 
 def matriz_coocurrencias(
-    texto,
-    min_frec=1,
-    max_num=200,
-    modo="documento",
-    ventana=3,
-    tri_sup=True,
-    limpiar=False,
-    tokenizador=None,
-):
+        texto,
+        min_frec=1,
+        max_num=200,
+        modo='documento',
+        ventana=3,
+        tri_sup=True,
+        limpiar=False,
+        tokenizador=None):
     """ Calcula la matriz de coocurrencias de un texto.
 
-    :param texto: (str o list) Corresponde al texto (o lista de textos/docume\
-        ntos) que se desea analizar.
-    :param min_frec: (int) Valor por defecto: 1. Frecuencia mínima de aparici\
-        ón de palabras, si la frecuencia de una palabra es menor a min_frec, \
-        dicha palabra es excluida de la matriz.
-    :param max_num: (int) Valor por defecto: 200. Número máximo de palabras a\
-         dejar en la matriz (se eligen las más frecuentes).
-    :param modo: (str) {'documento', 'ventana'} Valor por defecto: 'documento\
-        '. Corresponde al modo de análisis, con 'documento' se calcula la co-\
-        ocurrencia de términos sin importar la distancia entre estos,  con 'v\
-        entana' se calcula la co-ocurrencia de términos teniendo en cuenta un\
-        a distancia máxima entre estos.
-    :param ventana: (int) Valor por defecto: 3. Tamaño de la ventana (solo se\
-         usa cuando modo='ventana'). Número de palabras anteriores o posterio\
-        res a tener en cuenta con respecto al término de análisis, equivalent\
-        e a calcular la co-ocurrencia con n-gramas, siendo n = ventana + 1.
-    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor\
-         es True devuelve la versión diagonal superior de la matriz de coocur\
-        rencias, si es False devuelve la matriz completa.
-    :param limpiar: (bool) {True, False} Valor por defecto: False. Define si \
-        se desea hacer una limpieza básica (aplicando la función \
-        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes d\
-        e calcular las coocurrencias.
-    :param tokenizador: Valor por defecto: None. Objeto encargado de la token\
-        ización y detokenización de textos. Si el valor es 'None', se utiliza\
-        rá por defecto una instancia de la clase *TokenizadorNLTK*.
+    :param texto: (str o list) Corresponde al texto (o lista de textos/documentos) que se desea analizar.
+    :param min_frec: (int) Valor por defecto: 1. Frecuencia mínima de aparición de palabras, si la frecuencia de una palabra es menor a min_frec, dicha palabra es excluida de la matriz.
+    :param max_num: (int) Valor por defecto: 200. Número máximo de palabras a dejar en la matriz (se eligen las más frecuentes).
+    :param modo: (str) {'documento', 'ventana'} Valor por defecto: 'documento'. Corresponde al modo de análisis, con 'documento' se calcula la co-ocurrencia de términos sin importar la distancia entre estos,  con 'ventana' se calcula la co-ocurrencia de términos teniendo en cuenta una distancia máxima entre estos.
+    :param ventana: (int) Valor por defecto: 3. Tamaño de la ventana (solo se usa cuando modo='ventana'). Número de palabras anteriores o posteriores a tener en cuenta con respecto al término de análisis, equivalente a calcular la co-ocurrencia con n-gramas, siendo n=ventana+1.
+    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor es True devuelve la versión diagonal superior de la matriz de coocurrencias, si es False devuelve la matriz completa.
+    :param limpiar: (bool) {True, False} Valor por defecto: False. Define \
+        si se desea hacer una limpieza básica (aplicando la función `limpieza_basica` \
+        del módulo `limpieza`) al texto de entrada, antes de calcular las coocurrencias.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la tokenización y detokenización \
+        de textos. Si el valor es 'None', se utilizará por defecto una instancia de la clase *TokenizadorNLTK*.        
     :return: (dataframe) Coocurrencias de los textos de entrada.
     """
     # Generar un solo texto con todos los documentos
     if isinstance(texto, Iterable) and not isinstance(texto, str):
-        texto_entero = " ".join([str(i) for i in texto])
+        texto_entero = ' '.join([str(i) for i in texto])
     else:
         texto_entero = str(texto)
         texto = [texto_entero]  # Convertir variable "texto" en un iterable
 
     if limpiar:
         texto = [limpieza_basica(t) for t in texto]
-        texto_entero = " ".join([texto])
+        texto_entero = ' '.join([texto])
     # Se inicializa un solo tokenizador, para ahorrar un poco de tiempo
     tok = TokenizadorNLTK() if tokenizador is None else tokenizador
     # Generar lista de palabras en todos los textos juntos
@@ -362,9 +251,8 @@ def matriz_coocurrencias(
     nombres = list(set(cuenta_filt.keys()))
     # Inicializar en ceros la matriz de coocurrencias
     mat_oc = pd.DataFrame(
-        np.zeros([len(nombres), len(nombres)]), columns=nombres, index=nombres
-    )
-    if modo == "ventana":
+        np.zeros([len(nombres), len(nombres)]), columns=nombres, index=nombres)
+    if modo == 'ventana':
         for t in texto:
             palabras_t = tokenizar(t, tok)
             # Ciclo a través de las palabras para obtener las coocurrencias:
@@ -378,7 +266,7 @@ def matriz_coocurrencias(
                         else:
                             if (inicio + j) != i:
                                 mat_oc[p2][p1] += 1
-    elif modo == "documento":
+    elif modo == 'documento':
         for t in texto:
             cuenta_t = dict(Counter(tokenizar(t, tok)))
             for p1 in nombres:
@@ -400,57 +288,41 @@ def matriz_coocurrencias(
 
 
 def diag_superior(df):
-    """
-    Función que acepta una dataframe y devuelve la versión diagonal superior \
-    de la misma.
+    """ Función que acepta una dataframe y devuelve la versión diagonal superior de la misma.
 
-    :param df: (dataframe) Dataset de insumo.
-    :return: Dataframe transformado.
+    :param df: (dataframe) dataset de insumo.
+    :return: dataframe transformado.
     """
     return pd.DataFrame(np.triu(df), index=df.index, columns=df.columns)
 
 
 def graficar_coocurrencias(
-    mat,
-    prop_fuera=0,
-    ubicacion_archivo="",
-    graficar=True,
-    K=5,
-    color_borde="orchid",
-    color_nodo="silver",
-    semilla=123,
-    dim_figura=(13, 13),
-    devolver_grafica=False,
-):
-    """
-    Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
+        mat,
+        prop_fuera=0,
+        ubicacion_archivo='',
+        graficar=True,
+        K=5,
+        color_borde='orchid',
+        color_nodo='silver',
+        semilla=123,
+        dim_figura=(13, 13),
+        devolver_grafica=False,
+        circular=False):
+    """ Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
 
     :param mat: (dataframe) Matriz de coocurrencias que desea graficar.
-    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las co\
-        nexiones con menor peso para aclarar un poco la imagen.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea e\
-        xportar la gráfica como archivo tipo imagen. Al nombrar el archivo se\
-         recomienda utilizar la extensión jpg. Si no se especifica una ruta, \
-        la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param K: (float) Valor por defecto: 5. Distancia óptima entre nodos, aum\
-        ente este valor para separar los nodos.
-    :param color_borde: (str) Valor por defecto: 'orchid'. Corresponde al col\
-        or de los bordes de la red, se puede asignar el nombre de un color pr\
-        edefinido o el código hexadecimal de un color.
-    :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al colo\
-        r de los nodos, se puede asignar el nombre de un color predefinido o \
-        el código hexadecimal de un color.
-    :param semilla: (int) Valor por defecto: 123. Estado inicial del generado\
-        r aleatorio para establecer la posición de los nodos.
-    :param dim_figura: (float, float) Valor por defecto: (13, 13). Correspond\
-        en al ancho y alto de la figura en pulgadas.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico de barras como un objeto de Matp\
-        lotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el grafo de coocurrenci\
-        as, solo si devolver_grafica=True.
+    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las conexiones con menor peso para aclarar un poco la imagen.
+    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param K: (float) Valor por defecto: 5. Distancia óptima entre nodos, aumente este valor para separar los nodos. 
+    :param color_borde: (str) Valor por defecto: 'orchid'. Corresponde al color de los bordes de la red, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.
+    :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al color de los nodos, se puede asignar el nombre de un color predefinido o el código hexadecimal de un color.
+    :param semilla: (int) Valor por defecto: 123. Estado inicial del generador aleatorio para establecer la posición de los nodos.
+    :param dim_figura: (float, float) Valor por defecto: (13, 13). Corresponden al ancho y alto de la figura en pulgadas.    
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. Indica si se desea obtener \
+        el gráfico de barras como un objeto de Matplotlib.
+    :param circular: (bool) {True, False} Valor pot defecto: False. Indica que tipo de gráfica crear si con posiciones circulares o no.
+    :return: (objeto Figure de Matplotlib) Figura con el grafo de coocurrencias, solo si devolver_grafica=True.    
     """
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
@@ -485,38 +357,60 @@ def graficar_coocurrencias(
     sizes = np.clip(sizes, 0, np.percentile(anchos, 99))
     # Modificar anchos de bordes y tamaño de nodos
     anchos = [100 * float(i) / max(anchos) for i in anchos]
-    anchos = [x ** 2.35 * escalar_borde ** 2 for x in anchos]
+    anchos = [x**2.35 * escalar_borde**2 for x in anchos]
     sizes = [30 + (escalar_nodo * float(i) / max(sizes)) for i in sizes]
     # Eliminar las conexiones con menor peso para aclarar un poco la imagen
-    anchos = [
-        i if i >= np.percentile(anchos, prop_fuera) else 0 for i in anchos
-    ]
+    anchos = [i if i >= np.percentile(
+        anchos, prop_fuera) else 0 for i in anchos]
     # Crear grafo
     G = nx.Graph()
     for i in sorted(lista_nodos):
         G.add_node(i[0], size=1)
     G.add_weighted_edges_from(lista_bordes)
     # Crear la gráfica
-    plt.subplots(figsize=dim_figura)
+    fig = plt.figure(figsize=dim_figura)
+    ax = plt.axes()
     try:
-        pos = nx.spring_layout(G, iterations=300, k=K, seed=semilla)
+       if circular == True:
+            pos = nx.circular_layout(G)
+       else:
+            pos = pos = nx.spring_layout(G, iterations=300, k=K, seed = 123)
     except BaseException:
-        pos = nx.spring_layout(G, iterations=300, k=K)
-    nx.draw(
-        G,
-        pos,
-        with_labels=False,
-        node_size=sizes,
-        width=anchos,
-        edge_color=color_borde,
-        node_color=color_nodo,
-    )
+        if circular == True:
+            pos = nx.circular_layout(G)
+        else:
+            pos = pos = nx.spring_layout(G, iterations=300, k=K)
+    # Obtener número de nodos
+    n = G.number_of_nodes()
+    # Número máximo de conexiones entre nodos
+    max_con = max([list(G.degree())[i][1] for i in range(n)])
+    # Definir los colores
+    colores = [plt.cm.plasma(list(G.degree())[i][1]/max_con) for i in range(n)] 
+    # Definir la cantidad de conexiones por nodos
+    grados = np.array([list(G.degree())[i][1] for i in range(n)])
+    # Definir la paleta de colores
+    cmap = plt.get_cmap('plasma', len(grados))
+    plt.text(x=1.5,y=-0.2, s="No de conecciones", horizontalalignment='center', fontsize=10, color='black', rotation=-90)
     # Escribir los nombres de los nodos
     for key, value in pos.items():
         x, y = value[0] + 0, value[1] - offset_y
-        plt.text(x, y, s=key, horizontalalignment="center", fontsize=10)
-    plt.axis("off")
-    if ubicacion_archivo != "":
+        plt.text(x, y, s=key, horizontalalignment='center', fontsize=10)
+    for key, value in pos.items():
+        xi = value[0]
+        yi = value[1]
+        scatter = ax.scatter(xi, yi, c=colores[list(G.nodes()).index(key)], s= 350, edgecolors='k', alpha=0.7, cmap = cmap)
+    bounds = np.linspace(min(grados), max(grados), max(grados) - min(grados) + 1)
+    norm = cl.BoundaryNorm(bounds, cmap.N)
+    ax2 = fig.add_axes([0.90, 0.1, 0.03, 0.8])
+    cb = mpl.colorbar.ColorbarBase(ax2, cmap=cmap, norm=norm, spacing='proportional', ticks=bounds, boundaries=bounds, format='%1i')
+    # Hacer un bucle en la lista de aristas para obtener las coordenadas x, y de los nodos conectados 
+    # Esos dos puntos son los extremos de la línea que se trazará. 
+    for i,j in enumerate(G.edges()):
+        x = np.array((pos[j[0]][0], pos[j[1]][0]))
+        y = np.array((pos[j[0]][1], pos[j[1]][1]))
+        ax.plot(x, y, c='black', alpha=0.5, linewidth=anchos[i])
+    ax.set_axis_off()
+    if ubicacion_archivo != '':
         plt.savefig(ubicacion_archivo)
     if graficar:
         plt.show()
@@ -527,67 +421,52 @@ def graficar_coocurrencias(
 
 
 def grafica_barchart_frecuencias(
-    texto,
-    n_grama=1,
-    dim_figura=(8, 5),
-    titulo="Términos más frecuentes",
-    ascendente=True,
-    ubicacion_archivo="",
-    graficar=True,
-    n_terminos=15,
-    devolver_grafica=False,
-):
-    """
-    Permite graficar o exportar un gráfico de barras horizontales de la frecu\
-    encia de palabras (n-gramas) a partir de un texto.
+        texto,
+        n_grama=1,
+        dim_figura=(8, 5),
+        titulo='Términos más frecuentes',
+        ascendente=True,
+        ubicacion_archivo='',
+        graficar=True,
+        n_terminos=15,
+        devolver_grafica=False):
+    """ Permite graficar o exportar un gráfico de barras horizontales de la frecuencia de palabras (n-gramas) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener\
-         en cuenta en la generación de n-gramas.
-    :param dim_figura: (float, float) Valor por defecto: (8, 5). Corresponden\
-         al ancho y alto de la figura en pulgadas.
-    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corres\
-        ponde al título de la nube de palabras.
-    :param ascendente: (bool) {True, False} Valor por defecto: True. Determin\
-        a si las barras de términos se muestran de menos (abajo) a más (arrib\
-        a) frecuentes en la gráfica.
-    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde\
-         desea exportar la gráfica como archivo tipo imagen. Al nombrar el ar\
-        chivo se recomienda utilizar la extensión jpg. Si no se especifica un\
-        a ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE` que esté utilizando.
-    :param n_terminos: (int) Valor por defecto: 15. Cantidad de n-gramas a gr\
-        aficar.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico de barras como un objeto de Matp\
-        lotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el gráfico de barras, s\
-        olo si devolver_grafica = True.
+    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener en cuenta en la generación de n-gramas.
+    :param dim_figura: (float, float) Valor por defecto: (8, 5). Corresponden al ancho y alto de la figura en pulgadas.
+    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corresponde al título de la nube de palabras.
+    :param ascendente: (bool) {True, False} Valor por defecto: True. Determina si las barras de términos se muestran de menos (abajo) a más (arriba) frecuentes en la gráfica.
+    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde desea exportar la gráfica como archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la extensión jpg. Si no se especifica una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param n_terminos: (int) Valor por defecto: 15. Cantidad de n-gramas a graficar.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. Indica si se desea obtener \
+        el gráfico de barras como un objeto de Matplotlib.
+    :return: (objeto Figure de Matplotlib) Figura con el gráfico de barras, solo si devolver_grafica=True.    
     """
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Ordenar datos en un dataframe
-    df = pd.DataFrame.from_dict(dict_datos, orient="index")
+    df = pd.DataFrame.from_dict(dict_datos, orient='index')
     df = df.reset_index()
-    df.columns = ["n_grama", "frecuencia"]
-    df = df.sort_values(by="frecuencia", ascending=ascendente)
+    df.columns = ['n_grama', 'frecuencia']
+    df = df.sort_values(by='frecuencia', ascending=ascendente)
     # Crear gráfica
     plt.rcdefaults()
     fig, ax = plt.subplots(figsize=dim_figura)
-    y_pos = np.arange(len(df["frecuencia"]))
-    ax.barh(y_pos, df["frecuencia"], align="center")
+    y_pos = np.arange(len(df['frecuencia']))
+    ax.barh(y_pos, df['frecuencia'], align='center')
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(df["n_grama"])
-    if titulo != "":
+    ax.set_yticklabels(df['n_grama'])
+    if titulo != '':
         ax.set_title(titulo)
-    ax.set_xlabel("Frecuencia")
-    ax.set_ylabel("Término")
+    ax.set_xlabel('Frecuencia')
+    ax.set_ylabel('Término')
     plt.tight_layout()
     #
-    for i, v in enumerate(df["frecuencia"]):
+    for i, v in enumerate(df['frecuencia']):
         ax.text(v, i, v, fontsize=10, verticalalignment="center")
     # Si se dio una ubicación, se guarda ahí la figura
-    if ubicacion_archivo != "":
+    if ubicacion_archivo != '':
         plt.savefig(ubicacion_archivo)
     if graficar:
         plt.show()
@@ -595,115 +474,3 @@ def grafica_barchart_frecuencias(
         return fig
     # Cerrar gráfica
     plt.close()
-
-
-def graficar_dispersion(
-    documentos,
-    palabras_clave,
-    ignorar_mayus=True,
-    titulo="Gráfico de dispersión de términos",
-    eje_x="Distribución de términos",
-    eje_y="Palabras clave",
-    etiquetas=None,
-    auto_etiquetas=True,
-    leyenda=True,
-    rotacion=30,
-    dim_figura=(12, 7),
-    ubicacion_archivo=None,
-    graficar=True,
-    marcador="|",
-    tam_marcador=20,
-    ancho_marcador=3,
-    colores=None,
-    mapa_color="nipy_spectral",
-    devolver_grafica=False,
-):
-    """
-    Permite generar un gráfico de dispersión de términos de interés a lo larg\
-    o de uno o varios documentos.
-
-    :param documentos: (str o list) Texto del documento o lista de textos de \
-        documentos sobre los cuales se quiere analizar la dispersión de térmi\
-        nos.
-    :param palabras_clave: (list) Lista de palabras clave o término de interé\
-        s que se quieren encontrar en los textos de los documentos.
-    :param ignorar_mayus: (bool) {True, False} Valor por defecto: True. Si Tr\
-        ue, no hace diferencia si las palabras tienen mayúsculas, es decir, C\
-        onTexto es igual a contexto.
-    :param titulo: (str) Valor por defecto: 'Gráfico de dispersión de término\
-        s'. Título de la figura de dispersión de términos.
-    :param eje_x: (str) Valor por defecto: 'Distribución de términos'. Leyend\
-        a del eje x de la figura.
-    :param eje_y: (str) Valor por defecto: 'Palabras clave'. Leyenda del eje \
-        y de la figura.
-    :param etiquetas: (None o str) Valor por defecto: None. Lista de identifi\
-        cadores de los documentos analizados. Esta debe ser de la misma longi\
-        tud de la lista de documentos de entrada. Si el valor es None y \
-        auto_etiquetas = True, se generan etiquetas automáticas por defecto.
-    :param auto_etiquetas: (bool) {True, False} Valor por defecto: True. Si e\
-        tiquetas = None, Genera etiquetas automáticas para los documentos de \
-        entrada {doc1, doc2, ..., docn}.
-    :param leyenda: (bool) {True, False} Valor por defecto: True. Permite mos\
-        trar los identificadores de los documentos al lado derecho de la gráf\
-        ica.
-    :param rotacion: (int) Valor por defecto: 30. Permite rotar las etiquetas\
-         de los documentos sobre el eje x de la gráfica de dispersión.
-    :param dim_figura: (float, float) Valor por defecto: (12, 7). Corresponde\
-        n al ancho y alto de la figura en pulgadas.
-    :param ubicacion_archivo: (None o str) Valor por defecto: None.  Ruta don\
-        de desea exportar la gráfica como archivo tipo imagen {png, jpeg, jpg\
-        , gif}. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica después de ejecutar la función.
-    :param marcador: (str) Valor por defecto: '|'. Tipo de marcador utilizado\
-         por el gráfico de dispersión. Se acepta los marcadores disponibles p\
-        ara Matplotlib (https://matplotlib.org/stable/api/markers_api.html).
-    :param tam_marcador: (float) Valor por defecto: 20. Tamaño del marcador e\
-        n el gráfico de dispersión.
-        Para un gráfico con muchas palabras clave, se recomienda poner un val\
-        or menor.
-    :param ancho_marcador: (float) Valor por defecto: 3. Ancho del marcador e\
-        n el gráfico de dispersión. Para un gráfico con muchos documentos, se\
-         recomienda utilizar un número menor.
-    :param colores: (None o list) Valor por defecto: None. Lista de colores p\
-        ara identificar cada documento de entrada. Si el valor es None, se ge\
-        neran colores automáticos para cada documento dependiendo del 'mapa_c\
-        olor' seleccionado.
-    :param mapa_color: (str) Valor por defecto: 'nipy_spectral'. Mapa de colo\
-        r para generar colores automáticos para los documentos. Se aceptan to\
-        dos los mapas de color continuos de Matplotlib\
-        (https://matplotlib.org/stable/tutorials/colors/colormaps.html)
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. S\
-        i True, devuelve el gráfico de dispersión como objeto de Matplotlib.
-    :return: (objeto Figure de Matplotlib) Objeto de Matplotlib, solo si devo\
-        lver_grafica = True.
-    """
-
-    # Llamar objecto de dispersionPlot
-    visualizador = dispersionPlot(
-        documentos,
-        palabras_clave,
-        ignorar_mayus,
-        titulo,
-        eje_x,
-        eje_y,
-        etiquetas,
-        auto_etiquetas,
-        dim_figura,
-        marcador,
-        tam_marcador,
-        ancho_marcador,
-        colores,
-        mapa_color,
-        leyenda,
-        rotacion,
-        graficar,
-        ubicacion_archivo,
-        devolver_grafica,
-    )
-
-    if devolver_grafica:
-        fig = visualizador.graficar()
-        return fig
-    else:
-        visualizador.graficar()
