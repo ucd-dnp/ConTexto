@@ -43,9 +43,8 @@ class VectorizadorFrecuencias:
             vectorizador cargado.
         :param kwargs: Parámetros adicionales que aceptan las clases \
             `CountVectorizer` y `TfidfVectorizer` de la librería scikit-learn.\
-             Para mayor información sobre estas clases, y los elementos adici\
-            onales que se pueden configurar, se puede consultar su documentac\
-            ion: \
+             Para mayor información sobre estas clases, y los párametros \
+            adicionales que se pueden configurar, consultar su documentacion:\
             https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text.
         """
         tipo = tipo.lower()
@@ -106,10 +105,11 @@ class VectorizadorFrecuencias:
         :param textos: (str o list) Texto o lista con textos de interés \
             para ser vectorizados.
         :param disperso: (bool) {True, False} Valor por defecto: False. \
-            Si es True retorna los resultados como una matriz dispersa (csr_m\
-            atrix). Si es False retorna los resultados como un numpy array.
-        :return: (csr_matrix o numpy.ndarray) Vectores documentos-términos de\
-             la vectorización de los textos.
+            Si es True retorna los resultados como una matriz dispersa \
+            (csr_matrix). Si es False retorna los resultados como un numpy \
+            array.
+        :return: (csr_matrix o numpy.ndarray) Vectores documentos-términos de \
+            la vectorización de los textos.
         """
         if isinstance(textos, str):
             textos = [textos]
@@ -120,7 +120,8 @@ class VectorizadorFrecuencias:
 
     # Para mantener "nomenclatura sklearn"
     def transform(self, x, disperso=False):
-        """ Vectoriza los textos utilizando el vectorizador. \
+        """
+        Vectoriza los textos utilizando el vectorizador. \
         Transformando los textos en una matriz documento-términos. \
         **Llama la función vectorizar**.
 
@@ -186,9 +187,9 @@ class VectorizadorHash:
             un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) \
             significa unigramas y bigramas, y (2, 2) significa solo bigramas.
         :param kwargs: Parámetros adicionales que acepta la clase \
-            `HashingVectorizer` de la librería scikit-learn. Para mayor infor\
-            mación sobre esta clase, y los elementos adicionales que se puede\
-            n configurar, se puede consultar su documentacion: \
+            `HashingVectorizer` de la librería scikit-learn. Para mayor \
+            información sobre esta clase, y los párametros adicionales que se \
+            pueden configurar, consultar su documentacion: \
             https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text.
         """
         self.model = HashingVectorizer(
@@ -302,9 +303,9 @@ class VectorizadorWord2Vec:
 
         :param texto: (str) Texto de interés para ser vectorizado.
         :param quitar_desconocidas: (bool) {True, False} Valor por defecto: \
-            False. Cuando este argumento es False, para cada palabra desconoc\
-            ida se incluirá un vector de solo ceros, lo que afectará el vecto\
-            r promedio resultante. Si es True hará que la función sea \
+            False. Cuando este argumento es False, para cada palabra \
+            desconocida se incluirá un vector de solo ceros, lo que afectará \
+            el vector promedio resultante. Si es True hará que la función sea \
             ligeramente más demorada, pero quizás más precisa, al no tener \
             en cuenta palabras que no están incluídas en el modelo.
         :return: (numpy.ndarray) Vector documento-términos de la \
@@ -335,9 +336,9 @@ class VectorizadorWord2Vec:
         :param textos: (str o list) Texto o lista con textos de interés \
             para ser vectorizados.
         :param quitar_desconocidas: (bool) {True, False} Valor por defecto: \
-            False. Cuando este argumento es False, para cada palabra desconoc\
-            ida se incluirá un vector de solo ceros, lo que afectará el vector\
-             promedio resultante. Si es True hará que la función sea \
+            False. Cuando este argumento es False, para cada palabra \
+            desconocida se incluirá un vector de solo ceros, lo que afectará \
+            el vector promedio resultante. Si es True hará que la función sea \
             ligeramente más demorada, pero quizás más precisa, al no tener \
             en cuenta palabras que no están incluídas en el modelo.
         :return: (numpy.ndarray) Vectores documentos-términos de la \
@@ -351,7 +352,8 @@ class VectorizadorWord2Vec:
         return np.array(vectores)
 
     def vectores_palabras(self, texto, tipo="diccionario"):
-        """ Retorna las palabras y vectores que pertenecen a un texto.
+        """
+        Retorna las palabras y vectores que pertenecen a un texto.
 
         :param texto: (str) Texto de interés a ser procesado.
         :param tipo: (str) {'diccionario', 'dataframe'} Valor por defecto: \
@@ -469,7 +471,7 @@ class VectorizadorDoc2Vec:
             Si True, las nuevas palabras en los documentos se agregarán al \
             vocabulario del modelo.
         :param archivo_salida: (str) Valor por defecto: ''. Ruta donde \
-            desea exportar el vectorizador ajustado. Usar formato pickle (pk)
+            desea exportar el vectorizador ajustado. Usar formato pickle (pk).
         """
         # Pre procesar los textos de entrenamiento
         corpus_entrenamiento = list(

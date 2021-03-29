@@ -30,12 +30,12 @@ def traducir_texto(texto, lenguaje_destino):
         función **traducir_texto**:
 
         * La función utiliza la librería googletrans, que hace uso de la API \
-            de Google Translate. Por lo tanto, se requiere tener una conexión\
-             a internet para su funcionamiento.
+            de Google Translate. Por lo tanto, se requiere tener una conexión \
+            a internet para su funcionamiento.
         * El límite máximo de caracteres en un solo texto es de 15.000.
         * Debido a las limitaciones de la versión web del traductor de Google,\
-             el uso de la API no garantiza que la librería funcione correctame\
-            nte en todo momento.
+             el uso de la API no garantiza que la librería funcione \
+            correctamente en todo momento.
         * Si desea utilizar una API estable, se recomienda el uso de la \
             `API de traducción oficial de Google <https://cloud.google.com/translate/docs>`_.
         * Si recibe un error HTTP 5xx, probablemente se deba a que Google ha \
@@ -131,8 +131,8 @@ def lenguaje_tesseract(lenguaje):
     Tesseract.
 
     :param lenguaje: (str) Corresponde al nombre del lenguaje a definir.
-    :return: (str) Texto correspondiente al lenguaje identificado, de acuerdo\
-         a lo aceptado por Tesseract.
+    :return: (str) Texto correspondiente al lenguaje identificado, de acuerdo \
+        a lo aceptado por Tesseract.
     """
     leng = None
     lenguaje = lenguaje.lower()

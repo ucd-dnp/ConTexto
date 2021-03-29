@@ -246,27 +246,27 @@ def par_nubes(
     devolver_grafica=False,
 ):
     """
-    Permite graficar o exportar un par de nubes de palabras (una junto a otra\
-    ) a partir de un texto.
+    Permite graficar o exportar un par de nubes de palabras (una junto a \
+    otra) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n1: (int) Valor por defecto: 1. Cantidad de elementos a tener en c\
-        uenta en la generación de n-gramas de la nube de palabras izquierda.
-    :param n2: (int) Valor por defecto: 2. Cantidad de elementos a tener en c\
-        uenta en la generación de n-gramas de la nube de palabras derecha.
-    :param dim_figura: (float, float) Valor por defecto: (20, 10). Correspond\
-        en al ancho y alto de la figura en pulgadas.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea e\
-        xportar la gráfica como archivo tipo imagen. Al nombrar el archivo se\
-         recomienda utilizar la extensión jpg. Si no se especifica una ruta, \
-        la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico con el par de nubes de palabras \
+    :param n1: (int) Valor por defecto: 1. Cantidad de elementos a tener en \
+        cuenta en la generación de n-gramas de la nube de palabras izquierda.
+    :param n2: (int) Valor por defecto: 2. Cantidad de elementos a tener en \
+        cuenta en la generación de n-gramas de la nube de palabras derecha.
+    :param dim_figura: (float, float) Valor por defecto: (20, 10). \
+        Corresponden al ancho y alto de la figura en pulgadas.
+    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea \
+        exportar la gráfica como archivo tipo imagen. Al nombrar el archivo \
+        se recomienda utilizar la extensión jpg. Si no se especifica una ruta,\
+         la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
+        visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. \
+        Indica si se desea obtener el gráfico con el par de nubes de palabras \
         como un objeto de Matplotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el par de nubes de pala\
-        bras, solo si devolver_grafica=True.
+    :return: (objeto Figure de Matplotlib) Figura con el par de nubes de \
+        palabras, solo si devolver_grafica=True.
     """
 
     # Obtener nubes de palabras
@@ -313,33 +313,34 @@ def matriz_coocurrencias(
 ):
     """ Calcula la matriz de coocurrencias de un texto.
 
-    :param texto: (str o list) Corresponde al texto (o lista de textos/docume\
-        ntos) que se desea analizar.
-    :param min_frec: (int) Valor por defecto: 1. Frecuencia mínima de aparici\
-        ón de palabras, si la frecuencia de una palabra es menor a min_frec, \
-        dicha palabra es excluida de la matriz.
-    :param max_num: (int) Valor por defecto: 200. Número máximo de palabras a\
-         dejar en la matriz (se eligen las más frecuentes).
-    :param modo: (str) {'documento', 'ventana'} Valor por defecto: 'documento\
-        '. Corresponde al modo de análisis, con 'documento' se calcula la co-\
-        ocurrencia de términos sin importar la distancia entre estos,  con 'v\
-        entana' se calcula la co-ocurrencia de términos teniendo en cuenta un\
-        a distancia máxima entre estos.
-    :param ventana: (int) Valor por defecto: 3. Tamaño de la ventana (solo se\
-         usa cuando modo='ventana'). Número de palabras anteriores o posterio\
-        res a tener en cuenta con respecto al término de análisis, equivalent\
-        e a calcular la co-ocurrencia con n-gramas, siendo n = ventana + 1.
-    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor\
-         es True devuelve la versión diagonal superior de la matriz de coocur\
-        rencias, si es False devuelve la matriz completa.
+    :param texto: (str o list) Corresponde al texto (o lista de \
+        textos/documentos) que se desea analizar.
+    :param min_frec: (int) Valor por defecto: 1. Frecuencia mínima de \
+        aparición de palabras, si la frecuencia de una palabra es menor a \
+        min_frec, dicha palabra es excluida de la matriz.
+    :param max_num: (int) Valor por defecto: 200. Número máximo de palabras \
+        a dejar en la matriz (se eligen las más frecuentes).
+    :param modo: (str) {'documento', 'ventana'} Valor por defecto: \
+        'documento'. Corresponde al modo de análisis, con 'documento' se \
+        calcula la co-ocurrencia de términos sin importar la distancia entre \
+        estos,  con 'ventana' se calcula la co-ocurrencia de términos \
+        teniendo en cuenta una distancia máxima entre estos.
+    :param ventana: (int) Valor por defecto: 3. Tamaño de la ventana (solo se \
+        usa cuando modo='ventana'). Número de palabras anteriores o \
+        posteriores a tener en cuenta con respecto al término de análisis, \
+        equivalente a calcular la co-ocurrencia con n-gramas, siendo \
+        n=ventana+1.
+    :param tri_sup: (bool) {True, False} Valor por defecto: True. Si el valor \
+        es True devuelve la versión diagonal superior de la matriz de \
+        co-ocurrencias, si es False devuelve la matriz completa.
     :param limpiar: (bool) {True, False} Valor por defecto: False. Define si \
         se desea hacer una limpieza básica (aplicando la función \
-        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes d\
-        e calcular las coocurrencias.
-    :param tokenizador: Valor por defecto: None. Objeto encargado de la token\
-        ización y detokenización de textos. Si el valor es 'None', se utiliza\
-        rá por defecto una instancia de la clase *TokenizadorNLTK*.
-    :return: (dataframe) Coocurrencias de los textos de entrada.
+        `limpieza_basica` del módulo `limpieza`) al texto de entrada, antes \
+        de calcular las co-ocurrencias.
+    :param tokenizador: Valor por defecto: None. Objeto encargado de la \
+        tokenización y detokenización de textos. Si el valor es 'None', se \
+        utilizará por defecto una instancia de la clase *TokenizadorNLTK*.
+    :return: (dataframe) Co-ocurrencias de los textos de entrada.
     """
     # Generar un solo texto con todos los documentos
     if isinstance(texto, Iterable) and not isinstance(texto, str):
@@ -426,31 +427,31 @@ def graficar_coocurrencias(
     Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
 
     :param mat: (dataframe) Matriz de coocurrencias que desea graficar.
-    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las co\
-        nexiones con menor peso para aclarar un poco la imagen.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea e\
-        xportar la gráfica como archivo tipo imagen. Al nombrar el archivo se\
-         recomienda utilizar la extensión jpg. Si no se especifica una ruta, \
-        la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param K: (float) Valor por defecto: 5. Distancia óptima entre nodos, aum\
-        ente este valor para separar los nodos.
-    :param color_borde: (str) Valor por defecto: 'orchid'. Corresponde al col\
-        or de los bordes de la red, se puede asignar el nombre de un color pr\
-        edefinido o el código hexadecimal de un color.
-    :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al colo\
-        r de los nodos, se puede asignar el nombre de un color predefinido o \
+    :param prop_fuera: (float) (valor entre 0 y 100). Permite eliminar las \
+        conexiones con menor peso para aclarar un poco la imagen.
+    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea \
+        exportar la gráfica como archivo tipo imagen. Al nombrar el archivo \
+        se recomienda utilizar la extensión jpg. Si no se especifica una \
+        ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
+        visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :param K: (float) Valor por defecto: 5. Distancia óptima entre nodos, \
+        aumente este valor para separar los nodos.
+    :param color_borde: (str) Valor por defecto: 'orchid'. Corresponde al \
+        color de los bordes de la red, se puede asignar el nombre de un color \
+        predefinido o el código hexadecimal de un color.
+    :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al color\
+         de los nodos, se puede asignar el nombre de un color predefinido o \
         el código hexadecimal de un color.
-    :param semilla: (int) Valor por defecto: 123. Estado inicial del generado\
-        r aleatorio para establecer la posición de los nodos.
-    :param dim_figura: (float, float) Valor por defecto: (13, 13). Correspond\
-        en al ancho y alto de la figura en pulgadas.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico de barras como un objeto de Matp\
-        lotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el grafo de coocurrenci\
-        as, solo si devolver_grafica=True.
+    :param semilla: (int) Valor por defecto: 123. Estado inicial del generador\
+         aleatorio para establecer la posición de los nodos.
+    :param dim_figura: (float, float) Valor por defecto: (13, 13). \
+        Corresponden al ancho y alto de la figura en pulgadas.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. \
+        Indica si se desea obtener el gráfico de barras como un objeto de \
+        Matplotlib.
+    :return: (objeto Figure de Matplotlib) Figura con el grafo de \
+        co-ocurrencias, solo si devolver_grafica=True.
     """
     # Definir el valor máximo de la matriz y de la diagonal
     max_cooc = max(mat.max())
@@ -538,32 +539,32 @@ def grafica_barchart_frecuencias(
     devolver_grafica=False,
 ):
     """
-    Permite graficar o exportar un gráfico de barras horizontales de la frecu\
-    encia de palabras (n-gramas) a partir de un texto.
+    Permite graficar o exportar un gráfico de barras horizontales de la \
+    frecuencia de palabras (n-gramas) a partir de un texto.
 
     :param texto: (str) Corresponde al texto que se desea analizar.
-    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener\
-         en cuenta en la generación de n-gramas.
-    :param dim_figura: (float, float) Valor por defecto: (8, 5). Corresponden\
-         al ancho y alto de la figura en pulgadas.
-    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. Corres\
-        ponde al título de la nube de palabras.
-    :param ascendente: (bool) {True, False} Valor por defecto: True. Determin\
-        a si las barras de términos se muestran de menos (abajo) a más (arrib\
-        a) frecuentes en la gráfica.
-    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde\
-         desea exportar la gráfica como archivo tipo imagen. Al nombrar el ar\
-        chivo se recomienda utilizar la extensión jpg. Si no se especifica un\
-        a ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica en el `IDE` que esté utilizando.
-    :param n_terminos: (int) Valor por defecto: 15. Cantidad de n-gramas a gr\
-        aficar.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. I\
-        ndica si se desea obtener el gráfico de barras como un objeto de Matp\
-        lotlib.
-    :return: (objeto Figure de Matplotlib) Figura con el gráfico de barras, s\
-        olo si devolver_grafica = True.
+    :param n_grama: (int) Valor por defecto: 1. Cantidad de elementos a tener \
+        en cuenta en la generación de n-gramas.
+    :param dim_figura: (float, float) Valor por defecto: (8, 5). Corresponden \
+        al ancho y alto de la figura en pulgadas.
+    :param titulo: (str) Valor por defecto: 'Términos más frecuentes'. \
+        Corresponde al título de la nube de palabras.
+    :param ascendente: (bool) {True, False} Valor por defecto: True. Determina\
+         si las barras de términos se muestran de menos (abajo) a más (arriba)\
+         frecuentes en la gráfica.
+    :param ubicacion_archivo: (str) Valor por defecto: vacío (''). Ruta donde \
+        desea exportar la gráfica como archivo tipo imagen. Al nombrar el \
+        archivo se recomienda utilizar la extensión jpg. Si no se especifica \
+        una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
+        visualizar la gráfica en el `IDE` que esté utilizando.
+    :param n_terminos: (int) Valor por defecto: 15. Cantidad de n-gramas a \
+        graficar.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. \
+        Indica si se desea obtener el gráfico de barras como un objeto de \
+        Matplotlib.
+    :return: (objeto Figure de Matplotlib) Figura con el gráfico de barras, \
+        solo si devolver_grafica = True.
     """
     dict_datos = frecuencia_ngramas(texto, n_grama, n_terminos)
     # Ordenar datos en un dataframe
@@ -619,64 +620,64 @@ def graficar_dispersion(
     devolver_grafica=False,
 ):
     """
-    Permite generar un gráfico de dispersión de términos de interés a lo larg\
-    o de uno o varios documentos.
+    Permite generar un gráfico de dispersión de términos de interés a lo largo\
+     de uno o varios documentos.
 
     :param documentos: (str o list) Texto del documento o lista de textos de \
-        documentos sobre los cuales se quiere analizar la dispersión de térmi\
-        nos.
-    :param palabras_clave: (list) Lista de palabras clave o término de interé\
-        s que se quieren encontrar en los textos de los documentos.
-    :param ignorar_mayus: (bool) {True, False} Valor por defecto: True. Si Tr\
-        ue, no hace diferencia si las palabras tienen mayúsculas, es decir, C\
-        onTexto es igual a contexto.
-    :param titulo: (str) Valor por defecto: 'Gráfico de dispersión de término\
-        s'. Título de la figura de dispersión de términos.
-    :param eje_x: (str) Valor por defecto: 'Distribución de términos'. Leyend\
-        a del eje x de la figura.
+        documentos sobre los cuales se quiere analizar la dispersión de \
+        términos.
+    :param palabras_clave: (list) Lista de palabras clave o término de interés\
+         que se quieren encontrar en los textos de los documentos.
+    :param ignorar_mayus: (bool) {True, False} Valor por defecto: True. Si \
+        True, no hace diferencia si las palabras tienen mayúsculas, es decir, \
+        ConTexto es igual a contexto.
+    :param titulo: (str) Valor por defecto: 'Gráfico de dispersión de \
+        términos'. Título de la figura de dispersión de términos.
+    :param eje_x: (str) Valor por defecto: 'Distribución de términos'. Leyenda\
+         del eje x de la figura.
     :param eje_y: (str) Valor por defecto: 'Palabras clave'. Leyenda del eje \
         y de la figura.
-    :param etiquetas: (None o str) Valor por defecto: None. Lista de identifi\
-        cadores de los documentos analizados. Esta debe ser de la misma longi\
-        tud de la lista de documentos de entrada. Si el valor es None y auto_\
-        etiquetas = True, se generan etiquetas automáticas por defecto.
-    :param auto_etiquetas: (bool) {True, False} Valor por defecto: True. Si e\
-        tiquetas = None, Genera etiquetas automáticas para los documentos de \
+    :param etiquetas: (None o str) Valor por defecto: None. Lista de \
+        identificadores de los documentos analizados. Esta debe ser de la \
+        misma longitud de la lista de documentos de entrada. Si el valor es \
+        None y auto_etiquetas=True, se generan etiquetas automáticas por \
+        defecto.
+    :param auto_etiquetas: (bool) {True, False} Valor por defecto: True. Si \
+        etiquetas=None, Genera etiquetas automáticas para los documentos de \
         entrada {doc1, doc2, ..., docn}.
-    :param leyenda: (bool) {True, False} Valor por defecto: True. Permite mos\
-        trar los identificadores de los documentos al lado derecho de la gráf\
-        ica.
-    :param rotacion: (int) Valor por defecto: 30. Permite rotar las etiquetas\
-         de los documentos sobre el eje x de la gráfica de dispersión.
-    :param dim_figura: (float, float) Valor por defecto: (12, 7). Corresponde\
-        n al ancho y alto de la figura en pulgadas.
-    :param ubicacion_archivo: (None o str) Valor por defecto: None.  Ruta don\
-        de desea exportar la gráfica como archivo tipo imagen {png, jpeg, jpg\
-        , gif}. Si no se especifica una ruta, la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite vi\
-        sualizar la gráfica después de ejecutar la función.
-    :param marcador: (str) Valor por defecto: '|'. Tipo de marcador utilizado\
-         por el gráfico de dispersión. Se acepta los marcadores disponibles p\
-        ara Matplotlib (https://matplotlib.org/stable/api/markers_api.html).
-    :param tam_marcador: (float) Valor por defecto: 20. Tamaño del marcador e\
-        n el gráfico de dispersión.
-        Para un gráfico con muchas palabras clave, se recomienda poner un val\
-        or menor.
-    :param ancho_marcador: (float) Valor por defecto: 3. Ancho del marcador e\
-        n el gráfico de dispersión. Para un gráfico con muchos documentos, se\
+    :param leyenda: (bool) {True, False} Valor por defecto: True. Permite \
+        mostrar los identificadores de los documentos al lado derecho de la \
+        gráfica.
+    :param rotacion: (int) Valor por defecto: 30. Permite rotar las etiquetas \
+        de los documentos sobre el eje x de la gráfica de dispersión.
+    :param dim_figura: (float, float) Valor por defecto: (12, 7). Corresponden\
+         al ancho y alto de la figura en pulgadas.
+    :param ubicacion_archivo: (None o str) Valor por defecto: None.  Ruta \
+        donde desea exportar la gráfica como archivo tipo imagen {png, jpeg, \
+        jpg, gif}. Si no se especifica una ruta, la gráfica no se exporta.
+    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
+        visualizar la gráfica después de ejecutar la función.
+    :param marcador: (str) Valor por defecto: '|'. Tipo de marcador utilizado \
+        por el gráfico de dispersión. Se acepta los marcadores disponibles \
+        para Matplotlib (https://matplotlib.org/stable/api/markers_api.html).
+    :param tam_marcador: (float) Valor por defecto: 20. Tamaño del marcador en\
+        el gráfico de dispersión. Para un gráfico con muchas palabras clave, \
+        se recomienda poner un valor menor.
+    :param ancho_marcador: (float) Valor por defecto: 3. Ancho del marcador en\
+         el gráfico de dispersión. Para un gráfico con muchos documentos, se\
          recomienda utilizar un número menor.
-    :param colores: (None o list) Valor por defecto: None. Lista de colores p\
-        ara identificar cada documento de entrada. Si el valor es None, se ge\
-        neran colores automáticos para cada documento dependiendo del 'mapa_c\
-        olor' seleccionado.
-    :param mapa_color: (str) Valor por defecto: 'nipy_spectral'. Mapa de colo\
-        r para generar colores automáticos para los documentos. Se aceptan to\
-        dos los mapas de color continuos de Matplotlib\
+    :param colores: (None o list) Valor por defecto: None. Lista de colores \
+        para identificar cada documento de entrada. Si el valor es None, se \
+        generan colores automáticos para cada documento dependiendo del \
+        'mapa_color' seleccionado.
+    :param mapa_color: (str) Valor por defecto: 'nipy_spectral'. Mapa de color\
+         para generar colores automáticos para los documentos. Se aceptan \
+        todos los mapas de color continuos de Matplotlib: \
         (https://matplotlib.org/stable/tutorials/colors/colormaps.html)
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. S\
-        i True, devuelve el gráfico de dispersión como objeto de Matplotlib.
-    :return: (objeto Figure de Matplotlib) Objeto de Matplotlib, solo si devo\
-        lver_grafica = True.
+    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. Si\
+         True, devuelve el gráfico de dispersión como objeto de Matplotlib.
+    :return: (objeto Figure de Matplotlib) Objeto de Matplotlib, solo si \
+        devolver_grafica = True.
     """
 
     # Llamar objecto de dispersionPlot

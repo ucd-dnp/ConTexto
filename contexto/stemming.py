@@ -16,9 +16,9 @@ class Stemmer:
         :param lenguaje: (str) Lenguaje de los textos a los que se va a aplic\
             ar *stemming*. Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-        :param tokenizador: Valor por defecto: None. Objeto encargado de la t\
-            okenización y detokenización de textos. Si el valor es 'None', se\
-             cargará por defecto una instancia de la clase *TokenizadorNLTK*.
+        :param tokenizador: Valor por defecto: None. Objeto encargado de la \
+            tokenización y detokenización de textos. Si el valor es 'None', \
+            se carga por defecto una instancia de la clase `TokenizadorNLTK`.
         :return: (Stemmer) Objeto del tipo de la clase Stemmer.
         """
         # Definir lenguaje del stemmer
@@ -35,8 +35,8 @@ class Stemmer:
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
         va a aplicarse el objeto de la case Stemmer.
 
-        :param lenguaje: (str) Lenguaje de los textos a los que se va a aplic\
-            ar stemming. Para mayor información, consultar la sección de \
+        :param lenguaje: (str) Lenguaje de los textos a los que se va a \
+            aplicar stemming. Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         """
         self.lenguaje = definir_lenguaje(lenguaje, simplificado=False)
@@ -58,10 +58,10 @@ class Stemmer:
         resultante.
 
         :param texto: (str) Texto al que se desea aplicar el *stemming*.
-        :param limpiar: (bool) {True, False} Valor por defecto: False. Argume\
-            nto opcional que define si se desea hacer una limpieza básica (\
-            aplicando la función `limpieza_basica` del módulo `limpieza`) al \
-            texto antes de aplicar el *stemming*.
+        :param limpiar: (bool) {True, False} Valor por defecto: False. \
+            Argumento opcional que define si se desea hacer una limpieza \
+            básica (aplicando la función `limpieza_basica` del módulo \
+            `limpieza`) al texto antes de aplicar el *stemming*.
         :return: (str) Texto luego de la aplicación del *stemming*.
         """
         if limpiar:
