@@ -1,5 +1,4 @@
-﻿
-Abejorral
+﻿Abejorral
 Abrego
 Abriaquí
 Acacias
@@ -15,9 +14,6 @@ Aguazul
 Agustín Codazzi
 Aipe
 Alban
-Alban
-Albania
-Albania
 Albania
 Alcalá
 Aldana
@@ -44,14 +40,13 @@ Anolaima
 Anorí
 Anserma
 Ansermanuevo
-Anzá
 Anzoátegui
+Anzá
 Apartado
 Apia
 Apulo
 Aquitania
 Aracataca
-Aránzazu
 Aratoca
 Arauca
 Arauquita
@@ -62,14 +57,12 @@ Arboletes
 Arcabuco
 Arenal
 Argelia
-Argelia
-Argelia
 Ariguaní
 Arjona
 Armenia
-Armenia
 Armero
 Arroyohondo
+Aránzazu
 Astrea
 Ataco
 Atrato
@@ -78,11 +71,9 @@ Bagadó
 Bahía Solano
 Bajo Baudó
 Balboa
-Balboa
 Baranoa
 Baraya
 Barbacoas
-Barbosa
 Barbosa
 Barichara
 Barranca De Upia
@@ -93,17 +84,15 @@ Barranco Minas
 Barranquilla
 Becerril
 Belalcázar
-Belén
-Belén
-Belén De Los Andaquies
-Belén De Umbría
 Bello
 Belmira
 Beltran
+Belén
+Belén De Los Andaquies
+Belén De Umbría
 Berbeo
 Betania
 Beteitiva
-Betulia
 Betulia
 Bituima
 Boavita
@@ -112,18 +101,12 @@ Bogotá, D.C.
 Bojacá
 Bojayá
 Bolívar
-Bolívar
-Bolívar
 Bosconia
 Boyacá
-Briceño
 Briceño
 Bucaramanga
 Bucarasica
 Buenaventura
-Buenavista
-Buenavista
-Buenavista
 Buenavista
 Buenos Aires
 Buesaco
@@ -131,10 +114,8 @@ Bugalagrande
 Buriticá
 Busbanza
 Cabrera
-Cabrera
 Cabuyaro
 Cacahual
-Cáceres
 Cachipay
 Cachira
 Cacota
@@ -145,9 +126,7 @@ Cajamarca
 Cajibío
 Cajicá
 Calamar
-Calamar
 Calarcá
-Caldas
 Caldas
 Caldono
 Cali
@@ -160,12 +139,9 @@ Campoalegre
 Campohermoso
 Canalete
 Candelaria
-Candelaria
 Cantagallo
-Cañasgordas
 Caparrapí
 Capitanejo
-Cáqueza
 Caracolí
 Caramanta
 Carcasí
@@ -181,6 +157,7 @@ Carurú
 Casabianca
 Castilla La Nueva
 Caucasia
+Cañasgordas
 Cepita
 Cerete
 Cerinza
@@ -194,10 +171,8 @@ Chameza
 Chaparral
 Charalá
 Charta
-Chía
 Chibolo
 Chigorodó
-Chima
 Chima
 Chimichagua
 Chinacota
@@ -217,26 +192,24 @@ Chivata
 Chivor
 Choachí
 Chocontá
+Chía
 Cicuco
-Ciénaga
-Ciénaga De Oro
-Ciénega
 Cimitarra
 Circasia
 Cisneros
 Ciudad Bolívar
+Ciénaga
+Ciénaga De Oro
+Ciénega
 Clemencia
 Cocorná
 Coello
 Cogua
 Colombia
 Colon
-Colon
 Coloso
 Combita
 Concepción
-Concepción
-Concordia
 Concordia
 Condoto
 Confines
@@ -246,9 +219,6 @@ Contratación
 Convención
 Copacabana
 Coper
-Córdoba
-Córdoba
-Córdoba
 Corinto
 Coromoro
 Corozal
@@ -264,7 +234,6 @@ Cubara
 Cubarral
 Cucaita
 Cucunuba
-Cúcuta
 Cucutilla
 Cuitiva
 Cumaral
@@ -275,6 +244,10 @@ Cunday
 Curillo
 Curití
 Curumani
+Cáceres
+Cáqueza
+Córdoba
+Cúcuta
 Dabeiba
 Dagua
 Dibulla
@@ -285,7 +258,6 @@ Dosquebradas
 Duitama
 Durania
 Ebéjico
-El Águila
 El Bagre
 El Banco
 El Cairo
@@ -315,8 +287,6 @@ El Paso
 El Paujil
 El Peñol
 El Peñón
-El Peñón
-El Peñón
 El Piñón
 El Playón
 El Reten
@@ -327,9 +297,9 @@ El Rosario
 El Santuario
 El Tablón De Gomez
 El Tambo
-El Tambo
 El Tarra
 El Zulia
+El Águila
 Elías
 Encino
 Enciso
@@ -343,12 +313,10 @@ Filandia
 Firavitoba
 Flandes
 Florencia
-Florencia
 Floresta
-Florián
 Florida
 Floridablanca
-Fómeque
+Florián
 Fonseca
 Fortul
 Fosca
@@ -360,22 +328,21 @@ Fuente De Oro
 Fundación
 Funes
 Funza
-Fúquene
 Fusagasugá
+Fómeque
+Fúquene
 Gachalá
 Gachancipá
 Gachantivá
 Gacheta
-Galán
 Galapa
 Galeras
+Galán
 Gama
 Gamarra
 Gambita
-Gámeza
 Garagoa
 Garzón
-Génova
 Gigante
 Ginebra
 Giraldo
@@ -385,8 +352,6 @@ Girón
 Gomez Plata
 González
 Gramalote
-Granada
-Granada
 Granada
 Gsepsa
 Gsican
@@ -398,12 +363,9 @@ Guachetá
 Guachucal
 Guadalajara De Buga
 Guadalupe
-Guadalupe
-Guadalupe
 Guaduas
 Guaitarilla
 Gualmatan
-Guamal
 Guamal
 Guamo
 Guapi
@@ -415,12 +377,14 @@ Guatapé
 Guataqui
 Guatavita
 Guateque
-Guática
 Guavatá
 Guayabal De Siquima
 Guayabetal
 Guayata
 Gutierrez
+Guática
+Gámeza
+Génova
 Hacarí
 Hatillo De Loba
 Hato
@@ -436,20 +400,17 @@ Ibagué
 Icononzo
 Iles
 Imues
-Inírida
 Inza
+Inírida
 Ipiales
-Íquira
 Isnos
 Istmina
 Itagüí
 Ituango
 Iza
-Jámbalo
 Jamundí
 Jardín
 Jenesano
-Jericó
 Jericó
 Jerusalén
 Jesús María
@@ -457,6 +418,7 @@ Jordán
 Juan De Acosta
 Junín
 Jurado
+Jámbalo
 La Apartada
 La Argentina
 La Belleza
@@ -482,7 +444,6 @@ La Mesa
 La Montañita
 La Palma
 La Paz
-La Paz
 La Pedrera
 La Peña
 La Pintada
@@ -494,14 +455,8 @@ La Sierra
 La Tebaida
 La Tola
 La Unión
-La Unión
-La Unión
-La Unión
 La Uvita
 La Vega
-La Vega
-La Victoria
-La Victoria
 La Victoria
 La Virginia
 Labateca
@@ -512,13 +467,10 @@ Leguizamo
 Leiva
 Lejanías
 Lenguazaque
-Lérida
 Leticia
-Líbano
 Liborina
 Linares
 Lloro
-López
 Lorica
 Los Andes
 Los Córdobas
@@ -527,6 +479,9 @@ Los Patios
 Los Santos
 Lourdes
 Luruaco
+Lérida
+Líbano
+López
 Macanal
 Macaravita
 Maceo
@@ -537,20 +492,17 @@ Magsi
 Mahates
 Maicao
 Majagual
-Málaga
 Malambo
 Mallama
 Manatí
 Manaure
-Manaure
-Maní
 Manizales
 Manta
 Manzanares
+Maní
 Mapiripan
 Mapiripana
 Margarita
-María La Baja
 Marinilla
 Maripi
 Mariquita
@@ -558,6 +510,7 @@ Marmato
 Marquetalia
 Marsella
 Marulanda
+María La Baja
 Matanza
 Medellín
 Medina
@@ -568,7 +521,6 @@ Melgar
 Mercaderes
 Mesetas
 Milán
-Miraflores
 Miraflores
 Miranda
 Miriti - Paraná
@@ -586,26 +538,22 @@ Montebello
 Montecristo
 Montelíbano
 Montenegro
-Montería
 Monterrey
-Moñitos
-Morales
+Montería
 Morales
 Morelia
 Morichal
 Morroa
 Mosquera
-Mosquera
 Motavita
+Moñitos
 Murillo
 Murindó
 Mutatá
 Mutiscua
 Muzo
+Málaga
 Nariño
-Nariño
-Nariño
-Nátaga
 Natagaima
 Nechí
 Necoclí
@@ -623,6 +571,7 @@ Nueva Granada
 Nuevo Colon
 Nunchia
 Nuqui
+Nátaga
 Obando
 Ocamonte
 Ocaña
@@ -643,15 +592,12 @@ Pacho
 Pacoa
 Pacora
 Padilla
-Páez
-Páez
 Paicol
 Pailitas
 Paime
 Paipa
 Pajarito
 Palermo
-Palestina
 Palestina
 Palmar
 Palmar De Varela
@@ -677,10 +623,10 @@ Paz De Rio
 Pedraza
 Pelaya
 Pensilvania
-Peñol
 Peque
 Pereira
 Pesca
+Peñol
 Piamonte
 Piedecuesta
 Piedras
@@ -706,7 +652,6 @@ Potosí
 Pradera
 Prado
 Providencia
-Providencia
 Pueblo Bello
 Pueblo Nuevo
 Pueblo Rico
@@ -722,7 +667,6 @@ Puerto Boyacá
 Puerto Caicedo
 Puerto Carreño
 Puerto Colombia
-Puerto Colombia
 Puerto Concordia
 Puerto Escondido
 Puerto Gaitán
@@ -734,10 +678,8 @@ Puerto Nare
 Puerto Nariño
 Puerto Parra
 Puerto Rico
-Puerto Rico
 Puerto Rondón
 Puerto Salgar
-Puerto Santander
 Puerto Santander
 Puerto Tejada
 Puerto Triunfo
@@ -747,6 +689,7 @@ Pupiales
 Puracé
 Purificación
 Purísima
+Páez
 Quebradanegra
 Quetame
 Quibdó
@@ -756,16 +699,13 @@ Quipama
 Quipile
 Ragonvalia
 Ramiriquí
-Ráquira
 Recetor
 Regidor
 Remedios
 Remolino
 Repelón
 Restrepo
-Restrepo
 Retiro
-Ricaurte
 Ricaurte
 Rio De Oro
 Rio Iro
@@ -775,8 +715,6 @@ Rioblanco
 Riofrio
 Riohacha
 Rionegro
-Rionegro
-Riosucio
 Riosucio
 Risaralda
 Rivera
@@ -786,31 +724,27 @@ Roncesvalles
 Rondón
 Rosas
 Rovira
+Ráquira
 Sabana De Torres
 Sabanagrande
-Sabanalarga
-Sabanalarga
 Sabanalarga
 Sabanas De San Ángel
 Sabaneta
 Saboya
 Sacama
-Sáchica
 Sahagún
 Saladoblanco
-Salamina
 Salamina
 Salazar
 Saldaña
 Salento
 Salgar
 Samacá
-Samaná
 Samaniego
+Samaná
 Sampués
 San Agustín
 San Alberto
-San Andres
 San Andres
 San Andres De Cuerquia
 San Andres De Tumaco
@@ -821,13 +755,10 @@ San Antonio Del Tequendama
 San Benito
 San Benito Abad
 San Bernardo
-San Bernardo
 San Bernardo Del Viento
 San Calixto
 San Carlos
-San Carlos
 San Carlos De Guaroa
-San Cayetano
 San Cayetano
 San Cristóbal
 San Diego
@@ -835,8 +766,6 @@ San Eduardo
 San Estanislao
 San Felipe
 San Fernando
-San Francisco
-San Francisco
 San Francisco
 San Gil
 San Jacinto
@@ -859,24 +788,18 @@ San Juan Nepomuceno
 San Juanito
 San Lorenzo
 San Luis
-San Luis
 San Luis De Gaceno
 San Luis De Palenque
 San Luis De Sincé
 San Marcos
 San Martin
-San Martin
 San Martin De Loba
 San Mateo
-San Miguel
 San Miguel
 San Miguel De Sema
 San Onofre
 San Pablo
-San Pablo
 San Pablo De Borbur
-San Pedro
-San Pedro
 San Pedro
 San Pedro De Cartago
 San Pedro De Urabá
@@ -892,17 +815,13 @@ San Zenón
 Sandoná
 Santa Ana
 Santa Barbara
-Santa Barbara
-Santa Barbara
 Santa Barbara De Pinto
 Santa Catalina
 Santa Helena Del Opón
 Santa Isabel
 Santa Lucia
-Santa María
-Santa María
 Santa Marta
-Santa Rosa
+Santa María
 Santa Rosa
 Santa Rosa De Cabal
 Santa Rosa De Osos
@@ -914,7 +833,6 @@ Santacruz
 Santafé De Antioquia
 Santana
 Santander De Quilichao
-Santiago
 Santiago
 Santiago De Tolú
 Santo Domingo
@@ -962,11 +880,8 @@ Sotará
 Suaita
 Suan
 Suarez
-Suarez
 Suaza
 Subachoque
-Sucre
-Sucre
 Sucre
 Suesca
 Supatá
@@ -977,13 +892,13 @@ Susacon
 Sutamarchan
 Sutatausa
 Sutatenza
+Sáchica
 Tabio
 Tadó
 Talaigua Nuevo
 Tamalameque
 Tamara
 Tame
-Támesis
 Taminango
 Tangua
 Taraira
@@ -1009,8 +924,8 @@ Tibirita
 Tibú
 Tierralta
 Timana
-Timbío
 Timbiquí
+Timbío
 Tinjacá
 Tipacoque
 Tiquisio
@@ -1020,10 +935,8 @@ Tocaima
 Tocancipá
 Togsi
 Toledo
-Toledo
 Tolú Viejo
 Tona
-Tópaga
 Topaipi
 Toribio
 Toro
@@ -1042,6 +955,8 @@ Turbo
 Turmequé
 Tuta
 Tutazá
+Támesis
+Tópaga
 Ubalá
 Ubaque
 Ulloa
@@ -1063,11 +978,8 @@ Valle De San Juan
 Valle Del Guamuez
 Valledupar
 Valparaíso
-Valparaíso
 Vegachí
-Vélez
 Venadillo
-Venecia
 Venecia
 Ventaquemada
 Vergara
@@ -1087,9 +999,6 @@ Villagómez
 Villahermosa
 Villamaría
 Villanueva
-Villanueva
-Villanueva
-Villanueva
 Villapinzón
 Villarrica
 Villavicencio
@@ -1099,6 +1008,7 @@ Viotá
 Viracacha
 Vistahermosa
 Viterbo
+Vélez
 Yacopí
 Yacuanquer
 Yaguará
@@ -1119,3 +1029,4 @@ Zetaquira
 Zipacón
 Zipaquirá
 Zona Bananera
+Íquira
