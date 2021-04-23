@@ -4,9 +4,9 @@ Instalación de Poppler y Tesseract en Linux
 ===========================================
 
 .. note::
-    Para la instalación de paquetes en linux utilizaremos el comando ``sudo``, por lo que se requiere contar con permisos de administrador.
+    Para la instalación de paquetes en linux se utiliza el comando ``sudo``, por lo que se requiere contar con permisos de administrador.
 
-Como primer paso procedemos a actualizar el gestor de paquetes de linux utilizando el siguiente comando:
+Como primer paso se procede a actualizar el gestor de paquetes de linux utilizando el siguiente comando:
 
 .. code-block:: python
 
