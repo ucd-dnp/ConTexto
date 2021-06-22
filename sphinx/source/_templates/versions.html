@@ -1,49 +1,51 @@
 {%- if current_version %}
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> Otras versiones</span>
-      
-      {%- if current_version.name == 'master' %}
-        v: latest
-      {% elif current_version.name == 'v0.1b' %}
-        v: v0.1
-      {% else %}
-        v: {{ current_version.name }}
-      {% endif %}
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+
+    {%- if current_version.name == 'master' %}
+        latest
+    {% elif current_version.name == 'v0.1b' %}
+        v0.1
+    {% else %}
+        {{ current_version.name }}
+    {% endif %}
 
     <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-    {%- if versions.branches %}
-    <dl>
-      <dt>Ramas</dt>
-      {%- for item in versions.branches %}
+</a>  
 
-        {%- if item.name == 'master' %}
-          <dd><a href="{{ item.url }}">latest</a></dd>        
-        {% else %}
-          <dd><a href="{{ item.url }}">{{ item.name }}</a></dd>
-        {% endif %}
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        {%- if versions.branches %}
+            <dl>
+                <dt>Versiones</dt>
+                {%- for item in versions.branches %}
 
-      {%- endfor %}
-    </dl>
-    {%- endif %}
+                    {%- if item.name == 'master' %}
+                        <dd><a href="{{ item.url }}">latest</a></dd>        
+                    {% else %}
+                        <dd><a href="{{ item.url }}">{{ item.name }}</a></dd>
+                    {% endif %}
 
-    {%- if versions.tags %}
-    <dl>
-      <dt>Tags</dt>
-      {%- for item in versions.tags %}
+                {%- endfor %}
+            <!-- </dl> -->
+        {%- endif %}
 
-      {% if item.name == 'v0.1b' %}
-        <dd><a href="{{ item.url }}">v0.1</a></dd>
-      {% else %}
-        <dd><a href="{{ item.url }}">{{ item.name }}</a></dd>
-      {% endif %}
+        {%- if versions.tags %}
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+                {%- for item in versions.tags %}
 
-      {%- endfor %}
-    </dl>
-    {%- endif %}    
+                    {% if item.name == 'v0.1b' %}
+                        <dd><a href="{{ item.url }}">v0.1</a></dd>
+                    {% else %}
+                        <dd><a href="{{ item.url }}">{{ item.name }}</a></dd>
+                    {% endif %}
 
-  </div>
+                {%- endfor %}
+            </dl>
+        {%- endif %}
+    </div>
 </div>
+
 {%- endif %}

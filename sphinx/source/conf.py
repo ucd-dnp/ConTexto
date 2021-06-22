@@ -21,9 +21,10 @@ sys.path.insert(0, os.path.abspath('../../contexto'))
 project = 'ConTexto'
 copyright = '2021, UCD - DNP'
 author = 'UCD - DNP'
+html_last_updated_fmt = '%b %d, %Y'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.2'
 version = 'gh-pages'
 
 # -- General configuration ---------------------------------------------------
@@ -31,11 +32,12 @@ version = 'gh-pages'
 # -- sphinx-multiversion -----------------------------------------------------
 
 # Whitelist pattern for tags (set to None to ignore all tags)
-# smv_tag_whitelist = r'^.*$' # default
-smv_tag_whitelist = r'^(?!v0.1b).*$' # ignora la versión v0.1
+smv_tag_whitelist = r'^.*$' # default
+# smv_tag_whitelist = r'^(?!v0.1b).*$' # ignora la versión v0.1
 
 # Whitelist pattern for branches (set to None to ignore all branches)
 # smv_branch_whitelist = r'^.*$' # default - all branches
+# smv_branch_whitelist = r'^(?!gh-pages|HEAD).*$'
 smv_branch_whitelist = r'^(?!gh-pages|HEAD|desarrollo).*$'
 
 # Pattern for released versions
@@ -95,10 +97,12 @@ autoclass_content = 'both'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
-html_show_sourcelink = False
 
-html_theme_options = {    
+html_theme = "pydata_sphinx_theme"
+# html_theme = 'sphinx_rtd_theme'
+# html_show_sourcelink = False
+
+html_theme_options = {
     'display_version': True,
     'style_external_links' : False
 }
@@ -109,15 +113,56 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_css_files = ['css/custom.css']
-html_logo  = '_static/image/logo_400.png'
+# html_logo  = '_static/image/logo_400.png'
+html_logo  = '_static/image/logo_2.png'
 html_favicon = '_static/image/favicon.ico'
 
-from sphinx.writers.html import HTMLTranslator
-class PatchedHTMLTranslator(HTMLTranslator):
-    def visit_reference(self, node):
-        if node.get('newtab') or not (node.get('target') or node.get('internal') or 'refuri' not in node):
-            node['target'] = '_blank'
-        super().visit_reference(node)
+# from sphinx.writers.html import HTMLTranslator
+# class PatchedHTMLTranslator(HTMLTranslator):
+#     def visit_reference(self, node):
+#         if node.get('newtab') or not (node.get('target') or node.get('internal') or 'refuri' not in node):
+#             node['target'] = '_blank'
+#         super().visit_reference(node)
 
-def setup(app):
-    app.set_translator('html', PatchedHTMLTranslator)
+# def setup(app):
+#     app.set_translator('html', PatchedHTMLTranslator)
+
+html_theme_options = {
+    
+    "icon_links": [
+        {
+            "name": "GitHub ConTexto",
+            "url": "https://github.com/ucd-dnp/ConTexto/",
+            "icon": "fab fa-github-square",
+        },
+        {        
+            "name": "Enviar correo",
+            "url": "mailto:ucd@dnp.gov.co",
+            "icon": "far fa-envelope",            
+        },      
+    ],
+
+    # "external_links": [
+    #   {"name": "link-one-name", "url": "https://<link-one>"},
+    #   {"name": "link-two-name", "url": "https://<link-two>"}
+    # ],
+
+    "collapse_navigation": True,
+    "show_prev_next": True,
+    "navigation_depth": 4,
+    "search_bar_text": "Buscar en la documentación ...",
+
+    "show_toc_level": 1,
+    "navbar_start": ["navbar-logo"],    
+    "navbar_center": ["navbar-nav"],    
+    "navbar_end": ["navbar-icon-links"],
+    "page_sidebar_items": ['page-toc'],
+    "footer_items": ['copyright', 'last-updated.html'],
+    
+}
+
+html_sidebars = {
+   # '**': ['search-field.html', 'sidebar-nav-bs.html', 'globaltoc.html','last-updated.html'],
+   '**': ['search-field.html', "versions", 'sidebar-nav-bs.html'],
+   
+}
