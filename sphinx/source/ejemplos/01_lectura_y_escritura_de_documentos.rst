@@ -3,7 +3,7 @@
 Lectura y escritura de documentos
 =================================
 
-Este ejemplo muestra las principales funcionalidades de los módulos :py:mod:`Lectura <lectura>` y :py:mod:`Escritura <escritura>`, de la librería. Estos módulos permiten extraer textos de archivos en diferentes formatos, así como escribir texto en nuevos archivos.
+Este ejemplo muestra las principales funcionalidades de los módulos :py:mod:`Lectura <lectura>` y :py:mod:`Escritura <escritura>` de la librería. Estos módulos permiten extraer textos de archivos en diferentes formatos, así como escribir texto en nuevos archivos.
 
 Importar paquetes necesarios y definir documentos para la prueba
 ----------------------------------------------------------------
@@ -85,11 +85,11 @@ A continuación se hace un recorrido por la lista de documentos de entrada, y pa
 Utilizar el OCR para extraer textos de imágenes
 -----------------------------------------------
 
-El OCR (reconocimiento óptico de caracteres) se utiliza para extraer texto de archivos de imagen. **ConTexto** incorpora el OCR de Tesseract para extraer texto de imágenes (como, por ejemplo, documentos escaneados). Actualmente, la librería soporta archivos en formatos ".png", ".jpg" y ".jpeg". Para archivos PDF, la librería primero convierte las páginas a imágenes, y luego aplica el OCR.
+El OCR (reconocimiento óptico de caracteres) se utiliza para extraer texto de archivos de imagen. **ConTexto** incorpora el OCR de Tesseract para extraer texto de imágenes (por ejemplo, documentos escaneados). Actualmente, la librería soporta archivos en formatos ".png", ".jpg" y ".jpeg". Para archivos PDF, la librería primero convierte las páginas a imágenes, y luego aplica el OCR.
 
 Adicionalmente, la librería permite realizar algunas operaciones de preprocesamiento sobre las imágenes antes de aplicar el OCR. Estos preprocesamientos pueden permitir hacer una lectura más acertada de los textos de las imágenes. 
 
-En este ejemplo, se va a leer el contenido de una imagen, y se va a mostrar cómo diferentes pre-procesamientos del OCR pueden llevar a diferentes resultados en la lectura. En primer lugar, se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo se grafica acá por motivos didácticos.
+En este ejemplo, se va a leer el contenido de una imagen y se va a mostrar cómo diferentes preprocesamientos del OCR pueden llevar a diferentes resultados en la lectura. En primer lugar, se carga y grafica la imagen. No es necesario hacer esto para extraer el texto; solo se grafica acá por motivos didácticos.
 
 .. code-block:: python
 

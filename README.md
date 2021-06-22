@@ -7,9 +7,9 @@
 
 ## Descripción
 
-La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren procesamiento y análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras, reconocidas por su buen desempeño.
+La librería de procesamiento y análisis de texto, ConTexto, tiene como objetivo principal proporcionar herramientas que simplifiquen las tareas y proyectos que involucren procesamiento y análisis de texto. La librería fue desarrollada en el lenguaje de programación de <em>Python</em> y contiene un conjunto de funciones que permiten realizar transformaciones y análisis de textos de forma simple, utilizando diferentes técnicas para lectura y escritura de archivos de texto, incluyendo reconocimiento óptico de caracteres (OCR), limpieza de textos y remoción de palabras no deseadas para el análisis (<em>stop words</em>), traducción y corrección de textos, generación de nubes de palabras, cálculo de similitudes entre textos, entre otras.
 
-La librería surge como solución a tres principales aspectos. En primer lugar, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto; en segundo lugar, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, contribuir en la reducción de la escasez de librerías enfocadas en el análisis de texto en español que existe actualmente. 
+La librería surge como solución a tres principales aspectos. En primer lugar, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto; en segundo lugar, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, aumentar la cantidad de librerías enfocadas en el análisis de texto en español que existen actualmente.
 
 - A continuación podrá consultar la siguiente información:
    
@@ -112,9 +112,9 @@ texto = limpieza_texto(texto_prueba, quitar_numeros=False, n_min=3, lista_palabr
 texto = remover_stopwords(texto, lista_expresiones=['project gutenberg'])
 ```
 
-Una vez limpio el texto, procedemos a utilizar la función **obtener_ngramas** que permite encontrar n-gramas, o conjuntos de n palabras seguidas donde n es un número entero mayor a cero. Por ejemplo, si n=1 o n=2, la función obtendrá las palabras o los bigramas del texto, respectivamente.
+Una vez limpio el texto, procedemos a utilizar la función **obtener_ngramas** que permite encontrar n-gramas, o conjuntos de n palabras seguidas, donde n es un número entero mayor a cero. Por ejemplo, si n=1 o n=2, la función obtendrá las palabras o los bigramas del texto, respectivamente.Con esta información se puede obtener la frecuencia de cada n-grama, y así conocer cuáles son los más mencionados en el texto. 
 
-Con esta información se puede obtener la frecuencia de cada n-grama, y así conocer cuales son los más mencionados en el texto. Esto puede ser graficado de varias maneras, como por ejemplo mediante nubes de palabras, en las cuales el tamaño de un término es proporcional a su frecuencia de aparición.
+Esto puede ser graficado de varias maneras, como por ejemplo mediante nubes de palabras, en las cuales el tamaño de un término es proporcional a su frecuencia de aparición.
 
 * Obtener listas de palabras y bigramas más frecuentes
 
@@ -136,9 +136,7 @@ bigramas[98:105]
 
 * Graficar y guardar nubes de palabras y bigramas
 
-```
-Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada
-```
+Si se utiliza el parámetro "ubicacion_archivo", la imagen generada se guardará en la ubicación especificada.
 
 La función **par_nubes** permite generar un par de nubes de palabras (una junto a otra).
 

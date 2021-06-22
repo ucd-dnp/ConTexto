@@ -9,7 +9,7 @@ Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vector
 Importar paquetes necesarios y adecuar el texto de prueba
 ---------------------------------------------------------
 
-El primer paso es importar las funciones del módulo de :py:mod:`Vectorización <vectorizacion>`, y definir los textos para correr los ejemplos. Adicionalmente, se importan y utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords` del módulo :py:mod:`Limpieza <limpieza>`, para hacer un procesamiento previo de los textos, antes de generar sus representaciones vectoriales.
+El primer paso es importar las funciones del módulo de :py:mod:`Vectorización <vectorizacion>` y definir los textos para correr los ejemplos. Adicionalmente, se importan y utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords` del módulo :py:mod:`Limpieza <limpieza>`, para hacer un procesamiento previo de los textos antes de generar sus representaciones vectoriales.
 
 .. code-block:: python
 
@@ -40,7 +40,7 @@ La clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuenci
 Inicializar y ajustar los vectorizadores
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Para utilizar estos tipos de vectorización, es necesario definir un objeto de clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`, especificando aspectos tales como:
+Para utilizar estos tipos de vectorización es necesario definir un objeto de clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`, especificando aspectos como:
 
 - Qué tipo de técnica aplicar (BOW, TF o TF-IDF).
 - El rango de n-gramas que se desea tener en cuenta (solo palabras, palabras y bigramas, etc.).
@@ -66,7 +66,7 @@ Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un co
 Vocabulario de los vectorizadores ajustados
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Una vez cada vectorizador ha sido ajustado, se puede acceder a su vocabulario llamando el método :py:meth:`vocabulario() <vectorizacion.VectorizadorFrecuencias.vocabulario>`. Esto retorna una DataFrame de Pandas con el término asignado a cada posición de los vectores resultantes. A continuación se muestran los términos de las primeras 10 posiciones para los 2 vectorizadores ajustados. 
+Una vez cada vectorizador ha sido ajustado, se puede acceder a su vocabulario llamando el método :py:meth:`vocabulario() <vectorizacion.VectorizadorFrecuencias.vocabulario>`. Esto retorna un DataFrame de Pandas con el término asignado a cada posición de los vectores resultantes. A continuación se muestran los términos de las primeras 10 posiciones para los 2 vectorizadores ajustados. 
 
 Se puede observar que `v_tfidf` incluye términos y bigramas, tal y como se estableció al definir esa variable.
 
@@ -169,7 +169,7 @@ inversa.
 Cargar un vectorizador ajustado previamente
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Previamente vimos cómo se puede guardar un vectorizador ajustado, por medio del parámetro *archivo_salida* de la función `ajustar`. Este vectorizador ya ajustado se puede cargar y utilizar, al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
+Previamente vimos cómo se puede guardar un vectorizador ajustado, por medio del parámetro *archivo_salida* de la función `ajustar`. Este vectorizador, ya ajustado, se puede cargar y utilizar, al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
 
 .. code-block:: python
 
@@ -193,7 +193,7 @@ Vectorización por medio de *Hashing*
 
 La clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` utiliza el *hashing trick* para determinar directamente (sin necesidad de ajustar sobre un corpus) la posición de cada término de un texto dentro de un vector numérico. Esta técnica es rápida y ligera en memoria, pues no requiere aprender ni guardar un vocabulario. Esto también tiene algunas desventajas; por ejemplo, a partir de un vector no se puede aplicar una transformada inversa para conocer qué palabras contenía el texto.
 
-Adicionalmente, cuando se consideran muchos textos, o textos muy grande, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
+Adicionalmente, cuando se consideran muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
 
 .. code-block:: python
 
@@ -224,9 +224,9 @@ Vectorización utilizando *word embeddings* - Word2Vec
 -----------------------------------------------------
 
 La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` utiliza por debajo las funcionalidades de la librería 
-`spaCy <https://spacy.io/>`_ para cargar *embeddings*, o representaciones vectoriales densas, de palabras en diferentes idiomas. Estas *embeddings* son representaciones de 300 elementos para cada palabra que exista en el diccionario del modelo, y ya han sido previamente entrenadas sobre un corpus de texto muy grande, utilizando de técnicas como *Word2Vec* y *GloVe*.
+`spaCy <https://spacy.io/>`_ para cargar *embeddings*, o representaciones vectoriales densas, de palabras en diferentes idiomas. Estas *embeddings* son representaciones de 300 elementos para cada palabra que exista en el diccionario del modelo, y ya han sido previamente entrenadas sobre un corpus de texto muy grande, utilizando técnicas como *Word2Vec* y *GloVe*.
 
-La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` permite acceder a y utilizar estas representaciones ya entrenadas que, a diferencia de los vectores basados en frecuencias, permiten a través del entrenamiento previo capturar información del contexto de las palabras. De esta manera, las representaciones densas de las palabras 'hombre' y 'niño' van a ser similares entre sí en ese espacio de 300 dimensiones, mientas que las palabras 'hombre' y 'cuchara' van a estar más alejadas.
+La clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` permite utilizar y acceder a estas representaciones ya entrenadas que, a diferencia de los vectores basados en frecuencias, permiten a través del entrenamiento previo capturar información del contexto de las palabras. De esta manera, las representaciones densas de las palabras 'hombre' y 'niño' van a ser similares entre sí en ese espacio de 300 dimensiones, mientas que las palabras 'hombre' y 'cuchara' van a estar más alejadas.
 
 Inicializar y aplicar el vectorizador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -396,7 +396,7 @@ Adicionalmente, al entrenar el vectorizador, por medio del método `entrenar_mod
 Vectorizar textos utilizando el vectorizador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al igual que con los otros vectorizadores, el método `vectorizar` acepta un texto o una lista de textos como entrada, y devuelve un arreglo numpy de dos dimensiones con los vectores generados. Normalmente, esta operación de vectorización puede producir diferentes vectores para un mismo texto de entrada, que aunque tienen valores distintos son similares entre sí en el espacio *n_elementos*-dimensional.
+Al igual que con los otros vectorizadores, el método `vectorizar` acepta un texto o una lista de textos como entrada y devuelve un arreglo numpy de dos dimensiones con los vectores generados. Normalmente, esta operación de vectorización puede producir diferentes vectores para un mismo texto de entrada, que aunque tienen valores distintos, son similares entre sí en el espacio *n_elementos*-dimensional.
 
 Sin embargo, la clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>` cuenta con una semilla para asegurar que siempre se obtenga el mismo vector para el mismo texto de entrada.
 
@@ -415,7 +415,7 @@ Sin embargo, la clase :py:class:`VectorizadorDoc2Vec <vectorizacion.Vectorizador
 Cargar un vectorizador entrenado previamente
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Previamente vimos cómo se puede guardar un vectorizador entrenado, por medio del parámetro *archivo_salida* de la función `entrenar_modelo`. Este vectorizador ya ajustado se puede cargar y utilizar, al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
+Previamente vimos cómo se puede guardar un vectorizador entrenado, por medio del parámetro *archivo_salida* de la función `entrenar_modelo`. Este vectorizador, ya ajustado, se puede cargar y utilizar, al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
 
 .. code-block:: python
 

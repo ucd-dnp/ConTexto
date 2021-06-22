@@ -3,12 +3,12 @@
 Corrección ortográfica
 ======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Corrección <correccion>`, de la librería . Este módulo permite realizar corrección ortográfica de textos, lo que puede simplificar los documentos, al estandarizar palabras que deberían ser escritas de la misma forma y evitando así tener un vocabulario más grande de lo necesario.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Corrección <correccion>` de la librería . Este módulo permite realizar corrección ortográfica de textos, lo que puede simplificar los documentos, al estandarizar palabras que deberían ser escritas de la misma forma y evitando así tener un vocabulario más grande de lo necesario.
 
 Importar funciones necesarias y definir textos de prueba
 --------------------------------------------------------
 
-En este caso se importa la función `corregir_texto`, que aplica corrección ortográfica a un texto de entrada, y la clase `Corrector`, que tiene algunas funcionalidades adicionales que pueden ser de utilidad. Adicionalmente, se definen algunos textos con mala ortografía para desarrollar los ejemplos.
+En este caso, se importa la función `corregir_texto`, que aplica corrección ortográfica a un texto de entrada, y la clase `Corrector`, que tiene algunas funcionalidades adicionales que pueden ser de utilidad. Adicionalmente, se definen algunos textos con mala ortografía para desarrollar los ejemplos.
 
 .. code-block:: python
 

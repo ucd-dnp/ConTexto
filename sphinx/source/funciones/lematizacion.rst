@@ -1,3 +1,4 @@
+.. _funciones_lematizacion:
 
 Lematización
 ============

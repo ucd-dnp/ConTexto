@@ -1,33 +1,19 @@
-ConTexto - Librería de procesamiento y análisis de textos
-=========================================================
+Documentación ConTexto
+======================
+
+.. |br| raw:: html
+
+   <br />
 
 .. toctree::
    :maxdepth: 2
-   :caption: ConTexto:
+   :caption: ConTexto:   
    :hidden:
 
-   seccion_introduccion
-   seccion_instalacion
-   seccion_ejemplos
-   seccion_lenguajes_soportados
-   seccion_ocr
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Módulos y funciones:
-   :hidden:   
-   
-   funciones/comparacion
-   funciones/correccion
-   funciones/escritura
-   funciones/exploracion
-   funciones/lectura
-   funciones/lematizacion
-   funciones/lenguajes
-   funciones/limpieza   
-   funciones/stemming   
-   funciones/vectorizacion
-   funciones/utils
+   _primeros_pasos
+   _documentacion
+   genindex
+   _contribuciones
 
 .. figure:: _static/image/contexto.jpg
     :align: center
@@ -53,6 +39,8 @@ ConTexto - Librería de procesamiento y análisis de textos
 .. image:: https://img.shields.io/github/forks/ucd-dnp/ConTexto.svg?style=social&label=Fork&maxAge=2592000
   :target: https://github.com/ucd-dnp/ConTexto/)
   :alt:
+
+|br|
 
 .. include:: seccion_introduccion.rst
    :start-line: 5

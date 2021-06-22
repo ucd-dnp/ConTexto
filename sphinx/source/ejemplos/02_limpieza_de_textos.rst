@@ -3,7 +3,7 @@
 Limpieza de textos
 ==================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>` de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
 
 Funciones de limpieza de textos
 -------------------------------
@@ -212,7 +212,7 @@ Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coinc
     >>> # Quitar las coincidencias encontradas
     >>> print(quitar_coincidenias(textos_prueba, prop=0.5, n_min=2, longitud_min=5))
 
-    ['Este es el primer texto de prueba para la detección de coincidencias.', 'Una segunda oración permite evaluar si hay cadanea de caracteres elementos en común.', 'Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.', 'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.', 'Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.', 'Una últim para ampliar un poco el grupo.']
+    ['Este es el primer texto de prueba para la detección de coincidencias.', 'Una segunda oración permite evaluar si hay coincidencia de caracteres elementos en común.', 'Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.', 'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.', 'Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.', 'Una últim para ampliar un poco el grupo.']
 
 
 Detectar y quitar palabras o valores atípicos

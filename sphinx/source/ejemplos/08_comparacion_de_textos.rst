@@ -3,12 +3,12 @@
 Comparación de textos
 =====================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Comparación <comparacion>`, de la librería. Este módulo permite calcular distintas métricas de distancia y similitud entre dos o mas textos. La capacidad para cuantificar qué tan similares o diferentes son un grupo de textos o cadenas de caracteres entre sí puede ser muy útil para ciertos procesos como detección de textos atípicos, identificación de afinidad entre documentos y estandarización de valores *string*, entre otros.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Comparación <comparacion>` de la librería. Este módulo permite calcular distintas métricas de distancia y similitud entre dos o más textos. La capacidad para cuantificar qué tan similares o diferentes son un grupo de textos o cadenas de caracteres entre sí puede ser muy útil para ciertos procesos como detección de textos atípicos, identificación de afinidad entre documentos y estandarización de valores *string*, entre otros.
 
 Importar paquetes necesarios y adecuar textos de prueba
 -------------------------------------------------------
 
-El primer paso es importar las tres clases del módulo de `comparacion` con las que se va a trabajar, y definir los textos para correr los ejemplos.
+El primer paso es importar las tres clases del módulo de `comparacion` con las que se va a trabajar y definir los textos para correr los ejemplos.
 
 .. code-block:: python
 
@@ -58,12 +58,12 @@ En este ejemplo se van a probar ambas opciones, por lo que es necesario iniciali
 Medidas de similitud entre textos
 ---------------------------------
 
-La clase :py:class:`Similitud <comparacion.Similitud>` permite calcular dos métricas de similitud, coseno y Jaccard, para cuantificar qué tan parecidos son dos textos entre sí. Entre más alto sea el valor de similitud (valor máximo es 1), más similares serán los dos textos.
+La clase :py:class:`Similitud <comparacion.Similitud>` permite calcular dos métricas de similitud (coseno y Jaccard) para cuantificar qué tan parecidos son dos textos entre sí. Entre más alto sea el valor de similitud (valor máximo es 1), más similares serán los dos textos.
 
 Inicializar los objetos de clase `Similitud`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al inicializar los objetos de clase :py:class:`Similitud <comparacion.Similitud>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada que se le pasen. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>`, del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Similitud <comparacion.Similitud>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
+Al inicializar los objetos de clase :py:class:`Similitud <comparacion.Similitud>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Similitud <comparacion.Similitud>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
 
 Es importante recalcar que si se pasa un vectorizador al objeto de Similitud, este ya debe estar ajustado, en caso de que aplique. Esto es particularmente relevante para los vectores de clases :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>` y :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`.
 
@@ -159,7 +159,7 @@ Similitud de Jaccard
 
 La similitud de Jaccard es un valor entre 0 y 1 que mide cuántos elementos tienen en común dos vectores, al calcular la intersección sobre la unión de los elementos. Este valor se puede obtener al llamar el método :py:meth:`jaccard() <comparacion.Similitud.jaccard>` del objeto de clase :py:class:`Similitud <comparacion.Similitud>`. Las entradas y salidas de este método son iguales a las del método :py:meth:`coseno() <comparacion.Similitud.coseno>`.
 
-El cálculo de la similitud de Jaccard funciona bien con vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing), o directamente con los textos sin vectorizar, aunque en este segundo caso pueden presentarse resultados distintos. Esto se debe a que, sí se pasan directamente los textos sin vectorizar, la "unión" de elementos se definirá como todos los términos que aparecen en por lo menos uno de los dos textos. Por otro lado, si se usa, por ejemplo, un vectorizador BOW con un vocabulario más amplio para hacer la vectorización, es posible que hayan palabras en dicho vocabulario que cuentan en la unión de elementos, pero realmente no están en ninguno de los dos textos a comparar.
+El cálculo de la similitud de Jaccard funciona bien con vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing) o directamente con los textos sin vectorizar, aunque en este segundo caso pueden presentarse resultados distintos. Esto se debe a que, sí se pasan directamente los textos sin vectorizar, la "unión" de elementos se definirá como todos los términos que aparecen en por lo menos uno de los dos textos. Por otro lado, si se usa, por ejemplo, un vectorizador BOW con un vocabulario más amplio para hacer la vectorización, es posible que hayan palabras en dicho vocabulario que cuentan en la unión de elementos, pero realmente no están en ninguno de los dos textos a comparar.
 
 .. code-block:: python
 
@@ -213,7 +213,7 @@ Mientras los vectorizadores utilizados sean basados en frecuencias, el cálculo 
 Similitudes entre dos grupos de textos distintos 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Como se mencionó anteriormente, es posible medir la similitud entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase :py:class:`Similitud <comparacion.Similitud>` calcularán la similitud indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
+Como se mencionó anteriormente, es posible medir la similitud entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintos. Los métodos de la clase :py:class:`Similitud <comparacion.Similitud>` calcularán la similitud indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
 
 .. code-block:: python
 
@@ -247,7 +247,7 @@ La clase :py:class:`Distancia <comparacion.distancia>` permite calcular varias m
 Inicializar los objetos de clase `Distancia`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al inicializar los objetos de clase :py:class:`Distancia <comparacion.distancia>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada que se le pasen. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>`, del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Distancia <comparacion.distancia>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
+Al inicializar los objetos de clase :py:class:`Distancia <comparacion.distancia>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>`, del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Distancia <comparacion.distancia>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
 
 Es importante recalcar que si se pasa un vectorizador al objeto de Similitud, este ya debe estar ajustado, en caso de que aplique. Esto es particularmente relevante para los vectores de clases :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>` y :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`.
 
@@ -347,7 +347,7 @@ Una de las distancias que se pueden calcular es la distancia de Jaccard. Esta di
 Otras métricas de distancias
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Adicionalmente a las funciones que la clase :py:class:`Distancia <comparacion.distancia>` trae implementadas, el método :py:meth:`distancia_pares() <comparacion.Distancia.distancia_pares>` permite calcular otras distancias, que se especifican por medio del parámetro *tipo_distancia*. Las métricas que se pueden utilizar son las soportadas por scikit-learn y scipy. Para mayor información, se puede consultar la 
+Adicional a las funciones que la clase :py:class:`Distancia <comparacion.distancia>` trae implementadas, el método :py:meth:`distancia_pares() <comparacion.Distancia.distancia_pares>` permite calcular otras distancias que se especifican por medio del parámetro *tipo_distancia*. Las métricas que se pueden utilizar son las soportadas por scikit-learn y scipy. Para mayor información, se puede consultar la 
 `documentación de scikit-learn <https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html>`_ .
 
 Algunas de estas métricas pueden requerir o aceptar argumentos adicionales. Estos parámetros pueden ser pasados al método :py:meth:`distancia_pares() <comparacion.Distancia.distancia_pares>` con el mismo nombre con el que aparezcan en la documentación de scikit-learn y `la documentación de scipy <https://docs.scipy.org/doc/scipy/reference/spatial.distance.html>`_ .
@@ -390,7 +390,7 @@ Algunas de estas métricas pueden requerir o aceptar argumentos adicionales. Est
 Distancias entre dos grupos de textos distintos
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Como se mencionó anteriormente, es posible medir la distancia entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintas. Los métodos de la clase :py:class:`Distancia <comparacion.distancia>` calcularán la distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
+Como se mencionó anteriormente, es posible medir la distancia entre dos grupos de textos distintos. Para esto, se deben introducir como argumentos dos listas de textos o vectores distintos. Los métodos de la clase :py:class:`Distancia <comparacion.distancia>` calcularán la distancia indicada entre cada uno de los elementos de la primera lista y cada uno de los elementos de la segunda lista.
 
 Esto aplica para cualquiera de los métodos de la clase :py:class:`Distancia <comparacion.distancia>`.
 

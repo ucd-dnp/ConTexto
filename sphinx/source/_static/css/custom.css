@@ -1,7 +1,39 @@
+h1 {
+    /*font-weight: bold;*/
+    text-align: right;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
 p {
     text-align: justify;    
 }
 
+
+.card {
+    color: inherit;
+    text-decoration: none;
+
+    -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+    box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+}
+
+.card:hover {
+    border: 1px solid #130654;
+    /*-webkit-transform: scale(1.005);*/
+}
+
+.blue {
+    color:  #130654;
+}
+
+.blue-hover:hover {
+    background-color:  #130654 !important;
+}
+
+
+
+/*
 li {
     text-align: justify;
 }
@@ -21,9 +53,12 @@ div[class="wy-menu wy-menu-vertical"] p[class="caption"] {
 .wy-nav-content {
     max-width: 1200px !important;
 }
+*/
 
 /* replace the copyright to eliminate the copyright symbol enforced by
    the ReadTheDocs theme but eschewed by our legal team */
+
+/*
 div[role=contentinfo] {
     visibility: hidden;
     position: relative;
@@ -40,3 +75,4 @@ div[role=contentinfo]:after {
 tbody tr[class="row-even"] td {
     background-color: #e7f2fa !important;    
 }
+*/

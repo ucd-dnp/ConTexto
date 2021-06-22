@@ -158,7 +158,7 @@ Vectorización de los textos
 
 La vectorización de textos consiste en convertir el texto preprocesado a una representación numérica para luego poder aplicar operaciones matemáticas. 
 
-En este caso se vectorizarán los por medio de la metodología Bag Of Words (BOW) del módulo :py:mod:`Vectorización <vectorizacion>`. Este módulo también cuenta con otras metodologías como TF-IDF, hashing, Word2Vec y Doc2Vec.
+En este caso se vectorizarán los textos por medio de la metodología Bag Of Words (BOW) del módulo :py:mod:`Vectorización <vectorizacion>`. Este módulo también cuenta con otras metodologías como TF-IDF, hashing, Word2Vec y Doc2Vec.
 
 Inicializar y ajustar vectorizador BOW
 ++++++++++++++++++++++++++++++++++++++
@@ -182,7 +182,7 @@ Vectorizar los textos
 Cálculo de similitud de textos
 ------------------------------
 
-Una vez definidos los vectores de los tres textos, es posible aplicar metodologías de comparación de textos. En este caso se utilizará la simiitud coseno. Esta es una de las muchas metodologías de comparación de textos que se puede hacer con **ConTexto**.
+Una vez definidos los vectores de los tres textos, es posible aplicar metodologías de comparación de textos. En este caso se utilizará la similitud coseno. Esta es una de las muchas metodologías de comparación de textos que se puede hacer con **ConTexto**.
 
 Inicializar la clase 'Similitud' de ConTexto
 ++++++++++++++++++++++++++++++++++++++++++++

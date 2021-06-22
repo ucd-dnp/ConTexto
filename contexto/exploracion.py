@@ -581,15 +581,6 @@ def graficar_coocurrencias(
     grados = np.array([list(G.degree())[i][1] for i in range(n)])
     # Definir la paleta de colores
     cmap = plt.get_cmap("plasma", len(grados))
-    plt.text(
-        x=1.5,
-        y=-0.2,
-        s="No de conecciones",
-        horizontalalignment="center",
-        fontsize=10,
-        color="black",
-        rotation=-90,
-    )
     # Escribir los nombres de los nodos
     for key, value in pos.items():
         x, y = value[0] + 0, value[1] - offset_y
@@ -600,7 +591,7 @@ def graficar_coocurrencias(
         ax.scatter(
             xi,
             yi,
-            c=colores[list(G.nodes()).index(key)],
+            color=colores[list(G.nodes()).index(key)],
             s=350,
             edgecolors="k",
             alpha=0.7,
@@ -611,15 +602,27 @@ def graficar_coocurrencias(
     )
     norm = cl.BoundaryNorm(bounds, cmap.N)
     ax2 = fig.add_axes([0.90, 0.1, 0.03, 0.8])
-    mpl.colorbar.ColorbarBase(
-        ax2,
-        cmap=cmap,
-        norm=norm,
-        spacing="proportional",
-        ticks=bounds,
-        boundaries=bounds,
-        format="%1i",
-    )
+    plt.text(
+        x=1.5,
+        y=-0.2,
+        s="No de conecciones",
+        horizontalalignment="center",
+        fontsize=10,
+        color="black",
+        rotation=-90,
+        )  
+    try:
+        mpl.colorbar.ColorbarBase(
+            ax2,
+            cmap=cmap,
+            norm=norm,
+            spacing="proportional",
+            ticks=bounds,
+            boundaries=bounds,
+            format="%1i",
+        )
+    except:
+        pass
     # Hacer un bucle en la lista de aristas para obtener las coordenadas
     # x, y de los nodos conectados
     # Esos dos puntos son los extremos de la línea que se trazará.
@@ -636,6 +639,7 @@ def graficar_coocurrencias(
         return plt
     # Cerrar gráfica
     plt.close()
+
 
 
 def grafica_barchart_frecuencias(

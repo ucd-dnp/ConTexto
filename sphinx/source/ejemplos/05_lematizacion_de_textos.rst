@@ -3,7 +3,7 @@
 Lematización de textos
 ======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lematización <lematizacion>`, de la librería. Este módulo permite realizar lematización de textos, una operación que consiste en transformar las palabras de su forma flexionada (plural, femenino, conjugaciones, etc.) a su lema correspondiente, el cual es el representante de todas las formas flexionadas de una misma palabra. Por ejemplo, las palabras niños, niña y niñito tienen todas el mismo lema: niño. Realizar lematización sobre textos puede simplificarlos, al unificar palabras que comparten el mismo lema, y evitando así tener un vocabulario más grande de lo necesario.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lematización <lematizacion>` de la librería. Este módulo permite realizar lematización de textos, una operación que consiste en transformar las palabras de su forma flexionada (plural, femenino, conjugaciones, etc.) a su lema correspondiente, el cual es el representante de todas las formas flexionadas de una misma palabra. Por ejemplo, las palabras niños, niña y niñito tienen todas el mismo lema: niño. Realizar lematización sobre textos puede simplificarlos, al unificar palabras que comparten el mismo lema, y evitando así tener un vocabulario más grande de lo necesario.
 
 
 Definir textos de prueba
@@ -141,7 +141,7 @@ A continuación se muestra una comparación de tiempos para dos opciones:
 Lematización de textos utilizando Stanza
 ----------------------------------------
 
-El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` permite elegir 'stanza', para utilizar esta librería. se encarga de aplicar lematización a todas las palabras de un texto de entrada. Si se define *liberia='stanza'*, la función utilizará el lematizador de la clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`. La primera vez que se seleccione un modelo de un lenguaje determinado, la función descargará el modelo correspondiente en el computador del usuario. Este proceso puede durar algunos minutos, dependiendo de la conexión a internet.
+El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` permite elegir la librería de lematización a utilizar. Esta función se encarga de aplicar lematización a todas las palabras de un texto de entrada. Si se define *liberia='stanza'*, la función utilizará el lematizador de la clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`. La primera vez que se seleccione un modelo de un lenguaje determinado, la función descargará el modelo correspondiente en el computador del usuario. Este proceso puede durar algunos minutos, dependiendo de la conexión a internet.
 
 .. warning::
     Es importante recalcar que para poder utilizar el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` es necesario tener los paquetes **torch, torhvision y stanza** instalados, que no vienen en la versión de ConTexto instalable a través de pip. Para mayor información puede consultar la :ref:`sección de instalación <seccion_instalacion>`.
@@ -165,7 +165,7 @@ El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` 
 Agregar lemas personalizados al `LematizadorStanza`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al igual que en el caso de spaCy, el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` permite añadir o modificar lemas, utilizando un archivo JSON o un diccionario de Python. Esto se hace con la función :py:func:`lematizacion.modificar_lemmas`, y se puede utilizar el parámetro *archivo_salida* para determinar dónde se quiere guardar el modelo resultante. 
+Al igual que en el caso de spaCy, el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` permite añadir o modificar lemas, utilizando un archivo JSON o un diccionario de Python. Esto se hace con la función :py:func:`lematizacion.modificar_lemmas` y se puede utilizar el parámetro *archivo_salida* para determinar dónde se quiere guardar el modelo resultante. 
 
 De esta manera, este modelo puede ser luego cargado a un objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` para seguirlo utilizando o modificando. Para cargar un modelo guardado previamente, es necesario utilizar el parámetro *modelo_lemas*, al definir el objeto lematizador.
 
@@ -204,7 +204,7 @@ De esta manera, este modelo puede ser luego cargado a un objeto de clase :py:cla
 Corrección de varios textos utilizando un solo objeto de la clase `LematizadorStanza`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si se desea lematizar un conjunto de textos, puede ser más rápido definir un único objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`, y pasar este objeto en el parámetro *lematizador* de la función :py:func:`lematizacion.lematizar_texto`. Al hacer esto puede haber un ahorro de tiempo, pues se evita inicializar un nuevo objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` para cada texto. Este ahorro de tiempo será mayor a medida que sean más los textos que se desean lematizar.
+Si se desea lematizar un conjunto de textos, puede ser más rápido definir un único objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` y pasar este objeto en el parámetro *lematizador* de la función :py:func:`lematizacion.lematizar_texto`. Al hacer esto puede haber un ahorro de tiempo, pues se evita inicializar un nuevo objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` para cada texto. Este ahorro de tiempo será mayor a medida que sean más los textos que se desean lematizar.
 
 A continuación se muestra una comparación de tiempos para dos opciones:
 

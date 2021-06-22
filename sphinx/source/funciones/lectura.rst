@@ -1,3 +1,5 @@
+.. _funciones_lectura:
+
 .. |**| raw:: html
 
    <span>|**|</span>
