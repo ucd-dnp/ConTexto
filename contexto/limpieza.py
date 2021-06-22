@@ -249,15 +249,15 @@ def cargar_stopwords(ubicacion_archivo, encoding="utf8"):
     :param ubicacion_archivo: (str) Ubicación del archivo plano que contiene \
         la lista de palabras y/o lista de palabras separadas por espacios, \
         comas o saltos de línea.
-    :param encoding: (str) Valor por defecto 'utf-8'. Codificación del archivo\
-         de texto.
-    :return: (tuple) Tupla que contiene: |br|
-        |ul|
-         |li| lista_palabras (list): Lista que contiene las palabras que \
-            se desean quitar en un texto. |/li|
-         |li| lista_expresiones (list): Lista que contiene las expresiones \
-            que se desean quitar de un texto. |/li|
-        |/ul|
+    :param encoding: (str) Valor por defecto 'utf-8'. Codificación del archivo \
+        de texto.
+    :return: (tuple) Tupla que contiene: |br| \
+     |ul|
+     |li| lista_palabras (list): Lista que contiene las palabras que \
+        se desean quitar en un texto. |/li|
+     |li| lista_expresiones (list): Lista que contiene las expresiones \
+        que se desean quitar de un texto. |/li|
+     |/ul|
     """
     lista_palabras = []
     lista_expresiones = []

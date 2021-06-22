@@ -109,7 +109,7 @@ class Lector:
         enderezar=False,
     ):
         """
-        Se lleva a cabo la lectura del texto de archivos con extensión '*.pdf'.
+        Se lleva a cabo la lectura del texto de archivos con extensión ``*.pdf``.
 
         :param por_paginas: (bool) {True, False}. Especifica si se desea \
             extraer el texto del archivo Word con separador de páginas. Este \
