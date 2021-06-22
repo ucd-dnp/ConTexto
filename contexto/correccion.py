@@ -12,32 +12,38 @@ class Corrector:
         self, lenguaje, diccionario=None, distancia=2, tokenizador=None
     ):
         """
-        Constructor por defecto de la clase Corrector. Esta clase se encarga \
-        de realizar corrección ortográfica sobre textos.
+        Constructor por defecto de la clase `Corrector`. Esta clase se \
+        encarga de realizar corrección ortográfica sobre textos.
 
-        :param lenguaje: (str) Lenguaje de los textos a los que se les va a \
+        :param lenguaje: Lenguaje de los textos a los que se les va a \
             aplicar corrección ortográfica. Para mayor información, consultar \
             la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-        :param diccionario: (dict, list o string) Valor por defecto: None. \
-            Diccionario (o string con ubicación del archivo JSON que lo \
-            contiene), o lista que permite modificar y agregar palabras. Si \
-            es una lista, contiene las palabras que serán consideradas como \
-            válidas o correctas. Si es un diccionario, las llaves del \
-            diccionario son las palabras que serán consideradas como válidas \
-            o correctas, y los valores del diccionario son las frecuencias de \
-            cada palabra en el diccionario. Las frecuencias son utilizadas \
-            como criterio de desempate, cuando una palabra incorrecta tiene \
-            más de una palabra candidata para la corrección. Si se deja este \
-            parámetro como None, se cargará el diccionario por defecto que \
+        :type lenguaje: str
+        :param diccionario: Diccionario (o string con ubicación del archivo \
+            JSON que lo contiene), o lista que permite modificar y agregar \
+            palabras. Si es una lista, contiene las palabras que serán \
+            consideradas como válidas o correctas. \
+            Si es un diccionario, las llaves del diccionario son las palabras \
+            que serán consideradas como válidas o correctas, y los valores \
+            del diccionario son las frecuencias de cada palabra en el \
+            diccionario. Las frecuencias son utilizadas como criterio de \
+            desempate, cuando una palabra incorrecta tiene más de una palabra \
+            candidata para la corrección. Si se deja este \
+            parámetro como `None`, se cargará el diccionario por defecto que \
             trae la librería `spellchecker` para el lenguaje determinado.
-        :param distancia: (int) Valor por defecto: 2. Máxima distancia de \
+        :type diccionario: dict, list, str, opcional
+        :param distancia: Máxima distancia de \
             Levenshtein que puede haber entre una palabra incorrecta (o no \
             reconocida) y las palabras del diccionario para determinar si \
-            hay palabras candidatas para realizar la corrección.
-        :param tokenizador: Valor por defecto: None. Objeto encargado de la \
-            tokenización y detokenización de textos. Si el valor es 'None', \
-            se cargará por defecto una instancia de la clase *TokenizadorNLTK*.
+            hay palabras candidatas para realizar la corrección. \
+            Valor por defecto `2`.
+        :type distancia: int
+        :param tokenizador: Objeto encargado de la tokenización y \
+            detokenización de textos. Si el valor es `None`, se cargará por \
+            defecto una instancia de la clase `TokenizadorNLTK`. Valor por \
+            defecto `None`
+        :type tokenizador: object, opcional
         """
         # Definir lenguaje del corrector ortográfico
         self.establecer_lenguaje(lenguaje)
@@ -51,12 +57,13 @@ class Corrector:
     def establecer_lenguaje(self, lenguaje):
         """
         Permite definir o cambiar el lenguaje de los textos sobre los cuales \
-        van a aplicarse el objeto de la clase Corrector.
+        van a aplicarse el objeto de la clase `Corrector`.
 
-        :param lenguaje: (str) Lenguaje de los textos a los que se les va a \
+        :param lenguaje: Lenguaje de los textos a los que se les va a \
             aplicar corrección ortográfica. Para mayor información, consultar \
             la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
+        :type lenguaje: str
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
@@ -64,18 +71,21 @@ class Corrector:
         """
         Inicializa el objeto de la clase `SpellChecker` de la librería \
         spellchecker, para el lenguaje definido previamente, y lo asigna al \
-        atributo "corrector" del objeto de clase Corrector.
+        atributo "corrector" del objeto de clase `Corrector`.
 
-        :param diccionario: (dict, list o string) Diccionario (o string con \
-            ubicación del archivo JSON que lo contiene), o lista que permite \
-            modificar y agregar palabras. Si es una lista, contiene las \
-            palabras que serán consideradas como válidas o correctas. Si es \
-            un diccionario, las llaves del diccionario son las palabras que \
-            serán consideradas como válidas o correctas, y los valores del \
-            diccionario son las frecuencias de cada palabra en el \
+        :param diccionario: Diccionario (o string con ubicación del archivo \
+            JSON que lo contiene), o lista que permite modificar y agregar \
+            palabras. Si es una lista, contiene las palabras que serán \
+            consideradas como válidas o correctas. \
+            Si es un diccionario, las llaves del diccionario son las palabras \
+            que serán consideradas como válidas o correctas, y los valores \
+            del diccionario son las frecuencias de cada palabra en el \
             diccionario. Las frecuencias son utilizadas como criterio de \
             desempate, cuando una palabra incorrecta tiene más de una palabra \
-            candidata para la corrección.
+            candidata para la corrección. Si se deja este \
+            parámetro como `None`, se cargará el diccionario por defecto que \
+            trae la librería `spellchecker` para el lenguaje determinado.
+        :type diccionario: dict, list, str, opcional
         """
         self.corrector = None
         if self.lenguaje is not None:
@@ -93,10 +103,12 @@ class Corrector:
          de ortografía para determinar si hay palabras candidatas para \
         corregir una palabra incorrecta o no reconocida.
 
-        :param distancia: (int) Valor por defecto: 2. Máxima distancia de \
+        :param distancia: Máxima distancia de \
             Levenshtein que puede haber entre una palabra incorrecta (o no \
             reconocida) y las palabras del diccionario para determinar si \
-            hay palabras candidatas para realizar la corrección.
+            hay palabras candidatas para realizar la corrección. \
+            Valor por defecto `2`.
+        :type distancia: int
         """
         if self.corrector is not None:
             self.corrector.distance = distancia
@@ -105,20 +117,23 @@ class Corrector:
         """
         Actualiza el diccionario que contiene las palabras válidas o \
         reconocidas disponibles para realizar la corrección ortográfica. Las \
-        palabras contenidas en el argumento *diccionario* de esta función \
+        palabras contenidas en el argumento `diccionario` de esta función \
         serán añadidas (o sus frecuencias serán actualizadas) en el \
-        diccionario que ya existe en el objeto de la clase Corrector.
+        diccionario que ya existe en el objeto de la clase `Corrector`.
 
-        :param diccionario: (dict, list o string) Diccionario (o string con \
-            ubicación del archivo JSON que lo contiene), o lista que permite \
-            modificar y agregar palabras. Si es una lista, contiene las \
-            palabras que serán consideradas como válidas o correctas. Si es \
-            un diccionario, las llaves del diccionario son las palabras que \
-            serán consideradas como válidas o correctas, y los valores del \
-            diccionario son las frecuencias de cada palabra en el \
+        :param diccionario: Diccionario (o string con ubicación del archivo \
+            JSON que lo contiene), o lista que permite modificar y agregar \
+            palabras. Si es una lista, contiene las palabras que serán \
+            consideradas como válidas o correctas. \
+            Si es un diccionario, las llaves del diccionario son las palabras \
+            que serán consideradas como válidas o correctas, y los valores \
+            del diccionario son las frecuencias de cada palabra en el \
             diccionario. Las frecuencias son utilizadas como criterio de \
             desempate, cuando una palabra incorrecta tiene más de una palabra \
-            candidata para la corrección.
+            candidata para la corrección. Si se deja este \
+            parámetro como `None`, se cargará el diccionario por defecto que \
+            trae la librería `spellchecker` para el lenguaje determinado.
+        :type diccionario: dict, list, str, opcional
         """
         if isinstance(diccionario, str):
             diccionario = json.load(open(diccionario))
@@ -137,14 +152,15 @@ class Corrector:
     def quitar_palabras(self, palabras):
         """
         Quita del diccionario del corrector una o más palabras \
-        proporcionadas en el argumento *palabras*, haciendo que estas ya no \
+        proporcionadas en el argumento `palabras`, haciendo que estas ya no \
         sean reconocidas como palabras válidas o correctas al momento de \
         hacer corrección ortográfica.
 
-        :param palabras: (str o list) Palabra o lista de palabras que se \
-            desean quitar del diccionario del objeto de la clase Corrector, \
-            para que no sean recnocidas como correctas al momento de hacer la \
-            corrección ortográfica.
+        :param palabras: Palabra o lista de palabras que se \
+            desean quitar del diccionario del objeto de la clase `Corrector`, \
+            para que no sean reconocidas como correctas al momento de hacer \
+            la corrección ortográfica.
+        :type palabras: str, list
         """
         if isinstance(palabras, str):
             palabras = [palabras]
@@ -156,14 +172,15 @@ class Corrector:
     def agregar_palabras(self, palabras):
         """
         Añade al diccionario del corrector una o más palabras proporcionadas \
-        en el argumento *palabras*, haciendo que estas sean reconocidas como \
+        en el argumento `palabras`, haciendo que estas sean reconocidas como \
         palabras válidas o correctas al momento de hacer corrección \
         ortográfica.
 
-        :param palabras: (str o list) Palabra o lista de palabras que se \
-            desean añadir al diccionario del objeto de la clase Corrector, \
-            para que sean reconocidas como correctas al momento de hacer la \
-            corrección ortográfica.
+        :param palabras: Palabra o lista de palabras que se \
+            desean quitar del diccionario del objeto de la clase `Corrector`, \
+            para que no sean reconocidas como correctas al momento de hacer \
+            la corrección ortográfica.
+        :type palabras: str, list
         """
         if isinstance(palabras, str):
             palabras = [palabras]
@@ -172,11 +189,12 @@ class Corrector:
     def palabras_conocidas(self, texto):
         """
         A partir de un texto de entrada, devuelve un conjunto (objeto de \
-        clase *set* de Python) con las palabras del texto que se reconocen \
+        clase `set` de Python) con las palabras del texto que se reconocen \
         por estar presentes en el diccionario del corrector.
 
-        :param texto: (str) Texto para el que se desean hayar las palabras \
+        :param texto: Texto para el que se desean hayar las palabras \
             conocidas.
+        :type texto: str
         :return: (set) Conjunto de palabras conocidas presentes en el texto \
             de entrada.
         """
@@ -186,12 +204,13 @@ class Corrector:
     def palabras_desconocidas(self, texto):
         """
         A partir de un texto de entrada, devuelve un conjunto (objeto de \
-        clase *set* de Python) con las palabras del texto que no están \
+        clase `set` de Python) con las palabras del texto que no están \
         incluidas en el diccionario del corrector y por lo tanto no se \
         reconocen.
 
-        :param texto: (str) Texto para el que se desean hallar las palabras \
+        :param texto: Texto para el que se desean hallar las palabras \
             desconocidas.
+        :type texto: str
         :return: (set) Conjunto de palabras desconocidas presentes en el \
             texto de entrada.
         """
@@ -204,11 +223,12 @@ class Corrector:
         podrían ser utilizadas para corregirla. Si la palabra de entrada es \
         correcta (está dentro del diccionario del corrector) o no tienen \
         ninguna palabra candidata con una distancia menor o igual a la \
-        establecida en el parámetro *distancia* de la clase Corrector, la \
+        establecida en el parámetro `distancia` de la clase `Corrector`, la \
         función devolverá la misma palabra de entrada.
 
-        :param palabra: (str) Palabra para la que se quieren conocer palabras \
+        :param palabra: Palabra para la que se quieren conocer palabras \
             candidatas para su corrección ortográfica.
+        :type palabra: str
         :return: (set) Conjunto de palabras candidatas para corregir la \
             palabra de entrada.
         """
@@ -221,8 +241,9 @@ class Corrector:
         (no se encuentra en el diccionario), la frecuencia retornada será de \
         cero.
 
-        :param palabra: (str) Palabra para la cual se desea conocer la \
+        :param palabra:Palabra para la cual se desea conocer la \
             frecuencia de aparición en el diccionario del corrector.
+        :type palabra: str
         :return: (int) Número mayor o igual a cero que indica la frecuencia \
             de la palabra consultada en el diccionario del corrector.
         """
@@ -230,14 +251,15 @@ class Corrector:
 
     def probabilidad_palabra(self, palabra):
         """
-        Para una palabra de entrada, devuelve la probabilidad de aparición de \
-        la misma, entendida como su frecuencia sobre la suma de las \
+        Para una palabra de entrada, devuelve la probabilidad de aparición \
+        entendida como su frecuencia sobre la suma de las \
         frecuencias de todas las palabras disponibles, de acuerdo al \
         diccionario del corrector. Si la palabra es desconocida (no se \
         encuentra en el diccionario), la probabilidad retornada será de cero.
 
-        :param palabra: (str) Palabra para la cual se desea conocer la \
+        :param palabra: Palabra para la cual se desea conocer la \
             probabilidad de aparición en el diccionario del corrector.
+        :type palabra: str
         :return: (float) Probabilidad, entre 0 y 1, de aparición de la \
             palabra.
         """
@@ -248,15 +270,16 @@ class Corrector:
         Realiza corrección ortográfica sobre un texto de entrada, \
         identificando las palabras que no están en el diccionario del \
         corrector y cambiándolas por su candidata más frecuente o probable, \
-        siempre y cuando ha ya por lo menos una palabra candidata que cumpla \
+        siempre y cuando haya por lo menos una palabra candidata que cumpla \
         con la máxima distancia de Levenshtein permitida.
 
-        :param texto: (str) Texto al cuál se desea aplicar corrección \
+        :param texto: Texto al cual se desea aplicar corrección \
             ortográfica.
-        :param limpieza: (bool) {True, False} Valor por defecto: False. \
-            Argumento opcional que define si se desea hacer una limpieza \
+        :param limpieza: Define si se desea hacer una limpieza \
             básica (aplicando la función `limpieza_basica` del módulo \
-            `limpieza`) al texto antes de aplicar la corrección ortográfica.
+            `limpieza`) al texto antes de aplicar la corrección ortográfica.\
+            Valor por defecto `False`.
+        :type limpieza: bool, opcional
         :return: (str) Texto de entrada luego de la corrección ortográfica.
         """
         if limpieza:
@@ -286,43 +309,51 @@ def corregir_texto(
     tokenizador=None,
 ):
     """
-    Función que aprovecha la clase Corrector para realizar corrección \
+    Función que aprovecha la clase `Corrector` para realizar corrección \
     ortográfica sobre un texto de entrada.
 
-    :param texto: (str) Texto al cuál se desea aplicar corrección ortográfica.
-    :param lenguaje: (str) Lenguaje de los textos a los que se les va a \
+    :param texto: Texto al cuál se desea aplicar corrección ortográfica.
+    :type texto: str
+    :param lenguaje: Lenguaje de los textos a los que se les va a \
         aplicar corrección ortográfica. Para mayor información, consultar la \
         sección de \
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-    :param corrector: (Corrector) Parámetro opcional. Objeto de la clase \
-        Corrector para aplicar corrección ortográfica sobre el texto de \
+    :param lenguaje: str
+    :param corrector: Objeto de la clase `Corrector` para aplicar corrección \
+        ortográfica sobre el texto de \
         entrada. Se puede utilizar para corregir varios textos a la vez, sin \
-        necesidad de inicializar una instancia de la clase Corrector en cada \
+        necesidad de inicializar una instancia de la clase `Corrector` en cada \
         ocasión. Esto puede representar ahorro en tiempos al momento de \
         aplicar la función.
-    :param diccionario: (dict, list o str) Valor por defecto: None. \
-        Diccionario (o string con ubicación del archivo JSON que lo contiene),\
-         o lista que permite modificar y agregar palabras. Si es una lista, \
-        contiene las palabras que serán consideradas como válidas o correctas.\
-         Si es un diccionario, las llaves del diccionario son las palabras que\
-         serán consideradas como válidas o correctas, y los valores del \
-        diccionario son las frecuencias de cada palabra en el diccionario. Las\
-         frecuencias son utilizadas como criterio de desempate, cuando una \
-        palabra incorrecta tiene más de una palabra candidata para la \
-        corrección. Si se deja este parámetro como None, se cargará el \
-        diccionario por defecto que trae la librería `spellchecker` para el \
-        lenguaje determinado.
-    :param distancia: (int) Valor por defecto: 2. Máxima distancia de \
-        Levenshtein que puede haber entre una palabra incorrecta (o no \
-        reconocida) y las palabras del diccionario para determinar si hay \
-        palabras candidatas para realizar la corrección.
-    :param limpieza: (bool) {True, False} Valor por defecto: False. Argumento \
-        opcional que define si se desea hacer una limpieza básica (aplicando \
-        la función `limpieza_basica` del módulo `limpieza`) al texto antes de \
-        aplicar la corrección ortográfica.
-    :param tokenizador: Valor por defecto: None. Objeto encargado de la \
-        tokenización y detokenización de textos. Si el valor es 'None', se \
-        cargará por defecto una instancia de la clase *TokenizadorNLTK*.
+    :param diccionario: Diccionario (o string con ubicación del archivo \
+            JSON que lo contiene), o lista que permite modificar y agregar \
+            palabras. Si es una lista, contiene las palabras que serán \
+            consideradas como válidas o correctas. \
+            Si es un diccionario, las llaves del diccionario son las palabras \
+            que serán consideradas como válidas o correctas, y los valores \
+            del diccionario son las frecuencias de cada palabra en el \
+            diccionario. Las frecuencias son utilizadas como criterio de \
+            desempate, cuando una palabra incorrecta tiene más de una palabra \
+            candidata para la corrección. Si se deja este \
+            parámetro como `None`, se cargará el diccionario por defecto que \
+            trae la librería `spellchecker` para el lenguaje determinado.
+        :type diccionario: dict, list, str, opcional
+    :param distancia: Máxima distancia de \
+            Levenshtein que puede haber entre una palabra incorrecta (o no \
+            reconocida) y las palabras del diccionario para determinar si \
+            hay palabras candidatas para realizar la corrección. \
+            Valor por defecto `2`.
+        :type distancia: int
+    :param limpieza: Define si se desea hacer una limpieza \
+            básica (aplicando la función `limpieza_basica` del módulo \
+            `limpieza`) al texto antes de aplicar la corrección ortográfica.\
+            Valor por defecto `False`.
+        :type limpieza: bool, opcional
+    :param tokenizador: Objeto encargado de la tokenización y \
+            detokenización de textos. Si el valor es `None`, se cargará por \
+            defecto una instancia de la clase `TokenizadorNLTK`. Valor por \
+            defecto `None`.
+        :type tokenizador: object, opcional
     :return: (str) Texto de entrada luego de la corrección ortográfica.
     """
     if corrector is None:

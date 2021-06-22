@@ -14,7 +14,7 @@ from sklearn.exceptions import DataConversionWarning
 warnings.filterwarnings(action="ignore", category=DataConversionWarning)
 
 
-# Clase Similitud ----------------------------------------------------
+# Clase Similitud ---------------------------------------------------
 
 
 class Similitud:
@@ -24,19 +24,19 @@ class Similitud:
         Permite calcular la similitud coseno y de Jaccard entre textos \
         y/o vectores.
 
-        :param vectorizador: Valor por defecto: None. Objeto de tipo \
-            vectorizador, o *string* con la ubicación del archivo que lo \
-            contiene. Vectorizador que va a ser utilizado para generar \
-            representaciones vectoriales de los textos. Si no se \
-            especifica un vectorizador, se utilizará uno de tipo Word2Vec. \
-            Si se pasa un vectorizador al objeto de clase Similitud, este ya \
-            debe estar ajustado.
-        :param lenguaje: (str) Valor por defecto: 'es'. Indica el lenguaje \
-            que utilizará el vectorizador. Para mayor información, consultar \
-            la sección de \
+        :param vectorizador: Objeto de tipo `vectorizador`, o `string` con la \
+            ubicación del archivo que lo contiene. Vectorizador que va a ser \
+            utilizado para generar representaciones vectoriales de los \
+            textos. Si no se especifica un vectorizador, se utilizará uno de \
+            tipo `Word2Vec`. Si se pasa un vectorizador al objeto de clase \
+            `Similitud`, este ya debe estar ajustado. Valor por defecto `None`
+        :type vectorizador: str/None/Vectorizador, opcional
+        :param lenguaje: Indica el lenguaje que utilizará el vectorizador. \
+            Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
             pasa un vectorizador ya ajustado, este parámetro no será \
-            utilizado.
+            utilizado. Valor por defecto "es".
+        :type lenguaje: str, opcional
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
@@ -56,23 +56,25 @@ class Similitud:
         """
         Establece el lenguaje del objeto Similitud.\
 
-        :param lenguaje: (str) Indica el lenguaje que utilizará el \
-            vectorizador. Para mayor información, consultar la \
+        :param lenguaje: Indica el lenguaje que utilizará el \
+            `vectorizador`. Para mayor información, consultar la \
             sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
             pasa un vectorizado ajustado, este parámetro no será usado.
+        :type lenguaje: str
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
-    def establecer_vectorizador(self, vectorizador):
+    def establecer_vectorizador(self, vectorizador=None):
         """
-        Establece el vectorizador del objeto Similitud.\
+        Establece el `vectorizador` del objeto Similitud.\
 
-        :param vectorizador: Objeto de tipo vectorizador, o *string* con la \
+        :param vectorizador: Objeto de tipo `vectorizador`, o `string` con la \
             ubicación del archivo que lo contiene. Vectorizador que va a ser \
             utilizado para generar representaciones vectoriales de los \
             textos. Si se pasa un vectorizador al objeto de clase Similitud, \
             este ya debe estar ajustado.
+        :type vectorizador: vectorizador, opcional
         """
         # Definir modelo para vectorizar
         if vectorizador is None:
@@ -88,25 +90,26 @@ class Similitud:
         Calcula la similitud coseno entre uno o dos grupos de textos o \
         vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de similitud. También es posible ingresar directamente \
             los vectores pre-calculados de los textos en un arreglo de numpy \
             o una matriz dispersa.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: list, str
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calculará la similitud entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2. \
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
             También es posible ingresar directamente los vectores \
             pre-calculados de los textos en un arreglo de numpy o una matriz \
-            dispersa.
-        :return: (numpy array) Matriz de dos dimensiones con las similitudes \
-            coseno entre los textos/vectores de entrada. Sí solo se utilizó \
-            el parámetro lista1 con *n* textos/vectores, devolverá una \
-            matriz de *nxn* simétrica, con las similitudes coseno entre todos \
-            los elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos respectivamente, devolverá una \
-            matriz de *n1xn2*, con las similitudes coseno entre los \
-            textos/vectores de lista1 y los elementos de lista2.
+            dispersa. Valor por defecto [].
+        :type lista2:list, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las similitudes \
+            coseno entre los textos/vectores de entrada. Si solo se utilizó \
+            el parámetro `lista1` con `n` textos/vectores, devolverá una \
+            matriz de `n x n` simétrica, con las similitudes coseno entre \
+            todos los elementos de `lista1`. Si se utilizan los parámetros \
+            `lista1` y `lista2` con `n_1` y `n_2` textos respectivamente, \
+            devolverá una matriz de `n_ 1 x n_2`, con las similitudes coseno \
+            entre los textos/vectores de `lista1` y los elementos de `lista2`.
         """
         if isinstance(lista1, str):
             lista1 = [lista1]
@@ -135,33 +138,35 @@ class Similitud:
         Calcula la similitud de Jaccard entre uno o dos grupos de textos o \
         vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de similitud. También es posible ingresar directamente \
-            los vectores pre-calculados de los textos en un arreglo de numpy, \
-            utilizando vectorizadores basados en frecuencias (BOW, TF-IDF, \
-            Hashing).
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+            los vectores pre-calculados de los textos en un arreglo de \
+            `numpy`, utilizando vectorizadores basados en frecuencias (`BOW`, \
+            `TF-IDF`, `Hashing`).
+        :type lista1: list, str
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calculará la similitud entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2. \
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
             También es posible ingresar directamente los vectores \
             pre-calculados de los textos en un arreglo de numpy, utilizando \
-            vectorizadores basados en frecuencias (BOW, TF-IDF, Hashing).
-        :param vectorizar: (bool) {True, False} Valor por defecto: False. \
-            Parámetro opcional que indica si se desean vectorizar los textos \
-            de entrada pertenecientes a lista1 y (opcionalmente) a lista2. \
-            Si vectorizar=False, se calculará la similitud de Jaccard de cada \
-            par de textos directamente, sin obtener sus representaciones \
-            vectoriales.
-        :return: (numpy array) Matriz de dos dimensiones con las similitudes \
-            de Jaccard entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las similitudes de Jaccard \
-            entre todos los elementos de lista1. Si se utilizan los \
-            parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            similitudes de Jaccard entre los elementos de lista1 y los \
-            elementos de lista2.
+            vectorizadores basados en frecuencias (`BOW`, `TF-IDF`, \
+            `Hashing`). Valor por defecto `[]`.
+        :type lista2: list, str, optional
+        :param vectorizar: Indica si se desean vectorizar los textos \
+            de entrada pertenecientes a `lista1` y a `lista2.` \
+            Si `vectorizar=False`, se calculará la similitud de Jaccard de \
+            cada par de textos directamente, sin obtener sus representaciones \
+            vectoriales. Valor por defecto `False`.
+        :type vectorizar: bool, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las similitudes \
+            de Jaccard entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las similitudes de Jaccard \
+            entre todos los elementos de `lista1`. Si se utilizan los \
+            parámetros `lista1` y `lista2` con `n_1` y `n_2` textos \
+            respectivamente, devolverá una matriz de `n_1 x n_2`, con las \
+            similitudes de Jaccard entre los elementos de `lista1` y los \
+            elementos de `lista2`.
         """
         if isinstance(lista1, str):
             lista1 = [lista1]
@@ -217,21 +222,23 @@ class Distancia:
     def __init__(self, vectorizador=None, lenguaje="es"):
         """
         Constructor de la clase Distacia.
-        Permite calcular la diferentes medidas de distancia entre textos y/o \
+        Permite calcular las diferentes medidas de distancia entre textos y/o \
         vectores.
 
-        :param vectorizador: Valor por defecto: None. Objeto de tipo \
-            vectorizador, o *string* con la ubicación del archivo que lo \
-            contiene. Vectorizador que va a ser utilizado para generar \
-            representaciones vectoriales de los textos. Si no se especifica \
-            un vectorizador, se utilizará uno de tipo Word2Vec. Si se pasa \
-            un vectorizador al objeto de clase Distancia, este ya debe estar \
-            ajustado.
-        :param lenguaje: (str) Valor por defecto: 'es'. Indica el lenguaje \
-            que utilizará el vectorizador. Para mayor información, consultar \
-            la sección de \
+        :param vectorizador:  Objeto de tipo `vectorizador`, o `string` con \
+            la ubicación del archivo que lo contiene. Vectorizador que va a \
+            ser utilizado para generar representaciones vectoriales de los \
+            textos. Si no se especifica un vectorizador, se utilizará uno de \
+            tipo `Word2Vec`. Si se pasa un vectorizador al objeto de clase \
+            `Distancia`, este ya debe estar ajustado. Valor por defecto \
+            `None`.
+            :type vectorizador: vectorizador, str, opcional
+        :param lenguaje: Indica el lenguaje que utilizará el `vectorizador`. \
+            Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
-            pasa un vectorizador ya ajustado, este parámetro no será utilizado.
+            pasa un vectorizador ya ajustado, este parámetro no será \
+            utilizado. Valor por defecto `"es"`.
+        :type lenguaje: str
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
         self.establecer_lenguaje(lenguaje)
@@ -248,26 +255,28 @@ class Distancia:
 
     def establecer_lenguaje(self, lenguaje):
         """
-        Establece el lenguaje del objeto Distancia.
+        Establece el lenguaje del objeto `Distancia`.
 
-        :param lenguaje: (str) Indica el lenguaje que utilizará el \
+        :param lenguaje: Indica el lenguaje que utilizará el \
             vectorizador. Para mayor información, consultar la \
             sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
             pasa un vectorizador ya ajustado, este parámetro no será utilizado.
+        :type lenguaje: str
         """
         self.lenguaje = definir_lenguaje(lenguaje)
 
     def establecer_vectorizador(self, vectorizador):
         """
-        Establece el vectorizador del objeto Distancia.
+        Establece el `vectorizador` del objeto `Distancia`.
 
-        :param vectorizador: Objeto de tipo vectorizador, o *string* con la \
+        :param vectorizador: Objeto de tipo vectorizador, o `string` con la \
             ubicación del archivo que lo contiene. Vectorizador que va a ser \
             utilizado para generar representaciones vectoriales de los \
-            textos. Si no se especifica un vectorizador, se utilizará uno de \
-            tipo Word2Vec. Si se pasa un vectorizador al objeto de clase \
-            Distancia, este ya debe estar ajustado.
+            textos. Si no se especifica un `vectorizador`, se utilizará uno \
+            de tipo `Word2Vec`. Si se pasa un `vectorizador` al objeto de \
+            clase `Distancia`, este ya debe estar ajustado.
+        :type vectorizador: vectorizador, str
         """
         # Definir modelo para vectorizar
         if vectorizador is None:
@@ -285,32 +294,36 @@ class Distancia:
         Permite calcular diferentes métricas de distancias entre uno o dos \
         grupos de textos y/o vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
             directamente los vectores pre-calculados de los textos en un \
             arreglo de numpy o una matriz dispersa.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: list, str, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calculará la distancia entre cada uno \
-            de los textos/vectores de lista1 con cada uno de los elementos de \
-            lista2. También es posible ingresar directamente los vectores \
-            pre-calculados de los textos en un arreglo de numpy o una matriz \
-            dispersa.
-        :param tipo_distancia: (str) Valor por defecto: 'l2'. Métrica de \
+            de los textos/vectores de `lista1` con cada uno de los elementos \
+            de `lista2`. También es posible ingresar directamente los \
+            vectores pre-calculados de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: list, str, numpy.array, opcional
+        :param tipo_distancia: Métrica de \
             distancia que se desea calcular.Para una lista de todas las \
             distancias que se pueden calcular por medio de esta función, \
             se puede consultar la documentación de scikit-learn y scipy: \
             https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
+            Valor por defecto `l2`.
+        :type tipo_distancia: str, opcional
         :param kwargs: Parámetros opcionales que pueden ser ajustables, \
             dependiendo de la métrica de distancia elegida.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las distancias entre todos los \
-            elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá \
-            una matriz de *n1xn2*, con las distancias entre los elementos de \
-            lista1 y los elementos de lista2.
+        :type kwargs: dict, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y lista2 con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n_1 x n_2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         if isinstance(lista1, str):
             lista1 = [lista1]
@@ -345,56 +358,60 @@ class Distancia:
 
     def l1(self, lista1, lista2=[]):
         """
-        Calcula la distancia L1, también conocida como la distancia \
+        Calcula la distancia `L1`, también conocida como la distancia \
         Manhattan, entre uno o dos grupos de textos y/o vectores de \
         entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
             directamente los vectores pre-calculados de los textos en un \
             arreglo de numpy o una matriz dispersa.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calcularán la distancias entre cada \
-            uno de los textos/vectores de lista1 con cada uno de los \
-            elementos de lista2. También es posible ingresar directamente los \
-            vectores pre-calculados de los textos en un arreglo de numpy o \
-            una matriz dispersa.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            L1 calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las distancias L1 entre todos \
-            los elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá \
-            una matriz de *n1xn2*, con las distancias entre los elementos de \
-            lista1 y los elementos de lista2.
+            uno de los textos/vectores de `lista1` con cada uno de los \
+            elementos de `lista2`. También es posible ingresar directamente \
+            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: str, list, numpy.array, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            `L1` calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias `L1` entre \
+            todos los elementos de `lista1`. Si se utilizan los parámetros \
+            `lista1` y lista2 con `n1` y `n2` textos/vectores \
+            respectivamente, devolverá una matriz de `n_1 x n_2`, con las \
+            distancias entre los elementos de `lista1` y los elementos de \
+            `lista2`.
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia="l1")
 
     def l2(self, lista1, lista2=[]):
         """
-        Calcula la distancia L2, también conocida como la distancia \
+        Calcula la distancia `L2`, también conocida como la distancia \
         euclidiana, entre uno o dos grupos de textos y/o vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
             directamente los vectores pre-calculados de los textos en un \
             arreglo de numpy o una matriz dispersa.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calcularán la distancias entre cada \
-            uno de los textos/vectores de lista1 con cada uno de los textos \
-            de lista2. También es posible ingresar directamente los vectores \
-            pre-calculados de los textos en un arreglo de numpy o una matriz \
-            dispersa.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            L2 calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las distancias L2 entre todos \
-            los elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá \
-            una matriz de *n1xn2*, con las distancias entre los elementos de \
-            lista1 y los elementos de lista2.
+            uno de los textos/vectores de `lista1` con cada uno de los \
+            elementos de `lista2`. También es posible ingresar directamente \
+            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: str, list, numpy.array, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            `L2` calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias `L2` entre \
+            todos los elementos de `lista1`. Si se utilizan los parámetros \
+            `lista1` y `lista2` con `n_1` y `n_2` textos/vectores \
+            respectivamente, devolverá una matriz de `n_1 x n_2`, con las \
+            distancias entre los elementos de `lista1` y los elementos de \
+            `lista2`.
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia="l2")
 
@@ -403,31 +420,32 @@ class Distancia:
         Calcula la distancia de Minkowski entre uno o dos grupos de textos \
         y/o vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
-            directamente los vectores pre-calculados de los textos. También \
-            es posible ingresar directamente los vectores pre-calculados de \
-            los textos en un arreglo de numpy o una matriz dispersa.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+            directamente los vectores pre-calculados de los textos en un \
+            arreglo de numpy o una matriz dispersa.
+        :type lista1: str, list, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calcularán la distancias entre cada \
-            uno de los textos/vectores de lista1 con cada uno de los textos \
-            de lista2. También es posible ingresar directamente los vectores \
-            pre-calculados de los textos en un arreglo de numpy o una matriz \
-            dispersa
-        :param p: (int) Valor por defecto: 2. Orden o grado de la distancia \
-            de Minkowski que se desea calcular. Si p=1, la distancia \
+            uno de los textos/vectores de `lista1` con cada uno de los \
+            elementos de `lista2`. También es posible ingresar directamente \
+            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: str, list, numpy.array, opcional
+        :param p: Orden o grado de la distancia \
+            de Minkowski que se desea calcular. Si `p = 1`, la distancia \
             calculada es equivalente a la distancia de Manhattan (L1) y \
-            cuando p=2 la distancia calculada es equivalente a la distancia \
-            euclidiana (L2).
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las distancias entre todos \
-            los elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá \
-            una matriz de *n1xn2*, con las distancias entre los elementos de \
-            lista1 y los elementos de lista2.
+            cuando `p=2` la distancia calculada es equivalente a la distancia \
+            euclidiana (L2). Valor por defecto `2`.
+        :type p: int
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         if p == 1:
             return self.distancia_pares(lista1, lista2, tipo_distancia="l1")
@@ -443,23 +461,26 @@ class Distancia:
         Calcula la distancia de Jaccard entre uno o dos grupos de textos y/o \
         vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
-            directamente los vectores pre-calculados de los textos.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+            directamente los vectores pre-calculados de los textos en un \
+            arreglo de numpy o una matriz dispersa.
+        :type lista1: str, list, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calcularán la distancias entre cada \
-            uno de los textos/vectores de lista1 con cada uno de los textos \
-            de lista2. También es posible ingresar directamente los vectores \
-            pre-calculados de los textos.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos, devolverá una matriz \
-            de *nxn* simétrica, con las distancias entre todos los elementos \
-            de lista1. Si se utilizan los parámetros lista1 y lista2 con *n1* \
-            y *n2* textos/vectores respectivamente, devolverá una matriz de \
-            *n1xn2*, con las distancias entre los elementos de lista1 y los \
-            elementos de lista2.
+            uno de los textos/vectores de `lista1` con cada uno de los \
+            elementos de `lista2`. También es posible ingresar directamente \
+            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: str, list, numpy.array, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia="jaccard")
 
@@ -468,23 +489,26 @@ class Distancia:
         Calcula la distancia de Hamming entre uno o dos grupos de textos y/o \
         vectores de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             el cálculo de las distancias. También es posible ingresar \
-            directamente los vectores pre-calculados de los textos.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+            directamente los vectores pre-calculados de los textos en un \
+            arreglo de numpy o una matriz dispersa.
+        :type lista1: str, list, numpy.array
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se calcularán la distancias entre cada \
-            uno de los textos/vectores de lista1 con cada uno de los textos \
-            de lista2. También es posible ingresar directamente los vectores \
-            pre-calculados de los textos.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            calculadas entre los textos/vectores de entrada. Sí solo se \
-            utilizó el parámetro lista1 con *n* textos/vectores, devolverá \
-            una matriz de *nxn* simétrica, con las distancias entre todos los \
-            elementos de lista1. Si se utilizan los parámetros lista1 y \
-            lista2 con *n1* y *n2* textos/vectores respectivamente, devolverá \
-            una matriz de *n1xn2*, con las distancias entre los elementos de \
-            lista1 y los elementos de lista2.
+            uno de los textos/vectores de `lista1` con cada uno de los \
+            elementos de `lista2`. También es posible ingresar directamente \
+            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            una matriz dispersa. Valor por defecto `[]`.
+        :type lista2: str, list, numpy.array, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.distancia_pares(lista1, lista2, tipo_distancia="hamming")
 
@@ -505,16 +529,21 @@ class DiferenciaStrings:
         Permite hacer comparaciones entre dos textos de entrada, de acuerdo a \
         un tipo de distancia o similitud determinado.
 
-        :param texto1: (str) Primer texto de interés a comparar.
-        :param texto2: (str) Segundo texto de interés a comparar.
-        :param tipo: (str) {'damerau_levenshtein', 'levenshtein', 'hamming', \
-            'jaro_winkler', 'jaro'} Valor por defecto: 'levenshtein'. \
-            Criterio de comparación a utilizar entre los textos.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si \
-            norm=1 se normaliza en función al texto más corto, si norm=2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (float o int) Valor resultado de la comparación.
+        :param texto1: Primer texto de interés a comparar.
+        :type texto1: str
+        :param texto2: Segundo texto de interés a comparar.
+        :type texto2: str
+        :param tipo: Criterio de comparación a utilizar entre los textos. \
+            Valor por defecto `'levenshtein'`.
+        :type tipo: {'damerau_levenshtein', 'levenshtein', 'hamming', \
+            'jaro_winkler', 'jaro'}, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (float) Valor resultado de la comparación entre `texto1` y \
+            `texto2`.
         """
         tipo = tipo.lower()
         if "damerau" in tipo:
@@ -549,28 +578,31 @@ class DiferenciaStrings:
         Permite hacer comparaciones entre una o dos listas de textos de \
         entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param tipo: (str) {'damerau_levenshtein', 'levenshtein', 'hamming', \
-            'jaro_winkler', 'jaro'} Valor por defecto: 'levenshtein'. \
-            Criterio de comparación a utilizar entre los textos.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si \
-            norm=1 se normaliza en función al texto más corto, si norm=2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con los valores de \
-            Comparación (similitud o distancia) calculados entre los textos \
-            de entrada. Sí solo se utilizó el parámetro lista1 con *n* \
-            textos, devolverá una matriz de *nxn* simétrica, con las \
-            comparaciones entre todos los elementos de lista1. Si se utilizan \
-            los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            comparaciones entre los elementos de lista1 y los elementos de \
-            lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param tipo: Criterio de comparación a utilizar entre los textos. \
+            Valor por defecto `'levenshtein'`.
+        :type tipo: {'damerau_levenshtein', 'levenshtein', 'hamming', \
+            'jaro_winkler', 'jaro'}, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         if isinstance(lista1, str):
             lista1 = [lista1]
@@ -600,24 +632,27 @@ class DiferenciaStrings:
         Permite calcular la distancia de Levenshtein entre una o dos listas \
         de textos de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si \
-            norm=1 se normaliza en función al texto más corto, si norm=2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            Entre los textos de entrada. Sí solo se utilizó el parámetro \
-            lista1 con *n* textos, devolverá una matriz de *nxn* simétrica, \
-            con las distancias entre todos los elementos de lista1. Si se \
-            utilizan los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            distancias entre los elementos de lista1 y los elementos de \
-            lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.comparacion_lista(lista1, lista2, "levenshtein", norm)
 
@@ -626,24 +661,30 @@ class DiferenciaStrings:
         Permite calcular la distancia de Damerau-Levenshtein entre una o dos \
         listas de textos de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        Permite calcular la distancia de Levenshtein entre una o dos listas \
+        de textos de entrada.
+
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si norm=1 \
-            se normaliza en función al texto más corto, si norm = 2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            entre los textos de entrada. Sí solo se utilizó el parámetro \
-            lista1 con *n* textos, devolverá una matriz de *nxn* simétrica, \
-            con las distancias entre todos los elementos de lista1. Si se \
-            utilizan los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            distancias entre los elementos de lista1 y los elementos de \
-            lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.comparacion_lista(
             lista1, lista2, "damerau_levenshtein", norm
@@ -654,23 +695,30 @@ class DiferenciaStrings:
         Permite calcular la distancia de Hamming entre una o dos listas de \
         textos de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        Permite calcular la distancia de Levenshtein entre una o dos listas \
+        de textos de entrada.
+
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional\
-             con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar\
-             los resultados en función de la longitud de los textos. Si \
-            norm=1 se normaliza en función al texto más corto. Si norm=2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con las distancias \
-            entre los textos de entrada. Sí solo se utilizó el parámetro \
-            lista1 con *n* textos, devolverá una matriz de *nxn* simétrica, \
-            con las distancias entre todos los elementos de lista1. Si se \
-            utilizan los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            distancias entre los elementos de lista1 y los elementos de lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.comparacion_lista(lista1, lista2, "hamming", norm)
 
@@ -679,23 +727,30 @@ class DiferenciaStrings:
         Permite calcular la similitud de Jaro entre una o dos listas de \
         textos de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        Permite calcular la distancia de Levenshtein entre una o dos listas \
+        de textos de entrada.
+
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional\
-             con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si norm=1 \
-            se normaliza en función al texto más corto, si norm=2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con las similitudes \
-            entre los textos de entrada. Sí solo se utilizó el parámetro \
-            lista1 con *n* textos, devolverá una matriz de *nxn* simétrica, \
-            con las similitudes entre todos los elementos de lista1. Si se \
-            utilizan los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las simil\
-            itudes entre los elementos de lista1 y los elementos de lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.comparacion_lista(lista1, lista2, "jaro")
 
@@ -704,23 +759,29 @@ class DiferenciaStrings:
         Permite calcular la similitud de Jaro-Winkler entre una o dos listas \
         de textos de entrada.
 
-        :param lista1: (str o list) Texto o lista de textos de interés para \
+        Permite calcular la distancia de Levenshtein entre una o dos listas \
+        de textos de entrada.
+
+        :param lista1: Texto o lista de textos de interés para \
             realizar las comparaciones.
-        :param lista2: (str o list) Valor por defecto: []. Parámetro opcional \
-            con un segundo texto o lista de textos para comparar. Si se \
+        :type lista1: str, list
+        :param lista2: Texto o lista de textos para comparar. Si se \
             utiliza este parámetro, se harán las comparaciones entre cada uno \
-            de los textos de lista1 con cada uno de los textos de lista2.
-        :param norm: (int) {1, 2} Valor por defecto: None. Permite normalizar \
-            los resultados en función de la longitud de los textos. Si norm=1 \
-            se normaliza en función al texto más corto, si norm = 2 se \
-            normaliza en función al texto de mayor extensión.
-        :return: (numpy array) Matriz de dos dimensiones con las similitudes \
-            entre los textos de entrada. Sí solo se utilizó el parámetro \
-            lista1 con *n* textos, devolverá una matriz de *nxn* simétrica, \
-            con las similitudes entre todos los elementos de lista1. Si se \
-            utilizan los parámetros lista1 y lista2 con *n1* y *n2* textos \
-            respectivamente, devolverá una matriz de *n1xn2*, con las \
-            similitudes entre los elementos de lista1 y los elementos de \
-            lista2.
+            de los textos de `lista1` con cada uno de los textos de `lista2`. \
+            Valor por defecto `[]`.
+        :type lista2: str, list, opcional
+        :param norm: Permite normalizar los resultados en función de la \
+            longitud de los textos. Si `norm = 1` se normaliza en función al \
+            texto más corto, si `norm = 2` se normaliza en función al texto \
+            de mayor extensión.
+        :type norm: {1,2}, opcional
+        :return: (numpy.array) Matriz de dos dimensiones con las distancias \
+            calculadas entre los textos/vectores de entrada. Si solo se \
+            utilizó el parámetro `lista1` con `n` textos/vectores, devolverá \
+            una matriz de `n x n` simétrica, con las distancias entre todos \
+            los elementos de `lista1`. Si se utilizan los parámetros `lista1` \
+            y `lista2` con `n_1` y `n_2` textos/vectores respectivamente, \
+            devolverá una matriz de `n1 x n2`, con las distancias entre los \
+            elementos de `lista1` y los elementos de `lista2`.
         """
         return self.comparacion_lista(lista1, lista2, "jaro_winkler")

@@ -87,8 +87,8 @@ def modificar_modelo(
     nlp_pipe,
     tipo,
     nuevo_diccionario,
-    archivo_entrada="",
-    archivo_salida="",
+    archivo_entrada=None,
+    archivo_salida=None,
     gpu=False,
 ):
     """
@@ -122,7 +122,7 @@ def modificar_modelo(
     """
     # Definir ubicación del modelo
     tipo = tipo.lower()
-    if archivo_entrada == "":
+    if archivo_entrada is None:
         procesador = [
             i for i in nlp_pipe.loaded_processors if tipo in str(i).lower()
         ][0]
@@ -146,7 +146,7 @@ def modificar_modelo(
         # Acá falta seguir el proceso para cada caso
     # Establecer dónde se va a guardar el modelo
     borrar_modelo = False
-    if archivo_salida == "":
+    if archivo_salida is None:
         borrar_modelo = True
         archivo_salida = "{}.pt".format(os.getpid())
     # Guardar modelo modificado

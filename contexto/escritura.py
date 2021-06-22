@@ -4,13 +4,15 @@
 class Escritor:
     def __init__(self, ubicacion_archivo, texto):
         """
-        Constructor por defecto de la clase Escritor. Esta clase se encarga \
+        Constructor por defecto de la clase `Escritor`. Esta clase se encarga \
         de guardar texto en archivos de distintos tipos como Word, PDF, CSV, \
         TXT, RTF e imágenes.
 
-        :param ubicacion_archivo: (str) Ruta del archivo que será guardado \
+        :param ubicacion_archivo: Ruta del archivo que será guardado \
             con el texto deseado.
-        :param texto: (str) Texto que se desea guardar en un archivo.
+        :type ubicacion_archivo: str
+        :param texto: Texto que se desea guardar en un archivo.
+        :type texto: str
         """
         self.establecer_ubicacion(ubicacion_archivo)
         self.establecer_texto(texto)
@@ -19,8 +21,9 @@ class Escritor:
         """
         Define la ruta del archivo con el texto que se desea guardar.
 
-        :param ubicacion_archivo: (str) Ruta del archivo que será guardado \
+        :param ubicacion_archivo: Ruta del archivo que será guardado \
             con el texto deseado.
+        :type ubicacion_archivo: str
         """
         self.ubicacion_archivo = ubicacion_archivo
 
@@ -28,14 +31,15 @@ class Escritor:
         """
         Define el texto que será guardado en un archivo.
 
-        :param texto: (str) Texto que será guardado en un archivo.
+        :param texto: Texto que será guardado en un archivo.
+        :type texto: str
         """
         self.texto = texto
 
     def escribir_txt(self):
         """
         Especifica que el texto deseado se guardará en un archivo con \
-        extensión '.txt'.
+        extensión `.txt`.
         """
         if isinstance(self.texto, list):
             self.texto = "\n\n|**|\n\n".join(self.texto)
@@ -46,7 +50,7 @@ class Escritor:
     def escribir_word(self):
         """
         Especifica que el texto deseado se guardará en un archivo con \
-        extensión '.docx'.
+        extensión `.docx`.
         """
         from docx import Document
 
@@ -63,7 +67,7 @@ class Escritor:
     def escribir_pdf(self):
         """
         Especifica que el texto deseado se guardará en un archivo con \
-        extensión '.pdf'.
+        extensión `.pdf`.
         """
         import PyPDF2
         from reportlab.pdfgen import canvas
@@ -109,9 +113,10 @@ class Escritor:
         """
         Especifica el tipo de archivo en el que se quiere guardar el texto.
 
-        :param tipo: (str) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'} \
-            Valor por defecto: 'inferir'. Define el tipo del archivo en el \
-            que se desea guardar el texto.
+        :param tipo:  Define el tipo del archivo en el que se desea guardar \
+            el texto. Si `tipo = 'inferir'` se guarda con la extensión del \
+            documento de entrada. Valor por defecto `'inferir'`.
+        :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}, opcional
         """
         if tipo == "inferir":
             tipo = self.ubicacion_archivo.split(".")[-1]
@@ -138,15 +143,18 @@ class Escritor:
 def escribir_texto(ubicacion_archivo, texto, tipo="inferir"):
     """
     Función que guarda texto en un archivo específico. Permite escoger la \
-    ruta del archivo, su tipo y el texto a ser guardado dentro de este \
+    ruta del archivo, su formato y el texto a ser guardado dentro de este \
     archivo.
 
-    :param ubicacion_archivo: (str) Ruta del archivo que será guardado con el \
-        texto deseado.
-    :param texto: (str) El texto que se desea guardar en un archivo.
-    :param tipo: (str) {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'} Valor \
-        por defecto: 'inferir'. Define el tipo del archivo en el que se desea \
-        guardar el texto.
+    :param ubicacion_archivo: Ruta del archivo que será guardado \
+        con el texto deseado.
+    :type ubicacion_archivo: str
+    :param texto: Texto que se desea guardar en un archivo.
+    :type texto: str
+    :param tipo:  Define el tipo del archivo en el que se desea guardar \
+        el texto. Si `tipo = 'inferir'` se guarda con la extensión del \
+        documento de entrada. Valor por defecto `'inferir'`.
+    :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}, opciona
     """
     if isinstance(texto, str) or isinstance(texto[0], str):
         es = Escritor(ubicacion_archivo, texto)

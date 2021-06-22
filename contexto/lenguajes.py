@@ -7,13 +7,15 @@ def detectar_lenguaje(texto, devolver_proba=False):
     """
     Identifica el lenguaje en el que está escrito el texto de entrada.
 
-    :param texto: (str) Corresponde al texto que se desea analizar.
-    :param devolver_proba: (bool) {True, False} Valor por defecto: False. \
-        Indica si se retorna el porcentaje de confiabilidad del lenguaje \
-        identificado.
+    :param texto: Texto de entrada.
+    :type texto: str
+    :param devolver_proba: Indica si se retorna el porcentaje de \
+        confiabilidad del lenguaje identificado. Valor por \
+        defecto `False`.
+    :type devolver_proba: bool, opcional
     :return: (str) Texto del lenguaje identificado siguiendo el estandar \
         `ISO 639-1 <https://es.wikipedia.org/wiki/ISO_639-1>`_. \
-        Si devolver_proba es True retorna una tupla.
+        Si `devolver_proba = True` retorna una tupla.
     """
     identificador = LanguageIdentifier.from_modelstring(model, norm_probs=True)
     if devolver_proba:
@@ -23,7 +25,8 @@ def detectar_lenguaje(texto, devolver_proba=False):
 
 
 def traducir_texto(texto, lenguaje_destino):
-    """ Permite hacer traducciones a un texto de interés.
+    """
+    Permite traducir un texto de entrada.
 
     .. note::
         Es importante tener en cuenta los siguientes aspectos al utilizar la \
@@ -43,10 +46,12 @@ def traducir_texto(texto, lenguaje_destino):
         * Para mayor información puede consultar la \
             `documentación de la librería googletrans <https://py-googletrans.readthedocs.io/en/latest/>`_.
 
-    :param texto: (str) Corresponde al texto que se desea traducir.
-    :param lenguaje_destino: (str)  Indica el lenguaje al que desea traducir \
+    :param texto: Texto de entrada.
+    :type texto: str
+    :param lenguaje_destino: Indica el lenguaje al que desea traducir \
         el texto. Para mayor información, consultar la sección de \
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
+    :type lenguaje_destino: {'es', 'en', 'fr', 'ge'}
     :return: (str) Texto traducido.
     """
     traductor = Translator()
