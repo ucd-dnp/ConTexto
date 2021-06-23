@@ -610,7 +610,7 @@ def graficar_coocurrencias(
         fontsize=10,
         color="black",
         rotation=-90,
-        )  
+    )
     try:
         mpl.colorbar.ColorbarBase(
             ax2,
@@ -639,7 +639,6 @@ def graficar_coocurrencias(
         return plt
     # Cerrar gráfica
     plt.close()
-
 
 
 def grafica_barchart_frecuencias(
@@ -749,10 +748,12 @@ def graficar_dispersion(
 
     :param documentos: Texto del documento o lista de textos de \
         documentos sobre los cuales se quiere analizar la dispersión de \
-        términos.
+        términos. Si desea generar la dispersión con n-gramas, cada texto \
+        debe ser representado como lista de n-gramas. 
     :type documentos: str, list
-    :param palabras_clave: Lista de palabras clave o término de interés\
-         que se quieren encontrar en los textos de los documentos.
+    :param palabras_clave: Lista de palabras clave, n-gramas claves \
+        o término de interés\
+        que se quieren encontrar en los textos de los documentos.
     :type palabras_clave: list
     :param ignorar_mayus: Si `ignorar_mayus = True`, no hace diferencia \
         si las palabras tienen mayúsculas, es decir, \
