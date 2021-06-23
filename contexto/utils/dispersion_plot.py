@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import numpy as np
 import warnings
+import itertools
+import re
 
 
-# Objeto dispersionPlot
 class dispersionPlot:
     def __init__(
         self,
@@ -58,11 +59,19 @@ class dispersionPlot:
     @textos.setter
     def textos(self, text):
         if isinstance(text, str):
-            self._textos = [text]
-            all_words = " ".join(self._textos).split()
-        elif isinstance(text, list):
+            self._textos = [
+                limpieza_basica(text, ignorar_mayus=self._ignore_case)
+            ]
+            self._all_words = " ".join(self._textos).split()
+        elif all(isinstance(t, list) for t in text):
             self._textos = text
-            all_words = " ".join(self._textos).split()
+            self._all_words = list(itertools.chain.from_iterable(text))
+
+        elif isinstance(text, list):
+            self._textos = list(
+                map(limpieza_basica, text, [self._ignore_case] * len(text))
+            )
+            self._all_words = " ".join(self._textos).split()
         else:
             raise ValueError(
                 (
@@ -70,11 +79,6 @@ class dispersionPlot:
                     "o una lista de textos"
                 )
             )
-
-        if self._ignore_case:
-            self._all_words = list(map(str.lower, all_words))
-        else:
-            self._all_words = all_words
 
     @property
     def keywords(self):
@@ -157,7 +161,10 @@ class dispersionPlot:
         Función para calcular finales de documentos y posición de \
         etiquetas en gráfico de dispersión.
         """
-        limits = [len(t.split()) for t in self._textos]
+        try:
+            limits = [len(t.split()) for t in self._textos]
+        except Exception:
+            limits = [len(t) for t in self._textos]
         limits = np.cumsum(limits) - 1
         limits_ = np.insert(limits, 0, 0)
         x_pos = [
@@ -252,7 +259,7 @@ class dispersionPlot:
         ax.set_position([box.x0, box.y0, box.width * 0.85, box.height])
         ax.set_title(self._title, {"fontsize": 15, "fontweight": 700})
         ax.set_xlabel(self._label_x)
-        ax.set_xlim(0.2, x[-1] + 0.2)
+        ax.set_xlim(-0.2, x[-1] + 0.2)
         ax.set_xticks(self._x_limits)
         if self._labels is not None:
             ax.set_xticklabels(self._labels, rotation=self._rotation)
@@ -285,3 +292,21 @@ class dispersionPlot:
         if self._return_fig:
             return fig
         return ax
+
+
+def limpieza_basica(texto, ignorar_mayus=True):
+
+    # Texto a minúsculas
+    if ignorar_mayus:
+        texto = texto.lower()
+    # Pone un espacio antes y después de cada signo de puntuación
+    texto = re.sub(r"([\.\",\(\)!\?;:])", " \\1 ", texto)
+    # Quita caracteres especiales del texto.
+    # RegEx adaptada de https://stackoverflow.com/a/56280214
+
+    texto = re.sub(r"[^ a-zA-ZÀ-ÖØ-öø-ÿ0-9]+", " ", texto)
+    # Reemplaza espacios múltiples por un solo espacio
+    texto = re.sub(r" +", " ", texto)
+    # Quitar espacios, tabs y enters en los extremos del texto
+    texto = texto.strip(" \t\n\r")
+    return texto
