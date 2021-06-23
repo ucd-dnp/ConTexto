@@ -96,7 +96,7 @@ def remover_palabras_cortas(texto, n_min):
     return " ".join([palabra for palabra in palabras if len(palabra) >= n_min])
 
 
-def limpieza_basica(texto, quitar_numeros=True):
+def limpieza_basica(texto, quitar_numeros=True, ignorar_mayus=True):
     """
     Limpieza básica del texto. Esta función realiza una limpieza básica del \
     texto de entrada, transforma todo el texto a letras minúsculas, quita \
@@ -110,10 +110,15 @@ def limpieza_basica(texto, quitar_numeros=True):
     :param quitar_numeros: Indica si desea quitar los números dentro del \
         texto. Valor por defecto `True`.
     :type quitar_numeros: bool, opcional
+    :param ignorar_mayus: Si `ignorar_mayus = True`, convierte el texto todo\
+        a letras minúsculas, en caso contrario, deja el texto como el \
+        original. Valor por defecto `True`.
+    :type ignorar_mayus: bool, opcional
     :return: (str) Texto después de la limpieza básica.
     """
     # Texto a minúsculas
-    texto = texto.lower()
+    if ignorar_mayus:
+        texto = texto.lower()
     # Pone un espacio antes y después de cada signo de puntuación
     texto = re.sub(r"([\.\",\(\)!\?;:])", " \\1 ", texto)
     # Quita caracteres especiales del texto.
@@ -137,6 +142,7 @@ def limpieza_texto(
     n_min=0,
     quitar_numeros=True,
     quitar_acentos=False,
+    ignorar_mayus=True,
     tokenizador=None,
     momento_stopwords="ambos",
 ):
@@ -172,6 +178,10 @@ def limpieza_texto(
     :param quitar_acentos: Opción para determinar si se quitan acentos \
         (tildes, diéresis, virgulilla) del texto. Valor por defecto `False`.
     :type quitar_acentos: bool, opcional
+    :param ignorar_mayus: Si `ignorar_mayus = True`, convierte el texto todo\
+        a letras minúsculas, en caso contrario, deja el texto como el \
+        original. Valor por defecto `True`.
+    :type ignorar_mayus: bool, opcional
     :param tokenizador: Objeto encargado de la tokenización y detokenización \
         de textos. Si el valor es 'None', se utilizará por defecto una \
         instancia de la clase `TokenizadorNLTK`.
@@ -202,7 +212,7 @@ def limpieza_texto(
     if quitar_acentos:
         texto = remover_acentos(texto)
     # Limpieza básica del texto
-    texto = limpieza_basica(texto, quitar_numeros)
+    texto = limpieza_basica(texto, quitar_numeros, ignorar_mayus)
     # Quita palabras cortas y palabras pertenecientes a una lista específica
     texto = remover_palabras_cortas(texto, n_min)
     # Se quitan stopwords de nuevo, por si habían palabras que después de
