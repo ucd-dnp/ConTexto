@@ -265,7 +265,7 @@ def grafica_nube(
     plt.axis("off")
     if graficar:
         plt.show()
-    if ubicacion_archivo != "":
+    if ubicacion_archivo is not None:
         fig.savefig(ubicacion_archivo)
     # Cerrar gráfica
     plt.close()
