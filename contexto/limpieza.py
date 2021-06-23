@@ -280,10 +280,10 @@ def cargar_stopwords(ubicacion_archivo, encoding="utf8"):
     :type encoding: str, opcional
     :return: (tuple) Tupla que contiene: \
         |ul|
-          |li| lista_palabras (list): Lista que contiene las palabras que \
-            se desean quitar en un texto. |/li|
-          |li| lista_expresiones (list): Lista que contiene las expresiones \
-            que se desean quitar de un texto. |/li|
+        |li| lista_palabras (list): Lista que contiene las palabras que \
+        se desean quitar en un texto. |/li|
+        |li| lista_expresiones (list): Lista que contiene las expresiones \
+        que se desean quitar de un texto. |/li|
         |/ul|
     """
     lista_palabras = []
