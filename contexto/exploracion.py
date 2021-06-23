@@ -276,7 +276,7 @@ def par_nubes(
     n1=1,
     n2=2,
     dim_figura=(20, 11),
-    ubicacion_archivo="",
+    ubicacion_archivo=None,
     graficar=True,
     devolver_grafica=False,
 ):
@@ -331,7 +331,7 @@ def par_nubes(
     plt.setp(plt.gcf().get_axes(), xticks=[], yticks=[])
     if graficar:
         plt.show()
-    if ubicacion_archivo != "":
+    if ubicacion_archivo is not None:
         fig.savefig(ubicacion_archivo)
     if devolver_grafica:
         return fig
