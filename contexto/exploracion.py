@@ -110,9 +110,9 @@ def nube_palabras(
         de n-gramas. Por ejemplo, si `n = 1` se retornarán palabras, \
         y si `n = 2` se retornarán bigramas, si `n = 3` se retornarán \
         trigramas y así sucesivamente. Valor por defecto `2`.
-    :param n_terminos:Cantidad de n-gramas que se incluyen en la nube. \
+    :param n_terminos: Cantidad de n-gramas que se incluyen en la nube. \
         Se graficarán los `n_terminos` más frecuentes en \
-        el texto. Valor por defecto `100`
+        el texto. Valor por defecto `100`.
     :type n_terminos: int, opcional
     :param graficar: Permite visualizar la gráfica en el `IDE`_ que esté \
         utilizando. Valor por defecto `True`.
@@ -610,7 +610,7 @@ def grafica_barchart_frecuencias(
     :type ubicacion_archivo: str, opcional
     :param graficar: Permite visualizar la gráfica. Valor por defecto `True`.
     :type graficar: bool, opcional
-    :param n_terminos:Cantidad de n-gramas que se incluyen en la gráfica. \
+    :param n_terminos: Cantidad de n-gramas que se incluyen en la gráfica. \
         Se graficarán los `n_terminos` más frecuentes en el texto. \
         Valor por defecto `15`.
     :type n_terminos: int, opcional
@@ -696,7 +696,7 @@ def graficar_dispersion(
     :type titulo: str, opcional
     :param eje_x: Leyenda del eje `x` de la figura. Valor por defecto \
         `'Distribución de términos'`.
-    type eje_x: str, opcional
+    :type eje_x: str, opcional
     :param eje_y: Leyenda del eje `y` de la figura. Valor por defecto \
         `'Palabras clave'`.
     :type eje_y: str, opcional
@@ -750,7 +750,7 @@ def graficar_dispersion(
         (https://matplotlib.org/stable/tutorials/colors/colormaps.html). \
         Valor por defecto: 'nipy_spectral'.
     :type mapa_color: str, opcional
-    :param devolver_grafica:  Si `devolver_grafica = True`, devuelve el \
+    :param devolver_grafica: Si `devolver_grafica = True`, devuelve el \
         gráfico de dispersión como objeto de `Matplotlib`. \
         Valor por defecto `False`.
     :return: (Matplotlib.Figure) Objeto de Matplotlib, solo si \
