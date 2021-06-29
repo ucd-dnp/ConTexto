@@ -101,7 +101,7 @@ class Similitud:
             También es posible ingresar directamente los vectores \
             pre-calculados de los textos en un arreglo de numpy o una matriz \
             dispersa. Valor por defecto [].
-        :type lista2:list, opcional
+        :type lista2: list, opcional
         :return: (numpy.array) Matriz de dos dimensiones con las similitudes \
             coseno entre los textos/vectores de entrada. Si solo se utilizó \
             el parámetro `lista1` con `n` textos/vectores, devolverá una \
