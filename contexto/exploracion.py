@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.colors as cl
 import networkx as nx
+from networkx.convert_matrix import from_pandas_adjacency
 import numpy as np
 import pandas as pd
 import warnings
@@ -10,7 +11,6 @@ from collections import Counter, Iterable
 from wordcloud import WordCloud, ImageColorGenerator
 from limpieza import limpieza_basica
 from utils.tokenizacion import tokenizar, TokenizadorNLTK
-from utils.dispersion_plot import dispersionPlot
 
 
 def obtener_ngramas(
@@ -461,184 +461,116 @@ def diag_superior(df):
 
 def graficar_coocurrencias(
     mat,
-    prop_fuera=0,
-    ubicacion_archivo=None,
+    vmin=10,
+    vmax=None,
+    escala=700,
+    n_nodos=0,
+    titulo="Gráfico de co-ocurrencias",
+    dim_figura=(10, 6),
+    node_cmap="RdPu",
+    edge_cmap="Blues",
+    offset_y=0.09,
+    font_color="white",
+    node_font_size=12,
+    label_font_size=10,
     graficar=True,
-    K=5,
-    color_borde="orchid",
-    color_nodo="silver",
-    semilla=123,
-    dim_figura=(13, 13),
+    ubicacion_archivo=None,
     devolver_grafica=False,
-    circular=False,
+    seed=12,
 ):
     """
-    Grafica una matriz de coocurrencias de términos como un grafo no dirigido.
+    Grafica una matriz de coocurrencia como un grafo no dirigido de términos.
 
-    :param mat: Matriz de coocurrencias que desea graficar.
+    :param mat: Matriz de coocurrencia de términos
     :type mat: pandas.DataFrame
-    :param prop_fuera: (valor entre 0 y 100). Permite eliminar las \
-        conexiones con menor peso para aclarar un poco la imagen. Si \
-        `prop_fuera = 0` no se elimina ninguna conexión. Valor por defecto \
-        `0`.
-    :type prop_fuera: float, opcional
-    :param ubicacion_archivo: Ruta donde desea exportar la gráfica como \
-        archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la \
-        extensión `jpg`. Si `ubicacion_archivo = None` la gráfica no se \
-        exporta. Valor por defecto `None`.
-    :type ubicacion_archivo: str, opcional
-    :param graficar: Permite visualizar la gráfica. Valor por defecto `True`.
-    :type graficar: bool, opcional
-    :param K: Distancia óptima entre nodos, aumente este valor para separar \
-        los nodos. Valor por defecto `5`.
-    :type K: float, opcional
-    :param color_borde: (str)  Corresponde al color de los bordes de la red, \
-        se puede asignar el nombre de un color predefinido o el código \
-        hexadecimal. Valor por defecto `'orchid'`.
-    :type color_borde: str, opcional
-    :param color_nodo: (str) Valor por defecto: 'silver'. Corresponde al color\
-         de los nodos, se puede asignar el nombre de un color predefinido o \
-        el código hexadecimal de un color.
-    :param semilla: Estado inicial del generador aleatorio para establecer la \
-        posición de los nodos.Valor por defecto `123`.
-    :type semilla: int, opcional
     :param dim_figura: Corresponden al ancho y alto de la figura en pulgadas. \
-        Valor por defecto `(13, 13)`.
+        Valor por defecto `(10, 6)`.
     :type dim_figura: (float, float), opcional
+    :param vmin: Tamaño mínimo de un nodo. Valor por defecto `10`.
+    :type vmin: int, opcional
+    :param vmax: Tamaño máximo de un nodo. Si  `vmax = None`, se escoge el \
+        número máximo de grados de un nodo. Valor por defecto `None`.
+    :type vmax: int, opcional
+    :param n_nodos: Indica el número o porcentaje de nodos que se quieren \
+        mostrar en el gráfico. Si `n_nodos = 0`, todos los nodos son \
+        selecionados. Si `n_nodos` está entre `0` y `1`, representa \
+        el porcentaje de nodos que se desean graficar. Si `n_nodos > 1`, \
+        reresenta el número de nodos que se desean graficar. Valor por \
+        defecto `0`.
+    :type n_nodos: float,int, opcional
+    :param escala: Valor de escala para aumentar o disminuir el tamaño del \
+        gráfico en general. Valor por defecto `700`.
+    :type escala: int, opcional
+    :param node_cmap: Mapa de color para generar colores de los nodos dado \
+        su número de conexiones. Se aceptan todos los mapas de color \
+        continuos de `Matplotlib`: \
+        (https://matplotlib.org/stable/tutorials/colors/colormaps.html). \
+        Valor por defecto: "RdPu".
+    :type node_cmap: str, opcional
+    :param edge_cmap: Mapa de color para generar colores de las conexiones \
+        dado su peso. Se aceptan todos los mapas de color continuos de \
+        `Matplotlib`: \
+        (https://matplotlib.org/stable/tutorials/colors/colormaps.html). \
+        Valor por defecto: "Blues".
+    :type edge_cmap: str, opcional
+    :param offset_y: Desplazamiento hacia abajo (eje y) de los textos de los \
+        nodos, para evitar el traslape con los nodos. Valor por defecto `0.09`.
+    :type offset_y: float, opcional
+    :param font_color: Color de la letra dentro de los nodos. El color puede \
+        ser un string o una tupla (rgb) de floats de 0-1. Valor por defecto \
+        `'white'`.
+    :type font_color: str, array of colors, opcional
+    :param node_font_size: Tamaño de letra dentro del nodo. Valor por \
+        defecto `12`.
+    :type node_font_size: int, opcional
+    :param label_font_size: Tamaño de letra de las etiquetas de los nodos. \
+        Valor por defecto `10`.
+    :type label_font_size: int, opcional
+    :param titulo: Título del gráfico de coocurrencias. Valor por defecto \
+        `"Gráfico de co-ocurencias"`.
+    :type titulo: str, opcional
+    :param graficar: Permite visualizar la gráfica después de ejecutar la \
+        función. Valor por defecto `True`.
+    :type visualizar: bool, opcional
+    :param ubicacion_archivo:  Ruta donde desea exportar la gráfica como \
+        archivo tipo imagen {png, jpeg, jpg, gif}. Si \
+        `ubicacion_archivo = None`, la gráfica no se exporta. Valor por \
+        defecto `None`.
+    :type ubicacion_archivo: str, opcional
     :param devolver_grafica: Indica si se desea obtener el gráfico de \
         coocurrencias como un objeto de `Matplotlib`. \
         Valor por defecto `False`.
+    :param seed: Semilla para la generación del grafo. Sirve para cambiar la \
+        distribución aleatoria de aparición de los nodos. Valor por \
+        defecto `12`.
+    :type seed: int, opcional
     :type devolver_grafica: bool, opcional
-    :return: (Matplotlib.Figure) Figura con el grafo de \
-        coocurrencias, solo si `devolver_grafica = True`.
+    :return: (Matplotlib.Figure) Figura con el gráfico de coocurrencias, \
+        solo si `devolver_grafica = True`.
     """
-    # Definir el valor máximo de la matriz y de la diagonal
-    max_cooc = max(mat.max())
-    max_diag = max(np.diag(mat))
-    # Definir lista de conexiones (edges)
-    lista_bordes = []
-    for indice, fila in mat.iterrows():
-        i = 0
-        for col in fila:
-            peso = float(col) / np.log10(max_cooc)
-            lista_bordes.append((indice, mat.columns[i], peso))
-            i += 1
-    # Quitar de la lista conexiones con peso 0 (no hay co-ocurrencia)
-    lista_bordes = [x for x in lista_bordes if x[2] > 0.0]
-    # Quitar conexiones de un nodo consigo mismo
-    for i in lista_bordes:
-        if i[0] == i[1]:
-            lista_bordes.remove(i)
-    # Definir lista de vértices (nodes)
-    lista_nodos = [[i, mat.loc[i, i] / np.log(max_diag)] for i in mat.columns]
-    for i, nodo in enumerate(lista_nodos):
-        if nodo[1] == 0.0:
-            lista_nodos[i][1] += 0.1
-    # Definir tamaños de nodos y bordes del grafo
-    offset_y = 0.06
-    escalar_nodo = 200
-    escalar_borde = 0.0055
-    sizes = [x[1] for x in lista_nodos]
-    anchos = [x[2] for x in lista_bordes]
-    # Acotar los tamaños en el percentil 99 para evitar valores demasiado altos
-    anchos = np.clip(anchos, 0, np.percentile(anchos, 99))
-    sizes = np.clip(sizes, 0, np.percentile(anchos, 99))
-    # Modificar anchos de bordes y tamaño de nodos
-    anchos = [100 * float(i) / max(anchos) for i in anchos]
-    anchos = [x ** 2.35 * escalar_borde ** 2 for x in anchos]
-    sizes = [30 + (escalar_nodo * float(i) / max(sizes)) for i in sizes]
-    # Eliminar las conexiones con menor peso para aclarar un poco la imagen
-    anchos = [
-        i if i >= np.percentile(anchos, prop_fuera) else 0 for i in anchos
-    ]
-    # Crear grafo
-    G = nx.Graph()
-    for i in sorted(lista_nodos):
-        G.add_node(i[0], size=1)
-    G.add_weighted_edges_from(lista_bordes)
-    # Crear la gráfica
-    fig = plt.figure(figsize=dim_figura)
-    ax = plt.axes()
-    try:
-        if circular:
-            pos = nx.circular_layout(G)
-        else:
-            pos = pos = nx.spring_layout(G, iterations=300, k=K, seed=123)
-    except BaseException:
-        if circular:
-            pos = nx.circular_layout(G)
-        else:
-            pos = pos = nx.spring_layout(G, iterations=300, k=K)
-    # Obtener número de nodos
-    n = G.number_of_nodes()
-    # Número máximo de conexiones entre nodos
-    max_con = max([list(G.degree())[i][1] for i in range(n)])
-    # Definir los colores
-    colores = [
-        plt.cm.plasma(list(G.degree())[i][1] / max_con) for i in range(n)
-    ]
-    # Definir la cantidad de conexiones por nodos
-    grados = np.array([list(G.degree())[i][1] for i in range(n)])
-    # Definir la paleta de colores
-    cmap = plt.get_cmap("plasma", len(grados))
-    # Escribir los nombres de los nodos
-    for key, value in pos.items():
-        x, y = value[0] + 0, value[1] - offset_y
-        plt.text(x, y, s=key, horizontalalignment="center", fontsize=10)
-    for key, value in pos.items():
-        xi = value[0]
-        yi = value[1]
-        ax.scatter(
-            xi,
-            yi,
-            color=colores[list(G.nodes()).index(key)],
-            s=350,
-            edgecolors="k",
-            alpha=0.7,
-            cmap=cmap,
-        )
-    bounds = np.linspace(
-        min(grados), max(grados), max(grados) - min(grados) + 1
+    from contexto.utils import coocurrence_plot as cp
+
+    ax = cp.graficar_coocurencia(
+        mat,
+        dim_figura=dim_figura,
+        vmin=vmin,
+        vmax=vmax,
+        n_nodos=n_nodos,
+        escala=escala,
+        node_cmap=node_cmap,
+        edge_cmap=edge_cmap,
+        offset_y=offset_y,
+        font_color=font_color,
+        node_font_size=node_font_size,
+        label_font_size=label_font_size,
+        titulo=titulo,
+        visualizar=graficar,
+        ubicacion_archivo=ubicacion_archivo,
+        devolver_grafica=devolver_grafica,
+        seed=seed,
     )
-    norm = cl.BoundaryNorm(bounds, cmap.N)
-    ax2 = fig.add_axes([0.90, 0.1, 0.03, 0.8])
-    plt.text(
-        x=1.5,
-        y=-0.2,
-        s="No de conecciones",
-        horizontalalignment="center",
-        fontsize=10,
-        color="black",
-        rotation=-90,
-    )
-    try:
-        mpl.colorbar.ColorbarBase(
-            ax2,
-            cmap=cmap,
-            norm=norm,
-            spacing="proportional",
-            ticks=bounds,
-            boundaries=bounds,
-            format="%1i",
-        )
-    except:
-        pass
-    # Hacer un bucle en la lista de aristas para obtener las coordenadas
-    # x, y de los nodos conectados
-    # Esos dos puntos son los extremos de la línea que se trazará.
-    for i, j in enumerate(G.edges()):
-        x = np.array((pos[j[0]][0], pos[j[1]][0]))
-        y = np.array((pos[j[0]][1], pos[j[1]][1]))
-        ax.plot(x, y, c="black", alpha=0.5, linewidth=anchos[i])
-    ax.set_axis_off()
-    if ubicacion_archivo is not None:
-        plt.savefig(ubicacion_archivo)
-    if graficar:
-        plt.show()
-    if devolver_grafica:
-        return plt
-    # Cerrar gráfica
-    plt.close()
+
+    return ax
 
 
 def grafica_barchart_frecuencias(
@@ -749,7 +681,7 @@ def graficar_dispersion(
     :param documentos: Texto del documento o lista de textos de \
         documentos sobre los cuales se quiere analizar la dispersión de \
         términos. Si desea generar la dispersión con n-gramas, cada texto \
-        debe ser representado como lista de n-gramas. 
+        debe ser representado como lista de n-gramas.
     :type documentos: str, list
     :param palabras_clave: Lista de palabras clave, n-gramas claves \
         o término de interés\
@@ -824,6 +756,7 @@ def graficar_dispersion(
     :return: (Matplotlib.Figure) Objeto de Matplotlib, solo si \
         `devolver_grafica = True`.
     """
+    from utils.dispersion_plot import dispersionPlot
 
     # Llamar objecto de dispersionPlot
     visualizador = dispersionPlot(
