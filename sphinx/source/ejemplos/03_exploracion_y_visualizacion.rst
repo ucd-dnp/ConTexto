@@ -184,6 +184,39 @@ En el caso en que se considera más de un texto, el gráfico es dividido de acue
     :alt: 
     :figclass: align-center
 
+En algunas ocasiones, graficar la dispersión léxica de palabras por si solas, hacen perder el contexto en las que aparecen. Una forma de solucionar este hecho es visualizar la aparición de n-gramas a través del texto.
+
+Para graficar la dispersión léxica de n-gramas con ConTexto, es necesario, calcular los n-gramas para cada texto y pasarlos como una lista de listas. En el siguiente ejemplo, se muestra la dispersión léxica para bi-gramas.
+
+.. code-block:: python
+    
+    >>> # Diferentes textos en una lista
+    >>> textos = [
+    >>>     'Un campesino alimentaba al mismo tiempo a la cabra y a un asno. La cabra, envidiosa porque su compañero estaba mejor atendido, le dio el siguiente consejo: - La noria y la carga hacen de tu vida un tormento interminable; simula una enfermedad y déjate caer en un foso, pues así te dejarán reposar.',
+    >>>     'Al salir la cabra de su establo encargó a su hijo el cuidado de la casa, advirtiéndole el peligro de los animales que rondaban por los alrededores con intención de entrar a los establos y devorar los ganados.',
+    >>>     'Bien sé que eres nuestro mayor adversario y que, imitando la voz de un campesino, pretendes entrar para devorarme. Puedes marcharte, odiado animal, que no seré yo quien te abra la puerta.',
+    >>>     'la cabra robó un queso y, llevando su botín fue a saborearlo en la copa de un árbol. En estas circunstancias lo vio un asno muy astuto, y comenzó a adularlo con la intención de arrebatárselo.'
+    >>> ]
+
+    >>> # Limpieza basica para quitar signos de puntuación
+    >>> textos = [limpieza_basica(t) for t in textos]
+
+    >>> # Calculo de bigramas sobre el texto
+    >>> bigramas = [obtener_ngramas(t, 2) for t in textos]
+
+    >>> #bigramas de interés 
+    >>> mis_bigramas = ['un campesino','la cabra', 'los ganados', 'un asno']
+
+    >>> #graficar la dispersión de bigramas 
+    >>> graficar_dispersion(bigramas, mis_bigramas, titulo = 'Dispersión léxica de bigramas',
+    >>>                     dim_figura=(10,3), eje_y = "Bigramas de interés")
+
+.. figure:: ../_static/image/graficos/dispersion_plot_3.png
+    :align: center
+    :alt: 
+    :figclass: align-center
+
+
 Calcular coocurrencias y graficarlas
 ------------------------------------
 
@@ -194,29 +227,18 @@ A partir de estas matrices de coocurrencias es posible graficar redes o grafos d
 .. code-block:: python
 
     >>> ## Obtener matrices de coocurrencias
-
-    >>> mat_doc = matriz_coocurrencias(texto, max_num=60)
+    >>> texto =  """ el perro está en la casa un perro y un gato están en el carro
+    >>>     el carro entro a la casa el gato salió de la casa para entrar al carro
+    >>>     el carro casi atropella al perro """
 
     >>> # Solo se cuenta la coocurrencia si las palabras están a 5 o menos palabras entre sí
     >>> mat_ven = matriz_coocurrencias(texto, max_num=60, modo='ventana', ventana=5)
 
     >>> ## Graficar co-ocurrencias de palabras en el texto
+    >>> graficar_coocurrencias(mat_ven, ubicacion_archivo='salida/grafo_doc_full.jpg', dim_figura=(12,7), graficar=True, seed = 31,
+    >>>                       offset_y =0.13, vmin= 20)
 
-    >>> graficar_coocurrencias(mat_doc, ubicacion_archivo='salida/grafo_doc_full.jpg', dim_figura=(10,8))
-
-    >>> # El parámetro "prop_fuera" se utiliza para quitar líneas de menos coocurrencias del grafo,
-    >>> # con el propósito de simplificar un poco la gráfica
-    >>> graficar_coocurrencias(mat_doc, prop_fuera=80, ubicacion_archivo='salida/grafo_doc_top20.jpg', graficar=False)
-
-    >>> graficar_coocurrencias(mat_ven, ubicacion_archivo='salida/grafo_ven_full.jpg', dim_figura=(10,8))
-    >>> graficar_coocurrencias(mat_ven, prop_fuera=80, ubicacion_archivo='salida/grafo_ven_top20.jpg', graficar=False)
-
-.. figure:: ../_static/image/graficos/grafo_doc_full.jpg
-    :align: center
-    :alt: 
-    :figclass: align-center
-
-.. figure:: ../_static/image/graficos/grafo_ven_full.jpg
+.. figure:: ../_static/image/graficos/grafo_doc_full_b.jpg
     :align: center
     :alt: 
     :figclass: align-center
@@ -226,27 +248,23 @@ También se pueden calcular y graficar coocurrencias sobre un conjunto de docume
 .. code-block:: python
 
     >>> # Ejemplo con un grupo de textos
+    >>> # Diferentes textos en una lista
     >>> textos = [
-    >>>     'el perro está en la casa',
-    >>>     'un perro y un gato están en el carro',
-    >>>     'el carro entro a la casa',
-    >>>     'el gato salió de la casa para entrar al carro',
-    >>>     'el carro casi atropella al perro']
+    >>>     'Un campesino alimentaba al mismo tiempo a la cabra y a un asno. La cabra, envidiosa porque su compañero estaba mejor atendido, le dio el siguiente consejo: - La noria y la carga hacen de tu vida un tormento interminable; simula una enfermedad y déjate caer en un foso, pues así te dejarán reposar.',
+    >>>     'Al salir la cabra de su establo encargó a su hijo el cuidado de la casa, advirtiéndole el peligro de los animales que rondaban por los alrededores con intención de entrar a los establos y devorar los ganados.',
+    >>>     'Bien sé que eres nuestro mayor adversario y que, imitando la voz de un campesino, pretendes entrar para devorarme. Puedes marcharte, odiado animal, que no seré yo quien te abra la puerta.',
+    >>>     'la cabra robó un queso y, llevando su botín fue a saborearlo en la copa de un árbol. En estas circunstancias lo vio un asno muy astuto, y comenzó a adularlo con la intención de arrebatárselo.'
+    >>> ]
 
+    >>> # limpieza básica de texto para  quitar puntuaciones
     >>> textos = [limpieza_texto(t, lista_palabras=lista_stopwords()) for t in textos]
 
     >>> mat_doc = matriz_coocurrencias(textos)
-    >>> mat_ven = matriz_coocurrencias(textos, modo='ventana', ventana=2)
 
-    >>> graficar_coocurrencias(mat_doc, dim_figura=(4,4))
-    >>> graficar_coocurrencias(mat_ven, dim_figura=(4,4))
+    >>> graficar_coocurrencias(mat_doc, n_nodos = 0.75, vmin= 50, escala = 900,dim_figura=(15,11), 
+    >>>                        node_cmap = "viridis", offset_y = 0.06, seed = 1)
 
-.. figure:: ../_static/image/graficos/grafo_doc_full_2.jpg
-    :align: center
-    :alt: 
-    :figclass: align-center
-
-.. figure:: ../_static/image/graficos/grafo_ven_full_2.jpg
+.. figure:: ../_static/image/graficos/grafo_ven_full_b.jpg
     :align: center
     :alt: 
     :figclass: align-center
