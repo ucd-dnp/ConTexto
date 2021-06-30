@@ -135,7 +135,7 @@ class OCR:
         nombre_archivo = "{}.png".format(os.getpid())
         cv2.imwrite(nombre_archivo, imagen)
         # Se establecen las opciones para el OCR
-        config = "-l {}--psm {} --oem {}".format(
+        config = "-l {} --psm {} --oem {}".format(
             self.lenguaje, self.psm, self.oem
         )
         # Se carga la imagen como un objeto PIL/Pillow image y se aplica el OCR
