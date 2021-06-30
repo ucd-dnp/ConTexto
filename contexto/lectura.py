@@ -110,7 +110,7 @@ class Lector:
         ocr=False,
         preprocesamiento=3,
         lenguaje="es",
-        oem=3,
+        oem=2,
         psm=3,
         password=None,
         enderezar=False,
@@ -153,7 +153,7 @@ class Lector:
         :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
         :param oem: modo del motor OCR (OCR Engine mode en inglés). Para \
             mayor información, consultar la sección de \
-            :ref:`OCR <seccion_ocr>`. Valor por defecto `3`.
+            :ref:`OCR <seccion_ocr>`. Valor por defecto `2`.
         :type oem: {0, 1, 2, 3}, opcional
         :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
@@ -215,10 +215,10 @@ class Lector:
         return texto
 
     def leer_imagen(
-        self, preprocesamiento=1, lenguaje="es", oem=3, psm=3, enderezar=False
+        self, preprocesamiento=1, lenguaje="es", oem=2, psm=3, enderezar=False
     ):
         """
-        Lectura de texto de archivos de tipo imagen, con extensión `png`, 
+        Lectura de texto de archivos de tipo imagen, con extensión `png`, \
         `jpg` o `jpeg`.
 
         :param preprocesamiento: Especifica el nivel de preprocesamiento que \
@@ -246,7 +246,7 @@ class Lector:
         :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
         :param oem: modo del motor OCR (OCR Engine mode en inglés). Para \
             mayor información, consultar la sección de \
-            :ref:`OCR <seccion_ocr>`. Valor por defecto `3`.
+            :ref:`OCR <seccion_ocr>`. Valor por defecto `2`.
         :type oem: {0, 1, 2, 3}, opcional
         :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
@@ -278,7 +278,7 @@ class Lector:
         ocr=False,
         preprocesamiento=3,
         lenguaje="es",
-        oem=3,
+        oem=2,
         psm=3,
         password=None,
         enderezar=False,
@@ -464,7 +464,7 @@ def leer_texto(
         :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
     :param oem: modo del motor OCR (OCR Engine mode en inglés). Para \
             mayor información, consultar la sección de \
-            :ref:`OCR <seccion_ocr>`. Valor por defecto `3`.
+            :ref:`OCR <seccion_ocr>`. Valor por defecto `2`.
         :type oem: {0, 1, 2, 3}, opcional
     :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
