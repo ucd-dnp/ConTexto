@@ -111,7 +111,7 @@ class Lector:
         preprocesamiento=3,
         lenguaje="es",
         oem=3,
-        psm=0,
+        psm=3,
         password=None,
         enderezar=False,
     ):
@@ -158,7 +158,7 @@ class Lector:
         :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
             información consultar la sección de :ref:`OCR <seccion_ocr>`. \
-            Valor por defecto `0`.
+            Valor por defecto `3`.
         :type psm: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, opcional
         :param password: Contraseña del documento PDF que se quiere leer, en \
             caso de que se necesite. Valor por defecto `None`.
@@ -215,7 +215,7 @@ class Lector:
         return texto
 
     def leer_imagen(
-        self, preprocesamiento=1, lenguaje="es", oem=3, psm=0, enderezar=False
+        self, preprocesamiento=1, lenguaje="es", oem=3, psm=3, enderezar=False
     ):
         """
         Lectura de texto de archivos de tipo imagen, con extensión `png`, 
@@ -251,7 +251,7 @@ class Lector:
         :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
             información consultar la sección de :ref:`OCR <seccion_ocr>`. \
-            Valor por defecto `0`.
+            Valor por defecto `3`.
         :type psm: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, opcional
         :param enderezar: \
             Permite enderezar el texto en la imagen para obtener mejores \
@@ -279,7 +279,7 @@ class Lector:
         preprocesamiento=3,
         lenguaje="es",
         oem=3,
-        psm=0,
+        psm=3,
         password=None,
         enderezar=False,
     ):
@@ -469,7 +469,7 @@ def leer_texto(
     :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
             información consultar la sección de :ref:`OCR <seccion_ocr>`. \
-            Valor por defecto `0`.
+            Valor por defecto `1`.
         :type psm: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, opcional
     :param password: Contraseña del documento PDF que se quiere leer, en \
             caso de que se necesite. Valor por defecto `None`.
