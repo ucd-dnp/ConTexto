@@ -135,10 +135,12 @@ class OCR:
         nombre_archivo = "{}.png".format(os.getpid())
         cv2.imwrite(nombre_archivo, imagen)
         # Se establecen las opciones para el OCR
-        config = "--psm {} --oem {}".format(self.psm, self.oem)
+        config = "-l {}--psm {} --oem {}".format(
+            self.lenguaje, self.psm, self.oem
+        )
         # Se carga la imagen como un objeto PIL/Pillow image y se aplica el OCR
         texto = pytesseract.image_to_string(
-            Image.open(nombre_archivo), lang=self.lenguaje, config=config
+            Image.open(nombre_archivo), config=config
         )
         # Borrar el archivo de imagen preprocesada
         os.remove(nombre_archivo)
