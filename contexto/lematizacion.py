@@ -186,7 +186,7 @@ class LematizadorStanza:
             completas y los valores del diccionario son los lemas escogidos \
             para cada palabra. Valor por defecto `None`.
         :type dict_lemmas: dict, str, opcional
-        :param archivo_salida:Especifica la ruta del archivo de salida del \
+        :param archivo_salida: Especifica la ruta del archivo de salida del \
             modelo de lemas modificado. Si `archivo_salida = None`, el \
             resultado de la lematizacción se guarda en un archivo temporal \
             que eventualmente será borrado.
@@ -264,7 +264,7 @@ class LematizadorStanza:
             ruta del modelo de lematización personalizado que se quiere \
             utilizar. Valor por defecto `None`.
         :type archivo_entrada: str, opcional
-        :param archivo_salida:Especifica la ruta del archivo de salida del \
+        :param archivo_salida: Especifica la ruta del archivo de salida del \
             modelo de lemas modificado. Si `archivo_salida = None`, el \
             resultado de la lematizacción se guarda en un archivo temporal \
             que eventualmente será borrado.
