@@ -108,7 +108,7 @@ class Lector:
         self,
         por_paginas=False,
         ocr=False,
-        preprocesamiento=1,
+        preprocesamiento=3,
         lenguaje="es",
         oem=3,
         psm=0,
@@ -143,7 +143,7 @@ class Lector:
                 umbral de imagen con el método de OTSU, blurring y umbral \
                 adaptativo. |/li|
              |/ul|\
-            Valor por defecto `1`.
+            Valor por defecto `3`.
         :type preprocesamiento: {1, 2, 3, 4, 5}, opcional
         :param lenguaje: Define el lenguaje del texto que se desea \
             extraer. Aplica cuando `ocr = True`. Para mayor información, \
