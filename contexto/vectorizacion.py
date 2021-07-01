@@ -349,7 +349,9 @@ class VectorizadorWord2Vec:
             vectorización del texto.
         """
         # Aplicar el modelo al texto
-        tokens = self.vectorizador(texto, disable=["ner", "parser", "tagger"])
+        tokens = self.vectorizador(
+            texto, disable=["ner", "parser", "tagger", "lemmatizer"]
+        )
         vector_doc = tokens.vector
         if quitar_desconocidas:
             # Crear lista con todos los vectores de palabras reconocidas
