@@ -62,7 +62,8 @@ class LematizadorSpacy:
         # Si es la ubicación del archivo, primero se carga
         elif isinstance(dict_lemmas, str):
             try:
-                dict_lemmas = json.load(open(dict_lemmas))
+                with open(dict_lemmas) as f:
+                    dict_lemmas = json.load(f)
                 self.modificar_lemmas(dict_lemmas)
             except BaseException:
                 print("No se pudo cargar el diccionario de lemas")
@@ -110,9 +111,7 @@ class LematizadorSpacy:
             )
             # Se añade este proceso para poder deshabilitar el parser.
             # Tomado de https://bit.ly/38uMzC6
-            self.lematizador.add_pipe(
-                self.lematizador.create_pipe("sentencizer")
-            )
+            self.lematizador.add_pipe("sentencizer")
 
     def modificar_lemmas(self, dict_lemmas):
         """
@@ -126,7 +125,14 @@ class LematizadorSpacy:
             para cada palabra.
         :type dict_lemmas: dict, opcional
         """
-        # Definir función auxiliar
+
+        from spacy.language import Language
+        import string
+        import random  # define the random module
+
+        ran = "".join(random.choices(string.ascii_uppercase, k=4))
+
+        @Language.component(ran)
         def cambiar_propiedades_lemma(doc):
             for token in doc:
                 if token.text in dict_lemmas:
@@ -135,7 +141,7 @@ class LematizadorSpacy:
 
         # Aplicar la función para modificar el lematizador
         if (self.lematizador is not None) and (self.lematizador != -1):
-            self.lematizador.add_pipe(cambiar_propiedades_lemma, first=True)
+            self.lematizador.add_pipe(ran, first=True)
 
     def lematizar(self, texto, limpiar=True):
         """
