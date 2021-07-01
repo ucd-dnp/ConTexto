@@ -97,10 +97,13 @@ def corregir_giro(img):
     return: (numpy array). Imagen con alineamiento del texto corregido.
     """
     invertida = cv2.bitwise_not(img)
-    coords = np.column_stack(np.where(invertida > 0))
+    thresh = cv2.threshold(
+        invertida, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU
+    )[1]
+    coords = np.column_stack(np.where(thresh > 0))
     angulo = cv2.minAreaRect(coords)[-1]
-    if angulo < -45:
-        angulo = -(90 + angulo)
+    if angulo > 45:
+        angulo = 90 - angulo
     else:
         angulo = -angulo
     (h, w) = img.shape[:2]
