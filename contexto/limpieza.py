@@ -312,7 +312,7 @@ def lista_stopwords(lenguaje="es"):
         stopwords. Para mayor información, consultar la sección de \
         :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. \
         Valor por defecto `'es'`.
-    :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcio
+    :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
     :return: (list) Lista de palabras stopwords del idioma seleccionado.
     """
     from lenguajes import definir_lenguaje

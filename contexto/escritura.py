@@ -19,7 +19,7 @@ class Escritor:
 
     def establecer_ubicacion(self, ubicacion_archivo):
         """
-        Define la ruta del archivo con el texto que se desea guardar.
+        Define la ruta donde se guardará el resultado del texto procesado.
 
         :param ubicacion_archivo: Ruta del archivo que será guardado \
             con el texto deseado.
@@ -113,9 +113,10 @@ class Escritor:
         """
         Especifica el tipo de archivo en el que se quiere guardar el texto.
 
-        :param tipo:  Define el tipo del archivo en el que se desea guardar \
-            el texto. Si `tipo = 'inferir'` se guarda con la extensión del \
-            documento de entrada. Valor por defecto `'inferir'`.
+        :param tipo:  Define el formato del archivo en el que se desea \
+            guardar el texto. Si `tipo = 'inferir'` se guarda con la \
+            extensión del documento de entrada. Valor por defecto \
+            `'inferir'`.
         :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}, opcional
         """
         if tipo == "inferir":
@@ -151,7 +152,7 @@ def escribir_texto(ubicacion_archivo, texto, tipo="inferir"):
     :type ubicacion_archivo: str
     :param texto: Texto que se desea guardar en un archivo.
     :type texto: str
-    :param tipo:  Define el tipo del archivo en el que se desea guardar \
+    :param tipo:  Define el formato del archivo en el que se desea guardar \
         el texto. Si `tipo = 'inferir'` se guarda con la extensión del \
         documento de entrada. Valor por defecto `'inferir'`.
     :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'doc', 'docx'}, opciona

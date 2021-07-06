@@ -20,10 +20,10 @@ def obtener_ngramas(
     Permite generar n-gramas a partir de un texto.
 
     :param texto: Texto sobre el que se calculará los n-gramas.
-    :type: str
+    :type texto: str
     :param n: Cantidad de elementos a tener en cuenta en la generación \
         de n-gramas. Por ejemplo, si `n = 1` se retornarán palabras, \
-        y si `n = 2` se retornarán bigramas, si `n = 3` se retornarán \
+        si `n = 2` se retornarán bigramas, si `n = 3` se retornarán \
         trigramas y así sucesivamente. Valor por defecto `2`.
     :type n: int
     :param devolver_lista:  Si `devolver_lista` es `True` se retorna un \
@@ -61,13 +61,13 @@ def frecuencia_ngramas(texto, n_grama=1, n_max=None):
     ocurrencia en el texto.
 
     :param texto: Texto sobre el que se calculará la frecuencia de n-gramas.
-    :type: str
+    :type texto: str
     :param n_grama: Cantidad de elementos a tener en cuenta en la generación \
         de n-gramas. Por ejemplo, si `n_grama = 1` se retornará frecuencia de \
         palabras, si `n_grama = 2` se retornará frecuencia de bigramas, si \
         `n_grama = 3` se retornará frecuencia de trigramas y así \
         sucesivamente. Valor por defecto `2`.
-    :type n: int
+    :type n_grama: int, opcional
     :param n_max: Cantidad máxima de n-gramas a generar. Valor por defecto \
         `None`.
     :type n_max: int, opcional
@@ -122,7 +122,7 @@ def nube_palabras(
     :type dim_figura: (float, float)
     :param hor: Valor entre `0` y `1` Proporción de los términos que \
         se mostrarán de manera horizontal en la nube. Para `hor = 0` todos \
-        los térmonos se mostrarán verticalmente; para `hor = 1` todos los \
+        los términos se mostrarán verticalmente; para `hor = 1` todos los \
         términos se mostrarán horizontalmente, y para valores intermedios \
         habrá una combinación de términos en ambas representaciones. Valor \
         por defecto `0.6`
@@ -249,13 +249,14 @@ def grafica_nube(
     :param titulo: Título de la nube de palabras. Valor por defecto: \
         `'Términos más frecuentes'`.
     :type titulo: str, opcional
-    :param ubicacion_archivo: Ruta donde desea exportar la gráfica como \
+    :param ubicacion_archivo: Ruta donde se desea exportar la gráfica como \
         archivo tipo imagen. Al nombrar el archivo se recomienda utilizar la \
         extensión `jpg`. Si  `ubicacion_archivo = None`, la gráfica no se \
         exporta. Valor por defecto `None`.
-    :type :
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
-        visualizar la gráfica en el `IDE`_ que esté utilizando.
+    :type ubicacion_archivo: str, opcional
+    :param graficar: Permite visualizar la gráfica en el `IDE`_ que esté \
+        utilizando. Valor por defecto `True`.
+    :type graficar: bool, opcional
     """
 
     fig = plt.figure(figsize=dim_figura)
@@ -284,7 +285,7 @@ def par_nubes(
     Permite graficar o exportar un par de nubes de palabras (una junto a \
     otra) a partir de un texto.
 
-    :param texto:Corresponde al texto que se desea analizar.
+    :param texto: Corresponde al texto que se desea analizar.
     :type texto: str
     :param n1: Cantidad de elementos a tener en cuenta en la generación de \
         n-gramas de la nube de palabras izquierda. Valor por defecto `1`.
@@ -292,19 +293,23 @@ def par_nubes(
     :param n2: Cantidad de elementos a tener en cuenta en la generación de \
         n-gramas de la nube de palabras derecha. Valor por defecto `2`.
     :type n2: int, opcional
-    :param dim_figura: (float, float) Valor por defecto: (20, 10). \
-        Corresponden al ancho y alto de la figura en pulgadas.
-    :param ubicacion_archivo: (str) Valor por defecto: ''. Ruta donde desea \
+    :param dim_figura: Corresponden al ancho y alto de la figura en  \
+        pulgadas. Valor por defecto `(20, 10)`.
+    :type dim_figura: (float, float), opcional
+    :param ubicacion_archivo: Ruta donde se desea \
         exportar la gráfica como archivo tipo imagen. Al nombrar el archivo \
         se recomienda utilizar la extensión jpg. Si no se especifica una ruta,\
-         la gráfica no se exporta.
-    :param graficar: (bool) {True, False} Valor por defecto: True. Permite \
-        visualizar la gráfica en el `IDE`_ que esté utilizando.
-    :param devolver_grafica: (bool) {True, False} Valor por defecto: False. \
-        Indica si se desea obtener el gráfico con el par de nubes de palabras \
-        como un objeto de Matplotlib.
+         la gráfica no se exporta. Valor por defecto: `None`.
+    :type ubicacion_archivo: str, opcional
+    :param graficar: Permite visualizar la gráfica en el `IDE`_ que esté \
+        utilizando. Valor por defecto `True`.
+    :type graficar: bool, opcional
+    :param devolver_grafica: Indica si se desea obtener el gráfico con el \
+        par de nubes de palabras como un objeto de `Matplotlib`. Valor \
+        por defecto `False`.
+    :type devolver_grafica: bool, opcional
     :return: (objeto Figure de Matplotlib) Figura con el par de nubes de \
-        palabras, solo si devolver_grafica=True.
+        palabras, solo si `devolver_grafica = True`.
     """
 
     # Obtener nubes de palabras
@@ -527,11 +532,11 @@ def graficar_coocurrencias(
         Valor por defecto `10`.
     :type label_font_size: int, opcional
     :param titulo: Título del gráfico de coocurrencias. Valor por defecto \
-        `"Gráfico de co-ocurencias"`.
+        `'Gráfico de co-ocurencias'`.
     :type titulo: str, opcional
     :param graficar: Permite visualizar la gráfica después de ejecutar la \
         función. Valor por defecto `True`.
-    :type visualizar: bool, opcional
+    :type graficar: bool, opcional
     :param ubicacion_archivo:  Ruta donde desea exportar la gráfica como \
         archivo tipo imagen {png, jpeg, jpg, gif}. Si \
         `ubicacion_archivo = None`, la gráfica no se exporta. Valor por \
@@ -540,6 +545,7 @@ def graficar_coocurrencias(
     :param devolver_grafica: Indica si se desea obtener el gráfico de \
         coocurrencias como un objeto de `Matplotlib`. \
         Valor por defecto `False`.
+    :type devolver_grafica: bool, opcional
     :param seed: Semilla para la generación del grafo. Sirve para cambiar la \
         distribución aleatoria de aparición de los nodos. Valor por \
         defecto `12`.

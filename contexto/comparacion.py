@@ -35,7 +35,7 @@ class Similitud:
             Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
             pasa un vectorizador ya ajustado, este parámetro no será \
-            utilizado. Valor por defecto "es".
+            utilizado. Valor por defecto `'es'`.
         :type lenguaje: str, opcional
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
@@ -221,7 +221,7 @@ class Similitud:
 class Distancia:
     def __init__(self, vectorizador=None, lenguaje="es"):
         """
-        Constructor de la clase Distacia.
+        Constructor de la clase `Distacia`.
         Permite calcular las diferentes medidas de distancia entre textos y/o \
         vectores.
 
@@ -232,12 +232,12 @@ class Distancia:
             tipo `Word2Vec`. Si se pasa un vectorizador al objeto de clase \
             `Distancia`, este ya debe estar ajustado. Valor por defecto \
             `None`.
-            :type vectorizador: vectorizador, str, opcional
+        :type vectorizador: vectorizador, str, opcional
         :param lenguaje: Indica el lenguaje que utilizará el `vectorizador`. \
             Para mayor información, consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Si se \
             pasa un vectorizador ya ajustado, este parámetro no será \
-            utilizado. Valor por defecto `"es"`.
+            utilizado. Valor por defecto `'es'`.
         :type lenguaje: str
         """
         # Definir lenguaje del vectorizador y vectorizador a utilizar
@@ -307,10 +307,10 @@ class Distancia:
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: list, str, numpy.array, opcional
         :param tipo_distancia: Métrica de \
-            distancia que se desea calcular.Para una lista de todas las \
+            distancia que se desea calcular. Para una lista de todas las \
             distancias que se pueden calcular por medio de esta función, \
             se puede consultar la documentación de scikit-learn y scipy: \
-            https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
+            https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html.
             Valor por defecto `l2`.
         :type tipo_distancia: str, opcional
         :param kwargs: Parámetros opcionales que pueden ser ajustables, \
@@ -498,7 +498,7 @@ class Distancia:
             utiliza este parámetro, se calcularán la distancias entre cada \
             uno de los textos/vectores de `lista1` con cada uno de los \
             elementos de `lista2`. También es posible ingresar directamente \
-            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            los vectores pre-calculados de los textos en un arreglo de numpy o \
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: str, list, numpy.array, opcional
         :return: (numpy.array) Matriz de dos dimensiones con las distancias \

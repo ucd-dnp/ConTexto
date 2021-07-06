@@ -317,14 +317,16 @@ def corregir_texto(
     :param lenguaje: Lenguaje de los textos a los que se les va a \
         aplicar corrección ortográfica. Para mayor información, consultar la \
         sección de \
-        :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
-    :param lenguaje: str
+        :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. Valor \
+        por defecto `'es'`.
+    :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
     :param corrector: Objeto de la clase `Corrector` para aplicar corrección \
-        ortográfica sobre el texto de \
-        entrada. Se puede utilizar para corregir varios textos a la vez, sin \
-        necesidad de inicializar una instancia de la clase `Corrector` en cada \
-        ocasión. Esto puede representar ahorro en tiempos al momento de \
-        aplicar la función.
+        ortográfica sobre el texto de entrada. Se puede utilizar para \
+        corregir varios textos a la vez, sin necesidad de inicializar una \
+        instancia de la clase `Corrector` en cada ocasión. Esto puede \
+        representar ahorro en tiempos al momento de aplicar la función. Valor \
+        por defecto `None`.
+    :type corrector: Object, opcional
     :param diccionario: Diccionario (o string con ubicación del archivo \
             JSON que lo contiene), o lista que permite modificar y agregar \
             palabras. Si es una lista, contiene las palabras que serán \
@@ -337,23 +339,23 @@ def corregir_texto(
             candidata para la corrección. Si se deja este \
             parámetro como `None`, se cargará el diccionario por defecto que \
             trae la librería `spellchecker` para el lenguaje determinado.
-        :type diccionario: dict, list, str, opcional
+    :type diccionario: dict, list, str, opcional
     :param distancia: Máxima distancia de \
             Levenshtein que puede haber entre una palabra incorrecta (o no \
             reconocida) y las palabras del diccionario para determinar si \
             hay palabras candidatas para realizar la corrección. \
             Valor por defecto `2`.
-        :type distancia: int
+    :type distancia: int
     :param limpieza: Define si se desea hacer una limpieza \
             básica (aplicando la función `limpieza_basica` del módulo \
             `limpieza`) al texto antes de aplicar la corrección ortográfica.\
             Valor por defecto `False`.
-        :type limpieza: bool, opcional
+    :type limpieza: bool, opcional
     :param tokenizador: Objeto encargado de la tokenización y \
             detokenización de textos. Si el valor es `None`, se cargará por \
             defecto una instancia de la clase `TokenizadorNLTK`. Valor por \
             defecto `None`.
-        :type tokenizador: object, opcional
+    :type tokenizador: object, opcional
     :return: (str) Texto de entrada luego de la corrección ortográfica.
     """
     if corrector is None:

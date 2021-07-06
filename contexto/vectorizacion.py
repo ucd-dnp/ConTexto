@@ -301,7 +301,7 @@ class VectorizadorWord2Vec:
             al pre-entrenar el vectorizador, el lenguaje debe corresponder \
             al idioma del texto de entrada. Para mayor información, \
             consultar la sección de \
-            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. \
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :type lenguaje: {'es', 'en', 'fr', 'ge'}
         """
         self.lenguaje = definir_lenguaje(lenguaje)
@@ -319,7 +319,7 @@ class VectorizadorWord2Vec:
         :param maxima_longitud: Establecer la máxima longitud (número de \
             caracteres) que acepta el vectorizador en un texto de entrada. Si \
             `maxima_longitud = None`, se utilizará la máxima longitud que \
-            trae Spacy por defecto (1 millón de caracteres). \
+            trae Spacy por defecto (1 millón de caracteres).
         :type maxima_longitud: int
         """
         self.vectorizador = None
@@ -522,10 +522,11 @@ class VectorizadorDoc2Vec:
 
         :param corpus_entrenamiento: Lista de textos de interes para \
             entrenar el modelo.
-        :type corpus_entramiento: list, array-like
+        :type corpus_entrenamiento: list, array-like
         :param actualizar: Si `actualizar = True`, las nuevas palabras en \
             los documentos se agregarán al vocabulario del modelo. \
             Valor por defecto `False`.
+        :type actualizar: bool, opcional
         :param archivo_salida: Ruta donde desea exportar el vectorizador \
             ajustado en formato pickle. Si `archivo_salida = None` no se \
             guarda el vectorizador ajustado. Valor por defecto `None`.

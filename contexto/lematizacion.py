@@ -42,10 +42,6 @@ class LematizadorSpacy:
             trae Spacy por defecto (1 millón de caracteres). \
             Valor por defecto `None`.
         :type maxima_longitud: int, opcional
-        :param tokenizador: Valor por defecto: None. Objeto encargado de la \
-            detokenización de textos después de lematizar. Si el valor es \
-            'None', se cargará por defecto una instancia de la clase \
-            *TokenizadorEspacios*.
         :param tokenizador: Objeto encargado de la tokenización y \
             detokenización de textos después de lematizar. Si el valor es \
             `None`, se cargará por defecto una instancia de la clase \
@@ -148,7 +144,7 @@ class LematizadorSpacy:
         Lematización de texto.
 
         :param texto: El texto que se desea lematizar.
-        :type text: str
+        :type texto: str
         :param limpiar: Especifica si se desea hacer una limpieza básica del \
             texto antes de la lematización. Valor por defecto `True`.
         :type limpiar: bool, opcional
@@ -227,7 +223,7 @@ class LematizadorStanza:
 
         :param lenguaje: Define el lenguaje del Lematizador. \
             Para mayor información, consultar la sección de \
-            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. \
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
         """
         self.lenguaje = definir_lenguaje(lenguaje)
