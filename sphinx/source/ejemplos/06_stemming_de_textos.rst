@@ -6,8 +6,8 @@ Stemming de textos
 Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Stemming <stemming>` de la librería. Este módulo permite aplicar *stemming* a textos. El *stemming* es un método para reducir todas las formas flexionadas de palabras a su "raíz" o "tallo" (*stem*, en inglés), cuando estas comparten una misma raíz. Por ejemplo, las palabras niños, niña y niñez tienen todas la misma raíz: "niñ". A diferencia de la lematización, en donde cada lema es una palabra que existe en el vocabulario del lenguaje correspondiente, las palabras raíz que se obtienen al aplicar *stemming* no necesariamente existen por sí solas como palabra. Aplicar *stemming* a textos puede simplificarlos, al unificar palabras que comparten la misma raíz, y evitando así tener un vocabulario más grande de lo necesario.
 
 
-Importar funciones necesarias y defición de textos de prueba
-------------------------------------------------------------
+Importar funciones necesarias y definición de textos de prueba
+--------------------------------------------------------------
 
 En este caso se importa la función :py:func:`stemming.stem_texto`, que aplica *stemming* a un texto de entrada, y la clase :py:class:`Stemmer <stemming.Stemmer>`, que puede ser utilizada directamente, entre otras cosas, para agilizar el proceso de hacer *stemming* a una lista de varios textos. Adicionalmente, se definen algunos textos para desarrollar los ejemplos.
 

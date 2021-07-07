@@ -31,7 +31,7 @@
                <p class="text-center blue"><i class="far fa-map fa-4x"></i></p>
                <h5 class="card-title text-center">Ejemplos</h5>
                <p class="card-text text-center">
-                  Sigue la guía de ejemplos, conocerás las funcionalidades de ConTexto y aprenderás a cómo usarla.
+                  Sigue la guía de ejemplos, conocerás las funcionalidades de ConTexto y aprenderás a usarlas.
                </p>
                <p class="text-center">
                   <a class="reference internal btn btn-secondary blue-hover" href="seccion_ejemplos.html#seccion-ejemplos">
@@ -56,6 +56,6 @@ Primeros pasos
    seccion_instalacion
    seccion_ejemplos
 
-Entendemos que no estes familiarizado con el uso de ConTexto por eso incluimos esta sección. Aquí podrás consultar como instalar la librería y tendras acceso a la sección de ejemplos, en la que presentamos con casos prácticos diferentes escenarios donde ConTexto te puede ayudar.
+Entendemos que no estés familiarizado con el uso de ConTexto por eso incluimos esta sección. Aquí podrás consultar como instalar la librería y tendras acceso a la sección de ejemplos, en la que presentamos con casos prácticos diferentes escenarios donde ConTexto te puede ayudar.
 
 |cards|

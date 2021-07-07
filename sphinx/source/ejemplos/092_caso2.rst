@@ -32,7 +32,7 @@ Se van a comparar las tres siguientes fábulas con métodos de analítica de tex
 - La cabra y el asno. El texto está en un archivo PDT digitalizado con extensión .pdf
 - El zorro y el cuervo. El texto se encuentra en un archivo plano con extensión .txt
 
-La extracción de los textos de cada archivo tiene una metodología distina. **ConTexto** facilita el código de importación de textos con la función :py:func:`lectura.leer_texto`.
+La extracción de los textos de cada archivo tiene una metodología distinta. **ConTexto** facilita el código de importación de textos con la función :py:func:`lectura.leer_texto`.
 
 Definir las rutas de los archivos con los textos
 ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -40,7 +40,7 @@ Definir las rutas de los archivos con los textos
 En este paso se definen las rutas de los archivos que se van a importar. 
 
 .. note::
-        La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este caso en particular, se va a utilizar los archivos *fábula_cabrito_y_lobo.docx*, *fábula_cabra_y_asno.pdf* y *fábula_zorro_y_cuervo.txt*.
+        La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este caso en particular, se van a utilizar los archivos *fábula_cabrito_y_lobo.docx*, *fábula_cabra_y_asno.pdf* y *fábula_zorro_y_cuervo.txt*.
 
 .. code-block:: python
 
@@ -80,7 +80,7 @@ A continuación se extrae el texto de los tres archivos, y se imprimen sus prime
 Preprocesamiento de textos
 --------------------------
 
-El preprocesamiento de los textos es un paso importante para reducir ruido del texto original que puedan entorpecer los análisis a realizar, y en general adecuar los textos de entrada para poder aprovecharlos mejor.   
+El preprocesamiento de los textos es un paso importante para reducir el ruido del texto original que pueda entorpecer los análisis a realizar, y en general adecuar los textos de entrada para poder aprovecharlos mejor.   
 
 En este caso, se utilizaron las funciones :py:func:`limpieza.remover_acentos` para eliminar los acentos y :py:func:`limpieza.limpieza_texto` para el resto del preprocesamiento. Vale la pena mencionar que también es posible quitar los acentos desde la función :py:func:`limpieza.limpieza_texto` si se utiliza el parámetro `quitar_acentos=True`.
 
@@ -156,7 +156,7 @@ En este caso, el preprocesamiento previo ayuda a quitar palabras como conectores
 Vectorización de los textos
 ---------------------------
 
-La vectorización de textos consiste en convertir el texto preprocesado a una representación numérica para luego poder aplicar operaciones matemáticas. 
+La vectorización de textos consiste en convertir el texto preprocesado en una representación numérica para luego poder aplicar operaciones matemáticas. 
 
 En este caso se vectorizarán los textos por medio de la metodología Bag Of Words (BOW) del módulo :py:mod:`Vectorización <vectorizacion>`. Este módulo también cuenta con otras metodologías como TF-IDF, hashing, Word2Vec y Doc2Vec.
 

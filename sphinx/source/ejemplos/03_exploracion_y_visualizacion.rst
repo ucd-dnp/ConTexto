@@ -5,8 +5,8 @@ Análisis exploratorio y visualización
 
 Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Exploración <exploracion>` de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos y tener mejor idea de qué contienen y sobre qué hablan.
 
-Importar paquetes necesarios y adecuar texto de prueba
-------------------------------------------------------
+Importar funciones necesarias y adecuar texto de prueba
+-------------------------------------------------------
 
 .. note::
         Para este ejemplo, se va a trabajar con el texto de la novela **"Don Quijote de la Mancha"**, escrita por Miguel de Cervantes Saavedra. El texto completo de esta novela se encuentra en la carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_, y fue descargado desde la página del `Proyecto Gutenberg <https://www.gutenberg.org>`_, que tiene a su disposición miles de libros de forma gratuita.
@@ -22,7 +22,7 @@ Importar paquetes necesarios y adecuar texto de prueba
     >>> # Cargar y limpiar texto de prueba
     >>> ruta_cuento = 'entrada/cervantes_don_quijote.txt'
 
-La función :py:func:`lectura.leer_texto` del módulo `lectura` es utilizada para extraer el texto del archivo que contiene la novela. Luego, se realiza una limpieza estándar del texto, para que esté mejor adecuado para su exploración. Para esto, se utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords`, del módulo limpieza.
+La función :py:func:`lectura.leer_texto` del módulo `Lectura` es utilizada para extraer el texto del archivo que contiene la novela. Luego, se realiza una limpieza estándar del texto, para que esté mejor adecuado para su exploración. Para esto, se utilizan las funciones :py:func:`limpieza.limpieza_texto` y :py:func:`limpieza.lista_stopwords`, del módulo `Limpieza`.
 
 Finalmente, en el texto aparece en varias ocasiones la expresión "project gutenberg", el nombre del proyecto que pone a disposición la novela. Como esta información no está directamente relacionada al texto que nos interesa, se va a remover utilizando la función :py:func:`limpieza.remover_stopwords`.
 
@@ -86,7 +86,7 @@ Nubes de palabras
 
 La función de nubes de palabras tiene algunos parámetros que permiten personalizar la estética de la gráfica. En particular, se puede configurar:
 
-- La forma de la nube: Para esto, se puede ingresar una imagen de referencia con la forma que uno quiera utilizar. Por defecto, esta forma es circular.
+- La forma de la nube: Para esto, se puede ingresar una imagen de referencia con la forma que uno quiera utilizar. Por defecto esta forma es circular.
 - El color de fondo
 - El color y grosor del contorno: Esto permite delinear la forma de la nube de palabras
 
@@ -138,7 +138,7 @@ Gráficos de dispersión léxica
 
 Además de la frecuencia, la importancia de una palabra se puede ponderar por su dispersión en el texto. La dispersión léxica es una medida de la homogeneidad de una palabra en diferentes partes del texto. Esta medida puede ser visualizada usando el gráfico de dispersión léxica, en donde en el eje horizontal se marca con una línea cada una de las ocurrencias de una palabra, y en el eje vertical se muestran las palabras de interés. La función :py:func:`exploracion.graficar_dispersion` permite obtener estas gráficas.
 
-En el siguiente ejemplo se definen algunas palabras de interés y se hace el gráfico correspondiente. Palabras como *obispo* y *esparto* aparecen hacía al final del texto, mientras que palabras como *caballero* y *merced* aparecen en todo el texto.
+En el siguiente ejemplo se definen algunas palabras de interés y se hace el gráfico correspondiente. Palabras como *obispo* y *esparto* aparecen hacia al final del texto, mientras que palabras como *caballero* y *merced* aparecen en todo el texto.
 
 .. code-block:: python
 
@@ -184,7 +184,7 @@ En el caso en que se considera más de un texto, el gráfico es dividido de acue
     :alt: 
     :figclass: align-center
 
-En algunas ocasiones, graficar la dispersión léxica de palabras por si solas, hacen perder el contexto en las que aparecen. Una forma de solucionar este hecho es visualizar la aparición de n-gramas a través del texto.
+En algunas ocasiones, graficar la dispersión léxica de palabras por si solas, hace perder el contexto en las que aparecen. Una forma de solucionar este hecho es visualizar la aparición de n-gramas a través del texto.
 
 Para graficar la dispersión léxica de n-gramas con ConTexto, es necesario, calcular los n-gramas para cada texto y pasarlos como una lista de listas. En el siguiente ejemplo, se muestra la dispersión léxica para bi-gramas.
 

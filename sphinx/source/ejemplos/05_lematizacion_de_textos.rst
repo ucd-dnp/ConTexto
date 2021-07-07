@@ -9,7 +9,7 @@ Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Lemati
 Definir textos de prueba
 ------------------------
 
-El módulo de lematización de **ConTexto** cuenta con dos lematizadores distintos, cada uno apoyado en una librería de NLP (Procesamiento del Lenguaje Natural) distinta: `spaCy <https://spacy.io/>`_ y `Stanza <https://stanfordnlp.github.io/stanza/>`_. En este ejemplo se mostrará el uso de ambas clases, :py:class:`LematizadorSpacy <lematizacion.LematizadorSpacy>` y :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`, y de la función :py:func:`lematizacion.lematizar_texto`, que puede utilizar cualquiera de los dos lematizadores.
+El módulo de :py:mod:`Lematización <lematizacion>` de **ConTexto** cuenta con dos lematizadores distintos, cada uno apoyado en una librería de NLP (Procesamiento del Lenguaje Natural) distinta: `spaCy <https://spacy.io/>`_ y `Stanza <https://stanfordnlp.github.io/stanza/>`_. En este ejemplo se mostrará el uso de ambas clases, :py:class:`LematizadorSpacy <lematizacion.LematizadorSpacy>` y :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`, y de la función :py:func:`lematizacion.lematizar_texto`, que puede utilizar cualquiera de los dos lematizadores.
 
 En primer lugar, se definen los textos que se utilizarán para correr los ejemplos.
 
@@ -59,7 +59,7 @@ Agregar lemas personalizados al `LematizadorSpacy`
 
 Los modelos cuentan con algunos diccionarios de lemas, que se utilizan para aplicar la lematización. Así, por ejemplo, el lematizador sabe que para la palabra 'iba', su lema debería ser 'ir'.
 
-Es posible que el diccionario del lematizador no contenga todos los casos que nos interesan, por lo que es necesario complementar el lematizador. Esto se puede hacer desde un archivo JSON o desde un diccionario de Python.
+Es posible que el diccionario del lematizador no contenga todos los casos que nos interesan, por lo que es necesario complementarlo. Esto se puede hacer desde un archivo JSON o desde un diccionario de Python.
 
 .. note::
         La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este caso en particular, se va a utilizar el archivo `dict_lemas.json`.
@@ -144,7 +144,7 @@ Lematización de textos utilizando Stanza
 El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` permite elegir la librería de lematización a utilizar. Esta función se encarga de aplicar lematización a todas las palabras de un texto de entrada. Si se define *liberia='stanza'*, la función utilizará el lematizador de la clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`. La primera vez que se seleccione un modelo de un lenguaje determinado, la función descargará el modelo correspondiente en el computador del usuario. Este proceso puede durar algunos minutos, dependiendo de la conexión a internet.
 
 .. warning::
-    Es importante recalcar que para poder utilizar el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` es necesario tener los paquetes **torch, torhvision y stanza** instalados, que no vienen en la versión de ConTexto instalable a través de pip. Para mayor información puede consultar la :ref:`sección de instalación <seccion_instalacion>`.
+    Es importante recalcar que para poder utilizar el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` es necesario tener los paquetes **Torch, Torchvision y Stanza** instalados, que no vienen en la versión de ConTexto instalable a través de pip. Para mayor información puede consultar la :ref:`sección de instalación <seccion_instalacion>`.
 
 .. code-block:: python
 
