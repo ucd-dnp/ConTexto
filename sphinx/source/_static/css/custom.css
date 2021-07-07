@@ -31,15 +31,57 @@ p {
     background-color:  #130654 !important;
 }
 
-
-#versions_anchor {
-    color: rgb(164, 166, 167);
-    font-family: var(--pst-font-family-base);
+.my_version{
+    text-align: right;
+    margin: 0 25px 0 0 !important;
 }
 
-#versions_anchor:hover {
-    color: #130654;
-    font-family: var(--pst-font-family-base);
+#documentacion-contexto > h1{
+    margin-bottom: 0px !important;
+}
+
+#documentacion-contexto > p:first-of-type {
+    margin-bottom: 0px !important;
+}
+
+span.sig-prename.descclassname > span.pre {
+    color:  #e83e8c !important;
+}
+
+span.sig-name.descname > span.pre {
+    color:  #e83e8c !important;
+}
+
+code > span.pre {
+    font-size: 130% !important;
+}
+
+a > code > span.pre {
+    color:  #130654 !important;
+    /*font-size: 130% !important;*/
+}
+
+a > code > span.pre:hover {
+    color:  red !important;    
+    /*font-size: 130% !important;*/
+}
+
+div#funciones-auxiliares-para-limpieza-de-textos > p > a.internal {
+    color:  #130654 !important;
+    font-weight: bold !important;
+}
+
+div#funciones-auxiliares-para-limpieza-de-textos > p > a.internal:hover {
+    color:  red !important;
+    font-weight: bold !important;
+}
+
+button.copybtn {
+    width: 105% !important;
+    max-width: 35px !important;
+
+    height: 105% !important;
+    max-height: 35px !important;
 }
 
 /*
