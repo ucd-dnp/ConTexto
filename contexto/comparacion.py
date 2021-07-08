@@ -54,7 +54,7 @@ class Similitud:
 
     def establecer_lenguaje(self, lenguaje):
         """
-        Establece el lenguaje del objeto Similitud.\
+        Establece el lenguaje del objeto Similitud.
 
         :param lenguaje: Indica el lenguaje que utilizará el \
             `vectorizador`. Para mayor información, consultar la \
@@ -67,7 +67,7 @@ class Similitud:
 
     def establecer_vectorizador(self, vectorizador=None):
         """
-        Establece el `vectorizador` del objeto Similitud.\
+        Establece el `vectorizador` del objeto Similitud.
 
         :param vectorizador: Objeto de tipo `vectorizador`, o `string` con la \
             ubicación del archivo que lo contiene. Vectorizador que va a ser \

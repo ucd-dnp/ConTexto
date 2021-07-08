@@ -40,7 +40,7 @@ class Stemmer:
 
         :param lenguaje: Lenguaje de los textos a los que se va a aplicar \
             *stemming*. Para mayor información, consultar la sección de \
-            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. \
+            :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`.
         :type lenguaje: {'es', 'en', 'fr', 'ge'}
         """
         self.lenguaje = definir_lenguaje(lenguaje, simplificado=False)

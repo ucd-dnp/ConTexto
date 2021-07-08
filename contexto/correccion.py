@@ -241,7 +241,7 @@ class Corrector:
         (no se encuentra en el diccionario), la frecuencia retornada será de \
         cero.
 
-        :param palabra:Palabra para la cual se desea conocer la \
+        :param palabra: Palabra para la cual se desea conocer la \
             frecuencia de aparición en el diccionario del corrector.
         :type palabra: str
         :return: (int) Número mayor o igual a cero que indica la frecuencia \

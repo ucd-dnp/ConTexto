@@ -420,30 +420,34 @@ def leer_texto(
     otros.
 
     :param ubicacion_archivo: (str) Ruta del archivo que se desea leer.
-    :param tipo: (str) {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', 'docx',\
-         'png', 'jpg', 'jpeg'} Valor por defecto: 'inferir'. Se define el \
-        tipo (o extensión) del archivo que se desea leer.
-    :param extraer_medios: (bool) {True, False} Valor por defecto: False. \
-        Especifica si se desean extraer las imágenes dentro del archivo de \
-        Word para ser guardadas aparte como archivos de imágenes. Funciona \
-        únicamente para archivos '.docx' (no '.doc') y si el parámetro \
-        'por_paginas' es False.
-    :param dir_medios: (str) Valor por defecto: 'temp/img_dir/'. Ruta de la \
-        carpeta donde se guardan las imágenes del archivo Word cuyas imágenes \
-        se extrajeron (se especificó extraer_medios=True).
-    :param por_paginas: (bool) {True, False} Valor por defecto: False. Se \
-        define si se desea extraer el texto por páginas.
-    :param encoding: (str) Valor por defecto: 'utf-8'. Especifica la \
-        codificación del texto que se desea leer.
-    :param ocr: (bool) {True, False} Valor por defecto: False. Especifica si \
-        se desea utilizar reconocimiento óptico de caracteres sobre el \
-        archivo cuyo texto se quiere extraer. Se utiliza usualmente cuando el \
-        archivo es una imagen o documento escaneado.
-    :param preprocesamiento: (int) {1,2,3,4,5} Valor por defecto: 3. \
-        Especifica el nivel de preprocesamiento que se lleva a cabo antes de \
-        extraer el texto del archivo. Aplica cuando se utiliza reconocimiento \
-        óptico de caracteres (parámetro ocr es True). Las opciones son las \
-        siguientes:
+    :param tipo: Se define el tipo (o extensión) del archivo que se desea \
+        leer. Valor por defecto: `'inferir'`.
+    :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', 'docx',\
+        'png', 'jpg', 'jpeg'}, opcional
+    :param extraer_medios: Especifica si se desean extraer las imágenes \
+        dentro del archivo de Word para ser guardadas aparte como archivos \
+        de imágenes. Funciona únicamente para archivos '.docx' (no '.doc') \
+        y si el parámetro 'por_paginas' es `False`. Valor por defecto `False`.
+    :type extraer_medios: bool, opcional
+    :param dir_medios: Ruta de la carpeta donde se guardan las imágenes del \
+        archivo Word cuyas imágenes se extrajeron (si \
+        `extraer_medios = True`). Valor por defecto `'temp/img_dir/'`.
+    :type dir_medios: str, opcional
+    :param por_paginas: Se define si se desea extraer el texto por páginas. \
+        Valor por defecto `False`.
+    :type por_paginas: bool, opcional
+    :param encoding:Especifica la codificación del texto que se desea leer. \
+        Valor por defecto: `'utf-8'`.
+    :type encoding: str, opcional
+    :param ocr: Especifica si se desea utilizar reconocimiento óptico de \
+        caracteres sobre el texto se quiere extraer. Se utiliza usualmente \
+        cuando el archivo es una imagen o documento escaneado. Valor por \
+        defecto `False`.
+    :type ocr: bool, opcional
+    :param preprocesamiento: Especifica el nivel de preprocesamiento que se \
+        lleva a cabo antes de extraer el texto del archivo. Aplica cuando se \
+        utiliza reconocimiento óptico de caracteres ( `ocr = True`). Las \
+        opciones son las siguientes:
              |ul|
              |li| 1: se convierte la imagen a escala de grises. |/li|
              |li| 2: se convierte la imagen a escala de grises y se aplica \
@@ -455,31 +459,33 @@ def leer_texto(
              |li| 5: se convierte la imagen a escala de grises, se aplica \
                 umbral de imagen con el método de OTSU, blurring y umbral \
                 adaptativo. |/li|
-             |/ul|
+             |/ul| \
+        Valor por defecto `3`.
+    :type preprocesamiento: {1,2,3,4,5}, opcional
     :param lenguaje: Define el lenguaje del texto que se desea \
             extraer. Aplica cuando `ocr = True`. Para mayor información, \
             consultar la sección de \
             :ref:`Lenguajes soportados <seccion_lenguajes_soportados>`. \
             Valor por defecto `'es'`.
-        :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
+    :type lenguaje: {'es', 'en', 'fr', 'ge'}, opcional
     :param oem: modo del motor OCR (OCR Engine mode en inglés). Para \
             mayor información, consultar la sección de \
             :ref:`OCR <seccion_ocr>`. Valor por defecto `2`.
-        :type oem: {0, 1, 2, 3}, opcional
+    :type oem: {0, 1, 2, 3}, opcional
     :param psm:  Modo de segmentación de las páginas (page segmentation \
             modes, en inglés) de la librería `Pytesseract`. Para mayor \
             información consultar la sección de :ref:`OCR <seccion_ocr>`. \
             Valor por defecto `1`.
-        :type psm: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, opcional
+    :type psm: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, opcional
     :param password: Contraseña del documento PDF que se quiere leer, en \
             caso de que se necesite. Valor por defecto `None`.
-        :type password: str, opcional
+    :type password: str, opcional
     :param enderezar: \
             Permite enderezar el texto en la imagen para obtener mejores \
             resultados durante el proceso de extracción de texto,  solo si \
             `ocr = True` y `preprocesamiento` este entre `1` y `5`. Valor \
             por defecto `False`.
-        :type enderezar: bool, opcional
+    :type enderezar: bool, opcional
     :return: (str) Texto extraído del archivo especificado con la función \
         'leer_texto'.
     """
