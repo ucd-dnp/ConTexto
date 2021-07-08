@@ -9,7 +9,7 @@ Importar paquetes necesarios y definir documentos para la prueba
 ----------------------------------------------------------------
 
 .. note::
-        La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este caso en particular, se van a utilizar documentos de esta carpeta, que están en los siguientes formatos:
+        La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este ejemplo se van a utilizar documentos que están en los siguientes formatos:
 
         * Archivo plano (.txt)
         * Archivos .PDF; uno digitalizado y uno escaneado (se requiere aplicar OCR para leer este)
@@ -17,7 +17,7 @@ Importar paquetes necesarios y definir documentos para la prueba
         * Archivo tipo *Rich Text Format* (.rtf)
         * Imagen con texto (.png)
 
-El módulo de :py:mod:`Lectura <lectura>` de **ConTexto** permite extraer texto de todos estos tipos de archivos.
+El módulo de :py:mod:`Lectura <lectura>` de **ConTexto** permite extraer texto de estos tipos de archivos.
 
 .. code-block:: python
 
@@ -37,8 +37,8 @@ El módulo de :py:mod:`Lectura <lectura>` de **ConTexto** permite extraer texto 
     >>> archivo_img = 'entrada/prueba_in.png'
 
 
-Extraer texto de los documentos, y escribir el texto extraído en nuevos archivos
---------------------------------------------------------------------------------
+Extraer texto de los documentos y escribir el texto extraído en nuevos archivos
+-------------------------------------------------------------------------------
 
 A continuación se definen dos listas, una de los documentos a leer y otra de los documentos en los que se quiere guardar el texto extraído. Los nuevos documentos quedarán guardados en la carpeta *salida*, una vez se corra el ejemplo.
 
@@ -146,9 +146,9 @@ Se puede observar que el mejor desempeño se obtiene con *preprocesamiento=2*. C
 Enderezar textos en imágenes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` de la clase :py:class:`Lector <lectura.Lector>` cuentan con el parámetro *enderezar*, por defecto igual a False. Cuando este parámetro se hace igual a True, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
+Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` de la clase :py:class:`Lector <lectura.Lector>` cuenta con el parámetro *enderezar*, por defecto igual a *False*. Cuando este parámetro se hace igual a *True*, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
 
-Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro *preprocesamiento*. La corrección de giro puede ser bastante útil para textos torcidos (por ejemplo, porque quedaron así al escanear un documento).
+Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro *preprocesamiento*. La corrección de giro puede ser bastante útil para textos torcidos, como en el caso de documentos escaneados.
 
 .. code-block:: python
 

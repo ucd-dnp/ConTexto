@@ -3,7 +3,7 @@
 Corrección ortográfica
 ======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Corrección <correccion>` de la librería . Este módulo permite realizar corrección ortográfica de textos, lo que puede simplificar los documentos, al estandarizar palabras que deberían ser escritas de la misma forma y evitando así tener un vocabulario más grande de lo necesario.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Corrección <correccion>` de la librería. Este módulo permite realizar corrección ortográfica de textos, lo que puede simplificar los documentos, al estandarizar palabras que deberían ser escritas de la misma forma y evitando así tener un vocabulario más grande de lo necesario.
 
 Importar funciones necesarias y definir textos de prueba
 --------------------------------------------------------
@@ -84,7 +84,7 @@ Al utilizar la clase `Corrector` es posible identificar explícitamente las pala
 Modificar el diccionario del corrector, para añadir, eliminar o cambiar la preferencia de las palabras
 ------------------------------------------------------------------------------------------------------
 
-La clase `Corrector` usa, para varios lenguajes, unos diccionarios predefinidos, que contienen el vocabulario "válido" o conocido, junto con la frecuencia de cada palabra. Estas frecuencias fueron obtenidas a partir de un corpus, o conjunto de documentos, determinado.
+La clase `Corrector` usa para varios lenguajes, unos diccionarios predefinidos, que contienen el vocabulario "válido" o conocido, junto con la frecuencia de cada palabra. Estas frecuencias fueron obtenidas a partir de un corpus o conjunto de documentos determinados.
 
 Es posible modificar estos diccionarios para alcanzar 3 propósitos distintos:
 

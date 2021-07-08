@@ -1,6 +1,13 @@
 Documentación ConTexto
 ======================
 
+.. |my_version| raw:: html
+
+   <h4 class="my_version blue">Librería de procesamiento y análisis de texto</h4>
+   <h4 class="my_version blue">v0.2.0</h4>
+
+|my_version|
+
 .. |br| raw:: html
 
    <br />
@@ -14,6 +21,7 @@ Documentación ConTexto
    _documentacion
    genindex
    _contribuciones
+   _control_de_cambios
 
 .. figure:: _static/image/contexto.jpg
     :align: center

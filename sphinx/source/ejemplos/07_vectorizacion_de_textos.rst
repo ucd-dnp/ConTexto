@@ -3,7 +3,7 @@
 Vectorización de textos
 =======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>` de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para análisis posteriores de textos, tales como comparaciones, agrupaciones, entrenamiento de modelos de clasificación, entre otros.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>` de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para posteriores análisis de textos. Tales como comparaciones, agrupaciones, entrenamiento de modelos de clasificación, entre otros.
 
 
 Importar paquetes necesarios y adecuar el texto de prueba
@@ -46,7 +46,7 @@ Para utilizar estos tipos de vectorización es necesario definir un objeto de cl
 - El rango de n-gramas que se desea tener en cuenta (solo palabras, palabras y bigramas, etc.).
 - Si se quiere limitar el tamaño del vocabulario del vectorizador a los *n* términos más frecuentes. Esto puede ser útil cuando se tienen muchos textos de larga longitud, lo que puede llegar a generar un vocabulario demasiado grande si no se acota.
 
-Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un corpus, para que aprenda el vocabulario que va a utilizar. Al momento de ajustar el vectorizador se puede utilizar el parámetro *archivo_salida*. Si este parámetro se utiliza, el vectorizador ajustado va a quedar guardado como un objeto tipo *Pickle* en la ubicación definida por el usuario.
+Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un corpus para que aprenda el vocabulario que va a utilizar. Al momento de ajustar el vectorizador se puede utilizar el parámetro *archivo_salida*. Si este parámetro se utiliza, el vectorizador ajustado va a quedar guardado como un objeto tipo *Pickle* en la ubicación definida por el usuario.
 
 .. code-block:: python
 
@@ -66,7 +66,7 @@ Una vez se define el objeto del vectorizador, es necesario ajustarlo sobre un co
 Vocabulario de los vectorizadores ajustados
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Una vez cada vectorizador ha sido ajustado, se puede acceder a su vocabulario llamando el método :py:meth:`vocabulario() <vectorizacion.VectorizadorFrecuencias.vocabulario>`. Esto retorna un DataFrame de Pandas con el término asignado a cada posición de los vectores resultantes. A continuación se muestran los términos de las primeras 10 posiciones para los 2 vectorizadores ajustados. 
+Una vez cada vectorizador ha sido ajustado, se puede acceder a su vocabulario llamando el método :py:meth:`vocabulario() <vectorizacion.VectorizadorFrecuencias.vocabulario>`. Esto retorna un DataFrame de Pandas con el término asignado a cada posición de los vectores resultantes. A continuación se muestran los términos de las primeras 10 posiciones para los dos vectorizadores ajustados. 
 
 Se puede observar que `v_tfidf` incluye términos y bigramas, tal y como se estableció al definir esa variable.
 
@@ -169,7 +169,7 @@ inversa.
 Cargar un vectorizador ajustado previamente
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Previamente vimos cómo se puede guardar un vectorizador ajustado, por medio del parámetro *archivo_salida* de la función `ajustar`. Este vectorizador, ya ajustado, se puede cargar y utilizar, al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
+Previamente vimos cómo se puede guardar un vectorizador ajustado, por medio del parámetro *archivo_salida* de la función `ajustar`. Este vectorizador, ya ajustado, se puede cargar y utilizar al momento de definir un nuevo objeto de la clase :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>`. Para cargar un vectorizador ajustado previamente se debe utilizar el parámetro *archivo_modelo*, especificando dónde está el archivo con el vectorizador ya ajustado. Al usar esta opción, los demás parámetros de inicialización no serán tenidos en cuenta, pues esos parámetros se tomarán del vectorizador cargado.
 
 .. code-block:: python
 
@@ -193,7 +193,7 @@ Vectorización por medio de *Hashing*
 
 La clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` utiliza el *hashing trick* para determinar directamente (sin necesidad de ajustar sobre un corpus) la posición de cada término de un texto dentro de un vector numérico. Esta técnica es rápida y ligera en memoria, pues no requiere aprender ni guardar un vocabulario. Esto también tiene algunas desventajas; por ejemplo, a partir de un vector no se puede aplicar una transformada inversa para conocer qué palabras contenía el texto.
 
-Adicionalmente, cuando se consideran muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distinitos, lo cual introduce ambiguedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
+Adicionalmente, cuando se consideran muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distintos, lo cual introduce ambigüedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
 
 .. code-block:: python
 
@@ -260,7 +260,7 @@ Textos con palabras desconocidas (no incluídas en el modelo)
 
 Como se mencionó en la sección anterior, un texto se vectoriza sacando el promedio de los vectores de cada palabra. Por grande que sea el vocabulario del modelo pre-entrenado que se utiliza, es posible que un nuevo texto contenga palabras que no se encuentran en el vocabulario del modelo. En este caso, el método `vectorizar` del objeto de clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` puede manejar las palabras desconocidas de dos formas distintas.
 
-El argumento booleano *quitar_desconocidas* en el método `vectorizar`, cuando se hace igual a True, hará que no se tengan en cuenta las palabras que no están incluídas en el modelo. De esta manera, el vector del texto será el promedio de solamente los vectores de palabras que están presentes en el vocabulario del modelo. Cuando este argumento es False (valor por defecto), para cada palabra desconocida se incluirá un vector de solo ceros, lo que afectará el vector promedio resultante.
+El argumento booleano *quitar_desconocidas* en el método `vectorizar`, cuando se hace igual a *True*, hará que no se tengan en cuenta las palabras que no están incluídas en el modelo. De esta manera, el vector del texto será el promedio de solamente los vectores de palabras que están presentes en el vocabulario del modelo. Cuando este argumento es *False* (valor por defecto), para cada palabra desconocida se incluirá un vector de solo ceros, lo que afectará el vector promedio resultante.
 
 A continuación se hace la vectorización de 2 textos distintos. En el primer texto todas las palabras hacen parte del vocabulario del modelo, por lo que el valor del parámetro *quitar_desconocidas* no va a afectar el vector de salida. Por otro lado, el segundo texto tiene 3 palabras desconocidas. En este caso, los valores del vector resultante van a ser ligeramente menores si se utiliza *quitar_desconocidas=False*, pues los vectores de solo ceros (correspondientes a las palabras desconocidas) afectarán el promedio del vector de salida.
 
@@ -374,7 +374,7 @@ La clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>` uti
 Inicializar y entrenar el vectorizador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al igual que los vectorizadores basados en frecuencias (`ver sección <07_vectorizacion_de_textos.html#vectorizaciones-por-frecuencia-de-terminos>`__) , los objetos de clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>` deben ser entrenados o ajustados sobre un corpus de textos. El primer paso es inicializar el objeto del vectorizador; para esto, se deben definir los siguientes parámetros:
+Al igual que los vectorizadores basados en frecuencias (`ver sección <07_vectorizacion_de_textos.html#vectorizaciones-por-frecuencia-de-terminos>`__), los objetos de clase :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>` deben ser entrenados o ajustados sobre un corpus de textos. El primer paso es inicializar el objeto del vectorizador, para esto se deben definir los siguientes parámetros:
 
 - Número de elementos que tendrán los vectores
 - Frecuencia mínima que debe tener cada término en el corpus para ser tenido en cuenta en el modelo. Esto se utiliza para evitar que términos muy poco frecuentes afecten el entrenamiento.

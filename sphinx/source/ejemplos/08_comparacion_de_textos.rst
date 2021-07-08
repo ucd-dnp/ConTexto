@@ -8,7 +8,7 @@ Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Compar
 Importar paquetes necesarios y adecuar textos de prueba
 -------------------------------------------------------
 
-El primer paso es importar las tres clases del módulo de `comparacion` con las que se va a trabajar y definir los textos para correr los ejemplos.
+El primer paso consiste en importar las tres clases del módulo de `comparacion` con las que se va a trabajar y definir los textos para correr los ejemplos.
 
 .. code-block:: python
 
@@ -182,7 +182,7 @@ El cálculo de la similitud de Jaccard funciona bien con vectorizadores basados 
            [False, False,  True,  True],
            [ True,  True,  True,  True]])
 
-Mientras los vectorizadores utilizados sean basados en frecuencias, el cálculo de similitud Jaccard funcionará bien. Por el otro lado, los vectorizadores word2vec y doc2vec generan una representación densa, por lo que no dan buenos resultados al utilizarse en este caso.
+Mientras los vectorizadores utilizados sean basados en frecuencias, el cálculo de similitud Jaccard funcionará bien. Por otro lado, los vectorizadores word2vec y doc2vec generan una representación densa, por lo que no dan buenos resultados al utilizarse en este caso.
 
 .. code-block:: python
 
@@ -249,7 +249,7 @@ Inicializar los objetos de clase `Distancia`
 
 Al inicializar los objetos de clase :py:class:`Distancia <comparacion.distancia>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>`, del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Distancia <comparacion.distancia>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
 
-Es importante recalcar que si se pasa un vectorizador al objeto de Similitud, este ya debe estar ajustado, en caso de que aplique. Esto es particularmente relevante para los vectores de clases :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>` y :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`.
+Es importante recalcar que si se pasa un vectorizador al objeto de Distancia, este ya debe estar ajustado, en caso de que aplique. Esto es particularmente relevante para los vectores de clases :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>` y :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`.
 
 .. code-block:: python
 
@@ -302,7 +302,7 @@ En este caso, los valores de distancias generalmente variarán dependiendo del v
      [0.14 0.13 0.   0.18]
      [0.13 0.12 0.18 0.  ]]
 
-La distancia Minkowski es una generalización de las operaciones que se utilizan para calcular la distancia L1 o L2. El parámetro p permite definir el grado a utilizar en el cálculo de la distancia.
+La distancia Minkowski es una generalización de las operaciones que se utilizan para calcular la distancia *L1* o *L2*. El parámetro *p* permite definir el grado a utilizar en el cálculo de la distancia.
 
 Por ejemplo, si p=1, se calculará la distancia L1 y si p=2 se calculará la distancia L2.
 
@@ -502,9 +502,9 @@ La gran diferencia en este caso es que la clase :py:class:`DiferenciaStrings <co
 Normalización de medidas de distancia
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Para los métodos de distancia (:py:meth:`distancia_levenshtein() <comparacion.DiferenciaStrings.distancia_levenshtein>`, :py:meth:`distancia_damerau_levenshtein() <comparacion.DiferenciaStrings.distancia_damerau_levenshtein>` y :py:meth:`distancia_hamming() <comparacion.DiferenciaStrings.distancia_hamming>`) es posible utilizar el parámetro norm, que por defecto es igual a None, para normalizar la distancia calculada.
+Para los métodos de distancia (:py:meth:`distancia_levenshtein() <comparacion.DiferenciaStrings.distancia_levenshtein>`, :py:meth:`distancia_damerau_levenshtein() <comparacion.DiferenciaStrings.distancia_damerau_levenshtein>` y :py:meth:`distancia_hamming() <comparacion.DiferenciaStrings.distancia_hamming>`) es posible utilizar el parámetro *norm*, que por defecto es igual a *None*, para normalizar la distancia calculada.
 
-Si norm=1, se dividirá la distancia encontrada por la longitud (número de caracteres) del texto más corto de los dos a comparar. Si norm=2, se dividirá la distancia encontrada por la longitud (número de caracteres) del texto más largo. En este segundo caso se puede garantizar que el valor resultante será un número entre 0 y 1.
+Si norm=1, se dividirá la distancia encontrada entre la longitud (número de caracteres) del texto más corto de los dos a comparar. Si norm=2, se dividirá la distancia encontrada entre la longitud (número de caracteres) del texto más largo. En este segundo caso se puede garantizar que el valor resultante será un número entre 0 y 1.
 
 .. code-block:: python
 

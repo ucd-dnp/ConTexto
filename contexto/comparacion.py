@@ -371,7 +371,7 @@ class Distancia:
             utiliza este parámetro, se calcularán la distancias entre cada \
             uno de los textos/vectores de `lista1` con cada uno de los \
             elementos de `lista2`. También es posible ingresar directamente \
-            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            los vectores pre-calculados de los textos en un arreglo de numpy o \
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: str, list, numpy.array, opcional
         :return: (numpy.array) Matriz de dos dimensiones con las distancias \
@@ -400,7 +400,7 @@ class Distancia:
             utiliza este parámetro, se calcularán la distancias entre cada \
             uno de los textos/vectores de `lista1` con cada uno de los \
             elementos de `lista2`. También es posible ingresar directamente \
-            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            los vectores pre-calculados de los textos en un arreglo de numpy o \
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: str, list, numpy.array, opcional
         :return: (numpy.array) Matriz de dos dimensiones con las distancias \
@@ -429,7 +429,7 @@ class Distancia:
             utiliza este parámetro, se calcularán la distancias entre cada \
             uno de los textos/vectores de `lista1` con cada uno de los \
             elementos de `lista2`. También es posible ingresar directamente \
-            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            los vectores pre-calculados de los textos en un arreglo de numpy o \
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: str, list, numpy.array, opcional
         :param p: Orden o grado de la distancia \
@@ -470,7 +470,7 @@ class Distancia:
             utiliza este parámetro, se calcularán la distancias entre cada \
             uno de los textos/vectores de `lista1` con cada uno de los \
             elementos de `lista2`. También es posible ingresar directamente \
-            los vectores pre-calculaos de los textos en un arreglo de numpy o \
+            los vectores pre-calculados de los textos en un arreglo de numpy o \
             una matriz dispersa. Valor por defecto `[]`.
         :type lista2: str, list, numpy.array, opcional
         :return: (numpy.array) Matriz de dos dimensiones con las distancias \

@@ -108,7 +108,7 @@ def nube_palabras(
     :type texto: str
     :param n: Cantidad de elementos a tener en cuenta en la generación \
         de n-gramas. Por ejemplo, si `n = 1` se retornarán palabras, \
-        y si `n = 2` se retornarán bigramas, si `n = 3` se retornarán \
+        si `n = 2` se retornarán bigramas, si `n = 3` se retornarán \
         trigramas y así sucesivamente. Valor por defecto `2`.
     :param n_terminos: Cantidad de n-gramas que se incluyen en la nube. \
         Se graficarán los `n_terminos` más frecuentes en \
