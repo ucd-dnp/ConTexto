@@ -4,7 +4,9 @@ import sys
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+
 INSTALL_REQUIRES = [
+    "click<7.2.0,>=7.1.1",
     "docx2pdf",
     "docx2txt==0.8",
     "gensim==4.0.1",
@@ -18,14 +20,16 @@ INSTALL_REQUIRES = [
     "pdf2image==1.16.0",
     "PyPDF2==1.26.0",
     "pyspellchecker==0.6.2",
-    "pytesseract>=0.3.7",
+    "pytesseract==0.3.7; python_version<'3.8'",
+    "pytesseract>=0.3.7; python_version>='3.8'",
     "python-docx>=0.8.11",
-    'pywin32>=227; platform_system=="Windows"',
+    'pywin32==227; platform_system=="Windows"',
     "opencv-python>=4.5.2.54",
     "reportlab==3.5.68",
     "scikit-learn>=0.24.2",
     "slate3k==0.5.3",
     "spacy>=3.0.6",
+    "stanza>=1.2.1",
     "wordcloud>=1.8.1",
 ]
 
@@ -44,11 +48,15 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
-    keywords="python OCR texto",
+    keywords=["Python", "OCR", "NLP", "Español","Text processing", "UCD", "DNP"],
     url="https://github.com/ucd-dnp/ConTexto",
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
+    project_urls={
+        "Documentación": "https://ucd-dnp.github.io/contexto/",
+        "Seguimiento de fallas": "https://github.com/ucd-dnp/ConTexto/issues",
+    },
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
@@ -59,5 +67,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
-    python_requires=">=3.6.0",
+    python_requires=">=3.6.1",
 )
