@@ -7,6 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 INSTALL_REQUIRES = [
     "click<7.2.0,>=7.1.1",
+    "comtypes>=1.1.10",
     "docx2pdf",
     "docx2txt==0.8",
     "gensim==4.0.1",
@@ -23,7 +24,6 @@ INSTALL_REQUIRES = [
     "pytesseract==0.3.7; python_version<'3.8'",
     "pytesseract>=0.3.7; python_version>='3.8'",
     "python-docx>=0.8.11",
-    'pywin32==227; platform_system=="Windows"',
     "opencv-python>=4.5.2.54",
     "reportlab==3.5.68",
     "scikit-learn>=0.24.2",
@@ -48,7 +48,15 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
-    keywords=["Python", "OCR", "NLP", "Español","Text processing", "UCD", "DNP"],
+    keywords=[
+        "Python",
+        "OCR",
+        "NLP",
+        "Español",
+        "Text processing",
+        "UCD",
+        "DNP",
+    ],
     url="https://github.com/ucd-dnp/ConTexto",
     packages=setuptools.find_packages(),
     include_package_data=True,
