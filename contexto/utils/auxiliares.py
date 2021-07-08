@@ -470,18 +470,19 @@ def doc_a_pdf(archivo_entrada, archivo_salida):
     :param archivo_salida: (str). Ubicación en donde se desea guardar el \
         archivo PDF generado.
     """
-    from win32com import client
+
+    import comtypes.client
 
     # Para que no haya problema con paths relativos
     archivo_entrada = os.path.realpath(archivo_entrada)
     archivo_salida = os.path.realpath(archivo_salida)
     wdFormatPDF = 17
-    word = client.Dispatch("Word.Application")
-    word.Visible = True
-    time.sleep(3)
+    word = comtypes.client.CreateObject("Word.Application")
+    word.Visible = False
     doc = word.Documents.Open(archivo_entrada)
     doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
     doc.Close()
+    word.Quit()
 
 
 def docx_a_pdf(archivo_entrada, archivo_salida):
