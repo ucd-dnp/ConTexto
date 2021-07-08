@@ -5,7 +5,7 @@ import torch
 
 def stanza_pipeline(
     lenguaje,
-    procesadores="tokenize, pos, lemma",
+    procesadores="tokenize, pos, lemma, mwt",
     modelo_lemas="",
     modelo_ner="",
     modelo_pos="",
@@ -29,11 +29,12 @@ def stanza_pipeline(
         que se desean aplicar a un texto de entrada, que se desean incluir \
         en el pipeline. Se ingresa un string en el que los diferentes \
         procesadores van separados por comas.
-    :param modelo_lemas: (str). Valor por defecto: ''. Unicación de un \
+    :param modelo_lemas: Ubicación de un \
         archivo que contenga el modelo o procesador que el usuario desea \
         utilizar para aplicar lematización a los textos. Si este parámetro se \
         deja vacío, se utilizará el procesador disponible de la librería \
         Stanza para el lenguaje especificado.
+    :type modelo_lemas: str, opcional
     :param modelo_ner: (str). Valor por defecto: ''. Unicación de un archivo \
         que contenga el modelo o procesador que el usuario desea utilizar \
         para aplicar *Named Entity Recognition* a los textos. Si este \
@@ -59,17 +60,14 @@ def stanza_pipeline(
     # Si se añade algún modelo custom, se agrega al diccionario
     if modelo_pos != "":
         config["pos_model_path"] = modelo_pos
-    if modelo_lemas != "":
+    if modelo_lemas is not None:
         config["lemma_model_path"] = modelo_lemas
     if modelo_ner != "":
         config["ner_model_path"] = modelo_ner
     # Intentar crear pipeline. Si el modelo no está descargado, se descarga
     # primero
     try:
-        nlp_pipe = stanza.Pipeline(
-            **config,
-            verbose=0,
-        )
+        nlp_pipe = stanza.Pipeline(**config, verbose=False)
     except BaseException:
         print(
             (
@@ -77,8 +75,10 @@ def stanza_pipeline(
                 "puede tardar varios minutos.\n"
             )
         )
-        stanza.download(lenguaje)
-        nlp_pipe = stanza.Pipeline(**config, verbose=0)
+        stanza.download(lenguaje, verbose=True)
+        print("\n[INFO] El modelo ha sido descargado.")
+
+        nlp_pipe = stanza.Pipeline(**config, verbose=False)
     # Retornar pipeline
     return nlp_pipe
 
