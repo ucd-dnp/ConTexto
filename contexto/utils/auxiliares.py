@@ -463,7 +463,8 @@ def doc_a_pdf(archivo_entrada, archivo_salida):
     Carga un archivo de Word (.doc o .docx) de una ruta especificada por \
     el usuario y lo convierte a PDF. El archivo PDF es guardado en otra \
     ruta especificada por el usuario. Se necesita tener Microsoft Word \
-    instalado para utilizar esta función.
+    instalado para utilizar esta función. Esta función solo está \
+    disponible para Windows.
 
     :param archivo_entrada: (str). Ubicación del archivo de Word que se \
         desea convertir.
@@ -482,23 +483,37 @@ def doc_a_pdf(archivo_entrada, archivo_salida):
     doc = word.Documents.Open(archivo_entrada)
     doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
     doc.Close()
-    word.Quit()
 
 
-def docx_a_pdf(archivo_entrada, archivo_salida):
+def doc_a_pdf_linux(archivo_entrada, archivo_salida):
     """
-    Carga un archivo de Word (sólo .docx) de una ruta especificada por \
+    Carga un archivo de Word (.doc o .docx) de una ruta especificada por \
     el usuario y lo convierte a PDF. El archivo PDF es guardado en otra \
-    ruta especificada por el usuario.
+    ruta especificada por el usuario. Esta función es para arquitecturas \
+    Linux.
 
     :param archivo_entrada: (str). Ubicación del archivo de Word que se \
         desea convertir.
     :param archivo_salida: (str). Ubicación en donde se desea guardar el \
         archivo PDF generado.
     """
-    from docx2pdf import convert
+    import subprocess
 
-    convert(archivo_entrada, archivo_salida)
+    # Para que no haya problema con paths relativos
+    archivo_entrada = os.path.realpath(archivo_entrada)
+    archivo_salida = os.path.realpath(archivo_salida)
+
+    cmd = "libreoffice --convert-to pdf".split() + [archivo_entrada]
+    p = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    p.wait(timeout=10)
+    stdout, stderr = p.communicate()
+    print(str(stdout))
+    out = str(stdout).split(" -> ")[1].split(" using")[0]
+    if stderr:
+        raise subprocess.SubprocessError(stderr)
+
+    p.stdout.close()
+    os.rename(out, archivo_salida)
 
 
 def word_a_pdf(archivo_entrada, archivo_salida=None):
@@ -515,18 +530,32 @@ def word_a_pdf(archivo_entrada, archivo_salida=None):
         generado en una ubicación generada automáticamente.
     :return: (str). Ubicación en la que quedó guardado el archivo PDF.
     """
+    import sys
+
     if archivo_salida is None:
         archivo_salida = f"temp_pdf_{os.getpid()}.pdf"
     # Realizar la conversión
-    try:
+    if sys.platform == "win32":
         doc_a_pdf(archivo_entrada, archivo_salida)
-    except RuntimeError:
-        pass
-    try:
-        docx_a_pdf(archivo_entrada, archivo_salida)
-    except RuntimeError:
-        return None
-    return archivo_salida
+        return archivo_salida
+    elif sys.platform == "linux":
+        try:
+            doc_a_pdf_linux(archivo_entrada, archivo_salida)
+            return archivo_salida
+        except Exception:
+            raise RuntimeError(
+                "Para poder procesar archivos 'doc' o 'docx' en Linux, se "
+                "debe tener instalado LibreOffice. Por favor instale "
+                "libreoffice:\n"
+                "\t $ sudo add-apt-repository ppa:libreoffice/ppa\n"
+                "\t $ sudo apt-get update\n"
+                "\t $ sudo apt-get install libreoffice\n"
+            )
+    else:
+        raise NotImplementedError(
+            "La lectura de documentos tipo '.doc' o 'docx' "
+            "no está disponible para este Sistema Operativo"
+        )
 
 
 # Funciones para leer archivos PDF ---
