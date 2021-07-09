@@ -82,22 +82,22 @@ class OCR:
             PSM hace referencia a los modos de segmentación de las páginas \
             (page segmentation modes, en inglés) de la librería Pytesseract. \
             Cada número hace referencia a un modo de segmentación:
-            0: orientation y detección de script (OSD) únicamente.
-            1: segmentación automática de páginas con OSD.
-            2: segmentación automática de págpinas sin OSD ni OCR.
-            3: segmentación completamente automática de páginas sin OSD.
-            4: supone una única columna de texto de tamaños variables.
-            5: supone un único bloque uniforme de texto alineado de forma \
+            0: Script de deteccion de orientación (OSD) únicamente.
+            1: Segmentación automática de páginas con OSD.
+            2: Segmentación automática de págpinas sin OSD ni OCR.
+            3: Segmentación completamente automática de páginas sin OSD.
+            4: Supone una única columna de texto de tamaños variables.
+            5: Supone un único bloque uniforme de texto alineado de forma \
                 vertical.
-            6: asume un único bloque uniforme de texto.
-            7: trata la imagen como una única línea de texto.
-            8: trata la imagen como una única palabra.
-            9: trata la imagen como una única palabra dentro de un círculo.
-            10: trata la imagen como un único carácter.
+            6: Asume un único bloque uniforme de texto.
+            7: Trata la imagen como una única línea de texto.
+            8: Trata la imagen como una única palabra.
+            9: Trata la imagen como una única palabra dentro de un círculo.
+            10: Trata la imagen como un único carácter.
             11: Buscador de texto disperso. Encontrar la mayor cantidad de \
                 texto posible sin un orden en particular.
             12: Buscador de texto disperso con OSD.
-            13: trata el texto como una única línea, sin utilizar métodos \
+            13: Trata el texto como una única línea, sin utilizar métodos \
                 específicos de Tesseract.
         :param dir_temporal: (string). Ruta donde se guardan páginas \
             temporales de apoyo como imágenes durante el proceso de \
