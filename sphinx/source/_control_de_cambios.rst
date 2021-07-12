@@ -5,12 +5,12 @@ Control de cambios
 
 Todos los cambios importantes de la librería *ConTexto* serán documentados en esta sección.
 
-0.2.0 (2021-07- )
-+++++++++++++++++
+v0.2.0 (2021-07- )
+++++++++++++++++++
 
 Agregado
 --------
-- Se agregó función para generar :py:func:`gráfico de dispersión léxica <exploracion.graficar_dispersion>` en el módulo de :py:mod:`Exploración <exploracion>`.
+- Se agregó función para generar :py:func:`gráfico_de_dispersión_léxica <exploracion.graficar_dispersion>` en el módulo de :py:mod:`Exploración <exploracion>`.
 - Se agregó :ref:`Ejemplo de gráfico de dispersión léxica <Gráficos de dispersión léxica>` con palabras y bi-gramas a la sección de :ref:`ejemplos <seccion_ejemplos>`.
 - Se agregó compatibilidad para instalación por medio de conda. 
 - Se habilitó la librería *ConTexto* para la versión 3.9 de Python.
