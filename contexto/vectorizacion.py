@@ -5,6 +5,7 @@ from gensim.utils import simple_preprocess
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import HashingVectorizer
+import spacy
 from lenguajes import definir_lenguaje
 from utils.auxiliares import cargar_objeto, guardar_objeto
 
@@ -348,6 +349,14 @@ class VectorizadorWord2Vec:
         :return: (numpy.ndarray) Vector documento-términos de la \
             vectorización del texto.
         """
+        if not len(self.vectorizador.components):
+            try:
+                self.vectorizador = spacy.load(self.lenguaje)
+            except Exception:
+                raise RuntimeError(
+                    "El modelo de vectorización no se ha cargado "
+                    "correctamente. Por favor ejecute nuevamente la función."
+                )
         # Aplicar el modelo al texto
         tokens = self.vectorizador(
             texto, disable=["ner", "parser", "tagger", "lemmatizer"]
