@@ -7,7 +7,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 INSTALL_REQUIRES = [
     "click<7.2.0,>=7.1.1",
-    "comtypes>=1.1.10; platform_system=='Windows'",
     "docx2txt==0.8",
     "gensim==4.0.1",
     "googletrans==2.4.0",
@@ -20,9 +19,10 @@ INSTALL_REQUIRES = [
     "pdf2image==1.16.0",
     "PyPDF2==1.26.0",
     "pyspellchecker==0.6.2",
-    "pytesseract==0.3.7; python_version<'3.8'",
-    "pytesseract>=0.3.7; python_version>='3.8'",
+    "pytesseract==0.3.7; python_version<'3.8.4'",
+    "pytesseract>=0.3.7; python_version>='3.8.5'",
     "python-docx>=0.8.11",
+    'pywin32>=227; platform_system=="Windows"',
     "opencv-python>=4.5.2.54",
     "reportlab==3.5.68",
     "scikit-learn>=0.24.2",
@@ -74,5 +74,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
-    python_requires=">=3.6.1",
+    python_requires=">=3.6.2",
 )

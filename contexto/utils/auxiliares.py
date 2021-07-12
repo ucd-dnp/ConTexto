@@ -472,13 +472,13 @@ def doc_a_pdf(archivo_entrada, archivo_salida):
         archivo PDF generado.
     """
 
-    import comtypes.client
+    from win32com import client
 
     # Para que no haya problema con paths relativos
     archivo_entrada = os.path.realpath(archivo_entrada)
     archivo_salida = os.path.realpath(archivo_salida)
     wdFormatPDF = 17
-    word = comtypes.client.CreateObject("Word.Application")
+    word = client.Dispatch("Word.Application")
     word.Visible = False
     doc = word.Documents.Open(archivo_entrada)
     doc.SaveAs(archivo_salida, FileFormat=wdFormatPDF)
@@ -507,7 +507,6 @@ def doc_a_pdf_linux(archivo_entrada, archivo_salida):
     p = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     p.wait(timeout=10)
     stdout, stderr = p.communicate()
-    print(str(stdout))
     out = str(stdout).split(" -> ")[1].split(" using")[0]
     if stderr:
         raise subprocess.SubprocessError(stderr)
@@ -613,7 +612,8 @@ def leer_pdf_slate(ubicacion_archivo, password=None):
     # Para no mostrar warnings de slate
     import logging
 
-    logging.getLogger("pdfminer").setLevel(logging.ERROR)
+    logging.propagate = False
+    logging.getLogger().setLevel(logging.ERROR)
     # Abrir el archivo y extraer el texto de las páginas
     with open(ubicacion_archivo, "rb") as f:
         if password is not None:
