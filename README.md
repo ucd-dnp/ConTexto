@@ -17,8 +17,8 @@ Para acceder a información relevante de la librería debe dirigirse a la [rama 
 
 ```console
 pip install contexto
-pip install -U sphinx
-pip install sphinx_rtd_theme
+pip install sphinx==4.0.0
+pip install pydata_sphinx_theme
 pip install sphinx_copybutton
 pip install sphinx-multiversion
 ```
