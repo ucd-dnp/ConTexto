@@ -143,9 +143,6 @@ Lematización de textos utilizando Stanza
 
 El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` permite elegir la librería de lematización a utilizar. Esta función se encarga de aplicar lematización a todas las palabras de un texto de entrada. Si se define *liberia='stanza'*, la función utilizará el lematizador de la clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>`. La primera vez que se seleccione un modelo de un lenguaje determinado, la función descargará el modelo correspondiente en el computador del usuario. Este proceso puede durar algunos minutos, dependiendo de la conexión a internet.
 
-.. warning::
-    Es importante recalcar que para poder utilizar el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` es necesario tener los paquetes **Torch, Torchvision y Stanza** instalados, que no vienen en la versión de ConTexto instalable a través de pip. Para mayor información puede consultar la :ref:`sección de instalación <seccion_instalacion>`.
-
 .. code-block:: python
 
     >>> # Lematización con librería Stanza ###
@@ -165,7 +162,7 @@ El parámetro *libreria* de la función :py:func:`lematizacion.lematizar_texto` 
 Agregar lemas personalizados al `LematizadorStanza`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al igual que en el caso de spaCy, el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` permite añadir o modificar lemas, utilizando un archivo JSON o un diccionario de Python. Esto se hace con la función :py:func:`lematizacion.modificar_lemmas` y se puede utilizar el parámetro *archivo_salida* para determinar dónde se quiere guardar el modelo resultante. 
+Al igual que en el caso de spaCy, el :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` permite añadir o modificar lemas, utilizando un archivo JSON o un diccionario de Python. Esto se hace con la función :py:func:`modificar_lemmas <lematizacion.LematizadorStanza.modificar_lemmas>` y se puede utilizar el parámetro *archivo_salida* para determinar dónde se quiere guardar el modelo resultante. 
 
 De esta manera, este modelo puede ser luego cargado a un objeto de clase :py:class:`LematizadorStanza <lematizacion.LematizadorStanza>` para seguirlo utilizando o modificando. Para cargar un modelo guardado previamente, es necesario utilizar el parámetro *modelo_lemas*, al definir el objeto lematizador.
 
