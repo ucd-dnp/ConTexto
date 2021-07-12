@@ -3,6 +3,36 @@
 Control de cambios
 ==================
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat est sit amet lectus accumsan fringilla. Sed placerat urna et erat posuere porta. Curabitur quis feugiat risus. Proin sit amet lacus augue. Curabitur vitae felis ac orci vestibulum laoreet. Sed vitae tempor dolor. Morbi scelerisque lacinia egestas. Maecenas malesuada ultricies nulla, at bibendum enim ultrices ac. Phasellus blandit nunc non ante tincidunt vestibulum. Nullam vitae dictum tellus. Suspendisse tortor elit, malesuada non mauris non, malesuada egestas massa. Mauris et sagittis velit, a semper metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean fringilla, dui non posuere ultricies, est ante semper ligula, quis lacinia metus sapien non ex. Maecenas nec nisl tempor, laoreet enim non, facilisis purus.
+Todos los cambios importantes de la librería *ConTexto* serán documentados en esta sección.
 
-Suspendisse tincidunt commodo commodo. Vestibulum lectus orci, porttitor ut accumsan vel, feugiat nec dolor. Quisque non orci scelerisque, pulvinar ipsum vitae, ornare erat. Vestibulum iaculis egestas cursus. Pellentesque massa erat, viverra accumsan nunc sit amet, placerat mollis mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis rhoncus nisi. Sed consectetur ac risus pharetra porta. Praesent sapien eros, malesuada eu volutpat in, bibendum ac lectus. Proin non maximus elit. Maecenas metus nulla, pulvinar fringilla mauris nec, porta fermentum justo. Donec interdum vel leo ac ornare. Phasellus et arcu mauris.
+v0.2.0 (2021-07- )
+++++++++++++++++++
+
+Agregado
+--------
+- Se agregó función para generar :py:func:`gráfico_de_dispersión_léxica <exploracion.graficar_dispersion>` en el módulo de :py:mod:`Exploración <exploracion>`.
+- Se agregó :ref:`Ejemplo de gráfico de dispersión léxica <Gráficos de dispersión léxica>` con palabras y bi-gramas a la sección de :ref:`ejemplos <seccion_ejemplos>`.
+- Se agregó compatibilidad para instalación por medio de conda. 
+- Se habilitó la librería *ConTexto* para la versión 3.9 de Python.
+
+Modificado
+----------
+- Se hace compatible con la versión 3.0.6 o mayor de *Spacy*.
+- Se complementó la lista de stopwords.
+- Se actualizó el :ref:`ejemplo de exploración y visualización <03_exploracion_y_visualizacion>` de textos.
+- Se actualizó y modificó la :ref:`documentación <index>` de la librería.
+- Se modificó el gráfico de :py:func:`co-ocurrencias <exploracion.graficar_coocurrencias>`.
+- Se modificó :ref:`ejemplo de gráfico de co-ocurrencias <Calcular coocurrencias y graficarlas>` con la modificación de la función :py:func:`graficar_coocurrencias() <exploracion.graficar_coocurrencias>` a la sección de :ref:`ejemplos <seccion_ejemplos>`.
+- Se modificó el instalador de *ConTexto*. Ya no es necesario realizar la instalación del paquete *Stanza* manualmente.
+
+Obsoleto
+--------
+- No hay soporte para *Python* versión 3.6.1
+
+Borrado
+-------
+- Se eliminaron nombres repetidos en la lista de nombres.
+
+Arreglado
+---------
+- Se corrigieron errores en la parte *pre-OCR*.

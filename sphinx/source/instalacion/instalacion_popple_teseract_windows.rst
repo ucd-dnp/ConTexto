@@ -93,16 +93,18 @@ Instalación de Tesseract
 #. Añadir otros idiomas al reconocimiento óptico de caracteres (OCR).
 
    .. note::
-        * Para añadir otros idiomas al OCR se deben descargar los archivos de entrenamiento en el idioma deseado, los cuales se encuentran disponibles en:  https://github.com/tesseract-ocr/tessdata . (Para el desarrollo de este manual se hará el ejemplo con el idioma español)
+        * Para añadir otros idiomas al OCR se deben descargar los archivos de entrenamiento en el idioma deseado, los cuales se encuentran disponibles en:  https://github.com/tesseract-ocr/tessdata. (Para el desarrollo de este manual se hará el ejemplo con el idioma español)
 
         * Por defecto, en la instalación se cargan los archivos del idioma Inglés, sin embargo, estos corresponden a un corpus pequeño, por lo que se recomienda descargar nuevamente los archivos para este idioma desde el enlace mencionado anteriormente.
 
-   Para el idioma español se descargarán los archivos **spa.traineddata** y **spa_old.traineddata** los cuales están disponibles en los siguientes enlaces:
+   Para el idioma español se descargarán los archivos `spa.traineddata <https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata>`_ y `spa_old.traineddata <https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata>`_.
+   
+   Los archivos descargados se deben copiar y pegar en la carpeta tessdata siguiendo la ruta de instalación de *Tesseract*, que por defecto para Windows es: 
 
-   * https://github.com/tesseract-ocr/tessdata/blob/master/spa_old.traineddata
-   * https://github.com/tesseract-ocr/tessdata/blob/master/spa.traineddata
+    .. code-block:: console
 
-   Los archivos descargados se deben copiar y pegar en la carpeta tessdata que se encuentra en la carpeta tesseract-OCR que se creó al instalar el archivo .exe de tesseract. La ruta podría verse como **'C:\\Program Files\\Tesseract-OCR\\tessdata'** que fue la ruta que se creó al momento de hacer el desarrollo de este manual.
+            C:\\Program Files\\Tesseract-OCR\\tessdata   
+   
 
    |br|
 
