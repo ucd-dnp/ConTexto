@@ -12,7 +12,7 @@ La librería de procesamiento y análisis de texto, ConTexto, tiene como objetiv
 La librería surge como solución a tres principales aspectos. En primer lugar, la necesidad de integrar todos los esfuerzos y desarrollos que ha hecho la Unidad de Científicos de Datos (UCD) del DNP, en proyectos relacionados con la analítica de texto; en segundo lugar, evitar reprocesos en la construcción de scripts para estas tareas, y finalmente, aumentar la cantidad de librerías enfocadas en el análisis de texto en español que existen actualmente.
 
 - A continuación podrá consultar la siguiente información:
-   
+  
   - [Prerrequisitos](#prerrequisitos)
   - [Instalación](#instalaci%C3%B3n)
   - [Documentación](#documentaci%C3%B3n)
@@ -28,7 +28,7 @@ Antes de proceder con la instalación de ConTexto asegúrese de tener instalado 
 * Tesseract
 * Poppler v0.68.0
 
-Para mayor información consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html)
+Para mayor información consultar la [sección de instalación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html)
 
 ## Instalación
 
@@ -156,6 +156,10 @@ grafica_barchart_frecuencias(texto, ubicacion_archivo='salida/barras_palabras.jp
 ```
 
 ![screenshot](https://raw.githubusercontent.com/ucd-dnp/ConTexto/master/recursos/barras_palabras.jpg "Frecuencia de palabras")
+
+## Control de cambios
+
+Para ver todos los cambios en las versiones de `ConTexto` ver el archivo [changelog](https://github.com/ucd-dnp/ConTexto/wiki/Changelog)
 
 ## Contribuciones a ConTexto
 
