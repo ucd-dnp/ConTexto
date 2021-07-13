@@ -135,7 +135,7 @@ def caracteres_repetidos(palabra, n, limpiar_palabra=True):
     Determina si en una palabra de entrada se repiten caracteres (letras \
     o números) de forma seguida por lo menos un número de veces determinado \
     por el usuario. Por ejemplo, si n=3 y palabra="animaaal", la función \
-    arrojara positivo, porque el carácter "a" aparece 3 veces de forma seguida.
+    arrojará positivo, porque el carácter "a" aparece 3 veces de forma seguida.
 
     :param palabra: (str) Palabra que se quiere analizar.
     :param n: (int) Número mínimo de veces seguidas que debe aparecer un \

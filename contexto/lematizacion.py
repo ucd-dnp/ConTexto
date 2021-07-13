@@ -190,7 +190,7 @@ class LematizadorStanza:
         :type dict_lemmas: dict, str, opcional
         :param archivo_salida: Especifica la ruta del archivo de salida del \
             modelo de lemas modificado. Si `archivo_salida = None`, el \
-            resultado de la lematizacción se guarda en un archivo temporal \
+            resultado de la lematización se guarda en un archivo temporal \
             que eventualmente será borrado.
         :type archivo_salida: str, opcional
         :param tokenizador: Objeto encargado de la tokenización y \

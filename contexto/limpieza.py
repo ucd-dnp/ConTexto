@@ -189,7 +189,7 @@ def limpieza_texto(
     :param momento_stopwords: Indica en que parte del proceso de limpieza de \
         texto se remueven las `stopwords`. Las opciones son hacerlo antes o \
         después de las demás operaciones de limpieza del texto, eligiendo \
-        los valores `antes` o `despues`. También es posible remover \
+        los valores `antes` o `después`. También es posible remover \
         `stopwords` de los textos en ambos instantes al asignar el valor \
         `momento_stopwords = 'ambos'`. Valor por defecto `ambos`.
     :type momento_stopwords: {'antes', 'después', 'ambos'}, opcional

@@ -5,8 +5,8 @@ Control de cambios
 
 Todos los cambios importantes de la librería *ConTexto* serán documentados en esta sección.
 
-v0.2.0 (2021-07- )
-++++++++++++++++++
+v0.2.0 (2021-07-13)
++++++++++++++++++++
 
 Agregado
 --------
