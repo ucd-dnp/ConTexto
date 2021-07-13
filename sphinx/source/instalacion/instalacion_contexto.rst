@@ -3,7 +3,10 @@
 Instalación ConTexto
 ====================
 
-Para la instalación de la librería se recomienda utilizar el gestor de paquetes ``pip``. Por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y así evitar conflictos de versiones con el entorno de desarrollo base del computador.
+Instalación usando pip
+----------------------
+
+Por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y así evitar conflictos de versiones con el entorno de desarrollo base del computador.
 
     .. code-block:: console
 
@@ -22,3 +25,15 @@ Para la instalación de la librería se recomienda utilizar el gestor de paquete
         * Versiones soportadas de ``Python >= 3.6.2``.
         * *ConTexto* está disponible para Windows x64 y Linux.
         * *ConTexto* no fue probada en arquitecturas de 32 bits para Windows, por lo que se podrían presentar errores.
+
+
+
+Instalación usando conda
+------------------------
+
+Para realizar la instalación en ``Anaconda / Miniconda`` utilizar el siguiente comando:
+
+
+    .. code-block:: console
+
+        pip install --extra-index-url https://pypi.org/simple/ contexto
