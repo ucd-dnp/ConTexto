@@ -21,9 +21,9 @@ Modificado
 - Se complementó la lista de stopwords.
 - Se actualizó el :ref:`ejemplo de exploración y visualización <03_exploracion_y_visualizacion>` de textos.
 - Se actualizó y modificó la :ref:`documentación <index>` de la librería.
-- Se modificó el gráfico de :py:func:`co-ocurrencias <exploracion.graficar_coocurrencias>`.
+- Se modificó la función para generar :py:func:`gráficas de co-ocurrencias <exploracion.graficar_coocurrencias>`.
 - Se modificó :ref:`ejemplo de gráfico de co-ocurrencias <Calcular coocurrencias y graficarlas>` con la modificación de la función :py:func:`graficar_coocurrencias() <exploracion.graficar_coocurrencias>` a la sección de :ref:`ejemplos <seccion_ejemplos>`.
-- Se modificó el instalador de *ConTexto*. Ya no es necesario realizar la instalación del paquete *Stanza* manualmente.
+- Se modificó el instalador de *ConTexto*. Ya no es necesario realizar la instalación del paquete *Stanza* manualmente. Ver :ref:`sección de instalación <seccion_instalacion>`
 
 Obsoleto
 --------
