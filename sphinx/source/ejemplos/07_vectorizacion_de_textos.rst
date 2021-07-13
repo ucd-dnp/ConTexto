@@ -3,7 +3,7 @@
 Vectorización de textos
 =======================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>` de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para posteriores análisis de textos. Tales como comparaciones, agrupaciones, entrenamiento de modelos de clasificación, entre otros.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Vectorización <vectorizacion>` de la librería. Este módulo permite generar representaciones vectoriales o numéricas de textos a través de distintas técnicas. La capacidad de representar un texto de forma numérica es muy útil para análisis posteriores de textos, tales como comparaciones, agrupaciones y entrenamiento de modelos de clasificación, entre otros.
 
 
 Importar paquetes necesarios y adecuar el texto de prueba
@@ -114,7 +114,7 @@ posición  palabra
 Vectorizar textos utilizando los vectorizadores entrenados
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Una vez se tiene el vectorizador ajustado, la función `vectorizar` permite obtener, para uno o varios textos de entrada, un arreglo (*array*) en numpy de 2 dimensiones. La cantidad de filas de este arreglo corresponde al número de textos vectorizados, y la cantidad de columnas corresponde al tamaño del vocabulario del vectorizador. El argumento *disperso* permite  obtener como salida una matriz dispersa (disperso=True) o un arreglo de numpy (disperso=False). Esto puede traducirse en un ahorro significativo de memoria en el caso de que se tengan muchos textos y/o un vocabulario muy grande.
+Una vez se tiene el vectorizador ajustado, la función `vectorizar` permite obtener, para uno o varios textos de entrada, un arreglo (*array*) en numpy de 2 dimensiones. La cantidad de filas de este arreglo corresponde al número de textos vectorizados, y la cantidad de columnas corresponde al tamaño del vocabulario del vectorizador. El argumento *disperso*, por defecto igual a *False*, permite obtener la salida como una matriz dispersa, en vez de un arreglo de numpy. Esto puede traducirse en un ahorro significativo de memoria en el caso de que se tengan muchos textos y/o un vocabulario muy grande.
 
 Es importante anotar que si algún texto de entrada tiene palabras que no hacen parte del vocabulario del vectorizador, estas no serán tenidas en cuenta.
 
@@ -181,8 +181,8 @@ Previamente vimos cómo se puede guardar un vectorizador ajustado, por medio del
     >>> vector_tfidf_2 = v_tfidf_2.vectorizar(texto_nuevo, disperso=False)  # Salida como un numpy array
     
     >>> # Se comprueba que los vectores resultantes sean iguales
-    >>> print(np.all((vector_bow == vector_bow_2).toarray()))
-    >>> print(np.all(vector_tfidf == vector_tfidf_2))
+    >>> print(~np.all((vector_bow != vector_bow_2).toarray()))
+    >>> print(~np.all(vector_tfidf != vector_tfidf_2))
     
     True
     True
@@ -193,7 +193,7 @@ Vectorización por medio de *Hashing*
 
 La clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` utiliza el *hashing trick* para determinar directamente (sin necesidad de ajustar sobre un corpus) la posición de cada término de un texto dentro de un vector numérico. Esta técnica es rápida y ligera en memoria, pues no requiere aprender ni guardar un vocabulario. Esto también tiene algunas desventajas; por ejemplo, a partir de un vector no se puede aplicar una transformada inversa para conocer qué palabras contenía el texto.
 
-Adicionalmente, cuando se consideran muchos textos, o textos muy grandes, existe la posibilidad de que se presenten 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distintos, lo cual introduce ambigüedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
+Adicionalmente, para muchos textos, o textos muy grandes, existe la posibilidad de que haya 'colisiones'. Una colisión se da cuando el vectorizador representa de la misma manera a dos términos distintos, lo cual introduce ambigüedad en la vectorización y disminuye la calidad de la representación numérica de los textos. Para evitar este problema, se puede configurar el objeto de clase :py:class:`VectorizadorHash <vectorizacion.VectorizadorHash>` para que tenga muchos más elementos (por medio del parámetro *n_elementos*) a medida que se trabaja con textos de mayor longitud y vocabulario.
 
 .. code-block:: python
 

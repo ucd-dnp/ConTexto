@@ -63,7 +63,7 @@ La clase :py:class:`Similitud <comparacion.Similitud>` permite calcular dos mét
 Inicializar los objetos de clase `Similitud`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Al inicializar los objetos de clase :py:class:`Similitud <comparacion.Similitud>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Similitud <comparacion.Similitud>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
+Al inicializar los objetos de clase :py:class:`Similitud <comparacion.Similitud>` se pasa como parámetro un vectorizador para poder obtener las representaciones vectoriales de los textos de entrada que se le pasen. Si no se pasa ningún vectorizador, por defecto inicializará uno de la clase :py:class:`VectorizadorWord2Vec <vectorizacion.VectorizadorWord2Vec>` del idioma especificado por el usuario (por defecto: español). Si a los métodos del objeto de clase :py:class:`Similitud <comparacion.Similitud>` se pasan vectores en vez de textos como entrada, no importa qué vectorizador tenga, pues no lo utilizará.
 
 Es importante recalcar que si se pasa un vectorizador al objeto de Similitud, este ya debe estar ajustado, en caso de que aplique. Esto es particularmente relevante para los vectores de clases :py:class:`VectorizadorFrecuencias <vectorizacion.VectorizadorFrecuencias>` y :py:class:`VectorizadorDoc2Vec <vectorizacion.VectorizadorDoc2Vec>`.
 

@@ -1,7 +1,7 @@
 .. _04_correccion_ortografica:
 
-Corrección ortográfica
-======================
+Corrección ortográfica de textos
+================================
 
 Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Corrección <correccion>` de la librería. Este módulo permite realizar corrección ortográfica de textos, lo que puede simplificar los documentos, al estandarizar palabras que deberían ser escritas de la misma forma y evitando así tener un vocabulario más grande de lo necesario.
 

@@ -3,7 +3,7 @@
 Análisis exploratorio y visualización
 =====================================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Exploración <exploracion>` de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos y tener mejor idea de qué contienen y sobre qué hablan.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Exploración <exploracion>` de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes, gráficos de dispersión léxica y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos y tener mejor idea de qué contienen y sobre qué hablan.
 
 Importar funciones necesarias y adecuar texto de prueba
 -------------------------------------------------------
@@ -83,6 +83,9 @@ Nubes de palabras
     :align: center
     :alt: 
     :figclass: align-center
+
+
+**Personalizar las nubes de palabras**
 
 La función de nubes de palabras tiene algunos parámetros que permiten personalizar la estética de la gráfica. En particular, se puede configurar:
 
@@ -222,7 +225,7 @@ Calcular coocurrencias y graficarlas
 
 En lingüistica, la coocurrencia es la aparición o utilización conjunta de dos unidades léxicas (por ejemplo, palabras o n-gramas) en una unidad superior, como una oración o un documento. La función :py:func:`exploracion.matriz_coocurrencias` permite calcular las coocurrencias de términos en un mismo documento o en una ventana de +/- n palabras. 
 
-A partir de estas matrices de coocurrencias es posible graficar redes o grafos de coocurrencia. En estos, el tamaño de cada punto es proporcional a la frecuencia de aparición de ese término y el grosor de las lineas entre puntos es proporcional a la cantidad de veces que dos términos aparecen juntos en un documento o una ventana de palabras.
+A partir de estas matrices de coocurrencias es posible graficar redes o grafos de coocurrencia, en las cuales el tamaño de cada punto es proporcional a la frecuencia de aparición de ese término y el grosor de las lineas entre puntos es proporcional a la cantidad de veces que dos términos aparecen juntos en un documento o una ventana de palabras.
 
 .. code-block:: python
 

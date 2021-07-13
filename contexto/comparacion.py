@@ -221,7 +221,7 @@ class Similitud:
 class Distancia:
     def __init__(self, vectorizador=None, lenguaje="es"):
         """
-        Constructor de la clase `Distacia`.
+        Constructor de la clase `Distancia`.
         Permite calcular las diferentes medidas de distancia entre textos y/o \
         vectores.
 

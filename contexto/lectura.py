@@ -293,7 +293,7 @@ class Lector:
         :type tipo: {'inferir', 'txt', 'csv', 'pdf', 'rtf', 'doc', \
             'docx', 'png', 'jpg', 'jpeg'}, opcional
         :param extraer_medios: Especifica si se desean extraer las imágenes \
-            dentro del archivo de Word para ser guardadase como archivos de \
+            dentro del archivo de Word para ser guardadas como archivos de \
             imágenes. Funciona únicamente para archivos `*.docx` y si el \
             parámetro `por_paginas = False`. Valor por defecto `False`.
         :type extraer_medios: bool, opcional

@@ -5,6 +5,10 @@ Lectura y escritura de documentos
 
 Este ejemplo muestra las principales funcionalidades de los módulos :py:mod:`Lectura <lectura>` y :py:mod:`Escritura <escritura>` de la librería. Estos módulos permiten extraer textos de archivos en diferentes formatos, así como escribir texto en nuevos archivos.
 
+.. warning::
+        Es necesario recordar que para el correcto funcionamiento del módulo de :py:mod:`Lectura <lectura>` es necesario tener instalados Poppler y Tesseract en el computador del usuario. Para más información sobre cómo instalar estos requerimientos, por favor consultar la :ref:`Documentación de instalación <seccion_instalacion>`.
+
+
 Importar paquetes necesarios y definir documentos para la prueba
 ----------------------------------------------------------------
 
@@ -146,7 +150,7 @@ Se puede observar que el mejor desempeño se obtiene con *preprocesamiento=2*. C
 Enderezar textos en imágenes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` de la clase :py:class:`Lector <lectura.Lector>` cuenta con el parámetro *enderezar*, por defecto igual a *False*. Cuando este parámetro se hace igual a *True*, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
+Además del parámetro *preprocesamiento*, la función :py:func:`lectura.leer_texto` y la clase :py:class:`Lector <lectura.Lector>` cuenta con el parámetro *enderezar*, por defecto igual a *False*. Cuando este parámetro se hace igual a *True*, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.
 
 Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro *preprocesamiento*. La corrección de giro puede ser bastante útil para textos torcidos, como en el caso de documentos escaneados.
 
@@ -192,7 +196,7 @@ Este procesamiento adicional se puede combinar con cualquiera de los 5 preproces
 Utilizar las clases `Lector` y `Escritor`
 -----------------------------------------
 
-Si se desea, también es posible utilizar las clases `Lector` y `Escritor` para leer y escribir archivos, respectivamente
+Si se desea, también es posible utilizar las clases `Lector` y `Escritor` para leer y escribir archivos, respectivamente.
 
 .. code-block:: python
 
