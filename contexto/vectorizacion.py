@@ -354,7 +354,7 @@ class VectorizadorWord2Vec:
                 self.vectorizador = spacy.load(self.lenguaje)
             except Exception:
                 raise RuntimeError(
-                    "El modelo de vectorización no se ha cargado "
+                    "El modelo de vectorización Word2Vec no se ha cargado "
                     "correctamente. Por favor ejecute nuevamente la función."
                 )
         # Aplicar el modelo al texto
