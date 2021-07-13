@@ -12,5 +12,5 @@ Casos de uso
 
 En esta sección se presentan dos casos de uso práctico en los que se presentan las funcionalidades de la librería en diferentes escenarios:
 
-* :ref:`Caso de uso - Agrupar textos por temas <caso_de_uso_1>`
-* :ref:`Caso de uso - Comparación de fábula <caso_de_uso_2>`
+* :ref:`Caso de uso - Agrupación textos por temáticas similares <caso_de_uso_1>`
+* :ref:`Caso de uso - Exploración y comparación de fábulas <caso_de_uso_2>`

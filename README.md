@@ -32,11 +32,21 @@ Para mayor información consultar la [sección de instalación](https://ucd-dnp.
 
 ## Instalación
 
-Para la instalación de la librería se debe utilizar el gestor de paquetes ``pip``. Por buenas prácticas, se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html).
+Se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y evitar conflictos de versiones con el entorno de desarrollo base del computador. Se debe mencionar que se requiere hacer instalaciones adicionales para el correcto funcionamiento de algunos módulos de la librería. Para más información, consultar la [sección de instalación en la página de documentación](https://ucd-dnp.github.io/ConTexto/versiones/master/seccion_instalacion.html).
+
+Para realizar la instalación por medio del gestor de paquetes ``pip`` utilizar los siguientes comandos:
 
 ```linux
+python -m pip install --upgrade pip
 pip install contexto
 ```
+
+Para realizar la instalación por medio de ``Conda`` utilizar el siguiente comando:
+
+```linux
+pip install --extra-index-url https://pypi.org/simple/ contexto
+```
+
 ## Documentación
 
 La librería cuenta con una documentación que detalla las funciones que la conforman, al igual que ejemplos de uso y demás información de interés relacionada con esta. Para acceder a la documentación, siga el siguiente enlace:
@@ -74,7 +84,6 @@ La librería cuenta con varias funciones de limpieza como son limpieza_basica, l
 	- Quitar palabras de una longitud menor a n caracteres (configurable)
 	- Quitar números (configurable)
 	- Quitar acentos (configurable)
-  
 ```python
 limpio_completo = limpieza_texto(texto_prueba, n_min=3, quitar_acentos=True, 
 	lista_palabras = ['esto','sea', 'con', 'que', 'para', 'este', 'una'])

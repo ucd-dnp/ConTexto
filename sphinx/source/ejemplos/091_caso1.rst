@@ -1,11 +1,11 @@
 .. _caso_de_uso_1:
 
-Caso de uso - Agrupar textos por temas
-======================================
+Caso de uso - Agrupación textos por temáticas similares
+=======================================================
 
 Este es un caso de uso que utiliza varias funcionalidades de la librería ConTexto para procesar y vectorizar textos de noticias sobre diferentes temas. Luego, sobre estos vectores se aplica t-SNE, una técnica no lineal de reducción de dimensionalidad para transformar los vectores a un espacio bidimensional.
 
-Una vez se tengan los vectores en dos dimensiones, se graficarán con un color correspondiente al tema de cada texto. Esto permite observar si los puntos de cada tema quedan juntos entre sí y separados de los otros temas.
+Una vez se tengan los vectores en 2 dimensiones, se graficarán con un color correspondiente al tema de cada texto. Esto permite observar si los puntos de cada tema quedan juntos entre sí y separados de los otros temas.
 
 
 Cargar librerías necesarias y definir parámetros importantes para el caso de uso

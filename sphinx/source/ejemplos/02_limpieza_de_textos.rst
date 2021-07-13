@@ -173,7 +173,7 @@ Importar funciones auxiliares y definir textos de prueba
     >>> # Corpus de prueba
     >>> textos_prueba = [
     >>>     'Este es el primer texto de prueba para la detección de coincidencias.',
-    >>>     'Una segunda oración permite evaluar si hay coincidencia de caracteres con elementos en común.',
+    >>>     'Una segunda oración permite evaluar si hay cadenas de caracteres o elementos en común.',
     >>>     'Tercera frase que consiste en un texto complementario con palabras comúnmente utilizadas.',
     >>>     'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.',
     >>>     'Finalmente, esta frase cierra un grupo de 5 oraciones para probar la detección de coincidencias.',
