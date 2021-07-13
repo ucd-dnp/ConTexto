@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Instalación de Poppler y Tesseract &#8212; documentación de ConTexto - 0.1</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="2.1. Instalación de Poppler y Tesseract en Linux" href="instalacion_popple_teseract_linux.html" />
+    <link rel="prev" title="1. Instalación ConTexto" href="instalacion_contexto.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_introduccion.html">
+  Introducción
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../seccion_instalacion.html">
+  Instalación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ejemplos.html">
+  Ejemplos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_lenguajes_soportados.html">
+  Lenguajes soportados
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ocr.html">
+  OCR
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/comparacion.html">
+  Comparación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/correccion.html">
+  Corrección
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/escritura.html">
+  Escritura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/exploracion.html">
+  Exploración
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lectura.html">
+  Lectura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lematizacion.html">
+  Lematización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lenguajes.html">
+  Lenguajes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/limpieza.html">
+  Limpieza
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/stemming.html">
+  Stemming
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/vectorizacion.html">
+  Vectorización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/utils.html">
+  Utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        v0.1
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="../../master/instalacion/instalacion_popple_teseract.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="instalacion_popple_teseract.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="instalacion_contexto.html">
+   1. Instalación ConTexto
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   2. Instalación de Poppler y Tesseract
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="instalacion_popple_teseract_linux.html">
+     2.1. Instalación de Poppler y Tesseract en Linux
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="instalacion_popple_teseract_windows.html">
+     2.2. Instalación de Poppler y Tesseract en Windows
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="instalacion-de-poppler-y-tesseract">
+<span id="instalacion-poppler-tesseract"></span><h1><span class="section-number">2. </span>Instalación de Poppler y Tesseract<a class="headerlink" href="#instalacion-de-poppler-y-tesseract" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En esta sección se presenta el proceso de instalación de las librerías <code class="docutils literal notranslate"><span class="pre">Poppler</span></code> y <code class="docutils literal notranslate"><span class="pre">Pytesseract</span></code> de Python, requeridas para poder ejecutar de manera satisfactoria las funciones <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.archivo_a_texto" title="lectura.Lector.archivo_a_texto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.archivo_a_texto()</span></code></a>, <a class="reference internal" href="../funciones/lectura.html#lectura.Lector.leer_pdf" title="lectura.Lector.leer_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lectura.Lector.leer_pdf()</span></code></a> y <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> del módulo <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> utilizando  el OCR (Reconocimiento óptico de caracteres, OCR por sus siglas en ingles) de la librería ConTexto.</p>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="instalacion_popple_teseract_linux.html#instalacion-poppler-tesseract-linux"><span class="std std-ref">Instalación de Poppler y Tesseract en Linux</span></a></p></li>
+<li><p><a class="reference internal" href="instalacion_popple_teseract_windows.html#instalacion-poppler-tesseract-windows"><span class="std std-ref">Instalación de Poppler y Tesseract en Windows</span></a></p></li>
+</ul>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="instalacion_contexto.html" title="previous page"><span class="section-number">1. </span>Instalación ConTexto</a>
+    <a class='right-next' id="next-link" href="instalacion_popple_teseract_linux.html" title="next page"><span class="section-number">2.1. </span>Instalación de Poppler y Tesseract en Linux</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

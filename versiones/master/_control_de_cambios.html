@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control de cambios &#8212; documentación de ConTexto - 0.2</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="¿Cómo contribuir?" href="_contribuciones.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="_primeros_pasos.html">
+  Primeros pasos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="_documentacion.html">
+  Documentación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="genindex.html">
+  Índice
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="_contribuciones.html">
+  ¿Cómo contribuir?
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Control de cambios
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        latest
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="_control_de_cambios.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="../v0.1b/index.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v0-2-0-2021-07">
+   v0.2.0 (2021-07- )
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agregado">
+     Agregado
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modificado">
+     Modificado
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obsoleto">
+     Obsoleto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#borrado">
+     Borrado
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arreglado">
+     Arreglado
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="control-de-cambios">
+<span id="id1"></span><h1>Control de cambios<a class="headerlink" href="#control-de-cambios" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Todos los cambios importantes de la librería <em>ConTexto</em> serán documentados en esta sección.</p>
+<div class="section" id="v0-2-0-2021-07">
+<h2>v0.2.0 (2021-07- )<a class="headerlink" href="#v0-2-0-2021-07" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="agregado">
+<h3>Agregado<a class="headerlink" href="#agregado" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Se agregó función para generar <a class="reference internal" href="funciones/exploracion.html#exploracion.graficar_dispersion" title="exploracion.graficar_dispersion"><code class="xref py py-func docutils literal notranslate"><span class="pre">gráfico_de_dispersión_léxica</span></code></a> en el módulo de <a class="reference internal" href="funciones/exploracion.html#module-exploracion" title="exploracion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Exploración</span></code></a>.</p></li>
+<li><p>Se agregó <a class="reference internal" href="ejemplos/03_exploracion_y_visualizacion.html#graficos-de-dispersion-lexica"><span class="std std-ref">Ejemplo de gráfico de dispersión léxica</span></a> con palabras y bi-gramas a la sección de <a class="reference internal" href="seccion_ejemplos.html#seccion-ejemplos"><span class="std std-ref">ejemplos</span></a>.</p></li>
+<li><p>Se agregó compatibilidad para instalación por medio de conda.</p></li>
+<li><p>Se habilitó la librería <em>ConTexto</em> para la versión 3.9 de Python.</p></li>
+</ul>
+</div>
+<div class="section" id="modificado">
+<h3>Modificado<a class="headerlink" href="#modificado" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Se hace compatible con la versión 3.0.6 o mayor de <em>Spacy</em>.</p></li>
+<li><p>Se complementó la lista de stopwords.</p></li>
+<li><p>Se actualizó el <a class="reference internal" href="ejemplos/03_exploracion_y_visualizacion.html#exploracion-y-visualizacion"><span class="std std-ref">ejemplo de exploración y visualización</span></a> de textos.</p></li>
+<li><p>Se actualizó y modificó la <a class="reference internal" href="index.html#index"><span class="std std-ref">documentación</span></a> de la librería.</p></li>
+<li><p>Se modificó el gráfico de <a class="reference internal" href="funciones/exploracion.html#exploracion.graficar_coocurrencias" title="exploracion.graficar_coocurrencias"><code class="xref py py-func docutils literal notranslate"><span class="pre">co-ocurrencias</span></code></a>.</p></li>
+<li><p>Se modificó <a class="reference internal" href="ejemplos/03_exploracion_y_visualizacion.html#calcular-coocurrencias-y-graficarlas"><span class="std std-ref">ejemplo de gráfico de co-ocurrencias</span></a> con la modificación de la función <a class="reference internal" href="funciones/exploracion.html#exploracion.graficar_coocurrencias" title="exploracion.graficar_coocurrencias"><code class="xref py py-func docutils literal notranslate"><span class="pre">graficar_coocurrencias()</span></code></a> a la sección de <a class="reference internal" href="seccion_ejemplos.html#seccion-ejemplos"><span class="std std-ref">ejemplos</span></a>.</p></li>
+<li><p>Se modificó el instalador de <em>ConTexto</em>. Ya no es necesario realizar la instalación del paquete <em>Stanza</em> manualmente.</p></li>
+</ul>
+</div>
+<div class="section" id="obsoleto">
+<h3>Obsoleto<a class="headerlink" href="#obsoleto" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>No hay soporte para <em>Python</em> versión 3.6.1</p></li>
+</ul>
+</div>
+<div class="section" id="borrado">
+<h3>Borrado<a class="headerlink" href="#borrado" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Se eliminaron nombres repetidos en la lista de nombres.</p></li>
+</ul>
+</div>
+<div class="section" id="arreglado">
+<h3>Arreglado<a class="headerlink" href="#arreglado" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Se corrigieron errores en la parte <em>pre-OCR</em>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="_contribuciones.html" title="previous page">¿Cómo contribuir?</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

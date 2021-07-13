@@ -1,0 +1,297 @@
+.. _02_limpieza_de_textos:
+
+Limpieza de textos
+==================
+
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
+
+Funciones de limpieza de textos
+-------------------------------
+
+En esta sección se muestra cómo se pueden hacer distintos procesamientos de un texto de entrada para remover elementos como signos de puntuación, *stopwords*, números y acentos, que pueden llegar a entorpecer el análisis de un conjunto de documentos.
+
+Importar módulo de ConTexto y definir texto de prueba
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    >>> from contexto.limpieza import *
+
+    >>> texto_prueba = '''hola, esto es una prueba para verificar que la limpieza
+    >>> sea hecha con precisión, empeño y calidad! Esperamos que esté todo de 10.
+    >>> Desde Amazonas hasta la Guajira y san andrés, desde John y María hasta Ernesto,
+    >>> esperamos       que todo funcione de manera correcta.'''
+
+Aplicar funciones de limpieza de textos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    >>> # Limpieza básica, se pasa todo a minúsculas, se eliminan signos de puntuación y caracteres numéricos
+    >>> limpio_basico = limpieza_basica(texto_prueba)
+    >>> print(limpio_basico)
+
+    hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
+
+.. code-block:: python
+
+    >>> # Si se desea mantener los caracteres numéricos
+    >>> limpio_basico_nums = limpieza_basica(texto_prueba, quitar_numeros=False)
+    >>> print(limpio_basico_nums)
+
+    hola esto es una prueba para verificar que la limpieza sea hecha con precisión empeño y calidad esperamos que esté todo de 10 desde amazonas hasta la guajira y san andrés desde john y maría hasta ernesto esperamos que todo funcione de manera correcta
+
+.. code-block:: python
+
+    >>> # Para quitar acentos (diéresis, tildes y virgulillas)
+    >>> sin_acentos = remover_acentos(limpio_basico)
+    >>> print(sin_acentos)
+
+    hola esto es una prueba para verificar que la limpieza sea hecha con precision empeno y calidad esperamos que este todo de desde amazonas hasta la guajira y san andres desde john y maria hasta ernesto esperamos que todo funcione de manera correcta
+
+.. code-block:: python
+
+    >>> # Quitar palabras con menos de 4 caracteres
+    >>> quitar_caracteres = remover_palabras_cortas(sin_acentos, 4)
+    >>> print(quitar_caracteres)
+
+    hola esto prueba para verificar limpieza hecha precision empeno calidad esperamos este todo desde amazonas hasta guajira andres desde john maria hasta ernesto esperamos todo funcione manera correcta
+
+Utilizando la función :py:func:`limpieza.limpieza_texto` se puede, a la vez:
+
+* Pasar todo el texto a minúsculas
+* Quitar signos de puntuación
+* Quitar *stopwords* (palabras y/o expresiones). Para esto, se pueden pasar directamente las listas de palabras y expresiones a quitar, o se puede pasar un archivo que contenga esta información.
+* Quitar palabras de una longitud menor a *n* caracteres (configurable)
+* Quitar números (configurable)
+* Quitar acentos (configurable)
+
+.. code-block:: python
+
+    >>> limpio_completo = limpieza_texto(texto_prueba, ubicacion_archivo='entrada/stopwords_prueba.txt', n_min=3)
+    >>> print(limpio_completo)
+
+    hola esto una prueba para verificar que sea hecha con precisión empeño esté todo desde amazonas hasta san andrés desde maría hasta ernesto todo funcione manera correcta
+
+
+Quitar elementos repetidos de un texto
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+La función :py:func:`limpieza.quitar_repetidos` permite quitar elementos repetidos de un texto, de acuerdo a un separador definido por el usuario.
+
+.. code-block:: python
+
+    >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
+
+    >>> # Aplicar función directamente
+    >>> print('texto quitando partes repetidas, utilizando el separador por defecto ("|"):')
+    >>> print(quitar_repetidos(texto_repetido))
+    
+    texto quitando partes repetidas, utilizando el separador por defecto ("|"):
+    hola, hola, como estas,hola, hola tu
+
+.. code-block:: python
+
+    >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
+
+    >>> # Especificar el separador entre documentos/frases
+    >>> print('texto quitando partes repetidas, separadas por coma:')
+    >>> print(quitar_repetidos(texto_repetido, ","))
+
+    texto quitando partes repetidas, separadas por coma:
+    hola como estas hola tu
+
+.. code-block:: python
+
+    >>> texto_repetido = 'hola, hola, como estas,hola, hola tu'
+
+    >>> # Deshabilitar opción de quitar espacios al inicio y al final
+    >>> print('texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:')
+    >>> print(quitar_repetidos(texto_repetido, ",", remover_espacios=False))
+
+    texto quitando partes repetidas, separadas por coma y sin quitar espacios al inicio y final:
+    hola  hola  como estas  hola tu
+
+
+Cargar listas de *stopwords*, predefinidas y definidas por el usuario
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**ConTexto** trae algunas listas predefinidas de *stopwords* que pueden ser cargadas y utilizadas directamente. Las listas incluidas son:
+
+* Palabras comunes del lenguaje castellano (solo palabras)
+* Nombres comunes de hombres y mujeres (solo palabras)
+* Nombres de municipios y departamentos de Colombia (palabras y expresiones: nombres compuestos como "San Andrés")
+
+.. code-block:: python
+
+    >>> # Cargar listas de stopwords predefinidas
+    >>> nombres_hombres = lista_nombres('hombre')
+    >>> nombres_mujeres = lista_nombres('mujer')
+    >>> nombres_todos = lista_nombres()
+    >>> apellidos = lista_apellidos()
+    >>> municipios = lista_geo_colombia('municipios')
+    >>> departamentos = lista_geo_colombia('departamentos')
+    >>> todos_geo = lista_geo_colombia()
+
+Además de estas listas, la función :py:func:`limpieza.lista_stopwords` permite cargar listas predefinidas de las *stopwords* más comunes para varios lenguajes, utilizando la librería NLTK.
+
+.. code-block:: python
+
+    >>> # Stopwords comunes de varios lenguajes (por defecto se devuelven las de español)
+    >>> stopwords = lista_stopwords()
+    >>> stopwords_ingles = lista_stopwords('ingles')
+
+Finalmente, la función :py:func:`limpieza.cargar_stopwords` permite al usuario cargar *stopwords* (tanto palabras como expresiones) desde un archivo plano. Las palabras/expresiones deben ir separadas por comas o ir en renglones separados para ser tenidas en cuenta por aparte.
+
+.. note::
+        La carpeta `entrada <https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada>`_ de la sección de ejemplos del `Repositorio de GitHub de ConTexto <https://github.com/ucd-dnp/ConTexto>`_ tiene insumos que servirán para correr varios ejemplos de la librería **ConTexto**. En este caso en particular, se va a utilizar el archivo *stopwords_prueba.txt*.
+
+.. code-block:: python
+
+    >>> # Cargar archivo con lista de términos y expresiones que se desean remover
+    >>> custom_sw = cargar_stopwords('entrada/stopwords_prueba.txt')
+    >>> print(custom_sw)
+
+    (['calidad', 'limpieza', 'guajira', 'john', 'maria', 'elías'], ['Pedro pablo', 'esperamos que'])
+
+
+Funciones auxiliares para limpieza de textos
+--------------------------------------------
+
+Adicionalmente, el módulo auxiliar `limpieza_aux` contiene algunas funciones complementarias que permiten identificar y remover elementos adicionales que puedan entorpecer el análisis de un conjunto de textos.
+
+
+Importar funciones auxiliares y definir textos de prueba
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    >>> from contexto.utils.limpieza_aux import substrings_en_comun, detectar_coincidencias
+    >>> from contexto.utils.limpieza_aux import caracteres_repetidos, caracteres_consecutivos, consonantes_consecutivas
+    >>> from contexto.utils.limpieza_aux import quitar_coincidenias, quitar_palabras_atipicas
+
+    >>> # Corpus de prueba
+    >>> textos_prueba = [
+    >>>     'Este es el primer texto de prueba para la detección de coincidencias.',
+    >>>     'Una segunda oración permite evaluar si hay coincidencia de caracteres con elementos en común.',
+    >>>     'Tercera frase que consiste en un texto complementario con palabras comúnmente utilizadas.',
+    >>>     'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.',
+    >>>     'Finalmente, esta frase cierra un grupo de 5 oraciones para probar la detección de coincidencias.',
+    >>>     'Una última frase para ampliar un poco el grupo.']
+
+
+Detectar y quitar coincidencias entre un conjunto de textos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En ocasiones un documento puede tener un encabezado o pie de nota común en casi todas sus páginas. Esto puede entorpecer ciertos análisis, al darle un peso demasiado grande a estas coincidencias.
+
+Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coincidenias` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.substrings_en_comun` y :py:func:`utils.limpieza_aux.detectar_coincidencias`) permite, para un conjunto de textos, encontrar y remover coincidencias (cadenas de caracteres) que cumplan una o varias de estas condiciones:
+
+* Que aparezcan en mínimo una proporción determinada de todos los textos
+* Que su longitud (cantidad de caracteres) sea mayor o igual a un valor determinado
+* Que la cadena tenga un número de palabras mayor o igual a un valor determinado
+
+.. code-block:: python
+
+    >>> # Detectar coincidencias de por lo menos 4 y 10 caracteres
+    >>> print(substrings_en_comun(textos_prueba[4], textos_prueba[5], longitud_min=4))
+    >>> print(substrings_en_comun(textos_prueba[4], textos_prueba[5], longitud_min=10))
+    
+    ['a frase ', ' grupo']
+    []
+
+.. code-block:: python
+
+    >>> # Detectar cadenas de caracteres de mínimo 2 palabras que estén en mínimo la mitad de los textos
+    >>> print(detectar_coincidencias(textos_prueba, prop=0.5, n_min=2, longitud_min=5))
+
+    ['a frase ']
+
+.. code-block:: python
+
+    >>> # Quitar las coincidencias encontradas
+    >>> print(quitar_coincidenias(textos_prueba, prop=0.5, n_min=2, longitud_min=5))
+
+    ['Este es el primer texto de prueba para la detección de coincidencias.', 'Una segunda oración permite evaluar si hay cadanea de caracteres elementos en común.', 'Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.', 'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.', 'Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.', 'Una últim para ampliar un poco el grupo.']
+
+
+Detectar y quitar palabras o valores atípicos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya 'ruido' en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como 'abcde' o '0000000'). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.
+
+Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_palabras_atipicas` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.caracteres_repetidos`, :py:func:`utils.limpieza_aux.caracteres_consecutivos` y :py:func:`utils.limpieza_aux.consonantes_consecutivas`) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:
+
+* Que tengan un número o letra repetidos de forma seguida más veces de lo permitido
+* Que tengan números o letras consecutivas de forma seguida en un número mayor de lo permitido
+* Que tengan más consonantes seguidas de lo permitido
+
+.. code-block:: python
+
+    >>> # Detectar si una palabra tiene una cantidad determinada de caracteres repetidos seguidos
+    >>> caracteres_repetidos('123444321', 4)
+
+    False
+
+.. code-block:: python
+
+    >>> # La función por defecto quita acentos y pasa todo a minúsculas, para que esto no afecte la búsqueda de repetidos
+    >>> caracteres_repetidos('GóOol', 3)
+
+    True
+
+.. code-block:: python
+
+    >>> # Detectar si una palabra tiene una cantidad determinada de caracteres consecutivos seguidos
+    >>> caracteres_consecutivos('123444321', 4)
+
+    True
+
+.. code-block:: python
+
+    >>> caracteres_consecutivos('aBCdE', 4)
+
+    True
+
+.. code-block:: python
+
+    >>> # Detectar si una palabra tiene una cantidad determinada de consonantes seguidas    
+    >>> consonantes_consecutivas('AbStracto', 3)
+
+    True
+
+.. code-block:: python
+
+    >>> consonantes_consecutivas('Lynyrd Skynyrd', 4)
+
+    False
+
+.. code-block:: python
+
+    >>> # El resultado cambia si se deja de incluir la letra "Y" como vocal
+    >>> consonantes_consecutivas('Lynyrd Skynyrd', 4, incluir_y=False)
+
+    True
+
+.. code-block:: python
+
+    >>> # La función quita acentos por defecto, por lo que puede trabajar con consonantes que tengan algún tipo de acento o tilde
+    >>> consonantes_consecutivas('mñçs', 4)
+
+    True
+
+.. code-block:: python
+
+    >>> # Prueba de quitar palabras con problemas en un texto
+    >>> texto_prueba = 'HolaAá! esta es una pruebba para ver si, En 12345, se pueden abstraer las reglas del abcdario.'
+    >>> texto_sin_atipicas = quitar_palabras_atipicas(texto_prueba, n_repetidas=3, n_consecutivas=3, n_consonantes=4)
+
+    >>> print(f"---------------\nTexto original:\n{texto_prueba}")
+    >>> print(f"---------------\nTexto sin palabras detectadas como atípicas:\n{texto_sin_atipicas}")
+
+    ---------------
+    Texto original:
+    HolaAá! esta es una pruebba para ver si, En 12345, se pueden abstraer las reglas del abcdario.
+    ---------------
+    Texto sin palabras detectadas como atípicas:
+    ! esta es una pruebba para ver si, En, se pueden las reglas del.

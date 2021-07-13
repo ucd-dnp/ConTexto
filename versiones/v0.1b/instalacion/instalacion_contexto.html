@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Instalación ConTexto &#8212; documentación de ConTexto - 0.1</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="2. Instalación de Poppler y Tesseract" href="instalacion_popple_teseract.html" />
+    <link rel="prev" title="Instalación" href="../seccion_instalacion.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_introduccion.html">
+  Introducción
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../seccion_instalacion.html">
+  Instalación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ejemplos.html">
+  Ejemplos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_lenguajes_soportados.html">
+  Lenguajes soportados
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ocr.html">
+  OCR
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/comparacion.html">
+  Comparación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/correccion.html">
+  Corrección
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/escritura.html">
+  Escritura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/exploracion.html">
+  Exploración
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lectura.html">
+  Lectura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lematizacion.html">
+  Lematización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lenguajes.html">
+  Lenguajes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/limpieza.html">
+  Limpieza
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/stemming.html">
+  Stemming
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/vectorizacion.html">
+  Vectorización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/utils.html">
+  Utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        v0.1
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="../../master/instalacion/instalacion_contexto.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="instalacion_contexto.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Instalación ConTexto
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="instalacion_popple_teseract.html">
+   2. Instalación de Poppler y Tesseract
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.1. Instalación básica
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacion-completa">
+   1.2. Instalación completa
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="instalacion-contexto">
+<span id="instalacion-basica"></span><h1><span class="section-number">1. </span>Instalación ConTexto<a class="headerlink" href="#instalacion-contexto" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">1.1. </span>Instalación básica<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para la instalación de la librería se recomienda utilizar el gestor de paquetes <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y así evitar conflictos de versiones con el entorno de desarrollo base del computador. Esta instalación no presenta restricciones de arquitectura, es decir, funciona tanto para arquitecturas de 32 bits como arquitecturas de 64 bits.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install contexto</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>De manera alterna también puede utilizar el gestor de paquetes <code class="docutils literal notranslate"><span class="pre">conda</span></code>; sin embargo, dado que algunos paquetes no se encuentran disponibles en este gestor será necesario realizar la instalación manualmente de los paquetes <code class="docutils literal notranslate"><span class="pre">librería_1</span></code>, <code class="docutils literal notranslate"><span class="pre">librería_2</span></code> y <code class="docutils literal notranslate"><span class="pre">librería_3</span></code>.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c ucd-dnp contexto</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="instalacion-completa">
+<h2><span class="section-number">1.2. </span>Instalación completa<a class="headerlink" href="#instalacion-completa" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Otra opción de instalación corresponde a utilizar los archivos compilados wheel que se encuentran cargados en el repositorio de GitHub de la librería. Al utilizar los archivos wheel se instalarán las dependencias de ConTexto, equivalente a utilizar el comando <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">contexto</span></code> y adicionalmente se instalará el framework <a class="reference external" href="https://pytorch.org/">PyTorch</a> (con instalación para uso de CPU) y el paquete <a class="reference external" href="https://stanfordnlp.github.io/stanza/">Stanza</a>, estos últimos se utilizan en el módulo de <a class="reference internal" href="../funciones/lematizacion.html#module-lematizacion" title="lematizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lematización</span></code></a>, sin embargo, su instalación no es de caracter obligatorio, ya que por defecto se utiliza el lematizador de <a class="reference external" href="https://spacy.io/">spaCy</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<ul class="simple">
+<li><p>La instalación utilizando los archivos wheel solo soportan Python en arquitecturas de 64 bits (x64) para Windows. Para Linux no se presenta esta restricción.</p></li>
+<li><p>Versión máxima soportada de Python v3.8.5</p></li>
+<li><p>Versión mínima soportada de Python v3.6.1</p></li>
+</ul>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install contexto -f https://ucd-dnp.github.io/ConTexto/contexto_stable.html</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../seccion_instalacion.html" title="previous page">Instalación</a>
+    <a class='right-next' id="next-link" href="instalacion_popple_teseract.html" title="next page"><span class="section-number">2. </span>Instalación de Poppler y Tesseract</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

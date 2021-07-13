@@ -49,7 +49,7 @@ parámetros *psm* y *oem* utilizados por la función de OCR
 
     |ul| 
     |br|
-    |li| 0: orientation y detección de script (OSD) únicamente. |/li| 
+    |li| 0: Horientación y detección de script (OSD) únicamente. |/li| 
     |li| 1: segmentación automática de páginas con OSD. |/li| 
     |li| 2: segmentación automática de páginas sin OSD ni OCR. |/li| 
     |li| 3: segmentación completamente automática de páginas sin OSD. |/li| 

@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Stemming de textos &#8212; documentación de ConTexto - 0.1</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="7. Vectorización de textos" href="07_vectorizacion_de_textos.html" />
+    <link rel="prev" title="5. Lematización de textos" href="05_lematizacion_de_textos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_introduccion.html">
+  Introducción
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_instalacion.html">
+  Instalación
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../seccion_ejemplos.html">
+  Ejemplos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_lenguajes_soportados.html">
+  Lenguajes soportados
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ocr.html">
+  OCR
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/comparacion.html">
+  Comparación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/correccion.html">
+  Corrección
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/escritura.html">
+  Escritura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/exploracion.html">
+  Exploración
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lectura.html">
+  Lectura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lematizacion.html">
+  Lematización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/lenguajes.html">
+  Lenguajes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/limpieza.html">
+  Limpieza
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/stemming.html">
+  Stemming
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/vectorizacion.html">
+  Vectorización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../funciones/utils.html">
+  Utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        v0.1
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="../../master/ejemplos/06_stemming_de_textos.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="06_stemming_de_textos.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_lectura_y_escritura_de_documentos.html">
+   1. Lectura y escritura de documentos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_limpieza_de_textos.html">
+   2. Limpieza de textos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_exploracion_y_visualizacion.html">
+   3. Análisis exploratorio y visualización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_correccion_ortografica.html">
+   4. Corrección ortográfica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_lematizacion_de_textos.html">
+   5. Lematización de textos
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Stemming de textos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_vectorizacion_de_textos.html">
+   7. Vectorización de textos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_comparacion_de_textos.html">
+   8. Comparación de textos
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_casos_de_uso.html">
+   Casos de uso
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importar-funciones-necesarias-y-deficion-de-textos-de-prueba">
+   6.1. Importar funciones necesarias y defición de textos de prueba
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-stemming">
+   6.2. Ejemplo de Stemming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stemming-de-varios-textos-utilizando-un-solo-objeto-de-la-clase-stemmer">
+   6.3.
+   <em>
+    Stemming
+   </em>
+   de varios textos utilizando un solo objeto de la clase
+   <cite>
+    Stemmer
+   </cite>
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="stemming-de-textos">
+<span id="id1"></span><h1><span class="section-number">6. </span>Stemming de textos<a class="headerlink" href="#stemming-de-textos" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Este ejemplo muestra las principales funcionalidades del módulo <a class="reference internal" href="../funciones/stemming.html#module-stemming" title="stemming"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Stemming</span></code></a>, de la librería. Este módulo permite aplicar <em>stemming</em> a textos. El <em>stemming</em> es un método para reducir una palabra a su «raíz» o «tallo» (<em>stem</em>, en inglés) a todas las formas flexionadas de palabras que compartan una misma raíz. Por ejemplo, las palabras niños, niña y niñez tienen todas la misma raíz: «niñ». A diferencia de la lematización, en donde cada lema es una palabra que existe en el vocabulario del lenguaje correspondiente, las palabras raíz que se obtienen al aplicar <em>stemming</em> no necesariamente existen por sí solas como palabra. Aplicar <em>stemming</em> a textos puede simplificarlos, al unificar palabras que comparten la misma raíz, y evitando así tener un vocabulario más grande de lo necesario.</p>
+<div class="section" id="importar-funciones-necesarias-y-deficion-de-textos-de-prueba">
+<h2><span class="section-number">6.1. </span>Importar funciones necesarias y defición de textos de prueba<a class="headerlink" href="#importar-funciones-necesarias-y-deficion-de-textos-de-prueba" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este caso se importa la función <a class="reference internal" href="../funciones/stemming.html#stemming.stem_texto" title="stemming.stem_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">stemming.stem_texto()</span></code></a>, que aplica <em>stemming</em> a un texto de entrada, y la clase <a class="reference internal" href="../funciones/stemming.html#stemming.Stemmer" title="stemming.Stemmer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stemmer</span></code></a>, que puede ser utilizada directamente, entre otras cosas, para agilizar el proceso de hacer <em>stemming</em> a una lista de varios textos. Adicionalmente, se definen algunos textos para desarrollar los ejemplos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">contexto.stemming</span> <span class="kn">import</span> <span class="n">Stemmer</span><span class="p">,</span> <span class="n">stem_texto</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># textos de prueba</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto</span> <span class="o">=</span> <span class="s1">&#39;Esta es una prueba para ver si las funciones son correctas y funcionan bien. Perritos y gatos van a la casita&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_limpiar</span> <span class="o">=</span> <span class="s2">&quot;Este texto, con signos de puntuación y mayúsculas, ¡será limpiado antes de pasar por la función!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_ingles</span> <span class="o">=</span> <span class="s1">&#39;This is a test writing to study if these functions are performing well.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">textos</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;Esta es una primera entrada en el grupo de textos&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;El Pibe Valderrama empezó a destacar jugando fútbol desde chiquitin&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;De los pájaros del monte yo quisiera ser canario&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;Finalizando esta listica, se incluye una última frase un poquito más larga que las anteriores.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ejemplo-de-stemming">
+<h2><span class="section-number">6.2. </span>Ejemplo de Stemming<a class="headerlink" href="#ejemplo-de-stemming" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La función <a class="reference internal" href="../funciones/stemming.html#stemming.stem_texto" title="stemming.stem_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">stemming.stem_texto()</span></code></a> se encarga de aplicar <em>stemming</em> a un texto de entrada. Esta función tiene parámetros opcionales para determinar el lenguaje del texto de entrada (si es «auto», lo detectará automáticamente). Adicionalmente, el parámetro <em>limpiar</em> permite hacer una limpieza básica al texto antes de aplicar el <em>stemming</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Determinar automáticamente el lenguaje del texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">texto_stem</span> <span class="o">=</span> <span class="n">stem_texto</span><span class="p">(</span><span class="n">texto</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">texto_stem</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prueba en otro lenguaje</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stem_english</span> <span class="o">=</span> <span class="n">stem_texto</span><span class="p">(</span><span class="n">texto_ingles</span><span class="p">,</span> <span class="s1">&#39;inglés&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">stem_english</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prueba limpiando un texto antes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">stem_texto</span><span class="p">(</span><span class="n">texto_limpiar</span><span class="p">,</span> <span class="n">limpiar</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="go">esta es una prueb par ver si las funcion son correct y funcion bien. perrit y gat van a la casit</span>
+<span class="go">-------</span>
+<span class="go">this is a test write to studi if these function are perform well.</span>
+<span class="go">-------</span>
+<span class="go">este text con sign de puntuacion y mayuscul ser limpi antes de pas por la funcion</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stemming-de-varios-textos-utilizando-un-solo-objeto-de-la-clase-stemmer">
+<h2><span class="section-number">6.3. </span><em>Stemming</em> de varios textos utilizando un solo objeto de la clase <cite>Stemmer</cite><a class="headerlink" href="#stemming-de-varios-textos-utilizando-un-solo-objeto-de-la-clase-stemmer" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si se desea aplicar <em>stemming</em> a un conjunto de textos, puede ser más rápido definir un único objeto de clase <a class="reference internal" href="../funciones/stemming.html#stemming.Stemmer" title="stemming.Stemmer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stemmer</span></code></a>, y pasar este objeto en el parámetro <em>stemmer</em> de la función <a class="reference internal" href="../funciones/stemming.html#stemming.stem_texto" title="stemming.stem_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">stemming.stem_texto()</span></code></a>. Al hacer esto puede haber un ahorro de tiempo, pues se evita inicializar un nuevo objeto de clase <cite>Stemmer</cite> para cada texto. Este ahorro de tiempo será mayor a medida que sean más los textos que se desean procesar.</p>
+<p>A continuación se muestra una comparación de tiempos para dos opciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar <em>stemming</em> a una lista de textos, aplicando la función <a class="reference internal" href="../funciones/stemming.html#stemming.stem_texto" title="stemming.stem_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">stemming.stem_texto()</span></code></a> a cada uno sin ninguna otra consideración.</p></li>
+<li><p>Definir un objeto de clase <a class="reference internal" href="../funciones/stemming.html#stemming.Stemmer" title="stemming.Stemmer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stemmer</span></code></a> y utilizarlo para procesar la misma lista de textos</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Opción 1: se inicializa el stemmer en cada texto</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">textos</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">stem_texto</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tiempo_1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Opción 2: se utiliza solo un lematizador para todos los textos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stemmer</span> <span class="o">=</span> <span class="n">Stemmer</span><span class="p">(</span><span class="n">lenguaje</span><span class="o">=</span><span class="s1">&#39;español&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">textos</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">stem_texto</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">stemmer</span><span class="o">=</span><span class="n">stemmer</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tiempo_2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">***************</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo con opción 1: </span><span class="si">{</span><span class="n">tiempo_1</span><span class="si">}</span><span class="s1"> segundos</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tiempo con opción 2: </span><span class="si">{</span><span class="n">tiempo_2</span><span class="si">}</span><span class="s1"> segundos</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="go">esta es una primer entrad en el grup de text</span>
+<span class="go">el pib valderram empez a destac jug futbol desd chiquitin</span>
+<span class="go">de los pajar del mont yo quis ser canari</span>
+<span class="go">finaliz esta listic, se inclu una ultim fras un poquit mas larg que las anterior.</span>
+<span class="go">----------</span>
+<span class="go">esta es una primer entrad en el grup de text</span>
+<span class="go">el pib valderram empez a destac jug futbol desd chiquitin</span>
+<span class="go">de los pajar del mont yo quis ser canari</span>
+<span class="go">finaliz esta listic, se inclu una ultim fras un poquit mas larg que las anterior.</span>
+
+<span class="go">***************</span>
+
+<span class="go">Tiempo con opción 1: 0.005089521408081055 segundos</span>
+
+<span class="go">Tiempo con opción 2: 0.004584312438964844 segundos</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="05_lematizacion_de_textos.html" title="previous page"><span class="section-number">5. </span>Lematización de textos</a>
+    <a class='right-next' id="next-link" href="07_vectorizacion_de_textos.html" title="next page"><span class="section-number">7. </span>Vectorización de textos</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

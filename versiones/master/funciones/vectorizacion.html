@@ -1,789 +1,660 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="es" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Vectorización &mdash; documentación de ConTexto - 0.1</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vectorización &#8212; documentación de ConTexto - 0.2</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
-  
-  
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="Utils" href="utils.html" />
-    <link rel="prev" title="Stemming" href="stemming.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="prev" title="Stemming" href="stemming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> ConTexto
-          
-
-          
-            
-            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                latest - v0.1
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">ConTexto:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="comparacion.html">Comparación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
-<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploracion.html">Exploración</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lenguajes.html">Lenguajes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Vectorización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
-</ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">ConTexto</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Vectorización</li>
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
     
     
-      <li class="wy-breadcrumbs-aside">
-        
-          
-        
-      </li>
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
     
-  </ul>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="module-vectorizacion">
-<span id="vectorizacion"></span><h1>Vectorización<a class="headerlink" href="#module-vectorizacion" title="Enlazar permanentemente con este título">¶</a></h1>
-<dl class="py class">
-<dt id="vectorizacion.VectorizadorDoc2Vec">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">vectorizacion.</span></code><code class="descname"><span class="pre">VectorizadorDoc2Vec</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em><span class="n"><span class="pre">minima_cuenta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em><span class="n"><span class="pre">epocas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em><span class="n"><span class="pre">archivo_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor de la clase VectorizadorDoc2Vec. 
-Permite hacer vectorizaciones usando Doc2Vec.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>n_elementos</strong> – (int) Valor por defecto: 100. Número de elementos 
-que tendrán los vectores generados por el vectorizador.</li>
-<li><strong>minima_cuenta</strong> – (int) Valor por defecto: 5. Frecuencia 
-mínima que debe tener cada término para ser tenido en cuenta 
-en el modelo.</li>
-<li><strong>epocas</strong> – (int) Valor por defecto: 20. Número de iteraciones 
-que realiza la red neuronal al entrenar el modelo.</li>
-<li><strong>semilla</strong> – (int) Valor por defecto: 1. El modelo tiene un 
-componente aleatorio. Se establece una semilla para poder 
-replicar los resultados.</li>
-<li><strong>archivo_modelo</strong> – (str) Valor por defecto: “”. Ruta de archivo 
-de un vectorizador en formato pickle (pk). Permite cargar un 
-vectorizador generado previamente, los demás parámetros de 
-inicialización no serán tenidos en cuenta, pues se tomarán del 
-vectorizador cargado.</li>
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_primeros_pasos.html">
+  Primeros pasos
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../_documentacion.html">
+  Documentación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../genindex.html">
+  Índice
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_contribuciones.html">
+  ¿Cómo contribuir?
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_control_de_cambios.html">
+  Control de cambios
+ </a>
+</li>
+
+    
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorDoc2Vec.entrenar_modelo">
-<code class="descname"><span class="pre">entrenar_modelo</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">corpus_entrenamiento</span></span></em>, <em><span class="n"><span class="pre">actualizar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.entrenar_modelo" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite entrenar un modelo a partir de un corpus de entrenamiento.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>corpus_entrenamiento</strong> – (list) Lista de textos de interes para 
-entrenar el modelo.</li>
-<li><strong>actualizar</strong> – (bool) {True, False} Valor por defecto: False. 
-Si True, las nuevas palabras en los documentos se agregarán al 
-vocabulario del modelo.</li>
-<li><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Ruta donde 
-desea exportar el vectorizador ajustado. Usar formato pickle (pk)</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorDoc2Vec.vectorizar">
-<code class="descname"><span class="pre">vectorizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">textos</span></span></em>, <em><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em><span class="n"><span class="pre">num_pasos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documentos-términos. 
-<strong>Llama la función vectorizar_texto</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>textos</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>alpha</strong> – (float) Valor por defecto: 0.025. 
-Tasa de aprendizaje del modelo.</li>
-<li><strong>num_pasos</strong> – (int) Valor por defecto: 50. Número de iteraciones 
-usadas para entrenar el nuevo documento. Los valores más grandes 
-toman más tiempo, pero pueden mejorar la calidad y la estabilidad 
-de ejecución a ejecución de los vectores inferidos. Si no se 
-especifica, se reutilizará el valor de épocas de la 
-inicialización del modelo.</li>
-<li><strong>semilla</strong> – (int) Valor por defecto: 13. El vectorizador tiene un 
-componente aleatorio. Se establece una semilla para poder 
-replicar los resultados.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la 
-vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorDoc2Vec.vectorizar_texto">
-<code class="descname"><span class="pre">vectorizar_texto</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em>, <em><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em><span class="n"><span class="pre">num_pasos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.vectorizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza el texto utilizando el vectorizador. 
-Transformando el texto en un vector documento-términos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Texto de interés para ser vectorizado.</li>
-<li><strong>alpha</strong> – (float) Valor por defecto: 0.025. 
-Tasa de aprendizaje del modelo.</li>
-<li><strong>num_pasos</strong> – (int) Valor por defecto: 50. Número de iteraciones 
-usadas para entrenar el nuevo documento. Los valores más grandes 
-toman más tiempo, pero pueden mejorar la calidad y la estabilidad 
-de ejecución a ejecución de los vectores inferidos. Si no se 
-especifica, se reutilizará el valor de épocas de la 
-inicialización del modelo.</li>
-<li><strong>semilla</strong> – (int) Valor por defecto: 13. El vectorizador tiene un 
-componente aleatorio. Se establece una semilla para poder 
-replicar los resultados.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la 
-vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="vectorizacion.VectorizadorFrecuencias">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">vectorizacion.</span></code><code class="descname"><span class="pre">VectorizadorFrecuencias</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bow'</span></span></em>, <em><span class="n"><span class="pre">rango_ngramas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em><span class="n"><span class="pre">max_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">archivo_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor de la clase VectorizadorFrecuencias. 
-Permite hacer vectorizaciones usando Bag of Words (BOW) o TF-IDF.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>tipo</strong> – (str) {“bow”, “tfidf”} Valor por defecto: “bow”. 
-Determina el tipo de vectorizador a inicializar.</li>
-<li><strong>rango_ngramas</strong> – (tupla) (int, int) Valor por defecto: (1, 1). 
-Límite inferior y superior del rango de valores n para los 
-diferentes n-gramas que se van a extraer. Por ejemplo, 
-un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) 
-significa unigramas y bigramas, y (2, 2) significa solo bigramas.</li>
-<li><strong>max_elementos</strong> – (int) Valor por defecto: None. Número máximo 
-de términos a ser tenidos en cuenta, se escogen los max_elementos  
-términos más frecuentes.</li>
-<li><strong>idf</strong> – (bool) {True, False} Valor por defecto: True. Habilita la 
-reponderación de pesos de los términos usando IDF.</li>
-<li><strong>archivo_modelo</strong> – (str) Valor por defecto: “”. Ruta de archivo 
-de un vectorizador en formato pickle (pk). Permite cargar un 
-vectorizador generado previamente, los demás parámetros de 
-inicialización no serán tenidos en cuenta, pues se tomarán del 
-vectorizador cargado.</li>
-<li><strong>kwargs</strong> – Parámetros adicionales que aceptan las clases <cite>CountVectorizer</cite> y             <cite>TfidfVectorizer</cite> de la librería scikit-learn. Para mayor información sobre             estas clases, y los elementos adicionales que se pueden configurar, se puede             consultar su documentacion:             <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text" target="_blank">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text</a>.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.ajustar">
-<code class="descname"><span class="pre">ajustar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">x</span></span></em>, <em><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.ajustar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite al vectorizador aprender el vocabulario de acuerdo con 
-los textos de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> – Objeto iterable con textos (str), unicode u archivos de 
-texto de interés para ser procesados por el vectorizador.</li>
-<li><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Ruta donde 
-desea exportar el vectorizador ajustado. Usar formato pickle (pk)</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.fit">
-<code class="descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">x</span></span></em>, <em><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.fit" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite al vectorizador aprender el vocabulario de acuerdo con 
-los textos de entrada. <strong>Llama la función ajustar</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> – Objeto iterable con textos (str), unicode u archivos de 
-texto de interés para ser procesados por el vectorizador.</li>
-<li><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Ruta donde 
-desea exportar el vectorizador ajustado. Usar formato pickle (pk)</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.inversa">
-<code class="descname"><span class="pre">inversa</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.inversa" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>A partir de un vector o grupo de vectores, devuelve los términos 
-con frecuencia mayor a 0 en el documento.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>x</strong> – Vector o grupo de vectores correspondientes a la 
-vectorización de textos generada por un vectorizador.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(list) Lista de arrays con los términos más frecuentes 
-correspondientes a los vectores de cada texto/documento.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.transform">
-<code class="descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">x</span></span></em>, <em><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.transform" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documento-términos. 
-<strong>Llama la función vectorizar</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>disperso</strong> – (bool) {True, False} Valor por defecto: False. 
-Si es True retorna los resultados como una matriz dispersa 
-(csr_matrix). Si es False retorna los resultados como un numpy array</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.vectorizar">
-<code class="descname"><span class="pre">vectorizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">textos</span></span></em>, <em><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documentos-términos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>textos</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>disperso</strong> – (bool) {True, False} Valor por defecto: False. 
-Si es True retorna los resultados como una matriz dispersa 
-(csr_matrix). Si es False retorna los resultados como un numpy array.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(csr_matrix o numpy.ndarray) Vectores documentos-términos de la vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorFrecuencias.vocabulario">
-<code class="descname"><span class="pre">vocabulario</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.vocabulario" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Retorna el vocabulario del vectorizador entrenado.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Devuelve:</th><td class="field-body">(dataframe) Vocabulario del vectorizador.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="vectorizacion.VectorizadorHash">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">vectorizacion.</span></code><code class="descname"><span class="pre">VectorizadorHash</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">n_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em><span class="n"><span class="pre">rango_ngramas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor de la clase VectorizadorHash.  
-Permite hacer vectorizaciones usando hashing.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>n_elementos</strong> – (int) Hace referencia al número de elementos o  
-características (columnas) en las matrices de salida.</li>
-<li><strong>rango_ngramas</strong> – (tupla) (int, int) Valor por defecto: (1, 1). 
-Límite inferior y superior del rango de valores n para los 
-diferentes n-gramas que se van a extraer. Por ejemplo, 
-un rango_ngramas de (1, 1) significa solo unigramas, (1, 2) 
-significa unigramas y bigramas, y (2, 2) significa solo bigramas.</li>
-<li><strong>kwargs</strong> – Parámetros adicionales que acepta la clase <cite>HashingVectorizer</cite> de             la librería scikit-learn. Para mayor información sobre esta clase, y los             elementos adicionales que se pueden configurar, se puede consultar su documentacion:             <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text" target="_blank">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text</a>.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorHash.transform">
-<code class="descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">x</span></span></em>, <em><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash.transform" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documento-términos. 
-<strong>Llama la función vectorizar</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>disperso</strong> – (bool) {True, False} Valor por defecto: False. 
-Si es True retorna los resultados como una matriz dispersa 
-(csr_matrix).Si es False retorna los resultados como un numpy array.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorHash.vectorizar">
-<code class="descname"><span class="pre">vectorizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">textos</span></span></em>, <em><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documentos-términos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>textos</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>disperso</strong> – (bool) {True, False} Valor por defecto: False. 
-Si es True retorna los resultados como una matriz dispersa 
-(csr_matrix). Si es False retorna los resultados como un numpy array</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="vectorizacion.VectorizadorWord2Vec">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">vectorizacion.</span></code><code class="descname"><span class="pre">VectorizadorWord2Vec</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lenguaje</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em><span class="n"><span class="pre">dim_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'md'</span></span></em>, <em><span class="n"><span class="pre">maxima_longitud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor de la clase VectorizadorWord2Vec. 
-Permite hacer vectorizaciones utilizando Word2Vec. 
-Utiliza un modelo pre entrenado.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lenguaje</strong> – (str) Define el lenguaje del corpus utilizado 
-al pre entrenar el vectorizador, el lenguaje debe corresponder 
-al idioma del texto a ser analizado. Para mayor información, consultar 
-la sección de <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</li>
-<li><strong>dim_modelo</strong> – (str) {“sm”, “md”, “lg”} Valor por defecto: “md”. 
-Define el tamaño del corpus utilizado al pre entrenar 
-el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.</li>
-<li><strong>maxima_longitud</strong> – (int) Valor por defecto: None. Parámetro opcional que 
-permite establecer la máxima longitud (número de caracteres) que acepta el             vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará             la máxima longitud que trae Spacy por defecto (1 millón de caracteres).</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.establecer_lenguaje">
-<code class="descname"><span class="pre">establecer_lenguaje</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lenguaje</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite establecer el lenguaje a ser utilizado por el vectorizador.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lenguaje</strong> – (str) Define el lenguaje del corpus utilizado 
-al pre entrenar el vectorizador, el lenguaje debe corresponder 
-al idioma del texto a ser analizado. Para mayor información, consultar 
-la sección de <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.iniciar_vectorizador">
-<code class="descname"><span class="pre">iniciar_vectorizador</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">dim_modelo</span></span></em>, <em><span class="n"><span class="pre">maxima_longitud</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.iniciar_vectorizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Permite cargar el modelo de vectorizador a utilizar.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>dim_modelo</strong> – (str) {“sm”, “md”, “lg”} Valor por defecto: “md”. 
-Define el tamaño del corpus utilizado al pre entrenar 
-el vectorizador. Siendo sm - pequeño, md - mediano, lg - grande.</li>
-<li><strong>maxima_longitud</strong> – (int). Parámetro opcional que 
-permite establecer la máxima longitud (número de caracteres) que acepta el             vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará             la máxima longitud que trae Spacy por defecto (1 millón de caracteres).</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.similitud_textos">
-<code class="descname"><span class="pre">similitud_textos</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">t1</span></span></em>, <em><span class="n"><span class="pre">t2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.similitud_textos" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Calcula la similitud coseno entre 2 palabras o textos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>t1</strong> – (str) Primer texto de interés para el cálculo de similitud.</li>
-<li><strong>t2</strong> – (str) Segundo texto de interés para el cálculo de similitud.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(float) Valor entre 0 y 1, donde 1 representa que los textos 
-son iguales.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.vectores_palabras">
-<code class="descname"><span class="pre">vectores_palabras</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em>, <em><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diccionario'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectores_palabras" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Retorna las palabras y vectores que pertenecen a un texto.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Texto de interés a ser procesado.</li>
-<li><strong>tipo</strong> – (str) {“diccionario”, “dataframe”} Valor por defecto: 
-“diccionario”. Si es “diccionario” retorna los resultados como 
-un objeto tipo diccionario, si es “dataframe”, retorna los 
-resultados como un objeto tipo dataframe.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(dict o dataframe) Palabras y vectores del texto.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.vectorizar">
-<code class="descname"><span class="pre">vectorizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">textos</span></span></em>, <em><span class="n"><span class="pre">quitar_desconocidas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza los textos utilizando el vectorizador. 
-Transformando los textos en una matriz documentos-términos. 
-<strong>Llama la función vectorizar_texto</strong>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>textos</strong> – (str o list) Texto o lista con textos de interés 
-para ser vectorizados.</li>
-<li><strong>quitar_desconocidas</strong> – (bool) {True, False} Valor por defecto: False. 
-Cuando este argumento es False, para cada palabra desconocida 
-se incluirá un vector de solo ceros, lo que afectará el vector 
-promedio resultante. Si es True hará que la función sea 
-ligeramente más demorada, pero quizás más precisa, al no tener 
-en cuenta palabras que no están incluídas en el modelo.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vectores documentos-términos de la 
-vectorización de los textos.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="py method">
-<dt id="vectorizacion.VectorizadorWord2Vec.vectorizar_texto">
-<code class="descname"><span class="pre">vectorizar_texto</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em>, <em><span class="n"><span class="pre">quitar_desconocidas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectorizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Vectoriza el texto utilizando el vectorizador. 
-Transformando el texto en un vector documento-términos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Texto de interés para ser vectorizado.</li>
-<li><strong>quitar_desconocidas</strong> – (bool) {True, False} Valor por defecto: False. 
-Cuando este argumento es False, para cada palabra desconocida 
-se incluirá un vector de solo ceros, lo que afectará el vector 
-promedio resultante. Si es True hará que la función sea 
-ligeramente más demorada, pero quizás más precisa, al no tener 
-en cuenta palabras que no están incluídas en el modelo.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(numpy.ndarray) Vector documento-términos de la 
-vectorización del texto.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-
-
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="utils.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="stemming.html" class="btn btn-neutral float-left" title="Stemming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      </div>
+      
     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Derechos de autor 2021, UCD - DNP.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> Otras versiones</span>
-        v: latest
+    <div id="navbar-end">
       
-
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-    <dl>
-      <dt>Ramas</dt>
-          <dd><a href="vectorizacion.html">latest</a></dd>        
-        
-    </dl>    
-
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
   </div>
 </div>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+    </nav>
     
-   
 
-</body>
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        latest
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="vectorizacion.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="../../v0.1b/funciones/vectorizacion.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p class="caption">
+ <span class="caption-text">
+  Módulos y funciones:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparacion.html">
+   Comparación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correccion.html">
+   Corrección
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="escritura.html">
+   Escritura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploracion.html">
+   Exploración
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectura.html">
+   Lectura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lematizacion.html">
+   Lematización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lenguajes.html">
+   Lenguajes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="limpieza.html">
+   Limpieza
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stemming.html">
+   Stemming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Vectorización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="utils.html">
+   Utils
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Otros aspectos:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../seccion_lenguajes_soportados.html">
+   Lenguajes soportados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../seccion_ocr.html">
+   OCR
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vectorizacion">
+<span id="vectorizacion"></span><span id="funciones-vectorizacion"></span><h1>Vectorización<a class="headerlink" href="#module-vectorizacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorDoc2Vec">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vectorizacion.</span></span><span class="sig-name descname"><span class="pre">VectorizadorDoc2Vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minima_cuenta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epocas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor de la clase <cite>VectorizadorDoc2Vec</cite>.         Permite hacer vectorizaciones usando <cite>Doc2Vec</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_elementos</strong> (<em>int</em><em>, </em><em>opcional</em>) – Hace referencia al número de elementos o              características (columnas) en las matrices de salida.             Valor por defecto <cite>100</cite>.</p></li>
+<li><p><strong>minima_cuenta</strong> (<em>int</em><em>, </em><em>opcional</em>) – Frecuencia mínima que debe tener cada término             para ser tenido en cuenta en el modelo. Valor por defecto <cite>5</cite>.</p></li>
+<li><p><strong>epocas</strong> (<em>int</em><em>, </em><em>opcional</em>) – Número de iteraciones que realiza la red neuronal al             entrenar el modelo. Valor por defecto <cite>20</cite>.</p></li>
+<li><p><strong>semilla</strong> (<em>int</em><em>, </em><em>opcional</em>) – El modelo tiene un componente aleatorio. Se             establece una semilla para poder replicar los resultados.             Valor por defecto <cite>1</cite>.</p></li>
+<li><p><strong>archivo_modelo</strong> (<em>str</em><em>, </em><em>opcional</em>) – Ruta de archivo de vectorizador en formato             pickle. Permite cargar un vectorizador generado previamente,             los demás parámetros de inicialización no serán tenidos en             cuenta, pues se tomarán del vectorizador cargado. Valor por             defecto <cite>None</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorDoc2Vec.entrenar_modelo">
+<span class="sig-name descname"><span class="pre">entrenar_modelo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_entrenamiento</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actualizar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.entrenar_modelo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite entrenar un modelo a partir de un corpus de entrenamiento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>corpus_entrenamiento</strong> (<em>list</em><em>, </em><em>array-like</em>) – Lista de textos de interes para             entrenar el modelo.</p></li>
+<li><p><strong>actualizar</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Si <cite>actualizar = True</cite>, las nuevas palabras en             los documentos se agregarán al vocabulario del modelo.             Valor por defecto <cite>False</cite>.</p></li>
+<li><p><strong>archivo_salida</strong> (<em>str</em><em>, </em><em>opcional</em>) – Ruta donde desea exportar el vectorizador             ajustado en formato pickle. Si <cite>archivo_salida = None</cite> no se             guarda el vectorizador ajustado. Valor por defecto <cite>None</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorDoc2Vec.vectorizar">
+<span class="sig-name descname"><span class="pre">vectorizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pasos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador entrenado.         Transformando los textos en una matriz documentos-términos.         <strong>Llama la función vectorizar_texto</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> (<em>str</em><em>, </em><em>list</em><em>, </em><em>array-like</em>) – Texto o textos de interés para ser vectorizado(s).</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>opcional</em>) – Tasa de aprendizaje del modelo. Valor por             defecto <cite>0.025</cite>.</p></li>
+<li><p><strong>num_pasos</strong> (<em>int</em><em>, </em><em>opcional</em>) – Número de iteraciones usadas para entrenar el             nuevo documento. Los valores más grandes toman más tiempo, pero             pueden mejorar la calidad y la estabilidad             de ejecución a ejecución de los vectores inferidos. Si no se             especifica, se reutilizará el valor de épocas de la             inicialización del modelo. Valor por defecto <cite>50</cite>.</p></li>
+<li><p><strong>semilla</strong> (<em>int</em><em>, </em><em>opcional</em>) – El modelo tiene un componente aleatorio. Se             establece una semilla para poder replicar los resultados.             Valor por defecto <cite>13</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(numpy.ndarray) Vectores documentos-términos de la             vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorDoc2Vec.vectorizar_texto">
+<span class="sig-name descname"><span class="pre">vectorizar_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pasos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semilla</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorDoc2Vec.vectorizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza el texto utilizando el vectorizador entrenado.         Transformando el texto en un vector documento-términos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> (<em>str</em><em>, </em><em>list</em><em>, </em><em>array-like</em>) – Texto o textos de interés para ser vectorizado(s).</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>opcional</em>) – Tasa de aprendizaje del modelo. Valor por             defecto <cite>0.025</cite>.</p></li>
+<li><p><strong>num_pasos</strong> (<em>int</em><em>, </em><em>opcional</em>) – Número de iteraciones usadas para entrenar el             nuevo documento. Los valores más grandes toman más tiempo, pero             pueden mejorar la calidad y la estabilidad             de ejecución a ejecución de los vectores inferidos. Si no se             especifica, se reutilizará el valor de épocas de la             inicialización del modelo. Valor por defecto <cite>50</cite>.</p></li>
+<li><p><strong>semilla</strong> (<em>int</em><em>, </em><em>opcional</em>) – El modelo tiene un componente aleatorio. Se             establece una semilla para poder replicar los resultados.             Valor por defecto <cite>13</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(numpy.ndarray) Vectores documentos-términos de la             vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vectorizacion.</span></span><span class="sig-name descname"><span class="pre">VectorizadorFrecuencias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rango_ngramas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor de la clase <cite>VectorizadorFrecuencias</cite>.         Permite hacer vectorizaciones usando Bag of Words (BOW) o TF-IDF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tipo</strong> (<em>{'bow'</em><em>, </em><em>'tfidf'}</em><em>, </em><em>opcional</em>) – Determina el tipo de vectorizador a inicializar.             Valor por defecto <cite>“bow”</cite>.</p></li>
+<li><p><strong>rango_ngramas</strong> (<em>tuple</em><em> (</em><em>int</em><em>, </em><em>int</em><em>)</em><em>, </em><em>opcional</em>) – Límite inferior y superior del rango de             valores <cite>n</cite> para los diferentes n-gramas que se van a extraer.             Por ejemplo, un <cite>rango_ngramas</cite> de <cite>(1, 1)</cite> significa solo             unigramas, <cite>(1, 2)</cite> significa unigramas y bigramas, y <cite>(2, 2)</cite>             significa solo bigramas. Valor por defecto <cite>(1, 1)</cite>.</p></li>
+<li><p><strong>max_elementos</strong> (<em>int</em><em>, </em><em>opcional</em>) – Número máximo de términos a ser tenidos en             cuenta, se escogen los  términos más frecuentes.             Si <cite>max_elementos = None</cite>, se escogen todos los terminos.             Valor por defecto <cite>None</cite>.</p></li>
+<li><p><strong>idf</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Habilita la reponderación de pesos de los términos usando             IDF. Si <cite>idf = False</cite>, se calcula solo la parte TF del             vectorizador. Valor por defecto <cite>True</cite>.</p></li>
+<li><p><strong>archivo_modelo</strong> (<em>str</em><em>, </em><em>opcional</em>) – Ruta de ubicación del archivo vectorizador en             formato pickle. Permite cargar un vectorizador generado             previamente, los demás parámetros de inicialización no serán             tenidos en cuenta, pues se tomarán del vectorizador cargado.             Valor por defecto <cite>None</cite>.</p></li>
+<li><p><strong>kwargs</strong> – Parámetros adicionales que aceptan las clases             <cite>CountVectorizer</cite> y <cite>TfidfVectorizer</cite> de la librería             <cite>scikit-learn</cite>. Para mayor información sobre estas clases, y los             párametros adicionales que se pueden configurar, consultar su             documentacion en:             <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text</a>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.ajustar">
+<span class="sig-name descname"><span class="pre">ajustar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.ajustar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite ajustar el vocabulario  del vectorizador de acuerdo con         los textos de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>like-Array</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser procesados por el vectorizador.</p></li>
+<li><p><strong>archivo_salida</strong> (<em>str</em><em>, </em><em>opcional</em>) – Ruta donde desea exportar el vectorizador             ajustado en formato pickle. Si <cite>archivo_salida = None</cite> no se             guarda el vectorizador ajustado. Valor por defecto <cite>None</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.fit" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite al vectorizador aprender el vocabulario de acuerdo con         los textos de entrada. <strong>Llama la función ajustar</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>like-Array</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser procesados por el vectorizador.</p></li>
+<li><p><strong>archivo_salida</strong> (<em>str</em><em>, </em><em>opcional</em>) – Ruta donde desea exportar el vectorizador             ajustado en formato pickle. Si <cite>archivo_salida = None</cite> no se             guarda el vectorizador ajustado. Valor por defecto <cite>None</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.inversa">
+<span class="sig-name descname"><span class="pre">inversa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.inversa" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A partir de un vector o grupo de vectores, devuelve los términos         con frecuencia mayor a 0 en el documento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em>) – Vector o grupo de vectores correspondientes a la             vectorización de textos generada por un vectorizador.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de arrays con los términos más frecuentes             correspondientes a los vectores de cada texto/documento.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.transform" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador.         Transformando los textos en una matriz documento-términos.         <strong>Llama la función vectorizar</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>like-Array</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>disperso</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Si es <cite>True</cite> retorna los resultados como una matriz             dispersa (csr_matrix). Si es <cite>False</cite> retorna los resultados como             un numpy.array. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(scipy.csr_matrix o numpy.ndarray) Vectores             documentos-términos de la vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.vectorizar">
+<span class="sig-name descname"><span class="pre">vectorizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador.         Transformando los textos en una matriz documentos-términos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>array-like</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>disperso</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Si es <cite>True</cite> retorna los resultados como una matriz             dispersa (csr_matrix). Si es <cite>False</cite> retorna los resultados como             un numpy.array. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(scipy.csr_matrix o numpy.ndarray) Vectores             documentos-términos de la vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorFrecuencias.vocabulario">
+<span class="sig-name descname"><span class="pre">vocabulario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorFrecuencias.vocabulario" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Retorna el vocabulario del vectorizador entrenado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve</dt>
+<dd class="field-odd"><p>(pandas.DataFrame) Vocabulario del vectorizador.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorHash">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vectorizacion.</span></span><span class="sig-name descname"><span class="pre">VectorizadorHash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_elementos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rango_ngramas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor de la clase <cite>VectorizadorHash</cite>.         Permite hacer vectorizaciones usando hashing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_elementos</strong> (<em>int</em><em>, </em><em>opcional</em>) – Hace referencia al número de elementos o              características (columnas) en las matrices de salida.             Valor por defecto <cite>100</cite>.</p></li>
+<li><p><strong>rango_ngramas</strong> (<em>tuple</em><em> (</em><em>int</em><em>, </em><em>int</em><em>)</em><em>, </em><em>opcional</em>) – Límite inferior y superior del rango de             valores <cite>n</cite> para los diferentes n-gramas que se van a extraer.             Por ejemplo, un <cite>rango_ngramas</cite> de <cite>(1, 1)</cite> significa solo             unigramas, <cite>(1, 2)</cite> significa unigramas y bigramas, y <cite>(2, 2)</cite>             significa solo bigramas. Valor por defecto <cite>(1, 1)</cite>.</p></li>
+<li><p><strong>kwargs</strong> – Parámetros adicionales que acepta la clase             <cite>HashingVectorizer</cite> de la librería scikit-learn. Para mayor             información sobre esta clase, y los párametros adicionales que se             pueden configurar, consultar su documentacion:             <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_extraction.text</a>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorHash.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash.transform" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador.         Transformando los textos en una matriz documento-términos.         <strong>Llama la función `vectorizar`</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>array-like</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>disperso</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Si es <cite>True</cite> retorna los resultados como una matriz             dispersa (csr_matrix). Si es <cite>False</cite> retorna los resultados como             un numpy.array. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(scipy.csr_matrix o numpy.ndarray) Vectores             documentos-términos de la vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorHash.vectorizar">
+<span class="sig-name descname"><span class="pre">vectorizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disperso</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorHash.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador.         Transformando los textos en una matriz documentos-términos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>array-like</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>disperso</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Si es <cite>True</cite> retorna los resultados como una matriz             dispersa (csr_matrix). Si es <cite>False</cite> retorna los resultados como             un numpy.array. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(scipy.csr_matrix o numpy.ndarray) Vectores             documentos-términos de la vectorización de los textos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vectorizacion.</span></span><span class="sig-name descname"><span class="pre">VectorizadorWord2Vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxima_longitud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor de la clase <cite>VectorizadorWord2Vec</cite>.         Permite hacer vectorizaciones utilizando <cite>Word2Vec</cite>.         Utiliza un modelo pre-entrenado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lenguaje</strong> (<em>{'es'</em><em>, </em><em>'en'</em><em>, </em><em>'fr'</em><em>, </em><em>'ge'}</em><em>, </em><em>opcional</em>) – Define el lenguaje del corpus utilizado             al pre-entrenar el vectorizador, el lenguaje debe corresponder             al idioma del texto de entrada. Para mayor información,             consultar la sección de             <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.             Valor por defecto <cite>“es”</cite>.</p></li>
+<li><p><strong>dim_modelo</strong> (<em>{'lg'</em><em>, </em><em>'md'</em><em>, </em><em>'sm'}</em><em>, </em><em>opcional</em>) – Tamaño del modelo para pre-entrenar el             vectorizador. “lg” es grande (large), “md” es             mediano (medium) y “sm” es pequeño (small). Los modelos más             grandes usualmente obtienen mejores resultados, pero requieren             mayor tiempo de carga. Valor por defecto <cite>“md”</cite>.</p></li>
+<li><p><strong>maxima_longitud</strong> (<em>int</em><em>, </em><em>opcional</em>) – Establecer la máxima longitud (número de             caracteres) que acepta el vectorizador en un texto de entrada. Si             <cite>maxima_longitud = None</cite>, se utilizará la máxima longitud que             trae Spacy por defecto (1 millón de caracteres).             Valor por defecto <cite>None</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.establecer_lenguaje">
+<span class="sig-name descname"><span class="pre">establecer_lenguaje</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite establecer el lenguaje a ser utilizado por el vectorizador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lenguaje</strong> (<em>{'es'</em><em>, </em><em>'en'</em><em>, </em><em>'fr'</em><em>, </em><em>'ge'}</em>) – Define el lenguaje del corpus utilizado             al pre-entrenar el vectorizador, el lenguaje debe corresponder             al idioma del texto de entrada. Para mayor información,             consultar la sección de             <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.iniciar_vectorizador">
+<span class="sig-name descname"><span class="pre">iniciar_vectorizador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_modelo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxima_longitud</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.iniciar_vectorizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite cargar el modelo de vectorizador a utilizar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim_modelo</strong> (<em>{'lg'</em><em>, </em><em>'md'</em><em>, </em><em>'sm'}</em>) – Tamaño del modelo para pre-entrenar el             vectorizador. “lg” es grande (large), “md” es             mediano (medium) y “sm” es pequeño (small). Los modelos más             grandes usualmente obtienen mejores resultados, pero requieren             mayor tiempo de carga.</p></li>
+<li><p><strong>maxima_longitud</strong> (<em>int</em>) – Establecer la máxima longitud (número de             caracteres) que acepta el vectorizador en un texto de entrada. Si             <cite>maxima_longitud = None</cite>, se utilizará la máxima longitud que             trae Spacy por defecto (1 millón de caracteres).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.similitud_textos">
+<span class="sig-name descname"><span class="pre">similitud_textos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.similitud_textos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula la similitud coseno entre 2 palabras o textos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t1</strong> (<em>str</em>) – Primer texto de interés para el cálculo de similitud.</p></li>
+<li><p><strong>t2</strong> (<em>str</em>) – Segundo texto de interés para el cálculo de similitud.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(float) Valor entre 0 y 1, donde 1 representa que los textos             son iguales.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.vectores_palabras">
+<span class="sig-name descname"><span class="pre">vectores_palabras</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diccionario'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectores_palabras" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Retorna las palabras y vectores que pertenecen a un texto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> (<em>str</em>) – Texto de interés a ser procesado.</p></li>
+<li><p><strong>tipo</strong> (<em>{'diccionario'</em><em>, </em><em>'dataframe'}</em><em>, </em><em>opcional</em>) – Si <cite>tipo = “diccionario”</cite> retorna los resultados como             un objeto tipo diccionario, si es <cite>tipo = “dataframe”</cite>, retorna             los resultados como un objeto tipo pandas.DataFrame. Valor por             defecto <cite>“diccionario”</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(dict o dataframe) Palabras y vectores del texto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.vectorizar">
+<span class="sig-name descname"><span class="pre">vectorizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quitar_desconocidas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectorizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza los textos utilizando el vectorizador.         Transformando los textos en una matriz documentos-términos.         <strong>Llama la función `vectorizar_texto`</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>array-like</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>quitar_desconocidas</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Cuando este argumento es <cite>False</cite>, para             cada palabra desconocida se incluirá un vector de solo ceros, lo             que afectará el vector promedio resultante. Si es <cite>True</cite> hará             que la función sea ligeramente más demorada, pero quizás más             precisa, al no tener en cuenta palabras que no están incluídas             en el modelo. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(numpy.ndarray) Vector documento-términos de la             vectorización del texto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vectorizacion.VectorizadorWord2Vec.vectorizar_texto">
+<span class="sig-name descname"><span class="pre">vectorizar_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quitar_desconocidas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vectorizacion.VectorizadorWord2Vec.vectorizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vectoriza el texto utilizando el vectorizador.         Transformando el texto en un vector documento-términos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>textos</strong> (<em>array-like</em><em>, </em><em>iterable</em>) – Objeto iterable con textos, unicode u archivos de             texto de interés para ser vectorizados.</p></li>
+<li><p><strong>quitar_desconocidas</strong> (<em>bool</em><em>, </em><em>opcional</em>) – Cuando este argumento es <cite>False</cite>, para             cada palabra desconocida se incluirá un vector de solo ceros, lo             que afectará el vector promedio resultante. Si es <cite>True</cite> hará             que la función sea ligeramente más demorada, pero quizás más             precisa, al no tener en cuenta palabras que no están incluídas             en el modelo. Valor por defecto <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(numpy.ndarray) Vector documento-términos de la             vectorización del texto.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="stemming.html" title="previous page">Stemming</a>
+    <a class='right-next' id="next-link" href="utils.html" title="next page">Utils</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
 </html>

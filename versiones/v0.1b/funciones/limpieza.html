@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Limpieza &#8212; documentación de ConTexto - 0.1</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Stemming" href="stemming.html" />
+    <link rel="prev" title="Lenguajes" href="lenguajes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_introduccion.html">
+  Introducción
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_instalacion.html">
+  Instalación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ejemplos.html">
+  Ejemplos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_lenguajes_soportados.html">
+  Lenguajes soportados
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ocr.html">
+  OCR
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comparacion.html">
+  Comparación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="correccion.html">
+  Corrección
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="escritura.html">
+  Escritura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="exploracion.html">
+  Exploración
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="lectura.html">
+  Lectura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="lematizacion.html">
+  Lematización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="lenguajes.html">
+  Lenguajes
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Limpieza
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="stemming.html">
+  Stemming
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="vectorizacion.html">
+  Vectorización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="utils.html">
+  Utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        v0.1
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="../../master/funciones/limpieza.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="limpieza.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-limpieza">
+<span id="limpieza"></span><h1>Limpieza<a class="headerlink" href="#module-limpieza" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.cargar_stopwords">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">cargar_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ubicacion_archivo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.cargar_stopwords" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función para cargar las listas de palabras y expresiones que se desean     eliminar de un texto a partir de un archivo plano.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ubicacion_archivo</strong> – (str) Ubicación del archivo plano que contiene la lista de palabras         y/o lista de palabras separadas por espacios, comas o saltos de línea.</p></li>
+<li><p><strong>encoding</strong> – (str) Valor por defecto “utf-8”. Codificación del archivo de texto.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p><p>(tuple) Tupla que contiene: <br /></p>
+<p><ul>  <li> lista_palabras (list): Lista que contiene las palabras que se desean quitar en un texto. </li>
+<li> lista_expresiones (list): Lista que contiene las expresiones que se desean quitar de un texto. </li>  </ul></p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.limpieza_basica">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">limpieza_basica</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quitar_numeros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.limpieza_basica" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Limpieza básica del texto. Esta función realiza una limpieza básica del texto de entrada,     transforma todo el texto a letras minúsculas, quita signos de puntuación y caracteres     especiales, remueve espacios múltiples dejando solo espacio sencillo y caracteres     de salto de línea o tabulaciones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto de entrada al que se le aplicará la limpieza básica.</p></li>
+<li><p><strong>quitar_numeros</strong> – (bool) {True, False} Valor por defecto: True.         Indica si desea quitar los números dentro del texto.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto después de la limpieza básica.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.limpieza_texto">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">limpieza_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lista_palabras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lista_expresiones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubicacion_archivo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quitar_numeros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quitar_acentos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momento_stopwords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ambos'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.limpieza_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Limpieza completa de texto. Esta función hace una limpieza exhaustiva del texto de entrada.     Es capaz de quitar palabras y expresiones contenidas en <cite>lista_palabras</cite> y <cite>lista_expresiones</cite>,     quita acentos de las palabras, números y palabras de longitud menor a <cite>n_min</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto de entrada al que se le aplicará el proceso de limpieza.</p></li>
+<li><p><strong>lista_palabras</strong> – (list) Parámetro opcional. Lista de palabras que se quieren quitar del texto. Por ejemplo,         la lista <cite>[“hola”, “de”, “a”]</cite> eliminará esas palabras.</p></li>
+<li><p><strong>lista_expresiones</strong> – (list) Parámetro opcional. Lista de expresiones que se quieren quitar al texto.         A diferencia de <cite>lista_palabras</cite>, esta puede contener expresiones compuestas. Por ejemplo,         [“San juan de Dios”, “Distrito Capital, “fuente de agua”]; esta lista quitará esas expresiones         del texto de entrada.</p></li>
+<li><p><strong>ubicacion_archivo</strong> – (str) Valor por defecto: None. Parámetro opcional. Indica la ubicación del archivo         plano que contiene la lista de palabras y/o expresiones separadas por comas o saltos de línea.         Si se usa este parámetro, no se tendrán en cuenta los parámetros <cite>lista_palabras</cite> y <cite>lista_expresiones</cite>.</p></li>
+<li><p><strong>n_min</strong> – (int) Parámetro opcional. Longitud mínima de las palabras aceptadas en el texto de entrada.</p></li>
+<li><p><strong>quitar_numeros</strong> – (bool) {True, False} Valor por defecto: True. Si <cite>False</cite>, no se quitan los números dentro         del texto de entrada</p></li>
+<li><p><strong>quitar_acentos</strong> – (bool) {True, False} Valor por defecto: False. Opción para determinar si se quitan         acentos (tildes, diéresis, virgulilla) del texto.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos al momento de quitar stopwords. Si el valor es “None”, se utilizará por defecto una instancia         de la clase <em>TokenizadorNLTK</em>.</p></li>
+<li><p><strong>momento_stopwords</strong> – (str) {“antes”, “después”, “ambos”} Valor por defecto: “ambos”. Indica en qué         momento remover las <em>stopwords</em> del texto. Las opciones son hacerlo antes o después         de las demás operaciones de limpieza del texto de entrada, eligiendo los valores «antes» o «después»,         respectivamente (la función acepta los valores con o sin tildes y/o mayúsculas). También es posible remover         stopwords de los textos tanto antes como despúes de las otras operaciones de limpieza, al asignar el valor         «ambos» a este parámetro. Cualquier otro valor que se asigne a este parámetro ocasionará que no se haga         remoción de stopwords en el texto.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto después de la limpieza completa.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.lista_apellidos">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">lista_apellidos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.lista_apellidos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera lista de apellidos más comunes del español.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve</dt>
+<dd class="field-odd"><p>(list) Lista de apellidos más comunes del español.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.lista_geo_colombia">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">lista_geo_colombia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'todos'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.lista_geo_colombia" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera lista de nombres de municipios y departamentos de Colombia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>tipo</strong> – (str) {“todos”, “municipios”, “departamentos”} Valor por defecto “todos”.         “todos” genera una lista de nombres de municipios y departamentos de Colombia,         “municipios” genera nombres solo de municipios y “departamentos” genera nombres         solo de departamentos.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de nombres de municipios, departamentos o ambos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.lista_nombres">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">lista_nombres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tipo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'todos'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.lista_nombres" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera lista de nombres más comunes del español. Retorna lista con los nombres     más comunes, tanto para hombre y mujer del idioma español. La función permite generar     lista de nombres solo de mujeres o solo de hombres con el parámetro <cite>tipo</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>tipo</strong> – (str) {“todos”, “mujeres”, “hombres”} Valor por defecto: “todos”.         Permite generar una lista de nombres de: solo mujeres (<cite>tipo=”mujeres”</cite>),         solo nombres de hombres (<cite>tipo=”hombres”</cite>) o ambos (<cite>tipo=”todos”</cite>).</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de nombres en español.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.lista_stopwords">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">lista_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.lista_stopwords" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera una lista de stopwords (palabras que se quieren quitar de un texto).     Función que genera una lista de stopwords de un idioma predeterminado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lenguaje</strong> – (str) Valor por defecto: “es” (Español). Define el lenguaje de las stopwords.         Para mayor información, consultar la sección de <a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de palabras stopwords del idioma seleccionado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.quitar_repetidos">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">quitar_repetidos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remover_espacios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.quitar_repetidos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función para quitar frases o palabras repetidas que están separadas por un     caracter en específico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto de entrada.</p></li>
+<li><p><strong>sep</strong> – (str) Valor por defecto: “|”. Separador determinado para encontrar palabras repetidas.</p></li>
+<li><p><strong>remover_espacios</strong> – (bool) {True, False} Valor por defecto: True. Si True quita los espacios         presentes al inicio y al final de una palabra.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto sin palabras o expresiones repetidas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.remover_acentos">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">remover_acentos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.remover_acentos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Quita los acentos (tildes, diéresis, virgulilla) de un texto de entrada. Esta reemplaza     cada carácter con acento en el texto por su equivalente sin acento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>texto</strong> – (str) Texto al que se le quieren quitar los acentos.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto sin acentos después de la limpieza.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.remover_palabras_cortas">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">remover_palabras_cortas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_min</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.remover_palabras_cortas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Quita las palabras en el texto con longitud estrictamente menor a <cite>n_min</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto de entrada al que se quitarán las palabras menores a <cite>n_min</cite>.</p></li>
+<li><p><strong>n_min</strong> – (int) Longitud mínima de las palabras aceptadas en el texto de entrada.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto sin las palabras de longitud menor a <cite>n_min</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpieza.remover_stopwords">
+<span class="sig-prename descclassname"><span class="pre">limpieza.</span></span><span class="sig-name descname"><span class="pre">remover_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lista_palabras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lista_expresiones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubicacion_archivo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpieza.remover_stopwords" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Quita las palabras y expresiones determinadas de un texto. Esta función quita del texto de entrada,     palabras específicas contenidas en <cite>lista_palabras</cite>, o expresiones de palabras contenidas en <cite>lista_expresiones</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto al cual se le quitarán palabras y expresiones contenidas en <cite>lista_palabras</cite>     y <cite>lista_expresiones</cite>.</p></li>
+<li><p><strong>lista_palabras</strong> – (list) Parámetro opcional. Lista de palabras que se quieren quitar del texto. Por ejemplo,         la lista <cite>[“hola”, “de”, “a”]</cite> eliminará esas palabras.</p></li>
+<li><p><strong>lista_expresiones</strong> – (list) Parámetro opcional. Lista de expresiones que se quieren quitar al texto.         A diferencia de <cite>lista_palabras</cite>, esta puede contener palabras compuestas. Por ejemplo,         [“San juan de Dios”, “Distrito Capital, “fuente de agua”]; esta lista quitará esas palabras         compuestas del texto de entrada.</p></li>
+<li><p><strong>ubicacion_archivo</strong> – (str) Valor por defecto: None. Ubicación del archivo plano que contiene la lista de palabras         y/o lista de palabras separadas por espacios, comas o saltos de línea. En         caso contrario no es necesario especificar los parametros <cite>lista_palabras</cite> y <cite>lista_expresiones</cite>.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se utilizará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto sin las palabras y expresiones incluidas en la limpieza.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="lenguajes.html" title="previous page">Lenguajes</a>
+    <a class='right-next' id="next-link" href="stemming.html" title="next page">Stemming</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

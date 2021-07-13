@@ -3,7 +3,7 @@
 Limpieza de textos
 ==================
 
-Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>`, de la librería. También se muestran ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
+Este ejemplo muestra las principales funcionalidades del módulo :py:mod:`Limpieza <limpieza>` de la librería. También muestra ejemplos de uso de las funciones de limpieza contenidas en el módulo auxiliar `limpieza_aux`, que hace parte de `utils`.
 
 Funciones de limpieza de textos
 -------------------------------
@@ -57,7 +57,7 @@ Aplicar funciones de limpieza de textos
 
     hola esto prueba para verificar limpieza hecha precision empeno calidad esperamos este todo desde amazonas hasta guajira andres desde john maria hasta ernesto esperamos todo funcione manera correcta
 
-Utilizando la función :py:func:`limpieza.limpieza_texto` se puede, a la vez:
+Utilizando la función :py:func:`limpieza.limpieza_texto` se puede a la vez:
 
 * Pasar todo el texto a minúsculas
 * Quitar signos de puntuación
@@ -158,7 +158,7 @@ Finalmente, la función :py:func:`limpieza.cargar_stopwords` permite al usuario 
 Funciones auxiliares para limpieza de textos
 --------------------------------------------
 
-Adicionalmente, el módulo auxiliar `limpieza_aux` contiene algunas funciones complementarias que permiten identificar y remover elementos adicionales que puedan entorpecer el análisis de un conjunto de textos.
+Adicionalmente, el módulo :ref:`Limpieza auxiliar <funciones_utils_limpieza_utils>` contiene algunas funciones complementarias que permiten identificar y remover elementos adicionales que puedan entorpecer el análisis de un conjunto de textos.
 
 
 Importar funciones auxiliares y definir textos de prueba
@@ -185,7 +185,7 @@ Detectar y quitar coincidencias entre un conjunto de textos
 
 En ocasiones un documento puede tener un encabezado o pie de nota común en casi todas sus páginas. Esto puede entorpecer ciertos análisis, al darle un peso demasiado grande a estas coincidencias.
 
-Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coincidenias` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.substrings_en_comun` y :py:func:`utils.limpieza_aux.detectar_coincidencias`) permite, para un conjunto de textos, encontrar y remover coincidencias (cadenas de caracteres) que cumplan una o varias de estas condiciones:
+Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coincidenias() <utils.tokenizacion.quitar_coincidenias>` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.substrings_en_comun() <utils.tokenizacion.substrings_en_comun>` y :py:func:`utils.limpieza_aux.detectar_coincidencias() <utils.tokenizacion.detectar_coincidencias>` permite, para un conjunto de textos, encontrar y remover coincidencias (cadenas de caracteres) que cumplan una o varias de estas condiciones:
 
 * Que aparezcan en mínimo una proporción determinada de todos los textos
 * Que su longitud (cantidad de caracteres) sea mayor o igual a un valor determinado
@@ -212,7 +212,7 @@ Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_coinc
     >>> # Quitar las coincidencias encontradas
     >>> print(quitar_coincidenias(textos_prueba, prop=0.5, n_min=2, longitud_min=5))
 
-    ['Este es el primer texto de prueba para la detección de coincidencias.', 'Una segunda oración permite evaluar si hay cadanea de caracteres elementos en común.', 'Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.', 'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.', 'Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.', 'Una últim para ampliar un poco el grupo.']
+    ['Este es el primer texto de prueba para la detección de coincidencias.', 'Una segunda oración permite evaluar si hay coincidencia de caracteres elementos en común.', 'Tercer que consiste en un texto complementario con palabras comúnmente utilizadas.', 'En esta oración y la siguiente se introducen elementos para completar un grupo de por lo menos 5.', 'Finalmente, est cierra un grupo de 5 oraciones para probar la detección de coincidencias.', 'Una últim para ampliar un poco el grupo.']
 
 
 Detectar y quitar palabras o valores atípicos
@@ -220,7 +220,7 @@ Detectar y quitar palabras o valores atípicos
 
 Si se está trabajando con un texto de mala calidad (por ejemplo, porque se aplicó OCR a un documento antiguo y mal escaneado), es posible que haya 'ruido' en el texto, como palabras sin sentido, que puede afectar el análisis de este documento. Otro caso posible es trabajar con textos que tengan palabras o valores numéricos sospechosos (como 'abcde' o '0000000'). En este caso, puede ser de utilidad poder detectar y/o remover estas palabras sospechosas o de ruido.
 
-Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_palabras_atipicas` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.caracteres_repetidos`, :py:func:`utils.limpieza_aux.caracteres_consecutivos` y :py:func:`utils.limpieza_aux.consonantes_consecutivas`) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:
+Para evitar este problema, la función :py:func:`utils.limpieza_aux.quitar_palabras_atipicas() <utils.tokenizacion.quitar_palabras_atipicas>` (que a su vez utiliza las funciones :py:func:`utils.limpieza_aux.caracteres_repetidos() <utils.tokenizacion.caracteres_repetidos>`, :py:func:`utils.limpieza_aux.caracteres_consecutivos() <utils.tokenizacion.caracteres_consecutivos>` y :py:func:`utils.limpieza_aux.consonantes_consecutivas() <utils.tokenizacion.consonantes_consecutivas>`) permite, para un conjunto de textos, encontrar y remover palabras que cumplan una o varias de estas condiciones:
 
 * Que tengan un número o letra repetidos de forma seguida más veces de lo permitido
 * Que tengan números o letras consecutivas de forma seguida en un número mayor de lo permitido

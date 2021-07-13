@@ -1,245 +1,348 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="es" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Utils &mdash; documentación de ConTexto - 0.1</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utils &#8212; documentación de ConTexto - 0.2</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
-  
-  
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="prev" title="Vectorización" href="vectorizacion.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="next" title="Lenguajes soportados" href="../seccion_lenguajes_soportados.html" />
+    <link rel="prev" title="Vectorización" href="vectorizacion.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> ConTexto
-          
-
-          
-            
-            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                latest - v0.1
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">ConTexto:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="comparacion.html">Comparación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="correccion.html">Corrección</a></li>
-<li class="toctree-l1"><a class="reference internal" href="escritura.html">Escritura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploracion.html">Exploración</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lectura.html">Lectura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lematizacion.html">Lematización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lenguajes.html">Lenguajes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="limpieza.html">Limpieza</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectorizacion.html">Vectorización</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#auxiliares">Auxiliares</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tokenizacion">Tokenizacion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#limpieza-aux">Limpieza aux</a></li>
-</ul>
-</li>
-</ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">ConTexto</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Utils</li>
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
     
     
-      <li class="wy-breadcrumbs-aside">
-        
-          
-        
-      </li>
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
     
-  </ul>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   
-  <hr/>
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_primeros_pasos.html">
+  Primeros pasos
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../_documentacion.html">
+  Documentación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../genindex.html">
+  Índice
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_contribuciones.html">
+  ¿Cómo contribuir?
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_control_de_cambios.html">
+  Control de cambios
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
             
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        latest
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="utils.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="../../v0.1b/funciones/utils.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p class="caption">
+ <span class="caption-text">
+  Módulos y funciones:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparacion.html">
+   Comparación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="correccion.html">
+   Corrección
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="escritura.html">
+   Escritura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploracion.html">
+   Exploración
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lectura.html">
+   Lectura
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lematizacion.html">
+   Lematización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lenguajes.html">
+   Lenguajes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="limpieza.html">
+   Limpieza
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stemming.html">
+   Stemming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vectorizacion.html">
+   Vectorización
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Utils
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Otros aspectos:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../seccion_lenguajes_soportados.html">
+   Lenguajes soportados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../seccion_ocr.html">
+   OCR
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auxiliares">
+   Auxiliares
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tokenizacion">
+   Tokenizacion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limpieza-aux">
+   Limpieza aux
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="utils">
-<h1>Utils<a class="headerlink" href="#utils" title="Enlazar permanentemente con este título">¶</a></h1>
+<span id="funciones-utils"></span><h1>Utils<a class="headerlink" href="#utils" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Esta sección contiene funciones que se utilizan en varios módulos de la librería ConTexto. Se divide en 3 partes: (1) auxiliares, (2) tokenización y (3) limpieza aux.</p>
 <div class="section" id="auxiliares">
 <h2>Auxiliares<a class="headerlink" href="#auxiliares" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Aquí hay funciones para cargar y guardar archivos de formato Pickle y una función para verificar la existencia de un directorio escogido por un usuario.</p>
 <span class="target" id="module-utils.auxiliares"></span><dl class="py function">
-<dt id="utils.auxiliares.cargar_objeto">
-<code class="descclassname"><span class="pre">utils.auxiliares.</span></code><code class="descname"><span class="pre">cargar_objeto</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.cargar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Carga un objeto en Python, desde un archivo Pickle cuya ubicación es determinada por el usuario.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>nombre_archivo</strong> – (str). Ubicación del archivo que contiene el objeto que se desea cargar.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(objeto Python). Objeto en Python contenido en el archivo.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.auxiliares.cargar_objeto">
+<span class="sig-prename descclassname"><span class="pre">utils.auxiliares.</span></span><span class="sig-name descname"><span class="pre">cargar_objeto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.cargar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Carga un objeto en Python, desde un archivo Pickle cuya ubicación         es determinada por el usuario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>nombre_archivo</strong> – (str). Ubicación del archivo que contiene el         objeto que se desea cargar.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(objeto Python). Objeto en Python contenido en el archivo.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.auxiliares.guardar_objeto">
-<code class="descclassname"><span class="pre">utils.auxiliares.</span></code><code class="descname"><span class="pre">guardar_objeto</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">objeto</span></span></em>, <em><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.guardar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Guarda, en un archivo Pickle, un objeto de Python determinado por el usuario.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>objeto</strong> – (objeto Python). Objeto que se desea guardar.</li>
-<li><strong>nombre_archivo</strong> – (str). Ubicación y nombre del archivo en donde se desea guardar         el objeto.</li>
+<dt class="sig sig-object py" id="utils.auxiliares.guardar_objeto">
+<span class="sig-prename descclassname"><span class="pre">utils.auxiliares.</span></span><span class="sig-name descname"><span class="pre">guardar_objeto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objeto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.guardar_objeto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Guarda, en un archivo Pickle, un objeto de Python determinado por         el usuario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objeto</strong> – (objeto Python). Objeto que se desea guardar.</p></li>
+<li><p><strong>nombre_archivo</strong> – (str). Ubicación y nombre del archivo en         donde se desea guardar el objeto.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.auxiliares.verificar_crear_dir">
-<code class="descclassname"><span class="pre">utils.auxiliares.</span></code><code class="descname"><span class="pre">verificar_crear_dir</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">ubicacion_directorio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.verificar_crear_dir" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Verifica si existe un directorio en la ubicación determinada por         el usuario. Si el directorio no existe, la función lo crea.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>ubicacion_directorio</strong> – (str). Ubicación del directorio que se desea         verificar o crear.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.auxiliares.verificar_crear_dir">
+<span class="sig-prename descclassname"><span class="pre">utils.auxiliares.</span></span><span class="sig-name descname"><span class="pre">verificar_crear_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ubicacion_directorio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.auxiliares.verificar_crear_dir" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Verifica si existe un directorio en la ubicación determinada por     el usuario. Si el directorio no existe, la función lo crea.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>ubicacion_directorio</strong> – (str). Ubicación del directorio que se desea         verificar o crear.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -247,433 +350,350 @@
 <h2>Tokenizacion<a class="headerlink" href="#tokenizacion" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Esta sección contiene las funciones de tokenización de texto, las cuales se utilizan durante el preprocesamiento de un texto.</p>
 <span class="target" id="module-utils.tokenizacion"></span><dl class="py class">
-<dt id="utils.tokenizacion.TokenizadorEspacios">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">TokenizadorEspacios</span></code><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorEspacios">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">TokenizadorEspacios</span></span><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorEspacios.destokenizar">
-<code class="descname"><span class="pre">destokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lista_tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Realiza la función de detokenización (unir una lista de tokens, produciendo un texto) sobre             una o varias listas de tokens de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lista_tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es para varios         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una         lista de tokens.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens.             Si se introdujeron varias listas de tokens, devuelve una lista de strings.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorEspacios.destokenizar">
+<span class="sig-name descname"><span class="pre">destokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista_tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de detokenización (unir una lista de tokens,         produciendo un texto) sobre una o varias listas de tokens de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lista_tokens</strong> – (list). Lista de tokens, si es para un solo             texto. Si es para varios textos, se introduce una lista en la que             cada elemento (uno para cada texto) es una lista de tokens.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str o lista de strings) Devuelve un solo string si se             introdujo solo una lista de tokens. Si se introdujeron varias             listas de tokens, devuelve una lista de strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorEspacios.tokenizar">
-<code class="descname"><span class="pre">tokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Realiza la función de tokenización (separar un texto en componentes sueltos, o tokens) sobre             uno o varios textos de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los cuales se desea             aplicar la tokenización.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se             ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de             tokens, con un elemento para cada texto de entrada.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorEspacios.tokenizar">
+<span class="sig-name descname"><span class="pre">tokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorEspacios.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de tokenización (separar un texto en componentes         sueltos, o tokens) sobre uno o varios textos de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre             los cuales se desea aplicar la tokenización.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list). Si se ingresó un solo texto, devuelve la lista de             tokens del texto. Si se ingresó una lista de textos, se devuelve             una lista en la que cada elemento es una lista de tokens, con un             elemento para cada texto de entrada.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="utils.tokenizacion.TokenizadorNLTK">
-<em class="property"><span class="pre">class</span> </em><code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">TokenizadorNLTK</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">destokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">TokenizadorNLTK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constructor por defecto de la clase TokenizadorNLTK. Esta clase se apoya         en la librería NLTK para definir acciones de tokenización y detokenización         (operación inversa en la que se pasa de tokens a texto) de textos.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
-<li><strong>tokenizador</strong> – (objeto de tokenización de NLTK) Valor por defecto: None. Objeto             encargado de la tokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>ToktokTokenizer</em>, de la librería NLTK.</li>
-<li><strong>detokenizador</strong> – (objeto de detokenización de NLTK) Valor por defecto: None. Objeto             encargado de la detokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>TreebankWordDetokenizer</em>, de la librería NLTK.</li>
+<p>Constructor por defecto de la clase TokenizadorNLTK. Esta clase se         apoya en la librería NLTK para definir acciones de tokenización y         detokenización (operación inversa en la que se pasa de tokens a         texto) de textos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tokenizador</strong> – (objeto de tokenización de NLTK) Valor por             defecto: None. Objeto encargado de la tokenización de textos. Si             el valor es “None”, se cargará por defecto una instancia de la             clase <cite>ToktokTokenizer</cite>, de la librería NLTK.</p></li>
+<li><p><strong>detokenizador</strong> – (objeto de detokenización de NLTK) Valor por             defecto: None. Objeto encargado de la detokenización de textos.             Si el valor es “None”, se cargará por defecto una instancia de la             clase <cite>TreebankWordDetokenizer</cite>, de la librería NLTK.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorNLTK.destokenizar">
-<code class="descname"><span class="pre">destokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lista_tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Realiza la función de detokenización (unir una lista de tokens, produciendo un texto) sobre             una o varias listas de tokens de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>lista_tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es para varios         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una         lista de tokens.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens.             Si se introdujeron varias listas de tokens, devuelve una lista de strings.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK.destokenizar">
+<span class="sig-name descname"><span class="pre">destokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista_tokens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de detokenización (unir una lista de tokens,         produciendo un texto) sobre una o varias listas de tokens de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lista_tokens</strong> – (list). Lista de tokens, si es para un solo             texto. Si es para varios textos, se introduce una lista en la que             cada elemento (uno para cada texto) es una lista de tokens.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str o lista de strings) Devuelve un solo string si se             introdujo solo una lista de tokens. Si se introdujeron varias             listas de tokens, devuelve una lista de strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador">
-<code class="descname"><span class="pre">establecer_destokenizador</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">destokenizador</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador">
+<span class="sig-name descname"><span class="pre">establecer_destokenizador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destokenizador</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_destokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Permite definir o cambiar el detokenizador a utilizar.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>detokenizador</strong> – (objeto de detokenización de NLTK). Objeto             encargado de la detokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>TreebankWordDetokenizer</em>, de la librería NLTK.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>detokenizador</strong> – (objeto de detokenización de NLTK). Objeto             encargado de la detokenización de textos. Si el valor es “None”,             se cargará por defecto una instancia de la clase             <cite>TreebankWordDetokenizer</cite>, de la librería NLTK.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador">
-<code class="descname"><span class="pre">establecer_tokenizador</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">tokenizador</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador">
+<span class="sig-name descname"><span class="pre">establecer_tokenizador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.establecer_tokenizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Permite definir o cambiar el tokenizador a utilizar.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>tokenizador</strong> – (objeto de tokenización de NLTK). Objeto             encargado de la tokenización de textos. Si el valor es “None”, se cargará por             defecto una instancia de la clase <em>ToktokTokenizer</em>, de la librería NLTK.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>tokenizador</strong> – (objeto de tokenización de NLTK). Objeto encargado             de la tokenización de textos. Si el valor es “None”, se cargará             por defecto una instancia de la clase <cite>ToktokTokenizer</cite>, de la             librería NLTK.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorNLTK.post_destokenizacion">
-<code class="descname"><span class="pre">post_destokenizacion</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.post_destokenizacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Hace algunos ajustes al texto, una vez ha pasado por la detokenización, para que             cumpla con las reglas de puntuación de los idiomas español e inglés. Es posible             que para otros idiomas sea necesario incluir ajustes adicionales. Si el texto de             entrada no contiene signos de puntuación (por ejemplo, si fue pasado por alguna             función de limpieza previamente), la salida será igual a la entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str). Texto que resulta de detokenizar una lista de tokens.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(str) Texto con los signos de puntuación ajustados.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK.post_destokenizacion">
+<span class="sig-name descname"><span class="pre">post_destokenizacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.post_destokenizacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Hace algunos ajustes al texto, una vez ha pasado por la         detokenización, para que cumpla con las reglas de puntuación de los         idiomas español e inglés. Es posible que para otros idiomas sea         necesario incluir ajustes adicionales. Si el texto de entrada no         contiene signos de puntuación (por ejemplo, si fue pasado por alguna         función de limpieza previamente), la salida será igual a la entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>texto</strong> – (str). Texto que resulta de detokenizar una lista de             tokens.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto con los signos de puntuación ajustados.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="utils.tokenizacion.TokenizadorNLTK.tokenizar">
-<code class="descname"><span class="pre">tokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Realiza la función de tokenización (separar un texto en componentes sueltos, o tokens) sobre             uno o varios textos de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los cuales se desea             aplicar la tokenización.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">(list) Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se             ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de             tokens, con un elemento para cada texto de entrada.</td>
-</tr>
-</tbody>
-</table>
+<dt class="sig sig-object py" id="utils.tokenizacion.TokenizadorNLTK.tokenizar">
+<span class="sig-name descname"><span class="pre">tokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.TokenizadorNLTK.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Realiza la función de tokenización (separar un texto en componentes         sueltos, o tokens) sobre uno o varios textos de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre             los cuales se desea aplicar la tokenización.</p>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Si se ingresó un solo texto, devuelve la lista de             tokens del texto. Si se ingresó una lista de textos, se devuelve             una lista en la que cada elemento es una lista de tokens, con un             elemento para cada texto de entrada.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.destokenizar">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">destokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">tokens</span></span></em>, <em><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función de detokenización     (unir una lista de tokens, produciendo un texto) sobre una o varias listas de tokens de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es para varios         textos, se introduce una lista en la que cada elemento (uno para cada texto) es una         lista de tokens.</li>
-<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+<dt class="sig sig-object py" id="utils.tokenizacion.destokenizar">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">destokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.destokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función     de detokenización (unir una lista de tokens, produciendo un texto) sobre     una o varias listas de tokens de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tokens</strong> – (list). Lista de tokens, si es para un solo texto. Si es         para varios textos, se introduce una lista en la que cada elemento         (uno para cada texto) es una lista de tokens.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la         tokenización y detokenización de textos. Si el valor es “None”, se         cargará por defecto una instancia de la clase <cite>TokenizadorNLTK</cite>.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(str o lista de strings) Devuelve un solo string si se introdujo solo una lista de tokens.         Si se introdujeron varias listas de tokens, devuelve una lista de strings.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str o lista de strings) Devuelve un solo string si se introdujo         solo una lista de tokens. Si se introdujeron varias listas de tokens        , devuelve una lista de strings.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.tokenizar">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">tokenizar</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em>, <em><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función de tokenización         (separar un texto en componentes sueltos, o tokens) sobre uno o varios textos de entrada.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los cuales se desea         aplicar la tokenización.</li>
-<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización         de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+<dt class="sig sig-object py" id="utils.tokenizacion.tokenizar">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">tokenizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.tokenizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que aprovecha la clase TokenizadorNLTK para realizar la función de     tokenización (separar un texto en componentes sueltos, o tokens) sobre     uno o varios textos de entrada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str o lista de strings). Texto o lista de textos sobre los         cuales se desea aplicar la tokenización.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la         tokenización y detokenización de textos. Si el valor es “None”, se         cargará por defecto una instancia de la clase <cite>TokenizadorNLTK</cite>.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(list). Si se ingresó un solo texto, devuelve la lista de tokens del texto. Si se         ingresó una lista de textos, se devuelve una lista en la que cada elemento es una lista de         tokens, con un elemento para cada texto de entrada.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list). Si se ingresó un solo texto, devuelve la lista de tokens         del texto. Si se ingresó una lista de textos, se devuelve una lista         en la que cada elemento es una lista de tokens, con un elemento para         cada texto de entrada.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 <div class="section" id="limpieza-aux">
-<h2>Limpieza aux<a class="headerlink" href="#limpieza-aux" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="funciones-utils-limpieza-utils"></span><h2>Limpieza aux<a class="headerlink" href="#limpieza-aux" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las funciones de esta sección se encargan de encontrar caracteres con ciertas características dentro de los textos, como números o letras repetidos, números o letras consecutivos y coincidencias de textos. También permite la eliminación de caracteres no deseados por el usuario, según varios criterios de selección.</p>
 <dl class="py function">
-<dt id="utils.tokenizacion.substrings_en_comun">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">substrings_en_comun</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">str1</span></span></em>, <em><span class="n"><span class="pre">str2</span></span></em>, <em><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.substrings_en_comun" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.substrings_en_comun">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">substrings_en_comun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.substrings_en_comun" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Encuentra los <em>substrings</em>, o cadena de caracteres internas, que tienen en común dos textos de entrada y cumplen con una longitud mínima.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>str1</strong> – (str) Primer texto de insumo.</li>
-<li><strong>str2</strong> – (str) Segundo texto de insumo.</li>
-<li><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los dos textos de entrada, para ser considerada.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str1</strong> – (str) Primer texto de insumo.</p></li>
+<li><p><strong>str2</strong> – (str) Segundo texto de insumo.</p></li>
+<li><p><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los dos textos de entrada, para ser considerada.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(list) Lista de <em>substrings</em> o cadenas de caracteres en común que cumplan con el requisito de longitud mínima. Si no hay ningúna cadena de caracteres que cumpla esta condición, se devuelve una lista vacía.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de <em>substrings</em> o cadenas de caracteres en común que cumplan con el requisito de longitud mínima. Si no hay ningúna cadena de caracteres que cumpla esta condición, se devuelve una lista vacía.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.detectar_coincidencias">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">detectar_coincidencias</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lista_textos</span></span></em>, <em><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em><span class="n"><span class="pre">n_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.detectar_coincidencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.detectar_coincidencias">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">detectar_coincidencias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista_textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.detectar_coincidencias" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Detecta y devuelve <em>substrings</em>, o cadenas de caracteres, que se repiten a lo largo de una lista de textos y que cumplan hasta tres condiciones, ajustadas por el usuario:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Que aparezcan en por lo menos una proporción determinada de todos los textos.</li>
-<li>Que tengan por lo menos un número determinado de palabras.</li>
-<li>Que tengan un número de caracteres mayor o igual a una longitud mínima establecida.</li>
+<li><p>Que aparezcan en por lo menos una proporción determinada de todos los textos.</p></li>
+<li><p>Que tengan por lo menos un número determinado de palabras.</p></li>
+<li><p>Que tengan un número de caracteres mayor o igual a una longitud mínima establecida.</p></li>
 </ul>
 </div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>lista_textos</strong> – (list) Lista de textos sobre los cuales se desea buscar coincidencias.</li>
-<li><strong>prop</strong> – (float) Valor por defecto: 0.5. Número entre 0 y 1 que determina la proporción mínima de la lista de textos en los que debe estar presente una cadena de caracteres para ser considerada. Por ejemplo, si prop=0.8, un <em>substring</em> debe estar en por lo menos el 80% de los textos de lista_textos, para ser devuelto.</li>
-<li><strong>n_min</strong> – (int) Valor por defecto: 2. Número mínimo de palabras que debe tener una coincidencia entre los textos de entrada, para ser considerada.</li>
-<li><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los textos de entrada, para ser considerada.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista_textos</strong> – (list) Lista de textos sobre los cuales se desea buscar coincidencias.</p></li>
+<li><p><strong>prop</strong> – (float) Valor por defecto: 0.5. Número entre 0 y 1 que determina la proporción mínima de la lista de textos en los que debe estar presente una cadena de caracteres para ser considerada. Por ejemplo, si prop=0.8, un <em>substring</em> debe estar en por lo menos el 80% de los textos de lista_textos, para ser devuelto.</p></li>
+<li><p><strong>n_min</strong> – (int) Valor por defecto: 2. Número mínimo de palabras que debe tener una coincidencia entre los textos de entrada, para ser considerada.</p></li>
+<li><p><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los textos de entrada, para ser considerada.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(list) Lista de coincidencias encontradas entre los textos de entrada, que cumplan con las condiciones con los valores establecidos por el usuario. Si no hay ningúna cadena de caracteres que cumpla estas condiciones, se devuelve una lista vacía.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de coincidencias encontradas entre los textos de entrada, que cumplan con las condiciones con los valores establecidos por el usuario. Si no hay ningúna cadena de caracteres que cumpla estas condiciones, se devuelve una lista vacía.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.quitar_coincidenias">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">quitar_coincidenias</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">lista_textos</span></span></em>, <em><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em><span class="n"><span class="pre">n_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.quitar_coincidenias" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.quitar_coincidenias">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">quitar_coincidenias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista_textos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitud_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.quitar_coincidenias" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Detecta y remueve <em>substrings</em>, o cadenas de caracteres, que se repiten a lo largo de una lista de textos y que cumplan hasta tres condiciones, ajustadas por el usuario:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Que aparezcan en por lo menos una proporción determinada de todos los textos.</li>
-<li>Que tengan por lo menos un número determinado de palabras.</li>
-<li>Que tengan un número de caracteres mayor o igual a una longitud mínima establecida.</li>
+<li><p>Que aparezcan en por lo menos una proporción determinada de todos los textos.</p></li>
+<li><p>Que tengan por lo menos un número determinado de palabras.</p></li>
+<li><p>Que tengan un número de caracteres mayor o igual a una longitud mínima establecida.</p></li>
 </ul>
 <p>Cada coincidencia encontrada entre la lista de textos es reemplazada de los textos de entrada por un espacio en blanco.</p>
 </div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>lista_textos</strong> – (list) Lista de textos sobre los cuales se desea buscar coincidencias.</li>
-<li><strong>prop</strong> – (float) Valor por defecto: 0.5. Número entre 0 y 1 que determina la proporción mínima de la lista de textos en los que debe estar presente una cadena de caracteres para ser considerada. Por ejemplo, si prop=0.8, un <em>substring</em> debe estar en por lo menos el 80% de los textos de lista_textos, para ser devuelto.</li>
-<li><strong>n_min</strong> – (int) Valor por defecto: 2. Número mínimo de palabras que debe tener una coincidencia entre los textos de entrada, para ser considerada.</li>
-<li><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los textos de entrada, para ser considerada.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista_textos</strong> – (list) Lista de textos sobre los cuales se desea buscar coincidencias.</p></li>
+<li><p><strong>prop</strong> – (float) Valor por defecto: 0.5. Número entre 0 y 1 que determina la proporción mínima de la lista de textos en los que debe estar presente una cadena de caracteres para ser considerada. Por ejemplo, si prop=0.8, un <em>substring</em> debe estar en por lo menos el 80% de los textos de lista_textos, para ser devuelto.</p></li>
+<li><p><strong>n_min</strong> – (int) Valor por defecto: 2. Número mínimo de palabras que debe tener una coincidencia entre los textos de entrada, para ser considerada.</p></li>
+<li><p><strong>longitud_min</strong> – (int) Cantidad mínima de caracteres que debe tener una coincidencia entre los textos de entrada, para ser considerada.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(list) Lista de textos de entrada, luego de remover todas las coincidencias encontradas que cumplan con las condiciones con los valores establecidos por el usuario.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(list) Lista de textos de entrada, luego de remover todas las coincidencias encontradas que cumplan con las condiciones con los valores establecidos por el usuario.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.caracteres_repetidos">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">caracteres_repetidos</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">palabra</span></span></em>, <em><span class="n"><span class="pre">n</span></span></em>, <em><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.caracteres_repetidos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.caracteres_repetidos">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">caracteres_repetidos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">palabra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.caracteres_repetidos" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Determina si en una palabra de entrada se repiten caracteres (letras o números) de forma seguida por lo menos un número de veces determinado por el usuario. Por ejemplo, si n=3 y palabra=”animaaal”, la función arrojara positivo, porque el carácter “a” aparece 3 veces de forma seguida.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>palabra</strong> – (str) Palabra que se quiere analizar.</li>
-<li><strong>n</strong> – (int) Número mínimo de veces seguidas que debe aparecer un carácter para que la función arroje positivo.</li>
-<li><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite pasar a minúsculas y quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las letras con acentos no serán contabilizadas en la búsqueda de caracteres repetidos, y pueden haber inconsistencias entre letras en mayúscula y minúscula. Por ejemplo, las palabras «animaáal» o «animaAal» no contabilizarán caracteres repetidos seguidos.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>palabra</strong> – (str) Palabra que se quiere analizar.</p></li>
+<li><p><strong>n</strong> – (int) Número mínimo de veces seguidas que debe aparecer un carácter para que la función arroje positivo.</p></li>
+<li><p><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite pasar a minúsculas y quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las letras con acentos no serán contabilizadas en la búsqueda de caracteres repetidos, y pueden haber inconsistencias entre letras en mayúscula y minúscula. Por ejemplo, las palabras «animaáal» o «animaAal» no contabilizarán caracteres repetidos seguidos.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(bool) Devuelve True si se cumple la condición de caracteres consecutivos repetidos, y False en caso contrario.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(bool) Devuelve True si se cumple la condición de caracteres consecutivos repetidos, y False en caso contrario.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.caracteres_consecutivos">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">caracteres_consecutivos</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">palabra</span></span></em>, <em><span class="n"><span class="pre">n</span></span></em>, <em><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.caracteres_consecutivos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.caracteres_consecutivos">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">caracteres_consecutivos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">palabra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.caracteres_consecutivos" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Determina si en una palabra de entrada hay caracteres (letras o números) consecutivos, uno junto al otro, por lo menos un número de veces determinado por el usuario. Por ejemplo, si n=4 y palabra=“1234555”, la función va a arrojar positivo, porque hay cinco caracteres consecutivos (del 1 al 5) que aparecen uno junto al otro.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>palabra</strong> – (str) Palabra que se quiere analizar.</li>
-<li><strong>n</strong> – (int) Número mínimo de caracteres consecutivos que deben aparecer juntos en la palabra que la función arroje positivo.</li>
-<li><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Permite pasar a minúsculas y quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las letras con acentos no serán contabilizadas en la búsqueda de caracteres consecutivos, y pueden haber inconsistencias entre letras en mayúscula y minúscula. Por ejemplo, las palabras “àbcdë” o “ABcde” solo contabilizarán 3 caracteres consecutivos seguidos.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>palabra</strong> – (str) Palabra que se quiere analizar.</p></li>
+<li><p><strong>n</strong> – (int) Número mínimo de caracteres consecutivos que deben aparecer juntos en la palabra que la función arroje positivo.</p></li>
+<li><p><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Permite pasar a minúsculas y quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las letras con acentos no serán contabilizadas en la búsqueda de caracteres consecutivos, y pueden haber inconsistencias entre letras en mayúscula y minúscula. Por ejemplo, las palabras “àbcdë” o “ABcde” solo contabilizarán 3 caracteres consecutivos seguidos.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(bool) Devuelve True si se cumple la condición de caracteres consecutivos seguidos, y False en caso contrario.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(bool) Devuelve True si se cumple la condición de caracteres consecutivos seguidos, y False en caso contrario.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.consonantes_consecutivas">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">consonantes_consecutivas</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">palabra</span></span></em>, <em><span class="n"><span class="pre">n</span></span></em>, <em><span class="n"><span class="pre">incluir_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.consonantes_consecutivas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.consonantes_consecutivas">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">consonantes_consecutivas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">palabra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incluir_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar_palabra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.consonantes_consecutivas" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Determina si en una palabra de entrada hay consonantes (letras distintas a vocales) seguidas, una junto a la otra, por lo menos un número de veces determinado por el usuario. Por ejemplo, si n=4 y palabra=”Abstracto”, la función va a arrojar positivo, porque hay cuatro consonantes seguidas (“bstr”) en la palabra.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>palabra</strong> – (str) Palabra que se quiere analizar.</li>
-<li><strong>n</strong> – (int) Número mínimo de consonantes que deben aparecer seguidas en la palabra que la función arroje positivo.</li>
-<li><strong>incluir_y</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional para determinar si la letra. “Y” debe ser considerada como vocal. Si incluir_y=False, la letra “Y” será considerada consonante.</li>
-<li><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las consonantes con acentos como “ç” o “ñ” no serán contabilizadas en la búsqueda de consonantes seguidas.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>palabra</strong> – (str) Palabra que se quiere analizar.</p></li>
+<li><p><strong>n</strong> – (int) Número mínimo de consonantes que deben aparecer seguidas en la palabra que la función arroje positivo.</p></li>
+<li><p><strong>incluir_y</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional para determinar si la letra. “Y” debe ser considerada como vocal. Si incluir_y=False, la letra “Y” será considerada consonante.</p></li>
+<li><p><strong>limpiar_palabra</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite quitar acentos (tildes, diéresis, virgulilla) a la palabra antes de analizarla. Si este parámetro se deja como False, las consonantes con acentos como “ç” o “ñ” no serán contabilizadas en la búsqueda de consonantes seguidas.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(bool) Devuelve True si se cumple la condición de consonantes seguidas, y False en caso contrario.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(bool) Devuelve True si se cumple la condición de consonantes seguidas, y False en caso contrario.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.tokenizacion.quitar_palabras_atipicas">
-<code class="descclassname"><span class="pre">utils.tokenizacion.</span></code><code class="descname"><span class="pre">quitar_palabras_atipicas</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">texto</span></span></em>, <em><span class="n"><span class="pre">n_repetidas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">n_consecutivas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">n_consonantes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">incluir_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">limpiar_palabras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.quitar_palabras_atipicas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dt class="sig sig-object py" id="utils.tokenizacion.quitar_palabras_atipicas">
+<span class="sig-prename descclassname"><span class="pre">utils.tokenizacion.</span></span><span class="sig-name descname"><span class="pre">quitar_palabras_atipicas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repetidas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_consecutivas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_consonantes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incluir_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar_palabras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.tokenizacion.quitar_palabras_atipicas" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Para un texto de entrada, busca y elimina palabras que cumplan una o varias de las siguientes condiciones, ajustadas por el usuario:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Si se repiten caracteres (letras o números) de forma seguida por lo menos un número de veces determinado.</li>
-<li>Si hay caracteres (letras o números) consecutivos, uno junto al otro, por lo menos un número de veces determinado.</li>
-<li>Si hay consonantes (letras distintas a vocales) seguidas, una junto a la otra, por lo menos un número de veces determinado.</li>
+<li><p>Si se repiten caracteres (letras o números) de forma seguida por lo menos un número de veces determinado.</p></li>
+<li><p>Si hay caracteres (letras o números) consecutivos, uno junto al otro, por lo menos un número de veces determinado.</p></li>
+<li><p>Si hay consonantes (letras distintas a vocales) seguidas, una junto a la otra, por lo menos un número de veces determinado.</p></li>
 </ul>
 </div></blockquote>
 <p>Al final, devuelve el texto de entrada sin las palabras identificadas.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
-<li><strong>texto</strong> – (str) Texto al que se desean quitar palabras potencialmente problemáticas.</li>
-<li><strong>n_repetidas</strong> – (int) Valor por defecto: None. Número mínimo de veces seguidas que se debe repetir un caracter en una palabra para que cumpla este criterio. Si n_repetidas=None, la función no identificará palabras con caracteres repetidos. Si n_repetidas=0, el valor de n_repetidas se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</li>
-<li><strong>n_consecutivas</strong> – (int) Valor por defecto: None. Número mínimo de caracteres consecutivos que deben aparecer juntos en una palabra para que cumpla este criterio. Si n_consecutivas=None, la función no identificará palabras con caracteres consecutivos. Si n_consecutivas=0, el valor de n_consecutivas se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</li>
-<li><strong>n_consonantes</strong> – (int) Valor por defecto: None. Número mínimo de consonantes que deben aparecer seguidas en una palabra que cumpla este criterio. Si n_consonantes=None, la función no identificará palabras con consonantes seguidas. Si n_consonantes=0, el valor de n_consonantes se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</li>
-<li><strong>incluir_y</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional para determinar si la letra. «Y» debe ser considerada como vocal, al buscar palabras con consonantes seguidas. Si incluir_y=False, la letra «Y» será considerada consonante.</li>
-<li><strong>limpiar_palabras</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite quitar acentos (tildes, diéresis, virgulilla) y pasar a minúsculas las palabras del texto antes de revisar las condiciones definidas por el usuario.</li>
-<li><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto al que se desean quitar palabras potencialmente problemáticas.</p></li>
+<li><p><strong>n_repetidas</strong> – (int) Valor por defecto: None. Número mínimo de veces seguidas que se debe repetir un caracter en una palabra para que cumpla este criterio. Si n_repetidas=None, la función no identificará palabras con caracteres repetidos. Si n_repetidas=0, el valor de n_repetidas se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</p></li>
+<li><p><strong>n_consecutivas</strong> – (int) Valor por defecto: None. Número mínimo de caracteres consecutivos que deben aparecer juntos en una palabra para que cumpla este criterio. Si n_consecutivas=None, la función no identificará palabras con caracteres consecutivos. Si n_consecutivas=0, el valor de n_consecutivas se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</p></li>
+<li><p><strong>n_consonantes</strong> – (int) Valor por defecto: None. Número mínimo de consonantes que deben aparecer seguidas en una palabra que cumpla este criterio. Si n_consonantes=None, la función no identificará palabras con consonantes seguidas. Si n_consonantes=0, el valor de n_consonantes se definirá en función de la longitud de cada palabra, de acuerdo a unas reglas preestablecidas.</p></li>
+<li><p><strong>incluir_y</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional para determinar si la letra. «Y» debe ser considerada como vocal, al buscar palabras con consonantes seguidas. Si incluir_y=False, la letra «Y» será considerada consonante.</p></li>
+<li><p><strong>limpiar_palabras</strong> – (bool) {True, False} Valor por defecto: True. Argumento opcional que permite quitar acentos (tildes, diéresis, virgulilla) y pasar a minúsculas las palabras del texto antes de revisar las condiciones definidas por el usuario.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la tokenización y detokenización de textos. Si el valor es “None”, se cargará por defecto una instancia de la clase <em>TokenizadorNLTK</em>.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">(str) Devuelve el texto de entrada sin las palabras que hayan sido identificadas de acuerdo a los criterios especificados por el usuario.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Devuelve el texto de entrada sin las palabras que hayan sido identificadas de acuerdo a los criterios especificados por el usuario.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="vectorizacion.html" class="btn btn-neutral float-left" title="Vectorización" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vectorizacion.html" title="previous page">Vectorización</a>
+    <a class='right-next' id="next-link" href="../seccion_lenguajes_soportados.html" title="next page">Lenguajes soportados</a>
 
-  <hr/>
+              </div>
+              
+          </main>
+          
 
-  <div role="contentinfo">
-    <p>
-        &#169; Derechos de autor 2021, UCD - DNP.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> Otras versiones</span>
-        v: latest
-      
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-    <dl>
-      <dt>Ramas</dt>
-          <dd><a href="utils.html">latest</a></dd>        
-        
-    </dl>    
-
-  </div>
-</div>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     
-   
-
-</body>
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
 </html>

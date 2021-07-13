@@ -1,220 +1,389 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="es" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>2. Caso de uso - Exploración y comparación de fábulas &mdash; documentación de ConTexto - 0.1</title>
-  
 
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Caso de uso - Exploración y comparación de fábulas &#8212; documentación de ConTexto - 0.2</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
-  
-  
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Lenguajes soportados" href="../seccion_lenguajes_soportados.html" />
-    <link rel="prev" title="1. Caso de uso - Agrupar textos por temas" href="091_caso1.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="next" title="Documentación" href="../_documentacion.html" />
+    <link rel="prev" title="1. Caso de uso - Agrupar textos por temas" href="091_caso1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> ConTexto
-          
-
-          
-            
-            <img src="../_static/logo_400.png" class="logo" alt="Logo"/>
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                latest - v0.1
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">ConTexto:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../seccion_introduccion.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_instalacion.html">Instalación</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../seccion_ejemplos.html">Ejemplos</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_lectura_y_escritura_de_documentos.html">1. Lectura y escritura de documentos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_limpieza_de_textos.html">2. Limpieza de textos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_exploracion_y_visualizacion.html">3. Análisis exploratorio y visualización</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_correccion_ortografica.html">4. Corrección ortográfica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_lematizacion_de_textos.html">5. Lematización de textos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_stemming_de_textos.html">6. Stemming de textos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_vectorizacion_de_textos.html">7. Vectorización de textos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08_comparacion_de_textos.html">8. Comparación de textos</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="09_casos_de_uso.html">Casos de uso</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="091_caso1.html">1. Caso de uso - Agrupar textos por temas</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">2. Caso de uso - Exploración y comparación de fábulas</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#importar-los-paquetes-y-librerias-necesarios">2.1. Importar los paquetes y librerias necesarios</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#leer-textos-de-interes">2.2. Leer textos de interés</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#preprocesamiento-de-textos">2.3. Preprocesamiento de textos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#visualizacion-de-textos">2.4. Visualización de textos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vectorizacion-de-los-textos">2.5. Vectorización de los textos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#calculo-de-similitud-de-textos">2.6. Cálculo de similitud de textos</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_lenguajes_soportados.html">Lenguajes soportados</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../seccion_ocr.html">OCR</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Módulos y funciones:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/comparacion.html">Comparación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/correccion.html">Corrección</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/escritura.html">Escritura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/exploracion.html">Exploración</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/lectura.html">Lectura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/lematizacion.html">Lematización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/lenguajes.html">Lenguajes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/limpieza.html">Limpieza</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/stemming.html">Stemming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/vectorizacion.html">Vectorización</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../funciones/utils.html">Utils</a></li>
-</ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">ConTexto</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../seccion_ejemplos.html">Ejemplos</a> &raquo;</li>
-        
-          <li><a href="09_casos_de_uso.html">Casos de uso</a> &raquo;</li>
-        
-      <li><span class="section-number">2. </span>Caso de uso - Exploración y comparación de fábulas</li>
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
     
     
-      <li class="wy-breadcrumbs-aside">
-        
-          
-        
-      </li>
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
     
-  </ul>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   
-  <hr/>
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../_primeros_pasos.html">
+  Primeros pasos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_documentacion.html">
+  Documentación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../genindex.html">
+  Índice
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_contribuciones.html">
+  ¿Cómo contribuir?
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../_control_de_cambios.html">
+  Control de cambios
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
             
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        latest
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="092_caso2.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="../../v0.1b/ejemplos/092_caso2.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p class="caption">
+ <span class="caption-text">
+  Primeros pasos:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../seccion_instalacion.html">
+   Instalación
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../seccion_ejemplos.html">
+   Ejemplos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_lectura_y_escritura_de_documentos.html">
+     1. Lectura y escritura de documentos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_limpieza_de_textos.html">
+     2. Limpieza de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_exploracion_y_visualizacion.html">
+     3. Análisis exploratorio y visualización
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_correccion_ortografica.html">
+     4. Corrección ortográfica
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_lematizacion_de_textos.html">
+     5. Lematización de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_stemming_de_textos.html">
+     6. Stemming de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_vectorizacion_de_textos.html">
+     7. Vectorización de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_comparacion_de_textos.html">
+     8. Comparación de textos
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="09_casos_de_uso.html">
+     Casos de uso
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="091_caso1.html">
+       1. Caso de uso - Agrupar textos por temas
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       2. Caso de uso - Exploración y comparación de fábulas
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importar-los-paquetes-y-librerias-necesarios">
+   2.1. Importar los paquetes y librerias necesarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leer-textos-de-interes">
+   2.2. Leer textos de interés
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definir-las-rutas-de-los-archivos-con-los-textos">
+     2.2.1. Definir las rutas de los archivos con los textos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leer-los-textos">
+     2.2.2. Leer los textos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocesamiento-de-textos">
+   2.3. Preprocesamiento de textos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#crear-una-lista-de-python-con-los-tres-textos">
+     2.3.1. Crear una lista de Python con los tres textos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quitar-acentos-de-los-textos">
+     2.3.2. Quitar acentos de los textos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pasar-textos-minusculas-quitar-puntuacion-y-stopwords">
+     2.3.3. Pasar textos minúsculas, quitar puntuación y stopwords
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#guardar-textos-en-archivos-txt-para-ser-utilizados-luego">
+     2.3.4. Guardar textos en archivos .txt para ser utilizados luego
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizacion-de-textos">
+   2.4. Visualización de textos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectorizacion-de-los-textos">
+   2.5. Vectorización de los textos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializar-y-ajustar-vectorizador-bow">
+     2.5.1. Inicializar y ajustar vectorizador BOW
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorizar-los-textos">
+     2.5.2. Vectorizar los textos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculo-de-similitud-de-textos">
+   2.6. Cálculo de similitud de textos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializar-la-clase-similitud-de-contexto">
+     2.6.1. Inicializar la clase “Similitud” de ConTexto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calcular-la-matriz-de-similitudes-coseno-entre-los-tres-textos">
+     2.6.2. Calcular la matriz de similitudes coseno entre los tres textos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
   <div class="section" id="caso-de-uso-exploracion-y-comparacion-de-fabulas">
 <span id="caso-de-uso-2"></span><h1><span class="section-number">2. </span>Caso de uso - Exploración y comparación de fábulas<a class="headerlink" href="#caso-de-uso-exploracion-y-comparacion-de-fabulas" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Este ejemplo muestra cómo utilizar la librería <strong>ConTexto</strong> para analizar textos, mediante la aplicación de técnicas de lectura, limpieza, exploración, vectorización y comparación. A continuación se muestran los pasos para importar los módulos necesarios de la librería y utilizarlos para trabajar con tres textos diferentes.</p>
-<p>Los textos de ejemplo son tres fábulas cortas cuyos textos fueron descargados desde <a class="reference external" href="https://aprenderespanol.org/lecturas/cuentos-breves-fabulas.html" target="_blank">aprenderespanol.org</a>, y fueron guardados en archivos de diferentes tipos.</p>
+<p>Los textos de ejemplo son tres fábulas cortas cuyos textos fueron descargados desde <a class="reference external" href="https://aprenderespanol.org/lecturas/cuentos-breves-fabulas.html">aprenderespanol.org</a>, y fueron guardados en archivos de diferentes tipos.</p>
 <p>El objetivo final de este ejercicio es comparar el texto de las fábulas para saber qué tanto se parecen entre sí.</p>
 <div class="section" id="importar-los-paquetes-y-librerias-necesarios">
 <h2><span class="section-number">2.1. </span>Importar los paquetes y librerias necesarios<a class="headerlink" href="#importar-los-paquetes-y-librerias-necesarios" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -232,17 +401,17 @@
 <h2><span class="section-number">2.2. </span>Leer textos de interés<a class="headerlink" href="#leer-textos-de-interes" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Se van a comparar las tres siguientes fábulas con métodos de analítica de texto:</p>
 <ul class="simple">
-<li>El cabrito y el lobo. El texto está en un archivo Word con extensión .docx</li>
-<li>La cabra y el asno. El texto está en un archivo PDT digitalizado con extensión .pdf</li>
-<li>El zorro y el cuervo. El texto se encuentra en un archivo plano con extensión .txt</li>
+<li><p>El cabrito y el lobo. El texto está en un archivo Word con extensión .docx</p></li>
+<li><p>La cabra y el asno. El texto está en un archivo PDT digitalizado con extensión .pdf</p></li>
+<li><p>El zorro y el cuervo. El texto se encuentra en un archivo plano con extensión .txt</p></li>
 </ul>
-<p>La extracción de los textos de cada archivo tiene una metodología distina. <strong>ConTexto</strong> facilita el código de importación de textos con la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a>.</p>
+<p>La extracción de los textos de cada archivo tiene una metodología distinta. <strong>ConTexto</strong> facilita el código de importación de textos con la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a>.</p>
 <div class="section" id="definir-las-rutas-de-los-archivos-con-los-textos">
 <h3><span class="section-number">2.2.1. </span>Definir las rutas de los archivos con los textos<a class="headerlink" href="#definir-las-rutas-de-los-archivos-con-los-textos" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En este paso se definen las rutas de los archivos que se van a importar.</p>
 <div class="admonition note">
-<p class="first admonition-title">Nota</p>
-<p class="last">La carpeta <a class="reference external" href="https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada" target="_blank">entrada</a> de la sección de ejemplos del <a class="reference external" href="https://github.com/ucd-dnp/ConTexto" target="_blank">Repositorio de GitHub de ConTexto</a> tiene insumos que servirán para correr varios ejemplos de la librería <strong>ConTexto</strong>. En este caso en particular, se va a utilizar los archivos <em>fábula_cabrito_y_lobo.docx</em>, <em>fábula_cabra_y_asno.pdf</em> y <em>fábula_zorro_y_cuervo.txt</em>.</p>
+<p class="admonition-title">Nota</p>
+<p>La carpeta <a class="reference external" href="https://github.com/ucd-dnp/ConTexto/tree/master/ejemplos/entrada">entrada</a> de la sección de ejemplos del <a class="reference external" href="https://github.com/ucd-dnp/ConTexto">Repositorio de GitHub de ConTexto</a> tiene insumos que servirán para correr varios ejemplos de la librería <strong>ConTexto</strong>. En este caso en particular, se van a utilizar los archivos <em>fábula_cabrito_y_lobo.docx</em>, <em>fábula_cabra_y_asno.pdf</em> y <em>fábula_zorro_y_cuervo.txt</em>.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ruta_fabula_1</span> <span class="o">=</span> <span class="s2">&quot;entrada/fábula_cabrito_y_lobo.docx&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ruta_fabula_2</span> <span class="o">=</span> <span class="s2">&quot;entrada/fábula_cabra_y_asno.pdf&quot;</span>
@@ -279,7 +448,7 @@
 </div>
 <div class="section" id="preprocesamiento-de-textos">
 <h2><span class="section-number">2.3. </span>Preprocesamiento de textos<a class="headerlink" href="#preprocesamiento-de-textos" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>El preprocesamiento de los textos es un paso importante para reducir ruido del texto original que puedan entorpecer los análisis a realizar, y en general adecuar los textos de entrada para poder aprovecharlos mejor.</p>
+<p>El preprocesamiento de los textos es un paso importante para reducir el ruido del texto original que pueda entorpecer los análisis a realizar, y en general adecuar los textos de entrada para poder aprovecharlos mejor.</p>
 <p>En este caso, se utilizaron las funciones <a class="reference internal" href="../funciones/limpieza.html#limpieza.remover_acentos" title="limpieza.remover_acentos"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.remover_acentos()</span></code></a> para eliminar los acentos y <a class="reference internal" href="../funciones/limpieza.html#limpieza.limpieza_texto" title="limpieza.limpieza_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.limpieza_texto()</span></code></a> para el resto del preprocesamiento. Vale la pena mencionar que también es posible quitar los acentos desde la función <a class="reference internal" href="../funciones/limpieza.html#limpieza.limpieza_texto" title="limpieza.limpieza_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">limpieza.limpieza_texto()</span></code></a> si se utiliza el parámetro <cite>quitar_acentos=True</cite>.</p>
 <div class="section" id="crear-una-lista-de-python-con-los-tres-textos">
 <h3><span class="section-number">2.3.1. </span>Crear una lista de Python con los tres textos<a class="headerlink" href="#crear-una-lista-de-python-con-los-tres-textos" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -339,8 +508,8 @@
 </div>
 <div class="section" id="vectorizacion-de-los-textos">
 <h2><span class="section-number">2.5. </span>Vectorización de los textos<a class="headerlink" href="#vectorizacion-de-los-textos" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>La vectorización de textos consiste en convertir el texto preprocesado a una representación numérica para luego poder aplicar operaciones matemáticas.</p>
-<p>En este caso se vectorizarán los por medio de la metodología Bag Of Words (BOW) del módulo <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>. Este módulo también cuenta con otras metodologías como TF-IDF, hashing, Word2Vec y Doc2Vec.</p>
+<p>La vectorización de textos consiste en convertir el texto preprocesado en una representación numérica para luego poder aplicar operaciones matemáticas.</p>
+<p>En este caso se vectorizarán los textos por medio de la metodología Bag Of Words (BOW) del módulo <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>. Este módulo también cuenta con otras metodologías como TF-IDF, hashing, Word2Vec y Doc2Vec.</p>
 <div class="section" id="inicializar-y-ajustar-vectorizador-bow">
 <h3><span class="section-number">2.5.1. </span>Inicializar y ajustar vectorizador BOW<a class="headerlink" href="#inicializar-y-ajustar-vectorizador-bow" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v_bow</span> <span class="o">=</span> <span class="n">VectorizadorFrecuencias</span><span class="p">()</span>
@@ -360,7 +529,7 @@
 </div>
 <div class="section" id="calculo-de-similitud-de-textos">
 <h2><span class="section-number">2.6. </span>Cálculo de similitud de textos<a class="headerlink" href="#calculo-de-similitud-de-textos" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Una vez definidos los vectores de los tres textos, es posible aplicar metodologías de comparación de textos. En este caso se utilizará la simiitud coseno. Esta es una de las muchas metodologías de comparación de textos que se puede hacer con <strong>ConTexto</strong>.</p>
+<p>Una vez definidos los vectores de los tres textos, es posible aplicar metodologías de comparación de textos. En este caso se utilizará la similitud coseno. Esta es una de las muchas metodologías de comparación de textos que se puede hacer con <strong>ConTexto</strong>.</p>
 <div class="section" id="inicializar-la-clase-similitud-de-contexto">
 <h3><span class="section-number">2.6.1. </span>Inicializar la clase “Similitud” de ConTexto<a class="headerlink" href="#inicializar-la-clase-similitud-de-contexto" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Se inicia la clase Similitud con el vectorizador de bag of words definido en el paso anterior.</p>
@@ -379,35 +548,35 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coseno_bow</span>
 </pre></div>
 </div>
-<table border="1" class="docutils align-default">
+<table class="table">
 <colgroup>
-<col width="26%" />
-<col width="26%" />
-<col width="23%" />
-<col width="26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 23%" />
+<col style="width: 26%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Index</th>
-<th class="head">el cabrito y el lobo</th>
-<th class="head">la cabra y el asno</th>
-<th class="head">el zorro y el cuervo</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>el cabrito y el lobo</p></th>
+<th class="head"><p>la cabra y el asno</p></th>
+<th class="head"><p>el zorro y el cuervo</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>el cabrito y el lobo</td>
-<td>1.000000</td>
-<td>0.162288</td>
-<td>0.070675</td>
+<tbody>
+<tr class="row-even"><td><p>el cabrito y el lobo</p></td>
+<td><p>1.000000</p></td>
+<td><p>0.162288</p></td>
+<td><p>0.070675</p></td>
 </tr>
-<tr class="row-odd"><td>la cabra y el asno</td>
-<td>0.162288</td>
-<td>1.000000</td>
-<td>0.036867</td>
+<tr class="row-odd"><td><p>la cabra y el asno</p></td>
+<td><p>0.162288</p></td>
+<td><p>1.000000</p></td>
+<td><p>0.036867</p></td>
 </tr>
-<tr class="row-even"><td>el zorro y el cuervo</td>
-<td>0.070675</td>
-<td>0.036867</td>
-<td>1.000000</td>
+<tr class="row-even"><td><p>el zorro y el cuervo</p></td>
+<td><p>0.070675</p></td>
+<td><p>0.036867</p></td>
+<td><p>1.000000</p></td>
 </tr>
 </tbody>
 </table>
@@ -416,68 +585,40 @@
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../seccion_lenguajes_soportados.html" class="btn btn-neutral float-right" title="Lenguajes soportados" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="091_caso1.html" class="btn btn-neutral float-left" title="1. Caso de uso - Agrupar textos por temas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="091_caso1.html" title="previous page"><span class="section-number">1. </span>Caso de uso - Agrupar textos por temas</a>
+    <a class='right-next' id="next-link" href="../_documentacion.html" title="next page">Documentación</a>
 
-  <hr/>
+              </div>
+              
+          </main>
+          
 
-  <div role="contentinfo">
-    <p>
-        &#169; Derechos de autor 2021, UCD - DNP.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> Otras versiones</span>
-        v: latest
-      
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-    <dl>
-      <dt>Ramas</dt>
-          <dd><a href="092_caso2.html">latest</a></dd>        
-        
-    </dl>    
-
-  </div>
-</div>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
     
-   
-
-</body>
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
 </html>

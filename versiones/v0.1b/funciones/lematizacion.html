@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lematización &#8212; documentación de ConTexto - 0.1</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Lenguajes" href="lenguajes.html" />
+    <link rel="prev" title="Lectura" href="lectura.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_2.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_introduccion.html">
+  Introducción
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_instalacion.html">
+  Instalación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ejemplos.html">
+  Ejemplos
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_lenguajes_soportados.html">
+  Lenguajes soportados
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../seccion_ocr.html">
+  OCR
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="comparacion.html">
+  Comparación
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="correccion.html">
+  Corrección
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="escritura.html">
+  Escritura
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="exploracion.html">
+  Exploración
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="lectura.html">
+  Lectura
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Lematización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="lenguajes.html">
+  Lenguajes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="limpieza.html">
+  Limpieza
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="stemming.html">
+  Stemming
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="vectorizacion.html">
+  Vectorización
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="utils.html">
+  Utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ucd-dnp/ConTexto/" rel="noopener" target="_blank" title="GitHub ConTexto">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub ConTexto</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:ucd@dnp.gov.co" rel="noopener" target="_blank" title="Enviar correo">
+            <span><i class="far fa-envelope"></i></span>
+            <label class="sr-only">Enviar correo</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar en la documentación ..." aria-label="Buscar en la documentación ..." autocomplete="off" >
+</form>
+
+<a id="versions_anchor" class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <span class="fa fa-book"></span> Versión
+        v0.1
+    
+
+    <span class="fa fa-caret-down"></span>
+</a>  
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+            <dl>
+                <dt>Versiones</dt>
+                        <dd><a href="../../master/funciones/lematizacion.html">latest</a></dd>        
+                    
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Tags</dt> -->
+
+                    
+                        <dd><a href="lematizacion.html">v0.1</a></dd>
+                    
+            </dl>
+    </div>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-lematizacion">
+<span id="lematizacion"></span><h1>Lematización<a class="headerlink" href="#module-lematizacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="lematizacion.LematizadorSpacy">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lematizacion.</span></span><span class="sig-name descname"><span class="pre">LematizadorSpacy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_lemmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxima_longitud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor por defecto de la clase LematizadorSpacy. Esta clase se         encarga de manejar todas las funciones asociadas a la lematización         del texto con la librería Spacy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lenguaje</strong> – (str) Define el lenguaje del texto a ser tratado. 
+Para mayor información, consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p></li>
+<li><p><strong>dim_modelo</strong> – (str) {“lg”, “md”, “sm”} Valor por defecto: “md”. Se define el tamaño 
+del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” es             pequeño (small). Los modelos más grandes usualmente obtienen mejores resultados,             pero requieren mayor tiempo de carga.</p></li>
+<li><p><strong>dict_lemmas</strong> – (dict o str) Diccionario (o <em>string</em> con ubicación del             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las             llaves del diccionario son las palabras completas y los valores del             diccionario son los lemas escogidos para cada palabra.</p></li>
+<li><p><strong>maxima_longitud</strong> – (int) Valor por defecto: None. Parámetro opcional que 
+permite establecer la máxima longitud (número de caracteres) que acepta el             lematizador en un texto de entrada. Si este valor se deja en None, se utilizará             la máxima longitud que trae Spacy por defecto (1 millón de caracteres).</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la detokenización             de textos después de lematizar. Si el valor es “None”, se cargará por defecto una             instancia de la clase <em>TokenizadorEspacios</em>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorSpacy.establecer_lenguaje">
+<span class="sig-name descname"><span class="pre">establecer_lenguaje</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Define el lenguaje del lematizador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lenguaje</strong> – (str) Define el lenguaje del texto a ser tratado. 
+Para mayor información, consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorSpacy.iniciar_lematizador">
+<span class="sig-name descname"><span class="pre">iniciar_lematizador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_modelo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxima_longitud</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.iniciar_lematizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Inicia el lematizador con el tamaño del modelo de lematización basado en         en los tamaños de la librería Spacy. Los modelos más grandes usualmente obtienen mejores         resultados, pero requieren mayor tiempo de carga.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim_modelo</strong> – (str) {“lg”, “md”, “sm”} Valor por defecto: “md”. Se define             el tamaño del modelo. “lg” es grande (large), “md” es mediano (medium) y “sm” es             pequeño (small).</p></li>
+<li><p><strong>maxima_longitud</strong> – (int) Parámetro opcional que 
+permite establecer la máxima longitud (número de caracteres) que acepta el             vectorizador en un texto de entrada. Si este valor se deja en None, se utilizará             la máxima longitud que trae Spacy por defecto (1 millón de caracteres).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorSpacy.lematizar">
+<span class="sig-name descname"><span class="pre">lematizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.lematizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Se lleva a cabo el proceso de lematización del texto, el cual puede             ser limpiado antes de la lematización.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) El texto que se desea lematizar.</p></li>
+<li><p><strong>limpiar</strong> – (bool) {True, False} Valor por defecto: True. Especifica             si se desea hacer una limpieza básica del texto antes de la lematización.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Retorna el texto lematizado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorSpacy.modificar_lemmas">
+<span class="sig-name descname"><span class="pre">modificar_lemmas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_lemmas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorSpacy.modificar_lemmas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Define lemas asociados a palabras escogidas por el usuario. Estos nuevos         lemas serán adicionados al diccionario de lemas del lematizador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>dict_lemmas</strong> – (dict) Diccionario que permite modificar y agregar             lemas. Las llaves del diccionario son las palabras completas y los             valores del diccionario son los lemas escogidos para cada palabra.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lematizacion.LematizadorStanza">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lematizacion.</span></span><span class="sig-name descname"><span class="pre">LematizadorStanza</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modelo_lemas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_lemmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructor por defecto de la clase LematizadorStanza. Esta clase se         encarga de manejar todas las funciones asociadas a la lematización         del texto con la librería Stanza.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lenguaje</strong> – (str) Define el lenguaje del texto a ser tratado.             Para mayor información, consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p></li>
+<li><p><strong>modelo_lemas</strong> – (str) Valor por defecto: None. Especifica la ruta             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza             el modelo genérico de lemas de Stanza.</p></li>
+<li><p><strong>dict_lemmas</strong> – (dict o str) Diccionario (o <em>string</em> con ubicación del             archivo JSON que lo contiene) que permite modificar y agregar lemas. Las             llaves del diccionario son las palabras completas y los valores del             diccionario son los lemas escogidos para cada palabra.</p></li>
+<li><p><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Especifica la ruta             del archivo de salida del modelo de lemas modificado. En caso de ser             vacío, el resultado de la lematizacción se guarda en un archivo             temporal que eventualmente será borrado.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la detokenización             de textos después de lematizar. Si el valor es “None”, se cargará por defecto una             instancia de la clase <em>TokenizadorEspacios</em>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorStanza.establecer_lenguaje">
+<span class="sig-name descname"><span class="pre">establecer_lenguaje</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.establecer_lenguaje" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Define el lenguaje del lematizador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>lenguaje</strong> – (str) Define el lenguaje del texto a ser tratado.             Para mayor información, consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorStanza.iniciar_lematizador">
+<span class="sig-name descname"><span class="pre">iniciar_lematizador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modelo_lemas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.iniciar_lematizador" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Inicia el lematizador de Stanza y permite ingresar la ruta de un modelo         de lematización personalizado. En caso de no especificar la ruta         se utilizará el modelo que trae Stanza por defecto para el lenguaje seleccionado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><p><strong>modelo_lemas</strong> – (str) Valor por defecto: None. Especifica la ruta             de un modelo de lemas personalizado. En caso de ser vacío, se utiliza             el modelo que trae Stanza por defecto para el lenguaje seleccionado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorStanza.lematizar">
+<span class="sig-name descname"><span class="pre">lematizar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.lematizar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Se lleva a cabo el proceso de lematización del texto, el cual puede         ser limpiado antes de la lematización.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) El texto que se desea lematizar.</p></li>
+<li><p><strong>limpiar</strong> – (bool) {True, False} Valor por defecto: True. Especifica             si se desea hacer una limpieza básica del texto antes de la lematización.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Retorna el texto lematizado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lematizacion.LematizadorStanza.modificar_lemmas">
+<span class="sig-name descname"><span class="pre">modificar_lemmas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_lemmas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_entrada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.LematizadorStanza.modificar_lemmas" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Permite modificar o añadir nuevos lemas al modelo original de         lematización. Adicionalmente, permite ingresar un modelo personalizado         desde una ruta específica.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_lemmas</strong> – (dict) Diccionario que permite modificar y agregar             lemas. Las llaves del diccionario son las palabras completas             y el valor el lema escogido para cada palabra.</p></li>
+<li><p><strong>archivo_entrada</strong> – (str) Valor por defecto: “”. En caso de             ser vacío, se escoge un modelo de lematización genérico. De lo contrario,             se especifica la ruta del modelo de lematización personalizado a ser             utilizado.</p></li>
+<li><p><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Especifica la ruta             del archivo de salida del modelo de lemas modificado. En caso de ser             vacío, el modelo modificado de lematizacción se guarda en un archivo             temporal que eventualmente será borrado.</p></li>
+<li><p><strong>gpu</strong> – (bool) {True, False} Valor por defecto: False. Se escoge si             correr el proceso de lematización con GPU (True) o CPU (False)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lematizacion.lematizar_texto">
+<span class="sig-prename descclassname"><span class="pre">lematizacion.</span></span><span class="sig-name descname"><span class="pre">lematizar_texto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lenguaje</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">libreria</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spacy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limpiar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lematizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_lemmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_modelo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modelo_lemas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_salida</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxima_longitud</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizador</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lematizacion.lematizar_texto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que retorna un texto lematizado por la librería Spacy o Stanza.         Permite escoger el idioma de lematización, si hacer limpieza del texto,         modificar los modelos de lematizaciones originales y guardar los modelos         modificados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>texto</strong> – (str) Texto de entrada a ser lematizado.</p></li>
+<li><p><strong>lenguaje</strong> – (str) Valor por defecto: “es”. Define el lenguaje del 
+texto a ser tratado. Para mayor información, consultar la sección de 
+<a class="reference internal" href="../seccion_lenguajes_soportados.html#seccion-lenguajes-soportados"><span class="std std-ref">Lenguajes soportados</span></a>.</p></li>
+<li><p><strong>libreria</strong> – (str) {“spacy”, “stanza”} Valor por defecto: “spacy”.         Se define la librería de Python de lematización para ser utilizada en “
+el texto. Las opciones son las librerías Spacy y Stanza.</p></li>
+<li><p><strong>limpiar</strong> – (bool) {True, False} Valor por defecto: True. Especifica         si se desea hacer una limpieza básica del texto antes de la lematización.</p></li>
+<li><p><strong>lematizador</strong> – Valor por defecto: None. Parámetro opcional. Objeto de la clase         LematizadorSpacy o LematizadorStanzapara aplicar lematización sobre el texto de entrada.         Se puede utilizar para aplicar lematización a varios textos a la vez, sin necesidad de inicializar         un lematizador en cada ocasión. Esto puede representar ahorro en tiempos al momento de aplicar la función.</p></li>
+<li><p><strong>dict_lemmas</strong> – (dict) Diccionario que permite modificar y agregar         lemas. Las llaves del diccionario son las palabras completas y los         valores del diccionario son los lemas escogidos para cada palabra.</p></li>
+<li><p><strong>dim_modelo</strong> – (str) {“lg”, “md”, “sm”} Valor por defecto: “md”.         Se define el tamaño del modelo. “lg” es grande (large), “md” es mediano         (medium) y “sm” es pequeño (small). Aplica únicamente para el lematizador Spacy.</p></li>
+<li><p><strong>modelo_lemas</strong> – (str) Valor por defecto: None. Especifica la ruta         de un modelo de lemas personalizado. En caso de ser vacío, se utiliza         el modelo genérico de lemas de Stanza. Aplica únicamente para la         lematización con Stanza.</p></li>
+<li><p><strong>archivo_salida</strong> – (str) Valor por defecto: “”. Especifica la ruta         del archivo de salida del modelo de lemas modificado. En caso de ser         vacío, el resultado de la lematizacción se guarda en un archivo         temporal que eventualmente será borrado. Aplica únicamente para la         lematización con Stanza.</p></li>
+<li><p><strong>maxima_longitud</strong> – (int) Valor por defecto: None. Parámetro opcional que 
+permite establecer la máxima longitud (número de caracteres) que acepta el         LematizadorSpacy en un texto de entrada. Si este valor se deja en None, se utilizará         la máxima longitud que trae Spacy por defecto (1 millón de caracteres). Aplica únicamente         para la lematización con Spacy.</p></li>
+<li><p><strong>tokenizador</strong> – Valor por defecto: None. Objeto encargado de la detokenización         de textos después de lematizar. Si el valor es “None”, se cargará por defecto una         instancia de la clase <em>TokenizadorEspacios</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve</dt>
+<dd class="field-even"><p>(str) Texto lematizado.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="lectura.html" title="previous page">Lectura</a>
+    <a class='right-next' id="next-link" href="lenguajes.html" title="next page">Lenguajes</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, UCD - DNP.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="last-updated">
+Actualizado por última vez en jul. 13, 2021.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
