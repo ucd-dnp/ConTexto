@@ -208,7 +208,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04_correccion_ortografica.html">
-     4. Corrección ortográfica
+     4. Corrección ortográfica de textos
     </a>
    </li>
    <li class="toctree-l2">
@@ -312,6 +312,10 @@
   <div class="section" id="lectura-y-escritura-de-documentos">
 <span id="id1"></span><h1><span class="section-number">1. </span>Lectura y escritura de documentos<a class="headerlink" href="#lectura-y-escritura-de-documentos" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Este ejemplo muestra las principales funcionalidades de los módulos <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> y <a class="reference internal" href="../funciones/escritura.html#module-escritura" title="escritura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Escritura</span></code></a> de la librería. Estos módulos permiten extraer textos de archivos en diferentes formatos, así como escribir texto en nuevos archivos.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Es necesario recordar que para el correcto funcionamiento del módulo de <a class="reference internal" href="../funciones/lectura.html#module-lectura" title="lectura"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Lectura</span></code></a> es necesario tener instalados Poppler y Tesseract en el computador del usuario. Para más información sobre cómo instalar estos requerimientos, por favor consultar la <a class="reference internal" href="../seccion_instalacion.html#seccion-instalacion"><span class="std std-ref">Documentación de instalación</span></a>.</p>
+</div>
 <div class="section" id="importar-paquetes-necesarios-y-definir-documentos-para-la-prueba">
 <h2><span class="section-number">1.1. </span>Importar paquetes necesarios y definir documentos para la prueba<a class="headerlink" href="#importar-paquetes-necesarios-y-definir-documentos-para-la-prueba" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="admonition note">
@@ -434,7 +438,7 @@
 <p>Se puede observar que el mejor desempeño se obtiene con <em>preprocesamiento=2</em>. Cuando no se hace ningún procesamiento, el ruido de fondo de la imagen afecta el texto extraído. Por otro lado, con <em>preprocesamiento=4</em> la función no encuentra ningún texto. Dependiendo de la calidad de la imagen (o archivo PDF escaneado) de entrada, diferentes preprocesamientos (o no aplicar ninguno) tendrán mejor o peor desempeño.</p>
 <div class="section" id="enderezar-textos-en-imagenes">
 <h3><span class="section-number">1.3.1. </span>Enderezar textos en imágenes<a class="headerlink" href="#enderezar-textos-en-imagenes" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Además del parámetro <em>preprocesamiento</em>, la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> de la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> cuenta con el parámetro <em>enderezar</em>, por defecto igual a <em>False</em>. Cuando este parámetro se hace igual a <em>True</em>, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.</p>
+<p>Además del parámetro <em>preprocesamiento</em>, la función <a class="reference internal" href="../funciones/lectura.html#lectura.leer_texto" title="lectura.leer_texto"><code class="xref py py-func docutils literal notranslate"><span class="pre">lectura.leer_texto()</span></code></a> y la clase <a class="reference internal" href="../funciones/lectura.html#lectura.Lector" title="lectura.Lector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lector</span></code></a> cuenta con el parámetro <em>enderezar</em>, por defecto igual a <em>False</em>. Cuando este parámetro se hace igual a <em>True</em>, la librería intentará identificar y corregir un giro en el texto de la imagen de la cual se desea extraer texto. Una vez se haga esta corrección de giro, se aplicará el OCR.</p>
 <p>Este procesamiento adicional se puede combinar con cualquiera de los 5 preprocesamientos de la librería, o incluso se puede aplicar sin necesidad de utilizar el parámetro <em>preprocesamiento</em>. La corrección de giro puede ser bastante útil para textos torcidos, como en el caso de documentos escaneados.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">texto_torcido</span> <span class="o">=</span> <span class="s1">&#39;entrada/texto_torcido.jpg&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">texto_torcido</span><span class="p">)</span>
@@ -473,7 +477,7 @@
 </div>
 <div class="section" id="utilizar-las-clases-lector-y-escritor">
 <h2><span class="section-number">1.4. </span>Utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite><a class="headerlink" href="#utilizar-las-clases-lector-y-escritor" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Si se desea, también es posible utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite> para leer y escribir archivos, respectivamente</p>
+<p>Si se desea, también es posible utilizar las clases <cite>Lector</cite> y <cite>Escritor</cite> para leer y escribir archivos, respectivamente.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definir objeto de clase Lector y extraer el texto</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lector</span> <span class="o">=</span> <span class="n">Lector</span><span class="p">(</span><span class="n">archivo_img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">texto</span> <span class="o">=</span> <span class="n">lector</span><span class="o">.</span><span class="n">archivo_a_texto</span><span class="p">(</span><span class="n">preprocesamiento</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>

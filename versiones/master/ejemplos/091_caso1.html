@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Caso de uso - Agrupar textos por temas &#8212; documentación de ConTexto - 0.2</title>
+    <title>1. Caso de uso - Agrupación textos por temáticas similares &#8212; documentación de ConTexto - 0.2</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -208,7 +208,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04_correccion_ortografica.html">
-     4. Corrección ortográfica
+     4. Corrección ortográfica de textos
     </a>
    </li>
    <li class="toctree-l2">
@@ -243,7 +243,7 @@
     <ul class="current">
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       1. Caso de uso - Agrupar textos por temas
+       1. Caso de uso - Agrupación textos por temáticas similares
       </a>
      </li>
      <li class="toctree-l3">
@@ -312,10 +312,10 @@
               
               <div>
                 
-  <div class="section" id="caso-de-uso-agrupar-textos-por-temas">
-<span id="caso-de-uso-1"></span><h1><span class="section-number">1. </span>Caso de uso - Agrupar textos por temas<a class="headerlink" href="#caso-de-uso-agrupar-textos-por-temas" title="Enlazar permanentemente con este título">¶</a></h1>
+  <div class="section" id="caso-de-uso-agrupacion-textos-por-tematicas-similares">
+<span id="caso-de-uso-1"></span><h1><span class="section-number">1. </span>Caso de uso - Agrupación textos por temáticas similares<a class="headerlink" href="#caso-de-uso-agrupacion-textos-por-tematicas-similares" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Este es un caso de uso que utiliza varias funcionalidades de la librería ConTexto para procesar y vectorizar textos de noticias sobre diferentes temas. Luego, sobre estos vectores se aplica t-SNE, una técnica no lineal de reducción de dimensionalidad para transformar los vectores a un espacio bidimensional.</p>
-<p>Una vez se tengan los vectores en dos dimensiones, se graficarán con un color correspondiente al tema de cada texto. Esto permite observar si los puntos de cada tema quedan juntos entre sí y separados de los otros temas.</p>
+<p>Una vez se tengan los vectores en 2 dimensiones, se graficarán con un color correspondiente al tema de cada texto. Esto permite observar si los puntos de cada tema quedan juntos entre sí y separados de los otros temas.</p>
 <div class="section" id="cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso">
 <h2><span class="section-number">1.1. </span>Cargar librerías necesarias y definir parámetros importantes para el caso de uso<a class="headerlink" href="#cargar-librerias-necesarias-y-definir-parametros-importantes-para-el-caso-de-uso" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El primer paso es cargar los módulos y las librerías necesarias para correr el caso de estudio. De parte de <strong>ConTexto</strong> se necesitan funciones del módulo de <a class="reference internal" href="../funciones/limpieza.html#module-limpieza" title="limpieza"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Limpieza</span></code></a>, para hacer un procesamiento básico de los textos y remover <em>stopwords</em> y el módulo de <a class="reference internal" href="../funciones/vectorizacion.html#module-vectorizacion" title="vectorizacion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vectorización</span></code></a>, para generar las representaciones vectoriales de los textos.</p>

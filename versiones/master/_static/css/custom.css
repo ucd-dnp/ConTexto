@@ -78,10 +78,10 @@ div#funciones-auxiliares-para-limpieza-de-textos > p > a.internal:hover {
 
 button.copybtn {
     width: 105% !important;
-    max-width: 35px !important;
+    max-width: 30px !important;
 
     height: 105% !important;
-    max-height: 35px !important;
+    max-height: 30px !important;
 }
 
 /*

@@ -39,7 +39,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="4. Corrección ortográfica" href="04_correccion_ortografica.html" />
+    <link rel="next" title="4. Corrección ortográfica de textos" href="04_correccion_ortografica.html" />
     <link rel="prev" title="2. Limpieza de textos" href="02_limpieza_de_textos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -208,7 +208,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04_correccion_ortografica.html">
-     4. Corrección ortográfica
+     4. Corrección ortográfica de textos
     </a>
    </li>
    <li class="toctree-l2">
@@ -309,7 +309,7 @@
                 
   <div class="section" id="analisis-exploratorio-y-visualizacion">
 <span id="exploracion-y-visualizacion"></span><h1><span class="section-number">3. </span>Análisis exploratorio y visualización<a class="headerlink" href="#analisis-exploratorio-y-visualizacion" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>Este ejemplo muestra las principales funcionalidades del módulo <a class="reference internal" href="../funciones/exploracion.html#module-exploracion" title="exploracion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Exploración</span></code></a> de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos y tener mejor idea de qué contienen y sobre qué hablan.</p>
+<p>Este ejemplo muestra las principales funcionalidades del módulo <a class="reference internal" href="../funciones/exploracion.html#module-exploracion" title="exploracion"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Exploración</span></code></a> de la librería. Este módulo permite obtener distintas visualizaciones de un texto o conjunto de textos, tales como nubes de palabras, gráficos de barras con los términos más frecuentes, gráficos de dispersión léxica y redes de coocurrencias. Estas funciones son útiles para explorar uno o varios textos y tener mejor idea de qué contienen y sobre qué hablan.</p>
 <div class="section" id="importar-funciones-necesarias-y-adecuar-texto-de-prueba">
 <h2><span class="section-number">3.1. </span>Importar funciones necesarias y adecuar texto de prueba<a class="headerlink" href="#importar-funciones-necesarias-y-adecuar-texto-de-prueba" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="admonition note">
@@ -374,6 +374,7 @@
 <div class="align-center figure">
 <img alt="" src="../_images/nube_uni_bi.jpg" />
 </div>
+<p><strong>Personalizar las nubes de palabras</strong></p>
 <p>La función de nubes de palabras tiene algunos parámetros que permiten personalizar la estética de la gráfica. En particular, se puede configurar:</p>
 <ul class="simple">
 <li><p>La forma de la nube: Para esto, se puede ingresar una imagen de referencia con la forma que uno quiera utilizar. Por defecto esta forma es circular.</p></li>
@@ -483,7 +484,7 @@
 <div class="section" id="calcular-coocurrencias-y-graficarlas">
 <h2><span class="section-number">3.4. </span>Calcular coocurrencias y graficarlas<a class="headerlink" href="#calcular-coocurrencias-y-graficarlas" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En lingüistica, la coocurrencia es la aparición o utilización conjunta de dos unidades léxicas (por ejemplo, palabras o n-gramas) en una unidad superior, como una oración o un documento. La función <a class="reference internal" href="../funciones/exploracion.html#exploracion.matriz_coocurrencias" title="exploracion.matriz_coocurrencias"><code class="xref py py-func docutils literal notranslate"><span class="pre">exploracion.matriz_coocurrencias()</span></code></a> permite calcular las coocurrencias de términos en un mismo documento o en una ventana de +/- n palabras.</p>
-<p>A partir de estas matrices de coocurrencias es posible graficar redes o grafos de coocurrencia. En estos, el tamaño de cada punto es proporcional a la frecuencia de aparición de ese término y el grosor de las lineas entre puntos es proporcional a la cantidad de veces que dos términos aparecen juntos en un documento o una ventana de palabras.</p>
+<p>A partir de estas matrices de coocurrencias es posible graficar redes o grafos de coocurrencia, en las cuales el tamaño de cada punto es proporcional a la frecuencia de aparición de ese término y el grosor de las lineas entre puntos es proporcional a la cantidad de veces que dos términos aparecen juntos en un documento o una ventana de palabras.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Obtener matrices de coocurrencias</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">texto</span> <span class="o">=</span>  <span class="s2">&quot;&quot;&quot; el perro está en la casa un perro y un gato están en el carro</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">    el carro entro a la casa el gato salió de la casa para entrar al carro</span>
@@ -532,7 +533,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="02_limpieza_de_textos.html" title="previous page"><span class="section-number">2. </span>Limpieza de textos</a>
-    <a class='right-next' id="next-link" href="04_correccion_ortografica.html" title="next page"><span class="section-number">4. </span>Corrección ortográfica</a>
+    <a class='right-next' id="next-link" href="04_correccion_ortografica.html" title="next page"><span class="section-number">4. </span>Corrección ortográfica de textos</a>
 
               </div>
               

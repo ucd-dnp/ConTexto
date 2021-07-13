@@ -24,7 +24,7 @@ author = 'UCD - DNP'
 html_last_updated_fmt = '%b %d, %Y'
 
 # The full version, including alpha/beta/rc tags
-release = '0.2'
+release = '0.2.0'
 version = 'gh-pages'
 
 # -- General configuration ---------------------------------------------------
@@ -32,8 +32,8 @@ version = 'gh-pages'
 # -- sphinx-multiversion -----------------------------------------------------
 
 # Whitelist pattern for tags (set to None to ignore all tags)
-smv_tag_whitelist = r'^.*$' # default
-# smv_tag_whitelist = r'^(?!v0.1b).*$' # ignora la versión v0.1
+# smv_tag_whitelist = r'^.*$' # default
+smv_tag_whitelist = r'^(?!v0.2.0).*$' # ignora la versión v0.1
 
 # Whitelist pattern for branches (set to None to ignore all branches)
 # smv_branch_whitelist = r'^.*$' # default - all branches

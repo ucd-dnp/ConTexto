@@ -217,9 +217,24 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacion-usando-pip">
+   1.1. Instalación usando pip
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instalacion-usando-conda">
+   1.2. Instalación usando conda
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -237,7 +252,9 @@
                 
   <div class="section" id="instalacion-contexto">
 <span id="instalacion-basica"></span><h1><span class="section-number">1. </span>Instalación ConTexto<a class="headerlink" href="#instalacion-contexto" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>Para la instalación de la librería se recomienda utilizar el gestor de paquetes <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y así evitar conflictos de versiones con el entorno de desarrollo base del computador.</p>
+<div class="section" id="instalacion-usando-pip">
+<h2><span class="section-number">1.1. </span>Instalación usando pip<a class="headerlink" href="#instalacion-usando-pip" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Por buenas prácticas se sugiere antes de la instalación crear un entorno virtual que permita aislar las librerías y así evitar conflictos de versiones con el entorno de desarrollo base del computador.</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install contexto</span>
 </pre></div>
@@ -257,6 +274,16 @@
 <li><p><em>ConTexto</em> está disponible para Windows x64 y Linux.</p></li>
 <li><p><em>ConTexto</em> no fue probada en arquitecturas de 32 bits para Windows, por lo que se podrían presentar errores.</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="instalacion-usando-conda">
+<h2><span class="section-number">1.2. </span>Instalación usando conda<a class="headerlink" href="#instalacion-usando-conda" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para realizar la instalación en <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">/</span> <span class="pre">Miniconda</span></code> utilizar el siguiente comando:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install --extra-index-url https://pypi.org/simple/ contexto</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
