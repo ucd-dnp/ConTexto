@@ -46,7 +46,7 @@ pytesseract==0.3.5
 python-dateutil==2.8.1
 python-docx==0.8.10
 pytz==2021.1
-pywin32==228
+pywin32==301
 regex==2020.11.13
 reportlab==3.5.48
 requests==2.25.1
