@@ -17,7 +17,7 @@ INSTALL_REQUIRES = [
     "nltk==3.6.2",
     "pandas>=0.25.3",
     "pdf2image==1.16.0",
-    "PyPDF2==1.26.0",
+    "PyPDF2==1.27.5",
     "pyspellchecker==0.6.2",
     "pytesseract==0.3.7; python_version<'3.8.4'",
     "pytesseract>=0.3.7; python_version>='3.8.5'",

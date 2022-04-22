@@ -40,7 +40,7 @@ ply==3.11
 preshed==3.0.5
 Pygments==2.8.0
 pyparsing==2.4.7
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyspellchecker==0.5.5
 pytesseract==0.3.5
 python-dateutil==2.8.1
