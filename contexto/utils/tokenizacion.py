@@ -1,4 +1,4 @@
-from collections import Iterable
+from collections.abc import Iterable
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from nltk.tokenize.toktok import ToktokTokenizer
 
