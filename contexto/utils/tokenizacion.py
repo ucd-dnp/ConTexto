@@ -1,4 +1,9 @@
-from collections.abc import Iterable
+try:
+    # Python <= 3.9
+    from collections import Iterable
+except ImportError:
+    # Python > 3.9
+    from collections.abc import Iterable
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from nltk.tokenize.toktok import ToktokTokenizer
 
